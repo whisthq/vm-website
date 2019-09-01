@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css?family=Maven+Pro|Kalam&display=swap');
+
+html {
+  overflow-y: auto;
+}
+
+.App, .About {
+  text-align: center;
+  font-family: 'Maven Pro', sans-serif;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  width: 100%;
+}
+
+.LandingButton {
+  background-color: white;
+  border: solid 1px #2F5DA3;
+  color: #2F5DA3;
+  padding: 10px;
+  min-width: 150px;
+  font-size: 15px;
+  font-weight: bold;
+}
