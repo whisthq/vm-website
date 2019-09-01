@@ -22,3 +22,34 @@ html {
   font-size: 15px;
   font-weight: bold;
 }
+
+::placeholder {
+  color: white;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+input[type=text] {
+  position: relative;
+  left: 5px;
+  color: red;
+}
+
+button {
+  transition-duration: 0.7s;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.headerlink {
+  transition-duration: 0.7s;
+}
+
+.headerlink:hover {
+  color: #4BC6ED !important;
+}

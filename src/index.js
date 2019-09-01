@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './static/index.css';
 import App from './pages/App';
 import Story from './pages/story';
+import HowItWorks from './pages/howitworks'
 import * as serviceWorker from './pages/serviceWorker';
 import Banner from './pages/banner.js';
 import SignupBox from './pages/signupbox.js'
@@ -17,6 +18,7 @@ const routing = (
 	      <Header/>
 	      <Route exact path="/" component={App} />
 	      <Route path="/story" component={Story} />
+	      <Route path="/howitworks" component={HowItWorks} />
 	    </div>
 	  </Router>
 	</div>

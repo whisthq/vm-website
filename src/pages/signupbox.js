@@ -31,7 +31,7 @@ class SignupBox extends Component {
           <div style = {{marginRight: 60, display: 'flex', textAlign: 'center', marginTop: 15}}>
             <input type = "text" placeholder = '    Our beta is open! Apply with your email.'
             style = {{color: 'white', backgroundColor: '#4BC6ED', height: 15, marginTop: 5, width: 300,
-              border: 'none', borderRight: 'none', padding: '7px 5px', borderRadius: 15}}></input>
+              border: 'none', borderRight: 'none', padding: '7px 5px', borderRadius: 15, boxShadow: '0px 0px 10px #9ecaed'}}></input>
             <button style = {{color: 'white', backgroundColor: 'black', borderRadius: '50%', border: 'none',
                               height: 40, width: 40, position: 'relative', right: 30}}>
               <FaArrowRight/>

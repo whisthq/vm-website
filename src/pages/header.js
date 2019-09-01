@@ -34,15 +34,15 @@ class Header extends Component {
           <div style = {{width: '60%', textAlign: 'left', paddingLeft: 25}}>
             <div style = {{color: 'white', fontWeight: 'bold'}}>Fractal</div>  
           </div>
-          <div style = {{width: '30%', maxWidth: 350, textAlign: 'right', display: 'flex'}}>
-            <Link to = '/' style={{color: 'white', width: '33.33%', textDecoration: 'none'}}>
+          <div style = {{width: '30%', maxWidth: 350, textAlign: 'center', display: 'flex'}}>
+            <Link className = 'headerlink' to = '/' style={{color: 'white', width: '33.33%', textDecoration: 'none'}}>
               Join Our Beta
             </Link>
-            <Link to = '/story' style={{color: 'white', width: '33.33%', textDecoration: 'none'}}>
+            <Link className = 'headerlink' to = '/story' style={{color: 'white', width: '33.33%', textDecoration: 'none'}}>
               Our Story
             </Link>
-            <Link to = '/' style={{color: 'white', width: '33.33%', textDecoration: 'none'}}>
-              FAQs
+            <Link className = 'headerlink' to = '/howitworks' style={{color: 'white', width: '33.33%', textDecoration: 'none'}}>
+              How It Works
             </Link>
           </div>
         </div>
