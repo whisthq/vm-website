@@ -68,9 +68,9 @@ export default class PageHome extends Component {
             {
             this.state.width > 700
             ?
-            <div style = {{width: '50%', paddingLeft: 30, textAlign: 'left'}}>
+            <div style = {{width: '45%', maxWidth: 600, paddingLeft: 30, textAlign: 'left'}}>
               <div style = {{color: '#555555', margin: 0, lineHeight: 1.8, fontSize: 20}}>
-                Fractal builds cloud-powered computers and phones that are more flexible, affordable, and secure than today's devices. 
+                Fractal builds computers and phones powered by the cloud.
                 Our first computer, the Cube, is in currently in a private beta.
               </div>    
               <div style = {{display: 'flex', marginTop: 20}}>
