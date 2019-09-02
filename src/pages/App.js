@@ -41,7 +41,7 @@ export default class PageHome extends Component {
     }
     return (
       <div className='App'>
-        <div style = {{background: `url(${FractalOutline}) no-repeat center center`, maxHeight: '95vh', minHeight: '75vh'}}>
+        <div style = {{background: `url(${FractalOutline}) no-repeat cover center center`, maxHeight: '95vh', minHeight: '75vh'}}>
           {
           this.state.width > 700 
           ?
