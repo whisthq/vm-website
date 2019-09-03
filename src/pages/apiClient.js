@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URI = 'https://infinite-everglades-29230.herokuapp.com/';
+const BASE_URI = 'https://127.0.0.1:5000/';
 
 const client = axios.create({
  baseURL: BASE_URI,
@@ -9,17 +9,14 @@ const client = axios.create({
 
 class APIClient {
  storeEmail(email) {
-   return this.perform('post', '/email', email);
+   return this.perform('post', '/email', {'email':email});
  }
 
  async perform (method, resource, data) {
    return client({
      method,
      url: resource,
-     data,
-     headers: {
-       'Content-Type': 'application/json'
-     }
+     data
    }).then(resp => {
      return resp.data ? resp.data : [];
    })

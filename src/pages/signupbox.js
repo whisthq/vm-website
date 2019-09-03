@@ -9,7 +9,7 @@ import requestClient from './requestClient'
 class SignupBox extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, email: '', signedup: false}
+    this.state = { width: 0, height: 0, email: ''}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.storeEmail = this.storeEmail.bind(this)
     this.changeEmail = this.changeEmail.bind(this)
@@ -22,8 +22,17 @@ class SignupBox extends Component {
   }
 
   storeEmail(email) {
-    this.client = new apiClient();
-    this.client.storeEmail(email).then((data) => this.setState({...this.state, signedup: true}));
+    (async () => {
+      const rawResponse = await fetch('https://infinite-everglades-29230.herokuapp.com/email', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json',
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({email: email})
+      });
+    })();
   }
 
   componentDidMount() {
