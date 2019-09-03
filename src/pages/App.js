@@ -6,7 +6,7 @@ import LandingTop from '../assets/landingtop.svg'
 import LandingLeft from '../assets/landingleft.svg'
 import FractalOutline from '../assets/fractaloutline.svg'
 import FractalOutlineSmall from '../assets/fractaloutlinesmall.svg'
-import CubeRender1 from '../assets/bluecube.png'
+import CubeRender1 from '../assets/cuberender.png'
 import CubeRender2 from '../assets/cubegif.gif'
 import CubeRender3 from '../assets/closeup.png'
 import CubeRender4 from '../assets/pricingchart.svg'
@@ -100,7 +100,7 @@ export default class PageHome extends Component {
           ?
           <CubeSection subtitle = 'Introducing the Cube'
                        title = 'A next generation, cloud-powered desktop computer.'
-                       image = {<img src = {CubeRender1} style = {{width: '100%', margin: 'auto', marginTop: 50, maxWidth: 900}}
+                       image = {<img src = {CubeRender1} style = {{width: '100%', margin: 'auto', maxWidth: 1200}}
                        /> }
           />
           :
