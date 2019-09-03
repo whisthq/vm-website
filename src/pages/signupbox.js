@@ -3,11 +3,13 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { FaArrowRight } from 'react-icons/fa';
+import apiClient from './apiClient'
+import requestClient from './requestClient'
 
 class SignupBox extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, email: ''}
+    this.state = { width: 0, height: 0, email: '', signedup: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.storeEmail = this.storeEmail.bind(this)
     this.changeEmail = this.changeEmail.bind(this)
@@ -20,16 +22,8 @@ class SignupBox extends Component {
   }
 
   storeEmail(email) {
-    var xhr = new XMLHttpRequest()
-    // get a callback when the server responds
-    xhr.addEventListener('load', () => {
-      // update the state of the component with the result here
-      console.log(xhr.responseText)
-    })
-    // open the request with the verb and the url
-    xhr.open('POST', 'https://infinite-everglades-29230.herokuapp.com/email', {'email': email})
-    // send the request
-    xhr.send()
+    this.client = new apiClient();
+    this.client.storeEmail(email).then((data) => this.setState({...this.state, signedup: true}));
   }
 
   componentDidMount() {
