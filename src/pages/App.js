@@ -195,7 +195,7 @@ export default class PageHome extends Component {
           this.state.width > 700 
           ?
           <CubeSection subtitle = 'Security'
-                       title = 'Peace of mind'
+                       title = 'Peace of mind.'
                        text = {<div style = {{color: '#999999',  fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                  <p>Privacy matters. All communications with the cloud are encrypted end-to-end, and Fractal does 
                                     not have access to your data. Your private cloud is isolated, ensuring that your computer will not
@@ -207,7 +207,7 @@ export default class PageHome extends Component {
           />
           :
           <CubeSection subtitle = 'Security'
-                       title = 'Peace of mind'
+                       title = 'Peace of mind.'
                        text = {<div style = {{color: '#999999',  fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                  <p style = {{fontSize: 14}}>Privacy matters. All communications with the cloud are encrypted end-to-end, and Fractal does 
                                     not have access to your data. Your private cloud is isolated, ensuring that your computer will not
