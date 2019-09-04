@@ -20,7 +20,7 @@ const routing = (
 	      <Route path="/story" component={Story} />
 	      <Route path="/howitworks" component={HowItWorks} />
 	        <div style = {{width: '100%', height: 2, backgroundColor: 'black'}}></div>
-	        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex', fontSize: 12}}>
+	        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex', fontSize: 15}}>
 	          <p style = {{margin: 0, width: '60%'}}>Fractal, 2019</p>
 	        </div>
 	    </div>
