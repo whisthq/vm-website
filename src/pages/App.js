@@ -81,7 +81,7 @@ export default class PageHome extends Component {
             <div style = {{width: '45%', maxWidth: 600, paddingLeft: 30, textAlign: 'left'}}>
               <div style = {{color: '#555555', margin: 0, lineHeight: 1.8, fontSize: 20}}>
                 Fractal builds computers and phones powered by the cloud.
-                Our first computer, the Cube, is in currently in a private beta.
+                Our first computer, the Cube, is currently in a private beta.
               </div>    
               <div style = {{display: 'flex', marginTop: 20}}>
                 <button class = 'LandingButton' onClick = {this.learnmore}>Learn More</button>
@@ -96,7 +96,7 @@ export default class PageHome extends Component {
               <div style = {{color: '#555555', margin: 0, lineHeight: 1.7, fontSize: 14, backgroundColor: 'white'}}>
                 Fractal builds the next generation of personal devices—cloud-powered computers and 
                 phones that are more flexible, affordable, and secure than ever before. 
-                Our first computer, the Cube, is in currently in a private beta.
+                Our first computer, the Cube, is currently in a private beta.
               </div>    
             </div>
             }
