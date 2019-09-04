@@ -151,18 +151,22 @@ export default class PageHome extends Component {
           this.state.width > 700 
           ?
           <CubeSection subtitle = 'Flexibility'
-                       title = 'Upgrade at the click of a button.'
+                       title = 'Access your desktop anywhere. Upgrade instantly.'
                        text = {<div style = {{color: '#999999',  fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
-                               <p>Gone are the days of buying and installing new hardware. Need more processing power to run heavy applications? Want more storage? 
+                               <p>Gone are the days of forgetting your computer at home. You can access your Cube's desktop from any Internet-connected device. In this way,
+                               any computer can be your computer.</p>
+                               <p>Gone, too, are the days of buying and installing new hardware. Need more processing power to run heavy applications? Want more storage? 
                                   Simply click a button to upgrade your Cube instantly. With the Cube, you’ll always have the computer that perfectly fits your needs.</p></div>}
                        image = {<img src = {CubeRender3} style = {{width: '100%', margin: 'auto', maxWidth: 900}}
                        /> }
           />
           :
           <CubeSection subtitle = 'Flexibility'
-                       title = 'Upgrade at the click of a button.'
+                       title = 'Access your desktop anywhere. Upgrade instantly.'
                        text = {<div style = {{color: '#999999',  fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
-                               <p style = {{fontSize: 14}}>Gone are the days of buying and installing new hardware. Need more processing power to run heavy applications? Want more storage? 
+                               <p style = {{fontSize: 14}}>Gone are the days of forgetting your computer at home. You can access your Cube's desktop from any Internet-connected device. In this way,
+                               any computer can be your computer.</p>
+                               <p style = {{fontSize: 14}}>Gone, too, are the days of buying and installing new hardware. Need more processing power to run heavy applications? Want more storage? 
                                   Simply click a button to upgrade your Cube instantly. With the Cube, you’ll always have the computer that perfectly fits your needs.</p></div>}
                        image = {<img src = {CubeRender3} style = {{width: '100%', margin: 'auto', maxWidth: 900}}
                        /> }

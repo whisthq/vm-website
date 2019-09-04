@@ -12,6 +12,7 @@ import { Route, Switch, Link, BrowserRouter as Router } from 'react-router-dom'
 
 const routing = (
   <div className = 'App'>
+  	  <title>Fractal</title>
 	  <Banner object = {<SignupBox/>}/>
 	  <Router>
 	    <div>
