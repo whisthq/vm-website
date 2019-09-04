@@ -107,7 +107,7 @@ class SignupBox extends Component {
     }
     return (
       <div style = {{marginRight: 30, display: 'flex'}}>
-        <input type = "text" placeholder = '  johndoe@gmail.com'
+        <input type = "text" placeholder = '  Enter your email to join our beta!'
         style = {{color: 'white', backgroundColor: '#4BC6ED', height: 34, marginTop: 8, width: 450,
           border: 'none', borderRight: 'none', padding: '7px 5px', borderRadius: 15}}
           value = {this.state.email} onChange = {this.changeEmail}></input>
