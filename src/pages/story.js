@@ -50,7 +50,7 @@ export default class Story extends Component {
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '5% 10%'}}>
           <CubeSection subtitle = 'Our Story'
                        title = 'Behind the Logo'
-                       text = {<div style = {{color: '#333333', maxWidth: 800, fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                  <p>A fractal is a mathematical object that with finite area but infinite perimeter. Following this line of thought, 
                                     we have designed Fractal devices to be small in physical size but vast in computational power.</p>
                                  <p>We often get questions about our logo, which is intentionally abstract⁠—after all, abstract art can be anything
@@ -68,7 +68,7 @@ export default class Story extends Component {
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: ' 8% 10%'}}>
           <CubeSection subtitle = 'Our Story'
                        title = 'Behind the Logo'
-                       text = {<div style = {{color: '#333333', maxWidth: 800, fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                  <p style = {{fontSize: 14}}>A fractal is a mathematical object that with finite area but infinite perimeter. Following this line of thought, 
                                     we have designed Fractal devices to be small in physical size but vast in computational power.</p>
                                  <p style = {{fontSize: 14}}>We often get questions about our logo, which is intentionally abstract⁠—after all, abstract art can be anything
@@ -88,7 +88,7 @@ export default class Story extends Component {
         ?
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '0% 10%'}}>
           <CubeSection title = 'Who We Are'
-                       text = {<div style = {{color: '#333333', maxWidth: 800, fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                  <p>Fractal was founded in the summer of 2019 by a team of computer scientists from Harvard University, who saw a way to build a next 
                                  generation of more affordable,  more elegant computers. </p>
                                  <p>
@@ -102,7 +102,7 @@ export default class Story extends Component {
         :
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: ' 2% 10%'}}>
           <CubeSection title = 'Who We Are'
-                       text = {<div style = {{color: '#333333', maxWidth: 800, fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                  <p style = {{fontSize: 14}}>Fractal was founded in the summer of 2019 by a team of computer scientists from Harvard University, who saw a way to build a next 
                                  generation of more affordable,  more elegant computers. </p>
                                  <p style = {{fontSize: 14}}>
@@ -112,18 +112,6 @@ export default class Story extends Component {
                                 </div>}
                         daymode
           />
-        </div>
-        }
-        <div style = {{width: '100%', height: 2, backgroundColor: 'black', marginTop: 100}}></div>
-        {
-        this.state.width > 700 
-        ?
-        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex'}}>
-          <p style = {{margin: 0, width: '75%'}}>Fractal Computers Inc., 2019</p>
-        </div>
-        :
-        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex', fontSize: 12}}>
-          <p style = {{margin: 0, width: '60%'}}>Fractal Inc., 2019</p>
         </div>
         }
       </div>

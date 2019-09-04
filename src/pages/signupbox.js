@@ -75,16 +75,18 @@ class SignupBox extends Component {
         )
       }
       return (
-        <div style = {{marginRight: 30, display: 'flex'}}>
+        <div style = {{width: '100%', marginTop: 40}}>
+        <div style = {{margin: 'auto'}}>
           <input type = "text" placeholder = '    Our beta is open! Apply with your email.'
-          style = {{color: 'white', backgroundColor: '#4BC6ED', height: 20, marginTop: 8, maxWidth: 450,
+          style = {{color: 'white', backgroundColor: '#4BC6ED', height: 33, marginTop: 8, maxWidth: 450, display: 'inline-block',
             width: '90%', border: 'none', borderRight: 'none', padding: '7px 5px', borderRadius: 15}}
             value = {this.state.email} onChange = {this.changeEmail}>
             </input>
-          <button style = {{color: 'white', backgroundColor: 'black', borderRadius: '50%', border: 'none',
+          <button style = {{color: 'white', backgroundColor: 'black', borderRadius: '50%', border: 'none', display: 'inline-block',
                             height: 50, width: 50, position: 'relative', right: 40}} onClick = {() => this.storeEmail(this.state.email)}>
             <FaArrowRight/>
           </button>
+        </div>
         </div>
       )
     }

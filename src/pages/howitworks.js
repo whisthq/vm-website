@@ -50,7 +50,7 @@ export default class Story extends Component {
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '4% 10%'}}>
           <CubeSection subtitle = 'How it works'
                        title = 'What is the Cube?'
-                       text = {<div style = {{color: '#333333', maxWidth: 800, fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                  <p>The Cube is a cloud-powered desktop computer. This means that the Cube is a device that connects you seamlessly to a virtual computer, 
                                  living in one our remote datacenters. When you use the Cube, you'll notice no difference between the Cube and your old computer; under the hood, however,
                                  the Cube performs its computation in the cloud, and streams your Windows 10 desktop to whatever display you connect your Cube to.</p>
@@ -65,7 +65,7 @@ export default class Story extends Component {
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: ' 8% 10%'}}>
           <CubeSection subtitle = 'How it works'
                        title = 'What is the Cube?'
-                       text = {<div style = {{color: '#333333', maxWidth: 800, fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                  <p style = {{fontSize: 14}}>The Cube is a cloud-powered desktop computer. This means that the Cube is a device that connects you seamlessly to a virtual computer, 
                                  living in one our remote datacenters. When you use the Cube, you'll notice no difference between the Cube and your old computer; under the hood, however,
                                  the Cube performs its computation in the cloud, and streams your Windows 10 desktop to whatever display you connect your Cube to.</p>
@@ -81,7 +81,7 @@ export default class Story extends Component {
         ?
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '4% 10%'}}>
           <CubeSection title = 'What makes the Cube so great?'
-                       text = {<div style = {{color: '#333333', maxWidth: 800, fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                  <p>Because of the way that our datacenters are designed, the Cube is significantly less
                                  expensive than a traditional computer. Since the Cube's hardware lives in the cloud, you'll never 
                                  lose access to your Windows desktop, even if you are away from your computer. While your computer's 
@@ -95,7 +95,7 @@ export default class Story extends Component {
         :
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: ' 8% 10%'}}>
           <CubeSection title = 'What makes the Cube so great?'
-                       text = {<div style = {{color: '#333333', maxWidth: 800, fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                  <p style = {{fontSize: 14}}>Because of the way that our datacenters are designed, the Cube is significantly less
                                  expensive than a traditional computer. Since the Cube's hardware lives in the cloud, you'll never 
                                  lose access to your Windows desktop, even if you are away from your computer. While your computer's 
@@ -112,7 +112,7 @@ export default class Story extends Component {
         ?
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '4% 10%'}}>
           <CubeSection title = 'How does the technology work?'
-                       text = {<div style = {{color: '#333333', maxWidth: 800, fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                 <p>
                                 When you purchase a Fractal plan, we allocate you a solid state storage disk in the cloud, where your computer's 
                                 operating system is stored, along with some processing power according to your plan. We call this a Fractal instance. 
@@ -131,7 +131,7 @@ export default class Story extends Component {
         :
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: ' 8% 10%'}}>
           <CubeSection title = 'What makes the Cube so great?'
-                       text = {<div style = {{color: '#333333', maxWidth: 800, fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                 <p style = {{fontSize: 14}}>
                                 When you purchase a Fractal plan, we allocate you a solid state storage disk in the cloud, where your computer's 
                                 operating system is stored, along with some processing power according to your plan. We call this a Fractal instance. 
@@ -153,7 +153,7 @@ export default class Story extends Component {
         ?
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '4% 10%'}}>
           <CubeSection title = 'Is it secure?'
-                       text = {<div style = {{color: '#333333', maxWidth: 800, fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                 <p>
                                 Yes, even more so than your normal computer. Since all your data lives in the cloud, you don’t have to worry about 
                                 losing of breaking your Cube.
@@ -174,7 +174,7 @@ export default class Story extends Component {
         :
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: ' 8% 10%'}}>
           <CubeSection title = 'Is it secure?'
-                       text = {<div style = {{color: '#333333', maxWidth: 800, fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                 <p style = {{fontSize: 14}}>
                                 Yes, even more so than your normal computer. Since all your data lives in the cloud, you don’t have to worry about 
                                 losing of breaking your Cube.
@@ -191,18 +191,6 @@ export default class Story extends Component {
                                 </div>}
                         daymode
           />
-        </div>
-        }
-        <div style = {{width: '100%', height: 2, backgroundColor: 'black', marginTop: 100}}></div>
-        {
-        this.state.width > 700 
-        ?
-        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex'}}>
-          <p style = {{margin: 0, width: '75%'}}>Fractal Computers Inc., 2019</p>
-        </div>
-        :
-        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex', fontSize: 12}}>
-          <p style = {{margin: 0, width: '60%'}}>Fractal Inc., 2019</p>
         </div>
         }
       </div>
