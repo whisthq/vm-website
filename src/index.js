@@ -9,10 +9,13 @@ import Banner from './pages/banner.js';
 import SignupBox from './pages/signupbox.js'
 import Header from './pages/header.js'
 import { Route, Switch, Link, BrowserRouter as Router } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 const routing = (
   <div className = 'App'>
+  	  <Helmet>
   	  <title>Fractal</title>
+  	  </Helmet>
 	  <Banner object = {<SignupBox/>}/>
 	  <Router>
 	    <div>
