@@ -27,7 +27,7 @@ class CubeSection extends Component {
   	if (this.props.daymode) {
   		if (this.state.width > 700) {
 		    return (
-		      <div style = {{width: '80%', marginTop: 20}}>
+		      <div style = {{width: '100%', marginTop: 20}}>
 		        <h2 style = {{color: '#333333', margin: 0}}>{this.props.subtitle}</h2>
 		        <h1 style = {{color: 'black', fontSize: 70, margin: 0, marginTop: 15, marginBottom: 30, fontWeight: 'bold'}}>{this.props.title}</h1>
 		        {this.props.text}
@@ -36,7 +36,7 @@ class CubeSection extends Component {
 		    )
 		}
     return (
-      <div style = {{width: '80%', marginTop: 20}}>
+      <div style = {{width: '100%', marginTop: 20}}>
         <h2 style = {{color: '#333333', margin: 0, fontSize: 20}}>{this.props.subtitle}</h2>
         <h1 style = {{color: 'black', fontSize: 30, margin: 0, marginTop: 10, marginBottom: 30, fontWeight: 'bold'}}>{this.props.title}</h1>
         {this.props.text}
@@ -49,14 +49,14 @@ class CubeSection extends Component {
     {
     this.state.width > 700
     ?
-      <div style = {{width: '80%', marginTop: 20}}>
+      <div style = {{width: '100%', marginTop: 20}}>
         <h2 style = {{color: '#999999', margin: 0}}>{this.props.subtitle}</h2>
         <h1 style = {{color: 'white', fontSize: 70, margin: 0, marginTop: 15, marginBottom: 30, fontWeight: 'bold'}}>{this.props.title}</h1>
         {this.props.text}
         {this.props.image}
       </div>
     :
-      <div style = {{width: '80%', marginTop: 20}}>
+      <div style = {{width: '100%', marginTop: 20}}>
         <h2 style = {{color: '#999999', margin: 0, fontSize: 20}}>{this.props.subtitle}</h2>
         <h1 style = {{color: 'white', fontSize: 30, margin: 0, marginTop: 10, marginBottom: 30, fontWeight: 'bold'}}>{this.props.title}</h1>
         {this.props.text}

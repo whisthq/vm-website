@@ -32,17 +32,17 @@ class Header extends Component {
         this.state.width > 700 
         ?
         <div style = {{display: 'flex', width: '100%', padding: 5}}>
-          <div style = {{width: '60%', textAlign: 'left', paddingLeft: 25}}>
+          <div style = {{width: '70%', textAlign: 'left', paddingLeft: 25}}>
             <div style = {{color: 'white', fontWeight: 'bold'}}>Fractal</div>  
           </div>
           <div style = {{width: '30%', maxWidth: 350, textAlign: 'center', display: 'flex'}}>
-            <Link className = 'headerlink' to = '/' style={{color: 'white', width: '33.33%', textDecoration: 'none'}}>
+            <Link className = 'headerlink' to = '/' style={{color: 'white', textDecoration: 'none', textAlign: 'center', marginRight: 25}}>
               Home
             </Link>
-            <Link className = 'headerlink' to = '/story' style={{color: 'white', width: '33.33%', textDecoration: 'none'}}>
+            <Link className = 'headerlink' to = '/story' style={{color: 'white', textDecoration: 'none', textAlign: 'center', marginRight: 25}}>
               Our Story
             </Link>
-            <Link className = 'headerlink' to = '/howitworks' style={{color: 'white', width: '33.33%', textDecoration: 'none'}}>
+            <Link className = 'headerlink' to = '/howitworks' style={{color: 'white', textDecoration: 'none', textAlign: 'center'}}>
               How It Works
             </Link>
           </div>
