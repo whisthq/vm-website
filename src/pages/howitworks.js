@@ -198,11 +198,11 @@ export default class Story extends Component {
         this.state.width > 700 
         ?
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex'}}>
-          <p style = {{margin: 0, width: '75%'}}>@ Fractal Computers Inc., 2019</p>
+          <p style = {{margin: 0, width: '75%'}}>Fractal Computers Inc., 2019</p>
         </div>
         :
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex', fontSize: 12}}>
-          <p style = {{margin: 0, width: '60%'}}>@ Fractal Inc., 2019</p>
+          <p style = {{margin: 0, width: '60%'}}>Fractal Inc., 2019</p>
         </div>
         }
       </div>
