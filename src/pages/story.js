@@ -120,18 +120,10 @@ export default class Story extends Component {
         ?
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex'}}>
           <p style = {{margin: 0, width: '75%'}}>@ Fractal Computers Inc., 2019</p>
-          <p style = {{margin: 0, width: '20%', textAlign: 'right', display: 'flex'}}>
-            Contact Us
-            <FaRegEnvelope style = {{marginLeft: 20}}/>
-          </p>
         </div>
         :
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex', fontSize: 12}}>
           <p style = {{margin: 0, width: '60%'}}>@ Fractal Inc., 2019</p>
-          <p style = {{margin: 0, width: '30%', textAlign: 'right', display: 'flex'}}>
-            Contact Us
-            <FaRegEnvelope style = {{marginLeft: 10}}/>
-          </p>
         </div>
         }
       </div>

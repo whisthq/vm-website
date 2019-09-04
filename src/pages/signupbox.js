@@ -9,7 +9,7 @@ import requestClient from './requestClient'
 class SignupBox extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, email: ''}
+    this.state = { width: 0, height: 0, email: '', signedup: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.storeEmail = this.storeEmail.bind(this)
     this.changeEmail = this.changeEmail.bind(this)
@@ -33,6 +33,9 @@ class SignupBox extends Component {
         body: JSON.stringify({email: email})
       });
     })();
+    this.setState({
+      signedup: true
+    });
   }
 
   componentDidMount() {
@@ -49,6 +52,12 @@ class SignupBox extends Component {
   }
 
   render() {
+    if (this.state.signedup) {
+      if (this.state.width < 700) {
+        return(<div style = {{color: '#3dcf29', padding: 10}}>Thank you for signing up!<br/>You'll hear from us soon.</div>) 
+      }
+      return(<div style = {{color: '#3dcf29', padding: 10}}>Thank you for signing up! You'll hear from us soon.</div>) 
+    }
     if (this.props.right) {
       if (this.state.width < 700) {
         return (
@@ -82,12 +91,12 @@ class SignupBox extends Component {
     if (this.state.width < 700) {
       return (
         <div style = {{marginRight: 60, display: 'flex', textAlign: 'center', marginTop: 15}}>
-          <input type = "text" placeholder = '  johndoe@gmail.com'
-          style = {{color: 'white', backgroundColor: '#4BC6ED', height: 15, marginTop: 5, width: 200,
+          <input type = "text" placeholder = '  Email Address'
+          style = {{color: 'white', backgroundColor: '#4BC6ED', height: 30, marginTop: 4, width: 160,
             border: 'none', borderRight: 'none', padding: '7px 5px', borderRadius: 15}}
             value = {this.state.email} onChange = {this.changeEmail}></input>
           <button style = {{color: 'white', backgroundColor: 'black', borderRadius: '50%', border: 'none',
-                            height: 40, width: 40, position: 'relative', right: 30}}
+                            height: 40, width: 40, position: 'relative', right: 20}}
                             onClick = {() => this.storeEmail(this.state.email)}>
             <FaArrowRight/>
           </button>
@@ -97,7 +106,7 @@ class SignupBox extends Component {
     return (
       <div style = {{marginRight: 30, display: 'flex'}}>
         <input type = "text" placeholder = '  johndoe@gmail.com'
-        style = {{color: 'white', backgroundColor: '#4BC6ED', height: 20, marginTop: 8, width: 450,
+        style = {{color: 'white', backgroundColor: '#4BC6ED', height: 34, marginTop: 8, width: 450,
           border: 'none', borderRight: 'none', padding: '7px 5px', borderRadius: 15}}
           value = {this.state.email} onChange = {this.changeEmail}></input>
         <button style = {{color: 'white', backgroundColor: 'black', borderRadius: '50%', border: 'none',

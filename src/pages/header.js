@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom'
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'react-bootstrap'
 
 class Header extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class Header extends Component {
           </div>
           <div style = {{width: '30%', maxWidth: 350, textAlign: 'center', display: 'flex'}}>
             <Link className = 'headerlink' to = '/' style={{color: 'white', width: '33.33%', textDecoration: 'none'}}>
-              Join Our Beta
+              Home
             </Link>
             <Link className = 'headerlink' to = '/story' style={{color: 'white', width: '33.33%', textDecoration: 'none'}}>
               Our Story
@@ -47,10 +48,41 @@ class Header extends Component {
           </div>
         </div>
         :
-        <div>
-          <div style = {{color: 'white', fontWeight: 'bold', textAlign: 'left'}}>Fractal</div>  
+        <div style = {{paddingLeft: 10, paddingRight: 10, minHeight: 30}}>
+          <div style = {{color: 'white', fontWeight: 'bold', float: 'left'}}>Fractal</div> 
+          <div style = {{float: 'right'}}>
+            <Dropdown>
+              <Dropdown.Toggle variant="secondary" id="dropdown-basic" style = {{backgroundColor: 'black', border: 'none', padding: 0}}>
+                Menu
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">
+                  <Link className = 'headerlink' to = '/' style = {{color: 'black'}}>
+                    Home
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item href="#/action-2">
+                  <Link className = 'headerlink' to = '/story' style = {{color: 'black'}}>
+                    Our Story
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item href="#/action-3">
+                  <Link className = 'headerlink' to = '/howitworks' style = {{color: 'black'}}>
+                    How It Works
+                  </Link>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown> 
+          </div>
         </div>
-        }        
+        }    
+      <link
+        rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+      />    
       </div>
     )
   }

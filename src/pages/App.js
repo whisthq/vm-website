@@ -17,8 +17,18 @@ import {FaRegEnvelope} from 'react-icons/fa'
 export default class PageHome extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, modalShow: false }
+    this.state = { width: 0, height: 0, modalShow: false, showPopup: false }
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
+    this.learnmore = this.learnmore.bind(this)
+    this.joinbeta = this.joinbeta.bind(this)
+  }
+
+  learnmore() {
+    this.refs.learnmore.scrollIntoView();
+  }
+
+  joinbeta() {
+    this.refs.joinbeta.scrollIntoView();
   }
 
   componentDidMount() {
@@ -74,8 +84,9 @@ export default class PageHome extends Component {
                 Our first computer, the Cube, is in currently in a private beta.
               </div>    
               <div style = {{display: 'flex', marginTop: 20}}>
-                <button class = 'LandingButton'>Learn More</button>
-                <button class = 'LandingButton' style = {{marginLeft: 20, color: '#4BC6ED', border: 'solid 1px #4BC6ED'}}>
+                <button class = 'LandingButton' onClick = {this.learnmore}>Learn More</button>
+                <button class = 'LandingButton' style = {{marginLeft: 20, color: '#4BC6ED', border: 'solid 1px #4BC6ED'}}
+                  onClick = {this.joinbeta}>
                   Join Our Beta
                 </button>
               </div>
@@ -94,7 +105,7 @@ export default class PageHome extends Component {
             }
           </div>
         </div>
-        <div style = {{backgroundColor: 'black', width: '100%', textAlign: 'left', padding: '10%'}}>
+        <div ref = 'learnmore' style = {{backgroundColor: 'black', width: '100%', textAlign: 'left', padding: '10%'}}>
           {
           this.state.width > 700 
           ?
@@ -214,7 +225,7 @@ export default class PageHome extends Component {
         {
         this.state.width > 700 
         ?
-        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '10%'}}>
+        <div  ref = 'joinbeta' style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '10%'}}>
           <CubeSection subtitle = 'Test it out yourself'
                        title = 'Join Our Beta'
                        text = {<div style = {{color: '#333333', maxWidth: 800, fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
@@ -244,18 +255,10 @@ export default class PageHome extends Component {
         ?
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex'}}>
           <p style = {{margin: 0, width: '75%'}}>@ Fractal Computers Inc., 2019</p>
-          <p style = {{margin: 0, width: '20%', textAlign: 'right', display: 'flex'}}>
-            Contact Us
-            <FaRegEnvelope style = {{marginLeft: 20}}/>
-          </p>
         </div>
         :
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex', fontSize: 12}}>
           <p style = {{margin: 0, width: '60%'}}>@ Fractal Inc., 2019</p>
-          <p style = {{margin: 0, width: '30%', textAlign: 'right', display: 'flex'}}>
-            Contact Us
-            <FaRegEnvelope style = {{marginLeft: 10}}/>
-          </p>
         </div>
         }
       </div>
