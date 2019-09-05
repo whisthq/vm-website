@@ -156,47 +156,6 @@ export default class Story extends Component {
         this.state.width > 700 
         ?
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '4% 10%'}}>
-          <CubeSection title = 'How does the technology work?'
-                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
-                                <p>
-                                When you purchase a Fractal plan, we allocate you a solid state storage disk in the cloud, where your computer's 
-                                operating system is stored, along with some processing power according to your plan. We call this a Fractal instance. 
-                                Whenever you fire up your Cube, we connect you to your instance and display your desktop through our 
-                                highly performant, secure communication protocol.
-                                </p>
-                                <p>
-                                Whenever you do something on your desktop, like click your mouse or type something on your keyboard, the Cube 
-                                sends your action to your cloud computer, which then reacts accordingly. When you power off, we simply disconnect
-                                your storage disk (which contains all your personal information) from the rest of your cloud computer.
-                                </p>
-                                </div>}
-                        daymode
-          />
-        </div>
-        :
-        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: ' 8% 10%'}}>
-          <CubeSection title = 'How does the technology work?'
-                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
-                                <p style = {{fontSize: 14}}>
-                                When you purchase a Fractal plan, we allocate you a solid state storage disk in the cloud, where your computer's 
-                                operating system is stored, along with some processing power according to your plan. We call this a Fractal instance. 
-                                Whenever you fire up your Cube, we connect you to your instance and display your desktop through our 
-                                highly performant, secure communication protocol.
-                                </p>
-                                <p style = {{fontSize: 14}}>
-                                Whenever you do something on your desktop, like click your mouse or type something on your keyboard, the Cube 
-                                sends your action to your cloud computer, which then reacts accordingly. When you power off, we simply disconnect
-                                your storage disk (which contains all your personal information) from the rest of your cloud computer.
-                                </p>
-                                </div>}
-                        daymode
-          />
-        </div>
-        }
-        {
-        this.state.width > 700 
-        ?
-        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '4% 10%'}}>
           <CubeSection title = 'Is it secure?'
                        text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                 <p>
