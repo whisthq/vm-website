@@ -118,7 +118,7 @@ export default class Story extends Component {
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', marginBottom: 50}}>
           <CubeSection title = 'Behind the Logo'
                        text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
-                                 <p>A fractal is a mathematical object that with finite area but infinite perimeter. Following this line of thought, 
+                                 <p>A fractal is a mathematical object with finite area but infinite perimeter. Following this line of thought, 
                                     we have designed Fractal devices to be small in physical size but vast in computational power.</p>
                                  <p>We often get questions about our logo, which is intentionally abstract⁠—after all, abstract art can be anything
                                  you imagine. When we launched Fractal, we envisioned a world where personal computing would not be tied to a specific 
@@ -135,7 +135,7 @@ export default class Story extends Component {
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: ' 2% 10%', marginBottom: 50}}>
           <CubeSection title = 'Behind the Logo'
                        text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
-                                 <p style = {{fontSize: 14}}>A fractal is a mathematical object that with finite area but infinite perimeter. Following this line of thought, 
+                                 <p style = {{fontSize: 14}}>A fractal is a mathematical object with finite area but infinite perimeter. Following this line of thought, 
                                     we have designed Fractal devices to be small in physical size but vast in computational power.</p>
                                  <p style = {{fontSize: 14}}>We often get questions about our logo, which is intentionally abstract⁠—after all, abstract art can be anything
                                  you imagine. When we launched Fractal, we envisioned a world where personal computing would not be tied to a specific 

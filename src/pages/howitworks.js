@@ -152,6 +152,51 @@ export default class Story extends Component {
         this.state.width > 700 
         ?
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '4% 10%'}}>
+          <CubeSection title = 'Who is the Cube for?'
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                                <p>
+                                The Cube is designed for consumers and small businesses.
+                                </p>
+                                <p>
+                                Every year, small businesses spend $170B purchasing and maintaining computer hardware. At the same time, 27%
+                                of these businesses do not have IT support, which means that they cannot take advantage of remote access
+                                software. The Cube allows small businesses to save significant amounts of money on hardware while enabling
+                                remote access for their employees.
+                                </p>
+                                <p>
+                                Similarly, consumers who buy desktops care primarily about two features: cost and performance. The Cube offers
+                                to them more flexible performance at a fraction of the price.
+                                </p>
+                                </div>}
+                        daymode
+          />
+        </div>
+        :
+        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: ' 8% 10%'}}>
+          <CubeSection title = 'Is it secure?'
+                       text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
+                                <p style = {{fontSize: 14}}>
+                                The Cube is designed for consumers and small businesses.
+                                </p>
+                                <p style = {{fontSize: 14}}>
+                                Every year, small businesses spend $170B purchasing and maintaining computer hardware. At the same time, 27%
+                                of these businesses do not have IT support, which means that they cannot take advantage of remote access
+                                software. The Cube allows small businesses to save significant amounts of money on hardware while enabling
+                                remote access for their employees.
+                                </p>
+                                <p style = {{fontSize: 14}}>
+                                Similarly, consumers who buy desktops care primarily about two features: cost and performance. The Cube offers
+                                to them more flexible performance at a fraction of the price.
+                                </p>
+                                </div>}
+                        daymode
+          />
+        </div>
+        }
+        {
+        this.state.width > 700 
+        ?
+        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '4% 10%'}}>
           <CubeSection title = 'Is it secure?'
                        text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                 <p>

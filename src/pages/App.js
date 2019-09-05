@@ -180,7 +180,7 @@ export default class PageHome extends Component {
                        title = 'Yours for just $75.'
                        text = {<div style = {{color: '#999999',  fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                <p>The Cube drastically reduces the cost of a computer. We’ll ship a Cube to your door for $75 — shipping on us. 
-                                  Afterward, you’ll select a plan depending on the computer that best fits your needs.</p></div>}
+                                  Afterward, you’ll select a plan based on the computer that best fits your needs.</p></div>}
                        image = {<img src = {CubeRender4} style = {{width: '100%', margin: 'auto', marginTop: 50, marginLeft: 5, maxWidth: 900}}
                        /> }
           /><br/><br/></div>
@@ -190,7 +190,7 @@ export default class PageHome extends Component {
                        title = 'Yours for just $75.'
                        text = {<div style = {{color: '#999999',  fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                <p style = {{fontSize: 14}}>The Cube drastically reduces the cost of a computer. We’ll ship a Cube to your door for $75 — shipping on us. 
-                                  Afterward, you’ll select a plan depending on the computer that best fits your needs.</p></div>}
+                                  Afterward, you’ll select a plan based on the computer that best fits your needs.</p></div>}
                        image = {<img src = {CubeRender4} style = {{width: '100%', margin: 'auto', marginTop: 20, marginLeft: 5, maxWidth: 700}}
                        /> }
           /><br/><br/></div>
