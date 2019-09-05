@@ -172,8 +172,8 @@ export default class Story extends Component {
           />
         </div>
         :
-        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: ' 8% 10%'}}>
-          <CubeSection title = 'Is it secure?'
+        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '4% 10%'}}>
+          <CubeSection title = 'Who is the Cube for?'
                        text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                 <p style = {{fontSize: 14}}>
                                 The Cube is designed for consumers and small businesses.
