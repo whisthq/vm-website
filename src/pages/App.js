@@ -124,8 +124,8 @@ export default class PageHome extends Component {
           <CubeSection subtitle = 'Technology'
                        title = 'Why the Cube?'
                        text = {<div style = {{color: '#999999',  fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
-                               <p>Current desktop computers like your Mac or PC are expensive. Difficult to upgrade. 
-                                  Confined to a physical box.</p>
+                               <p>Current desktop computers like your Mac or PC are expensive. Not designed for remote access.
+                                  Difficult to upgrade.</p>
                                <p>The Cube is a desktop computer powered by the cloud, and it changes all of that. 
                                   It runs Windows 10, but unlike any computer you’ve ever owned, it's way more affordable, 
                                   easily upgradeable, and accessible from any Internet-connected device.
@@ -137,8 +137,8 @@ export default class PageHome extends Component {
           <CubeSection subtitle = 'Technology'
                        title = 'Why the Cube?'
                        text = {<div style = {{color: '#999999',  fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
-                               <p style = {{fontSize: 13}}>Current desktop computers like your Mac or PC are expensive. Difficult to upgrade. 
-                                  Confined to a physical box.</p>
+                               <p style = {{fontSize: 13}}>Current desktop computers like your Mac or PC are expensive. Not designed for remote access.
+                               Difficult to upgrade.</p>
                                <p style = {{fontSize: 13}}>The Cube is a desktop computer powered by the cloud, and it changes all of that. 
                                   It runs Windows 10, but unlike any computer you’ve ever owned, it's way more affordable, 
                                   easily upgradeable, and accessible from any Internet-connected device.
