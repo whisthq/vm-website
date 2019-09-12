@@ -44,7 +44,7 @@ export default class Story extends Component {
     }
     return (
       <div className = 'About'>
-        {
+{/*        {
         this.state.width > 700 
         ?
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '5% 10%'}}>
@@ -80,12 +80,12 @@ export default class Story extends Component {
                         daymode
           />
         </div>
-        }
+        }*/}
         {
         this.state.width > 700 
         ?
-        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%'}}>
-          <CubeSection title = 'Who We Are'
+        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', marginTop: 50}}>
+          <CubeSection title = 'Who We Are' subtitle = 'Our Story'
                        text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                  <p>Fractal was founded in the summer of 2019 by a team of computer scientists from Harvard University, who saw a way to build a next 
                                  generation of more affordable,  more elegant computers. </p>
@@ -98,8 +98,8 @@ export default class Story extends Component {
           />
         </div>
         :
-        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: ' 2% 10%'}}>
-          <CubeSection title = 'Who We Are'
+        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: ' 2% 10%', marginTop: 40}}>
+          <CubeSection title = 'Who We Are' subtitle = 'Our Story'
                        text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                  <p style = {{fontSize: 14}}>Fractal was founded in the summer of 2019 by a team of computer scientists from Harvard University, who saw a way to build a next 
                                  generation of more affordable,  more elegant computers. </p>
