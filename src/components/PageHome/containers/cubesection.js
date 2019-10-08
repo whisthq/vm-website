@@ -39,7 +39,7 @@ class CubeSection extends Component {
     :
       <div style = {{width: '100%', marginTop: 20}}>
         <h2 style = {{color: '#999999', margin: 0, fontSize: 20}}>{this.props.subtitle}</h2>
-        <h1 style = {{color: 'white', fontSize: 30, margin: 0, marginTop: 10, marginBottom: 30, fontWeight: 'bold'}}>{this.props.title}</h1>
+        <h1 style = {{color: 'white', fontSize: 30, margin: 0, marginTop: 10, marginBottom: 30, fontWeight: 'bold'}}><span style = {this.props.titleColor}>{this.props.title}</span></h1>
         {this.props.text}
         {this.props.image}
         {this.props.signupbox}

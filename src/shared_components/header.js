@@ -64,15 +64,10 @@ class Header extends Component {
           <div style = {{float: 'right'}}>
             <Dropdown alignRight>
               <Dropdown.Toggle variant="secondary" id="dropdown-basic" style = {{backgroundColor: 'rgba(0,0,0,0.0)', border: 'none', padding: 0}}>
-                Menu
+                <span style = {this.props.linkStyle}>Menu</span>
               </Dropdown.Toggle>
 
               <Dropdown.Menu style = {{backgroundColor: '#333333'}}>
-                <Dropdown.Item href="#/action-1">
-                  <Link className = 'headerlink' to = '/' style = {{color: '#e3e3e3'}}>
-                    Home
-                  </Link>
-                </Dropdown.Item>
                 <Dropdown.Item href="#/action-2">
                   <Link className = 'headerlink' to = '/story' style = {{color: '#e3e3e3'}}>
                     Our Story
