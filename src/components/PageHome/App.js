@@ -79,7 +79,7 @@ class PageHome extends Component {
         	</div>
         	:
         	<div>
-        	<img src = {Logo} width = '60' height = '60'/>
+        	<img src = {Logo} width = '50' height = '50'/>
         	<div style = {{fontWeight: 'bold', fontSize: 30, color: 'white', margin: 'auto', marginTop: 30, width: '85%', lineHeight: 1.2}}>
         		Fractal makes cloud-powered computers.
         	</div>
@@ -122,7 +122,7 @@ class PageHome extends Component {
                                <p>Current desktop computers like your Mac or PC are expensive. Not designed for remote access.
                                   Difficult to upgrade.</p>
                                <p>The Cube is a desktop computer powered by the cloud, and it changes all of that. 
-                                  It runs Windows 10, but unlike any computer you’ve ever owned, it's way more affordable, 
+                                  It runs Windows 10, but unlike any computer you’ve ever owned, it's much more affordable, 
                                   easily upgradeable, and accessible from any Internet-connected device.
                                </p></div>}
                        image = {<img src = {CubeRender2} style = {{width: '110%', margin: 'auto', maxWidth: 900}}
@@ -135,7 +135,7 @@ class PageHome extends Component {
                                <p style = {{fontSize: 13}}>Current desktop computers like your Mac or PC are expensive. Not designed for remote access.
                                Difficult to upgrade.</p>
                                <p style = {{fontSize: 13}}>The Cube is a desktop computer powered by the cloud, and it changes all of that. 
-                                  It runs Windows 10, but unlike any computer you’ve ever owned, it's way more affordable, 
+                                  It runs Windows 10, but unlike any computer you’ve ever owned, it's much more affordable, 
                                   easily upgradeable, and accessible from any Internet-connected device.
                                </p></div>}
                        image = {<img src = {CubeRender2} style = {{width: '150%', margin: 'auto', maxWidth: 700, position: 'relative', right: '25%'}}

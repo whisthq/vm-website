@@ -23,6 +23,15 @@ class SignupBox extends Component {
   }
 
   handleClick(name, email, cubeType) {
+    if(this.state.email.includes("@") && this.state.name) {
+      this.setState({
+        disabled: false
+      }); 
+    } else {
+      this.setState({
+        disabled: true
+      });  
+    }
     this.props.dispatch(sendFormData(name, email, cubeType))
     this.setState({
       signedup: true
