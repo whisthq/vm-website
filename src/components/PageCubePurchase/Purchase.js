@@ -32,15 +32,15 @@ class Purchase extends Component {
     if (this.state.width > 700 && this.state.modalShow) {
       modalClose()
     }
-    const baseBox = {border: 'solid 2px #111111', padding: 20} 
+    const baseBox = {border: 'solid 2px #111111', padding: '20px 20px 5px 20px'} 
     const baseFont = {color: '#111111'}
     const baseSubFont = {color: '#555555'}
-    const enhancedBox = {backgroundColor: '#124270', padding: 20}
+    const enhancedBox = {backgroundColor: '#124270', padding: '20px 20px 5px 20px'}
     const enhancedFont = {color: 'white'}
-    const enhancedSubFont = {color: '#e3e3e3'} 
+    const enhancedSubFont = {color: '#f1f1f1'} 
     const baseButton = {border: 'solid 2px #111111', backgroundColor: 'rgba(0,0,0,0.0)', color: '#111111', padding: '10px 15px', position: 'relative', bottom: 20}
     const enhancedButton = {border: 'solid 2px white', backgroundColor: 'rgba(0,0,0,0.0)', color: 'white', padding: '10px 15px', position: 'relative', bottom: 20}
-    const powerBox = {backgroundColor: '#14a0b5', padding: 20} 
+    const powerBox = {backgroundColor: '#14a0b5', padding: '20px 20px 5px 20px'} 
     const linkStyle = {color: '#666666'}
     return (
       <div>
@@ -52,7 +52,7 @@ class Purchase extends Component {
           <div style = {{display: 'flex', padding: '10px 50px'}}>
             <div style = {{width: '70%', maxWidth: 1000}}>
               <div>
-                <div style = {{backgroundColor: '#F1F1F1', padding: 70, marginTop: 70}}>
+                <div style = {{backgroundColor: '#ffffff', padding: 70, marginTop: 70, borderRadius: 10, boxShadow: '3px 3px 15px 1px #ddd'}}>
                   <div style = {{marginBottom: 30}}>
                     <SpecBox 
                     name = "Base Cube"
@@ -92,7 +92,7 @@ class Purchase extends Component {
                 </div>
               </div>
             </div>
-            <div style = {{width: '27%', backgroundColor: '#f1f1f1', height: 400, marginTop: 70, marginLeft: '3%', padding: 30}}>
+            <div style = {{width: '27%', backgroundColor: 'white', height: 400, marginTop: 70, marginLeft: '3%', padding: 30, borderRadius: 10, boxShadow: '3px 3px 15px 1px #ddd'}}>
               <div style = {{fontWeight: 'bold', fontSize: 20}}>Cart Summary</div>
               <div style = {{height: 279}}></div>
               <table style = {{width: '100%'}}>

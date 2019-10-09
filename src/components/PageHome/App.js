@@ -221,7 +221,7 @@ class PageHome extends Component {
         {
         this.state.width > 700 
         ?
-        <div  ref = 'joinbeta' className = "Homepage-Bottom" style = {{textAlign: 'left', padding: '10%'}}>
+        <div  ref = 'joinbeta' className = "Homepage-Bottom" style = {{textAlign: 'left', padding: '10%', minHeight: '100vh'}}>
           <CubeSection subtitle = 'Test it out yourself'
                        title = 'Join Our Beta'
                        text = {<div style = {{color: '#d3d3d3', fontSize: 18, lineHeight: 1.5, paddingLeft: 5}}>
@@ -234,7 +234,7 @@ class PageHome extends Component {
           </div>
         </div>
         :
-        <div className = "Homepage-Bottom" style = {{width: '100%', textAlign: 'left', padding: '10%'}}>
+        <div className = "Homepage-Bottom" style = {{width: '100%', textAlign: 'left', padding: '10%', minHeight: '100vh'}}>
           <CubeSection subtitle = 'Test it out yourself'
                        title = 'Join Our Beta'
                        text = {<div style = {{color: '#d3d3d3', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
