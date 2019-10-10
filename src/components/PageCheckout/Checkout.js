@@ -179,7 +179,7 @@ class Checkout extends Component {
                 </div>
                 <div style = {{marginTop: 50}}>
                   <div style = {{fontWeight: 'bold', fontSize: 20}}>Personal Details</div>
-                  <InputGroup className="mb-3" style = {{maxWidth: 600}}>
+                  <InputGroup className="mb-3" style = {{maxWidth: 600, marginTop: 20}}>
                     <FormControl
                       aria-label="Default"
                       aria-describedby="inputGroup-sizing-default"
