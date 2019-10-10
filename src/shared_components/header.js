@@ -71,6 +71,11 @@ class Header extends Component {
 
               <Dropdown.Menu style = {{backgroundColor: '#333333'}}>
                 <Dropdown.Item href="#/action-2">
+                  <Link className = 'headerlink' to = '/purchase' style = {{color: '#e3e3e3'}}>
+                    Pre-Order
+                  </Link>
+                </Dropdown.Item>
+                <Dropdown.Item href="#/action-2">
                   <Link className = 'headerlink' to = '/story' style = {{color: '#e3e3e3'}}>
                     Our Story
                   </Link>
