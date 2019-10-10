@@ -17,6 +17,8 @@ import Auth from './components/PageAuth/Auth'
 import Story from './components/PageStory/Story'
 import HowItWorks from './components/PageHowItWorks/HowItWorks'
 import NotFound from './components/PageNotFound/NotFound'
+import Checkout from './components/PageCheckout/Checkout'
+import CheckoutMessage from './components/PageCheckoutMessage/CheckoutMessage'
 import rootSaga from './sagas';
 import { Route, Switch, Link, BrowserRouter as Router } from 'react-router-dom';
 import { Helmet } from 'react-helmet'
@@ -51,11 +53,12 @@ const Engine = ({ store, history, persistor }) => (
       </Helmet>
       <Router>
             <Route exact path="/" component={App} />
-{/*            <Route exact path="/purchase" component={Purchase} />*/}
-{/*            <Route exact path="/auth" component={Auth} />*/}
+            <Route exact path="/purchase" component={Purchase}  />
+            <Route exact path="/auth" component={Auth} />
             <Route exact path="/story" component={Story} />
             <Route exact path="/howitworks" component={HowItWorks} />
-{/*            <Route component={NotFound} />*/}
+            <Route exact path="/checkout" component={Checkout} />
+            <Route exact path="/checkedout" component={CheckoutMessage} />
         </Router>
         <div style = {{width: '100%', height: 2, backgroundColor: 'black'}}></div>
         <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex', fontSize: 15}}>

@@ -1,7 +1,6 @@
-import { put, takeLatest, takeEvery, all, call } from 'redux-saga/effects';
+import { put, takeLatest, takeEvery, all, call, select } from 'redux-saga/effects';
 import * as FormAction from "../actions/index.js"
 import { apiPost } from '../utils/Api.js'
-
 
 function* sendFormData(action) {
    const response = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/form/store', {
@@ -11,9 +10,27 @@ function* sendFormData(action) {
    });
 }
 
+function* sendPreOrder(action) {
+   const state = yield select()
+   console.log(state)
+   const response = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/order', {
+      address1: action.payload.address1,
+      address2: action.payload.address2,
+      zipcode: action.payload.zipcode,
+      name: action.payload.name,
+      email: action.payload.email,
+      password: action.payload.password,
+      order: {base: state.CartReducer.base, enhanced: state.CartReducer.enhanced, power: state.CartReducer.power}
+   });
+   if (response.status === 200) {
+     yield put(FormAction.createCart());
+   }
+}
+
 export default function* rootSaga() {
  	yield all([
     	takeEvery(FormAction.SEND_FORM_DATA, sendFormData),
+    	takeEvery(FormAction.SEND_PRE_ORDER, sendPreOrder)
 	]);
 }
 
