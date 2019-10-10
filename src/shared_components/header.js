@@ -49,9 +49,11 @@ class Header extends Component {
             </div>  
           </div>
           <div style = {{width: '30%', maxWidth: 350, textAlign: 'right'}}>
-            <Button disabled = "true" style = {{border: 'none', backgroundColor: '#94a8ed', borderRadius: 30, padding: '10px 22px'}}>
-              <Link className = 'headerbutton' to = '/' style = {{color: 'white', fontSize: 15}}><strong>Purchase (Coming Soon)</strong></Link>
+          <Link className = 'headerbutton' to = '/purchase' style = {{color: 'white', fontSize: 15}}>
+            <Button style = {{border: 'none', backgroundColor: '#94a8ed', borderRadius: 30, padding: '10px 30px'}}>
+              <strong>Pre-Order</strong>
             </Button>
+          </Link>
           </div>
         </div>
         :
