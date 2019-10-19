@@ -179,7 +179,14 @@ class Checkout extends Component {
                 </div>
                 <div style = {{marginTop: 50}}>
                   <div style = {{fontWeight: 'bold', fontSize: 20}}>Personal Details</div>
-                  <InputGroup className="mb-3" style = {{marginTop: 20}}>
+                  <InputGroup className="mb-3" style = {{maxWidth: 600, marginTop: 20}}>
+                    <FormControl
+                      aria-label="Default"
+                      aria-describedby="inputGroup-sizing-default"
+                      placeholder = "Email Address*"
+                      style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0}}
+                      onChange = {this.changeEmail}
+                    />
                     <FormControl
                       aria-label="Default"
                       aria-describedby="inputGroup-sizing-default"
@@ -188,14 +195,7 @@ class Checkout extends Component {
                       onChange = {this.changeName}
                     />
                   </InputGroup>
-                  <InputGroup className="mb-3" style = {{maxWidth: 600}}>
-                    <FormControl
-                      aria-label="Default"
-                      aria-describedby="inputGroup-sizing-default"
-                      placeholder = "Email Address*"
-                      style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0}}
-                      onChange = {this.changeEmail}
-                    />
+                  <InputGroup className="mb-3" style = {{marginTop: 20, maxWidth: 600}}>
                     <FormControl
                       type = "password"
                       aria-label="Default"
@@ -205,11 +205,14 @@ class Checkout extends Component {
                       onChange = {this.changePassword}
                     />
                     {
-                    this.state.tooShort && this.state.width > 700
-                    ?
-                    <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', left: '83%', zIndex: 100, top: 7, fontSize: 14}}>
+                    this.state.tooShort
+                    ? ( this.state.width < 700 ?
+                    <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', left: '65%', zIndex: 100, top: 7, fontSize: 14}}>
                       <FaExclamationTriangle style = {{marginRight: 5, position: 'relative', bottom: 2}}/>Too Short
-                    </div>
+                    </div> :
+                    <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', left: '82%', zIndex: 100, top: 7, fontSize: 14}}>
+                      <FaExclamationTriangle style = {{marginRight: 5, position: 'relative', bottom: 2}}/>Too Short
+                    </div>  )
                     :
                     <div></div>
                     }
@@ -251,7 +254,7 @@ class Checkout extends Component {
                     <Button style = {{backgroundColor: '#94a8ed', borderRadius: 10, border: 'none', paddingLeft: 40, paddingRight: 40, fontWeight: 'bold'}}>
                       Go Back
                     </Button>
-                    </Link>
+                    </Link> 
                   </div>
                 </div>
               </Col>
