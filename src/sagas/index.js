@@ -12,7 +12,6 @@ function* sendFormData(action) {
 
 function* sendPreOrder(action) {
    const state = yield select()
-   console.log(state)
    const response = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/order', {
       address1: action.payload.address1,
       address2: action.payload.address2,
@@ -27,10 +26,33 @@ function* sendPreOrder(action) {
    }
 }
 
+function* sendLoginInfo(action) {
+   const state = yield select()
+   const resp = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/account/login', {
+      username: action.user,
+      password: action.password
+   });
+   console.log(resp)
+   if(resp) {
+	   if (resp.verified) {
+	     yield put(FormAction.loginSuccess());
+	   }
+	}
+}
+
+function* sendSignupInfo(action) {
+   const state = yield select()
+   console.log("signup saga")
+}
+
+
+
 export default function* rootSaga() {
  	yield all([
     	takeEvery(FormAction.SEND_FORM_DATA, sendFormData),
-    	takeEvery(FormAction.SEND_PRE_ORDER, sendPreOrder)
+    	takeEvery(FormAction.SEND_PRE_ORDER, sendPreOrder),
+    	takeEvery(FormAction.USER_LOGIN, sendLoginInfo),
+    	takeEvery(FormAction.USER_SIGNUP, sendSignupInfo)
 	]);
 }
 

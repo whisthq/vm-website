@@ -1,10 +1,12 @@
 import FormReducer from './form_reducer'
 import CartReducer from './cart_reducer'
+import AccountReducer from './account_reducer'
 import { combineReducers } from 'redux'
 
 const reducers = combineReducers({
   FormReducer: FormReducer,
-  CartReducer: CartReducer
+  CartReducer: CartReducer,
+  AccountReducer: AccountReducer
 })
 
 const rootReducer = (state, action) => {

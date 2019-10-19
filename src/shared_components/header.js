@@ -46,11 +46,14 @@ class Header extends Component {
               <Link className = 'headerlink' to = '/howitworks' style={{color: '#e1e1e1', textDecoration: 'none', textAlign: 'center', fontSize: 15, marginTop: 10}}>
                 <span style = {this.props.linkStyle}>How It Works</span>
               </Link>
+              <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#e1e1e1', textDecoration: 'none', textAlign: 'center', fontSize: 15, marginTop: 10, marginLeft: 25}}>
+                <span style = {this.props.linkStyle}>Contact Us</span>
+              </a>
             </div>  
           </div>
           <div style = {{width: '30%', maxWidth: 350, textAlign: 'right'}}>
           <Link className = 'headerbutton' to = '/purchase' style = {{color: 'white', fontSize: 15, position: 'fixed', right: 50}}>
-            <Button style = {{border: 'none', backgroundColor: '#94a8ed', borderRadius: 30, padding: '10px 30px'}}>
+            <Button style = {{border: 'none', backgroundColor: '#94a8ed', borderRadius: 30, padding: '10px 30px', zIndex: 100}}>
               <strong>Pre-Order</strong>
             </Button>
           </Link>

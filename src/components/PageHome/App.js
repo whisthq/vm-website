@@ -20,7 +20,7 @@ import Button from 'react-bootstrap/Button'
 class PageHome extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, modalShow: false, showPopup: false }
+    this.state = { width: 0, height: 0, modalShow: false, showPopup: false, loaded: false }
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.learnmore = this.learnmore.bind(this)
     this.joinbeta = this.joinbeta.bind(this)
@@ -37,6 +37,13 @@ class PageHome extends Component {
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
+    // setTimeout(
+    //   function() {
+    //       this.setState({loaded: true});
+    //   }
+    //   .bind(this),
+    //   2500
+    // );
   }
 
   componentWillUnmount() {
@@ -52,6 +59,11 @@ class PageHome extends Component {
     if (this.state.width > 700 && this.state.modalShow) {
       modalClose()
     }
+    // if (!this.state.loaded) {
+    //   return(
+    //     <div>Testing!</div>
+    //   );
+    // }
     return (
       <div className='App'>
         <Header/>
@@ -60,10 +72,10 @@ class PageHome extends Component {
         	?
         	<div>
         	<img src = {Logo} width = '70' height = '70'/>
-        	<div style = {{fontWeight: 'bold', fontSize: 40, color: 'white', margin: 'auto', marginTop: 30, width: '85%'}}>
-        		Fractal makes cloud-powered computers.
+        	<div style = {{fontWeight: 'bold', fontSize: 40, color: 'white', margin: 'auto', marginTop: 30, width: '85%', maxWidth: 700}}>
+        		Fractal makes cloud-powered computers for creative professionals.
         	</div>
-        	<div style = {{color: '#d3d3d3', textAlign: 'center', margin: 'auto', maxWidth: 700, marginTop: 15, width: '80%'}}>
+        	<div style = {{color: '#d3d3d3', textAlign: 'center', margin: 'auto', maxWidth: 700, marginTop: 30, width: '80%', lineHeight: 1.6}}>
         		Fractal is a Boston-based company building the next generation of personal devices. Our first computer, the Cube, is currently in private beta.
         	</div>
         	<div style = {{margin: 'auto', marginTop: 25}}>
@@ -80,8 +92,8 @@ class PageHome extends Component {
         	:
         	<div>
         	<img src = {Logo} width = '50' height = '50'/>
-        	<div style = {{fontWeight: 'bold', fontSize: 30, color: 'white', margin: 'auto', marginTop: 30, width: '85%', lineHeight: 1.2}}>
-        		Fractal makes cloud-powered computers.
+        	<div style = {{fontWeight: 'bold', fontSize: 25, color: 'white', margin: 'auto', marginTop: 30, width: '85%', lineHeight: 1.2}}>
+        		Fractal makes cloud-powered computers for creative professionals.
         	</div>
         	<div style = {{color: '#d3d3d3', textAlign: 'center', margin: 'auto', maxWidth: 700, marginTop: 15, fontSize: 15, width: '80%'}}>
         		Fractal is a Boston-based company building the next generation of personal devices. Our first computer, the Cube, is currently in private beta.
@@ -146,7 +158,7 @@ class PageHome extends Component {
           this.state.width > 700 
           ?
           <CubeSection subtitle = 'Flexibility'
-                       title = 'Access your desktop anywhere. Upgrade instantly.'
+                       title = "Change your computer's specs instantly. Access your desktop anywhere."
                        text = {<div style = {{color: '#999999',  fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                <p>Gone are the days of forgetting your computer at home. You can access your Cube's desktop from any Internet-connected device. In this way,
                                any computer can be your computer.</p>
@@ -157,7 +169,7 @@ class PageHome extends Component {
           />
           :
           <CubeSection subtitle = 'Flexibility'
-                       title = 'Access your desktop anywhere. Upgrade instantly.'
+                       title = "Change your computer's specs instantly. Access your desktop anywhere."
                        text = {<div style = {{color: '#999999',  fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                <p style = {{fontSize: 14}}>Gone are the days of forgetting your computer at home. You can access your Cube's desktop from any Internet-connected device. In this way,
                                any computer can be your computer.</p>

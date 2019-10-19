@@ -110,3 +110,8 @@ button:hover {
   cursor: pointer;
   transform: scale(1.02);
 }
+
+.react-tabs__tab--selected {
+  color: #94a8ed !important;
+  border-bottom: solid 4px #666666 !important;
+}

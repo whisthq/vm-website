@@ -60,11 +60,12 @@ const Engine = ({ store, history, persistor }) => (
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/checkedout" component={CheckoutMessage} />
         </Router>
-        <div style = {{width: '100%', height: 2, backgroundColor: 'black'}}></div>
-        <div style = {{width: '100%', backgroundColor: 'white', textAlign: 'left', padding: '2% 10%', display: 'flex', fontSize: 15}}>
-        <p style = {{margin: 0, width: '50%', textAlign: 'left'}}>Fractal, 2019</p>
-        <a href = "mailto: hello@fractalcomputers.com" style = {{margin: 0, width: '50%', textAlign: 'right', color: 'black', fontWeight: 'bold'}}>
-        Contact Us</a>
+        <div style = {{width: '100%', backgroundColor: '#111111', paddingTop: 35, paddingBottom: 35, fontSize: 15}}>
+          <div style = {{maxWidth: 1000, display: 'flex', margin: 'auto', paddingLeft: 20, paddingRight: 20}}>
+            <p style = {{margin: 0, width: '50%', textAlign: 'left', color: 'white'}}>Fractal, 2019</p>
+            <a href = "mailto: hello@fractalcomputers.com" style = {{margin: 0, width: '50%', textAlign: 'right', color: 'white', fontWeight: 'bold'}}>
+            Contact Us</a>
+          </div>
         </div>
     </PersistGate>
   </Provider>
