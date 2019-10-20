@@ -102,17 +102,14 @@ class HowItWorks extends Component {
             <CubeSection title = 'Who is the Cube for?'
                          text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                   <p>
-                                  The Cube is designed for consumers and small businesses.
+                                  The Cube is a computer designed for creative professionals, who need flexible computational
+                                  power for 3D rendering, simulations, art, and high-resolution video editing.
                                   </p>
                                   <p>
-                                  Every year, small businesses spend $170B purchasing and maintaining computer hardware. At the same time, 27%
-                                  of these businesses do not have IT support, which means that they cannot take advantage of remote access
-                                  software. The Cube allows small businesses to save significant amounts of money on hardware while enabling
-                                  remote access for their employees.
-                                  </p>
-                                  <p>
-                                  Similarly, consumers who buy desktops care primarily about two features: cost and performance. The Cube offers
-                                  to them more flexible performance at a fraction of the price.
+                                  75% of creative professionals regularly experience hardware-related performance issues, from laggy software
+                                  to slow rendering times. Fancy hardware, rendering farms, and virtual machines cost a fortune. The Cube costs
+                                  2-3x less than similarly-speced computers, while offering users the ability to upgrade their hardware at
+                                  the click of a button and access their work and local applications from any device.
                                   </p>
                                   </div>}
                           titleColor = {blackText}
@@ -123,17 +120,14 @@ class HowItWorks extends Component {
             <CubeSection title = 'Who is the Cube for?'
                          text = {<div style = {{color: '#333333', fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                   <p style = {{fontSize: 14}}>
-                                  The Cube is designed for consumers and small businesses.
+                                  The Cube is a computer designed for creative professionals, who need flexible computational
+                                  power for 3D rendering, simulations, art, and high-resolution video editing.
                                   </p>
                                   <p style = {{fontSize: 14}}>
-                                  Every year, small businesses spend $170B purchasing and maintaining computer hardware. At the same time, 27%
-                                  of these businesses do not have IT support, which means that they cannot take advantage of remote access
-                                  software. The Cube allows small businesses to save significant amounts of money on hardware while enabling
-                                  remote access for their employees.
-                                  </p>
-                                  <p style = {{fontSize: 14}}>
-                                  Similarly, consumers who buy desktops care primarily about two features: cost and performance. The Cube offers
-                                  to them more flexible performance at a fraction of the price.
+                                  75% of creative professionals regularly experience hardware-related performance issues, from laggy software
+                                  to slow rendering times. Fancy hardware, rendering farms, and virtual machines cost a fortune. The Cube costs
+                                  2-3x less than similarly-speced computers, while offering users the ability to upgrade their hardware at
+                                  the click of a button and access their work and local applications from any device.
                                   </p>
                                   </div>}
                           titleColor = {blackText}
