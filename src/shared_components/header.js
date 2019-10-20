@@ -52,8 +52,8 @@ class Header extends Component {
             </div>  
           </div>
           <div style = {{width: '30%', maxWidth: 350, textAlign: 'right'}}>
-          <Link className = 'headerbutton' to = '/purchase' style = {{color: 'white', fontSize: 15, position: 'fixed', right: 50, zIndex: 100}}>
-            <Button style = {{border: 'none', backgroundColor: '#94a8ed', borderRadius: 30, padding: '10px 30px'}}>
+          <Link className = 'headerbutton' to = '/' style = {{color: 'white', fontSize: 15, position: 'fixed', right: 50, zIndex: 100}}>
+            <Button disabled = "true" style = {{border: 'none', backgroundColor: '#94a8ed', borderRadius: 30, padding: '10px 30px'}}>
               <strong>Pre-Order</strong>
             </Button>
           </Link>
@@ -73,11 +73,6 @@ class Header extends Component {
               </Dropdown.Toggle>
 
               <Dropdown.Menu style = {{backgroundColor: '#333333'}}>
-                <Dropdown.Item href="#/action-2">
-                  <Link className = 'headerlink' to = '/purchase' style = {{color: '#e3e3e3'}}>
-                    Pre-Order
-                  </Link>
-                </Dropdown.Item>
                 <Dropdown.Item href="#/action-2">
                   <Link className = 'headerlink' to = '/story' style = {{color: '#e3e3e3'}}>
                     Our Story
