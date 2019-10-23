@@ -106,9 +106,9 @@ class SignupBox extends Component {
           <Col xs = {12} sm = {3}>
             <Form.Group controlId="exampleForm.ControlSelect1">
               <Form.Control as="select" value = {this.state.cubeType} onChange = {this.changeCubeType}>
-                <option value = "1">Base Cube ($5/month)</option>
-                <option value = "2">Enhanced Cube ($10/month)</option>
-                <option value = "3">Power Cube ($15/month)</option>
+                <option value = "1">Base Cube ($20/month)</option>
+                <option value = "2">Enhanced Cube ($30/month)</option>
+                <option value = "3">Power Cube ($40/month)</option>
               </Form.Control>
             </Form.Group>
           </Col>
