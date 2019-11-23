@@ -132,7 +132,7 @@ class Purchase extends Component {
                     mainFont = {baseFont}
                     subFont = {baseSubFont}
                     graphic = {BaseSpec}
-                    price = {<div>$75 + $5/<span style = {{fontSize: 11}}>mo</span></div>}/>
+                    price = {<div>$75 + $20/<span style = {{fontSize: 11}}>mo</span></div>}/>
                   </div>
                   <div style = {{marginBottom: 30}} onClick={() => this.enhancedCube()}>
                     <SpecBox 
@@ -141,7 +141,7 @@ class Purchase extends Component {
                     mainFont = {baseFont}
                     subFont = {baseSubFont}
                     graphic = {EnhancedSpec}
-                    price = {<div>$75 + $10/<span style = {{fontSize: 11}}>mo</span></div>}/>
+                    price = {<div>$75 + $30/<span style = {{fontSize: 11}}>mo</span></div>}/>
                   </div>
                   <div style = {{marginBottom: 30}} onClick={() => this.powerCube()} >
                     <SpecBox 
@@ -150,7 +150,7 @@ class Purchase extends Component {
                     mainFont = {baseFont}
                     subFont = {baseSubFont}
                     graphic = {PowerSpec}
-                    price = {<div>$75 + $15/<span style = {{fontSize: 11}}>mo</span></div>}/>
+                    price = {<div>$75 + $45/<span style = {{fontSize: 11}}>mo</span></div>}/>
                   </div>
               </div>
             </Col>
