@@ -22,7 +22,7 @@ class VM extends Component {
     super(props)
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, 
       emailLogin: '', passwordLogin: '', emailSignup: '', passwordSignup: '', passwordConfirmSignup: '', 
-      loggedIn: false, stage: 1, baseColor: '#d6d6d6', enhancedColor: 'white', powerColor: '#d6d6d6',
+      loggedIn: false, baseColor: '#d6d6d6', enhancedColor: 'white', powerColor: '#d6d6d6',
       baseSize: 1, enhancedSize: 1.03, powerSize: 1}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.changeEmailLogin = this.changeEmailLogin.bind(this)
@@ -132,42 +132,24 @@ class VM extends Component {
                 this.state.loggedIn
                 ?
                 (
-                  this.state.stage === 1
-                  ?
-                  (
-                  <div>
-                    <div style = {{color: "#94a8ed", fontWeight: 'bold', fontSize: 110, lineHeight: 1.7}}>
-                      02
-                      <span style = {{color: "#585858", fontSize: 30}}>/03</span>
-                    </div>
-                    <div style = {{color: "#B0B0B0"}}>LOG IN</div>
-                    <div style = {{color: 'white'}}>FRACTAL INSTANCE</div>
-                    <div style = {{color: "#B0B0B0"}}>PERSONAL INFO</div>
+                <div>
+                  <div style = {{color: "#94a8ed", fontWeight: 'bold', fontSize: 110, lineHeight: 1.7}}>
+                    02
+                    <span style = {{color: "#585858", fontSize: 30}}>/02</span>
                   </div>
-                  )
-                  :
-                  (
-                  <div>
-                    <div style = {{color: "#94a8ed", fontWeight: 'bold', fontSize: 110, lineHeight: 1.7}}>
-                      03
-                      <span style = {{color: "#585858", fontSize: 30}}>/03</span>
-                    </div>
-                    <div style = {{color: "#B0B0B0"}}>LOG IN</div>
-                    <div style = {{color: "#B0B0B0"}}>FRACTAL INSTANCE</div>
-                    <div style = {{color: 'white'}}>PERSONAL INFO</div>
-                  </div>
-                  )        
+                  <div style = {{color: "#B0B0B0"}}>GET STARTED</div>
+                  <div style = {{color: 'white'}}>CREATE A COMPUTER</div>
+                </div>    
                 )
                 :
                 (
                 <div>
                   <div style = {{color: "#94a8ed", fontWeight: 'bold', fontSize: 110, lineHeight: 1.7}}>
                     01
-                    <span style = {{color: "#585858", fontSize: 30}}>/03</span>
+                    <span style = {{color: "#585858", fontSize: 30}}>/02</span>
                   </div>
-                  <div style = {{color: "white"}}>LOG IN</div>
-                  <div style = {{color: "#585858"}}>FRACTAL INSTANCE</div>
-                  <div style = {{color: '#585858'}}>PERSONAL INFO</div>
+                  <div style = {{color: "white"}}>GET STARTED</div>
+                  <div style = {{color: "#585858"}}>CREATE A COMPUTER</div>
                 </div>
                 )
               }
@@ -268,9 +250,79 @@ class VM extends Component {
                 </Button>
               </Col>
               :
-              <div>
-              not logged in
-              </div>
+              (
+              <Col xs = {8} style = {{paddingLeft: 80}}>
+                <div style = {{fontWeight: 'bold', fontSize: 50, color: 'white', marginBottom: 30}}>
+                  Let's Get Started.
+                </div>
+                <div style = {{color: "#a9a9a9", marginBottom: 60, fontSize: 20}}>
+                  Log in or sign up to unlock a Fractal cloud computer.
+                </div>
+                <div style = {{backgroundColor: '#e8e8e8', borderRadius: 10, padding: 50, maxWidth: 450}}>
+                  <Tabs>
+                    <TabList style = {{textAlign: 'center', border: 'none'}}>
+                      <Tab style = {{color: '#444444', border: 'none', fontWeight: 'bold'}}>Log In</Tab>
+                      <Tab style = {{color: '#444444', border: 'none', fontWeight: 'bold'}}>Sign Up</Tab>
+                    </TabList>
+                    <TabPanel style = {{padding: '15px 30px'}}>
+                      <InputGroup className="mb-3" style = {{marginTop: 30}}>
+                        <FormControl
+                          aria-label="Default"
+                          aria-describedby="inputGroup-sizing-default"
+                          placeholder = "Email Address"
+                          onChange = {this.changeEmailLogin}
+                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)"}}
+                        /><br/>
+                      </InputGroup>
+                      <InputGroup className="mb-3" style = {{marginTop: 20}}>
+                        <FormControl
+                          aria-label="Default"
+                          type = "password"
+                          aria-describedby="inputGroup-sizing-default"
+                          placeholder = "Password"
+                          onChange = {this.changePasswordLogin}
+                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)"}}
+                        /><br/>
+                      </InputGroup>
+                      <div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 30, color: '#007bff'}}>Forgot Password?</div>
+                      <Button  onClick = {this.handleLogin} style = {{marginTop: 40, color: 'white', width: '100%', fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none'}}>Log In</Button>
+                    </TabPanel>
+                    <TabPanel style = {{padding: '15px 30px'}}>
+                      <InputGroup className="mb-3" style = {{marginTop: 30}}>
+                        <FormControl
+                          aria-label="Default"
+                          aria-describedby="inputGroup-sizing-default"
+                          placeholder = "Email Address"
+                          onChange = {this.changeEmailSignup}
+                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)"}}
+                        /><br/>
+                      </InputGroup>
+                      <InputGroup className="mb-3" style = {{marginTop: 20}}>
+                        <FormControl
+                          aria-label="Default"
+                          type = "password"
+                          aria-describedby="inputGroup-sizing-default"
+                          placeholder = "Password"
+                          onChange = {this.changePasswordSignup}
+                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)"}}
+                        /><br/>
+                      </InputGroup>
+                      <InputGroup className="mb-3" style = {{marginTop: 20}}>
+                        <FormControl
+                          aria-label="Default"
+                          type = "password"
+                          aria-describedby="inputGroup-sizing-default"
+                          placeholder = "Confirm Password"
+                          onChange = {this.changePasswordConfirmSignup}
+                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)"}}
+                        /><br/>
+                      </InputGroup>
+                      <Button style = {{marginTop: 40, color: 'white', width: '100%', fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none'}}>Sign Up</Button>
+                    </TabPanel>
+                  </Tabs>
+                </div>
+              </Col>
+              )
             }
             </Row>
           </Container>

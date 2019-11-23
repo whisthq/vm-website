@@ -111,7 +111,12 @@ button:hover {
   transform: scale(1.02);
 }
 
+.react-tabs__tab {
+  padding: 10px 30px !important;
+}
+
 .react-tabs__tab--selected {
-  color: #94a8ed !important;
-  border-bottom: solid 4px #666666 !important;
+  border-bottom: solid 5px #94a8ed !important;
+  color: #333 !important;
+  background-color: rgba(0,0,0,0.0) !important;
 }
