@@ -22,8 +22,8 @@ class VM extends Component {
     super(props)
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, 
       emailLogin: '', passwordLogin: '', emailSignup: '', passwordSignup: '', passwordConfirmSignup: '', 
-      loggedIn: false, baseColor: '#d6d6d6', enhancedColor: 'white', powerColor: '#d6d6d6',
-      baseSize: 1, enhancedSize: 1.03, powerSize: 1}
+      loggedIn: true, baseColor: '#d6d6d6', enhancedColor: 'white', powerColor: '#d6d6d6',
+      baseSize: 1, enhancedSize: 1.03, powerSize: 1, selected: 'Enhanced Instance'}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.changeEmailLogin = this.changeEmailLogin.bind(this)
     this.changePasswordLogin = this.changePasswordLogin.bind(this)
@@ -77,7 +77,8 @@ class VM extends Component {
       powerColor: '#d6d6d6',
       baseSize: 1.03,
       enhancedSize: 1,
-      powerSize: 1
+      powerSize: 1,
+      selected: 'Base Instance'
     });
   }
 
@@ -88,7 +89,8 @@ class VM extends Component {
       powerColor: '#d6d6d6',
       baseSize: 1,
       enhancedSize: 1.03,
-      powerSize: 1
+      powerSize: 1,
+      selected: 'Enhanced Instance'
     });
   }
 
@@ -99,7 +101,8 @@ class VM extends Component {
       powerColor: "white",
       baseSize: 1,
       enhancedSize: 1,
-      powerSize: 1.03
+      powerSize: 1.03,
+      selected: 'Power Instance'
     });
   }
 
@@ -245,9 +248,65 @@ class VM extends Component {
                       </div>
                     </Col>
                 </Row>
-                <Button style = {{color: 'white', marginTop: 75, paddingLeft: 75, paddingRight: 75, fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none', borderRadius: 20, float: 'right'}}>
-                  Next
-                </Button>
+                <div style = {{width: '100%', height: 80}}>
+                  <div style = {{width: 370, marginTop: 50, float: 'right'}}>
+                    {
+                    this.state.selected === "Base Instance"
+                    ?
+                    <table style = {{width: "100%", fontSize: 15}}>
+                      <tr style = {{textAlign: 'right', paddingTop: 10}}>
+                        <td style = {{color: 'white', textAlign: 'left'}}>Selected Instance</td>
+                        <td style = {{color: '#a9a9a9'}}><strong>1x</strong> Base Instance</td>
+                      </tr>
+                      <tr style = {{textAlign: 'right', paddingTop: 10, height: 30}}>
+                        <td style = {{color: 'white', textAlign: 'left'}}>Monthly Charge</td>
+                        <td style = {{color: '#a9a9a9'}}>$15 / mo</td>
+                      </tr>
+                      <tr style = {{textAlign: 'right', height: 50}}>
+                        <td style = {{color: 'white', fontWeight: 'bold', textAlign: 'left'}}>Due Today</td>
+                        <td style = {{color: 'white'}}>$15.00</td>
+                      </tr>
+                    </table>   
+                    :
+                    (
+                    this.state.selected === "Enhanced Instance"
+                    ?
+                    <table style = {{width: "100%", fontSize: 15}}>
+                      <tr style = {{textAlign: 'right', paddingTop: 10}}>
+                        <td style = {{color: 'white', textAlign: 'left'}}>Selected Instance</td>
+                        <td style = {{color: '#a9a9a9'}}><strong>1x</strong> Enhanced Instance</td>
+                      </tr>
+                      <tr style = {{textAlign: 'right', paddingTop: 10, height: 30}}>
+                        <td style = {{color: 'white', textAlign: 'left'}}>Monthly Charge</td>
+                        <td style = {{color: '#a9a9a9'}}>$25 / mo</td>
+                      </tr>
+                      <tr style = {{textAlign: 'right', height: 50}}>
+                        <td style = {{color: 'white', fontWeight: 'bold', textAlign: 'left'}}>Due Today</td>
+                        <td style = {{color: 'white'}}>$25.00</td>
+                      </tr>
+                    </table>   
+                    :
+                    <table style = {{width: "100%", fontSize: 15}}>
+                      <tr style = {{textAlign: 'right', paddingTop: 10}}>
+                        <td style = {{color: 'white', textAlign: 'left'}}>Selected Instance</td>
+                        <td style = {{color: '#a9a9a9'}}><strong>1x</strong> Power Instance</td>
+                      </tr>
+                      <tr style = {{textAlign: 'right', paddingTop: 10, height: 30}}>
+                        <td style = {{color: 'white', textAlign: 'left'}}>Monthly Charge</td>
+                        <td style = {{color: '#a9a9a9'}}>$35 / mo</td>
+                      </tr>
+                      <tr style = {{textAlign: 'right', height: 50}}>
+                        <td style = {{color: 'white', fontWeight: 'bold', textAlign: 'left'}}>Due Today</td>
+                        <td style = {{color: 'white'}}>$35.00</td>
+                      </tr>
+                    </table>   
+                    )
+                    } 
+                    <Button style = {{color: 'white', marginTop: 30, paddingLeft: 75, paddingRight: 75, fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none', borderRadius: 20, float: 'right'}}>
+                      Checkout
+                    </Button>
+                  </div>
+                </div>
               </Col>
               :
               (
