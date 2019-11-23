@@ -15,6 +15,7 @@ import App from './components/PageHome/App';
 import Purchase from './components/PageCubePurchase/Purchase'
 import Auth from './components/PageAuth/Auth'
 import Story from './components/PageStory/Story'
+import VM from './components/PageVirtualMachine/VM'
 import HowItWorks from './components/PageHowItWorks/HowItWorks'
 import NotFound from './components/PageNotFound/NotFound'
 import Checkout from './components/PageCheckout/Checkout'
@@ -59,6 +60,7 @@ const Engine = ({ store, history, persistor }) => (
             <Route exact path="/howitworks" component={HowItWorks} />
             <Route exact path="/checkout" component={Checkout} />
             <Route exact path="/checkedout" component={CheckoutMessage} />
+            <Route exact path="/vm" component={VM}  />
         </Router>
         <div style = {{width: '100%', backgroundColor: '#111111', paddingTop: 35, paddingBottom: 35, fontSize: 15}}>
           <div style = {{maxWidth: 1000, display: 'flex', margin: 'auto', paddingLeft: 20, paddingRight: 20}}>

@@ -90,11 +90,6 @@ class Auth extends Component {
           <Container style = {{margin: 'auto', maxWidth: 900, position: 'relative', top: 50, color: 'white', padding: 0}}>
             <div style = {{backgroundColor: '#94a8ed', padding: 40, borderRadius: 2}}>
             <Row style = {{maxHeight: 250}}>
-              <Col md = {5}>
-                <div style = {{fontWeight: 'bold', fontSize: 25}}>Experience the next generation of personal computing.</div>
-                <div style = {{color: '#f1f1f1', marginTop: 20}}>Create an account to access your personal portal, where you
-                can order a Cube or log in to your virtual desktop from any device (if you've purchased a Cube).</div>
-              </Col>
               <Col md = {7} style = {{paddingLeft: 30, paddingRight: 30}}>
                 <div style = {{backgroundColor: 'white', height: 440, position: 'relative', borderRadius: 2, bottom: 90, padding: 20}}>
                   <Tabs>
