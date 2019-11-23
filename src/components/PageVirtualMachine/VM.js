@@ -26,7 +26,7 @@ class VM extends Component {
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, 
       emailLogin: '', passwordLogin: '', emailSignup: '', passwordSignup: '', passwordConfirmSignup: '', 
       loggedIn: false, baseColor: '#d6d6d6', enhancedColor: 'white', powerColor: '#d6d6d6',
-      baseSize: 1, enhancedSize: 1.03, powerSize: 1, selected: 'Enhanced Instance', stage: 2,
+      baseSize: 1, enhancedSize: 1.03, powerSize: 1, selected: 'Enhanced Instance', stage: 1,
       tooShort: false, matches: true, validEmail: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.changeEmailLogin = this.changeEmailLogin.bind(this)
