@@ -1,6 +1,6 @@
 import * as AccountAction from '../actions/index'
 
-const DEFAULT = {user: '', loggedIn: false}
+const DEFAULT = {user: '', loggedIn: false, stage: 1}
 
 export default function(state = DEFAULT, action) {
   switch (action.type) {
@@ -20,6 +20,16 @@ export default function(state = DEFAULT, action) {
       return {
         ...state,
         loggedIn: true 
+      }
+    case AccountAction.SIGNUP_SUCCESS:
+      return {
+        ...state,
+        loggedIn: true 
+      }
+    case AccountAction.CHANGE_STAGE:
+      return {
+        ...state,
+        stage: action.stage
       }
     default:
       return state

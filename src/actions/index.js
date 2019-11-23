@@ -23,6 +23,8 @@ export const SEND_PRE_ORDER = "SEND_PRE_ORDER"
 export const USER_LOGIN = "USER_LOGIN"
 export const USER_SIGNUP = "USER_SIGNUP"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS"
+export const CHANGE_STAGE = "CHANGE_STAGE"
 
 export function sendFormData(name, email, cubeType) {
 	return {
@@ -86,8 +88,6 @@ export function sendPreOrder(payload) {
 
 
 export function userLogin(user, password) {
-	console.log(user);
-	console.log(password);
 	return {
 		type: USER_LOGIN,
 		user,
@@ -106,5 +106,18 @@ export function userSignup(user, password) {
 export function loginSuccess() {
 	return {
 		type: LOGIN_SUCCESS
+	}
+}
+
+export function signupSuccess() {
+	return {
+		type: SIGNUP_SUCCESS
+	}
+}
+
+export function changeStage(stage) {
+	return {
+		type: CHANGE_STAGE,
+		stage
 	}
 }

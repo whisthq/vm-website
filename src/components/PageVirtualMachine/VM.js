@@ -13,7 +13,7 @@ import '../../static/App.css';
 import { FaArrowRight } from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { userLogin } from '../../actions/index.js';
+import { userLogin, userSignup, changeStage } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './containers/checkoutform.js';
@@ -25,8 +25,8 @@ class VM extends Component {
     super(props)
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, 
       emailLogin: '', passwordLogin: '', emailSignup: '', passwordSignup: '', passwordConfirmSignup: '', 
-      loggedIn: false, baseColor: '#d6d6d6', enhancedColor: 'white', powerColor: '#d6d6d6',
-      baseSize: 1, enhancedSize: 1.03, powerSize: 1, selected: 'Enhanced Instance', stage: 2,
+      baseColor: '#d6d6d6', enhancedColor: 'white', powerColor: '#d6d6d6',
+      baseSize: 1, enhancedSize: 1.03, powerSize: 1, selected: 'Enhanced Instance',
       tooShort: false, matches: true, validEmail: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.changeEmailLogin = this.changeEmailLogin.bind(this)
@@ -38,11 +38,17 @@ class VM extends Component {
     this.changeToEnhanced = this.changeToEnhanced.bind(this)
     this.changeToPower = this.changeToPower.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
+    this.handleSignup = this.handleSignup.bind(this)
+    this.changeStage = this.changeStage.bind(this)
   }
 
 
   handleLogin(evt) {
     this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin))
+  }
+
+  handleSignup(evt) {
+    this.props.dispatch(userSignup(this.state.emailSignup, this.state.passwordSignup))
   }
 
   changeEmailLogin(evt) {
@@ -123,6 +129,11 @@ class VM extends Component {
     });
   }
 
+  changeStage(stage) {
+    this.props.dispatch(changeStage(2))
+  }
+
+
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
@@ -149,10 +160,10 @@ class VM extends Component {
             <Row>
               <Col xs = {4} style = {{lineHeight: 3, fontWeight: 'bold', borderRight: 'solid 1px #C9C9C9', minHeight: '100vh'}}>
               {
-                this.state.loggedIn
+                this.props.loggedIn
                 ?
                 (
-                this.state.stage === 1
+                this.props.stage === 1
                 ?
                 <div>
                   <div style = {{color: "#94a8ed", fontWeight: 'bold', fontSize: 110, lineHeight: 1.7}}>
@@ -189,10 +200,10 @@ class VM extends Component {
               }
               </Col>
               {
-              this.state.loggedIn
+              this.props.loggedIn
               ?
               (
-              this.state.stage === 1
+              this.props.stage === 1
               ?
               <Col xs = {8} style = {{paddingLeft: 80, paddingBottom: 80}}>
                 <div style = {{fontWeight: 'bold', fontSize: 45, color: 'white', marginBottom: 30}}>
@@ -336,7 +347,7 @@ class VM extends Component {
                     </table>   
                     )
                     } 
-                    <Button style = {{color: 'white', marginTop: 30, paddingLeft: 50, paddingRight: 50, fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none', borderRadius: 20, float: 'right'}}>
+                    <Button onClick = {() => this.changeStage(2)} style = {{paddingLeft: 50, paddingRight: 50, maxWidth: 600, background: "linear-gradient(258.54deg, #2BF7DE 0%, #62CEE6 52.08%, #94A8ED 100%)", border: 0, marginTop: 20, float: 'right', fontWeight: 'bold', fontSize: 16}}>
                       Next Step
                     </Button>
                   </div>
@@ -365,7 +376,7 @@ class VM extends Component {
               <Col xs = {8} style = {{paddingLeft: 80, marginTop: 50}}>
                 <div style = {{backgroundColor: 'white', borderRadius: 2, padding: '40px 40px 60px 40px', maxWidth: 425, marginBottom: 80}}>
                   <Tabs>
-                    <TabList style = {{textAlign: 'center', border: 'none', color: '#444444', border: 'none', fontWeight: 'bold', fontSize: 18}}>
+                    <TabList style = {{textAlign: 'center', border: 'none', color: '#444444', border: 'none', fontWeight: 'bold', fontSize: 16}}>
                       <Tab>LOG IN</Tab>
                       <Tab>SIGN UP</Tab>
                     </TabList>
@@ -475,7 +486,7 @@ class VM extends Component {
                         )
                         }
                       </InputGroup>
-                      <Button style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>SIGN UP</Button>
+                      <Button onClick = {this.handleSignup} style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>SIGN UP</Button>
                     </TabPanel>
                   </Tabs>
                 </div>
@@ -491,5 +502,11 @@ class VM extends Component {
 }
 
 
+function mapStateToProps(state) {
+  console.log(state)
+  return { 
+    loggedIn: state.AccountReducer.loggedIn,
+    stage: state.AccountReducer.stage}
+}
 
-export default connect()(VM);
+export default connect(mapStateToProps)(VM);
