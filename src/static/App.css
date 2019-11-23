@@ -117,7 +117,34 @@ button:hover {
 }
 
 .react-tabs__tab--selected {
-  border-bottom: solid 5px #94a8ed !important;
+  border: 0px !important;
+  border-bottom: solid 5px #62CEE6 !important;
   color: #222 !important;
   background-color: rgba(0,0,0,0.0) !important;
+}
+
+.MyCardElement {
+  height: 40px;
+  padding: 10px 12px;
+  width: 100%;
+  color: #32325d;
+  background-color: white;
+  border: 1px solid transparent;
+  border-radius: 4px;
+
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.MyCardElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.MyCardElement--invalid {
+  border-color: #fa755a;
+}
+
+.MyCardElement--webkit-autofill {
+  background-color: #fefde5 !important;
 }

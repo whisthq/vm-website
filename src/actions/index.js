@@ -86,6 +86,8 @@ export function sendPreOrder(payload) {
 
 
 export function userLogin(user, password) {
+	console.log(user);
+	console.log(password);
 	return {
 		type: USER_LOGIN,
 		user,

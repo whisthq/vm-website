@@ -15,15 +15,19 @@ import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { userLogin } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
-
+import {Elements, StripeProvider} from 'react-stripe-elements';
+import CheckoutForm from './containers/checkoutform.js';
+import { FaExclamationTriangle } from 'react-icons/fa'
+import { FaCheckCircle } from 'react-icons/fa'
 
 class VM extends Component {
   constructor(props) {
     super(props)
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, 
       emailLogin: '', passwordLogin: '', emailSignup: '', passwordSignup: '', passwordConfirmSignup: '', 
-      loggedIn: true, baseColor: '#d6d6d6', enhancedColor: 'white', powerColor: '#d6d6d6',
-      baseSize: 1, enhancedSize: 1.03, powerSize: 1, selected: 'Enhanced Instance'}
+      loggedIn: false, baseColor: '#d6d6d6', enhancedColor: 'white', powerColor: '#d6d6d6',
+      baseSize: 1, enhancedSize: 1.03, powerSize: 1, selected: 'Enhanced Instance', stage: 2,
+      tooShort: false, matches: true, validEmail: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.changeEmailLogin = this.changeEmailLogin.bind(this)
     this.changePasswordLogin = this.changePasswordLogin.bind(this)
@@ -35,6 +39,7 @@ class VM extends Component {
     this.changeToPower = this.changeToPower.bind(this)
     this.handleLogin = this.handleLogin.bind(this)
   }
+
 
   handleLogin(evt) {
     this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin))
@@ -53,20 +58,32 @@ class VM extends Component {
   }
 
   changeEmailSignup(evt) {
-    this.setState({
-      emailSignup: evt.target.value
+    this.setState({emailSignup: evt.target.value}, function () {
+      if(this.state.emailSignup.includes('@')) {
+        this.setState({ validEmail: true})
+      } else {
+        this.setState({ validEmail: false})
+      }
     });
   }
 
   changePasswordSignup(evt) {
-    this.setState({
-      passwordSignup: evt.target.value
+    this.setState({passwordSignup: evt.target.value}, function () {
+      if(this.state.passwordSignup.length < 7 && this.state.passwordSignup.length > 0) {
+        this.setState({ tooShort: true})
+      } else {
+        this.setState({ tooShort: false})
+      }
     });
   }
 
   changePasswordConfirmSignup(evt) {
-    this.setState({
-      passwordConfirmSignup: evt.target.value
+    this.setState({passwordConfirmSignup: evt.target.value}, function () {
+      if(this.state.passwordSignup === this.state.passwordConfirmSignup) {
+        this.setState({ matches: true})
+      } else {
+        this.setState({ matches: false})
+      }
     });
   }
 
@@ -135,30 +152,47 @@ class VM extends Component {
                 this.state.loggedIn
                 ?
                 (
+                this.state.stage === 1
+                ?
                 <div>
                   <div style = {{color: "#94a8ed", fontWeight: 'bold', fontSize: 110, lineHeight: 1.7}}>
                     02
-                    <span style = {{color: "#585858", fontSize: 30}}>/02</span>
+                    <span style = {{color: "#585858", fontSize: 30}}>/03</span>
                   </div>
-                  <div style = {{color: "#B0B0B0"}}>GET STARTED</div>
+                  <div style = {{color: "#585858"}}>GET STARTED</div>
                   <div style = {{color: 'white'}}>CHOOSE A COMPUTER</div>
-                </div>    
+                  <div style = {{color: "#585858"}}>FINISH AND PAY</div>
+                </div> 
+                :
+                <div>
+                  <div style = {{color: "#94a8ed", fontWeight: 'bold', fontSize: 110, lineHeight: 1.7}}>
+                    03
+                    <span style = {{color: "#585858", fontSize: 30}}>/03</span>
+                  </div>
+                  <div style = {{color: "#585858"}}>GET STARTED</div>
+                  <div style = {{color: "#585858"}}>CHOOSE A COMPUTER</div>
+                  <div style = {{color: "white"}}>FINISH AND PAY</div>
+                </div>                    
                 )
                 :
                 (
                 <div>
                   <div style = {{color: "#94a8ed", fontWeight: 'bold', fontSize: 110, lineHeight: 1.7}}>
                     01
-                    <span style = {{color: "#585858", fontSize: 30}}>/02</span>
+                    <span style = {{color: "#585858", fontSize: 30}}>/03</span>
                   </div>
                   <div style = {{color: "white"}}>GET STARTED</div>
                   <div style = {{color: "#585858"}}>CHOOSE A COMPUTER</div>
+                  <div style = {{color: "#585858"}}>FINISH AND PAY</div>
                 </div>
                 )
               }
               </Col>
               {
               this.state.loggedIn
+              ?
+              (
+              this.state.stage === 1
               ?
               <Col xs = {8} style = {{paddingLeft: 80, paddingBottom: 80}}>
                 <div style = {{fontWeight: 'bold', fontSize: 45, color: 'white', marginBottom: 30}}>
@@ -303,31 +337,47 @@ class VM extends Component {
                     )
                     } 
                     <Button style = {{color: 'white', marginTop: 30, paddingLeft: 50, paddingRight: 50, fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none', borderRadius: 20, float: 'right'}}>
-                      Create Cloud Computer
+                      Next Step
                     </Button>
                   </div>
                 </div>
               </Col>
               :
-              (
               <Col xs = {8} style = {{paddingLeft: 80}}>
-                <div style = {{fontWeight: 'bold', fontSize: 45, color: 'white', marginBottom: 50}}>
-                  Let's Get Started.
+                <div style = {{fontWeight: 'bold', fontSize: 45, color: 'white', marginBottom: 30}}>
+                  One Last Step.
                 </div>
-                <div style = {{backgroundColor: '#e8e8e8', borderRadius: 10, padding: "40px 20px", maxWidth: 425, marginBottom: 80}}>
+                <div style = {{color: "#a9a9a9", marginBottom: 50, fontSize: 17}}>
+                  You can cancel your plan at any time. If you do, we will mail a hard drive containing
+                  a copy of your entire virtual disk to an address of your choice.
+                </div>
+                <StripeProvider apiKey="pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb">
+                  <div className="example">
+                    <Elements>
+                      <CheckoutForm />
+                    </Elements>
+                  </div>
+                </StripeProvider>
+              </Col>
+              )
+              :
+              (
+              <Col xs = {8} style = {{paddingLeft: 80, marginTop: 50}}>
+                <div style = {{backgroundColor: 'white', borderRadius: 2, padding: '40px 40px 60px 40px', maxWidth: 425, marginBottom: 80}}>
                   <Tabs>
-                    <TabList style = {{textAlign: 'center', border: 'none'}}>
-                      <Tab style = {{color: '#444444', border: 'none', fontWeight: 'bold'}}>Log In</Tab>
-                      <Tab style = {{color: '#444444', border: 'none', fontWeight: 'bold'}}>Sign Up</Tab>
+                    <TabList style = {{textAlign: 'center', border: 'none', color: '#444444', border: 'none', fontWeight: 'bold', fontSize: 18}}>
+                      <Tab>LOG IN</Tab>
+                      <Tab>SIGN UP</Tab>
                     </TabList>
                     <TabPanel style = {{padding: '15px 30px'}}>
                       <InputGroup className="mb-3" style = {{marginTop: 30}}>
                         <FormControl
+                          type = "email"
                           aria-label="Default"
                           aria-describedby="inputGroup-sizing-default"
                           placeholder = "Email Address"
                           onChange = {this.changeEmailLogin}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)"}}
+                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #efefef"}}
                         /><br/>
                       </InputGroup>
                       <InputGroup className="mb-3" style = {{marginTop: 20}}>
@@ -337,21 +387,39 @@ class VM extends Component {
                           aria-describedby="inputGroup-sizing-default"
                           placeholder = "Password"
                           onChange = {this.changePasswordLogin}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)"}}
-                        /><br/>
+                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #efefef"}}
+                        />
                       </InputGroup>
-                      <div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 30, color: '#007bff'}}>Forgot Password?</div>
-                      <Button  onClick = {this.handleLogin} style = {{marginTop: 40, color: 'white', width: '100%', fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none'}}>Log In</Button>
+                      <Button  onClick = {this.handleLogin} style = {{marginTop: 50, color: 'white', width: '100%', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>LOG IN</Button>
+                      <div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 50, color: '#888'}}>Forgot Password?</div>
                     </TabPanel>
                     <TabPanel style = {{padding: '15px 30px'}}>
                       <InputGroup className="mb-3" style = {{marginTop: 30}}>
                         <FormControl
+                          type = "email"
                           aria-label="Default"
                           aria-describedby="inputGroup-sizing-default"
                           placeholder = "Email Address"
                           onChange = {this.changeEmailSignup}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)"}}
-                        /><br/>
+                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #efefef"}}
+                        />
+                        {
+                        !this.state.validEmail && this.state.emailSignup.length > 0
+                        ?
+                        <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+                          <FaExclamationTriangle style = {{marginRight: 5, position: 'relative', bottom: 2}}/>Invalid Email
+                        </div>
+                        :
+                        (
+                        this.state.emailSignup.length > 0
+                        ?
+                        <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+                          <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#21ed2f'}}/>
+                        </div>
+                        :
+                        <div></div>
+                        )
+                        }
                       </InputGroup>
                       <InputGroup className="mb-3" style = {{marginTop: 20}}>
                         <FormControl
@@ -360,8 +428,25 @@ class VM extends Component {
                           aria-describedby="inputGroup-sizing-default"
                           placeholder = "Password"
                           onChange = {this.changePasswordSignup}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)"}}
-                        /><br/>
+                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #efefef"}}
+                        />
+                        {
+                        this.state.tooShort
+                        ?
+                        <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+                          <FaExclamationTriangle style = {{marginRight: 5, position: 'relative', bottom: 2}}/>Too Short
+                        </div>
+                        :
+                        (
+                        this.state.passwordSignup.length > 0
+                        ?
+                        <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+                          <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#21ed2f'}}/>
+                        </div>
+                        :
+                        <div></div>
+                        )
+                        }
                       </InputGroup>
                       <InputGroup className="mb-3" style = {{marginTop: 20}}>
                         <FormControl
@@ -370,10 +455,27 @@ class VM extends Component {
                           aria-describedby="inputGroup-sizing-default"
                           placeholder = "Confirm Password"
                           onChange = {this.changePasswordConfirmSignup}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)"}}
-                        /><br/>
+                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #efefef"}}
+                        />
+                        {
+                        !this.state.matches && this.state.passwordConfirmSignup.length > 0
+                        ?
+                        <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+                          <FaExclamationTriangle style = {{marginRight: 5, position: 'relative', bottom: 2}}/>Doesn't Match
+                        </div>
+                        :
+                        (
+                        this.state.passwordConfirmSignup.length > 0
+                        ?
+                        <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+                          <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#21ed2f'}}/>
+                        </div>
+                        :
+                        <div></div>
+                        )
+                        }
                       </InputGroup>
-                      <Button style = {{marginTop: 40, color: 'white', width: '100%', fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none'}}>Sign Up</Button>
+                      <Button style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>SIGN UP</Button>
                     </TabPanel>
                   </Tabs>
                 </div>
