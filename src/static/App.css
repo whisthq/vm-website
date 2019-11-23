@@ -113,10 +113,11 @@ button:hover {
 
 .react-tabs__tab {
   padding: 10px 30px !important;
+  color: #222 !important;
 }
 
 .react-tabs__tab--selected {
   border-bottom: solid 5px #94a8ed !important;
-  color: #333 !important;
+  color: #222 !important;
   background-color: rgba(0,0,0,0.0) !important;
 }

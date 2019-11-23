@@ -141,7 +141,7 @@ class VM extends Component {
                     <span style = {{color: "#585858", fontSize: 30}}>/02</span>
                   </div>
                   <div style = {{color: "#B0B0B0"}}>GET STARTED</div>
-                  <div style = {{color: 'white'}}>CREATE A COMPUTER</div>
+                  <div style = {{color: 'white'}}>CHOOSE A COMPUTER</div>
                 </div>    
                 )
                 :
@@ -152,7 +152,7 @@ class VM extends Component {
                     <span style = {{color: "#585858", fontSize: 30}}>/02</span>
                   </div>
                   <div style = {{color: "white"}}>GET STARTED</div>
-                  <div style = {{color: "#585858"}}>CREATE A COMPUTER</div>
+                  <div style = {{color: "#585858"}}>CHOOSE A COMPUTER</div>
                 </div>
                 )
               }
@@ -160,11 +160,11 @@ class VM extends Component {
               {
               this.state.loggedIn
               ?
-              <Col xs = {8} style = {{paddingLeft: 80}}>
-                <div style = {{fontWeight: 'bold', fontSize: 50, color: 'white', marginBottom: 30}}>
+              <Col xs = {8} style = {{paddingLeft: 80, paddingBottom: 80}}>
+                <div style = {{fontWeight: 'bold', fontSize: 45, color: 'white', marginBottom: 30}}>
                   Let's Create Your Cloud Computer.
                 </div>
-                <div style = {{color: "#a9a9a9", marginBottom: 50, fontSize: 20}}>
+                <div style = {{color: "#a9a9a9", marginBottom: 50, fontSize: 17}}>
                   Achieve workstation-grade performance from any device — even your laptop — for a fraction of 
                   the cost.
                 </div>
@@ -302,8 +302,8 @@ class VM extends Component {
                     </table>   
                     )
                     } 
-                    <Button style = {{color: 'white', marginTop: 30, paddingLeft: 75, paddingRight: 75, fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none', borderRadius: 20, float: 'right'}}>
-                      Checkout
+                    <Button style = {{color: 'white', marginTop: 30, paddingLeft: 50, paddingRight: 50, fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none', borderRadius: 20, float: 'right'}}>
+                      Create Cloud Computer
                     </Button>
                   </div>
                 </div>
@@ -311,13 +311,10 @@ class VM extends Component {
               :
               (
               <Col xs = {8} style = {{paddingLeft: 80}}>
-                <div style = {{fontWeight: 'bold', fontSize: 50, color: 'white', marginBottom: 30}}>
+                <div style = {{fontWeight: 'bold', fontSize: 45, color: 'white', marginBottom: 50}}>
                   Let's Get Started.
                 </div>
-                <div style = {{color: "#a9a9a9", marginBottom: 60, fontSize: 20}}>
-                  Log in or sign up to unlock a Fractal cloud computer.
-                </div>
-                <div style = {{backgroundColor: '#e8e8e8', borderRadius: 10, padding: 50, maxWidth: 450}}>
+                <div style = {{backgroundColor: '#e8e8e8', borderRadius: 10, padding: "40px 20px", maxWidth: 425, marginBottom: 80}}>
                   <Tabs>
                     <TabList style = {{textAlign: 'center', border: 'none'}}>
                       <Tab style = {{color: '#444444', border: 'none', fontWeight: 'bold'}}>Log In</Tab>
