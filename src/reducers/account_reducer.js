@@ -1,6 +1,6 @@
 import * as AccountAction from '../actions/index'
 
-const DEFAULT = {user: '', loggedIn: false, stage: 1}
+const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, stripeToken: '', type: '', id: '', vm_created: false}
 
 export default function(state = DEFAULT, action) {
   switch (action.type) {
@@ -29,7 +29,36 @@ export default function(state = DEFAULT, action) {
     case AccountAction.CHANGE_STAGE:
       return {
         ...state,
+        vm_created: false,
         stage: action.stage
+      }
+    case AccountAction.CHARGE_STRIPE:
+      return {
+        ...state,
+        vm_created: false,
+        amount: action.amount,
+        stripeToken: action.token
+      }
+    case AccountAction.LOGOUT:
+      return {
+        ...state,
+        loggedIn: false
+      }
+    case AccountAction.CREATE_VM:
+      console.log("create vm reducer");
+      return {
+        ...state,
+        vm_size: action.vm_size
+      }
+    case AccountAction.GET_VM_ID:
+      return {
+        ...state,
+        id: action.id
+      }
+    case AccountAction.REGISTER_VM:
+      return {
+        ...state,
+        vm_name: action.vm_name
       }
     default:
       return state

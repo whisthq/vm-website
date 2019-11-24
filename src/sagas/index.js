@@ -1,6 +1,6 @@
-import { put, takeLatest, takeEvery, all, call, select } from 'redux-saga/effects';
+import { put, takeLatest, takeEvery, all, call, select, delay } from 'redux-saga/effects';
 import * as FormAction from "../actions/index.js"
-import { apiPost } from '../utils/Api.js'
+import { apiPost, apiGet } from '../utils/Api.js'
 
 function* sendFormData(action) {
    const response = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/form/store', {
@@ -41,26 +41,80 @@ function* sendLoginInfo(action) {
 
 function* sendSignupInfo(action) {
    const state = yield select()
-   const resp = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/account/register', {
+   const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/account/register', {
       username: action.user,
       password: action.password
    });
-   console.log(resp)
-   if(resp) {
-     if (resp.verified) {
+   if(json) {
+     if (json.verified) {
        yield put(FormAction.loginSuccess());
      }
   }
 }
 
 
+function* sendStripeCharge(action) {
+  console.log("stripe charge sent")
+   const state = yield select()
+   const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/stripe', {
+      token: action.token,
+      amount: action.amount
+   });
+   console.log(json)
+   if(json) {
+     if (json.status === 200) {
+       yield put(FormAction.createVM('Standard_D1_v2'));
+     }
+  }
+}
+
+
+function* createVMPost(action) {
+   console.log("vm creating")
+   const state = yield select()
+   const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/vm/create', {
+      vm_size: action.vm_size
+   });
+   if(json) {
+     if (json.ID) {
+       yield put(FormAction.getVMStatus(json.ID));
+     }
+  }
+}
+
+function* sendVMID(action) {
+   console.log("checking vm")
+   var {json, response} = yield call(apiGet, 'https://cube-celery-vm.herokuapp.com/status/'.concat(action.id))
+   while(json.state === "PENDING") {
+    yield delay(10000)
+    var {json, response} = yield call(apiGet, 'https://cube-celery-vm.herokuapp.com/status/'.concat(action.id))
+    console.log(json)
+   }
+   console.log(json)
+   yield put(FormAction.registerVM(json.output.vm_name))
+}
+
+function* sendVMRegister(action) {
+   console.log("registering vm")
+   const state = yield select()
+   const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/user/register', {
+    username: state.AccountReducer.user,
+    password: state.AccountReducer.password,
+    vm_name: action.vm_name
+   })
+   console.log(json)
+}
 
 export default function* rootSaga() {
  	yield all([
     	takeEvery(FormAction.SEND_FORM_DATA, sendFormData),
     	takeEvery(FormAction.SEND_PRE_ORDER, sendPreOrder),
     	takeEvery(FormAction.USER_LOGIN, sendLoginInfo),
-    	takeEvery(FormAction.USER_SIGNUP, sendSignupInfo)
+    	takeEvery(FormAction.USER_SIGNUP, sendSignupInfo),
+      takeEvery(FormAction.CHARGE_STRIPE, sendStripeCharge),
+      takeEvery(FormAction.CREATE_VM, createVMPost),
+      takeEvery(FormAction.GET_VM_ID, sendVMID),
+      takeEvery(FormAction.REGISTER_VM, sendVMRegister)
 	]);
 }
 
