@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {CardElement, injectStripe, PaymentRequestButtonElement} from 'react-stripe-elements';
 import Button from 'react-bootstrap/Button'
-import { changeStage } from '../../../actions/index.js';
+import { changeStage, chargeStripe } from '../../../actions/index.js';
 import { connect } from 'react-redux';
 
 class CheckoutForm extends Component {
@@ -10,6 +10,7 @@ class CheckoutForm extends Component {
     this.state = {
       errorMessage: '',
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   changeStage = (stage) => {
@@ -22,20 +23,16 @@ class CheckoutForm extends Component {
     }
   };
 
-  handleSubmit = (evt) => {
+  async handleSubmit(evt) {
     evt.preventDefault();
-    if (this.props.stripe) {
-      this.props.stripe.createToken().then(this.props.handleResult);
-    } else {
-      console.log("Stripe.js hasn't loaded yet.");
-    }
+    let {token} = await this.props.stripe.createToken();
+    this.props.dispatch(chargeStripe(token.id,  2500))
   };
 
   render() {
     const style = {
       base: {
         color: "#32325d",
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
         fontSmoothing: "antialiased",
         fontSize: "16px",
         "::placeholder": {
@@ -55,7 +52,7 @@ class CheckoutForm extends Component {
         </label>
         <div style = {{maxWidth: 600}}>
           <Button onClick = {() => this.changeStage(1)} style = {{width: '38%', maxWidth: 600, backgroundColor: '#94a8ed', border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14}}>GO BACK</Button>
-          <Button style = {{width: '58%', maxWidth: 600, background: "linear-gradient(258.54deg, #2BF7DE 0%, #62CEE6 52.08%, #94A8ED 100%)", border: 0, marginTop: 20, float: 'right', fontWeight: 'bold', fontSize: 14}}>
+          <Button onClick = {this.handleSubmit} style = {{width: '58%', maxWidth: 600, background: "linear-gradient(258.54deg, #2BF7DE 0%, #62CEE6 52.08%, #94A8ED 100%)", border: 0, marginTop: 20, float: 'right', fontWeight: 'bold', fontSize: 14}}>
             PAY
           </Button>
         </div>

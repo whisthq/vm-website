@@ -25,7 +25,11 @@ export const USER_SIGNUP = "USER_SIGNUP"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS"
 export const CHANGE_STAGE = "CHANGE_STAGE"
-
+export const CHARGE_STRIPE = "CHARGE_STRIPE"
+export const LOGOUT = "LOGOUT"
+export const CREATE_VM = "CREATE_VM"
+export const GET_VM_ID = "GET_VM_ID"
+export const REGISTER_VM = "REGISTER_VM"
 export function sendFormData(name, email, cubeType) {
 	return {
 		type: SEND_FORM_DATA,
@@ -119,5 +123,41 @@ export function changeStage(stage) {
 	return {
 		type: CHANGE_STAGE,
 		stage
+	}
+}
+
+export function chargeStripe(token, amount) {
+	return {
+		type: CHARGE_STRIPE,
+		token,
+		amount
+	}
+}
+
+export function logout() {
+	return {
+		type: LOGOUT
+	}
+}
+
+export function createVM(vm_size) {
+	console.log("create vm action");
+	return {
+		type: CREATE_VM,
+		vm_size
+	}
+}
+
+export function getVMStatus(id) {
+	return {
+		type: GET_VM_ID,
+		id
+	}
+}
+
+export function registerVM(vm_name) {
+	return {
+		type: REGISTER_VM,
+		vm_name
 	}
 }

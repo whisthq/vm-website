@@ -13,7 +13,7 @@ import '../../static/App.css';
 import { FaArrowRight } from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { userLogin, userSignup, changeStage } from '../../actions/index.js';
+import { userLogin, userSignup, changeStage, logout } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './containers/checkoutform.js';
@@ -170,7 +170,7 @@ class VM extends Component {
                     02
                     <span style = {{color: "#585858", fontSize: 30}}>/03</span>
                   </div>
-                  <div style = {{color: "#585858"}}>GET STARTED</div>
+                  <div style = {{color: "#585858"}}>LOG IN / SIGN UP</div>
                   <div style = {{color: 'white'}}>CHOOSE A COMPUTER</div>
                   <div style = {{color: "#585858"}}>FINISH AND PAY</div>
                 </div> 
@@ -180,7 +180,7 @@ class VM extends Component {
                     03
                     <span style = {{color: "#585858", fontSize: 30}}>/03</span>
                   </div>
-                  <div style = {{color: "#585858"}}>GET STARTED</div>
+                  <div style = {{color: "#585858"}}>LOG IN / SIGN UP</div>
                   <div style = {{color: "#585858"}}>CHOOSE A COMPUTER</div>
                   <div style = {{color: "white"}}>FINISH AND PAY</div>
                 </div>                    
@@ -192,7 +192,7 @@ class VM extends Component {
                     01
                     <span style = {{color: "#585858", fontSize: 30}}>/03</span>
                   </div>
-                  <div style = {{color: "white"}}>GET STARTED</div>
+                  <div style = {{color: "white"}}>LOG IN / SIGN UP</div>
                   <div style = {{color: "#585858"}}>CHOOSE A COMPUTER</div>
                   <div style = {{color: "#585858"}}>FINISH AND PAY</div>
                 </div>
@@ -347,9 +347,12 @@ class VM extends Component {
                     </table>   
                     )
                     } 
-                    <Button onClick = {() => this.changeStage(2)} style = {{paddingLeft: 50, paddingRight: 50, maxWidth: 600, background: "linear-gradient(258.54deg, #2BF7DE 0%, #62CEE6 52.08%, #94A8ED 100%)", border: 0, marginTop: 20, float: 'right', fontWeight: 'bold', fontSize: 16}}>
-                      Next Step
-                    </Button>
+                    <div style = {{textAlign: 'right'}}>
+                      <Button onClick = {() => this.props.dispatch(logout())} style = {{paddingLeft: 50, paddingRight: 50, maxWidth: 600, backgroundColor: '#94a8ed', border: 0, marginTop: 20, marginRight: 20,fontWeight: 'bold'}}>Log Out</Button>
+                      <Button onClick = {() => this.changeStage(2)} style = {{paddingLeft: 50, paddingRight: 50, maxWidth: 600, background: "linear-gradient(258.54deg, #2BF7DE 0%, #62CEE6 52.08%, #94A8ED 100%)", border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 16}}>
+                        Next Step
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </Col>
@@ -374,7 +377,7 @@ class VM extends Component {
               :
               (
               <Col xs = {8} style = {{paddingLeft: 80, marginTop: 50}}>
-                <div style = {{backgroundColor: 'white', borderRadius: 2, padding: '40px 40px 60px 40px', maxWidth: 425, marginBottom: 80}}>
+                <div style = {{backgroundColor: 'rgba(0,0,0,0.0)', borderRadius: 2, border: 'solid 1px white', padding: '40px 40px 60px 40px', maxWidth: 425, marginBottom: 80}}>
                   <Tabs>
                     <TabList style = {{textAlign: 'center', border: 'none', color: '#444444', border: 'none', fontWeight: 'bold', fontSize: 16}}>
                       <Tab>LOG IN</Tab>
@@ -388,7 +391,7 @@ class VM extends Component {
                           aria-describedby="inputGroup-sizing-default"
                           placeholder = "Email Address"
                           onChange = {this.changeEmailLogin}
-                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #efefef"}}
+                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #444444"}}
                         /><br/>
                       </InputGroup>
                       <InputGroup className="mb-3" style = {{marginTop: 20}}>
@@ -398,7 +401,7 @@ class VM extends Component {
                           aria-describedby="inputGroup-sizing-default"
                           placeholder = "Password"
                           onChange = {this.changePasswordLogin}
-                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #efefef"}}
+                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #444444"}}
                         />
                       </InputGroup>
                       <Button  onClick = {this.handleLogin} style = {{marginTop: 50, color: 'white', width: '100%', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>LOG IN</Button>
@@ -412,7 +415,7 @@ class VM extends Component {
                           aria-describedby="inputGroup-sizing-default"
                           placeholder = "Email Address"
                           onChange = {this.changeEmailSignup}
-                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #efefef"}}
+                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #444444"}}
                         />
                         {
                         !this.state.validEmail && this.state.emailSignup.length > 0
@@ -425,7 +428,7 @@ class VM extends Component {
                         this.state.emailSignup.length > 0
                         ?
                         <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
-                          <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#21ed2f'}}/>
+                          <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
                         </div>
                         :
                         <div></div>
@@ -439,7 +442,7 @@ class VM extends Component {
                           aria-describedby="inputGroup-sizing-default"
                           placeholder = "Password"
                           onChange = {this.changePasswordSignup}
-                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #efefef"}}
+                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #444444"}}
                         />
                         {
                         this.state.tooShort
@@ -452,7 +455,7 @@ class VM extends Component {
                         this.state.passwordSignup.length > 0
                         ?
                         <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
-                          <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#21ed2f'}}/>
+                          <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
                         </div>
                         :
                         <div></div>
@@ -466,7 +469,7 @@ class VM extends Component {
                           aria-describedby="inputGroup-sizing-default"
                           placeholder = "Confirm Password"
                           onChange = {this.changePasswordConfirmSignup}
-                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #efefef"}}
+                          style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #444444"}}
                         />
                         {
                         !this.state.matches && this.state.passwordConfirmSignup.length > 0
@@ -479,7 +482,7 @@ class VM extends Component {
                         this.state.passwordConfirmSignup.length > 0
                         ?
                         <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
-                          <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#21ed2f'}}/>
+                          <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
                         </div>
                         :
                         <div></div>
@@ -503,7 +506,6 @@ class VM extends Component {
 
 
 function mapStateToProps(state) {
-  console.log(state)
   return { 
     loggedIn: state.AccountReducer.loggedIn,
     stage: state.AccountReducer.stage}
