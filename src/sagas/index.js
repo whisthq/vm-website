@@ -12,7 +12,7 @@ function* sendFormData(action) {
 
 function* sendPreOrder(action) {
    const state = yield select()
-   const response = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/order', {
+   const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/order', {
       address1: action.payload.address1,
       address2: action.payload.address2,
       zipcode: action.payload.zipcode,
@@ -21,20 +21,19 @@ function* sendPreOrder(action) {
       password: action.payload.password,
       order: {base: state.CartReducer.base, enhanced: state.CartReducer.enhanced, power: state.CartReducer.power}
    });
-   if (response.status === 200) {
+   if (json.status === 200) {
      yield put(FormAction.createCart());
    }
 }
 
 function* sendLoginInfo(action) {
    const state = yield select()
-   const resp = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/account/login', {
+   const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/account/login', {
       username: action.user,
       password: action.password
-   });
-   console.log(resp)
-   if(resp) {
-	   if (resp.verified) {
+   })
+   if(json) {
+	   if (json.verified) {
 	     yield put(FormAction.loginSuccess());
 	   }
 	}
@@ -42,7 +41,16 @@ function* sendLoginInfo(action) {
 
 function* sendSignupInfo(action) {
    const state = yield select()
-   console.log("signup saga")
+   const resp = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/account/register', {
+      username: action.user,
+      password: action.password
+   });
+   console.log(resp)
+   if(resp) {
+     if (resp.verified) {
+       yield put(FormAction.loginSuccess());
+     }
+  }
 }
 
 
