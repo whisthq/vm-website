@@ -376,7 +376,7 @@ class VM extends Component {
               )
               :
               (
-              <Col xs = {8} style = {{paddingLeft: 80, marginTop: 50}}>
+              <Col xs = {8} style = {{paddingLeft: 150, marginTop: 50}}>
                 <div style = {{backgroundColor: 'rgba(0,0,0,0.0)', borderRadius: 2, border: 'solid 1px white', padding: '40px 40px 60px 40px', maxWidth: 425, marginBottom: 80}}>
                   <Tabs>
                     <TabList style = {{textAlign: 'center', border: 'none', color: '#444444', border: 'none', fontWeight: 'bold', fontSize: 16}}>

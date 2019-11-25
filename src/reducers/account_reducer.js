@@ -58,6 +58,8 @@ export default function(state = DEFAULT, action) {
     case AccountAction.REGISTER_VM:
       return {
         ...state,
+        vm_username: action.vm_username,
+        vm_password: action.vm_password,
         vm_name: action.vm_name
       }
     default:

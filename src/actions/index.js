@@ -155,9 +155,11 @@ export function getVMStatus(id) {
 	}
 }
 
-export function registerVM(vm_name) {
+export function registerVM(vm_username, vm_password, vm_name) {
 	return {
 		type: REGISTER_VM,
+		vm_username,
+		vm_password,
 		vm_name
 	}
 }

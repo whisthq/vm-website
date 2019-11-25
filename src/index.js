@@ -64,7 +64,7 @@ const Engine = ({ store, history, persistor }) => (
         </Router>
         <div style = {{width: '100%', backgroundColor: '#111111', paddingTop: 35, paddingBottom: 35, fontSize: 15}}>
           <div style = {{maxWidth: 1000, display: 'flex', margin: 'auto', paddingLeft: 20, paddingRight: 20}}>
-            <p style = {{margin: 0, width: '50%', textAlign: 'left', color: 'white'}}>Fractal, 2019</p>
+            <p style = {{margin: 0, width: '50%', textAlign: 'left', color: '#dfdfdf'}}>Copyright &copy; Fractal Computers Inc., All Rights Reserved.</p>
             <a href = "mailto: hello@fractalcomputers.com" style = {{margin: 0, width: '50%', textAlign: 'right', color: 'white', fontWeight: 'bold'}}>
             Contact Us</a>
           </div>
