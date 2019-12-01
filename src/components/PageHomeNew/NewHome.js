@@ -91,7 +91,7 @@ class PageHome extends Component {
           <Container>
             <Row>
               <Col md = {5} xs = {{order: 2}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: 100}}>
-                <div style = {{width: '100%', maxWidth: 450, height: 280, backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5}}>
+                <div style = {{width: '100%', maxWidth: 375, height: 280, backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 35px', fontWeight: 'bold'}}>
                     Windows Instance
                   </div>
@@ -166,7 +166,7 @@ class PageHome extends Component {
             {
             this.state.width > 700
             ?
-            <img src = {PriceCompare} style = {{width: '100%', margin: 'auto', maxWidth: 700, marginTop: 75}}/>
+            <img src = {PriceCompare} style = {{width: '100%', margin: 'auto', maxWidth: 750, marginTop: 75}}/>
             :
             <img src = {PriceCompareSmall} style = {{width: '90%', margin: 'auto', maxWidth: 700, marginTop: 75}}/>
             }
@@ -180,9 +180,9 @@ class PageHome extends Component {
                 Need to work in more than one location? Forgot to upload a file to the cloud, or to commit a change? Your Fractal instance is accessible from any Internet-connected device.
               </p>
             </div>
-            <Row style = {{marginTop: 75}}>
+            <Row style = {{maxWidth: 1000, margin: 'auto', marginTop: 75}}>
               <Col md = {6}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, margin: 'auto', minHeight: 230}}>
+                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, minHeight: 230}}>
                   <div style = {{fontWeight: 'bold', fontSize: 25, color: "#333333", textAlign: 'left'}}>Color Correction</div>
                   <div style = {{backgroundColor: "#4166E7", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 100, marginTop: 10}}>Coming Soon</div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Achieve near-100% RGB color accuracy with our build-to-lossless streaming technology.</p>
@@ -192,7 +192,7 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {6}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, margin: 'auto', minHeight: 230}}>
+                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, minHeight: 230}}>
                   <div style = {{fontWeight: 'bold', fontSize: 25, color: "#333333", textAlign: 'left'}}>Hardware Flexibility</div>
                   <div style = {{backgroundColor: "#94a8ed", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 100, marginTop: 10}}>Coming Soon</div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Instantly swap out your CPU, GPU, RAM, or storage at the click of a button.</p>
