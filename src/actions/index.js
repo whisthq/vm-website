@@ -30,6 +30,11 @@ export const LOGOUT = "LOGOUT"
 export const CREATE_VM = "CREATE_VM"
 export const GET_VM_ID = "GET_VM_ID"
 export const REGISTER_VM = "REGISTER_VM"
+export const FETCH_VMS = "FETCH_VMS"
+export const VM_TO_STATE = "VM_TO_STATE"
+export const VM_CREATING = "VM_CREATING"
+export const PROGRESS_BAR = "PROGRESS_BAR"
+
 export function sendFormData(name, email, cubeType) {
 	return {
 		type: SEND_FORM_DATA,
@@ -155,11 +160,38 @@ export function getVMStatus(id) {
 	}
 }
 
-export function registerVM(vm_username, vm_password, vm_name) {
+export function registerVM(user, vm_name) {
 	return {
 		type: REGISTER_VM,
-		vm_username,
-		vm_password,
+		user,
 		vm_name
+	}
+}
+
+export function fetchVMs(user) {
+	return {
+		type: FETCH_VMS,
+		user
+	}
+}
+
+export function vmToState(vms) {
+	return {
+		type: VM_TO_STATE,
+		vms
+	}
+}
+
+export function vmCreating(is_creating) {
+	return {
+		type: VM_CREATING,
+		is_creating
+	}
+}
+
+export function progressBar(progress) {
+	return {
+		type: PROGRESS_BAR,
+		progress
 	}
 }

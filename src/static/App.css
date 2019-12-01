@@ -44,7 +44,6 @@ textarea:focus, input:focus{
 
 input[type=text], input {
   position: relative;
-  color: white !important;
 }
 
 button, .submitButton {
@@ -146,4 +145,16 @@ button:hover {
 
 .MyCardElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+.blue-gradient {
+  background: linear-gradient(258.54deg, #2BF7DE 0%, #62CEE6 52.08%, #94A8ED 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.orange-gradient {
+  background: linear-gradient(110.1deg, #D62424 0%, #E0871F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

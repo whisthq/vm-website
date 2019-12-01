@@ -3,6 +3,7 @@ import {CardElement, injectStripe, PaymentRequestButtonElement} from 'react-stri
 import Button from 'react-bootstrap/Button'
 import { changeStage, chargeStripe } from '../../../actions/index.js';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 class CheckoutForm extends Component {
   constructor(props) {

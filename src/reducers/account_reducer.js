@@ -1,6 +1,6 @@
 import * as AccountAction from '../actions/index'
 
-const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, stripeToken: '', type: '', id: '', vm_created: false}
+const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, stripeToken: '', type: '', id: '', vm_created: false, is_creating: false, progress: 1, vm_credentials: []}
 
 export default function(state = DEFAULT, action) {
   switch (action.type) {
@@ -58,10 +58,23 @@ export default function(state = DEFAULT, action) {
     case AccountAction.REGISTER_VM:
       return {
         ...state,
-        vm_username: action.vm_username,
-        vm_password: action.vm_password,
         vm_name: action.vm_name
       }
+    case AccountAction.VM_TO_STATE:
+      return {
+        ...state,
+        vm_credentials: action.vms
+      }
+    case AccountAction.VM_CREATING:
+      return {
+        ...state,
+        is_creating: action.is_creating
+      }
+    case AccountAction.PROGRESS_BAR:
+     return {
+        ...state,
+        progress: action.progress
+     }
     default:
       return state
   }

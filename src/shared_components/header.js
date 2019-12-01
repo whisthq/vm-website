@@ -32,33 +32,27 @@ class Header extends Component {
         {
         this.state.width > 700 
         ?
-        <div style = {{display: 'flex', width: '100%', padding: 5}}>
-          <div style = {{width: '70%', textAlign: 'left', paddingLeft: 25}}>
-            <div style = {{fontSize: 24, display: 'flex'}}>
-              <div style = {{fontWeight: 'bold', marginRight: 75}}>
-                <Link to = '/' style = {{textDecoration: 'none', color: '#c7c7c7'}}>
-                  Fractal
-                </Link>
-              </div>
-              <Link className = 'headerlink' to = '/story' style={{color: '#e1e1e1', textDecoration: 'none', textAlign: 'center', marginRight: 25, fontSize: 15, marginTop: 10}}>
+        <Container>
+        <div style = {{display: 'flex', width: '100%'}}>
+          <div style = {{width: '40%', textAlign: 'left'}}>
+            <Link to = '/' style = {{textDecoration: 'none', color: '#333333', fontWeight: 'bold', fontSize: 24}}>
+              Fractal
+            </Link> 
+          </div>
+          <div style = {{width: '60%', textAlign: 'right'}}>
+              <Link className = 'headerlink' to = '/story' style={{color: '#333333', textDecoration: 'none', textAlign: 'center', marginRight: 20, fontSize: 14, marginTop: 12}}>
                 <span style = {this.props.linkStyle}>Our Story</span>
               </Link>
-              <Link className = 'headerlink' to = '/howitworks' style={{color: '#e1e1e1', textDecoration: 'none', textAlign: 'center', fontSize: 15, marginTop: 10}}>
+              <Link className = 'headerlink' to = '/howitworks' style={{color: '#333333', textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
                 <span style = {this.props.linkStyle}>How It Works</span>
               </Link>
-              <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#e1e1e1', textDecoration: 'none', textAlign: 'center', fontSize: 15, marginTop: 10, marginLeft: 25}}>
+              <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#333333', textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
                 <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
-            </div>  
-          </div>
-          <div style = {{width: '30%', maxWidth: 350, textAlign: 'right'}}>
-          <Link className = 'headerbutton' to = '/' style = {{color: 'white', fontSize: 15, position: 'fixed', right: 50, zIndex: 100}}>
-            <Button disabled = "true" style = {{border: 'none', backgroundColor: '#94a8ed', borderRadius: 30, padding: '10px 30px'}}>
-              <strong>Pre-Order</strong>
-            </Button>
-          </Link>
+              <Button style = {{marginLeft: 35, background: "#94a8ed", border: "none", fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.25)"}}>Create My Cloud Computer</Button>
           </div>
         </div>
+        </Container>
         :
         <div style = {{paddingLeft: 10, paddingRight: 10, minHeight: 30}}>
           <div style = {{color: 'white', fontWeight: 'bold', float: 'left'}}>

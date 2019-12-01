@@ -19,6 +19,7 @@ import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckoutForm from './containers/checkoutform.js';
 import { FaExclamationTriangle } from 'react-icons/fa'
 import { FaCheckCircle } from 'react-icons/fa'
+import { withRouter } from "react-router";  
 
 class VM extends Component {
   constructor(props) {
@@ -511,4 +512,4 @@ function mapStateToProps(state) {
     stage: state.AccountReducer.stage}
 }
 
-export default connect(mapStateToProps)(VM);
+export default withRouter(connect(mapStateToProps)(VM))

@@ -1,6 +1,8 @@
 import { put, takeLatest, takeEvery, all, call, select, delay } from 'redux-saga/effects';
 import * as FormAction from "../actions/index.js"
 import { apiPost, apiGet } from '../utils/Api.js'
+import history from "../history";
+import { push } from 'connected-react-router'
 
 function* sendFormData(action) {
    const response = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/form/store', {
@@ -47,7 +49,6 @@ function* sendSignupInfo(action) {
    });
    if(json) {
      if (json.status === 200) {
-       console.log("status")
        yield put(FormAction.loginSuccess());
      }
   }
@@ -55,7 +56,7 @@ function* sendSignupInfo(action) {
 
 
 function* sendStripeCharge(action) {
-  console.log("stripe charge sent")
+  console.log("stripe charge sent") 
    const state = yield select()
    const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/stripe', {
       token: action.token,
@@ -64,11 +65,17 @@ function* sendStripeCharge(action) {
    console.log(json)
    if(json) {
      if (json.status === 200) {
-       yield put(FormAction.createVM('Standard_D1_v2'));
+      history.push('/dashboard');
+       yield put(FormAction.vmCreating(true))
+       yield put(FormAction.progressBar(0))
+       yield put(FormAction.createVM('Standard_D1_v2'))
      }
   }
 }
 
+function forwardTo(location) {
+  history.push(location);
+}
 
 function* createVMPost(action) {
    console.log("vm creating")
@@ -85,29 +92,46 @@ function* createVMPost(action) {
 
 function* sendVMID(action) {
    var {json, response} = yield call(apiGet, 'https://cube-celery-vm.herokuapp.com/status/'.concat(action.id))
-   var query_number = 0
+   const state = yield select()
+   console.log(state)
+   var wait_time = 10000
+   var percentage = 1
    while(json.state === "PENDING") {
-    if(query_number === 0) {
-      yield delay(400000)
-      query_number = query_number + 1
-    } else {
-      yield delay(10000)
+    if(wait_time > 450000) {
+      var {json, response} = yield call(apiGet, 'https://cube-celery-vm.herokuapp.com/status/'.concat(action.id))
+    } 
+    yield delay(5000)
+    wait_time += 5000
+    if(percentage < 99) {
+      yield put(FormAction.progressBar(percentage))
+      percentage += 1
     }
-    var {json, response} = yield call(apiGet, 'https://cube-celery-vm.herokuapp.com/status/'.concat(action.id))
    }
-   yield put(FormAction.registerVM(json.output.username, json.output.password, json.output.vm_name))
+   yield put(FormAction.progressBar(100))
+   yield put(FormAction.registerVM(state.AccountReducer.user, json.output.vm_name))
 }
 
 function* sendVMRegister(action) {
-   console.log("registering vm")
    const state = yield select()
    console.log(action)
    const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/user/register', {
-    username: action.vm_username,
-    password: action.vm_password,
+    username: action.user,
     vm_name: action.vm_name
    })
-   console.log(json)
+   if(json) {
+      yield put(FormAction.vmCreating(false))
+   }
+}
+
+function* sendVMFetch(action) {
+   console.log("fetching vms!")
+   const state = yield select()
+   const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/user/fetchvms', {
+    username: state.AccountReducer.user
+   })
+   if(json.vms) {
+    yield put(FormAction.vmToState(json.vms));
+   }
 }
 
 export default function* rootSaga() {
@@ -119,7 +143,8 @@ export default function* rootSaga() {
       takeEvery(FormAction.CHARGE_STRIPE, sendStripeCharge),
       takeEvery(FormAction.CREATE_VM, createVMPost),
       takeEvery(FormAction.GET_VM_ID, sendVMID),
-      takeEvery(FormAction.REGISTER_VM, sendVMRegister)
+      takeEvery(FormAction.REGISTER_VM, sendVMRegister),
+      takeEvery(FormAction.FETCH_VMS, sendVMFetch)
 	]);
 }
 
