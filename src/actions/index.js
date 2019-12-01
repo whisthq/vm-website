@@ -96,19 +96,21 @@ export function sendPreOrder(payload) {
 }
 
 
-export function userLogin(user, password) {
+export function userLogin(user, password, create) {
 	return {
 		type: USER_LOGIN,
 		user,
-		password
+		password,
+		create
 	}
 }
 
-export function userSignup(user, password) {
+export function userSignup(user, password, create) {
 	return {
 		type: USER_SIGNUP,
 		user, 
-		password
+		password,
+		create
 	}
 }
 

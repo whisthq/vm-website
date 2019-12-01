@@ -54,9 +54,9 @@ class SignupBox extends Component {
   render() {
     if (this.state.signedup) {
       if (this.state.width < 700) {
-        return(<div style = {{color: '#3dcf29', padding: 10}}>Thank you for signing up!<br/>You'll hear from us soon.</div>) 
+        return(<div style = {{color: '#94a8ed', padding: 10}}>Thank you for signing up!<br/>You'll hear from us soon.</div>) 
       }
-      return(<div style = {{color: '#3dcf29', padding: 10}}>Thank you for signing up! You'll hear from us soon.</div>) 
+      return(<div style = {{color: '#94a8ed', padding: 10}}>Thank you for signing up! You'll hear from us soon.</div>) 
     }
     if (this.props.right) {
       if (this.state.width < 700) {

@@ -28,10 +28,9 @@ class Story extends Component {
       modalClose()
     }
     const blackText = {color: 'black'}
-    const linkStyle = {color: '#666666'}
     return (
       <div>
-        <Header linkStyle = {linkStyle}/>
+        <Header  color = "#333333" button = "#94a8ed"/>
         <div style = {{paddingTop: 70}}>
           {
           this.state.width > 700 
@@ -42,8 +41,7 @@ class Story extends Component {
                                    <p>Fractal was founded in the summer of 2019 by a team of computer scientists from Harvard University, who saw a way to build a next 
                                    generation of more affordable,  more elegant computers. </p>
                                    <p>
-                                   Our office is located on the East Coast (United States), and we are currently gearing up for the launch of our private beta 
-                                   for our first product, the Cube.
+                                   Our office is located on the East Coast (United States), and we are currently accepting applications for our private beta.
                                    </p>
                                   </div>}
                          titleColor = {blackText}
@@ -56,8 +54,7 @@ class Story extends Component {
                                    <p style = {{fontSize: 14}}>Fractal was founded in the summer of 2019 by a team of computer scientists from Harvard University, who saw a way to build a next 
                                    generation of more affordable,  more elegant computers. </p>
                                    <p style = {{fontSize: 14}}>
-                                   Our office is located on the East Coast (United States), and we are currently gearing up for the launch of our private beta 
-                                   for our first product, the Cube.
+                                   Our office is located on the East Coast (United States), and we are currently accepting applications for our private beta.
                                    </p>
                                   </div>}
                          titleColor = {blackText}

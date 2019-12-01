@@ -37,6 +37,9 @@ function* sendLoginInfo(action) {
    if(json) {
 	   if (json.verified) {
 	     yield put(FormAction.loginSuccess());
+       if(!action.create) {
+        history.push('/dashboard')
+       } 
 	   }
 	}
 }
@@ -50,6 +53,9 @@ function* sendSignupInfo(action) {
    if(json) {
      if (json.status === 200) {
        yield put(FormAction.loginSuccess());
+       if(!action.create) {
+        history.push('/dashboard')
+       }
      }
   }
 }
@@ -94,14 +100,12 @@ function* sendVMID(action) {
    var {json, response} = yield call(apiGet, 'https://cube-celery-vm.herokuapp.com/status/'.concat(action.id))
    const state = yield select()
    console.log(state)
-   var wait_time = 10000
-   var percentage = 1
+   var percentage = state.AccountReducer.progress
    while(json.state === "PENDING") {
-    if(wait_time > 450000) {
+    if(percentage > 90) {
       var {json, response} = yield call(apiGet, 'https://cube-celery-vm.herokuapp.com/status/'.concat(action.id))
     } 
     yield delay(5000)
-    wait_time += 5000
     if(percentage < 99) {
       yield put(FormAction.progressBar(percentage))
       percentage += 1
@@ -120,11 +124,11 @@ function* sendVMRegister(action) {
    })
    if(json) {
       yield put(FormAction.vmCreating(false))
+      yield put(FormAction.progressBar(1))
    }
 }
 
 function* sendVMFetch(action) {
-   console.log("fetching vms!")
    const state = yield select()
    const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/user/fetchvms', {
     username: state.AccountReducer.user

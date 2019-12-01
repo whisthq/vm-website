@@ -42,7 +42,11 @@ export default function(state = DEFAULT, action) {
     case AccountAction.LOGOUT:
       return {
         ...state,
-        loggedIn: false
+        loggedIn: false,
+        user: '',
+        password: '',
+        stripeToken: '',
+        vm_credentials: []
       }
     case AccountAction.CREATE_VM:
       console.log("create vm reducer");

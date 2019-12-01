@@ -28,10 +28,9 @@ class HowItWorks extends Component {
       modalClose()
     }
     const blackText = {color: 'black'}
-    const linkStyle = {color: '#666666'}
     return (
       <div>
-        <Header linkStyle = {linkStyle}/>
+        <Header  color = "#333333" button = "#94a8ed"/>
         <div style = {{paddingTop: 70}}>
           {
           this.state.width > 700 

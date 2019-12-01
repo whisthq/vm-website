@@ -30,6 +30,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.css';
 import history from "./history";
+import './static/App.css';
 
 const persistConfig = {
   key: 'rootKey',
@@ -58,20 +59,19 @@ ReactDOM.render(
           <Helmet>
             <title>Fractal</title>
           </Helmet>
-              <Route exact path="/" component={App} />
+              <Route exact path="/" component={NewHome} />
               <Route exact path="/purchase" component={Purchase}  />
               <Route exact path="/auth" component={Auth} />
               <Route exact path="/story" component={Story} />
-              <Route exact path="/howitworks" component={HowItWorks} />
               <Route exact path="/checkout" component={Checkout} />
               <Route exact path="/checkedout" component={CheckoutMessage} />
               <Route exact path="/vm" component={VM}  />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/home" component={NewHome} />
-               <div style = {{width: '100%', backgroundColor: '#111111', paddingTop: 35, paddingBottom: 35, fontSize: 15}}>
-                <div style = {{maxWidth: 1000, display: 'flex', margin: 'auto', paddingLeft: 20, paddingRight: 20}}>
-                  <p style = {{margin: 0, width: '50%', textAlign: 'left', color: '#dfdfdf'}}>Copyright &copy; Fractal Computers Inc., All Rights Reserved.</p>
-                  <a href = "mailto: hello@fractalcomputers.com" style = {{margin: 0, width: '50%', textAlign: 'right', color: 'white', fontWeight: 'bold'}}>
+               <div style = {{width: '100%', backgroundColor: 'white', paddingTop: 35, paddingBottom: 35, fontSize: 15, borderTop: 'solid 1px #111111'}}>
+                <div style = {{maxWidth: 1000, display: 'flex', margin: 'auto', paddingLeft: 20, paddingRight: 20, fontSize: 14}}>
+                  <p style = {{margin: 0, width: '50%', textAlign: 'left', color: '#333333'}}>Copyright &copy; Fractal Computers Inc., All Rights Reserved.</p>
+                  <a href = "mailto: hello@fractalcomputers.com" style = {{margin: 0, width: '50%', textAlign: 'right', color: '#333333', fontWeight: 'bold'}}>
                   Contact Us</a>
                 </div>
               </div>

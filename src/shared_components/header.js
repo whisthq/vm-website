@@ -5,6 +5,9 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'react-bootstrap'
+import { FaBars } from 'react-icons/fa'
+import '../static/App.css';
+import { HashLink } from 'react-router-hash-link';
 
 class Header extends Component {
   constructor(props) {
@@ -35,46 +38,58 @@ class Header extends Component {
         <Container>
         <div style = {{display: 'flex', width: '100%'}}>
           <div style = {{width: '40%', textAlign: 'left'}}>
-            <Link to = '/' style = {{textDecoration: 'none', color: '#333333', fontWeight: 'bold', fontSize: 24}}>
+            <Link to = '/' style = {{textDecoration: 'none', color: `${ this.props.color }`, fontWeight: 'bold', fontSize: 24}}>
               Fractal
             </Link> 
           </div>
           <div style = {{width: '60%', textAlign: 'right'}}>
-              <Link className = 'headerlink' to = '/story' style={{color: '#333333', textDecoration: 'none', textAlign: 'center', marginRight: 20, fontSize: 14, marginTop: 12}}>
+              <HashLink className = 'headerlink' to = '/#beta' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
+                <span style = {this.props.linkStyle}>Join Beta</span>
+              </HashLink>
+              <Link className = 'headerlink' to = '/story' style={{color:  `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', marginLeft: 20, fontSize: 14, marginTop: 12}}>
                 <span style = {this.props.linkStyle}>Our Story</span>
               </Link>
-              <Link className = 'headerlink' to = '/howitworks' style={{color: '#333333', textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
-                <span style = {this.props.linkStyle}>How It Works</span>
-              </Link>
-              <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#333333', textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
+              <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
                 <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
-              <Button style = {{marginLeft: 35, background: "#94a8ed", border: "none", fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.25)"}}>Create My Cloud Computer</Button>
+              <Link to = "/auth">
+                <Button style = {{marginLeft: 35, background: `${ this.props.button }`, border: "none", fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.25)"}}>My Account</Button>
+              </Link>
           </div>
         </div>
         </Container>
         :
         <div style = {{paddingLeft: 10, paddingRight: 10, minHeight: 30}}>
           <div style = {{color: 'white', fontWeight: 'bold', float: 'left'}}>
-            <Link to = '/' style = {{color: '#c7c7c7'}}>
+            <Link to = '/' style = {{color: '#c7c7c7', fontSize: 20}}>
               Fractal
             </Link>
           </div> 
           <div style = {{float: 'right'}}>
             <Dropdown alignRight>
               <Dropdown.Toggle variant="secondary" id="dropdown-basic" style = {{backgroundColor: 'rgba(0,0,0,0.0)', border: 'none', padding: 0}}>
-                <span style = {this.props.linkStyle}>Menu</span>
+                <span style = {{color: "#333333"}}><FaBars/></span>
               </Dropdown.Toggle>
 
-              <Dropdown.Menu style = {{backgroundColor: '#333333'}}>
+              <Dropdown.Menu style = {{backgroundColor: 'white'}}>
+                <Dropdown.Item href="#/action-3">
+                  <HashLink className = 'headerlink' to = '/#beta' style = {{color: '#333333'}}>
+                    Join Beta
+                  </HashLink>
+                </Dropdown.Item>
                 <Dropdown.Item href="#/action-2">
-                  <Link className = 'headerlink' to = '/story' style = {{color: '#e3e3e3'}}>
+                  <Link className = 'headerlink' to = '/story' style = {{color: '#333333'}}>
                     Our Story
                   </Link>
                 </Dropdown.Item>
+                <Dropdown.Item>
+                  <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#333333'}}>
+                    Contact Us
+                  </a>
+                </Dropdown.Item>
                 <Dropdown.Item href="#/action-3">
-                  <Link className = 'headerlink' to = '/howitworks' style = {{color: '#e3e3e3'}}>
-                    How It Works
+                  <Link className = 'headerlink' to = '/auth' style = {{color: '#333333'}}>
+                    My Account
                   </Link>
                 </Dropdown.Item>
               </Dropdown.Menu>

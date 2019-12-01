@@ -10,13 +10,14 @@ import '../../static/App.css';
 import { FaArrowRight } from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { userLogin, userSignup, changeStage, logout } from '../../actions/index.js';
+import { userLogin, userSignup, changeStage, logout, getVMStatus } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
 import { FaExclamationTriangle } from 'react-icons/fa'
 import { FaCheckCircle } from 'react-icons/fa'
 import { withRouter } from "react-router";
 import { fetchVMs } from '../../actions/index.js';
 import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
   constructor(props) {
@@ -28,6 +29,9 @@ class Dashboard extends Component {
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
+    if(this.props.is_creating) {
+      this.props.dispatch(getVMStatus(this.props.id))
+    }
     this.props.dispatch(fetchVMs(this.props.user))
     this.props.dispatch(changeStage(1))
   }
@@ -46,8 +50,14 @@ class Dashboard extends Component {
       modalClose()
     }
     return (
+      <div>
+      {
+      !this.props.loggedIn
+      ?
+      <Redirect to = "/auth"/>
+      :
       <div style = {{backgroundColor: "#222222", paddingBottom: 75}}>
-        <Header/>
+        <Header color = "white" button = "rgba(0,0,0,0.0)"/>
         <Container style = {{paddingTop: 120}}>
           <Row>
           <Col md = {3} style = {{paddingRight: 15}}>
@@ -60,6 +70,7 @@ class Dashboard extends Component {
                 <div style = {{color: '#555555', marginBottom: 30}}>SETTINGS</div>
                 <div style = {{color: '#555555', marginBottom: 30}}>MY ACCOUNT</div>
                 <div style = {{color: '#555555', marginBottom: 30}}>SUPPORT</div>
+                <Link style = {{textDecoration: 'none'}}><div style = {{color: '#555555', marginBottom: 30}} onClick = {() => this.props.dispatch(logout())}>LOG OUT</div></Link>
               </div>
               :
               <div style = {{fontWeight: 'bold'}}>
@@ -67,6 +78,8 @@ class Dashboard extends Component {
                 <div style = {{color: '#E0871F', marginBottom: 30}}>SETTINGS</div>
                 <div style = {{color: '#555555', marginBottom: 30}}>MY ACCOUNT</div>
                 <div style = {{color: '#555555', marginBottom: 30}}>SUPPORT</div>
+                <div style = {{color: '#555555', marginBottom: 30}} onClick = {() => this.props.dispatch(logout())}>LOG OUT</div>
+                <Link style = {{textDecoration: 'none'}}><div style = {{color: '#555555', marginBottom: 30}} onClick = {() => this.props.dispatch(logout())}>LOG OUT</div></Link>
               </div>
               }
             </div>
@@ -140,6 +153,8 @@ class Dashboard extends Component {
           </Row>
         </Container>
       </div>
+      }
+      </div>
     );
   }
 }
@@ -150,7 +165,8 @@ function mapStateToProps(state) {
     user: state.AccountReducer.user,
     vms: state.AccountReducer.vm_credentials,
     is_creating: state.AccountReducer.is_creating,
-    percentage: state.AccountReducer.progress}
+    percentage: state.AccountReducer.progress,
+    id: state.AccountReducer.id}
 }
 
 export default withRouter(connect(mapStateToProps)(Dashboard))

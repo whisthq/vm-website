@@ -10,15 +10,18 @@ import '../../static/App.css';
 import { FaArrowRight } from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { userLogin } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
-
+import { FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'
+import { userLogin, userSignup, logout } from '../../actions/index.js';
+import { Redirect } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 class Auth extends Component {
   constructor(props) {
     super(props)
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, 
-      emailLogin: '', passwordLogin: '', emailSignup: '', passwordSignup: '', passwordConfirmSignup: ''}
+      emailLogin: '', passwordLogin: '', emailSignup: '', passwordSignup: '', passwordConfirmSignup: '',
+      validEmail: false, tooShort: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.changeEmailLogin = this.changeEmailLogin.bind(this)
     this.changePasswordLogin = this.changePasswordLogin.bind(this)
@@ -29,7 +32,11 @@ class Auth extends Component {
   }
 
   handleLogin(evt) {
-    this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin))
+    this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin, false))
+  }
+
+  handleSignup(evt) {
+    this.props.dispatch(userSignup(this.state.emailSignup, this.state.passwordSignup, false))
   }
 
   changeEmailLogin(evt) {
@@ -45,23 +52,34 @@ class Auth extends Component {
   }
 
   changeEmailSignup(evt) {
-    this.setState({
-      emailSignup: evt.target.value
+    this.setState({emailSignup: evt.target.value}, function () {
+      if(this.state.emailSignup.includes('@')) {
+        this.setState({ validEmail: true})
+      } else {
+        this.setState({ validEmail: false})
+      }
     });
   }
 
   changePasswordSignup(evt) {
-    this.setState({
-      passwordSignup: evt.target.value
+    this.setState({passwordSignup: evt.target.value}, function () {
+      if(this.state.passwordSignup.length < 7 && this.state.passwordSignup.length > 0) {
+        this.setState({ tooShort: true})
+      } else {
+        this.setState({ tooShort: false})
+      }
     });
   }
 
   changePasswordConfirmSignup(evt) {
-    this.setState({
-      passwordConfirmSignup: evt.target.value
+    this.setState({passwordConfirmSignup: evt.target.value}, function () {
+      if(this.state.passwordSignup === this.state.passwordConfirmSignup) {
+        this.setState({ matches: true})
+      } else {
+        this.setState({ matches: false})
+      }
     });
   }
-
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
@@ -82,166 +100,147 @@ class Auth extends Component {
     }
     return (
       <div>
-        <Header/>
-        <div className = "Homepage-Top" style = {{minHeight: '100vh', paddingTop: 120}}>
-          {
-          this.state.width > 700
-          ?
-          <Container style = {{margin: 'auto', maxWidth: 900, position: 'relative', top: 50, color: 'white', padding: 0}}>
-            <div style = {{backgroundColor: '#94a8ed', padding: 40, borderRadius: 2}}>
-            <Row style = {{maxHeight: 250}}>
-              <Col md = {7} style = {{paddingLeft: 30, paddingRight: 30}}>
-                <div style = {{backgroundColor: 'white', height: 440, position: 'relative', borderRadius: 2, bottom: 90, padding: 20}}>
-                  <Tabs>
-                    <TabList style = {{textAlign: 'center', border: 'none'}}>
-                      <Tab style = {{color: '#444444', border: 'none', fontWeight: 'bold'}}>Log In</Tab>
-                      <Tab style = {{color: '#444444', border: 'none', fontWeight: 'bold'}}>Sign Up</Tab>
-                    </TabList>
-                    <TabPanel style = {{padding: '15px 30px'}}>
-                      <InputGroup className="mb-3" style = {{marginTop: 30}}>
-                        <FormControl
-                          aria-label="Default"
-                          aria-describedby="inputGroup-sizing-default"
-                          placeholder = "Email Address"
-                          onChange = {this.changeEmailLogin}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600}}
-                        /><br/>
-                      </InputGroup>
-                      <InputGroup className="mb-3" style = {{marginTop: 30}}>
-                        <FormControl
-                          aria-label="Default"
-                          type = "password"
-                          aria-describedby="inputGroup-sizing-default"
-                          placeholder = "Password"
-                          onChange = {this.changePasswordLogin}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600}}
-                        /><br/>
-                      </InputGroup>
-                      <div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 30, color: '#007bff'}}>Forgot Password?</div>
-                      <Button  onClick = {this.handleLogin} style = {{marginTop: 40, color: 'white', width: '100%', fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none'}}>Log In</Button>
-                    </TabPanel>
-                    <TabPanel style = {{padding: '15px 30px'}}>
-                      <InputGroup className="mb-3" style = {{marginTop: 30}}>
-                        <FormControl
-                          aria-label="Default"
-                          aria-describedby="inputGroup-sizing-default"
-                          placeholder = "Email Address"
-                          onChange = {this.changeEmailSignup}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600}}
-                        /><br/>
-                      </InputGroup>
-                      <InputGroup className="mb-3" style = {{marginTop: 30}}>
-                        <FormControl
-                          aria-label="Default"
-                          type = "password"
-                          aria-describedby="inputGroup-sizing-default"
-                          placeholder = "Password"
-                          onChange = {this.changePasswordSignup}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600}}
-                        /><br/>
-                      </InputGroup>
-                      <InputGroup className="mb-3" style = {{marginTop: 30}}>
-                        <FormControl
-                          aria-label="Default"
-                          type = "password"
-                          aria-describedby="inputGroup-sizing-default"
-                          placeholder = "Confirm Password"
-                          onChange = {this.changePasswordConfirmSignup}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600}}
-                        /><br/>
-                      </InputGroup>
-                      <Button style = {{marginTop: 40, color: 'white', width: '100%', fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none'}}>Sign Up</Button>
-                    </TabPanel>
-                  </Tabs>
-                </div>
-              </Col>
-            </Row>
-            </div>
-            </Container>
-            :
-            <Container style = {{paddingBottom: 50}}>
-            <div style = {{backgroundColor: '#94a8ed', color: 'white', margin: '0px 4px 4px 0px', borderRadius: 2, padding: 35, width: '100%'}}>
-                <div style = {{fontWeight: 'bold', fontSize: 25}}>Experience the next generation of personal computing.</div>
-                <div style = {{color: '#f1f1f1', marginTop: 20}}>Create an account to access your personal portal, where you
-                can order a Cube or log in to your virtual desktop from any device (if you've purchased a Cube).</div>
-            </div>
-            <div style = {{width: '100%', margin: 0}}>
-                <div style = {{backgroundColor: 'white', borderRadius: 2, padding: 20}}>
-                  <Tabs>
-                    <TabList style = {{textAlign: 'center', border: 'none'}}>
-                      <Tab style = {{color: '#444444', border: 'none', fontWeight: 'bold'}}>Log In</Tab>
-                      <Tab style = {{color: '#444444', border: 'none', fontWeight: 'bold'}}>Sign Up</Tab>
-                    </TabList>
-                    <TabPanel style = {{padding: '15px 30px'}}>
-                      <InputGroup className="mb-3" style = {{marginTop: 30}}>
-                        <FormControl
-                          aria-label="Default"
-                          aria-describedby="inputGroup-sizing-default"
-                          placeholder = "Email Address"
-                          onChange = {this.changeEmailLogin}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600}}
-                        /><br/>
-                      </InputGroup>
-                      <InputGroup className="mb-3" style = {{marginTop: 30}}>
-                        <FormControl
-                          aria-label="Default"
-                          aria-describedby="inputGroup-sizing-default"
-                          type = "password"
-                          placeholder = "Password"
-                          onChange = {this.changePasswordLogin}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600}}
-                        /><br/>
-                      </InputGroup>
-                      <div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 30, color: '#007bff'}}>Forgot Password?</div>
-                      <Button onClick = {this.handleLogin} style = {{marginTop: 40, color: 'white', width: '100%', fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none'}}>
-                        Log In
-                      </Button>
-                    </TabPanel>
-                    <TabPanel style = {{padding: '15px 30px'}}>
-                      <InputGroup className="mb-3" style = {{marginTop: 30}}>
-                        <FormControl
-                          aria-label="Default"
-                          aria-describedby="inputGroup-sizing-default"
-                          placeholder = "Email Address"
-                          onChange = {this.changeEmailSignup}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600}}
-                        /><br/>
-                      </InputGroup>
-                      <InputGroup className="mb-3" style = {{marginTop: 30}}>
-                        <FormControl
-                          aria-label="Default"
-                          aria-describedby="inputGroup-sizing-default"
-                          placeholder = "Password"
-                          type = "password"
-                          onChange = {this.changePasswordSignup}
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600}}
-                        /><br/>
-                      </InputGroup>
-                      <InputGroup className="mb-3" style = {{marginTop: 30}}>
-                        <FormControl
-                          aria-label="Default"
-                          aria-describedby="inputGroup-sizing-default"
-                          type = "password"
-                          onChange = {this.changePasswordConfirmSignup}
-                          placeholder = "Confirm Password"
-                          style = {{border: 'none', borderBottom: 'solid 1px #aaa', borderRadius: 0, maxWidth: 600}}
-                        /><br/>
-                      </InputGroup>
-                      <Button style = {{marginTop: 40, color: 'white', width: '100%', fontWeight: 'bold', backgroundColor: '#94a8ed', border: 'none'}}>
-                        Sign Up
-                      </Button>
-                    </TabPanel>
-                  </Tabs>
-                </div>
-            </div>
-            </Container>
-            }
+        {
+        this.props.loggedIn
+        ?
+        <Redirect to = "/dashboard"/>
+        :
+        <div>
+        <Header  color = "#333333" button = "#94a8ed"/>
+        <div style = {{minHeight: '100vh', paddingTop: 90, backgroundColor: 'white'}}>
+            <div style = {{backgroundColor: 'rgba(0,0,0,0.0)', borderRadius: 2, border: 'solid 1px white', padding: '40px 40px 60px 40px', maxWidth: 425, marginBottom: 80, margin: 'auto'}}>
+              <Tabs>
+                <TabList style = {{textAlign: 'center', border: 'none', border: 'none', fontWeight: 'bold', fontSize: 16}}>
+                  <Tab>LOG IN</Tab>
+                  <Tab>SIGN UP</Tab>
+                </TabList>
+                <TabPanel style = {{padding: '15px 30px'}}>
+                  <InputGroup className="mb-3" style = {{marginTop: 30}}>
+                    <FormControl
+                      type = "email"
+                      aria-label="Default"
+                      aria-describedby="inputGroup-sizing-default"
+                      placeholder = "Email Address"
+                      onChange = {this.changeEmailLogin}
+                      style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
+                    /><br/>
+                  </InputGroup>
+                  <InputGroup className="mb-3" style = {{marginTop: 20}}>
+                    <FormControl
+                      aria-label="Default"
+                      type = "password"
+                      aria-describedby="inputGroup-sizing-default"
+                      placeholder = "Password"
+                      onChange = {this.changePasswordLogin}
+                      style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
+                    />
+                  </InputGroup>
+                  <Button  onClick = {this.handleLogin} style = {{marginTop: 50, color: 'white', width: '100%', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>LOG IN</Button>
+                  <div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 50, color: '#888'}}>Forgot Password?</div>
+                </TabPanel>
+                <TabPanel style = {{padding: '15px 30px'}}>
+                  <InputGroup className="mb-3" style = {{marginTop: 30}}>
+                    <FormControl
+                      type = "email"
+                      aria-label="Default"
+                      aria-describedby="inputGroup-sizing-default"
+                      placeholder = "Email Address"
+                      onChange = {this.changeEmailSignup}
+                      style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
+                    />
+                    {
+                    !this.state.validEmail && this.state.emailSignup.length > 1
+                    ?
+                    <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+                      <FaExclamationTriangle style = {{marginRight: 5, position: 'relative', bottom: 2}}/>Invalid Email
+                    </div>
+                    :
+                    (
+                    this.state.emailSignup.length > 1
+                    ?
+                    <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+                      <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
+                    </div>
+                    :
+                    <div></div>
+                    )
+                    }
+                  </InputGroup>
+                  <InputGroup className="mb-3" style = {{marginTop: 20}}>
+                    <FormControl
+                      aria-label="Default"
+                      type = "password"
+                      aria-describedby="inputGroup-sizing-default"
+                      placeholder = "Password"
+                      onChange = {this.changePasswordSignup}
+                      style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
+                    />
+                    {
+                    this.state.tooShort
+                    ?
+                    <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+                      <FaExclamationTriangle style = {{marginRight: 5, position: 'relative', bottom: 2}}/>Too Short
+                    </div>
+                    :
+                    (
+                    this.state.passwordSignup.length > 0
+                    ?
+                    <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+                      <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
+                    </div>
+                    :
+                    <div></div>
+                    )
+                    }
+                  </InputGroup>
+                  <InputGroup className="mb-3" style = {{marginTop: 20}}>
+                    <FormControl
+                      aria-label="Default"
+                      type = "password"
+                      aria-describedby="inputGroup-sizing-default"
+                      placeholder = "Confirm Password"
+                      onChange = {this.changePasswordConfirmSignup}
+                      style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
+                    />
+                    {
+                    !this.state.matches && this.state.passwordConfirmSignup.length > 0
+                    ?
+                    <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+                      <FaExclamationTriangle style = {{marginRight: 5, position: 'relative', bottom: 2}}/>Doesn't Match
+                    </div>
+                    :
+                    (
+                    this.state.passwordConfirmSignup.length > 0
+                    ?
+                    <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+                      <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
+                    </div>
+                    :
+                    <div></div>
+                    )
+                    }
+                  </InputGroup>
+                  <Button disabled="true" onClick = {this.handleSignup} style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>SIGN UP</Button>
+                  <div style = {{fontSize: 16, color: "#333333", marginTop: 25}}>
+                    Currently, signups are open only to our 100 private beta users. If you'd like to join our private beta, apply <HashLink to = "/#beta" style = {{color: '#94a8ed', fontWeight: 'bold'}}>here</HashLink> and we'll be in touch.
+                  </div>
+                </TabPanel>
+              </Tabs>
             </div>
         </div>
+      </div>
+      }
+    </div>
     );
   }
 }
 
 
+function mapStateToProps(state) {
+  return { 
+    loggedIn: state.AccountReducer.loggedIn
+  }
+}
 
-export default connect()(Auth);
+
+export default connect(mapStateToProps)(Auth);

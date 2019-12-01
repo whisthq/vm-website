@@ -33,11 +33,11 @@ class CheckoutForm extends Component {
   render() {
     const style = {
       base: {
-        color: "#32325d",
+        color: "#333333",
         fontSmoothing: "antialiased",
         fontSize: "16px",
         "::placeholder": {
-          color: "#aab7c4"
+          color: "#888888"
         }
       },
       invalid: {
@@ -48,12 +48,11 @@ class CheckoutForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label style = {{width: '100%', maxWidth: 600}}>
-          Card details
           <CardElement className="MyCardElement" style={style} />
         </label>
         <div style = {{maxWidth: 600}}>
-          <Button onClick = {() => this.changeStage(1)} style = {{width: '38%', maxWidth: 600, backgroundColor: '#94a8ed', border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14}}>GO BACK</Button>
-          <Button onClick = {this.handleSubmit} style = {{width: '58%', maxWidth: 600, background: "linear-gradient(258.54deg, #2BF7DE 0%, #62CEE6 52.08%, #94A8ED 100%)", border: 0, marginTop: 20, float: 'right', fontWeight: 'bold', fontSize: 14}}>
+          <Button onClick = {() => this.changeStage(1)} style = {{width: '38%', maxWidth: 600, backgroundColor: '#94a8ed', border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)'}}>GO BACK</Button>
+          <Button onClick = {this.handleSubmit} style = {{width: '58%', maxWidth: 600, background: "linear-gradient(258.54deg, #2BF7DE 0%, #62CEE6 52.08%, #94A8ED 100%)", border: 0, marginTop: 20, float: 'right', fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)'}}>
             PAY
           </Button>
         </div>

@@ -39,33 +39,31 @@ class SignupBox extends Component {
   }
 
   changeEmail(evt) {
-    this.setState({
-      email: evt.target.value
+    this.setState({email: evt.target.value}, function () {
+      if(this.state.email.includes("@") && this.state.name) {
+        this.setState({
+          disabled: false
+        }); 
+      } else {
+        this.setState({
+          disabled: true
+        });  
+      }
     });
-    if(this.state.email.includes("@") && this.state.name) {
-      this.setState({
-        disabled: false
-      }); 
-    } else {
-      this.setState({
-        disabled: true
-      });  
-    }
   }
 
   changeName(evt) {
-    this.setState({
-      name: evt.target.value
+    this.setState({name: evt.target.value}, function () {
+      if(this.state.email.includes("@") && this.state.name) {
+        this.setState({
+          disabled: false
+        }); 
+      } else {
+        this.setState({
+          disabled: true
+        });  
+      }
     });
-    if(this.state.email.includes("@") && this.state.name) {
-      this.setState({
-        disabled: false
-      }); 
-    } else {
-      this.setState({
-        disabled: true
-      });  
-    }
   }
 
   changeCubeType(evt) {
@@ -95,7 +93,7 @@ class SignupBox extends Component {
       return(<div style = {{color: '#3dcf29', padding: 10}}>Thank you for signing up! You'll hear from us soon.</div>) 
     }
     return (
-      <Form style = {{maxWidth: 750, margin: 'auto', marginTop: 75}}>
+      <Form style = {{maxWidth: 750, margin: 'auto', marginTop: 75, paddingBottom: 75}}>
         <Row>
           <Col xs = {12} sm = {4}>
             <Form.Control placeholder="Full Name" style = {{marginBottom: 10}} value = {this.state.name} onChange = {this.changeName}/>
