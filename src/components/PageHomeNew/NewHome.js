@@ -79,9 +79,9 @@ class PageHome extends Component {
                 {
                 this.state.width > 700
                 ?
-                <img src = {Car} style = {{width: "100%", maxWidth: 550}}/>
+                <img src = {Car} style = {{width: "100%", maxWidth: 650}}/>
                 :
-                <img src = {Car} style = {{width: "100%", maxWidth: 550, marginTop: 50}}/>
+                <img src = {Car} style = {{width: "100%", maxWidth: 650, marginTop: 50}}/>
                 }
               </Col>
             </Row>
@@ -132,7 +132,7 @@ class PageHome extends Component {
           <Container>
             <Row>
               <Col md={6} style = {{paddingTop: 120}}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, margin: 'auto', minHeight: 200}}>
+                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, width: '100%', margin: 'auto', minHeight: 200}}>
                   <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'left'}}>Fractal instances are <span className = "blue-gradient">fast</span></div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Experience <strong>60 frames per second</strong> without noticeable latency or input lag.</p>
                 </div>
@@ -141,14 +141,14 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md={6} style = {{paddingTop: 260}}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, margin: 'auto', minHeight: 200}}>
+                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, width: '100%', margin: 'auto', minHeight: 200}}>
                   <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'left'}}><span className = "blue-gradient">Really fast</span></div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Upload a 5GB video file to cloud storage in under <strong>three minutes</strong> (coming soon).</p>
                 </div>
               </Col>
               :
               <Col md={6} style = {{paddingTop: 40, paddingBottom: 100}}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, margin: 'auto', minHeight: 200}}>
+                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, width: '100%', margin: 'auto', minHeight: 200}}>
                   <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'left'}}><span className = "blue-gradient">Really fast</span></div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Upload a 5GB video file to cloud storage in under <strong>three minutes</strong> (coming soon).</p>
                 </div>
