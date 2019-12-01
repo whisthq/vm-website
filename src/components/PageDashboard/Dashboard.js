@@ -160,10 +160,11 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state)
   return { 
     loggedIn: state.AccountReducer.loggedIn,
     user: state.AccountReducer.user,
-    vms: state.AccountReducer.vm_credentials,
+    vms: typeof state.AccountReducer.vm_credentials == "undefined" ? [] : state.AccountReducer.vm_credentials,
     is_creating: state.AccountReducer.is_creating,
     percentage: state.AccountReducer.progress,
     id: state.AccountReducer.id}
