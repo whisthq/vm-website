@@ -65,17 +65,17 @@ class PageHome extends Component {
     return (
       <div className='App'>
         <Header  color = "#333333" button = "#94a8ed"/>
-        <div style = {{minHeight: '100vh', paddingTop: 140}}>
+        <div style = {{paddingTop: 140}}>
           <Container>
             <Row>
-              <Col md = {4} style = {{textAlign: 'left', paddingRight: 50}}>
+              <Col md = {5} style = {{textAlign: 'left', paddingRight: 50}}>
                 <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'left'}}>Transform any device into a <span className = "blue-gradient">supercomputer</span></div>
                 <p style = {{textAlign: 'left', marginTop: 20}}>GPU-accelerated workstations in the cloud designed for <strong>creative professionals</strong></p>
                 <Link to = '/vm'>
                   <Button style = {{marginTop: 25, paddingLeft: 50, paddingRight: 50, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #4166E7', color: '#4166E7'}}>Get Started</Button>
                 </Link>
               </Col>
-              <Col md = {8} style = {{textAlign: 'right'}}>
+              <Col md = {7} style = {{textAlign: 'right'}}>
                 {
                 this.state.width > 700
                 ?
@@ -87,7 +87,7 @@ class PageHome extends Component {
             </Row>
           </Container>
         </div>
-        <div style = {{backgroundColor: "white", minHeight: '80vh'}}>
+        <div style = {{backgroundColor: "white", paddingBottom: 60, paddingTop: 30}}>
           <Container>
             <Row>
               <Col md = {5} xs = {{order: 2}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: 100}}>
@@ -128,7 +128,7 @@ class PageHome extends Component {
             </Row>
           </Container>
         </div>
-        <div style = {{backgroundColor: "#f8f8f8", minHeight: "105vh"}}>
+        <div style = {{backgroundColor: "#f8f8f8", paddingBottom: 120}}>
           <Container>
             <Row>
               <Col md={6} style = {{paddingTop: 120}}>
@@ -157,7 +157,7 @@ class PageHome extends Component {
             </Row> 
           </Container>
         </div>
-        <div style = {{backgroundColor: "#222222", minHeight: '100vh'}}>
+        <div style = {{backgroundColor: "#222222", paddingBottom: 120}}>
           <Container style = {{paddingTop: 100}}>
             <div style = {{fontWeight: 'bold', fontSize: 35, color: "white", textAlign: 'center'}}>And <span className = "orange-gradient">extremely affordable</span></div>
             <div style = {{margin: 'auto', maxWidth: 750}}>
@@ -172,7 +172,7 @@ class PageHome extends Component {
             }
           </Container>
         </div>
-        <div style = {{backgroundColor: 'white', minHeight: '100vh'}}>
+        <div style = {{backgroundColor: 'white'}}>
           <Container style = {{paddingTop: 100, paddingBottom: 100}}>
             <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'center'}}>Access your desktop <span className = "blue-gradient">anywhere</span></div>
             <div style = {{margin: 'auto', maxWidth: 750}}>
@@ -210,7 +210,7 @@ class PageHome extends Component {
             </Row>
           </Container>
         </div>
-        <div style = {{backgroundColor: 'white', minHeight: '100vh'}}>
+        <div style = {{backgroundColor: 'white'}}>
           <Container style = {{paddingTop: 50, paddingBottom: 100}}>
             <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'center'}}>Setup in under <span className = "orange-gradient">one minute</span></div>
             <div style = {{margin: 'auto', maxWidth: 750}}>
@@ -248,8 +248,8 @@ class PageHome extends Component {
             </div>
           </Container>
         </div>
-        <div style = {{backgroundColor: "#222222", minHeight: '100vh'}} id = "beta">
-          <Container style = {{paddingTop: 100}}>
+        <div style = {{backgroundColor: "#222222"}} id = "beta">
+          <Container style = {{paddingTop: 100, paddingBottom: 100}}>
             <div style = {{fontWeight: 'bold', fontSize: 35, color: "white", textAlign: 'center'}}>Join Our <span className = "blue-gradient">Private Beta</span></div>
             <div style = {{margin: 'auto', maxWidth: 750}}>
               <p style = {{textAlign: 'center', marginTop: 20, color: "#A9A9A9"}}>We are currently accepting 100 individuals for our private beta. If you’re interested in experiencing the next generation of personal computing,  please apply below.</p>
