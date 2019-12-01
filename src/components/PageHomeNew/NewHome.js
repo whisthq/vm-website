@@ -68,14 +68,14 @@ class PageHome extends Component {
         <div style = {{minHeight: '100vh', paddingTop: 140}}>
           <Container>
             <Row>
-              <Col md = {5} style = {{textAlign: 'left', paddingRight: 50}}>
+              <Col md = {4} style = {{textAlign: 'left', paddingRight: 50}}>
                 <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'left'}}>Transform any device into a <span className = "blue-gradient">supercomputer</span></div>
                 <p style = {{textAlign: 'left', marginTop: 20}}>GPU-accelerated workstations in the cloud designed for <strong>creative professionals</strong></p>
                 <Link to = '/vm'>
                   <Button style = {{marginTop: 25, paddingLeft: 50, paddingRight: 50, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #4166E7', color: '#4166E7'}}>Get Started</Button>
                 </Link>
               </Col>
-              <Col md = {7} style = {{textAlign: 'right'}}>
+              <Col md = {8} style = {{textAlign: 'right'}}>
                 {
                 this.state.width > 700
                 ?
@@ -132,7 +132,7 @@ class PageHome extends Component {
           <Container>
             <Row>
               <Col md={6} style = {{paddingTop: 120}}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 400, margin: 'auto', minHeight: 200}}>
+                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, margin: 'auto', minHeight: 200}}>
                   <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'left'}}>Fractal instances are <span className = "blue-gradient">fast</span></div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Experience <strong>60 frames per second</strong> without noticeable latency or input lag.</p>
                 </div>
@@ -141,14 +141,14 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md={6} style = {{paddingTop: 260}}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 400, margin: 'auto', minHeight: 200}}>
+                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, margin: 'auto', minHeight: 200}}>
                   <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'left'}}><span className = "blue-gradient">Really fast</span></div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Upload a 5GB video file to cloud storage in under <strong>three minutes</strong> (coming soon).</p>
                 </div>
               </Col>
               :
               <Col md={6} style = {{paddingTop: 40, paddingBottom: 100}}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 400, margin: 'auto', minHeight: 200}}>
+                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, margin: 'auto', minHeight: 200}}>
                   <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'left'}}><span className = "blue-gradient">Really fast</span></div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Upload a 5GB video file to cloud storage in under <strong>three minutes</strong> (coming soon).</p>
                 </div>
@@ -182,7 +182,7 @@ class PageHome extends Component {
             </div>
             <Row style = {{marginTop: 75}}>
               <Col md = {6}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 400, margin: 'auto', minHeight: 230}}>
+                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, margin: 'auto', minHeight: 230}}>
                   <div style = {{fontWeight: 'bold', fontSize: 25, color: "#333333", textAlign: 'left'}}>Color Correction</div>
                   <div style = {{backgroundColor: "#4166E7", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 100, marginTop: 10}}>Coming Soon</div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Achieve near-100% RGB color accuracy with our build-to-lossless streaming technology.</p>
@@ -192,7 +192,7 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {6}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 400, margin: 'auto', minHeight: 230}}>
+                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, margin: 'auto', minHeight: 230}}>
                   <div style = {{fontWeight: 'bold', fontSize: 25, color: "#333333", textAlign: 'left'}}>Hardware Flexibility</div>
                   <div style = {{backgroundColor: "#94a8ed", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 100, marginTop: 10}}>Coming Soon</div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Instantly swap out your CPU, GPU, RAM, or storage at the click of a button.</p>
@@ -200,7 +200,7 @@ class PageHome extends Component {
               </Col>
               :
               <Col md = {6} style = {{marginTop: 40}}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 400, margin: 'auto', minHeight: 230}}>
+                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, margin: 'auto', minHeight: 230}}>
                   <div style = {{fontWeight: 'bold', fontSize: 25, color: "#333333", textAlign: 'left'}}>Hardware Flexibility</div>
                   <div style = {{backgroundColor: "#94a8ed", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 100, marginTop: 10}}>Coming Soon</div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Instantly swap out your CPU, GPU, RAM, or storage at the click of a button.</p>
