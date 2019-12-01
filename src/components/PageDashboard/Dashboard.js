@@ -56,7 +56,7 @@ class Dashboard extends Component {
       ?
       <Redirect to = "/auth"/>
       :
-      <div style = {{backgroundColor: "#222222", paddingBottom: 75}}>
+      <div style = {{backgroundColor: "#222222", paddingBottom: 75, minHeight: '100vh'}}>
         <Header color = "white" button = "rgba(0,0,0,0.0)"/>
         <Container style = {{paddingTop: 120}}>
           <Row>
@@ -166,7 +166,7 @@ function mapStateToProps(state) {
     user: state.AccountReducer.user,
     vms: typeof state.AccountReducer.vm_credentials == "undefined" ? [] : state.AccountReducer.vm_credentials,
     is_creating: state.AccountReducer.is_creating,
-    percentage: state.AccountReducer.progress,
+    percentage: typeof state.AccountReducer.progress == "undefined" ? 1 : state.AccountReducer.progress,
     id: state.AccountReducer.id}
 }
 

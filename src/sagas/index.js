@@ -124,6 +124,7 @@ function* sendVMRegister(action) {
    })
    if(json) {
       yield put(FormAction.vmCreating(false))
+      history.push('/dashboard')
       yield put(FormAction.progressBar(1))
    }
 }
