@@ -33,7 +33,7 @@ class Footer extends Component {
     return (
       <div style = {{width: '100%', backgroundColor: '#222222', padding: 30, paddingTop: 60, fontSize: 15, borderTop: 'solid 1px white'}}>
        <Container>
-        <div style = {{color: 'white', width: '100%'}}>
+{/*        <div style = {{color: 'white', width: '100%'}}>
           <div style = {{fontSize: 30, fontWeight: 'bold'}}>
           BEGIN
           </div>
@@ -43,12 +43,12 @@ class Footer extends Component {
           <HashLink to = "/vm#top">
             <Button style = {{marginTop: 25, paddingLeft: 40, paddingRight: 40, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #94a8ed', color: '#94a8ed', marginTop: 40}}>Get Started</Button>
           </HashLink>
-        </div>
+        </div>*/}
         <div style = {{width: '100%', minHeight: 100}}>
           {
           this.state.width > 700
           ?
-          <Row style = {{width: 250, color: 'white', float: 'right'}}>
+          <Row style = {{width: 250, color: 'white'}}>
             <Col xs = {6}>
               <div style = {{fontWeight: 'bold', marginBottom: 10}}>MENU</div>
               <div style = {{fontSize: 12}}>
@@ -84,7 +84,7 @@ class Footer extends Component {
             </Col>
           </Row>
           :
-          <Row style = {{width: 250, color: 'white', marginTop: 50}}>
+          <Row style = {{width: 250, color: 'white'}}>
             <Col xs = {6}>
               <div style = {{fontWeight: 'bold', marginBottom: 10}}>MENU</div>
               <div style = {{fontSize: 12}}>
