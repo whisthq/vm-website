@@ -40,9 +40,9 @@ class Footer extends Component {
           <div style = {{fontSize: 15, marginTop: 20}}>
           Getting started with Fractal is free!<br/>Unlock your cloud supercomputer below.
           </div>
-          <Link to = "/vm">
+          <HashLink to = "/vm#top">
             <Button style = {{marginTop: 25, paddingLeft: 40, paddingRight: 40, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #94a8ed', color: '#94a8ed', marginTop: 40}}>Get Started</Button>
-          </Link>
+          </HashLink>
         </div>
         <div style = {{width: '100%', minHeight: 100}}>
           {

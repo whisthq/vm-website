@@ -155,7 +155,7 @@ class VM extends Component {
       modalClose()
     }
     return (
-      <div>
+      <div id = "top">
         <Header  color = "#333333" button = "#94a8ed"/>
         <div style = {{minHeight: '100vh', backgroundColor: "white", paddingTop: 100}}>
           <Container>
