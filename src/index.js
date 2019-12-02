@@ -30,7 +30,13 @@ import { PersistGate } from 'redux-persist/integration/react'
 import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.css';
 import history from "./history";
+import Button from "react-bootstrap/Button"
+import Container from "react-bootstrap/Container"
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import { HashLink } from 'react-router-hash-link'
 import './static/App.css';
+import Footer from './shared_components/footer'
 
 const persistConfig = {
   key: 'rootKey',
@@ -68,13 +74,7 @@ ReactDOM.render(
               <Route exact path="/vm" component={VM}  />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/home" component={NewHome} />
-               <div style = {{width: '100%', backgroundColor: 'white', paddingTop: 35, paddingBottom: 35, fontSize: 15, borderTop: 'solid 1px #111111'}}>
-                <div style = {{maxWidth: 1000, display: 'flex', margin: 'auto', paddingLeft: 20, paddingRight: 20, fontSize: 14}}>
-                  <p style = {{margin: 0, width: '50%', textAlign: 'left', color: '#333333'}}>Copyright &copy; Fractal Computers Inc., All Rights Reserved.</p>
-                  <a href = "mailto: hello@fractalcomputers.com" style = {{margin: 0, width: '50%', textAlign: 'right', color: '#333333', fontWeight: 'bold'}}>
-                  Contact Us</a>
-                </div>
-              </div>
+              <Footer/>
               </PersistGate>
           </Provider>
       </Router>,
