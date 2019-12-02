@@ -44,10 +44,22 @@ class Footer extends Component {
             <Button style = {{marginTop: 25, paddingLeft: 40, paddingRight: 40, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #94a8ed', color: '#94a8ed', marginTop: 40}}>Get Started</Button>
           </HashLink>
         </div>*/}
+        {
+        this.state.width > 700
+        ?
+        <div style = {{float: 'right'}}>
+          <HashLink to = "/vm#top">
+            <Button style = {{paddingLeft: 40, paddingRight: 40, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #94a8ed', color: '#94a8ed'}}>Get Started</Button>
+          </HashLink>
+        </div>
+        :
+        <div style = {{marginBottom: 50}}>
+          <HashLink to = "/vm#top">
+            <Button style = {{paddingLeft: 40, paddingRight: 40, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #94a8ed', color: '#94a8ed'}}>Get Started</Button>
+          </HashLink>
+        </div>
+        }
         <div style = {{width: '100%', minHeight: 100}}>
-          {
-          this.state.width > 700
-          ?
           <Row style = {{width: 250, color: 'white'}}>
             <Col xs = {6}>
               <div style = {{fontWeight: 'bold', marginBottom: 10}}>MENU</div>
@@ -83,43 +95,6 @@ class Footer extends Component {
               </div>
             </Col>
           </Row>
-          :
-          <Row style = {{width: 250, color: 'white'}}>
-            <Col xs = {6}>
-              <div style = {{fontWeight: 'bold', marginBottom: 10}}>MENU</div>
-              <div style = {{fontSize: 12}}>
-                <Link to = "/" style = {{textDecoration: 'none'}}>
-                  <div style = {{color: 'white', textDecoration: 'none', marginBottom: 4}}>
-                  Home
-                  </div>
-                </Link>
-                <HashLink to = "/#beta" style = {{textDecoration: 'none'}}>
-                  <div style = {{color: 'white', textDecoration: 'none', marginBottom: 4}}>
-                  Join Beta
-                  </div>
-                </HashLink>
-                <Link to = "/story" style = {{textDecoration: 'none'}}>
-                  <div style = {{color: 'white', textDecoration: 'none', marginBottom: 4}}>
-                  Our Story
-                  </div>
-                </Link>
-                <Link to  = "/auth" style = {{textDecoration: 'none'}}>
-                  <div style = {{color: 'white', textDecoration: 'none', marginBottom: 4}}>
-                  My Account
-                  </div>
-                </Link>
-              </div>
-            </Col>
-            <Col xs = {6}>
-              <div style = {{fontWeight: 'bold', marginBottom: 10}}>SUPPORT</div>
-              <div style = {{fontSize: 12}}>
-                <div>
-                <a href = "mailto: hello@fractalcomputers.com" style = {{color: 'white', textDecoration: 'none', marginBottom: 4}}>Contact Us</a>
-                </div>
-              </div>
-            </Col>
-          </Row>
-          }
         </div>
         <div style = {{fontSize: 11, marginTop: 50, width: '100%'}}>
           <p style = {{margin: 0, textAlign: 'left', color: 'white'}}>Copyright &copy; Fractal Computers Inc., All Rights Reserved.</p>
