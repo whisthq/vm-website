@@ -65,17 +65,17 @@ class PageHome extends Component {
     return (
       <div className='App'>
         <Header  color = "#333333" button = "#94a8ed"/>
-        <div style = {{minHeight: '100vh', paddingTop: 140}}>
+        <div style = {{paddingTop: 140}}>
           <Container>
             <Row>
-              <Col md = {4} style = {{textAlign: 'left', paddingRight: 50}}>
+              <Col md = {5} style = {{textAlign: 'left', paddingRight: 50}}>
                 <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'left'}}>Transform any device into a <span className = "blue-gradient">supercomputer</span></div>
                 <p style = {{textAlign: 'left', marginTop: 20}}>GPU-accelerated workstations in the cloud designed for <strong>creative professionals</strong></p>
                 <Link to = '/vm'>
                   <Button style = {{marginTop: 25, paddingLeft: 50, paddingRight: 50, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #4166E7', color: '#4166E7'}}>Get Started</Button>
                 </Link>
               </Col>
-              <Col md = {8} style = {{textAlign: 'right'}}>
+              <Col md = {7} style = {{textAlign: 'right'}}>
                 {
                 this.state.width > 700
                 ?
@@ -87,11 +87,11 @@ class PageHome extends Component {
             </Row>
           </Container>
         </div>
-        <div style = {{backgroundColor: "white", minHeight: '80vh'}}>
+        <div style = {{backgroundColor: "white", paddingBottom: 60, paddingTop: 30}}>
           <Container>
             <Row>
               <Col md = {5} xs = {{order: 2}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: 100}}>
-                <div style = {{width: '100%', maxWidth: 450, height: 280, backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5}}>
+                <div style = {{width: '100%', maxWidth: 375, height: 280, backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 35px', fontWeight: 'bold'}}>
                     Windows Instance
                   </div>
@@ -128,7 +128,7 @@ class PageHome extends Component {
             </Row>
           </Container>
         </div>
-        <div style = {{backgroundColor: "#f8f8f8", minHeight: "105vh"}}>
+        <div style = {{backgroundColor: "#f8f8f8", paddingBottom: 120}}>
           <Container>
             <Row>
               <Col md={6} style = {{paddingTop: 120}}>
@@ -157,7 +157,7 @@ class PageHome extends Component {
             </Row> 
           </Container>
         </div>
-        <div style = {{backgroundColor: "#222222", minHeight: '100vh'}}>
+        <div style = {{backgroundColor: "#222222", paddingBottom: 120}}>
           <Container style = {{paddingTop: 100}}>
             <div style = {{fontWeight: 'bold', fontSize: 35, color: "white", textAlign: 'center'}}>And <span className = "orange-gradient">extremely affordable</span></div>
             <div style = {{margin: 'auto', maxWidth: 750}}>
@@ -166,13 +166,13 @@ class PageHome extends Component {
             {
             this.state.width > 700
             ?
-            <img src = {PriceCompare} style = {{width: '100%', margin: 'auto', maxWidth: 700, marginTop: 75}}/>
+            <img src = {PriceCompare} style = {{width: '100%', margin: 'auto', maxWidth: 750, marginTop: 75}}/>
             :
             <img src = {PriceCompareSmall} style = {{width: '90%', margin: 'auto', maxWidth: 700, marginTop: 75}}/>
             }
           </Container>
         </div>
-        <div style = {{backgroundColor: 'white', minHeight: '100vh'}}>
+        <div style = {{backgroundColor: 'white'}}>
           <Container style = {{paddingTop: 100, paddingBottom: 100}}>
             <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'center'}}>Access your desktop <span className = "blue-gradient">anywhere</span></div>
             <div style = {{margin: 'auto', maxWidth: 750}}>
@@ -180,9 +180,9 @@ class PageHome extends Component {
                 Need to work in more than one location? Forgot to upload a file to the cloud, or to commit a change? Your Fractal instance is accessible from any Internet-connected device.
               </p>
             </div>
-            <Row style = {{marginTop: 75}}>
+            <Row style = {{maxWidth: 1000, margin: 'auto', marginTop: 75}}>
               <Col md = {6}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, margin: 'auto', minHeight: 230}}>
+                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, minHeight: 230}}>
                   <div style = {{fontWeight: 'bold', fontSize: 25, color: "#333333", textAlign: 'left'}}>Color Correction</div>
                   <div style = {{backgroundColor: "#4166E7", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 100, marginTop: 10}}>Coming Soon</div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Achieve near-100% RGB color accuracy with our build-to-lossless streaming technology.</p>
@@ -192,7 +192,7 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {6}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, margin: 'auto', minHeight: 230}}>
+                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", maxWidth: 450, minHeight: 230}}>
                   <div style = {{fontWeight: 'bold', fontSize: 25, color: "#333333", textAlign: 'left'}}>Hardware Flexibility</div>
                   <div style = {{backgroundColor: "#94a8ed", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 100, marginTop: 10}}>Coming Soon</div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Instantly swap out your CPU, GPU, RAM, or storage at the click of a button.</p>
@@ -210,7 +210,7 @@ class PageHome extends Component {
             </Row>
           </Container>
         </div>
-        <div style = {{backgroundColor: 'white', minHeight: '100vh'}}>
+        <div style = {{backgroundColor: 'white'}}>
           <Container style = {{paddingTop: 50, paddingBottom: 100}}>
             <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'center'}}>Setup in under <span className = "orange-gradient">one minute</span></div>
             <div style = {{margin: 'auto', maxWidth: 750}}>
@@ -248,8 +248,8 @@ class PageHome extends Component {
             </div>
           </Container>
         </div>
-        <div style = {{backgroundColor: "#222222", minHeight: '100vh'}} id = "beta">
-          <Container style = {{paddingTop: 100}}>
+        <div style = {{backgroundColor: "#222222"}} id = "beta">
+          <Container style = {{paddingTop: 100, paddingBottom: 100}}>
             <div style = {{fontWeight: 'bold', fontSize: 35, color: "white", textAlign: 'center'}}>Join Our <span className = "blue-gradient">Private Beta</span></div>
             <div style = {{margin: 'auto', maxWidth: 750}}>
               <p style = {{textAlign: 'center', marginTop: 20, color: "#A9A9A9"}}>We are currently accepting 100 individuals for our private beta. If you’re interested in experiencing the next generation of personal computing,  please apply below.</p>
