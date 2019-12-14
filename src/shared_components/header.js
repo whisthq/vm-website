@@ -31,11 +31,11 @@ class Header extends Component {
 
   render() {
     return (
-      <div style = {{width: '100%', position: 'absolute', padding: 10, marginTop: 20}}>  
+      <div style = {{width: '100%', position: 'absolute', padding: 10, marginTop: 20, overflowX: 'hidden'}}>  
         {
         this.state.width > 700 
         ?
-        <Container>
+        <div className = "fractal-container">
         <div style = {{display: 'flex', width: '100%'}}>
           <div style = {{width: '40%', textAlign: 'left'}}>
             <Link to = '/' style = {{textDecoration: 'none', color: `${ this.props.color }`, fontWeight: 'bold', fontSize: 24}}>
@@ -57,7 +57,7 @@ class Header extends Component {
               </Link>
           </div>
         </div>
-        </Container>
+        </div>
         :
         <div style = {{paddingLeft: 10, paddingRight: 10, minHeight: 30}}>
           <div style = {{color: 'white', fontWeight: 'bold', float: 'left'}}>

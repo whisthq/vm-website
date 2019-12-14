@@ -6,9 +6,8 @@ div {
 
 .App, .About {
   text-align: center;
-  overflow-x: hidden;
-  overflow-y: hidden;
   width: 100%;
+  overflow-x: hidden;
 }
 
 .LandingButton {
@@ -135,17 +134,31 @@ button:hover {
 }
 
 .blue-gradient {
-  background: linear-gradient(258.54deg, #2BF7DE 0%, #62CEE6 52.08%, #94A8ED 100%);
+  background: linear-gradient(258.54deg, #4B89E5 0%, #AB38E1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.orange-gradient {
-  background: linear-gradient(110.1deg, #D62424 0%, #E0871F 100%);
+.purple-gradient {
+  background: linear-gradient(110.1deg, #d217e3 0%, #7e14c9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.Container {
-  max-width: 1200px !important;
+
+.fractal-container {
+  width: 100vw;
+  margin: 0px;
+  padding-left: 100px;
+  padding-right: 100px;
+  max-width: 2000px;
+  margin: auto;
+  overflow-x: hidden;
+}
+
+@media screen and (max-width: 700px) {
+  .fractal-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
 }
