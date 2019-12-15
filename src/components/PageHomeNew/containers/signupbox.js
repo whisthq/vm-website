@@ -111,7 +111,7 @@ class SignupBox extends Component {
             </Form.Group>
           </Col>*/}
           <Col xs = {12} sm = {4}>
-            <Button disabled = {this.state.disabled} onClick={() => this.handleClick(this.state.name, this.state.email, 1)} className = "submitButton" style = {{width: '100%', backgroundColor: '#94a8ed', border: 'none'}}>Submit</Button>
+            <Button disabled = {this.state.disabled} onClick={() => this.handleClick(this.state.name, this.state.email, 1)} className = "submitButton" style = {{width: '100%', backgroundColor: '#4B89E5', border: 'none'}}>Submit</Button>
           </Col>
         </Row>
       </Form>

@@ -19,7 +19,7 @@ import {FaRegEnvelope} from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
-
+import { HashLink } from 'react-router-hash-link';
 
 class PageHome extends Component {
   constructor(props) {
@@ -65,7 +65,7 @@ class PageHome extends Component {
     }
     return (
       <div className='App' style = {{backgroundColor: '#261843'}}>
-        <Header  color = "white" button = "#94a8ed"/>
+        <Header  color = "white" button = "#4B89E5"/>
         <div style = {{paddingTop: 140}}>
           <div className = "fractal-container">
             <Row>
@@ -84,12 +84,14 @@ class PageHome extends Component {
                   Our <Link to = '/vm' style = {{textDecoration: 'none', color: '#4B89E5'}}>private beta</Link> is now open.
                 </div>
                 <div style = {{color: '#D1D1D1', fontSize: 18}}>TRANSFORM ANY DEVICE INTO A</div>
-                <div style = {{color: '#FFFFFF', fontSize: 50, fontWeight: 'bold'}}>SUPERCOMPUTER</div>
+                <div style = {{color: '#FFFFFF', fontSize: 45, fontWeight: 'bold'}}>SUPERCOMPUTER</div>
                 <p style = {{textAlign: 'left', marginTop: 16, color: '#D1D1D1', marginBottom: 40, fontSize: 15}}>Run GPU-powered, Windows 10 workstations from any macOS, iOS, or Windows device</p>
                 <Link to = '/vm'>
-                  <Button style = {{marginTop: 25, padding: "12px 30px", background: "linear-gradient(110.1deg, #4B89E5 0%, #AB38E1 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)'}}>GET STARTED</Button>
+                  <Button style = {{marginTop: 25, padding: "12px 30px", background: "#4B89E5", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)'}}>GET STARTED</Button>
                 </Link>
-                <Button style = {{marginTop: 25, padding: "12px 30px", background: "linear-gradient(110.1deg, #AB38E1 0%, #4B89E5 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', marginLeft: 30}}>JOIN BETA</Button>
+                <HashLink to = '/#beta'>
+                <Button style = {{marginTop: 25, padding: "12px 30px", background: "linear-gradient(110.1deg, #4B89E5 0%, #AB38E1 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', marginLeft: 30}}>JOIN BETA</Button>
+                </HashLink>
               </Col>
             </Row>
           </div>
@@ -135,7 +137,7 @@ class PageHome extends Component {
             </Row>
           </div>
         </div>
-        <div style = {{backgroundColor: 'white', paddingTop: "66.55%", width: '100%', position: 'relative'}}>
+        <div style = {{backgroundColor: 'white', paddingTop: "66.68%", width: '100%', position: 'relative'}}>
           <div style = {{backgroundImage: `url(${SpaceShip})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}}>
             <div className = "fractal-container" style = {{color: 'white', paddingTop: "40%", textAlign: 'center', fontWeight: 'bold', fontSize: 40, paddingBottom: 40}}>
               Fractal Cloud Computers Are <br/>Fast
@@ -147,6 +149,8 @@ class PageHome extends Component {
               <Button style = {{marginTop: 45, padding: "12px 50px", background: "linear-gradient(110.1deg, #4B89E5 0%, #AB38E1 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)'}}>GET STARTED</Button>
             </Link>
           </div>
+        </div>
+        <div style = {{backgroundColor: "#261843", width: '100%', height: 50}} className = "fractal-container">
         </div>
         <div style = {{backgroundColor: "#261843", paddingBottom: 150, paddingTop: 150}} className = "fractal-container">
             <div style = {{fontWeight: 'bold', fontSize: 35, color: "white", textAlign: 'center'}}>And extremely affordable</div>
@@ -208,7 +212,7 @@ class PageHome extends Component {
                     Your Info
                   </div>
                   <div style = {{width: '100%', padding: 50, color: '#333333', fontSize: 16}}>
-                  <div style = {{padding: '8px 35px', marginTop: 40, display: 'flex'}}>
+                  <div style = {{padding: '8px 35px', marginTop: 10, display: 'flex'}}>
                     <div style = {{width: '70%', height: 10, backgroundColor: '#e3e3e3', borderRadius: 5}}>
                     </div>
                     <div style = {{width: '25%', height: 10, backgroundColor: '#94a8ed', borderRadius: 5, marginLeft: '5%'}}>
@@ -226,7 +230,7 @@ class PageHome extends Component {
                   </div>
                    <div style = {{padding: '8px 35px'}}>
                   <Link to = "/vm" style = {{textAlign: 'center'}}>
-                    <Button style = {{width: '100%', margin: 'auto', color: 'white', background: "linear-gradient(110.1deg, #4B89E5 0%, #AB38E1 100%)", fontWeight: "bold", textAlign: 'center', borderRadius: 5, marginTop: 50, border: 'none', fontSize: 14}}>
+                    <Button style = {{width: '100%', margin: 'auto', color: 'white', background: "linear-gradient(110.1deg, #4B89E5 0%, #AB38E1 100%)", fontWeight: "bold", textAlign: 'center', borderRadius: 5, marginTop: 20, border: 'none', fontSize: 14}}>
                       + New Instance
                     </Button>
                   </Link>
