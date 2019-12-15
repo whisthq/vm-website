@@ -40,7 +40,10 @@ function* sendLoginInfo(action) {
        if(!action.create) {
         history.push('/dashboard')
        } 
-	   }
+	   } else {
+       console.log("login failure")
+       yield put(FormAction.loginFailure());
+     }
 	}
 }
 
@@ -74,7 +77,7 @@ function* sendStripeCharge(action) {
       history.push('/dashboard');
        yield put(FormAction.vmCreating(true))
        yield put(FormAction.progressBar(0))
-       yield put(FormAction.createVM('Standard_NV6_Promo'))
+       yield put(FormAction.createVM('Standard_NC6'))
      }
   }
 }

@@ -149,8 +149,8 @@ button:hover {
 .fractal-container {
   width: 100vw;
   margin: 0px;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 120px;
+  padding-right: 120px;
   max-width: 2000px;
   margin: auto;
   overflow-x: hidden;

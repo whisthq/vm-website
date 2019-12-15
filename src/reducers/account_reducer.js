@@ -1,6 +1,6 @@
 import * as AccountAction from '../actions/index'
 
-const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, stripeToken: '', type: '', id: '', vm_created: false, is_creating: false, progress: 1, vm_credentials: []}
+const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, stripeToken: '', type: '', id: '', vm_created: false, is_creating: false, progress: 1, vm_credentials: [], failed_attempts: 0}
 
 export default function(state = DEFAULT, action) {
   switch (action.type) {
@@ -20,6 +20,11 @@ export default function(state = DEFAULT, action) {
       return {
         ...state,
         loggedIn: true 
+      }
+    case AccountAction.LOGIN_FAILURE:
+      return {
+        ...state,
+        failed_attempts: state.failed_attempts + 1
       }
     case AccountAction.SIGNUP_SUCCESS:
       return {

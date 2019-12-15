@@ -23,6 +23,7 @@ export const SEND_PRE_ORDER = "SEND_PRE_ORDER"
 export const USER_LOGIN = "USER_LOGIN"
 export const USER_SIGNUP = "USER_SIGNUP"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
+export const LOGIN_FAILURE = "LOGIN_FAILURE"
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS"
 export const CHANGE_STAGE = "CHANGE_STAGE"
 export const CHARGE_STRIPE = "CHARGE_STRIPE"
@@ -117,6 +118,12 @@ export function userSignup(user, password, create) {
 export function loginSuccess() {
 	return {
 		type: LOGIN_SUCCESS
+	}
+}
+
+export function loginFailure() {
+	return {
+		type: LOGIN_FAILURE
 	}
 }
 

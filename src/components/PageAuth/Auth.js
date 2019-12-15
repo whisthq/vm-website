@@ -21,7 +21,7 @@ class Auth extends Component {
     super(props)
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, 
       emailLogin: '', passwordLogin: '', emailSignup: '', passwordSignup: '', passwordConfirmSignup: '',
-      validEmail: false, tooShort: false}
+      validEmail: false, tooShort: false, failed_attempt: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.changeEmailLogin = this.changeEmailLogin.bind(this)
     this.changePasswordLogin = this.changePasswordLogin.bind(this)
@@ -32,7 +32,7 @@ class Auth extends Component {
   }
 
   handleLogin(evt) {
-    this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin, false))
+    this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin, false));
   }
 
   handleSignup(evt) {
@@ -45,10 +45,26 @@ class Auth extends Component {
     });
   }
 
+  loginKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin, false));
+    }
+  }
+
+  signupKeyPress = (event) => {
+    // if(event.key === 'Enter'){
+    //   this.props.dispatch(userSignup(this.state.emailSignup, this.state.passwordSignup, false))
+    // }
+  }
+
   changePasswordLogin(evt) {
-    this.setState({
-      passwordLogin: evt.target.value
-    });
+    if(evt.key === 'Enter') {
+      this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin, false));
+    } else {
+      this.setState({
+        passwordLogin: evt.target.value
+      });
+    }
   }
 
   changeEmailSignup(evt) {
@@ -81,8 +97,15 @@ class Auth extends Component {
     });
   }
   componentDidMount() {
+    this.setState({'failures': this.props.failed_attempts})
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.failed_attempts != this.props.failed_attempts) {
+      this.setState({'failed_attempt': true})
+    }
   }
 
   componentWillUnmount() {
@@ -122,6 +145,7 @@ class Auth extends Component {
                       aria-describedby="inputGroup-sizing-default"
                       placeholder = "Email Address"
                       onChange = {this.changeEmailLogin}
+                      onKeyPress = {this.loginKeyPress}
                       style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
                     /><br/>
                   </InputGroup>
@@ -132,9 +156,17 @@ class Auth extends Component {
                       aria-describedby="inputGroup-sizing-default"
                       placeholder = "Password"
                       onChange = {this.changePasswordLogin}
+                      onKeyPress = {this.loginKeyPress}
                       style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
                     />
                   </InputGroup>
+                  {
+                  this.state.failed_attempt
+                  ?
+                  <div style = {{textAlign: 'center', fontSize: 14, color: "#a62121"}}>Invalid credentials</div>
+                  :
+                  <div style = {{height: 20}}></div>
+                  }
                   <Button  onClick = {this.handleLogin} style = {{marginTop: 50, color: 'white', width: '100%', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>LOG IN</Button>
                   <div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 50, color: '#888'}}>Forgot Password?</div>
                 </TabPanel>
@@ -238,7 +270,8 @@ class Auth extends Component {
 
 function mapStateToProps(state) {
   return { 
-    loggedIn: state.AccountReducer.loggedIn
+    loggedIn: state.AccountReducer.loggedIn,
+    failed_attempts: state.AccountReducer.failed_attempts
   }
 }
 
