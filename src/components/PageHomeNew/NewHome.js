@@ -161,7 +161,7 @@ class PageHome extends Component {
         ?
         <div style = {{backgroundColor: 'white', paddingTop: "66.68%", width: '100%', position: 'relative'}}>
           <div style = {{backgroundImage: `url(${SpaceShip})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}}>
-            <div className = "fractal-container" style = {{color: 'white', paddingTop: "42%", textAlign: 'center', fontWeight: 'bold', fontSize: 40, paddingBottom: 40}}>
+            <div className = "fractal-container" style = {{color: 'white', paddingTop: "39%", textAlign: 'center', fontWeight: 'bold', fontSize: 40, paddingBottom: 40}}>
               Fractal Cloud Computers Are <br/>Fast
             </div>
             <div style = {{color: "#D1D1D1", maxWidth: 600, margin: 'auto', zIndex: 100,  paddingLeft: 50, paddingRight: 50}}>
@@ -194,7 +194,7 @@ class PageHome extends Component {
         :
         <div style = {{backgroundColor: "#20254a", height: 250, zIndex: -1}}></div>
         }
-        <div  style = {{backgroundColor: "#20254a", paddingBottom: 150, paddingTop: 150, position: 'relative', bottom: 2}}>
+        <div  style = {{backgroundColor: "#20254a", paddingBottom: 150, paddingTop: 150, position: 'relative', bottom: 1}}>
         <div className = "fractal-container">
             <div style = {{fontWeight: 'bold', fontSize: 35, color: "white", textAlign: 'center'}}>And extremely affordable</div>
             <div style = {{margin: 'auto', maxWidth: 750}}>
