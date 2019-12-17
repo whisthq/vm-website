@@ -64,7 +64,7 @@ class PageHome extends Component {
       modalClose()
     }
     return (
-      <div className='App' style = {{backgroundColor: '#261843'}}>
+      <div className='App' style = {{backgroundColor: '#20254a'}}>
         <Header  color = "white" button = "#4B89E5"/>
         <div style = {{paddingTop: 100}}>
           <div className = "fractal-container">
@@ -159,9 +159,9 @@ class PageHome extends Component {
             {
             this.state.width > 700
             ?
-            <img src = {PriceCompare} style = {{width: '100%', margin: 'auto', maxWidth: 900, marginTop: 75}}/>
+            <img src = {PriceCompare} style = {{width: '100%', margin: 'auto', maxWidth: 800, marginTop: 75}}/>
             :
-            <img src = {PriceCompareSmall} style = {{width: '90%', margin: 'auto', maxWidth: 900, marginTop: 75}}/>
+            <img src = {PriceCompareSmall} style = {{width: '90%', margin: 'auto', maxWidth: 800, marginTop: 75}}/>
             }
         </div>
         <div style = {{backgroundColor: 'white'}}>

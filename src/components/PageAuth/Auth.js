@@ -29,6 +29,7 @@ class Auth extends Component {
     this.changePasswordSignup = this.changePasswordSignup.bind(this)
     this.changePasswordConfirmSignup = this.changePasswordConfirmSignup.bind(this) 
     this.handleLogin = this.handleLogin.bind(this)
+    this.handleSignup = this.handleSignup.bind(this)
   }
 
   handleLogin(evt) {
@@ -100,6 +101,8 @@ class Auth extends Component {
     this.setState({'failures': this.props.failed_attempts})
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
+    console.log("params")
+    console.log(this.props.location);
   }
 
   componentDidUpdate(prevProps) {
@@ -168,7 +171,7 @@ class Auth extends Component {
                   <div style = {{height: 20}}></div>
                   }
                   <Button  onClick = {this.handleLogin} style = {{marginTop: 50, color: 'white', width: '100%', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>LOG IN</Button>
-                  <div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 50, color: '#888'}}>Forgot Password?</div>
+                  <HashLink to = "/reset"><div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 50, color: '#888', textDecoration: 'none'}}>Forgot Password?</div></HashLink>
                 </TabPanel>
                 <TabPanel style = {{padding: '15px 30px'}}>
                   <InputGroup className="mb-3" style = {{marginTop: 30}}>
@@ -252,7 +255,7 @@ class Auth extends Component {
                     )
                     }
                   </InputGroup>
-                  <Button disabled="true" onClick = {this.handleSignup} style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>SIGN UP</Button>
+                  <Button onClick = {this.handleSignup} style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>SIGN UP</Button>
                   <div style = {{fontSize: 16, color: "#333333", marginTop: 25}}>
                     Currently, signups are open only to our 100 private beta users. If you'd like to join our private beta, apply <HashLink to = "/#beta" style = {{color: '#94a8ed', fontWeight: 'bold'}}>here</HashLink> and we'll be in touch.
                   </div>

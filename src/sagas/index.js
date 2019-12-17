@@ -142,6 +142,20 @@ function* sendVMFetch(action) {
    }
 }
 
+function* sendForgotPassword(action) {
+  console.log("sent")
+   const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/mail/forgot', {
+    username: action.username
+   })
+   if(json) {
+    if(json.verified) {
+      yield put(FormAction.forgotPasswordEmailCorrect());
+    } else {
+      yield put(FormAction.forgotPasswordEmailIncorrect());
+    }
+   }
+}
+
 export default function* rootSaga() {
  	yield all([
     	takeEvery(FormAction.SEND_FORM_DATA, sendFormData),
@@ -152,7 +166,8 @@ export default function* rootSaga() {
       takeEvery(FormAction.CREATE_VM, createVMPost),
       takeEvery(FormAction.GET_VM_ID, sendVMID),
       takeEvery(FormAction.REGISTER_VM, sendVMRegister),
-      takeEvery(FormAction.FETCH_VMS, sendVMFetch)
+      takeEvery(FormAction.FETCH_VMS, sendVMFetch),
+      takeEvery(FormAction.FORGOT_PASSWORD, sendForgotPassword)
 	]);
 }
 

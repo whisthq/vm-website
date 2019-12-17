@@ -35,6 +35,9 @@ export const FETCH_VMS = "FETCH_VMS"
 export const VM_TO_STATE = "VM_TO_STATE"
 export const VM_CREATING = "VM_CREATING"
 export const PROGRESS_BAR = "PROGRESS_BAR"
+export const FORGOT_PASSWORD = "FORGOT_PASSWORD"
+export const FORGOT_PASSWORD_EMAIL_INCORRECT = "FORGOT_PASSWORD_EMAIL_INCORRECT"
+export const FORGOT_PASSWORD_EMAIL_CORRECT = "FORGOT_PASSWORD_EMAIL_CORRECT"
 
 export function sendFormData(name, email, cubeType) {
 	return {
@@ -202,5 +205,26 @@ export function progressBar(progress) {
 	return {
 		type: PROGRESS_BAR,
 		progress
+	}
+}
+
+export function forgotPassword(username) {
+	return {
+		type: FORGOT_PASSWORD,
+		username
+	}
+}
+
+export function forgotPasswordEmailIncorrect() {
+	console.log("no")
+	return {
+		type: FORGOT_PASSWORD_EMAIL_INCORRECT,
+	}
+}
+
+export function forgotPasswordEmailCorrect() {
+	console.log("yes")
+	return {
+		type: FORGOT_PASSWORD_EMAIL_CORRECT,
 	}
 }

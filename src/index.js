@@ -22,8 +22,9 @@ import HowItWorks from './components/PageHowItWorks/HowItWorks'
 import NotFound from './components/PageNotFound/NotFound'
 import Checkout from './components/PageCheckout/Checkout'
 import CheckoutMessage from './components/PageCheckoutMessage/CheckoutMessage'
+import Reset from './components/PageReset/Reset'
 import rootSaga from './sagas';
-import { Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, Link, HashRouter } from 'react-router-dom';
 import { Router } from 'react-router';
 import { Helmet } from 'react-helmet'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -74,8 +75,9 @@ ReactDOM.render(
               <Route exact path="/vm" component={VM}  />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/home" component={NewHome} />
+              <Route exact path="/reset" component={Reset} />
               <Footer/>
-              </PersistGate>
+          </PersistGate>
           </Provider>
       </Router>,
   document.getElementById('root')
