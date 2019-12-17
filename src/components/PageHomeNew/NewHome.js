@@ -160,7 +160,7 @@ class PageHome extends Component {
         this.state.width > 700
         ?
         <div style = {{backgroundColor: 'white', paddingTop: "66.68%", width: '100%', position: 'relative'}}>
-          <div style = {{backgroundImage: `url(${SpaceShip})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 100}}>
+          <div style = {{backgroundImage: `url(${SpaceShip})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}}>
             <div className = "fractal-container" style = {{color: 'white', paddingTop: "42%", textAlign: 'center', fontWeight: 'bold', fontSize: 40, paddingBottom: 40}}>
               Fractal Cloud Computers Are <br/>Fast
             </div>
