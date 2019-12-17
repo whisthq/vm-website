@@ -143,18 +143,48 @@ function* sendVMFetch(action) {
 }
 
 function* sendForgotPassword(action) {
-  console.log("sent")
-   const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/mail/forgot', {
+   const {json, response} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/mail/forgot', {
     username: action.username
    })
    if(json) {
     if(json.verified) {
-      yield put(FormAction.forgotPasswordEmailCorrect());
+      yield put(FormAction.forgotPasswordEmailCorrect(action.username));
     } else {
       yield put(FormAction.forgotPasswordEmailIncorrect());
     }
    }
 }
+
+function* sendValidateToken(action) {
+   const {json, response} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/token/validate', {
+    token: action.token
+   })
+   if(json) {
+    console.log(json)
+    if(json.status === 200) {
+      console.log('valid')
+      yield put(FormAction.tokenStatus('verified'));
+    } else {
+      if(json.error === 'Expired token') {
+        console.log('expiered')
+        yield put(FormAction.tokenStatus('expired'));
+      }
+      else {
+        console.log('invalid')
+        yield put(FormAction.tokenStatus('invalid'));
+      }
+    }
+   }
+}
+
+function* sendResetPassword(action) {
+   const {json, response} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/mail/reset', {
+    username: action.username,
+    password: action.password
+   })
+   history.push('/auth')
+}
+
 
 export default function* rootSaga() {
  	yield all([
@@ -167,7 +197,9 @@ export default function* rootSaga() {
       takeEvery(FormAction.GET_VM_ID, sendVMID),
       takeEvery(FormAction.REGISTER_VM, sendVMRegister),
       takeEvery(FormAction.FETCH_VMS, sendVMFetch),
-      takeEvery(FormAction.FORGOT_PASSWORD, sendForgotPassword)
+      takeEvery(FormAction.FORGOT_PASSWORD, sendForgotPassword),
+      takeEvery(FormAction.VALIDATE_TOKEN, sendValidateToken),
+      takeEvery(FormAction.RESET_PASSWORD, sendResetPassword)
 	]);
 }
 

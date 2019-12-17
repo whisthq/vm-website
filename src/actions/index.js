@@ -38,6 +38,10 @@ export const PROGRESS_BAR = "PROGRESS_BAR"
 export const FORGOT_PASSWORD = "FORGOT_PASSWORD"
 export const FORGOT_PASSWORD_EMAIL_INCORRECT = "FORGOT_PASSWORD_EMAIL_INCORRECT"
 export const FORGOT_PASSWORD_EMAIL_CORRECT = "FORGOT_PASSWORD_EMAIL_CORRECT"
+export const VALIDATE_TOKEN = "VALIDATE_TOKEN"
+export const TOKEN_STATUS = "TOKEN_STATUS"
+export const RESET_PASSWORD = "RESET_PASSWORD"
+export const FORGOT_EMAIL = "FORGOT_EMAIL"
 
 export function sendFormData(name, email, cubeType) {
 	return {
@@ -222,9 +226,31 @@ export function forgotPasswordEmailIncorrect() {
 	}
 }
 
-export function forgotPasswordEmailCorrect() {
-	console.log("yes")
+export function forgotPasswordEmailCorrect(username) {
 	return {
 		type: FORGOT_PASSWORD_EMAIL_CORRECT,
+		username
+	}
+}
+
+export function validateToken(token) {
+	return {
+		type: VALIDATE_TOKEN,
+		token
+	}
+}
+
+export function tokenStatus(tokenStatus) {
+	return {
+		type: TOKEN_STATUS,
+		tokenStatus
+	}
+}
+
+export function resetPassword(username, password) {
+	return {
+		type: RESET_PASSWORD,
+		username,
+		password
 	}
 }

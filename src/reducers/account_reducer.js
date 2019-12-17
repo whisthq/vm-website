@@ -1,6 +1,6 @@
 import * as AccountAction from '../actions/index'
 
-const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, stripeToken: '', type: '', id: '', vm_created: false, is_creating: false, progress: 1, vm_credentials: [], failed_attempts: 0, forgot_password: 0}
+const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, stripeToken: '', type: '', id: '', vm_created: false, is_creating: false, progress: 1, vm_credentials: [], failed_attempts: 0, forgot_password: 0, token_status: 'invalid'}
 
 export default function(state = DEFAULT, action) {
   switch (action.type) {
@@ -92,7 +92,13 @@ export default function(state = DEFAULT, action) {
     case AccountAction.FORGOT_PASSWORD_EMAIL_CORRECT:
      return {
         ...state,
-        forgot_password: state.forgot_password - 1
+        forgot_password: state.forgot_password - 1,
+        forgot_email: action.username
+     }
+    case AccountAction.TOKEN_STATUS:
+     return {
+        ...state,
+        token_status: action.tokenStatus
      }
     default:
       return state

@@ -32,14 +32,6 @@ input[type=text], input {
   position: relative;
 }
 
-button, .submitButton {
-  transition-duration: 0.7s;
-}
-
-button:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-}
 
 .headerlink, .headerbutton {
   transition-duration: 0.7s;

@@ -171,7 +171,7 @@ class Auth extends Component {
                   <div style = {{height: 20}}></div>
                   }
                   <Button  onClick = {this.handleLogin} style = {{marginTop: 50, color: 'white', width: '100%', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>LOG IN</Button>
-                  <HashLink to = "/reset"><div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 50, color: '#888', textDecoration: 'none'}}>Forgot Password?</div></HashLink>
+                  <HashLink to = "/reset" style = {{textDecoration: 'none'}}><div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 50, color: '#888', textDecoration: 'none'}}>Forgot Password?</div></HashLink>
                 </TabPanel>
                 <TabPanel style = {{padding: '15px 30px'}}>
                   <InputGroup className="mb-3" style = {{marginTop: 30}}>
