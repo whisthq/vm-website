@@ -168,7 +168,7 @@ class PageHome extends Component {
               Experience <span style = {{color: 'white', fontWeight: 'bold'}}>60 frames per second</span> without latency or input lag. Upload a 5GB video file to cloud storage in under three minutes (coming soon).
             </div>
              <HashLink to = "/vm#top">
-              <Button style = {{zIndex: 100, marginTop: 45, padding: "12px 50px", background: "linear-gradient(110.1deg, #4B89E5 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)'}}>GET STARTED</Button>
+              <Button style = {{zIndex: 100, marginTop: 45, padding: "12px 50px", background: "linear-gradient(110.1deg, #4B89E5 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', zIndex: 200}}>GET STARTED</Button>
             </HashLink>
           </div>
         </div>
