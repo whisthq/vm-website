@@ -69,7 +69,7 @@ class PageHome extends Component {
         <div style = {{paddingTop: 100}}>
           <div className = "fractal-container" style = {{paddingBottom: 50}}>
             <Row>
-              <Col md = {6} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingTop: 50}}>
+              <Col md = {{span: 6, order :1}} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingTop: 50}}>
                 <div style = {{marginBottom: 30, color: "white", height: 40}}>
                   <span style = {{backgroundColor: '#4B89E5', padding: '5px 15px', color: 'white', fontWeight: 'bold', fontSize: 14, borderRadius: 10, marginRight: 20}}>NEW</span>
                   Our <HashLink to = '/#beta' style = {{textDecoration: 'none', fontWeight: 'bold', color: 'white'}}>private beta</HashLink> is now open.
@@ -83,7 +83,7 @@ class PageHome extends Component {
                 <Button style = {{background: '#4B89E5', marginTop: 25, padding: "8px 25px", border: 'none', color: 'white', fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', marginLeft: 30}}>JOIN BETA</Button>
                 </HashLink>
               </Col>
-              <Col md = {6} xs = {{order: 1, span: 12}} style = {{textAlign: 'right'}}>
+              <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{textAlign: 'right'}}>
                 {
                 this.state.width > 700
                 ?
