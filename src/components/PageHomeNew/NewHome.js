@@ -83,7 +83,7 @@ class PageHome extends Component {
                   <span style = {{backgroundColor: '#4B89E5', padding: '5px 15px', color: 'white', fontWeight: 'bold', fontSize: 14, borderRadius: 10, marginRight: 20}}>NEW</span>
                   Our <HashLink to = '/#beta' style = {{textDecoration: 'none', color: '#4B89E5'}}>private beta</HashLink> is now open.
                 </div>
-                <div style = {{color: '#FFFFFF', fontSize: 30, lineHeight: 1.4, fontWeight: 'bold'}}>The world's first self-lactating goat</div>
+                <div style = {{color: '#FFFFFF', fontSize: 30, lineHeight: 1.4, fontWeight: 'bold'}}>We stream cloud computers to your microwave</div>
                 <p style = {{textAlign: 'left', marginTop: 25, color: '#D1D1D1', marginBottom: 40, fontSize: 14}}>Run GPU-powered, Windows 10 workstations from any macOS, iOS, or Windows device</p>
                 <HashLink to = '/vm#top'>
                   <Button style = {{marginTop: 25, padding: "8px 25px", background: "#4B89E5", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', fontSize: 14}}>GET STARTED</Button>
