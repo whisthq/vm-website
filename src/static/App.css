@@ -126,7 +126,7 @@ input[type=text], input {
 }
 
 .blue-gradient {
-  background: linear-gradient(258.54deg, #4B89E5 0%, #AB38E1 100%);
+  background: linear-gradient(258.54deg, #4B89E5 0%, #d023eb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
