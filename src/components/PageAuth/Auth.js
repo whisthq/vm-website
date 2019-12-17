@@ -21,7 +21,7 @@ class Auth extends Component {
     super(props)
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, 
       emailLogin: '', passwordLogin: '', emailSignup: '', passwordSignup: '', passwordConfirmSignup: '',
-      validEmail: false, tooShort: false}
+      validEmail: false, tooShort: false, failed_attempt: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.changeEmailLogin = this.changeEmailLogin.bind(this)
     this.changePasswordLogin = this.changePasswordLogin.bind(this)
@@ -29,10 +29,11 @@ class Auth extends Component {
     this.changePasswordSignup = this.changePasswordSignup.bind(this)
     this.changePasswordConfirmSignup = this.changePasswordConfirmSignup.bind(this) 
     this.handleLogin = this.handleLogin.bind(this)
+    this.handleSignup = this.handleSignup.bind(this)
   }
 
   handleLogin(evt) {
-    this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin, false))
+    this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin, false));
   }
 
   handleSignup(evt) {
@@ -45,10 +46,26 @@ class Auth extends Component {
     });
   }
 
+  loginKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin, false));
+    }
+  }
+
+  signupKeyPress = (event) => {
+    // if(event.key === 'Enter'){
+    //   this.props.dispatch(userSignup(this.state.emailSignup, this.state.passwordSignup, false))
+    // }
+  }
+
   changePasswordLogin(evt) {
-    this.setState({
-      passwordLogin: evt.target.value
-    });
+    if(evt.key === 'Enter') {
+      this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin, false));
+    } else {
+      this.setState({
+        passwordLogin: evt.target.value
+      });
+    }
   }
 
   changeEmailSignup(evt) {
@@ -81,8 +98,17 @@ class Auth extends Component {
     });
   }
   componentDidMount() {
+    this.setState({'failures': this.props.failed_attempts})
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
+    console.log("params")
+    console.log(this.props.location);
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.failed_attempts != this.props.failed_attempts) {
+      this.setState({'failed_attempt': true})
+    }
   }
 
   componentWillUnmount() {
@@ -122,6 +148,7 @@ class Auth extends Component {
                       aria-describedby="inputGroup-sizing-default"
                       placeholder = "Email Address"
                       onChange = {this.changeEmailLogin}
+                      onKeyPress = {this.loginKeyPress}
                       style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
                     /><br/>
                   </InputGroup>
@@ -132,11 +159,19 @@ class Auth extends Component {
                       aria-describedby="inputGroup-sizing-default"
                       placeholder = "Password"
                       onChange = {this.changePasswordLogin}
+                      onKeyPress = {this.loginKeyPress}
                       style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
                     />
                   </InputGroup>
+                  {
+                  this.state.failed_attempt
+                  ?
+                  <div style = {{textAlign: 'center', fontSize: 14, color: "#a62121"}}>Invalid credentials</div>
+                  :
+                  <div style = {{height: 20}}></div>
+                  }
                   <Button  onClick = {this.handleLogin} style = {{marginTop: 50, color: 'white', width: '100%', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>LOG IN</Button>
-                  <div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 50, color: '#888'}}>Forgot Password?</div>
+                  <HashLink to = "/reset" style = {{textDecoration: 'none'}}><div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 50, color: '#888', textDecoration: 'none'}}>Forgot Password?</div></HashLink>
                 </TabPanel>
                 <TabPanel style = {{padding: '15px 30px'}}>
                   <InputGroup className="mb-3" style = {{marginTop: 30}}>
@@ -220,7 +255,7 @@ class Auth extends Component {
                     )
                     }
                   </InputGroup>
-                  <Button disabled="true" onClick = {this.handleSignup} style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>SIGN UP</Button>
+                  <Button onClick = {this.handleSignup} style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>SIGN UP</Button>
                   <div style = {{fontSize: 16, color: "#333333", marginTop: 25}}>
                     Currently, signups are open only to our 100 private beta users. If you'd like to join our private beta, apply <HashLink to = "/#beta" style = {{color: '#94a8ed', fontWeight: 'bold'}}>here</HashLink> and we'll be in touch.
                   </div>
@@ -238,7 +273,8 @@ class Auth extends Component {
 
 function mapStateToProps(state) {
   return { 
-    loggedIn: state.AccountReducer.loggedIn
+    loggedIn: state.AccountReducer.loggedIn,
+    failed_attempts: state.AccountReducer.failed_attempts
   }
 }
 

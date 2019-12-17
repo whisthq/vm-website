@@ -10,7 +10,7 @@ import SpaceShip from '../../assets/spaceship.svg'
 import InfoBox from '../../assets/infobox.svg'
 import PriceCompare from '../../assets/pricecompare.svg'
 import PriceCompareSmall from '../../assets/pricecomparesmall.svg'
-import Car from '../../assets/test.svg'
+import Car from '../../assets/caribou.svg'
 import Topography from '../../assets/topography.svg'
 import Logo from '../../assets/logo.svg'
 import CubeSection from './containers/cubesection.js'
@@ -64,43 +64,42 @@ class PageHome extends Component {
       modalClose()
     }
     return (
-      <div className='App' style = {{backgroundColor: '#261843'}}>
+      <div className='App' style = {{backgroundColor: '#20254a'}}>
         <Header  color = "white" button = "#4B89E5"/>
-        <div style = {{paddingTop: 140}}>
+        <div style = {{paddingTop: 100}}>
           <div className = "fractal-container">
             <Row>
-              <Col md = {7} style = {{textAlign: 'right'}}>
+              <Col md = {6} style = {{textAlign: 'right'}}>
                 {
                 this.state.width > 700
                 ?
-                <img src = {Car} style = {{width: "115%", position: 'relative', right: 100, maxWidth: 1200}}/>
+                <img src = {Car} style = {{width: "105%", position: 'relative', right: 50, maxWidth: 1200, paddingTop: 25}}/>
                 :
                 <img src = {Car} style = {{width: "100%"}}/>
                 }
               </Col>
-              <Col md = {5} style = {{textAlign: 'left', paddingTop: 50}}>
-                <div style = {{marginBottom: 75, color: "white", height: 40}}>
+              <Col md = {6} style = {{textAlign: 'left', paddingTop: 50}}>
+                <div style = {{marginBottom: 30, color: "white", height: 40}}>
                   <span style = {{backgroundColor: '#4B89E5', padding: '5px 15px', color: 'white', fontWeight: 'bold', fontSize: 14, borderRadius: 10, marginRight: 20}}>NEW</span>
-                  Our <Link to = '/vm' style = {{textDecoration: 'none', color: '#4B89E5'}}>private beta</Link> is now open.
+                  Our <HashLink to = '/#beta' style = {{textDecoration: 'none', color: '#2BF7DE'}}>private beta</HashLink> is now open.
                 </div>
-                <div style = {{color: '#D1D1D1', fontSize: 18}}>TRANSFORM ANY DEVICE INTO A</div>
-                <div style = {{color: '#FFFFFF', fontSize: 45, fontWeight: 'bold'}}>SUPERCOMPUTER</div>
-                <p style = {{textAlign: 'left', marginTop: 16, color: '#D1D1D1', marginBottom: 40, fontSize: 15}}>Run GPU-powered, Windows 10 workstations from any macOS, iOS, or Windows device</p>
-                <Link to = '/vm'>
-                  <Button style = {{marginTop: 25, padding: "12px 30px", background: "#4B89E5", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)'}}>GET STARTED</Button>
-                </Link>
+                <div style = {{color: '#FFFFFF', fontSize: 30, lineHeight: 1.4, fontWeight: 'bold'}}>Transform any device into a supercomputer</div>
+                <p style = {{textAlign: 'left', marginTop: 25, color: '#D1D1D1', marginBottom: 40, fontSize: 14}}>Run GPU-powered, Windows 10 workstations from any macOS, iOS, or Windows device</p>
+                <HashLink to = '/vm#top'>
+                  <Button className = "teal-gradient" style = {{marginTop: 25, padding: "8px 25px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', fontSize: 14}}>GET STARTED</Button>
+                </HashLink>
                 <HashLink to = '/#beta'>
-                <Button style = {{marginTop: 25, padding: "12px 30px", background: "linear-gradient(110.1deg, #4B89E5 0%, #AB38E1 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', marginLeft: 30}}>JOIN BETA</Button>
+                <Button style = {{background: '#4B89E5', marginTop: 25, padding: "8px 25px", border: 'none', color: 'white', fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', marginLeft: 30}}>JOIN BETA</Button>
                 </HashLink>
               </Col>
             </Row>
           </div>
         </div>
-        <div style = {{backgroundImage: `url(${WhiteBackground})`, backgroundSize: '100% auto', paddingTop: 300}}>
+        <div style = {{backgroundImage: `url(${WhiteBackground})`, backgroundSize: '100% auto', paddingTop: 200}}>
           <div className = "fractal-container">
             <Row>
               <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: 100}}>
-                <div style = {{width: '85%', height: 280, backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, margin: "auto", maxWidth: 600}}>
+                <div style = {{width: '85%', height: 290, backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, margin: "auto", maxWidth: 600}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 35px', fontWeight: 'bold'}}>
                     Windows Instance
                   </div>
@@ -113,11 +112,11 @@ class PageHome extends Component {
                       <Col xs = {6}><strong>8</strong> CPU cores, 3.2 GHz</Col>
                       <Col xs = {6} style = {{textAlign: 'right'}}><strong>1 TB</strong> NVMe SSD</Col>
                     </Row>
-                    <Link to = "/vm">
+                    <HashLink to = "/vm#top">
                     <Button style = {{width: '100%', color: 'white', background: "linear-gradient(110.1deg, #4B89E5 0%, #AB38E1 100%)", fontWeight: "bold", padding: 12, textAlign: 'center', borderRadius: 5, marginTop: 50, border: 'none', fontSize: 14}}>
                       LAUNCH
                     </Button>
-                    </Link>
+                    </HashLink>
                   </div>
                 </div>
               </Col>
@@ -139,18 +138,18 @@ class PageHome extends Component {
         </div>
         <div style = {{backgroundColor: 'white', paddingTop: "66.68%", width: '100%', position: 'relative'}}>
           <div style = {{backgroundImage: `url(${SpaceShip})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}}>
-            <div className = "fractal-container" style = {{color: 'white', paddingTop: "40%", textAlign: 'center', fontWeight: 'bold', fontSize: 40, paddingBottom: 40}}>
+            <div className = "fractal-container" style = {{color: 'white', paddingTop: "45%", textAlign: 'center', fontWeight: 'bold', fontSize: 40, paddingBottom: 40}}>
               Fractal Cloud Computers Are <br/>Fast
             </div>
             <div style = {{color: "#D1D1D1", maxWidth: 600, margin: 'auto'}}>
               Experience <span style = {{color: 'white', fontWeight: 'bold'}}>60 frames per second</span> without latency or input lag. Upload a 5GB video file to cloud storage in under three minutes (coming soon).
             </div>
-            <Link to = '/vm'>
+             <HashLink to = "/vm#top">
               <Button style = {{marginTop: 45, padding: "12px 50px", background: "linear-gradient(110.1deg, #4B89E5 0%, #AB38E1 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)'}}>GET STARTED</Button>
-            </Link>
+            </HashLink>
           </div>
         </div>
-        <div style = {{backgroundColor: "#261843", width: '100%', height: 50}} className = "fractal-container">
+        <div style = {{backgroundColor: "#261843", width: '100%', height: 70}} className = "fractal-container">
         </div>
         <div style = {{backgroundColor: "#261843", paddingBottom: 150, paddingTop: 150}} className = "fractal-container">
             <div style = {{fontWeight: 'bold', fontSize: 35, color: "white", textAlign: 'center'}}>And extremely affordable</div>
@@ -160,14 +159,14 @@ class PageHome extends Component {
             {
             this.state.width > 700
             ?
-            <img src = {PriceCompare} style = {{width: '100%', margin: 'auto', maxWidth: 900, marginTop: 75}}/>
+            <img src = {PriceCompare} style = {{width: '100%', margin: 'auto', maxWidth: 800, marginTop: 75}}/>
             :
-            <img src = {PriceCompareSmall} style = {{width: '90%', margin: 'auto', maxWidth: 900, marginTop: 75}}/>
+            <img src = {PriceCompareSmall} style = {{width: '90%', margin: 'auto', maxWidth: 800, marginTop: 75}}/>
             }
         </div>
         <div style = {{backgroundColor: 'white'}}>
           <div className = "fractal-container" style = {{paddingTop: 100, paddingBottom: 100}}>
-            <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'center'}}>Access your desktop <span className = "blue-gradient">anywhere</span></div>
+            <div style = {{fontWeight: 'bold', fontSize: 40, color: "#333333", textAlign: 'center'}}>Access your desktop <span className = "blue-gradient">anywhere</span></div>
             <div style = {{margin: 'auto'}}>
               <p style = {{textAlign: 'center', maxWidth: 750, margin: 'auto',  marginTop: 20 }}>
                 Need to work in more than one location? Forgot to upload a file to the cloud, or to commit a change? Your Fractal instance is accessible from any Internet-connected device.
@@ -229,11 +228,11 @@ class PageHome extends Component {
                     </div>
                   </div>
                    <div style = {{padding: '8px 35px'}}>
-                  <Link to = "/vm" style = {{textAlign: 'center'}}>
+                  <HashLink to = "/vm#top" style = {{textAlign: 'center'}}>
                     <Button style = {{width: '100%', margin: 'auto', color: 'white', background: "linear-gradient(110.1deg, #4B89E5 0%, #AB38E1 100%)", fontWeight: "bold", textAlign: 'center', borderRadius: 5, marginTop: 20, border: 'none', fontSize: 14}}>
                       + New Instance
                     </Button>
-                  </Link>
+                  </HashLink>
                   </div>
                   </div>
                 </div>

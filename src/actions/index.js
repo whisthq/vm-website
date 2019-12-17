@@ -23,6 +23,7 @@ export const SEND_PRE_ORDER = "SEND_PRE_ORDER"
 export const USER_LOGIN = "USER_LOGIN"
 export const USER_SIGNUP = "USER_SIGNUP"
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS"
+export const LOGIN_FAILURE = "LOGIN_FAILURE"
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS"
 export const CHANGE_STAGE = "CHANGE_STAGE"
 export const CHARGE_STRIPE = "CHARGE_STRIPE"
@@ -34,6 +35,13 @@ export const FETCH_VMS = "FETCH_VMS"
 export const VM_TO_STATE = "VM_TO_STATE"
 export const VM_CREATING = "VM_CREATING"
 export const PROGRESS_BAR = "PROGRESS_BAR"
+export const FORGOT_PASSWORD = "FORGOT_PASSWORD"
+export const FORGOT_PASSWORD_EMAIL_INCORRECT = "FORGOT_PASSWORD_EMAIL_INCORRECT"
+export const FORGOT_PASSWORD_EMAIL_CORRECT = "FORGOT_PASSWORD_EMAIL_CORRECT"
+export const VALIDATE_TOKEN = "VALIDATE_TOKEN"
+export const TOKEN_STATUS = "TOKEN_STATUS"
+export const RESET_PASSWORD = "RESET_PASSWORD"
+export const FORGOT_EMAIL = "FORGOT_EMAIL"
 
 export function sendFormData(name, email, cubeType) {
 	return {
@@ -120,6 +128,12 @@ export function loginSuccess() {
 	}
 }
 
+export function loginFailure() {
+	return {
+		type: LOGIN_FAILURE
+	}
+}
+
 export function signupSuccess() {
 	return {
 		type: SIGNUP_SUCCESS
@@ -195,5 +209,48 @@ export function progressBar(progress) {
 	return {
 		type: PROGRESS_BAR,
 		progress
+	}
+}
+
+export function forgotPassword(username) {
+	return {
+		type: FORGOT_PASSWORD,
+		username
+	}
+}
+
+export function forgotPasswordEmailIncorrect() {
+	console.log("no")
+	return {
+		type: FORGOT_PASSWORD_EMAIL_INCORRECT,
+	}
+}
+
+export function forgotPasswordEmailCorrect(username) {
+	return {
+		type: FORGOT_PASSWORD_EMAIL_CORRECT,
+		username
+	}
+}
+
+export function validateToken(token) {
+	return {
+		type: VALIDATE_TOKEN,
+		token
+	}
+}
+
+export function tokenStatus(tokenStatus) {
+	return {
+		type: TOKEN_STATUS,
+		tokenStatus
+	}
+}
+
+export function resetPassword(username, password) {
+	return {
+		type: RESET_PASSWORD,
+		username,
+		password
 	}
 }

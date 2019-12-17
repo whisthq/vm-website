@@ -40,7 +40,10 @@ function* sendLoginInfo(action) {
        if(!action.create) {
         history.push('/dashboard')
        } 
-	   }
+	   } else {
+       console.log("login failure")
+       yield put(FormAction.loginFailure());
+     }
 	}
 }
 
@@ -74,7 +77,7 @@ function* sendStripeCharge(action) {
       history.push('/dashboard');
        yield put(FormAction.vmCreating(true))
        yield put(FormAction.progressBar(0))
-       yield put(FormAction.createVM('Standard_NV6_Promo'))
+       yield put(FormAction.createVM('Standard_NC6'))
      }
   }
 }
@@ -139,6 +142,50 @@ function* sendVMFetch(action) {
    }
 }
 
+function* sendForgotPassword(action) {
+   const {json, response} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/mail/forgot', {
+    username: action.username
+   })
+   if(json) {
+    if(json.verified) {
+      yield put(FormAction.forgotPasswordEmailCorrect(action.username));
+    } else {
+      yield put(FormAction.forgotPasswordEmailIncorrect());
+    }
+   }
+}
+
+function* sendValidateToken(action) {
+   const {json, response} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/token/validate', {
+    token: action.token
+   })
+   if(json) {
+    console.log(json)
+    if(json.status === 200) {
+      console.log('valid')
+      yield put(FormAction.tokenStatus('verified'));
+    } else {
+      if(json.error === 'Expired token') {
+        console.log('expiered')
+        yield put(FormAction.tokenStatus('expired'));
+      }
+      else {
+        console.log('invalid')
+        yield put(FormAction.tokenStatus('invalid'));
+      }
+    }
+   }
+}
+
+function* sendResetPassword(action) {
+   const {json, response} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/mail/reset', {
+    username: action.username,
+    password: action.password
+   })
+   history.push('/auth')
+}
+
+
 export default function* rootSaga() {
  	yield all([
     	takeEvery(FormAction.SEND_FORM_DATA, sendFormData),
@@ -149,7 +196,10 @@ export default function* rootSaga() {
       takeEvery(FormAction.CREATE_VM, createVMPost),
       takeEvery(FormAction.GET_VM_ID, sendVMID),
       takeEvery(FormAction.REGISTER_VM, sendVMRegister),
-      takeEvery(FormAction.FETCH_VMS, sendVMFetch)
+      takeEvery(FormAction.FETCH_VMS, sendVMFetch),
+      takeEvery(FormAction.FORGOT_PASSWORD, sendForgotPassword),
+      takeEvery(FormAction.VALIDATE_TOKEN, sendValidateToken),
+      takeEvery(FormAction.RESET_PASSWORD, sendResetPassword)
 	]);
 }
 

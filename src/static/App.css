@@ -32,14 +32,6 @@ input[type=text], input {
   position: relative;
 }
 
-button, .submitButton {
-  transition-duration: 0.7s;
-}
-
-button:hover {
-  cursor: pointer;
-  transform: scale(1.05);
-}
 
 .headerlink, .headerbutton {
   transition-duration: 0.7s;
@@ -145,12 +137,15 @@ button:hover {
   -webkit-text-fill-color: transparent;
 }
 
+.teal-gradient {
+  background: linear-gradient(258.54deg, #4B89E5 0%, #2BF7DE 100%);
+}
 
 .fractal-container {
   width: 100vw;
   margin: 0px;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 120px;
+  padding-right: 120px;
   max-width: 2000px;
   margin: auto;
   overflow-x: hidden;
