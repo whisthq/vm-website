@@ -145,6 +145,9 @@ button:hover {
   -webkit-text-fill-color: transparent;
 }
 
+.teal-gradient {
+  background: linear-gradient(258.54deg, #4B89E5 0%, #2BF7DE 100%);
+}
 
 .fractal-container {
   width: 100vw;

@@ -20,7 +20,7 @@ class Reset extends Component {
   constructor(props) {
     super(props)
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, 
-      email: '', validEmail: false, forgot_password: 0 }
+      email: '', validEmail: false, forgot_password: 0, token: '' }
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 
@@ -44,6 +44,11 @@ class Reset extends Component {
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
+    var token = this.props.location.search
+    if(token) {
+      var token = token.substring(1,token.length)
+      this.setState({'token': token})
+    }
   }
 
   componentWillUnmount() {
@@ -74,7 +79,7 @@ class Reset extends Component {
       <div>
         <Header  color = "#333333" button = "#94a8ed"/>
         {
-        !this.state.validEmail
+        !this.state.validEmail && this.state.token.length < 1
         ?
         <div style = {{minHeight: '100vh', paddingTop: 90, backgroundColor: 'white', fontSize: 20}}>
           <div style = {{color: '#333333', textAlign: 'center', fontWeight: 'bold', marginTop: 50}}>
@@ -113,7 +118,7 @@ class Reset extends Component {
             </div>
             <div style =  {{color: '#333333', textAlign: 'center', marginTop: 15, fontSize: 14}}>
               An email with a password reset link has been sent the email address that you specified. For security,
-              this link will expire in ten minutes.
+              the link will expire in ten minutes.
             </div>
             <HashLink to = "/auth">
               <Button style = {{color: 'white', width: '100%', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', marginTop: 40}}>BACK TO LOGIN</Button>

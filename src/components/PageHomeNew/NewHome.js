@@ -10,7 +10,7 @@ import SpaceShip from '../../assets/spaceship.svg'
 import InfoBox from '../../assets/infobox.svg'
 import PriceCompare from '../../assets/pricecompare.svg'
 import PriceCompareSmall from '../../assets/pricecomparesmall.svg'
-import Car from '../../assets/test.svg'
+import Car from '../../assets/caribou.svg'
 import Topography from '../../assets/topography.svg'
 import Logo from '../../assets/logo.svg'
 import CubeSection from './containers/cubesection.js'
@@ -73,7 +73,7 @@ class PageHome extends Component {
                 {
                 this.state.width > 700
                 ?
-                <img src = {Car} style = {{width: "125%", position: 'relative', right: 100, maxWidth: 1200}}/>
+                <img src = {Car} style = {{width: "105%", position: 'relative', right: 50, maxWidth: 1200, paddingTop: 25}}/>
                 :
                 <img src = {Car} style = {{width: "100%"}}/>
                 }
@@ -81,15 +81,15 @@ class PageHome extends Component {
               <Col md = {6} style = {{textAlign: 'left', paddingTop: 50}}>
                 <div style = {{marginBottom: 30, color: "white", height: 40}}>
                   <span style = {{backgroundColor: '#4B89E5', padding: '5px 15px', color: 'white', fontWeight: 'bold', fontSize: 14, borderRadius: 10, marginRight: 20}}>NEW</span>
-                  Our <HashLink to = '/#beta' style = {{textDecoration: 'none', color: '#4B89E5'}}>private beta</HashLink> is now open.
+                  Our <HashLink to = '/#beta' style = {{textDecoration: 'none', color: '#2BF7DE'}}>private beta</HashLink> is now open.
                 </div>
-                <div style = {{color: '#FFFFFF', fontSize: 30, lineHeight: 1.4, fontWeight: 'bold'}}>We stream cloud computers to your microwave</div>
+                <div style = {{color: '#FFFFFF', fontSize: 30, lineHeight: 1.4, fontWeight: 'bold'}}>Transform any device into a supercomputer</div>
                 <p style = {{textAlign: 'left', marginTop: 25, color: '#D1D1D1', marginBottom: 40, fontSize: 14}}>Run GPU-powered, Windows 10 workstations from any macOS, iOS, or Windows device</p>
                 <HashLink to = '/vm#top'>
-                  <Button style = {{marginTop: 25, padding: "8px 25px", background: "#4B89E5", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', fontSize: 14}}>GET STARTED</Button>
+                  <Button className = "teal-gradient" style = {{marginTop: 25, padding: "8px 25px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', fontSize: 14}}>GET STARTED</Button>
                 </HashLink>
                 <HashLink to = '/#beta'>
-                <Button style = {{marginTop: 25, padding: "8px 25px", background: "linear-gradient(110.1deg, #4B89E5 0%, #AB38E1 100%)", border: 'none', color: 'white', fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', marginLeft: 30}}>JOIN BETA</Button>
+                <Button style = {{background: '#4B89E5', marginTop: 25, padding: "8px 25px", border: 'none', color: 'white', fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', marginLeft: 30}}>JOIN BETA</Button>
                 </HashLink>
               </Col>
             </Row>
