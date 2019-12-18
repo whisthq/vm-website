@@ -71,7 +71,6 @@ class Reset extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.AccountReducer)
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
     var token = this.props.location.search
