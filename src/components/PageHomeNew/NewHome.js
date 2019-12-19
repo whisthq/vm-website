@@ -161,14 +161,14 @@ class PageHome extends Component {
         ?
         <div style = {{backgroundColor: 'white', paddingTop: "66.68%", width: '100%', position: 'relative'}}>
           <div style = {{backgroundImage: `url(${SpaceShip})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}}>
-            <div className = "fractal-container" style = {{color: 'white', paddingTop: "39%", textAlign: 'center', fontWeight: 'bold', fontSize: 40, paddingBottom: 40}}>
+            <div className = "fractal-container" style = {{color: 'white', paddingTop: "37%", textAlign: 'center', fontWeight: 'bold', fontSize: 35, paddingBottom: 40}}>
               Fractal Cloud Computers Are <br/>Fast
             </div>
             <div style = {{color: "#D1D1D1", maxWidth: 600, margin: 'auto', zIndex: 100,  paddingLeft: 50, paddingRight: 50}}>
               Experience <span style = {{color: 'white', fontWeight: 'bold'}}>60 frames per second</span> without latency or input lag. Upload a 5GB video file to cloud storage in under three minutes (coming soon).
             </div>
              <HashLink to = "/vm#top">
-              <Button style = {{zIndex: 100, marginTop: 45, padding: "12px 50px", background: "linear-gradient(110.1deg, #4B89E5 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', zIndex: 200}}>GET STARTED</Button>
+              <Button style = {{zIndex: 100, marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #4B89E5 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.6)', zIndex: 200}}>GET STARTED</Button>
             </HashLink>
           </div>
         </div>
@@ -182,7 +182,7 @@ class PageHome extends Component {
               Experience <span style = {{color: 'white', fontWeight: 'bold'}}>60 frames per second</span> without latency or input lag. Upload a 5GB video file to cloud storage in under three minutes (coming soon).
             </div>
              <HashLink to = "/vm#top">
-              <Button style = {{zIndex: 100, marginTop: 45, padding: "12px 50px", background: "linear-gradient(110.1deg, #4B89E5 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)'}}>GET STARTED</Button>
+              <Button style = {{zIndex: 100, marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #4B89E5 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.60)'}}>GET STARTED</Button>
             </HashLink>
           </div>
         </div>

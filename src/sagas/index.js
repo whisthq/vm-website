@@ -77,7 +77,7 @@ function* sendStripeCharge(action) {
       history.push('/dashboard');
        yield put(FormAction.vmCreating(true))
        yield put(FormAction.progressBar(0))
-       yield put(FormAction.createVM('Standard_NC6'))
+       yield put(FormAction.createVM('Standard_D2_v3'))
      }
   }
 }
