@@ -255,7 +255,7 @@ class Auth extends Component {
                     )
                     }
                   </InputGroup>
-                  <Button onClick = {this.handleSignup} style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>SIGN UP</Button>
+                  <Button disabled = "true" onClick = {this.handleSignup} style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: 'linear-gradient(258.54deg, #2BF7DE 0%, #94A8ED 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>SIGN UP</Button>
                   <div style = {{fontSize: 16, color: "#333333", marginTop: 25}}>
                     Currently, signups are open only to our 100 private beta users. If you'd like to join our private beta, apply <HashLink to = "/#beta" style = {{color: '#94a8ed', fontWeight: 'bold'}}>here</HashLink> and we'll be in touch.
                   </div>

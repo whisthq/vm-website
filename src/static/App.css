@@ -126,7 +126,7 @@ input[type=text], input {
 }
 
 .blue-gradient {
-  background: linear-gradient(258.54deg, #4B89E5 0%, #AB38E1 100%);
+  background: linear-gradient(258.54deg, #4B89E5 0%, #d023eb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -144,8 +144,8 @@ input[type=text], input {
 .fractal-container {
   width: 100vw;
   margin: 0px;
-  padding-left: 120px;
-  padding-right: 120px;
+  padding-left: 100px;
+  padding-right: 100px;
   max-width: 2000px;
   margin: auto;
   overflow-x: hidden;
