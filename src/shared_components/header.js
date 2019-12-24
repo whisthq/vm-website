@@ -46,9 +46,6 @@ class Header extends Component {
               <HashLink className = 'headerlink' to = '/#beta' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
                 <span style = {this.props.linkStyle}>Join Beta</span>
               </HashLink>
-              <Link className = 'headerlink' to = '/story' style={{color:  `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', marginLeft: 20, fontSize: 14, marginTop: 12}}>
-                <span style = {this.props.linkStyle}>Our Story</span>
-              </Link>
               <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
                 <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
@@ -76,11 +73,6 @@ class Header extends Component {
                   <HashLink className = 'headerlink' to = '/#beta' style = {{color: '#333333'}}>
                     Join Beta
                   </HashLink>
-                </Dropdown.Item>
-                <Dropdown.Item href="#/action-2">
-                  <Link className = 'headerlink' to = '/story' style = {{color: '#333333'}}>
-                    Our Story
-                  </Link>
                 </Dropdown.Item>
                 <Dropdown.Item>
                   <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#333333'}}>

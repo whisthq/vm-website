@@ -20,6 +20,7 @@ import Header from '../../shared_components/header.js'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link';
+import { ReactTypeformEmbed } from 'react-typeform-embed';
 
 class PageHome extends Component {
   constructor(props) {
@@ -36,6 +37,10 @@ class PageHome extends Component {
 
   joinbeta() {
     this.refs.joinbeta.scrollIntoView();
+  }
+
+  openForm = () => {
+    this.typeformEmbed.typeform.open();
   }
 
   componentDidMount() {
@@ -64,30 +69,37 @@ class PageHome extends Component {
       modalClose()
     }
     return (
-      <div className='App' style = {{backgroundColor: '#20254a'}}>
-        <Header  color = "white" button = "#4B89E5"/>
+      <div className='App' style = {{backgroundColor: '#0b172b'}}>
+        <Header color = "white" button = "#5ec3eb"/>
+        <ReactTypeformEmbed
+          popup
+          autoOpen={false}
+          url="https://fractalcomputers.typeform.com/to/kVelwx"
+          hideHeaders
+          hideFooter
+          buttonText="Request Access"
+          ref={tf => {
+            this.typeformEmbed = tf;
+          }}
+          style = {{zIndex: -100}}
+        />
         <div style = {{paddingTop: 100}}>
           <div className = "fractal-container" style = {{paddingBottom: 50}}>
             <Row>
               <Col md = {{span: 6, order :1}} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingTop: 50}}>
                 <div style = {{marginBottom: 30, color: "white", height: 40}}>
-                  <span style = {{backgroundColor: '#4B89E5', padding: '5px 15px', color: 'white', fontWeight: 'bold', fontSize: 14, borderRadius: 10, marginRight: 20}}>NEW</span>
-                  Our <HashLink to = '/#beta' style = {{textDecoration: 'none', fontWeight: 'bold', color: 'white'}}>private beta</HashLink> is now open.
+                  <span style = {{backgroundColor: '#5ec3eb', padding: '5px 15px', color: '#0b172b', fontWeight: 'bold', fontSize: 14, borderRadius: 5, marginRight: 20}}>NEW</span>
+                  Our <HashLink to = '/#beta' style = {{textDecoration: 'none', fontWeight: 'bold', color: 'white', fontSize: 14}}>private beta</HashLink> is now open.
                 </div>
-                <div style = {{color: '#FFFFFF', fontSize: 35, lineHeight: 1.4, fontWeight: 'bold'}}>Transform any device into a supercomputer</div>
-                <p style = {{textAlign: 'left', marginTop: 25, color: '#D1D1D1', marginBottom: 40, fontSize: 16}}>Fractal streams GPU-powered, Windows 10 desktops to any macOS, iOS, or Windows device</p>
-                <HashLink to = '/vm#top'>
-                  <Button style = {{background: "linear-gradient(258.54deg, #4B89E5 0%, #d023eb 100%)", marginTop: 25, padding: "8px 25px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', fontSize: 14}}>GET STARTED</Button>
-                </HashLink>
-                <HashLink to = '/#beta'>
-                <Button style = {{background: '#4B89E5', marginTop: 25, padding: "8px 25px", border: 'none', color: 'white', fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', marginLeft: 30}}>JOIN BETA</Button>
-                </HashLink>
+                <div style = {{color: '#FFFFFF', fontSize: 30, lineHeight: 1.4, fontWeight: 'bold'}}>Transform any device into a supercomputer</div>
+                <p style = {{textAlign: 'left', marginTop: 25, color: '#D1D1D1', marginBottom: 40, fontSize: 15}}>Fractal streams GPU-powered, Windows 10 desktops to any macOS, iOS, or Windows device</p>
+                <Button onClick = {this.openForm} style = {{background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", marginTop: 5, padding: "10px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', fontSize: 14}}>REQUEST ACCESS</Button>
               </Col>
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{textAlign: 'right'}}>
                 {
                 this.state.width > 700
                 ?
-                <img src = {Car} style = {{width: "95%", position: 'relative', maxWidth: 1200, paddingTop: 25}}/>
+                <img src = {Car} style = {{width: "90%", position: 'relative', maxWidth: 1200, paddingTop: 25}}/>
                 :
                 <img src = {Car} style = {{width: "100%"}}/>
                 }
@@ -95,6 +107,26 @@ class PageHome extends Component {
             </Row>
           </div>
         </div>
+{/*        <div style = {{paddingTop: 100}}>
+          <div className = "fractal-container" style = {{paddingBottom: 50}}>
+            <Row>
+              <Col xs = {{order: 1, span: 12}} style = {{textAlign: 'center', paddingTop: 20}}>
+                <div style = {{color: '#FFFFFF', fontSize: 30, lineHeight: 1.4, fontWeight: 'bold'}}>Transform any device into a <br/><span className = "blue-gradient">supercomputer</span></div>
+                <p style = {{color: '#DFDFDF', fontSize: 15, maxWidth: 600, margin: 'auto', marginTop: 15}}>Fractal streams GPU-powered, Windows 10 desktops to any macOS, iOS, or Windows device</p>
+                <Button onClick = {this.openForm} style = {{background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", marginTop: 35, padding: "10px 40px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', fontSize: 15}}>REQUEST ACCESS</Button>
+              </Col>
+              <Col xs = {{order: 2, span: 12}} style = {{marginTop: 40}}>
+                {
+                this.state.width > 700
+                ?
+                <img src = {Car} style = {{width: "95%", position: 'relative', maxWidth: 450, paddingTop: 25}}/>
+                :
+                <img src = {Car} style = {{width: "100%"}}/>
+                }
+              </Col>
+            </Row>
+          </div>
+        </div>*/}
         <div style = {{background: 'white', backgroundSize: '100% auto'}}>
           <div className = "fractal-container">
             <Row>
@@ -115,11 +147,9 @@ class PageHome extends Component {
                       <Col xs = {6}><strong>8</strong> CPU cores, 3.2 GHz</Col>
                       <Col xs = {6} style = {{textAlign: 'right'}}><strong>1 TB</strong> NVMe SSD</Col>
                     </Row>
-                    <HashLink to = "/vm#top">
-                    <Button style = {{width: '100%', color: 'white', background: "linear-gradient(110.1deg, #4B89E5 0%, #d023eb 100%)", fontWeight: "bold", padding: 12, textAlign: 'center', borderRadius: 5, marginTop: 50, border: 'none', fontSize: 14}}>
+                    <Button onClick = {this.openForm} style = {{width: '100%', color: 'white', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", fontWeight: "bold", padding: 12, textAlign: 'center', borderRadius: 5, marginTop: 50, border: 'none', fontSize: 14}}>
                       LAUNCH
                     </Button>
-                    </HashLink>
                   </div>
                   :
                   <div style = {{width: '100%', padding: 35, color: '#333333', fontSize: 14}}>
@@ -131,11 +161,9 @@ class PageHome extends Component {
                       <Col xs = {6}><strong>8</strong> CPU cores, 3.2 GHz</Col>
                       <Col xs = {6} style = {{textAlign: 'right'}}><strong>1 TB</strong> NVMe SSD</Col>
                     </Row>
-                    <HashLink to = "/vm#top">
-                    <Button style = {{width: '100%', color: 'white', background: "linear-gradient(110.1deg, #4B89E5 0%, #d023eb 100%)", fontWeight: "bold", padding: 12, textAlign: 'center', borderRadius: 5, marginTop: 50, border: 'none', fontSize: 14}}>
+                    <Button onClick = {this.openForm} style = {{width: '100%', color: 'white', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", fontWeight: "bold", padding: 12, textAlign: 'center', borderRadius: 5, marginTop: 50, border: 'none', fontSize: 14}}>
                       LAUNCH
                     </Button>
-                    </HashLink>
                   </div>
                   }
                 </div>
@@ -161,29 +189,25 @@ class PageHome extends Component {
         ?
         <div style = {{backgroundColor: 'white', paddingTop: "66.68%", width: '100%', position: 'relative'}}>
           <div style = {{backgroundImage: `url(${SpaceShip})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}}>
-            <div className = "fractal-container" style = {{color: 'white', paddingTop: "37%", textAlign: 'center', fontWeight: 'bold', fontSize: 35, paddingBottom: 40}}>
+            <div className = "fractal-container" style = {{color: 'white', paddingTop: "37%", textAlign: 'center', fontWeight: 'bold', fontSize: 30, paddingBottom: 40}}>
               Fractal Cloud Computers Are <br/>Fast
             </div>
-            <div style = {{color: "#D1D1D1", maxWidth: 600, margin: 'auto', zIndex: 100,  paddingLeft: 50, paddingRight: 50}}>
+            <div style = {{color: "#D1D1D1", maxWidth: 600, margin: 'auto', zIndex: 100, fontSize: 15, paddingLeft: 50, paddingRight: 50, lineHeight: 1.6}}>
               Experience <span style = {{color: 'white', fontWeight: 'bold'}}>60 frames per second</span> without latency or input lag. Upload a 5GB video file to cloud storage in under three minutes (coming soon).
             </div>
-             <HashLink to = "/vm#top">
-              <Button style = {{zIndex: 100, marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #4B89E5 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.6)', zIndex: 200}}>GET STARTED</Button>
-            </HashLink>
+              <Button onClick = {this.openForm} style = {{zIndex: 100, marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.6)', zIndex: 200}}>REQUEST ACCESS</Button>
           </div>
         </div>
         :
         <div style = {{backgroundColor: 'white', paddingTop: "66.68%", width: '100%', position: 'relative'}}>
           <div style = {{backgroundImage: `url(${SpaceShip})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 100}}>
-            <div className = "fractal-container" style = {{color: 'white', paddingTop: "55%", textAlign: 'center', fontWeight: 'bold', fontSize: 35, paddingBottom: 40}}>
+            <div className = "fractal-container" style = {{color: 'white', paddingTop: "55%", textAlign: 'center', fontWeight: 'bold', fontSize: 30, paddingBottom: 40}}>
               Fractal Cloud Computers Are <br/>Fast
             </div>
-            <div style = {{color: "#D1D1D1", maxWidth: 600, margin: 'auto', zIndex: 100,  paddingLeft: 50, paddingRight: 50}}>
+            <div style = {{color: "#D1D1D1", maxWidth: 600, margin: 'auto', zIndex: 100, paddingLeft: 50, paddingRight: 50}}>
               Experience <span style = {{color: 'white', fontWeight: 'bold'}}>60 frames per second</span> without latency or input lag. Upload a 5GB video file to cloud storage in under three minutes (coming soon).
             </div>
-             <HashLink to = "/vm#top">
-              <Button style = {{zIndex: 100, marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #4B89E5 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.60)'}}>GET STARTED</Button>
-            </HashLink>
+              <Button onClick = {this.openForm} style = {{zIndex: 100, marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.60)'}}>REQUEST ACCESS</Button>
           </div>
         </div>
         }
@@ -192,13 +216,13 @@ class PageHome extends Component {
         ?
         <div></div>
         :
-        <div style = {{backgroundColor: "#20254a", height: 250, zIndex: -1}}></div>
+        <div style = {{backgroundColor: "#0b172b", height: 250, zIndex: -1}}></div>
         }
-        <div  style = {{backgroundColor: "#20254a", paddingBottom: 150, paddingTop: 150, position: 'relative', bottom: 1}}>
+        <div  style = {{backgroundColor: "#0b172b", paddingBottom: 150, paddingTop: 150, position: 'relative', bottom: 1}}>
         <div className = "fractal-container">
             <div style = {{fontWeight: 'bold', fontSize: 35, color: "white", textAlign: 'center'}}>And extremely affordable</div>
             <div style = {{margin: 'auto', maxWidth: 750}}>
-              <p style = {{textAlign: 'center', marginTop: 20, color: "#A9A9A9"}}>A small monthly (or hourly) fee, versus thousands of dollars upfront for an expensive PC.</p>
+              <p style = {{textAlign: 'center', marginTop: 20, color: "#D1D1D1", fontSize: 15, lineHeight: 1.6}}>A small monthly (or hourly) fee, versus thousands of dollars upfront for an expensive PC.</p>
             </div>
             {
             this.state.width > 700
@@ -224,7 +248,7 @@ class PageHome extends Component {
               <Col md = {6}>
                 <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", minHeight: 210, margin:'auto', width: '90%', marginBottom: 20}}>
                   <div style = {{fontWeight: 'bold', fontSize: 25, color: "#333333", textAlign: 'left'}}>Color Correction</div>
-                  <div style = {{backgroundColor: "#4B89E5", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 120, marginTop: 10}}>Coming Soon</div>
+                  <div style = {{backgroundColor: "#5ec3eb", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 120, marginTop: 10}}>Coming Soon</div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Achieve near-100% RGB color accuracy with our build-to-lossless streaming technology.</p>
                 </div>
               </Col>
@@ -232,7 +256,7 @@ class PageHome extends Component {
               <Col md = {6} style = {{marginTop: 40}}>
                 <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", margin: 'auto', minHeight: 210}}>
                   <div style = {{fontWeight: 'bold', fontSize: 25, color: "#333333", textAlign: 'left'}}>Color Correction</div>
-                  <div style = {{backgroundColor: "#4B89E5", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 120, marginTop: 10}}>Coming Soon</div>
+                  <div style = {{backgroundColor: "#5ec3eb", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 120, marginTop: 10}}>Coming Soon</div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Achieve near-100% RGB color accuracy with our build-to-lossless streaming technology.</p>
                 </div>
               </Col>
@@ -243,7 +267,7 @@ class PageHome extends Component {
               <Col md = {6}>
                 <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", minHeight: 210, margin:'auto', width: '90%'}}>
                   <div style = {{fontWeight: 'bold', fontSize: 25, color: "#333333", textAlign: 'left'}}>Hardware Flexibility</div>
-                  <div style = {{backgroundColor: "#4B89E5", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 120, marginTop: 10}}>Coming Soon</div>
+                  <div style = {{backgroundColor: "#5ec3eb", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 120, marginTop: 10}}>Coming Soon</div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Instantly swap out your CPU, GPU, RAM, or storage at the click of a button.</p>
                 </div>
               </Col>
@@ -251,7 +275,7 @@ class PageHome extends Component {
               <Col md = {6} style = {{marginTop: 40}}>
                 <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", margin: 'auto', minHeight: 210}}>
                   <div style = {{fontWeight: 'bold', fontSize: 25, color: "#333333", textAlign: 'left'}}>Hardware Flexibility</div>
-                  <div style = {{backgroundColor: "#4B89E5", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 120, marginTop: 10}}>Coming Soon</div>
+                  <div style = {{backgroundColor: "#5ec3eb", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 120, marginTop: 10}}>Coming Soon</div>
                   <p style = {{textAlign: 'left', marginTop: 20}}>Instantly swap out your CPU, GPU, RAM, or storage at the click of a button.</p>
                 </div>
               </Col>
@@ -285,11 +309,9 @@ class PageHome extends Component {
                     </div>
                   </div>
                    <div style = {{padding: '8px 20px'}}>
-                  <HashLink to = "/vm#top" style = {{textAlign: 'center'}}>
-                    <Button style = {{padding: 15, width: '100%', margin: 'auto', color: 'white', background: "linear-gradient(110.1deg, #4B89E5 0%, #d023eb 100%)", fontWeight: "bold", textAlign: 'center', borderRadius: 5, marginTop: 20, border: 'none', fontSize: 14}}>
+                    <Button onClick = {this.openForm} style = {{padding: 15, width: '100%', margin: 'auto', color: 'white', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", fontWeight: "bold", textAlign: 'center', borderRadius: 5, marginTop: 20, border: 'none', fontSize: 14}}>
                       + NEW INSTANCE
                     </Button>
-                  </HashLink>
                   </div>
                   </div>
                 </div>
@@ -310,13 +332,13 @@ class PageHome extends Component {
             </Row>
           </div>
         </div>
-        <div style = {{backgroundColor: "#20254a", paddingLeft: 40, paddingRight: 40}} id = "beta">
-          <Container style = {{paddingTop: 100, paddingBottom: 100}}>
+        <div style = {{backgroundColor: "#0b172b", paddingLeft: 40, paddingRight: 40}} id = "beta">
+          <Container style = {{paddingTop: 100, paddingBottom: 150}}>
             <div style = {{fontWeight: 'bold', fontSize: 35, color: "white", textAlign: 'center'}}>Join Our <span className = "blue-gradient">Private Beta</span></div>
             <div style = {{margin: 'auto', maxWidth: 750}}>
               <p style = {{textAlign: 'center', marginTop: 20, color: '#D1D1D1'}}>We are currently accepting 100 individuals for our private beta. If you’re interested in experiencing the next generation of personal computing,  please apply below.</p>
             </div>
-            <SignupBox/>
+            <Button style = {{zIndex: 100, marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.6)', zIndex: 200}} onClick={this.openForm}>REQUEST ACCESS</Button>
           </Container>
         </div>
       </div>

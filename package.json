@@ -29,6 +29,7 @@
     "react-spinners": "^0.6.1",
     "react-stripe-elements": "^6.0.1",
     "react-tabs": "^3.0.0",
+    "react-typeform-embed": "^0.2.1",
     "redux": "4.0.4",
     "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6",

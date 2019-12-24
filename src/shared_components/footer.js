@@ -31,7 +31,7 @@ class Footer extends Component {
 
   render() {
     return (
-      <div style = {{width: '100%', backgroundColor: '#222222', padding: 30, paddingTop: 60, fontSize: 15, borderTop: 'solid 1px white'}}>
+      <div style = {{width: '100%', backgroundColor: '#0b172b', padding: 30, paddingTop: 60, fontSize: 15, borderTop: 'solid 1px white'}}>
        <Container>
 {/*        <div style = {{color: 'white', width: '100%'}}>
           <div style = {{fontSize: 30, fontWeight: 'bold'}}>
