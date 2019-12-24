@@ -91,7 +91,7 @@ class PageHome extends Component {
                   <span style = {{backgroundColor: '#5ec3eb', padding: '5px 15px', color: '#0b172b', fontWeight: 'bold', fontSize: 14, borderRadius: 5, marginRight: 20}}>NEW</span>
                   Our <HashLink to = '/#beta' style = {{textDecoration: 'none', fontWeight: 'bold', color: 'white', fontSize: 14}}>private beta</HashLink> is now open.
                 </div>
-                <div style = {{color: '#FFFFFF', fontSize: 30, lineHeight: 1.4, fontWeight: 'bold'}}>Transform any device into a supercomputer</div>
+                <div style = {{color: '#FFFFFF', fontSize: 30, lineHeight: 1.4, fontWeight: 'bold'}}>Transform any device into a <span className = "blue-gradient">supercomputer</span></div>
                 <p style = {{textAlign: 'left', marginTop: 25, color: '#D1D1D1', marginBottom: 40, fontSize: 15}}>Fractal streams GPU-powered, Windows 10 desktops to any macOS, iOS, or Windows device</p>
                 <Button onClick = {this.openForm} style = {{background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", marginTop: 5, padding: "10px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', fontSize: 14}}>REQUEST ACCESS</Button>
               </Col>
