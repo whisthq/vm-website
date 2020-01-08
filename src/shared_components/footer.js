@@ -74,11 +74,6 @@ class Footer extends Component {
                   Join Beta
                   </div>
                 </HashLink>
-                <Link to = "/story" style = {{textDecoration: 'none'}}>
-                  <div style = {{color: 'white', textDecoration: 'none', marginBottom: 4}}>
-                  Our Story
-                  </div>
-                </Link>
                 <Link to  = "/auth" style = {{textDecoration: 'none'}}>
                   <div style = {{color: 'white', textDecoration: 'none', marginBottom: 4}}>
                   My Account
