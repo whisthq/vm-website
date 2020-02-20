@@ -49,13 +49,13 @@ class Footer extends Component {
         ?
         <div style = {{float: 'right'}}>
           <HashLink to = "/vm#top">
-            <Button style = {{paddingLeft: 40, paddingRight: 40, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #4B89E5', color: '#4B89E5'}}>Get Started</Button>
+            <Button style = {{paddingLeft: 40, paddingRight: 40, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #5ec3eb', color: '#5ec3eb'}}>Get Started</Button>
           </HashLink>
         </div>
         :
         <div style = {{marginBottom: 50}}>
           <HashLink to = "/vm#top">
-            <Button style = {{paddingLeft: 40, paddingRight: 40, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #4B89E5', color: '#4B89E5'}}>Get Started</Button>
+            <Button style = {{paddingLeft: 40, paddingRight: 40, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #5ec3eb', color: '#5ec3eb'}}>Get Started</Button>
           </HashLink>
         </div>
         }

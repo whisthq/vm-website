@@ -50,7 +50,7 @@ class Header extends Component {
                 <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
               <Link to = "/auth">
-                <Button style = {{marginLeft: 35, background: `${ this.props.button }`, border: "none", fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.25)"}}>My Account</Button>
+                <Button style = {{marginLeft: 35, color: `${ this.props.button }`, border: 'solid 1px #5ec3eb', borderColor: `${ this.props.button }`, fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,background: "rgba(0, 0,0,0.0)"}}>My Account</Button>
               </Link>
           </div>
         </div>
