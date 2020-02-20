@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import Logo from '../assets/big-logo.png'
 import { Link } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'react-bootstrap'
 import { FaBars } from 'react-icons/fa'
@@ -39,6 +40,7 @@ class Header extends Component {
         <div style = {{display: 'flex', width: '100%'}}>
           <div style = {{width: '40%', textAlign: 'left'}}>
             <Link to = '/' style = {{textDecoration: 'none', color: `${ this.props.color }`, fontWeight: 'bold', fontSize: 24}}>
+              <img src = {Logo} style = {{height: 24, position: 'relative', bottom: 2, right: 10}}/>
               Fractal
             </Link> 
           </div>
@@ -50,7 +52,7 @@ class Header extends Component {
                 <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
               <Link to = "/auth">
-                <Button style = {{marginLeft: 35, background: `${ this.props.button }`, border: "none", fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.25)"}}>My Account</Button>
+                <Button style = {{marginLeft: 35, color: `${ this.props.button }`, border: 'solid 1px #5ec3eb', borderColor: `${ this.props.button }`, fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,background: "rgba(0, 0,0,0.0)"}}>My Account</Button>
               </Link>
           </div>
         </div>

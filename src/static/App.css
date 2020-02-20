@@ -157,3 +157,13 @@ input[type=text], input {
     padding-right: 40px;
   }
 }
+
+.download-dropdown:hover {
+  background-color: #111111 !important;
+  color: #5ec3eb !important;
+}
+
+.dropdown-toggle, .dropdown-toggle:focus {
+  outline: 0 !important;
+  border: none;
+}
