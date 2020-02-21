@@ -160,7 +160,7 @@ class PageHome extends Component {
               <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: 100}}>
                 <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, margin: "auto", maxWidth: 500}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 35px', fontWeight: 'bold'}}>
-                    Windows Instance
+                    My Cloud PC
                   </div>
                   {
                   this.state.width > 700
