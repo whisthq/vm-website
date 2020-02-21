@@ -17,6 +17,7 @@ import Topography from '../../assets/topography.svg'
 import RGBIcon from '../../assets/rgb-icon.svg'
 import HardDriveIcon from '../../assets/hard-drive-icon.svg'
 import FileIcon from '../../assets/file-icon.svg'
+import WindowsBin from '../../bin/Fractal-Setup.exe'
 import Logo from '../../assets/logo.svg'
 import CubeSection from './containers/cubesection.js'
 import SignupBox from './containers/signupbox.js'
@@ -110,7 +111,9 @@ class PageHome extends Component {
                 <Dropdown as={ButtonGroup} style = {{display: 'inline', float: 'left'}}>
                   <div style = {{display: 'flex'}}>
                     <Dropdown.Toggle class = "dropdown-toggle" split variant="success" style = {{outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderRight: 'none', borderRadius: '4px 0px 0px 4px', padding: '10px 5px 10px 10px'}}/>
-                    <Button class = "dropdown-toggle" variant="success" style = {{outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, padding: '10px 5px 10px 0px', border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderLeft: 'none', borderRadius: '0px 4px 4px 0px', minWidth: 170}}>Download for {this.state.version}</Button>
+                    <a href = {WindowsBin} download>
+                      <Button class = "dropdown-toggle" variant="success" style = {{outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, padding: '10px 5px 10px 0px', border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderLeft: 'none', borderRadius: '0px 4px 4px 0px', minWidth: 170}}>Download for {this.state.version}</Button>
+                    </a>
                   </div>
                   <Dropdown.Menu style = {{fontSize: 12, color: 'white', background: '#111111'}}>
                     <Dropdown.Item className = "download-dropdown" style = {{color: 'white'}} onClick = {() => this.changeVersion("Windows")}>Windows (64 Bit)</Dropdown.Item>
@@ -270,7 +273,7 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {4}>
-                <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 230, width: '100%', marginBottom: 20}}>
+                <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, width: '100%', marginBottom: 20}}>
                   <img src = {RGBIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Color Accuracy</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Achieve visually lossless frames with our color-accurate streaming technology.</p>
@@ -289,7 +292,7 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {4}>
-                <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 230, margin:'auto', width: '100%', marginBottom: 20}}>
+                <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {HardDriveIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Hard Drive Upload</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Clone your entire hard drive to your cloud PC at the click of a button.</p>
@@ -308,7 +311,7 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {4}>
-                <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 230, margin:'auto', width: '100%', marginBottom: 20}}>
+                <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {FileIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>File Backup</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Fractal can download your entire cloud PC hard drive to your local PC every 24 hours.</p>
