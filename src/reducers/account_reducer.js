@@ -54,7 +54,6 @@ export default function(state = DEFAULT, action) {
         vm_credentials: []
       }
     case AccountAction.CREATE_VM:
-      console.log("create vm reducer");
       return {
         ...state,
         vm_size: action.vm_size
