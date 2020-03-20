@@ -317,7 +317,7 @@ class Purchase extends Component {
                 Your first seven days are free, and you can cancel anytime.
               </div>
               <div style = {{marginTop: 40, marginLeft: 39}}>
-                <StripeProvider apiKey="pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb">
+                <StripeProvider apiKey="pk_live_XLjiiZB93KN0EjY8hwCxvKmB00whKEIj3U">
                   <div className="example">
                     <Elements>
                       <CheckoutForm location = {this.state.location}/>
