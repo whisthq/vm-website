@@ -22,7 +22,7 @@ class Auth extends Component {
     super(props)
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, 
       emailLogin: '', passwordLogin: '', emailSignup: '', passwordSignup: '', passwordConfirmSignup: '',
-      validEmail: false, tooShort: false, failed_attempt: false}
+      validEmail: false, tooShort: false, failed_attempt: false, processing: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     this.changeEmailLogin = this.changeEmailLogin.bind(this)
     this.changePasswordLogin = this.changePasswordLogin.bind(this)
@@ -54,9 +54,9 @@ class Auth extends Component {
   }
 
   signupKeyPress = (event) => {
-    // if(event.key === 'Enter'){
-    //   this.props.dispatch(userSignup(this.state.emailSignup, this.state.passwordSignup, false))
-    // }
+    if(event.key === 'Enter'){
+      this.props.dispatch(userSignup(this.state.emailSignup, this.state.passwordSignup, false))
+    }
   }
 
   changePasswordLogin(evt) {
