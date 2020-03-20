@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Maven+Pro|Kalam&display=swap');
 
+body {
+  overflow-x: hidden;
+}
+
 div {
   font-family: 'Maven Pro' !important;
 }
@@ -166,4 +170,54 @@ input[type=text], input {
 .dropdown-toggle, .dropdown-toggle:focus {
   outline: 0 !important;
   border: none;
+}
+
+.create-cloud-pc {
+  transition: 0.5s;
+}
+
+.create-cloud-pc:hover {
+  transform: scale(1.02);
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #EBEBEB;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #C9C9C9;
+}
+
+.icon-spin {
+  -webkit-animation: icon-spin 2s infinite linear;
+          animation: icon-spin 2s infinite linear;
+}
+
+@-webkit-keyframes icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@keyframes icon-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
 }

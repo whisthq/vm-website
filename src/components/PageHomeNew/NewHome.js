@@ -27,6 +27,7 @@ import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
+import Footer from '../../shared_components/footer.js'
 
 class PageHome extends Component {
   constructor(props) {
@@ -405,6 +406,9 @@ class PageHome extends Component {
             </div>
             <Button style = {{zIndex: 100, marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.6)', zIndex: 200}} onClick={this.openForm}>REQUEST ACCESS</Button>
           </Container>
+        </div>
+        <div style = {{textAlign: 'left'}}>
+        <Footer/>
         </div>
       </div>
     );

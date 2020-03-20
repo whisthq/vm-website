@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import Logo from '../assets/big-logo.png'
+import Logo from '../assets/logo.svg'
 import { Link } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'react-bootstrap'
 import { FaBars } from 'react-icons/fa'
@@ -38,10 +38,12 @@ class Header extends Component {
         ?
         <div className = "fractal-container">
         <div style = {{display: 'flex', width: '100%'}}>
-          <div style = {{width: '40%', textAlign: 'left'}}>
+          <div style = {{width: '40%', textAlign: 'left', zIndex: 1}}>
             <Link to = '/' style = {{textDecoration: 'none', color: `${ this.props.color }`, fontWeight: 'bold', fontSize: 24}}>
               <img src = {Logo} style = {{height: 24, position: 'relative', bottom: 2, right: 10}}/>
+              <span style = {{color: `${ this.props.title }`}}>
               Fractal
+              </span>
             </Link> 
           </div>
           <div style = {{width: '60%', textAlign: 'right'}}>

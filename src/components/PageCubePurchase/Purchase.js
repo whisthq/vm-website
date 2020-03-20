@@ -14,59 +14,25 @@ import PowerSpec from '../../assets/powerspec.svg'
 import SpecBox from './containers/specBox.js'
 import { FaArrowRight } from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
-import { FaTrashAlt } from 'react-icons/fa'
+import Autofill from '../../shared_components/autofill.js'
+import TypeformButton from '../../shared_components/typeformbutton.js'
+import CheckoutForm from '../../shared_components/checkoutform.js'
+import { FaTrashAlt, FaAngleUp, FaAngleDown } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { addBaseCube, addEnhancedCube, addPowerCube, createCart, deleteBaseCube, deleteEnhancedCube, deletePowerCube } from '../../actions/index.js';
-
+import {Elements, StripeProvider} from 'react-stripe-elements';
+import { HashLink } from 'react-router-hash-link';
 
 class Purchase extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, modalShow: false, continue: false }
+    this.state = { width: 0, height: 0, modalShow: false, continue: false, step: 1.0, exit: false }
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
-  }
-
-  baseCube() {
-    this.props.dispatch(addBaseCube())
-    this.setState({ continue: true })
-  }
-
-  enhancedCube() {
-    this.props.dispatch(addEnhancedCube())
-    this.setState({ continue: true })
-  }
-
-  powerCube() {
-    this.props.dispatch(addPowerCube())
-    this.setState({ continue: true })
-  }
-
-  deleteBase() {
-    this.props.dispatch(deleteBaseCube())
-    if(this.props.enhanced === 0 && this.props.power === 0) {
-      this.setState({ continue: false })
-    }
-  }
-
-  deleteEnhanced() {
-    this.props.dispatch(deleteEnhancedCube())
-    if(this.props.base === 0 && this.props.power === 0) {
-      this.setState({ continue: false })
-    }
-  }
-
-  deletePower() {
-    this.props.dispatch(deletePowerCube())
-    if(this.props.enhanced === 0 && this.props.base === 0) {
-      this.setState({ continue: false })
-    }
   }
 
 
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
-    createCart()
     if(this.props.enhanced > 0 || this.props.base > 0 || this.props.power > 0) {
       this.setState({ continue: true })
     }
@@ -80,155 +46,308 @@ class Purchase extends Component {
     this.setState({ width: window.innerWidth, height: window.innerHeight })
   }
 
+
+  goBack = () => {
+    this.setState({step: this.state.step - 1})
+  }
+
+  goForward = () => {
+    this.setState({step: this.state.step + 1})
+  }
+
+  handleClick1 = (supported) => {
+    if(supported) {
+      this.setState({step: 2, exit: false})
+    } else {
+      this.setState({step: 2, exit: true})
+    }
+  }
+
+  handleClick2 = (state) => {
+    this.setState({step: 3})
+  }
+
   render() {
     let modalClose = () => this.setState({ modalShow: false })
     if (this.state.width > 700 && this.state.modalShow) {
       modalClose()
     }
-    const baseBox = {padding: 25, boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', borderRadius: 15} 
-    const baseFont = {color: '#111111'}
-    const baseSubFont = {color: '#666666', fontWeight: 'normal', fontSize: 15}
-    const enhancedBox = {backgroundColor: '#124270', padding: '20px 20px 5px 20px'}
-    const enhancedFont = {color: 'white'}
-    const baseButton = {border: 'solid 2px #111111', backgroundColor: 'rgba(0,0,0,0.0)', color: '#111111', padding: '10px 15px', position: 'relative', bottom: 20}
-    const enhancedButton = {border: 'solid 2px white', backgroundColor: 'rgba(0,0,0,0.0)', color: 'white', padding: '10px 15px', position: 'relative', bottom: 20}
-    const powerBox = {backgroundColor: '#14a0b5', padding: '20px 20px 5px 20px'} 
-    const linkStyle = {color: '#666666'}
-    return (
-      <div>
-        <Header linkStyle = {linkStyle}/>
-        <div style = {{paddingTop: 120}}>
-          <Container style = {{maxWidth: 1100}}>
-            <Row>
-              <Col sm = {12} md = {5} style = {{textAlign: 'center'}}>
-                <img src = {WhiteCube} style = {{width: '90%', maxWidth: 450, maxHeight: 450}}/>
-              </Col>
-              <Col sm = {12} md = {7} style = {{padding: 30}}>
-                <div style = {{color: 'black', fontSize: 30, fontWeight: 'bold'}}>
-                  Pre-order a Cube by selecting the configuration you want.
-                </div>
-                <div style = {{marginTop: 20}}>
-                  <div style = {{borderRadius: 20, backgroundColor: '#94a8ed', border: 'none', color: 'white', padding: '6px 20px', display: 'inline-block'}}>
-                    Which configuration should I get?
-                  </div>
-                  <div style = {{opacity: 1, marginTop: 20, color: '#555555', lineHeight: 1.6}}>
-                      The Base Cube can handle daily productivity tasks and Web browsing. The Enhanced Cube is ideal for 
-                      creative media work, coding, or light gaming. 
-                      Choose the Power Cube if you need a powerful workstation for tasks like 3D animation or 
-                      processing large datasets.
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-          <Container style = {{maxWidth: 1000, marginTop: 50}}>
-            <Row>
-            <Col sm = {12} md = {8}>
-              <div>
-                  <div style = {{marginBottom: 30}} onClick={() => this.baseCube()} >
-                    <SpecBox
-                    name = "Base Cube"
-                    boxStyle = {baseBox}
-                    mainFont = {baseFont}
-                    subFont = {baseSubFont}
-                    graphic = {BaseSpec}
-                    price = {<div>$75 + $20/<span style = {{fontSize: 11}}>mo</span></div>}/>
-                  </div>
-                  <div style = {{marginBottom: 30}} onClick={() => this.enhancedCube()}>
-                    <SpecBox 
-                    name = "Enhanced Cube"
-                    boxStyle = {baseBox}
-                    mainFont = {baseFont}
-                    subFont = {baseSubFont}
-                    graphic = {EnhancedSpec}
-                    price = {<div>$75 + $30/<span style = {{fontSize: 11}}>mo</span></div>}/>
-                  </div>
-                  <div style = {{marginBottom: 30}} onClick={() => this.powerCube()} >
-                    <SpecBox 
-                    name = "Power Cube"
-                    boxStyle = {baseBox}
-                    mainFont = {baseFont}
-                    subFont = {baseSubFont}
-                    graphic = {PowerSpec}
-                    price = {<div>$75 + $45/<span style = {{fontSize: 11}}>mo</span></div>}/>
-                  </div>
+
+    const renderSurvey = () => {
+      if(this.state.step === 1) {
+        return(
+          <div style = {{paddingTop: 150, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+            <div>
+              <span style = {{position: 'relative', bottom: 2}}>
+                1 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
+              </span>
+              <span style = {{fontSize: 22, paddingLeft: 10}}>Do you live in the United States or Canada?</span>
+              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
+                Currently, Fractal only has servers in certain geographic locations.
               </div>
-            </Col>
-            <Col sm = {12} md = {4}>
-              <div style = {{backgroundColor: '#f6f6f6', height: 400, padding: 30, borderRadius: 10, boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}>
-                <div style = {{fontWeight: 'bold', fontSize: 20}}>Cart Summary</div>
-                <div style = {{marginTop: 30, color: "#555555"}}>
-                {this.props.base > 0 &&
-                    <div>{this.props.base}x Base Cube<FaTrashAlt className = "trash-icon" onClick={() => this.deleteBase()}/></div>
-                }
-                {this.props.enhanced > 0 &&
-                    <div style = {{marginTop: 5}}>{this.props.enhanced}x Enhanced Cube<FaTrashAlt className = "trash-icon" onClick={() => this.deleteEnhanced()}/></div>
-                }
-                {this.props.power > 0 &&
-                    <div style = {{marginTop: 5}}>{this.props.power}x Power Cube<FaTrashAlt className = "trash-icon" onClick={() => this.deletePower()}/></div>
-                }
+              <div style = {{marginTop: 20}}>
+                <div onClick = {() => this.handleClick1(true)}>
+                  <TypeformButton buttonLabel = "Y" buttonText = "YES"/>
                 </div>
-                <div style = {{position: 'absolute', top: 300}}>
-                  <div style = {{marginBottom: 15, fontSize: 15, color: '#777777'}}>Due Today: $0.00</div>
-                {
-                this.state.continue
-                ?
-                <Link to = "/checkout" style = {{color: 'white', textDecoration: 'none'}}>
-                  <Button disabled = {!this.state.continue} style = {{backgroundColor: '#94a8ed', borderRadius: 10, border: 'none', paddingLeft: 40, paddingRight: 40, fontWeight: 'bold'}}>
-                    Continue
-                  </Button>
+                <div onClick = {() => this.handleClick1(false)}>
+                  <TypeformButton buttonLabel = "N" buttonText = "NO" onClick = {() => this.handleClick1(false)}/>
+                </div>
+              </div>
+              <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
+                <Link to = "/dashboard">
+                <div style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
+                  <FaAngleUp style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
+                </div>
                 </Link>
-                :
-                  <Button disabled = {!this.state.continue} style = {{backgroundColor: '#94a8ed', borderRadius: 10, border: 'none', paddingLeft: 40, paddingRight: 40, fontWeight: 'bold'}}>
-                    Continue
-                  </Button>
-                }
+                <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
+                  <FaAngleDown style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b', opacity: 0.2}}/>
                 </div>
               </div>
-            </Col>
-            </Row>
-          </Container>
-          <div style = {{width: '100%', backgroundColor: '#f6f6f6', padding: '50px 0px', marginTop: 50}}>
-            <Container style = {{maxWidth: 1000, margin: 'auto'}}>
-              <Row>
-                <Col md = {6}>
-                  <div style = {{fontWeight: 'bold', fontSize: 22, marginBottom: 25, marginTop: '3%'}}>What's in the Box?</div>
-                  <div style = {{fontColor: "#555555"}}>1x Cube</div>
-                  <div style = {{fontColor: "#555555"}}>1x micro HDMI to HDMI cable</div>
-                  <div style = {{fontColor: "#555555"}}>1x USB-C power supply/cable</div>
-                </Col>
-                <Col md = {6}>
-                  <div style = {{fontWeight: 'bold', fontSize: 22, marginBottom: 25, marginTop: '3%'}}>Connectivity</div>
-                  <div style = {{fontColor: "#555555"}}>Gigabyte ethernet</div>
-                  <div style = {{fontColor: "#555555"}}>2.4 GHz and 5.0 GHz IEEE 802.11ac wireless</div>
-                  <div style = {{fontColor: "#555555"}}>Bluetooth 5.0</div>
-                  <div style = {{fontColor: "#555555"}}>3.5mm audio jack</div>
-                  <div style = {{fontColor: "#555555"}}>2x USB 3.0</div>
-                  <div style = {{fontColor: "#555555"}}>2x USB 2.0</div>
-                  <div style = {{fontColor: "#555555"}}>2x micro HDMI</div>
-                  <div style = {{fontColor: "#555555"}}>1x USB-C power port</div>
-                </Col>
-              </Row>
-            </Container>
-          </div>
-          <div style = {{maxWidth: 1000, backgroundColor: 'white', margin: 'auto', padding: '30px 0px 30px 0px'}}>
-            <div style = {{textAlign: 'right', width: '100%'}}>
-              Due Today: $0.00
-              {
-              !this.state.continue 
-              ?
-              <Button disabled = {!this.state.continue} style = {{backgroundColor: '#94a8ed', borderRadius: 10, border: 'none', paddingLeft: 40, paddingRight: 40, fontWeight: 'bold', marginLeft: 30, marginRight: 20}}>
-                Continue
-              </Button>
-              :
-              <Link disabled = {!this.state.continue} style = {{color: 'white', textDecoration: 'none'}} to = "/checkout">
-              <Button disabled = {!this.state.continue} style = {{backgroundColor: '#94a8ed', borderRadius: 10, border: 'none', paddingLeft: 40, paddingRight: 40, fontWeight: 'bold', marginLeft: 30, marginRight: 20}}>
-                Continue
-              </Button>
-              </Link>
-              }
             </div>
           </div>
+        )
+      } else if(this.state.step === 2 && this.state.exit) {
+        return(
+        <div style = {{paddingTop: 150, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+          <div style = {{fontSize: 18, maxWidth: 600, lineHeight: 1.7}}>
+            Currently, Fractal is only available in the United States and Canada due to the locations of our servers. We are 
+            quickly expanding; if you'd like to be notified when Fractal is available outside the US and Canada, please join
+            our wait list!
+          </div>
+          <HashLink to = "/#beta" style = {{textDecoration: 'none'}}>
+            <Button style = {{display: 'inline', marginTop: 50, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.4)'}}>Join Wait List</Button>
+          </HashLink>
+          <div style = {{display: 'inline', fontSize: 12, marginTop: 40, color: '#333333', marginLeft: 25, position: 'relative', top: 24}}>
+              press <strong>Enter</strong>
+              <FaArrowRight style = {{height: 9, position: 'relative', bottom: 1, left: 4}}/>
+          </div>
+          <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
+            <div onClick = {this.goBack} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
+              <FaAngleUp style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
+            </div>
+            <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
+              <FaAngleDown style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b', opacity: 0.2}}/>
+            </div>
+          </div>
+        </div>
+        )
+      } else if(this.state.step === 2 && !this.state.exit) {
+        return(
+          <div style = {{paddingTop: 150, paddingLeft: 100, width: 'calc(100% - 400px)'}}>
+            <div>
+              <span style = {{position: 'relative', bottom: 2}}>
+                2 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
+              </span>
+              <span style = {{fontSize: 22, paddingLeft: 10}}>What state do you live in?</span>
+              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
+                So we can find servers closest to you.
+              </div>
+              <div style = {{marginTop: 20, overflowY: 'scroll', maxHeight: 'calc(100vh - 300px)'}}>
+                  <div onClick = {() => this.handleClick2("AL")}>
+                    <TypeformButton buttonLabel = "A" buttonText = "AL"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("AK")}>
+                    <TypeformButton buttonLabel = "B" buttonText = "AK"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("AZ")}>
+                    <TypeformButton buttonLabel = "C" buttonText = "AZ"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("AR")}>
+                    <TypeformButton buttonLabel = "D" buttonText = "AR"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("CA")}>
+                    <TypeformButton buttonLabel = "E" buttonText = "CA"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("CO")}>
+                    <TypeformButton buttonLabel = "F" buttonText = "CO"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("CT")}>         
+                    <TypeformButton buttonLabel = "G" buttonText = "CT"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("DE")}> 
+                    <TypeformButton buttonLabel = "H" buttonText = "DE"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("FL")}> 
+                    <TypeformButton buttonLabel = "I" buttonText = "FL"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("GA")}> 
+                    <TypeformButton buttonLabel = "J" buttonText = "GA"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("HI")}> 
+                    <TypeformButton buttonLabel = "K" buttonText = "HI"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("ID")}> 
+                    <TypeformButton buttonLabel = "L" buttonText = "ID"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("IL")}> 
+                    <TypeformButton buttonLabel = "M" buttonText = "IL"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("IN")}> 
+                    <TypeformButton buttonLabel = "N" buttonText = "IN"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("IA")}> 
+                    <TypeformButton buttonLabel = "O" buttonText = "IA"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("KS")}> 
+                    <TypeformButton buttonLabel = "P" buttonText = "KS"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("KY")}> 
+                    <TypeformButton buttonLabel = "Q" buttonText = "KY"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("LA")}> 
+                    <TypeformButton buttonLabel = "R" buttonText = "LA"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("ME")}> 
+                    <TypeformButton buttonLabel = "S" buttonText = "ME"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("MD")}> 
+                    <TypeformButton buttonLabel = "T" buttonText = "MD"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("MA")}> 
+                    <TypeformButton buttonLabel = "U" buttonText = "MA"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("MI")}> 
+                    <TypeformButton buttonLabel = "V" buttonText = "MI"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("MN")}> 
+                    <TypeformButton buttonLabel = "W" buttonText = "MN"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("MS")}> 
+                    <TypeformButton buttonLabel = "X" buttonText = "MS"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("MO")}> 
+                    <TypeformButton buttonLabel = "Y" buttonText = "MO"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("MT")}> 
+                    <TypeformButton buttonLabel = "Z" buttonText = "MT"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("NE")}> 
+                    <TypeformButton buttonLabel = "AA" buttonText = "NE"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("NV")}> 
+                    <TypeformButton buttonLabel = "BB" buttonText = "NV"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("NH")}> 
+                    <TypeformButton buttonLabel = "CC" buttonText = "NH"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("NJ")}> 
+                    <TypeformButton buttonLabel = "DD" buttonText = "NJ"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("NM")}> 
+                    <TypeformButton buttonLabel = "EE" buttonText = "NM"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("NY")}> 
+                    <TypeformButton buttonLabel = "FF" buttonText = "NY"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("NC")}> 
+                    <TypeformButton buttonLabel = "GG" buttonText = "NC"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("ND")}> 
+                    <TypeformButton buttonLabel = "HH" buttonText = "ND"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("OH")}> 
+                    <TypeformButton buttonLabel = "II" buttonText = "OH"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("OK")}> 
+                    <TypeformButton buttonLabel = "JJ" buttonText = "OK"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("OR")}> 
+                    <TypeformButton buttonLabel = "KK" buttonText = "OR"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("PA")}> 
+                    <TypeformButton buttonLabel = "LL" buttonText = "PA"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("RI")}> 
+                    <TypeformButton buttonLabel = "MM" buttonText = "RI"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("SC")}> 
+                    <TypeformButton buttonLabel = "NN" buttonText = "SC"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("SD")}> 
+                    <TypeformButton buttonLabel = "OO" buttonText = "SD"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("TN")}> 
+                    <TypeformButton buttonLabel = "PP" buttonText = "TN"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("TX")}> 
+                    <TypeformButton buttonLabel = "QQ" buttonText = "TX"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("UT")}> 
+                    <TypeformButton buttonLabel = "RR" buttonText = "UT"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("VT")}> 
+                    <TypeformButton buttonLabel = "SS" buttonText = "VT"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("VA")}> 
+                    <TypeformButton buttonLabel = "TT" buttonText = "VA"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("WA")}> 
+                    <TypeformButton buttonLabel = "UU" buttonText = "WA"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("WV")}> 
+                    <TypeformButton buttonLabel = "VV" buttonText = "WV"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("WI")}> 
+                    <TypeformButton buttonLabel = "WW" buttonText = "WI"/>
+                  </div>
+                  <div onClick = {() => this.handleClick2("WY")}> 
+                    <TypeformButton buttonLabel = "XX" buttonText = "WY"/>
+                  </div>
+              </div>
+              <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
+                <div onClick = {this.goBack} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
+                  <FaAngleUp style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
+                </div>
+                <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
+                  <FaAngleDown style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b', opacity: 0.2}}/>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      } else if(this.state.step === 3) {
+        return(
+          <div style = {{paddingTop: 150, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+            <div>
+              <span style = {{position: 'relative', bottom: 2}}>
+                3 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
+              </span>
+              <span style = {{fontSize: 22, paddingLeft: 10}}>Create My Cloud Computer</span>
+              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
+                Your first seven days are free, and you can cancel anytime.
+              </div>
+              <div style = {{marginTop: 40, marginLeft: 39}}>
+                <StripeProvider apiKey="pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb">
+                  <div className="example">
+                    <Elements>
+                      <CheckoutForm />
+                    </Elements>
+                  </div>
+                </StripeProvider>
+              </div>
+              <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
+                <div onClick = {this.goBack} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
+                  <FaAngleUp style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
+                </div>
+                <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
+                  <FaAngleDown style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b', opacity: 0.2}}/>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    }
+
+    return (
+      <div style = {{minHeight: '100vh', height: '100%', background: 'white'}}>
+        <Header color = "#333333" button = "#5ec3eb"/>
+        <div style = {{display: 'flex', width: '100vw', overflowX: 'hidden'}}>
+          <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'rgba(216,216,233,.2)', height: '100%', minHeight: '100vh', zIndex: 0}}>
+            <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>Quick Survey</div>
+            <div style = {{marginBottom: 20, color: '#B9B9B9', fontSize: 14}}>Cloud PC Setup</div>
+          </div>
+          {renderSurvey()}
         </div>
       </div>
     );
@@ -236,9 +355,12 @@ class Purchase extends Component {
 }
 
 function mapStateToProps(state) {
-  return { base: state.CartReducer.base,
-  enhanced: state.CartReducer.enhanced,
-  power: state.CartReducer.power }
+  return { 
+    loggedIn: state.AccountReducer.loggedIn,
+    user: state.AccountReducer.user,
+    vms: typeof state.AccountReducer.vm_credentials == "undefined" ? [] : state.AccountReducer.vm_credentials,
+    percentage: typeof state.AccountReducer.progress == "undefined" ? 1 : state.AccountReducer.progress,
+    id: state.AccountReducer.id}
 }
 
 export default connect(mapStateToProps)(Purchase)

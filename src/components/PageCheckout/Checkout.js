@@ -17,7 +17,6 @@ import { FaTrashAlt } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { sendPreOrder, deleteBaseCube, deleteEnhancedCube, deletePowerCube } from '../../actions/index.js';
 
-
 class Checkout extends Component {
   constructor(props) {
     super(props)

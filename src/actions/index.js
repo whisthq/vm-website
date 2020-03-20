@@ -42,6 +42,9 @@ export const VALIDATE_TOKEN = "VALIDATE_TOKEN"
 export const TOKEN_STATUS = "TOKEN_STATUS"
 export const RESET_PASSWORD = "RESET_PASSWORD"
 export const FORGOT_EMAIL = "FORGOT_EMAIL"
+export const RETRIEVE_CUSTOMER = "RETRIEVE_CUSTOMER"
+export const STORE_PAYMENT = "STORE_PAYMENT"
+export const CANCEL_PLAN = "CANCEL_PLAN"
 
 export function sendFormData(name, email, cubeType) {
 	return {
@@ -252,5 +255,24 @@ export function resetPassword(username, password) {
 		type: RESET_PASSWORD,
 		username,
 		password
+	}
+}
+
+export function retrieveCustomer() {
+	return {
+		type: RETRIEVE_CUSTOMER
+	}
+}
+
+export function storePayment(payload) {
+	return {
+		type: STORE_PAYMENT,
+		payload
+	}
+}
+
+export function cancelPlan() {
+	return {
+		type: CANCEL_PLAN
 	}
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+/**/import React from 'react';
 import createSagaMiddleware from 'redux-saga';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
@@ -76,7 +76,6 @@ ReactDOM.render(
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/home" component={NewHome} />
               <Route exact path="/reset" component={Reset} />
-              <Footer/>
           </PersistGate>
           </Provider>
       </Router>,
