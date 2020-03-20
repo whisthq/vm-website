@@ -51,7 +51,8 @@ export default function(state = DEFAULT, action) {
         user: '',
         password: '',
         stripeToken: '',
-        vm_credentials: []
+        vm_credentials: [],
+        payment: {}
       }
     case AccountAction.CREATE_VM:
       return {
