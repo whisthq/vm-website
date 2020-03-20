@@ -131,7 +131,7 @@ class Dashboard extends Component {
             <div>
               {this.state.month} {this.state.day}, {this.state.year}
             </div>
-            <div style = {{fontSize: 40, fontWeight: 'bold'}}>
+            <div style = {{fontSize: 42, fontWeight: 'bold'}}>
               MY CLOUD PC
             </div>
             {
