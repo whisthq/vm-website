@@ -25,7 +25,7 @@ import { HashLink } from 'react-router-hash-link';
 class Purchase extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, modalShow: false, continue: false, step: 1.0, exit: false }
+    this.state = { width: 0, height: 0, modalShow: false, continue: false, step: 1.0, exit: false, location: '' }
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 
@@ -63,8 +63,8 @@ class Purchase extends Component {
     }
   }
 
-  handleClick2 = (state) => {
-    this.setState({step: 3})
+  handleClick2 = (location) => {
+    this.setState({step: 3, location: location})
   }
 
   render() {
@@ -320,7 +320,7 @@ class Purchase extends Component {
                 <StripeProvider apiKey="pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb">
                   <div className="example">
                     <Elements>
-                      <CheckoutForm />
+                      <CheckoutForm location = {this.state.location}/>
                     </Elements>
                   </div>
                 </StripeProvider>
@@ -344,8 +344,19 @@ class Purchase extends Component {
         <Header color = "#333333" button = "#5ec3eb"/>
         <div style = {{display: 'flex', width: '100vw', overflowX: 'hidden'}}>
           <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'rgba(216,216,233,.2)', height: '100%', minHeight: '100vh', zIndex: 0}}>
-            <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>Quick Survey</div>
-            <div style = {{marginBottom: 20, color: '#B9B9B9', fontSize: 14}}>Cloud PC Setup</div>
+            {
+            this.state.step < 3
+            ?
+            <div>
+              <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>Quick Survey</div>
+              <div style = {{marginBottom: 20, color: '#B9B9B9', fontSize: 14}}>Cloud PC Setup</div>
+            </div>
+            :
+            <div>
+              <div style = {{marginBottom: 20, color: '#B9B9B9'}}>Quick Survey</div>
+              <div style = {{marginBottom: 20, fontWeight: 'bold', fontSize: 14, color: '#111111'}}>Cloud PC Setup</div>
+            </div>
+            }         
           </div>
           {renderSurvey()}
         </div>

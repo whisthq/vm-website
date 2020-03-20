@@ -18,6 +18,7 @@ import RGBIcon from '../../assets/rgb-icon.svg'
 import HardDriveIcon from '../../assets/hard-drive-icon.svg'
 import FileIcon from '../../assets/file-icon.svg'
 import WindowsBin from '../../bin/Fractal.exe'
+import MacBin from '../../bin/Fractal.dmg'
 import Logo from '../../assets/logo.svg'
 import CubeSection from './containers/cubesection.js'
 import SignupBox from './containers/signupbox.js'
@@ -112,13 +113,21 @@ class PageHome extends Component {
                 <Dropdown as={ButtonGroup} style = {{display: 'inline', float: 'left'}}>
                   <div style = {{display: 'flex'}}>
                     <Dropdown.Toggle class = "dropdown-toggle" split variant="success" style = {{outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderRight: 'none', borderRadius: '4px 0px 0px 4px', padding: '10px 5px 10px 10px'}}/>
+                    {
+                    this.state.version === 'Windows'
+                    ?
                     <a href = {WindowsBin} download = "Fractal.exe">
                       <Button class = "dropdown-toggle" variant="success" style = {{outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, padding: '10px 5px 10px 0px', border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderLeft: 'none', borderRadius: '0px 4px 4px 0px', minWidth: 170}}>Download for {this.state.version}</Button>
                     </a>
+                    :
+                    <a href = {MacBin} download = "Fractal.dmg">
+                      <Button class = "dropdown-toggle" variant="success" style = {{outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, padding: '10px 5px 10px 0px', border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderLeft: 'none', borderRadius: '0px 4px 4px 0px', minWidth: 170}}>Download for {this.state.version}</Button>
+                    </a>
+                    }
                   </div>
                   <Dropdown.Menu style = {{fontSize: 12, color: 'white', background: '#111111'}}>
                     <Dropdown.Item className = "download-dropdown" style = {{color: 'white'}} onClick = {() => this.changeVersion("Windows")}>Windows (64 Bit)</Dropdown.Item>
-                    <Dropdown.Item className = "download-dropdown" style = {{color: 'white'}} onClick = {() => this.changeVersion("Mac")}>Mac (64 Bit)</Dropdown.Item>
+                    <Dropdown.Item className = "download-dropdown" style = {{color: 'white'}} onClick = {() => this.changeVersion("Mac")}>macOS</Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
             

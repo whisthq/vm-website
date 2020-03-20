@@ -195,29 +195,12 @@ input[type=text], input {
   background: #C9C9C9;
 }
 
-.icon-spin {
-  -webkit-animation: icon-spin 2s infinite linear;
-          animation: icon-spin 2s infinite linear;
+
+.sign-out-button {
+  margin-bottom: 20px;
+  color: #B9B9B9;
 }
 
-@-webkit-keyframes icon-spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
-  }
-}
-
-@keyframes icon-spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(359deg);
-            transform: rotate(359deg);
-  }
+.sign-out-button:hover {
+  cursor: pointer;
 }

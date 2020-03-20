@@ -13,7 +13,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { logout, getVMStatus, retrieveCustomer, vmCreating, cancelPlan, fetchVMs } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
 import { FaExclamationTriangle } from 'react-icons/fa'
-import { FaCheckCircle, FaUser, FaLock, FaDollarSign, FaArrowRight, FaPlus, FaPlay, FaFastForward, FaPause } from 'react-icons/fa'
+import { FaCheckCircle, FaUser, FaLock, FaDollarSign, FaArrowRight, FaPlus, FaPlay, FaFastForward, FaPause, FaWindows, FaApple, FaUbuntu } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 
@@ -25,11 +25,13 @@ import CPU from '../../assets/cpu.svg'
 import GPU from '../../assets/gpu.svg'
 import RAM from '../../assets/ram.svg'
 import SSD from '../../assets/hard-drive-icon.svg'
+import WindowsBin from '../../bin/Fractal.exe'
+import MacBin from '../../bin/Fractal.dmg'
 
 class Dashboard extends Component {
   constructor(props) {
     super(props)
-    this.state = {width: 0, height: 0, modalShow: false, showPopup: false, day: 0, month: 0, year: 0, created: '', billStart: '', billEnd: ''}
+    this.state = {width: 0, height: 0, modalShow: false, showPopup: false, day: 0, month: 0, year: 0, created: '', billStart: '', billEnd: '', cancelling: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 
@@ -53,14 +55,29 @@ class Dashboard extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.state.created === '' && this.props.payment.created) {
-      this.setState({created: this.unixToDate(this.props.payment.created)})
-    }
-    if(this.state.billStart === '' && this.props.payment.current_period_start) {
-      this.setState({billStart: this.unixToDate(this.props.payment.current_period_start)})
-    }
-    if(this.state.billEnd === '' && this.props.payment.current_period_end) {
-      this.setState({billEnd: this.unixToDate(this.props.payment.current_period_end)})
+    console.log(this.props.payment)
+    if(Object.keys(this.props.payment).length > 0) {
+      console.log("PAYMENT FOUND")
+      if(this.state.created === '' && this.props.payment.created) {
+        this.setState({created: this.unixToDate(this.props.payment.created)})
+      }
+      if(this.state.billStart === '' && this.props.payment.current_period_start) {
+        this.setState({billStart: this.unixToDate(this.props.payment.current_period_start)})
+      }
+      if(this.state.billEnd === '' && this.props.payment.current_period_end) {
+        this.setState({billEnd: this.unixToDate(this.props.payment.current_period_end)})
+      }
+    } else {
+      console.log("NO PAYMENT")
+      if(this.state.created != '') {
+        this.setState({created: '', cancelling: false})
+      }
+      if(this.state.billStart != '') {
+        this.setState({billStart: '', cancelling: false})
+      }
+      if(this.state.billEnd != '') {
+        this.setState({billEnd: '', cancelling: false})
+      }
     }
   }
 
@@ -69,6 +86,7 @@ class Dashboard extends Component {
   }
 
   cancelPlan = () => {
+    this.setState({cancelling: true})
     this.props.dispatch(vmCreating(false))
     this.props.dispatch(cancelPlan())
   }
@@ -105,11 +123,11 @@ class Dashboard extends Component {
       <div style = {{backgroundColor: "white", paddingBottom: 75, minHeight: '100vh', overflowX: 'hidden !important'}}>
         <Header color = "#333333" button = "#5ec3eb"/>
         <div style = {{position: 'absolute', display: 'flex', width: '100vw', overflowX: 'hidden'}}>
-          <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'rgba(216,216,233,.2)', height: '100%', minHeight: '100vh', zIndex: 0}}>
+          <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'rgba(216,216,233,.2)', flex: '0 1 auto', zIndex: 0}}>
             <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>DASHBOARD</div>
-            <div onClick = {() => this.props.dispatch(logout())} style = {{marginBottom: 20, color: '#B9B9B9'}}>Sign Out</div>
+            <div className = "sign-out-button" onClick = {() => this.props.dispatch(logout())}>Sign Out</div>
           </div>
-          <div style = {{paddingTop: 100, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+          <div style = {{paddingTop: 100, paddingLeft: 100, paddingBottom: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
             <div>
               {this.state.month} {this.state.day}, {this.state.year}
             </div>
@@ -183,17 +201,68 @@ class Dashboard extends Component {
             </Row>
             </div>
             }
+            <div style = {{marginTop: 40}}>
+              <div style = {{display: 'block'}}>
+                <div style = {{fontSize: 20, fontWeight: 'bold', marginBottom: 20, display: 'inline'}}>
+                  Downloads
+                </div>
+                <div style = {{width: '100%'}}>
+                  <div style = {{fontSize: 14, backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, padding: 30, marginTop: 30}}>
+                    <Row style = {{width: '100%', marginBottom: 10}}>
+                      <Col sm = {6} xs = {12} style = {{padding: '0px 30px'}}>
+                          <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
+                            <FaWindows style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#666666'}}/> Windows 64-Bit
+                          </div>
+                        <a href = {WindowsBin} download = "Fractal.exe">
+                        <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
+                          <button style = {{background: 'none', border: 'solid 0.5px #0b172b', fontSize: 12, borderRadius: 5, color: '#0b172b', width: 90}}>Download</button>
+                        </div>
+                        </a>
+                      </Col>
+                      <Col sm = {6} xs = {12} style = {{padding: '0px 30px'}}>
+                        <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
+                          <FaApple style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#666666'}}/> macOS
+                        </div>
+                        <a href = {MacBin} download = "Fractal.dmg">
+                        <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
+                          <button style = {{background: 'none', border: 'solid 0.5px #0b172b', fontSize: 12, borderRadius: 5, color: '#0b172b', width: 90}}>Download</button>
+                        </div>
+                        </a>
+                      </Col>
+                    </Row>
+                    <Row style = {{width: '100%', marginBottom: 10}}>
+                      <Col sm = {6} xs = {12} style = {{padding: '0px 30px'}}>
+                        <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
+                          <FaUbuntu style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#666666'}}/> Ubuntu 18.04
+                        </div>
+                        <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
+                          <button disabled = "true" style = {{background: 'none', border: 'solid 0.5px #A9A9A9', fontSize: 12, borderRadius: 5, color: '#A9A9A9', width: 90}}>Coming Soon</button>
+                        </div>
+                      </Col>
+                    </Row>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div style = {{marginTop: 60}}>
               <div style = {{display: 'block'}}>
-                <div style = {{fontSize: 25, fontWeight: 'bold', marginBottom: 20, float: 'left', display: 'inline'}}>
-                  Settings
+                <div style = {{fontSize: 20, fontWeight: 'bold', marginBottom: 20, float: 'left', display: 'inline'}}>
+                  My Info
                 </div>
                 {
                 this.state.created != ''
                 ?
-                <button onClick = {this.cancelPlan} style = {{outline: 'none !important', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '5px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
-                  Cancel Plan
-                </button>
+                (
+                !this.state.cancelling
+                ?
+                  <button onClick = {this.cancelPlan} style = {{outline: 'none !important', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '5px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
+                    Cancel Plan
+                  </button>
+                :
+                  <div style = {{float: 'right', display: 'inline', fontSize: 13}}>
+                    <FontAwesomeIcon icon={faCircleNotch} spin style = {{height: 12, marginRight: 4}}/> Cancelling 
+                  </div>
+                )
                 :
                 <div>
                 </div>

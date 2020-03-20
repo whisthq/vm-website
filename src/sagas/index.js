@@ -67,8 +67,8 @@ function* sendStripeCharge(action) {
    const state = yield select()
    const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/stripe/charge', {
       token: action.token,
-      amount: action.amount,
-      email: state.AccountReducer.user
+      email: state.AccountReducer.user,
+      location: action.location
    });
    if(json) {
      if (json.status === 200) {

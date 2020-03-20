@@ -72,7 +72,7 @@ class Header extends Component {
                 <span style = {{color: "#333333"}}><FaBars/></span>
               </Dropdown.Toggle>
 
-              <Dropdown.Menu style = {{backgroundColor: 'white'}}>
+              <Dropdown.Menu style = {{backgroundColor: 'white', zIndex: 100}}>
                 <Dropdown.Item href="#/action-3">
                   <HashLink className = 'headerlink' to = '/#beta' style = {{color: '#333333'}}>
                     Join Beta

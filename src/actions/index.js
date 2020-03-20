@@ -150,11 +150,12 @@ export function changeStage(stage) {
 	}
 }
 
-export function chargeStripe(token, amount) {
+export function chargeStripe(token, amount, location) {
 	return {
 		type: CHARGE_STRIPE,
 		token,
-		amount
+		amount,
+		location
 	}
 }
 
