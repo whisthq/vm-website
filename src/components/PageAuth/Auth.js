@@ -98,12 +98,20 @@ class Auth extends Component {
       }
     });
   }
+
+  acceptTerms = (event) => {
+    const target = event.target;
+    if(target.checked) {
+      console.log("accepted")
+    } else {
+      console.log("not accepted")
+    }
+  }
+
   componentDidMount() {
     this.setState({'failures': this.props.failed_attempts})
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
-    console.log("params")
-    console.log(this.props.location);
   }
 
   componentDidUpdate(prevProps) {
@@ -257,6 +265,18 @@ class Auth extends Component {
                     }
                   </InputGroup>
                   <Button onClick = {this.handleSignup} style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold'}}>SIGN UP</Button>
+                  <div style = {{marginTop: 25, display: 'flex'}}>
+                    <label className = "termsContainer">
+                      <input
+                        type="checkbox"
+                        onChange={this.acceptTerms} /> 
+                      <span className ="checkmark"></span>
+                    </label>
+
+                    <div style = {{fontSize: 12}}>
+                      I accept the Terms of Service and Privacy Policy
+                    </div>
+                  </div>
                 </TabPanel>
               </Tabs>
             </div>
