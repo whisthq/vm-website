@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'react-bootstrap'
-import { FaBars } from 'react-icons/fa'
+import { FaBars, FaLinkedinIn, FaTwitter } from 'react-icons/fa'
 import '../static/App.css';
 import { HashLink } from 'react-router-hash-link';
 
@@ -31,70 +31,160 @@ class Footer extends Component {
 
   render() {
     return (
-      <div style = {{width: '100%', backgroundColor: '#0b172b', padding: 30, paddingTop: 60, fontSize: 15, borderTop: 'solid 1px white'}}>
+      <div>
+      {
+      this.state.width > 700
+      ?
+      <div style = {{width: '100%', backgroundColor: 'white', padding: 30, paddingTop: 60, fontSize: 15, borderTop: 'solid 1px white'}}>
        <Container>
-{/*        <div style = {{color: 'white', width: '100%'}}>
-          <div style = {{fontSize: 30, fontWeight: 'bold'}}>
-          BEGIN
-          </div>
-          <div style = {{fontSize: 15, marginTop: 20}}>
-          Getting started with Fractal is free!<br/>Unlock your cloud supercomputer below.
-          </div>
-          <HashLink to = "/vm#top">
-            <Button style = {{marginTop: 25, paddingLeft: 40, paddingRight: 40, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #94a8ed', color: '#94a8ed', marginTop: 40}}>Get Started</Button>
-          </HashLink>
-        </div>*/}
-        {
-        this.state.width > 700
-        ?
-        <div style = {{float: 'right'}}>
-          <HashLink to = "/vm#top">
-            <Button style = {{paddingLeft: 40, paddingRight: 40, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #5ec3eb', color: '#5ec3eb'}}>Get Started</Button>
-          </HashLink>
-        </div>
-        :
-        <div style = {{marginBottom: 50}}>
-          <HashLink to = "/vm#top">
-            <Button style = {{paddingLeft: 40, paddingRight: 40, background: 'rgba(0,0,0,0.0)', border: 'solid 1px #5ec3eb', color: '#5ec3eb'}}>Get Started</Button>
-          </HashLink>
-        </div>
-        }
         <div style = {{width: '100%', minHeight: 100}}>
-          <Row style = {{width: 250, color: 'white'}}>
-            <Col xs = {6}>
-              <div style = {{fontWeight: 'bold', marginBottom: 10}}>MENU</div>
-              <div style = {{fontSize: 12}}>
-                <Link to = "/" style = {{textDecoration: 'none'}}>
-                  <div style = {{color: 'white', textDecoration: 'none', marginBottom: 4}}>
-                  Home
+        <Row style = {{float: 'left', width: 400, display: 'inline'}}>
+            <Col xs = {12} style = {{maxWidth: 350}}>
+              <div style = {{fontWeight: 'bold', marginBottom: 10, fontSize: 25}}>Fractal</div>
+              <div style = {{fontSize: 14}}>
+                <div style = {{marginTop: 10, color: '#555555', textDecoration: 'none', marginBottom: 4, lineHeight: 1.7}}>
+                  Fractal streams a powerful computer to any device.
+                </div>
+                <div style = {{display: 'flex', marginTop: 15}}>
+                  <a href = "https://twitter.com/fractalapp" target = "_blank" style = {{textDecoration: 'none'}}>
+                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', borderRadius: 5}}>
+                    <FaLinkedinIn style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
                   </div>
-                </Link>
-                <HashLink to = "/#beta" style = {{textDecoration: 'none'}}>
-                  <div style = {{color: 'white', textDecoration: 'none', marginBottom: 4}}>
-                  Join Beta
+                  </a>
+                  <a href = "https://www.linkedin.com/company/fractalcomputers/about/?viewAsMember=true" target = "_blank" style = {{textDecoration: 'none'}}>
+                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative',marginLeft: 10, borderRadius: 5}}>
+                    <FaTwitter style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
                   </div>
-                </HashLink>
-                <Link to  = "/auth" style = {{textDecoration: 'none'}}>
-                  <div style = {{color: 'white', textDecoration: 'none', marginBottom: 4}}>
-                  My Account
-                  </div>
-                </Link>
+                  </a>
+                </div>
               </div>
             </Col>
-            <Col xs = {6}>
-              <div style = {{fontWeight: 'bold', marginBottom: 10}}>SUPPORT</div>
-              <div style = {{fontSize: 12}}>
-                <div>
-                <a href = "mailto: hello@fractalcomputers.com" style = {{color: 'white', textDecoration: 'none', marginBottom: 4}}>Contact Us</a>
+        </Row>
+        <Row style = {{float: 'right', width: 500, paddingRight: 100}}>
+            <Col xs = {4} style = {{paddingTop: 12}}>
+              <div style = {{fontWeight: 'bold', marginBottom: 15}}>HOME</div>
+              <Link to = "/" style = {{textDecoration: 'none'}}>
+                <div style = {{fontSize: 13}}>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Personal Use</div>
                 </div>
+              </Link>
+              <Link to = "/studios" style = {{textDecoration: 'none'}}>
+                <div style = {{fontSize: 13}}>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Studios</div>
+                </div>
+              </Link>
+              <div style = {{fontSize: 13}}>
+                <div>
+                <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#555555', textDecoration: 'none', marginBottom: 4}}>Contact Us</a>
+                </div>
+              </div>
+            </Col>
+            <Col xs = {4} style = {{paddingTop: 12}}>
+              <div style = {{fontWeight: 'bold', marginBottom: 15}}>LEGAL</div>
+              <Link to = "/" style = {{textDecoration: 'none'}}>
+                <div style = {{fontSize: 13}}>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Terms of Service</div>
+                </div>
+              </Link>
+              <Link to = "/studios" style = {{textDecoration: 'none'}}>
+                <div style = {{fontSize: 13}}>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Privacy Policy</div>
+                </div>
+              </Link>
+            </Col>
+            <Col xs = {4} style = {{paddingTop: 12}}>
+              <div style = {{fontWeight: 'bold', marginBottom: 15}}>CONTACT</div>
+              <div style = {{fontSize: 13}}>
+                <div style = {{color: '#555555', marginBottom: 4}}>support@fractalcomputers.com</div>
+              </div>
+              <div style = {{fontSize: 13}}>
+                <div style = {{color: '#555555', marginBottom: 4}}>sales@fractalcomputers.com</div>
               </div>
             </Col>
           </Row>
         </div>
-        <div style = {{fontSize: 11, marginTop: 50, width: '100%'}}>
-          <p style = {{margin: 0, textAlign: 'left', color: 'white'}}>Copyright &copy; Fractal Computers Inc., All Rights Reserved.</p>
+        <div style = {{width: '100%', marginTop: 100, background: '#EBEBEB', height: 1}}></div>
+        <div style = {{fontSize: 11, marginTop: 20, width: '100%'}}>
+          <p style = {{margin: 0, textAlign: 'left', color: '#555555'}}>Copyright &copy; Fractal Computers Inc., All Rights Reserved.</p>
         </div>
       </Container>
+    </div>
+    :
+      <div style = {{width: '100%', backgroundColor: 'white', padding: 30, paddingTop: 60, fontSize: 15, borderTop: 'solid 1px white'}}>
+       <Container>
+        <div style = {{width: '100%', minHeight: 100}}>
+        <Row style = {{width: 400}}>
+            <Col xs = {12} style = {{maxWidth: 350}}>
+              <div style = {{fontWeight: 'bold', marginBottom: 10, fontSize: 25}}>Fractal</div>
+              <div style = {{fontSize: 14}}>
+                <div style = {{marginTop: 10, color: '#555555', textDecoration: 'none', marginBottom: 4, lineHeight: 1.7}}>
+                  Fractal streams a powerful computer to any device.
+                </div>
+                <div style = {{display: 'flex', marginTop: 15}}>
+                  <a href = "https://twitter.com/fractalapp" target = "_blank" style = {{textDecoration: 'none'}}>
+                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', borderRadius: 5}}>
+                    <FaLinkedinIn style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
+                  </div>
+                  </a>
+                  <a href = "https://www.linkedin.com/company/fractalcomputers/about/?viewAsMember=true" target = "_blank" style = {{textDecoration: 'none'}}>
+                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative',marginLeft: 10, borderRadius: 5}}>
+                    <FaTwitter style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
+                  </div>
+                  </a>
+                </div>
+              </div>
+            </Col>
+        </Row>
+        <Row style= {{marginTop: 20, width: 280}}>
+            <Col xs = {4} style = {{paddingTop: 12}}>
+              <div style = {{fontWeight: 'bold', marginBottom: 15}}>HOME</div>
+              <Link to = "/" style = {{textDecoration: 'none'}}>
+                <div style = {{fontSize: 11}}>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Personal Use</div>
+                </div>
+              </Link>
+              <Link to = "/studios" style = {{textDecoration: 'none'}}>
+                <div style = {{fontSize: 11}}>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Studios</div>
+                </div>
+              </Link>
+              <div style = {{fontSize: 11}}>
+                <div>
+                <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#555555', textDecoration: 'none', marginBottom: 4}}>Contact Us</a>
+                </div>
+              </div>
+            </Col>
+            <Col xs = {4} style = {{paddingTop: 12}}>
+              <div style = {{fontWeight: 'bold', marginBottom: 15}}>LEGAL</div>
+              <Link to = "/" style = {{textDecoration: 'none'}}>
+                <div style = {{fontSize: 11}}>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Terms of Service</div>
+                </div>
+              </Link>
+              <Link to = "/studios" style = {{textDecoration: 'none'}}>
+                <div style = {{fontSize: 11}}>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Privacy Policy</div>
+                </div>
+              </Link>
+            </Col>
+            <Col xs = {4} style = {{paddingTop: 12}}>
+              <div style = {{fontWeight: 'bold', marginBottom: 15}}>CONTACT</div>
+              <div style = {{fontSize: 11}}>
+                <div style = {{color: '#555555', marginBottom: 4}}>support@fractalcomputers.com</div>
+              </div>
+              <div style = {{fontSize: 11}}>
+                <div style = {{color: '#555555', marginBottom: 4}}>sales@fractalcomputers.com</div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+        <div style = {{width: '100%', marginTop: 100, background: '#EBEBEB', height: 1}}></div>
+        <div style = {{fontSize: 11, marginTop: 20, width: '100%'}}>
+          <p style = {{margin: 0, textAlign: 'left', color: '#555555'}}>Copyright &copy; Fractal Computers Inc., All Rights Reserved.</p>
+        </div>
+      </Container>
+    </div>
+    }
     </div>
     )
   }

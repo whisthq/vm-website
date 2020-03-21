@@ -29,6 +29,7 @@ function* sendPreOrder(action) {
 }
 
 function* sendLoginInfo(action) {
+  console.log("LOG IN SAGA")
    const state = yield select()
    const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/account/login', {
       username: action.user,
