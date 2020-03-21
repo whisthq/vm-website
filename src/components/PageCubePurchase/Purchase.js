@@ -76,7 +76,7 @@ class Purchase extends Component {
               <span style = {{position: 'relative', bottom: 2}}>
                 1 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
               </span>
-              <span style = {{fontSize: 22, paddingLeft: 10}}>Do you live in the United States or Canada?</span>
+              <span style = {{fontSize: 22, paddingLeft: 10}}>Do you live in the United States?</span>
               <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
                 Currently, Fractal only has servers in certain geographic locations.
               </div>

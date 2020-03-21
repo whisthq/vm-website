@@ -30,6 +30,7 @@ import Footer from './shared_components/footer'
 import Purchase from './components/PageCubePurchase/Purchase'
 import Auth from './components/PageAuth/Auth'
 import NewHome from './components/PageHomeNew/NewHome'
+import HomeStudios from './components/PageHomeStudios/HomeStudios'
 import Dashboard from './components/PageDashboard/Dashboard'
 import Reset from './components/PageReset/Reset'
 
@@ -65,6 +66,7 @@ ReactDOM.render(
               <Route exact path="/auth" component={Auth} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/home" component={NewHome} />
+              <Route exact path="/studios" component = {HomeStudios} />
               <Route exact path="/reset" component={Reset} />
           </PersistGate>
           </Provider>

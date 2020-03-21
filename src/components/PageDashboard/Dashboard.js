@@ -213,7 +213,7 @@ class Dashboard extends Component {
                           </div>
                         <a href = {WindowsBin} download = "Fractal.exe">
                         <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
-                          <button style = {{background: 'none', border: 'solid 0.5px #5ec3eb', fontSize: 12, borderRadius: 5, color: '#5ec3eb', width: 90}}>Download</button>
+                          <button style = {{background: 'rgba(0,0,0,0.1)', border: 'solid 1px #555555', fontSize: 12, borderRadius: 5, color: '#333333', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
                         </div>
                         </a>
                       </Col>
@@ -223,7 +223,7 @@ class Dashboard extends Component {
                         </div>
                         <a href = {MacBin} download = "Fractal.dmg">
                         <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
-                          <button style = {{background: 'none', border: 'solid 0.5px #5ec3eb', fontSize: 12, borderRadius: 5, color: '#5ec3eb', width: 90}}>Download</button>
+                          <button style = {{background: 'rgba(0,0,0,0.1)', border: 'solid 1px #555555', fontSize: 12, borderRadius: 5, color: '#333333', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
                         </div>
                         </a>
                       </Col>
@@ -232,7 +232,7 @@ class Dashboard extends Component {
                           <FaUbuntu style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#666666'}}/> Ubuntu 18.04
                         </div>
                         <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
-                          <button disabled = "true" style = {{background: 'none', border: 'solid 0.5px #A9A9A9', fontSize: 12, borderRadius: 5, color: '#A9A9A9', width: 90}}>Coming Soon</button>
+                          <button disabled = "true" style = {{background: 'none', border: 'solid 0.5px #A9A9A9', fontSize: 12, borderRadius: 5, color: '#A9A9A9', width: 90, padding: '5px 5px'}}>Coming Soon</button>
                         </div>
                       </Col>
                     </Row>
