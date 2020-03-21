@@ -120,7 +120,7 @@ class Dashboard extends Component {
       ?
       <Redirect to = "/auth"/>
       :
-      <div style = {{backgroundColor: "white", paddingBottom: 75, minHeight: '100vh', overflowX: 'hidden !important'}}>
+      <div style = {{backgroundColor: "white", minHeight: '100vh', overflowX: 'hidden !important'}}>
         <Header color = "#333333" button = "#5ec3eb"/>
         <div style = {{display: 'flex', width: '100vw', overflowX: 'hidden'}}>
           <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'rgba(216,216,233,.2)', flex: '0 1 auto', zIndex: 0}}>
@@ -201,37 +201,35 @@ class Dashboard extends Component {
             </Row>
             </div>
             }
-            <div style = {{marginTop: 40}}>
-              <div style = {{display: 'block'}}>
+            <Row style = {{marginTop: 40}}>
+              <Col sm = {6} xs = {12}>
                 <div style = {{fontSize: 20, fontWeight: 'bold', marginBottom: 20, display: 'inline'}}>
                   Downloads
                 </div>
                 <div style = {{width: '100%'}}>
-                  <div style = {{fontSize: 14, backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, padding: 30, marginTop: 30}}>
-                    <Row style = {{width: '100%', marginBottom: 10}}>
-                      <Col sm = {6} xs = {12} style = {{padding: '0px 30px'}}>
+                  <div style = {{fontSize: 14, backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, padding: '30px 10px', marginTop: 35, minHeight: 200}}>
+                    <Row style = {{width: '100%', margin: 0}}>
+                      <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                           <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
                             <FaWindows style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#666666'}}/> Windows 64-Bit
                           </div>
                         <a href = {WindowsBin} download = "Fractal.exe">
                         <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
-                          <button style = {{background: 'none', border: 'solid 0.5px #0b172b', fontSize: 12, borderRadius: 5, color: '#0b172b', width: 90}}>Download</button>
+                          <button style = {{background: 'none', border: 'solid 0.5px #5ec3eb', fontSize: 12, borderRadius: 5, color: '#5ec3eb', width: 90}}>Download</button>
                         </div>
                         </a>
                       </Col>
-                      <Col sm = {6} xs = {12} style = {{padding: '0px 30px'}}>
+                      <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                         <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
                           <FaApple style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#666666'}}/> macOS
                         </div>
                         <a href = {MacBin} download = "Fractal.dmg">
                         <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
-                          <button style = {{background: 'none', border: 'solid 0.5px #0b172b', fontSize: 12, borderRadius: 5, color: '#0b172b', width: 90}}>Download</button>
+                          <button style = {{background: 'none', border: 'solid 0.5px #5ec3eb', fontSize: 12, borderRadius: 5, color: '#5ec3eb', width: 90}}>Download</button>
                         </div>
                         </a>
                       </Col>
-                    </Row>
-                    <Row style = {{width: '100%', marginBottom: 10}}>
-                      <Col sm = {6} xs = {12} style = {{padding: '0px 30px'}}>
+                      <Col xs = {12} style = {{padding: '0px 20px'}}>
                         <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
                           <FaUbuntu style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#666666'}}/> Ubuntu 18.04
                         </div>
@@ -242,10 +240,9 @@ class Dashboard extends Component {
                     </Row>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div style = {{marginTop: 60}}>
-              <div style = {{display: 'block'}}>
+              </Col>
+              <Col sm = {6} xs = {12}>
+                <div>
                 <div style = {{fontSize: 20, fontWeight: 'bold', marginBottom: 20, float: 'left', display: 'inline'}}>
                   My Info
                 </div>
@@ -268,9 +265,9 @@ class Dashboard extends Component {
                 </div>
                 }
               </div><br/>
-              <div style = {{display: 'block', width: 'calc(100vw - 500px)', fontSize: 14, background: 'white', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, marginTop: 40, padding: 30}}>
-                <Row style = {{width: '100%', marginBottom: 10}}>
-                  <Col sm = {6} xs = {12} style = {{padding: '0px 30px'}}>
+              <div style = {{display: 'block', fontSize: 13, background: 'white', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, marginTop: 40, padding: '30px 10px', minHeight: 200}}>
+                <Row style = {{width: '100%', margin: 0, marginBottom: 10}}>
+                  <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                     <div style = {{float: 'left', fontWeight: 'bold', color: '#555555', display: 'inline'}}>
                       <FaUser style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#DDDDDD'}}/> Username
                     </div>
@@ -278,7 +275,7 @@ class Dashboard extends Component {
                       {this.props.user}
                     </div>
                   </Col>
-                  <Col sm = {6} xs = {12} style = {{padding: '0px 30px'}}>
+                  <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                     <div style = {{float: 'left', display: 'inline', fontWeight: 'bold', color: '#555555'}}>
                       <FaFastForward style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#DDDDDD'}}/> Current Period Start
                     </div>
@@ -293,9 +290,7 @@ class Dashboard extends Component {
                     </div>
                     }
                   </Col>
-                </Row>
-                <Row style = {{width: '100%'}}>
-                  <Col sm = {6} xs = {12} style = {{padding: '0px 30px'}}>
+                  <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                     <div style = {{float: 'left', fontWeight: 'bold', color: '#555555', display: 'inline'}}>
                       <FaPlay style = {{height: 9, position: 'relative', bottom: 1, paddingRight: 5, color: '#DDDDDD'}}/> Plan Created
                     </div>
@@ -310,7 +305,7 @@ class Dashboard extends Component {
                     </div>
                     }
                   </Col>
-                  <Col sm = {6} xs = {12} style = {{padding: '0px 30px'}}>
+                  <Col xs = {12} style = {{padding: '0px 20px'}}>
                     <div style = {{float: 'left', display: 'inline', fontWeight: 'bold', color: '#555555'}}>
                       <FaPause style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#DDDDDD'}}/> Current Period End
                     </div>
@@ -327,7 +322,8 @@ class Dashboard extends Component {
                   </Col>
                 </Row>
               </div>
-            </div>
+              </Col>
+            </Row>
           </div>
         </div>
       </div>

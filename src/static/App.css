@@ -271,3 +271,7 @@ input[type=text], input {
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+.typeform-up:hover {
+  cursor: pointer;
+}

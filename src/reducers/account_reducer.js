@@ -1,6 +1,8 @@
 import * as AccountAction from '../actions/index'
 
-const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, stripeToken: '', type: '', id: '', vm_created: false, is_creating: false, progress: 1, vm_credentials: [], failed_attempts: 0, forgot_password: 0, token_status: 'invalid', has_vm: false, payment: {}}
+const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, stripeToken: '', type: '', id: '', vm_created: false, is_creating: false, progress: 1, 
+                 vm_credentials: [], failed_login_attempts: 0, forgot_password: 0, token_status: 'invalid', has_vm: false, 
+                 payment: {}, signupStatus: 200, failed_signup_attempts: 0, stripeStatus: 200, failed_payment_attempts: 0}
 
 export default function(state = DEFAULT, action) {
   switch (action.type) {
@@ -24,7 +26,7 @@ export default function(state = DEFAULT, action) {
     case AccountAction.LOGIN_FAILURE:
       return {
         ...state,
-        failed_attempts: state.failed_attempts + 1
+        failed_login_attempts: state.failed_login_attempts + 1
       }
     case AccountAction.SIGNUP_SUCCESS:
       return {
@@ -104,6 +106,18 @@ export default function(state = DEFAULT, action) {
       return {
         ...state,
         payment: action.payload
+      }
+    case AccountAction.SIGNUP_FAILURE:
+      return {
+        ...state,
+        signupStatus: action.status,
+        failed_signup_attempts: state.failed_signup_attempts + 1
+      }
+    case AccountAction.STRIPE_FAILURE:
+      return {
+        ...state,
+        stripeStatus: action.status,
+        failed_payment_attempts: state.failed_payment_attempts + 1
       }
     default:
       return state

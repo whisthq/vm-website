@@ -95,7 +95,7 @@ class Purchase extends Component {
               </div>
               <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
                 <Link to = "/dashboard">
-                <div style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
+                <div className = "typeform-up" style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
                   <FaAngleUp style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
                 </div>
                 </Link>
@@ -118,12 +118,10 @@ class Purchase extends Component {
             <Button style = {{display: 'inline', marginTop: 50, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.4)'}}>Join Wait List</Button>
           </HashLink>
           <div style = {{display: 'inline', fontSize: 12, marginTop: 40, color: '#333333', marginLeft: 25, position: 'relative', top: 24}}>
-              press <strong>Enter</strong>
-              <FaArrowRight style = {{height: 9, position: 'relative', bottom: 1, left: 4}}/>
           </div>
           <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
             <div onClick = {this.goBack} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
-              <FaAngleUp style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
+              <FaAngleUp className = "typeform-up" style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
             </div>
             <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
               <FaAngleDown style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b', opacity: 0.2}}/>
@@ -296,7 +294,7 @@ class Purchase extends Component {
               </div>
               <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
                 <div onClick = {this.goBack} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
-                  <FaAngleUp style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
+                  <FaAngleUp className = "typeform-up" style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
                 </div>
                 <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
                   <FaAngleDown style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b', opacity: 0.2}}/>
@@ -327,7 +325,7 @@ class Purchase extends Component {
               </div>
               <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
                 <div onClick = {this.goBack} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
-                  <FaAngleUp style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
+                  <FaAngleUp className = "typeform-up" style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
                 </div>
                 <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
                   <FaAngleDown style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b', opacity: 0.2}}/>

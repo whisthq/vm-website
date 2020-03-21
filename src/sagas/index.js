@@ -58,6 +58,8 @@ function* sendSignupInfo(action) {
        if(!action.create) {
         history.push('/dashboard')
        }
+     } else {
+       yield put(FormAction.signupFailure(json.status));
      }
   }
 }
@@ -70,10 +72,14 @@ function* sendStripeCharge(action) {
       email: state.AccountReducer.user,
       location: action.location
    });
+   console.log("STRIPE CHARGE")
+   console.log(json)
    if(json) {
      if (json.status === 200) {
       history.push('/dashboard');
        yield put(FormAction.vmCreating(true))
+     } else {
+      yield put(FormAction.stripeFailure(json.status))
      }
   }
 }

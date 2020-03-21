@@ -12,7 +12,7 @@ class CheckoutForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      errorMessage: '', processing: false
+      errorMessage: '', processing: false, failed_payment_attempt: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -24,13 +24,27 @@ class CheckoutForm extends Component {
   };
 
   async handleSubmit(evt) {
-    this.setState({processing: true})
+    this.setState({processing: true, failed_payment_attempt: false, errorMessage: ''})
 
     evt.preventDefault();
     let {token} = await this.props.stripe.createToken();
-    console.log(token.id)
-    this.props.dispatch(chargeStripe(token.id,  3500, this.props.location))
+    if(token) {
+      if(token.id) {
+        this.props.dispatch(chargeStripe(token.id,  3500, this.props.location))
+      } else {
+        this.setState({processing: false, errorMessage: 'Your card info was declined. Please try again.'})
+      }
+    } else {
+      this.setState({processing: false, errorMessage: 'Your card info was declined. Please try again.'})
+    }
   };
+
+  componentDidUpdate(prevProps) {
+    console.log(this.props)
+    if(prevProps.failed_payment_attempts != this.props.failed_payment_attempts && !this.state.failed_payment_attempt) {
+      this.setState({failed_payment_attempt: true, errorMessage: 'Your card info was declined. Please try again.', processing: false})
+    }
+  }
 
   render() {
     const style = {
@@ -60,11 +74,22 @@ class CheckoutForm extends Component {
             PAY
           </Button>
           :
-          <Button style = {{width: '100%', maxWidth: 600, background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 0, marginTop: 10, fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', paddingTop: 7, paddingBottom: 7}}>
+          <Button disabled = "true" style = {{width: '100%', maxWidth: 600, background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 0, marginTop: 10, fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', paddingTop: 7, paddingBottom: 7}}>
             <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 12, marginRight: 5, fontSize: 12}}/> Processing
           </Button>
           }
-          <div style = {{fontSize: 12, marginTop: 45, display: 'block'}}>
+          <div style = {{marginTop: 15}}>
+          {
+          this.state.errorMessage != ''
+          ?
+          <div style = {{fontSize: 12, color: '#e34d4d'}}>
+            {this.state.errorMessage}
+          </div>
+          :
+          <div style = {{height: 20}}></div>
+          }
+          </div>
+          <div style = {{fontSize: 12, marginTop: 50, display: 'block'}}>
             <div style = {{display: 'inline', float: 'left'}}>Due Today</div>
             <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>$0.00</div>
           </div><br/>
@@ -84,7 +109,9 @@ class CheckoutForm extends Component {
 
 function mapStateToProps(state) {
   return { 
-    stage: state.AccountReducer.stage}
+    stripeStatus: state.AccountReducer.stripeStatus,
+    failed_payment_attempts: state.AccountReducer.failed_payment_attempts
+  }
 }
 
 

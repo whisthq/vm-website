@@ -45,6 +45,8 @@ export const FORGOT_EMAIL = "FORGOT_EMAIL"
 export const RETRIEVE_CUSTOMER = "RETRIEVE_CUSTOMER"
 export const STORE_PAYMENT = "STORE_PAYMENT"
 export const CANCEL_PLAN = "CANCEL_PLAN"
+export const SIGNUP_FAILURE = "SIGNUP_FAILURE"
+export const STRIPE_FAILURE = "STRIPE_FAILURE"
 
 export function sendFormData(name, email, cubeType) {
 	return {
@@ -275,5 +277,19 @@ export function storePayment(payload) {
 export function cancelPlan() {
 	return {
 		type: CANCEL_PLAN
+	}
+}
+
+export function signupFailure(status) {
+	return {
+		type: SIGNUP_FAILURE,
+		status
+	}
+}
+
+export function stripeFailure(status) {
+	return {
+		type: STRIPE_FAILURE,
+		status
 	}
 }
