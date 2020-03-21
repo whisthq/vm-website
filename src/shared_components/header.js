@@ -47,8 +47,11 @@ class Header extends Component {
             </Link> 
           </div>
           <div style = {{width: '60%', textAlign: 'right'}}>
-              <HashLink className = 'headerlink' to = '/studios' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
-                <span style = {this.props.linkStyle}>For Studios</span>
+              <HashLink className = 'headerlink' to = '/' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
+                <span style = {this.props.linkStyle}>Personal Use</span>
+              </HashLink>
+              <HashLink className = 'headerlink' to = '/studios' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
+                <span style = {this.props.linkStyle}>Studios</span>
               </HashLink>
               <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
                 <span style = {this.props.linkStyle}>Contact Us</span>
@@ -74,8 +77,13 @@ class Header extends Component {
 
               <Dropdown.Menu style = {{backgroundColor: 'white', zIndex: 100}}>
                 <Dropdown.Item href="#/action-3">
+                  <HashLink className = 'headerlink' to = '/' style = {{color: '#333333'}}>
+                    Personal Use
+                  </HashLink>
+                </Dropdown.Item>
+                <Dropdown.Item href="#/action-3">
                   <HashLink className = 'headerlink' to = '/studios' style = {{color: '#333333'}}>
-                    For Studios
+                    Studios
                   </HashLink>
                 </Dropdown.Item>
                 <Dropdown.Item>
