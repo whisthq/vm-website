@@ -6,21 +6,16 @@ import Popover from 'react-bootstrap/Popover'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button'
-import '../../static/App.css';
-import WhiteCube from '../../assets/whitecube.svg'
-import BaseSpec from '../../assets/basespec.svg'
-import EnhancedSpec from '../../assets/enhancedspec.svg'
-import PowerSpec from '../../assets/powerspec.svg'
-import SpecBox from './containers/specBox.js'
-import { FaArrowRight } from 'react-icons/fa'
-import Header from '../../shared_components/header.js'
-import Autofill from '../../shared_components/autofill.js'
-import TypeformButton from '../../shared_components/typeformbutton.js'
-import CheckoutForm from '../../shared_components/checkoutform.js'
 import { FaTrashAlt, FaAngleUp, FaAngleDown } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import { HashLink } from 'react-router-hash-link';
+import { FaArrowRight } from 'react-icons/fa'
+
+import Header from '../../shared_components/header.js'
+import TypeformButton from '../../shared_components/typeformbutton.js'
+import CheckoutForm from '../../shared_components/checkoutform.js'
+import '../../static/App.css';
 
 class Purchase extends Component {
   constructor(props) {

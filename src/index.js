@@ -11,18 +11,6 @@ import { connectRouter, routerMiddleware } from 'connected-react-router'
 import ReduxPromise from 'redux-promise'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import App from './components/PageHome/App';
-import Purchase from './components/PageCubePurchase/Purchase'
-import Auth from './components/PageAuth/Auth'
-import Story from './components/PageStory/Story'
-import VM from './components/PageVirtualMachine/VM'
-import NewHome from './components/PageHomeNew/NewHome'
-import Dashboard from './components/PageDashboard/Dashboard'
-import HowItWorks from './components/PageHowItWorks/HowItWorks'
-import NotFound from './components/PageNotFound/NotFound'
-import Checkout from './components/PageCheckout/Checkout'
-import CheckoutMessage from './components/PageCheckoutMessage/CheckoutMessage'
-import Reset from './components/PageReset/Reset'
 import rootSaga from './sagas';
 import { Route, Switch, Link, HashRouter } from 'react-router-dom';
 import { Router } from 'react-router';
@@ -38,6 +26,12 @@ import Col from 'react-bootstrap/Col'
 import { HashLink } from 'react-router-hash-link'
 import './static/App.css';
 import Footer from './shared_components/footer'
+
+import Purchase from './components/PageCubePurchase/Purchase'
+import Auth from './components/PageAuth/Auth'
+import NewHome from './components/PageHomeNew/NewHome'
+import Dashboard from './components/PageDashboard/Dashboard'
+import Reset from './components/PageReset/Reset'
 
 const persistConfig = {
   key: 'rootKey',
@@ -69,10 +63,6 @@ ReactDOM.render(
               <Route exact path="/" component={NewHome} />
               <Route exact path="/purchase" component={Purchase}  />
               <Route exact path="/auth" component={Auth} />
-              <Route exact path="/story" component={Story} />
-              <Route exact path="/checkout" component={Checkout} />
-              <Route exact path="/checkedout" component={CheckoutMessage} />
-              <Route exact path="/vm" component={VM}  />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/home" component={NewHome} />
               <Route exact path="/reset" component={Reset} />

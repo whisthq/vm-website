@@ -57,7 +57,6 @@ class Dashboard extends Component {
   componentDidUpdate(prevProps) {
     console.log(this.props.payment)
     if(Object.keys(this.props.payment).length > 0) {
-      console.log("PAYMENT FOUND")
       if(this.state.created === '' && this.props.payment.created) {
         this.setState({created: this.unixToDate(this.props.payment.created)})
       }
@@ -68,7 +67,6 @@ class Dashboard extends Component {
         this.setState({billEnd: this.unixToDate(this.props.payment.current_period_end)})
       }
     } else {
-      console.log("NO PAYMENT")
       if(this.state.created != '') {
         this.setState({created: '', cancelling: false})
       }
