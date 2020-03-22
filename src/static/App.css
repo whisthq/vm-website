@@ -275,3 +275,7 @@ input[type=text], input {
 .typeform-up:hover {
   cursor: pointer;
 }
+
+.eye-button:hover {
+  cursor: pointer;
+}

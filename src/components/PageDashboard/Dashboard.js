@@ -13,7 +13,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { logout, getVMStatus, retrieveCustomer, vmCreating, cancelPlan, fetchVMs } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
 import { FaExclamationTriangle } from 'react-icons/fa'
-import { FaCheckCircle, FaUser, FaLock, FaDollarSign, FaArrowRight, FaPlus, FaPlay, FaFastForward, FaPause, FaWindows, FaApple, FaUbuntu } from 'react-icons/fa'
+import { FaCircle, FaEye, FaEyeSlash, FaCheckCircle, FaUser, FaLock, FaDollarSign, FaArrowRight, FaPlus, FaPlay, FaFastForward, FaPause, FaWindows, FaApple, FaUbuntu } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 
@@ -31,7 +31,8 @@ import MacBin from '../../bin/Fractal.dmg'
 class Dashboard extends Component {
   constructor(props) {
     super(props)
-    this.state = {width: 0, height: 0, modalShow: false, showPopup: false, day: 0, month: 0, year: 0, created: '', billStart: '', billEnd: '', cancelling: false}
+    this.state = {width: 0, height: 0, modalShow: false, showPopup: false, day: 0, month: 0, year: 0, 
+      created: '', billStart: '', billEnd: '', cancelling: false, hidePassword: true}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 
@@ -104,6 +105,10 @@ class Dashboard extends Component {
     const month = this.monthConvert(dateArr[0] - 1)
     var finalDate = month + " " + dateArr[1].toString() + ", " + dateArr[2].toString()
     return finalDate
+  }
+
+  showPassword = (show) => {
+    this.setState({hidePassword: !show})
   }
 
   render() {
@@ -205,7 +210,7 @@ class Dashboard extends Component {
                   Downloads
                 </div>
                 <div style = {{width: '100%'}}>
-                  <div style = {{fontSize: 14, backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, padding: '30px 10px', marginTop: 35, minHeight: 200}}>
+                  <div style = {{fontSize: 14, backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, padding: '30px 10px', marginTop: 35, minHeight: 225}}>
                     <Row style = {{width: '100%', margin: 0}}>
                       <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                           <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
@@ -263,7 +268,7 @@ class Dashboard extends Component {
                 </div>
                 }
               </div><br/>
-              <div style = {{display: 'block', fontSize: 13, background: 'white', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, marginTop: 40, padding: '30px 10px', minHeight: 200}}>
+              <div style = {{display: 'block', fontSize: 13, background: 'white', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, marginTop: 40, padding: '30px 10px', minHeight: 225}}>
                 <Row style = {{width: '100%', margin: 0, marginBottom: 10}}>
                   <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                     <div style = {{float: 'left', fontWeight: 'bold', color: '#555555', display: 'inline'}}>
@@ -272,6 +277,31 @@ class Dashboard extends Component {
                     <div style = {{float: 'right', display: 'inline', color: '#555555'}}>
                       {this.props.user}
                     </div>
+                  </Col>
+                  <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
+                    <div style = {{float: 'left', fontWeight: 'bold', color: '#555555', display: 'inline'}}>
+                      <FaLock style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#DDDDDD'}}/> Cloud PC Password
+                    </div>
+                    {
+                    this.state.hidePassword
+                    ?
+                    <div style = {{float: 'right', display: 'flex', color: '#555555'}}>
+                      <div style = {{width: 6, height: 6, background: '#555555', borderRadius: 3, position: 'relative', top: 7, marginRight: 2}}></div>
+                      <div style = {{width: 6, height: 6, background: '#555555', borderRadius: 3, position: 'relative', top: 7, marginRight: 2}}></div>
+                      <div style = {{width: 6, height: 6, background: '#555555', borderRadius: 3, position: 'relative', top: 7, marginRight: 2}}></div>
+                      <div style = {{width: 6, height: 6, background: '#555555', borderRadius: 3, position: 'relative', top: 7, marginRight: 2}}></div>
+                      <div style = {{width: 6, height: 6, background: '#555555', borderRadius: 3, position: 'relative', top: 7, marginRight: 2}}></div>
+                      <div style = {{width: 6, height: 6, background: '#555555', borderRadius: 3, position: 'relative', top: 7, marginRight: 2}}></div>
+                      <div style = {{width: 6, height: 6, background: '#555555', borderRadius: 3, position: 'relative', top: 7, marginRight: 2}}></div>
+                      <div style = {{width: 6, height: 6, background: '#555555', borderRadius: 3, position: 'relative', top: 7, marginRight: 2}}></div>
+                      <FaEye className = "eye-button" onClick = {() => this.showPassword(true)} style = {{color: '#999999', marginLeft: 10, position: 'relative', top: 3}}/>
+                    </div>
+                    :
+                    <div style = {{float: 'right', display: 'flex', color: '#555555'}}>
+                      {this.props.vms[0].vm_password}
+                      <FaEyeSlash className = "eye-button" onClick = {() => this.showPassword(false)} style = {{color: '#999999', marginLeft: 10, position: 'relative', top: 3}}/>
+                    </div>
+                    }
                   </Col>
                   <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                     <div style = {{float: 'left', display: 'inline', fontWeight: 'bold', color: '#555555'}}>
@@ -336,9 +366,8 @@ function mapStateToProps(state) {
   return { 
     loggedIn: state.AccountReducer.loggedIn,
     user: state.AccountReducer.user,
-    vms: typeof state.AccountReducer.vm_credentials == "undefined" ? [] : state.AccountReducer.vm_credentials,
+    vms: typeof state.AccountReducer.vm_credentials === undefined ? [] : state.AccountReducer.vm_credentials,
     is_creating: state.AccountReducer.is_creating,
-    percentage: typeof state.AccountReducer.progress == "undefined" ? 1 : state.AccountReducer.progress,
     id: state.AccountReducer.id,
     payment: state.AccountReducer.payment
   }
