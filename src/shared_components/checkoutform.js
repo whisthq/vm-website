@@ -53,7 +53,7 @@ class CheckoutForm extends Component {
         fontSmoothing: "antialiased",
         fontSize: "16px",
         "::placeholder": {
-          color: "#888888"
+          color: "#999999"
         }
       },
       invalid: {

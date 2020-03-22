@@ -33,6 +33,8 @@ import NewHome from './components/PageHomeNew/NewHome'
 import HomeStudios from './components/PageHomeStudios/HomeStudios'
 import Dashboard from './components/PageDashboard/Dashboard'
 import Reset from './components/PageReset/Reset'
+import Privacy from './components/PageLegal/Privacy'
+import TermsOfService from './components/PageLegal/TermsOfService'
 
 const persistConfig = {
   key: 'rootKey',
@@ -68,6 +70,8 @@ ReactDOM.render(
               <Route exact path="/home" component={NewHome} />
               <Route exact path="/studios" component = {HomeStudios} />
               <Route exact path="/reset" component={Reset} />
+              <Route exact path="/privacy" component={Privacy} />
+              <Route exact path="/termsofservice" component={TermsOfService} />
           </PersistGate>
           </Provider>
       </Router>,

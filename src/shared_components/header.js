@@ -46,6 +46,9 @@ class Header extends Component {
               </span>
             </Link> 
           </div>
+          {
+          this.props.homepage
+          ?
           <div style = {{width: '60%', textAlign: 'right'}}>
               <HashLink className = 'headerlink' to = '/' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
                 <span style = {this.props.linkStyle}>Personal Use</span>
@@ -60,6 +63,10 @@ class Header extends Component {
                 <Button style = {{marginLeft: 35, color: `${ this.props.button }`, border: 'solid 1px #5ec3eb', borderColor: `${ this.props.button }`, fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,background: "rgba(0, 0,0,0.0)"}}>My Account</Button>
               </Link>
           </div>
+          :
+          <div>
+          </div>
+          }
         </div>
         </div>
         :

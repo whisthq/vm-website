@@ -79,7 +79,7 @@ class PageHome extends Component {
     }
     return (
       <div className='App' style = {{backgroundColor: '#0b172b'}}>
-        <Header color = "white" button = "#5ec3eb"/>
+        <Header color = "white" button = "#5ec3eb" homepage/>
         <ReactTypeformEmbed
           popup
           autoOpen={false}

@@ -121,11 +121,11 @@ class Dashboard extends Component {
       <div style = {{backgroundColor: "white", minHeight: '100vh', overflowX: 'hidden !important'}}>
         <Header color = "#333333" button = "#5ec3eb"/>
         <div style = {{display: 'flex', width: '100vw', overflowX: 'hidden'}}>
-          <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'rgba(216,216,233,.2)', flex: '0 1 auto', zIndex: 0}}>
+          <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'rgba(216,216,233,.2)', flex: '0 1 auto', zIndex: 0, position: 'sticky'}}>
             <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>DASHBOARD</div>
             <div className = "sign-out-button" onClick = {() => this.props.dispatch(logout())}>Sign Out</div>
           </div>
-          <div style = {{paddingTop: 100, paddingLeft: 100, paddingBottom: 100, width: 'calc(100% - 400px)'}}>
+          <div style = {{paddingTop: 60, paddingLeft: 100, paddingBottom: 100, width: 'calc(100% - 400px)'}}>
             <div>
               {this.state.month} {this.state.day}, {this.state.year}
             </div>

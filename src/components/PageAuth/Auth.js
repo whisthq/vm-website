@@ -15,6 +15,7 @@ import { Redirect } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 import "react-tabs/style/react-tabs.css";
 import '../../static/App.css';
@@ -159,7 +160,7 @@ class Auth extends Component {
         <Redirect to = "/dashboard"/>
         :
         <div>
-        <Header  color = "#333333" button = "#5ec3eb"/>
+        <Header  color = "#333333" button = "#5ec3eb" homepage/>
         <div style = {{minHeight: '100vh', paddingTop: 90, backgroundColor: 'white'}}>
             <div style = {{backgroundColor: 'rgba(0,0,0,0.0)', borderRadius: 2, border: 'solid 1px white', padding: '40px 40px 60px 40px', maxWidth: 425, marginBottom: 80, margin: 'auto'}}>
               <Tabs>
@@ -326,7 +327,12 @@ class Auth extends Component {
                     </label>
 
                     <div style = {{fontSize: 12}}>
-                      I accept the Terms of Service and Privacy Policy
+                      I accept the&nbsp; 
+                      <Link to = "/termsofservice" style = {{textDecoration: 'none', color: '#5ec3eb'}}>
+                        Terms of Service&nbsp;
+                      </Link> 
+                      and&nbsp;
+                      <Link to = "/privacy" style = {{textDecoration: 'none', color: '#5ec3eb'}}>Privacy Policy</Link> 
                     </div>
                   </div>
                 </TabPanel>

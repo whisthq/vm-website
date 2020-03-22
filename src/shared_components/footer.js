@@ -81,12 +81,12 @@ class Footer extends Component {
             </Col>
             <Col xs = {4} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>LEGAL</div>
-              <Link to = "/" style = {{textDecoration: 'none'}}>
+              <Link to = "/termsofservice" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 13}}>
                   <div style = {{color: '#555555', marginBottom: 4}}>Terms of Service</div>
                 </div>
               </Link>
-              <Link to = "/studios" style = {{textDecoration: 'none'}}>
+              <Link to = "/privacy" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 13}}>
                   <div style = {{color: '#555555', marginBottom: 4}}>Privacy Policy</div>
                 </div>
@@ -156,12 +156,12 @@ class Footer extends Component {
             </Col>
             <Col xs = {4} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>LEGAL</div>
-              <Link to = "/" style = {{textDecoration: 'none'}}>
+              <Link to = "/termsofservice" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 11}}>
                   <div style = {{color: '#555555', marginBottom: 4}}>Terms of Service</div>
                 </div>
               </Link>
-              <Link to = "/studios" style = {{textDecoration: 'none'}}>
+              <Link to = "/privacy" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 11}}>
                   <div style = {{color: '#555555', marginBottom: 4}}>Privacy Policy</div>
                 </div>

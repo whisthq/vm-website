@@ -69,7 +69,7 @@ class PageHome extends Component {
     }
     return (
       <div className='App' style = {{backgroundColor: '#0b172b'}}>
-        <Header color = "white" button = "#5ec3eb"/>
+        <Header color = "white" button = "#5ec3eb" homepage/>
         <ReactTypeformEmbed
           popup
           autoOpen={false}
@@ -326,7 +326,7 @@ class PageHome extends Component {
         </div>
         <div style = {{backgroundColor: "#0b172b", paddingLeft: 40, paddingRight: 40}} id = "beta">
           <Container style = {{paddingTop: 100, paddingBottom: 150}}>
-            <div style = {{fontWeight: 'bold', fontSize: 35, color: "white", textAlign: 'center'}}>Does Fractal sound <span className = "blue-gradient">useful?</span></div>
+            <div style = {{fontWeight: 'bold', fontSize: 35, color: "white", textAlign: 'center'}}><span className = "blue-gradient">Interested?</span></div>
             <div style = {{margin: 'auto', maxWidth: 750}}>
               <p style = {{textAlign: 'center', marginTop: 20, color: '#D6D6D6', fontSize: 18}}>Fill out your info below, and one of our engineers will set you up with a free trial within 24 hours.</p>
             </div>
