@@ -283,6 +283,9 @@ class Dashboard extends Component {
                       <FaLock style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#DDDDDD'}}/> Cloud PC Password
                     </div>
                     {
+                    this.props.vms && this.props.vms.length > 0
+                    ?
+                    (
                     this.state.hidePassword
                     ?
                     <div style = {{float: 'right', display: 'flex', color: '#555555'}}>
@@ -301,7 +304,11 @@ class Dashboard extends Component {
                       {this.props.vms[0].vm_password}
                       <FaEyeSlash className = "eye-button" onClick = {() => this.showPassword(false)} style = {{color: '#999999', marginLeft: 10, position: 'relative', top: 3}}/>
                     </div>
-                    }
+                    )
+                    :
+                    <div style = {{float: 'right', display: 'inline', background: '#EBEBEB', width: 100, height: 6, borderRadius: 3, position: 'relative', top: 8}}>
+                    </div>
+                    } 
                   </Col>
                   <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                     <div style = {{float: 'left', display: 'inline', fontWeight: 'bold', color: '#555555'}}>
