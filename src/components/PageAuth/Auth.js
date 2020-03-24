@@ -31,7 +31,6 @@ class Auth extends Component {
   }
 
   handleLogin = (evt) => {
-    console.log("LOG IN HANDLE")
     this.setState({processing: true, failed_login_attempt: false})
     this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin, false));
   }
