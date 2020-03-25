@@ -29,7 +29,6 @@ function* sendPreOrder(action) {
 }
 
 function* sendLoginInfo(action) {
-  console.log("LOG IN SAGA")
    const state = yield select()
    const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/account/login', {
       username: action.user,
@@ -73,12 +72,13 @@ function* sendStripeCharge(action) {
       email: state.AccountReducer.user,
       location: action.location
    });
-   console.log("STRIPE CHARGE")
-   console.log(json)
    if(json) {
      if (json.status === 200) {
       history.push('/dashboard');
        yield put(FormAction.vmCreating(true))
+       const {json1, response1} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/mail/purchase', {
+          username: state.AccountReducer.user
+       });
      } else {
       yield put(FormAction.stripeFailure(json.status))
      }

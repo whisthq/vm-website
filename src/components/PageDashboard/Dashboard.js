@@ -56,8 +56,7 @@ class Dashboard extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(this.props.payment)
-    if(Object.keys(this.props.payment).length > 0) {
+    if(this.props.payment && Object.keys(this.props.payment).length > 0) {
       if(this.state.created === '' && this.props.payment.created) {
         this.setState({created: this.unixToDate(this.props.payment.created)})
       }
