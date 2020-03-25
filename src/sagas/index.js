@@ -4,29 +4,6 @@ import { apiPost, apiGet } from '../utils/Api.js'
 import history from "../history";
 import { push } from 'connected-react-router'
 
-function* sendFormData(action) {
-   const response = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/form/store', {
-     name: action.name,
-     email: action.email,
-     cubeType: action.cubeType
-   });
-}
-
-function* sendPreOrder(action) {
-   const state = yield select()
-   const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/order', {
-      address1: action.payload.address1,
-      address2: action.payload.address2,
-      zipcode: action.payload.zipcode,
-      name: action.payload.name,
-      email: action.payload.email,
-      password: action.payload.password,
-      order: {base: state.CartReducer.base, enhanced: state.CartReducer.enhanced, power: state.CartReducer.power}
-   });
-   if (json.status === 200) {
-     yield put(FormAction.createCart());
-   }
-}
 
 function* sendLoginInfo(action) {
    const state = yield select()
@@ -101,12 +78,27 @@ function* retrieveCustomer(action) {
 
 function* cancelPlan(action) {
    const state = yield select()
+   var vm_name = ''
+   if(state.AccountReducer.vm_credentials && state.AccountReducer.vm_credentials.length > 0) {
+    vm_name = state.AccountReducer.vm_credentials[0].vm_name
+   }
+   console.log("VM NAME IS " + vm_name)
+
    const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/stripe/cancel', {
       email: state.AccountReducer.user
    });
    if(json) {
      if (json.status === 200) {
        yield put(FormAction.storePayment({}))
+       console.log("ABOUT TO RESET USER")
+       console.log(json)
+       const {json1, response1} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/user/reset', {
+          username: 'Fractal',
+          vm_name: vm_name
+       });
+       if(json1 && json1.status === 200) {
+        yield put(FormAction.fetchVMs(state.AccountReducer.user))
+       }
      }
   }
 }
@@ -161,11 +153,11 @@ function* sendVMRegister(action) {
 }
 
 function* sendVMFetch(action) {
+   console.log("FETCHING VMS")
    const state = yield select()
    const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/user/fetchvms', {
     username: state.AccountReducer.user
    })
-   console.log("vms fetched!")
    console.log(json)
    if(json.vms) {
     yield put(FormAction.vmToState(json.vms));
@@ -220,8 +212,6 @@ function* sendResetPassword(action) {
 
 export default function* rootSaga() {
  	yield all([
-    	takeEvery(FormAction.SEND_FORM_DATA, sendFormData),
-    	takeEvery(FormAction.SEND_PRE_ORDER, sendPreOrder),
     	takeEvery(FormAction.USER_LOGIN, sendLoginInfo),
     	takeEvery(FormAction.USER_SIGNUP, sendSignupInfo),
       takeEvery(FormAction.CHARGE_STRIPE, sendStripeCharge),
