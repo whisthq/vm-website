@@ -209,7 +209,7 @@ class Dashboard extends Component {
                   Downloads
                 </div>
                 <div style = {{width: '100%'}}>
-                  <div style = {{fontSize: 14, backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, padding: '30px 10px', marginTop: 35, minHeight: 225}}>
+                  <div style = {{fontSize: 14, backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, padding: '30px 10px', marginTop: 35, minHeight: 200}}>
                     <Row style = {{width: '100%', margin: 0}}>
                       <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                           <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
@@ -267,7 +267,7 @@ class Dashboard extends Component {
                 </div>
                 }
               </div><br/>
-              <div style = {{display: 'block', fontSize: 13, background: 'white', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, marginTop: 40, padding: '30px 10px', minHeight: 225}}>
+              <div style = {{display: 'block', fontSize: 13, background: 'white', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, marginTop: 40, padding: '30px 10px', minHeight: 200}}>
                 <Row style = {{width: '100%', margin: 0, marginBottom: 10}}>
                   <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                     <div style = {{float: 'left', fontWeight: 'bold', color: '#555555', display: 'inline'}}>
