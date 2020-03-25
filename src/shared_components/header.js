@@ -72,7 +72,8 @@ class Header extends Component {
         :
         <div style = {{paddingLeft: 10, paddingRight: 10, minHeight: 30}}>
           <div style = {{color: 'white', fontWeight: 'bold', float: 'left'}}>
-            <Link to = '/' style = {{color: '#c7c7c7', fontSize: 20}}>
+            <Link to = '/' style = {{color: 'white', fontSize: 20}}>
+              <img src = {Logo} style = {{height: 24, position: 'relative', bottom: 2, right: 10}}/>
               Fractal
             </Link>
           </div> 
