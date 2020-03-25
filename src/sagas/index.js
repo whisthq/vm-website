@@ -90,8 +90,6 @@ function* cancelPlan(action) {
    if(json) {
      if (json.status === 200) {
        yield put(FormAction.storePayment({}))
-       console.log("ABOUT TO RESET USER")
-       console.log(json)
        const {json1, response1} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/user/reset', {
           username: 'Fractal',
           vm_name: vm_name
