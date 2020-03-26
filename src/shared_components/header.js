@@ -70,7 +70,7 @@ class Header extends Component {
         </div>
         </div>
         :
-        <div style = {{paddingLeft: 10, paddingRight: 10, minHeight: 30}}>
+        <div style = {{paddingLeft: 35, paddingRight: 25, minHeight: 30}}>
           <div style = {{color: 'white', fontWeight: 'bold', float: 'left'}}>
             <Link to = '/' style = {{color: 'white', fontSize: 20}}>
               <img src = {Logo} style = {{height: 24, position: 'relative', bottom: 2, right: 10}}/>
@@ -79,9 +79,9 @@ class Header extends Component {
           </div> 
           <div style = {{float: 'right'}}>
             <Dropdown alignRight>
-              <Dropdown.Toggle variant="secondary" id="dropdown-basic" style = {{backgroundColor: 'rgba(0,0,0,0.0)', border: 'none', padding: 0}}>
+              <Dropdown variant="secondary" style = {{backgroundColor: 'rgba(0, 0, 0, 0.0)', border: 'none', padding: 0}}>
                 <span style = {{color: "#333333"}}><FaBars/></span>
-              </Dropdown.Toggle>
+              </Dropdown>
 
               <Dropdown.Menu style = {{backgroundColor: 'white', zIndex: 100}}>
                 <Dropdown.Item href="#/action-3">
