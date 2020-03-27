@@ -20,6 +20,7 @@ import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router-dom';
+import Popup from "reactjs-popup";
 
 import CPU from '../../assets/cpu.svg'
 import GPU from '../../assets/gpu.svg'
@@ -32,7 +33,8 @@ class Dashboard extends Component {
   constructor(props) {
     super(props)
     this.state = {width: 0, height: 0, modalShow: false, showPopup: false, day: 0, month: 0, year: 0, 
-      created: '', billStart: '', billEnd: '', cancelling: false, hidePassword: true}
+      created: '', billStart: '', billEnd: '', cancelling: false, hidePassword: true, exitSurvey: false,
+      exitFeedback: ''}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 
@@ -86,7 +88,7 @@ class Dashboard extends Component {
   cancelPlan = () => {
     this.setState({cancelling: true})
     this.props.dispatch(vmCreating(false))
-    this.props.dispatch(cancelPlan())
+    this.props.dispatch(cancelPlan(this.state.exitFeedback))
   }
 
   monthConvert = (month) => {
@@ -108,6 +110,14 @@ class Dashboard extends Component {
 
   showPassword = (show) => {
     this.setState({hidePassword: !show})
+  }
+
+  showExitSurvey = (show) => {
+    this.setState({exitSurvey: show})
+  }
+
+  changeExitFeedback = (evt) => {
+    this.setState({exitFeedback: evt.target.value})
   }
 
   render() {
@@ -158,12 +168,15 @@ class Dashboard extends Component {
             :
             <div>
               <Row style = {{marginTop: 30}}>
-                <Col md = {3} sm = {6} xs = {12}>
+                <Col xs = {12}>
                   <Link style = {{textDecoration: 'none'}} to = "/purchase" className = "create-cloud-pc">
-                  <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20, width: 175}}>
-                    <FaPlus style = {{height: 25, marginTop: 10, color: "#333333"}}/>
-                    <div style = {{color: "#555555", fontSize: 13, marginTop: 20}}>Create Cloud Computer</div>
-                  </div>
+                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, paddingBottom: 40, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                      <FaPlus style = {{height: 25, marginTop: 10, color: "#333333"}}/>
+                      <div style = {{color: "#333333", fontSize: 20, marginTop: 20, fontWeight: 'bold'}}>Create My Cloud Computer</div>
+                      <div style = {{fontSize: 14, maxWidth: 450, margin: 'auto', marginTop: 10, color: '#333333'}}>
+                        Transform your local device into a GPU-powered cloud computer. Setup in less than one minute.
+                      </div>
+                    </div>
                   </Link>
                 </Col>
               </Row>
@@ -254,9 +267,48 @@ class Dashboard extends Component {
                 (
                 !this.state.cancelling
                 ?
-                  <button onClick = {this.cancelPlan} style = {{outline: 'none !important', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '5px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
+                  <Popup trigger = {
+                  <button style = {{outline: 'none', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '5px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
                     Cancel Plan
                   </button>
+                  } modal
+                    onClose = {() => this.showExitSurvey(false)} 
+                    contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 275, padding: '30px 50px', textAlign: "center"}}>
+                    <div>
+                    {
+                    !this.state.exitSurvey 
+                    ?
+                    <div>
+                      <div style = {{fontWeight: 'bold', fontSize: 22}}><strong>Are You Sure?</strong></div>
+                      <div style = {{fontSize: 14, color: "#333333", marginTop: 20}}>
+                        If you cancel, all the data, files, and applications on stored on cloud PC will be <strong>permanently</strong> lost. Please 
+                        make sure that you have transferred everything you need from your cloud PC to another device before cancelling.
+                      </div>
+                      <button onClick = {() => this.showExitSurvey(true)} style = {{fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
+                        I UNDERSTAND, PROCEED
+                      </button>
+                    </div>
+                    :
+                    <div className = "exit-survey">
+                      <div style = {{fontWeight: 'bold', fontSize: 22}}><strong>Your Feedback</strong></div>
+                      <textarea onChange = {this.changeExitFeedback} rows = "4" cols = "52" placeholder = "Please give us some feedback on why you're cancelling, so we can improve Fractal for others. Be brutally honest!"
+                        style = {{outline: 'none', resize: 'none', background: 'none', border: 'none', marginTop: 20, fontSize: 14, padding: 0}}>
+                      </textarea>
+                      {
+                      this.state.exitFeedback != ''
+                      ?
+                      <button onClick = {this.cancelPlan} style = {{fontWeight: 'bold', marginTop: 19, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
+                        CANCEL PLAN
+                      </button>
+                      :
+                      <button style = {{opacity: 0.5, fontWeight: 'bold', marginTop: 19, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
+                        CANCEL PLAN
+                      </button>
+                      }
+                    </div>
+                    }   
+                    </div> 
+                  </Popup>
                 :
                   <div style = {{float: 'right', display: 'inline', fontSize: 13}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{height: 12, marginRight: 4}}/> Cancelling 

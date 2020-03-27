@@ -53,8 +53,9 @@ function* sendStripeCharge(action) {
      if (json.status === 200) {
       history.push('/dashboard');
        yield put(FormAction.vmCreating(true))
-       const {json1, response1} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/mail/purchase', {
-          username: state.AccountReducer.user
+       const {json1, response1} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/purchase', {
+          username: state.AccountReducer.user,
+          location: action.location
        });
      } else {
       yield put(FormAction.stripeFailure(json.status))
@@ -82,11 +83,16 @@ function* cancelPlan(action) {
    if(state.AccountReducer.vm_credentials && state.AccountReducer.vm_credentials.length > 0) {
     vm_name = state.AccountReducer.vm_credentials[0].vm_name
    }
-   console.log("VM NAME IS " + vm_name)
+
+   const {json2, response2} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/cancel', {
+      username: state.AccountReducer.user,
+      feedback: action.message
+   });
 
    const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/stripe/cancel', {
       email: state.AccountReducer.user
    });
+
    if(json) {
      if (json.status === 200) {
        yield put(FormAction.storePayment({}))

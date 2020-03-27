@@ -274,9 +274,10 @@ export function storePayment(payload) {
 	}
 }
 
-export function cancelPlan() {
+export function cancelPlan(message) {
 	return {
-		type: CANCEL_PLAN
+		type: CANCEL_PLAN,
+		message
 	}
 }
 

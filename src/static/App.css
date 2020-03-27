@@ -28,6 +28,11 @@ div {
   color: white;
 }
 
+.exit-survey ::placeholder {
+  color: #999999;
+  font-size: 14px;
+}
+
 textarea:focus, input:focus{
     outline: none;
 }
@@ -181,6 +186,10 @@ input[type=text], input {
 }
 
 /* width */
+.state-select ::-webkit-scrollbar {
+  width: 0px;
+}
+
 ::-webkit-scrollbar {
   width: 6px;
 }

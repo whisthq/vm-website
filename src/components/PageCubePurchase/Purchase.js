@@ -59,7 +59,12 @@ class Purchase extends Component {
   }
 
   handleClick2 = (location) => {
-    this.setState({step: 3, location: location})
+    var unsupported = ["WA", "OR", "CA", "NV", "ID", "MT", "WY"]
+    if(unsupported.includes(location)) {
+      this.setState({step: 2, exit: true})
+    } else {
+      this.setState({step: 3, location: location})
+    }
   }
 
   render() {
@@ -71,7 +76,7 @@ class Purchase extends Component {
     const renderSurvey = () => {
       if(this.state.step === 1) {
         return(
-          <div style = {{paddingTop: 150, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+          <div style = {{paddingTop: 100, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
             <div>
               <span style = {{position: 'relative', bottom: 2}}>
                 1 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
@@ -103,11 +108,11 @@ class Purchase extends Component {
         )
       } else if(this.state.step === 2 && this.state.exit) {
         return(
-        <div style = {{paddingTop: 150, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
-          <div style = {{fontSize: 18, maxWidth: 600, lineHeight: 1.7}}>
-            Currently, Fractal is only available in the United States and Canada due to the locations of our servers. We are 
-            quickly expanding; if you'd like to be notified when Fractal is available outside the US and Canada, please join
-            our wait list!
+        <div style = {{paddingTop: 100, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+          <div style = {{fontSize: 16, maxWidth: 600, lineHeight: 1.7}}>
+            Currently, Fractal is only available in the Eastern and Midwestern United States due to the locations of our servers. 
+            We are quickly expanding to West Coast and beyond; if you'd like to be notified when Fractal is available in your location, 
+            please join our wait list!
           </div>
           <HashLink to = "/#beta" style = {{textDecoration: 'none'}}>
             <Button style = {{display: 'inline', marginTop: 50, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.4)'}}>Join Wait List</Button>
@@ -126,8 +131,8 @@ class Purchase extends Component {
         )
       } else if(this.state.step === 2 && !this.state.exit) {
         return(
-          <div style = {{paddingTop: 150, paddingLeft: 100, width: 'calc(100% - 400px)'}}>
-            <div>
+          <div style = {{paddingTop: 100, paddingLeft: 100, width: 'calc(100% - 400px)'}}>
+            <div className = "state-select">
               <span style = {{position: 'relative', bottom: 2}}>
                 2 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
               </span>
@@ -135,7 +140,7 @@ class Purchase extends Component {
               <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
                 So we can find servers closest to you.
               </div>
-              <div style = {{marginTop: 20, overflowY: 'scroll', maxHeight: 'calc(100vh - 300px)'}}>
+              <div style = {{marginTop: 20, overflowY: 'scroll', maxHeight: 'calc(100vh - 250px)'}}>
                   <div onClick = {() => this.handleClick2("AL")}>
                     <TypeformButton buttonLabel = "A" buttonText = "AL"/>
                   </div>
@@ -300,7 +305,7 @@ class Purchase extends Component {
         )
       } else if(this.state.step === 3) {
         return(
-          <div style = {{paddingTop: 150, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+          <div style = {{paddingTop: 100, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
             <div>
               <span style = {{position: 'relative', bottom: 2}}>
                 3 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
