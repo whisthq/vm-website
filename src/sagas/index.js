@@ -31,6 +31,9 @@ function* sendSignupInfo(action) {
    });
    if(json) {
      if (json.status === 200) {
+       const {json1, response1} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/signup', {
+          username: action.user
+       });
        yield put(FormAction.loginSuccess());
        if(!action.create) {
         history.push('/dashboard')
