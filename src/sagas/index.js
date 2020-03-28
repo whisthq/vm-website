@@ -13,7 +13,8 @@ function* sendLoginInfo(action) {
    })
    if(json) {
 	   if (json.verified) {
-	     yield put(FormAction.loginSuccess());
+	     yield put(FormAction.loginSuccess())
+       yield put(FormAction.getPromoCode(action.user))
        if(!action.create) {
         history.push('/dashboard')
        } 
@@ -23,18 +24,27 @@ function* sendLoginInfo(action) {
 	}
 }
 
+function* getPromoCode(action) {
+   const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/account/fetchCode', {
+      username: action.user
+   })
+   if(json && json.status === 200) {
+    yield put(FormAction.storePromoCode(json.code))
+   }
+}
+
 function* sendSignupInfo(action) {
    const state = yield select()
    const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/account/register', {
       username: action.user,
       password: action.password
    });
+   console.log(json)
    if(json) {
      if (json.status === 200) {
-       const {json1, response1} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/signup', {
-          username: action.user
-       });
-       yield put(FormAction.loginSuccess());
+       yield put(FormAction.loginSuccess())
+       yield put(FormAction.sendSignupEmail(action.user))
+       yield put(FormAction.getPromoCode(action.user))
        if(!action.create) {
         history.push('/dashboard')
        }
@@ -42,6 +52,12 @@ function* sendSignupInfo(action) {
        yield put(FormAction.signupFailure(json.status));
      }
   }
+}
+
+function* sendSignupEmail(action) {
+   const {json, response} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/signup', {
+      username: action.user
+   });
 }
 
 
@@ -218,6 +234,7 @@ function* sendFriendsEmail(action) {
     code: action.code
   })
   if(json) {
+    console.log(json)
     yield put(FormAction.emailSent(json.status))
   } else {
     yield put(FormAction.emailSent(500))
@@ -239,6 +256,8 @@ export default function* rootSaga() {
       takeEvery(FormAction.RESET_PASSWORD, sendResetPassword),
       takeEvery(FormAction.RETRIEVE_CUSTOMER, retrieveCustomer),
       takeEvery(FormAction.CANCEL_PLAN, cancelPlan),
-      takeEvery(FormAction.SEND_FRIENDS_EMAIL, sendFriendsEmail)
+      takeEvery(FormAction.SEND_FRIENDS_EMAIL, sendFriendsEmail),
+      takeEvery(FormAction.GET_PROMO_CODE, getPromoCode),
+      takeEvery(FormAction.SEND_SIGNUP_EMAIL, sendSignupEmail)
 	]);
 }

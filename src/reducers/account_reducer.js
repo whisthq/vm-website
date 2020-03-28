@@ -3,7 +3,7 @@ import * as AccountAction from '../actions/index'
 const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, stripeToken: '', type: '', id: '', vm_created: false, is_creating: false, progress: 1, 
                  vm_credentials: [], failed_login_attempts: 0, forgot_password: 0, token_status: 'invalid', has_vm: false, 
                  payment: {}, signupStatus: 200, failed_signup_attempts: 0, stripeStatus: 200, failed_payment_attempts: 0,
-                 currentPage: 'personal', emailStatus: 0}
+                 currentPage: 'personal', emailStatus: 0, promoCode: ''}
 
 export default function(state = DEFAULT, action) {
   switch (action.type) {
@@ -55,7 +55,8 @@ export default function(state = DEFAULT, action) {
         password: '',
         stripeToken: '',
         vm_credentials: [],
-        payment: {}
+        payment: {},
+        promoCode: ''
       }
     case AccountAction.CREATE_VM:
       return {
@@ -129,6 +130,11 @@ export default function(state = DEFAULT, action) {
       return {
         ...state,
         emailStatus: action.status
+      }
+    case AccountAction.STORE_PROMO_CODE:
+      return {
+        ...state,
+        promoCode: action.code
       }
     default:
       return state

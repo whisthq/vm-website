@@ -50,6 +50,9 @@ export const STRIPE_FAILURE = "STRIPE_FAILURE"
 export const CHANGE_TAB = "CHANGE_TAB"
 export const SEND_FRIENDS_EMAIL = "SEND_FRIENDS_EMAIL"
 export const EMAIL_SENT = "EMAIL_SENT"
+export const GET_PROMO_CODE = "GET_PROMO_CODE"
+export const STORE_PROMO_CODE = "STORE_PROMO_CODE"
+export const SEND_SIGNUP_EMAIL = "SEND_SIGNUP_EMAIL"
 
 export function sendFormData(name, email, cubeType) {
 	return {
@@ -316,5 +319,26 @@ export function emailSent(status) {
 	return {
 		type: EMAIL_SENT,
 		status
+	}
+}
+
+export function storePromoCode(code) {
+	return {
+		type: STORE_PROMO_CODE,
+		code
+	}
+}
+
+export function getPromoCode(user) {
+	return {
+		type: GET_PROMO_CODE,
+		user
+	}
+}
+
+export function sendSignupEmail(user) {
+	return {
+		type: SEND_SIGNUP_EMAIL,
+		user
 	}
 }

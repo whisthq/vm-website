@@ -125,7 +125,7 @@ class Dashboard extends Component {
   showEmailShare = (show) => {
     this.setState({emailShare: show})
     if(!show) {
-      this.setState({sendingEmails: false})
+      this.setState({sendingEmails: false, emails: [], emailBoxWidth: 45})
       this.props.dispatch(emailSent(0))
     }
   }
@@ -167,7 +167,7 @@ class Dashboard extends Component {
 
   sendEmails = () => {
     this.setState({sendingEmails: true})
-    this.props.dispatch(sendFriendsEmail(this.state.emails, 'ABC-123'))
+    this.props.dispatch(sendFriendsEmail(this.state.emails, this.props.promoCode))
   }
 
   render() {
@@ -210,7 +210,7 @@ class Dashboard extends Component {
                     For every person that types in the following code at checkout, your account will be credited an additional free month.
                   </div>
                   <div style = {{color: "#111111", marginTop: 75, fontSize: 40}}>
-                    MIN-289
+                    {this.props.promoCode}
                   </div>
                   <button onClick = {() => this.showEmailShare(true)} style = {{fontWeight: 'bold', marginTop: 75, outline: 'none', width: '100%', fontSize: 14, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', color: '#5ec3eb', border: 'solid 1px #5ec3eb', background: 'rgba(94, 195, 235,0.1)'}}>
                     Start Sharing
@@ -238,7 +238,7 @@ class Dashboard extends Component {
                   </div>
                   )
                   :
-                  <textarea onChange = {this.changeFriendsEmail} rows = "4" cols = "60" placeholder = "Enter your friends' emails here, and we'll email them your promotional code for you. When they create a cloud PC with this code, your account will automatically be accredited."
+                  <textarea onChange = {this.changeFriendsEmail} rows = "4" cols = "60" placeholder = "Enter your friends' emails here, and we'll email them your promotional code for you, along with a friendly message. When they create a cloud PC with this code, your account will automatically be accredited."
                     style = {{outline: 'none', resize: 'none', background: 'none', border: 'none', marginTop: 20, fontSize: 14, padding: 0}}>
                   </textarea>
                   }
@@ -560,6 +560,7 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state)
   return { 
     loggedIn: state.AccountReducer.loggedIn,
     user: state.AccountReducer.user,
@@ -567,7 +568,8 @@ function mapStateToProps(state) {
     is_creating: state.AccountReducer.is_creating,
     id: state.AccountReducer.id,
     payment: state.AccountReducer.payment,
-    emailStatus: state.AccountReducer.emailStatus
+    emailStatus: state.AccountReducer.emailStatus,
+    promoCode: state.AccountReducer.promoCode
   }
 }
 
