@@ -160,12 +160,10 @@ function* sendVMRegister(action) {
 }
 
 function* sendVMFetch(action) {
-   console.log("FETCHING VMS")
    const state = yield select()
    const {json, response} = yield call(apiPost, 'https://cube-celery-vm.herokuapp.com/user/fetchvms', {
     username: state.AccountReducer.user
    })
-   console.log(json)
    if(json.vms) {
     yield put(FormAction.vmToState(json.vms));
    } else {
@@ -191,17 +189,13 @@ function* sendValidateToken(action) {
     token: action.token
    })
    if(json) {
-    console.log(json)
     if(json.status === 200) {
-      console.log('valid')
       yield put(FormAction.tokenStatus('verified'));
     } else {
       if(json.error === 'Expired token') {
-        console.log('expiered')
         yield put(FormAction.tokenStatus('expired'));
       }
       else {
-        console.log('invalid')
         yield put(FormAction.tokenStatus('invalid'));
       }
     }
@@ -214,6 +208,20 @@ function* sendResetPassword(action) {
     password: action.password
    })
    history.push('/auth')
+}
+
+function* sendFriendsEmail(action) {
+  const state = yield select()
+  const {json, response} = yield call(apiPost, 'https://fractal-mail-server.herokuapp.com/referral', {
+    username: state.AccountReducer.user,
+    recipients: action.recipients,
+    code: action.code
+  })
+  if(json) {
+    yield put(FormAction.emailSent(json.status))
+  } else {
+    yield put(FormAction.emailSent(500))
+  }
 }
 
 
@@ -230,6 +238,7 @@ export default function* rootSaga() {
       takeEvery(FormAction.VALIDATE_TOKEN, sendValidateToken),
       takeEvery(FormAction.RESET_PASSWORD, sendResetPassword),
       takeEvery(FormAction.RETRIEVE_CUSTOMER, retrieveCustomer),
-      takeEvery(FormAction.CANCEL_PLAN, cancelPlan)
+      takeEvery(FormAction.CANCEL_PLAN, cancelPlan),
+      takeEvery(FormAction.SEND_FRIENDS_EMAIL, sendFriendsEmail)
 	]);
 }

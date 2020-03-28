@@ -48,6 +48,8 @@ export const CANCEL_PLAN = "CANCEL_PLAN"
 export const SIGNUP_FAILURE = "SIGNUP_FAILURE"
 export const STRIPE_FAILURE = "STRIPE_FAILURE"
 export const CHANGE_TAB = "CHANGE_TAB"
+export const SEND_FRIENDS_EMAIL = "SEND_FRIENDS_EMAIL"
+export const EMAIL_SENT = "EMAIL_SENT"
 
 export function sendFormData(name, email, cubeType) {
 	return {
@@ -169,7 +171,6 @@ export function logout() {
 }
 
 export function createVM(vm_size) {
-	console.log("create vm action");
 	return {
 		type: CREATE_VM,
 		vm_size
@@ -300,5 +301,20 @@ export function changeTab(tab) {
 	return {
 		type: CHANGE_TAB,
 		tab
+	}
+}
+
+export function sendFriendsEmail(recipients, code) {
+	return {
+		type: SEND_FRIENDS_EMAIL,
+		recipients,
+		code
+	}
+}
+
+export function emailSent(status) {
+	return {
+		type: EMAIL_SENT,
+		status
 	}
 }
