@@ -96,12 +96,14 @@ class PageHome extends Component {
           <div className = "fractal-container" style = {{paddingBottom: 50}}>
             <Row>
               <Col md = {{span: 6, order: 1}} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingTop: 50}}>
-                <div style = {{marginBottom: 30, color: "white", height: 40}}>
-                  <span style = {{backgroundColor: '#5ec3eb', padding: '5px 15px', color: '#0b172b', fontWeight: 'bold', fontSize: 14, borderRadius: 5, marginRight: 20}}>NEW</span>
-                  Fractal is now available across the US.
+                <div style = {{marginBottom: 30, color: "#D6D6D6", fontSize: 16, height: 40, display: 'flex'}}>
+                  <div style = {{height: 30, backgroundColor: '#5ec3eb', padding: '5px 15px', color: '#0b172b', fontWeight: 'bold', fontSize: 14, borderRadius: 5, marginRight: 20}}>NEW</div>
+                  <div style = {{position: 'relative', bottom: 5}}>
+                    Fractal is now available across the Eastern and Midwestern United States.
+                  </div>
                 </div>
-                <div style = {{color: '#FFFFFF', fontSize: 30, lineHeight: 1.4, fontWeight: 'bold'}}>Transform any device into a <span className = "blue-gradient">supercomputer</span></div>
-                <p style = {{textAlign: 'left', marginTop: 25, color: '#D6D6D6', marginBottom: 40, fontSize: 15}}>Fractal streams GPU-powered, Windows 10 desktops to any macOS, iOS, or Windows device</p>
+                <div style = {{color: '#FFFFFF', fontSize: 40, lineHeight: 1.4, fontWeight: 'bold', marginTop: 50}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
+                <p style = {{textAlign: 'left', marginTop: 25, color: '#D6D6D6', marginBottom: 40, fontSize: 17}}>Fractal streams GPU-powered, Windows 10 desktops to any macOS, iOS, or Windows device</p>
                 <Link to = "/dashboard">
                   <Button style = {{display: 'inline', float: 'left', background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", marginTop: 5, padding: "10px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', fontSize: 14, marginRight: 20, minWidth: 194, marginBottom: 10}}>GET STARTED</Button>
                 </Link>

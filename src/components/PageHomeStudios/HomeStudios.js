@@ -86,9 +86,11 @@ class PageHome extends Component {
           <div className = "fractal-container" style = {{paddingBottom: 50}}>
             <Row>
               <Col md = {{span: 6, order: 1}} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingTop: 50}}>
-                <div style = {{marginBottom: 30, color: "white", height: 40}}>
-                  <span style = {{backgroundColor: '#5ec3eb', padding: '5px 15px', color: '#0b172b', fontWeight: 'bold', fontSize: 14, borderRadius: 5, marginRight: 20}}>NEW</span>
-                  Get started with a one-week free trial.
+                <div style = {{marginBottom: 30, color: "#D6D6D6", fontSize: 16, height: 40, display: 'flex'}}>
+                  <div style = {{height: 30, backgroundColor: '#5ec3eb', padding: '5px 15px', color: '#0b172b', fontWeight: 'bold', fontSize: 14, borderRadius: 5, marginRight: 20}}>NEW</div>
+                  <div style = {{position: 'relative', bottom: 5}}>
+                    Get started with a one-week free trial.
+                  </div>
                 </div>
                 <div style = {{color: '#FFFFFF', fontSize: 35, lineHeight: 1.4, fontWeight: 'bold'}}>
                   Access your computer anywhere at <span className = "blue-gradient">ultra-low latency</span>

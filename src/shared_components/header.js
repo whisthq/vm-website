@@ -6,15 +6,19 @@ import Button from 'react-bootstrap/Button'
 import Logo from '../assets/logo.svg'
 import { Link } from 'react-router-dom'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'react-bootstrap'
-import { FaBars } from 'react-icons/fa'
+import { FaBars, FaTimes } from 'react-icons/fa'
 import '../static/App.css';
 import { HashLink } from 'react-router-hash-link';
 
 class Header extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0 }
+    this.state = { width: 0, height: 0, menu: false }
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
+  }
+
+  openMenu = (open) => {
+    this.setState({menu: open})
   }
 
   componentDidMount() {
@@ -51,10 +55,10 @@ class Header extends Component {
           ?
           <div style = {{width: '60%', textAlign: 'right'}}>
               <HashLink className = 'headerlink' to = '/' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
-                <span style = {this.props.linkStyle}>Personal Use</span>
+                <span style = {this.props.linkStyle}>Personal</span>
               </HashLink>
               <HashLink className = 'headerlink' to = '/studios' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
-                <span style = {this.props.linkStyle}>Studios</span>
+                <span style = {this.props.linkStyle}>Teams</span>
               </HashLink>
               <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
                 <span style = {this.props.linkStyle}>Contact Us</span>
@@ -77,36 +81,43 @@ class Header extends Component {
               Fractal
             </Link>
           </div> 
-          <div style = {{float: 'right'}}>
-            <Dropdown alignRight>
-              <Dropdown variant="secondary" style = {{backgroundColor: 'rgba(0, 0, 0, 0.0)', border: 'none', padding: 0}}>
-                <span style = {{color: "#333333"}}><FaBars/></span>
-              </Dropdown>
-
-              <Dropdown.Menu style = {{backgroundColor: 'white', zIndex: 100}}>
-                <Dropdown.Item href="#/action-3">
-                  <HashLink className = 'headerlink' to = '/' style = {{color: '#333333'}}>
-                    Personal Use
-                  </HashLink>
-                </Dropdown.Item>
-                <Dropdown.Item href="#/action-3">
-                  <HashLink className = 'headerlink' to = '/studios' style = {{color: '#333333'}}>
-                    Studios
-                  </HashLink>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#333333'}}>
-                    Contact Us
-                  </a>
-                </Dropdown.Item>
-                <Dropdown.Item href="#/action-3">
-                  <Link className = 'headerlink' to = '/auth' style = {{color: '#333333'}}>
-                    My Account
-                  </Link>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown> 
+          <div style = {{float: 'right', zIndex: 100}}>
+            <FaBars onClick = {() => this.openMenu(true)} style = {{color: 'white'}}/>
           </div>
+          {
+          this.state.menu
+          ?
+          <div style = {{position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'white', zIndex: 1000}}>
+            <div style = {{padding: 35, paddingTop: 30}}>
+              <FaTimes onClick = {() => this.openMenu(false)} style = {{color: "#333333", float: 'right', height: 30}}/>
+            </div>
+            <div style = {{padding: 35, marginTop: 50}}>
+              <div style = {{marginBottom: 10}}>
+                <HashLink className = 'headerlink' to = '/' style = {{color: '#333333'}}>
+                  Personal
+                </HashLink>
+              </div>
+              <div style = {{marginBottom: 10}}>
+                <HashLink className = 'headerlink' to = '/studios' style = {{color: '#333333'}}>
+                  Teams
+                </HashLink>
+              </div>
+              <div style = {{marginBottom: 10}}>
+                <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#333333'}}>
+                  Contact Us
+                </a>
+              </div>
+              <div style = {{marginBottom: 10}}>
+                <Link className = 'headerlink' to = '/auth' style = {{color: '#333333'}}>
+                  My Account
+                </Link>
+              </div>
+            </div>
+          </div>
+          :
+          <div>
+          </div>
+          }
         </div>
         }    
       <link
