@@ -47,6 +47,7 @@ export const STORE_PAYMENT = "STORE_PAYMENT"
 export const CANCEL_PLAN = "CANCEL_PLAN"
 export const SIGNUP_FAILURE = "SIGNUP_FAILURE"
 export const STRIPE_FAILURE = "STRIPE_FAILURE"
+export const CHANGE_TAB = "CHANGE_TAB"
 
 export function sendFormData(name, email, cubeType) {
 	return {
@@ -292,5 +293,12 @@ export function stripeFailure(status) {
 	return {
 		type: STRIPE_FAILURE,
 		status
+	}
+}
+
+export function changeTab(tab) {
+	return {
+		type: CHANGE_TAB,
+		tab
 	}
 }

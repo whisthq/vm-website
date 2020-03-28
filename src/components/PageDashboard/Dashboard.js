@@ -174,7 +174,7 @@ class Dashboard extends Component {
                       <FaPlus style = {{height: 25, marginTop: 10, color: "#333333"}}/>
                       <div style = {{color: "#333333", fontSize: 20, marginTop: 20, fontWeight: 'bold'}}>Create My Cloud Computer</div>
                       <div style = {{fontSize: 14, maxWidth: 450, margin: 'auto', marginTop: 10, color: '#333333'}}>
-                        Transform your local device into a GPU-powered cloud computer. Setup in less than one minute.
+                        Transform your local device into a GPU-powered cloud computer. Setup in less than one minute, and your first week is free.
                       </div>
                     </div>
                   </Link>
@@ -388,7 +388,6 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.AccountReducer)
   return { 
     loggedIn: state.AccountReducer.loggedIn,
     user: state.AccountReducer.user,

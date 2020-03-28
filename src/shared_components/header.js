@@ -5,20 +5,26 @@ import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Logo from '../assets/logo.svg'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'react-bootstrap'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import '../static/App.css';
 import { HashLink } from 'react-router-hash-link';
+import { changeTab } from '../actions/index.js';
 
 class Header extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, menu: false }
+    this.state = { width: 0, height: 0, menu: false, currentPage: 'personal' }
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 
   openMenu = (open) => {
     this.setState({menu: open})
+  }
+
+  switchTab = (tab) => {
+    this.props.dispatch(changeTab(tab))
   }
 
   componentDidMount() {
@@ -54,10 +60,14 @@ class Header extends Component {
           this.props.homepage
           ?
           <div style = {{width: '60%', textAlign: 'right'}}>
-              <HashLink className = 'headerlink' to = '/' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
+            {
+            this.props.currentPage === 'personal'
+            ?
+            <div>
+              <HashLink onClick = {() => this.switchTab('personal')} className = 'headerlink' to = '/' style={{color: `${ this.props.button }`, fontWeight: 'bold', textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
                 <span style = {this.props.linkStyle}>Personal</span>
               </HashLink>
-              <HashLink className = 'headerlink' to = '/studios' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
+              <HashLink onClick = {() => this.switchTab('teams')} className = 'headerlink' to = '/studios' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
                 <span style = {this.props.linkStyle}>Teams</span>
               </HashLink>
               <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
@@ -66,6 +76,23 @@ class Header extends Component {
               <Link to = "/auth">
                 <Button style = {{marginLeft: 35, color: `${ this.props.button }`, border: 'solid 1px #5ec3eb', borderColor: `${ this.props.button }`, fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,background: "rgba(0, 0,0,0.0)"}}>My Account</Button>
               </Link>
+            </div>
+            :
+            <div>
+              <HashLink onClick = {() => this.switchTab('personal')} className = 'headerlink' to = '/' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
+                <span style = {this.props.linkStyle}>Personal</span>
+              </HashLink>
+              <HashLink onClick = {() => this.switchTab('teams')} className = 'headerlink' to = '/studios' style={{color: `${ this.props.button }`, fontWeight: 'bold', textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
+                <span style = {this.props.linkStyle}>Teams</span>
+              </HashLink>
+              <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
+                <span style = {this.props.linkStyle}>Contact Us</span>
+              </a>
+              <Link to = "/auth">
+                <Button style = {{marginLeft: 35, color: `${ this.props.button }`, border: `$solid 1px { this.props.button }`, borderColor: `${ this.props.button }`, fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,background: "rgba(0, 0,0,0.0)"}}>My Account</Button>
+              </Link>
+            </div>
+            }
           </div>
           :
           <div>
@@ -92,16 +119,35 @@ class Header extends Component {
               <FaTimes onClick = {() => this.openMenu(false)} style = {{color: "#333333", float: 'right', height: 30}}/>
             </div>
             <div style = {{padding: 35, marginTop: 50}}>
-              <div style = {{marginBottom: 10}}>
-                <HashLink className = 'headerlink' to = '/' style = {{color: '#333333'}}>
-                  Personal
-                </HashLink>
+              {
+              this.props.currentPage === 'personal'
+              ?
+              <div>
+                <div onClick = {() => this.switchTab('personal')} style = {{marginBottom: 10}}>
+                  <HashLink className = 'headerlink' to = '/' style = {{color: '#5ec3eb', fontWeight: 'bold'}}>
+                    Personal
+                  </HashLink>
+                </div>
+                <div onClick = {() => this.switchTab('teams')} style = {{marginBottom: 10}}>
+                  <HashLink className = 'headerlink' to = '/studios' style = {{color: '#333333'}}>
+                    Teams
+                  </HashLink>
+                </div>
               </div>
-              <div style = {{marginBottom: 10}}>
-                <HashLink className = 'headerlink' to = '/studios' style = {{color: '#333333'}}>
-                  Teams
-                </HashLink>
+              :
+              <div>
+                <div onClick = {() => this.switchTab('personal')} style = {{marginBottom: 10}}>
+                  <HashLink className = 'headerlink' to = '/' style = {{color: '#333333'}}>
+                    Personal
+                  </HashLink>
+                </div>
+                <div onClick = {() => this.switchTab('teams')} style = {{marginBottom: 10}}>
+                  <HashLink className = 'headerlink' to = '/studios' style = {{color: '#5ec3eb', fontWeight: 'bold'}}>
+                    Teams
+                  </HashLink>
+                </div>
               </div>
+              }
               <div style = {{marginBottom: 10}}>
                 <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#333333'}}>
                   Contact Us
@@ -131,4 +177,11 @@ class Header extends Component {
   }
 }
 
-export default Header
+function mapStateToProps(state) {
+  return { 
+    currentPage: state.AccountReducer.currentPage
+  }
+}
+
+
+export default connect(mapStateToProps)(Header)
