@@ -6,7 +6,7 @@ import Popover from 'react-bootstrap/Popover'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button'
-import { FaTrashAlt, FaAngleUp, FaAngleDown } from 'react-icons/fa'
+import { FaTrashAlt, FaAngleUp, FaTimes } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import { HashLink } from 'react-router-hash-link';
@@ -104,9 +104,11 @@ class Purchase extends Component {
                   <FaAngleUp style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
                 </div>
                 </Link>
+                <Link to = "/dashboard">
                 <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
-                  <FaAngleDown style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b', opacity: 0.2}}/>
+                  <FaTimes style = {{height: 15, position: 'relative', bottom: 2, color: '#0b172b'}}/>
                 </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -128,9 +130,11 @@ class Purchase extends Component {
             <div onClick = {this.goBack} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
               <FaAngleUp className = "typeform-up" style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
             </div>
+            <Link to = "/dashboard">
             <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
-              <FaAngleDown style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b', opacity: 0.2}}/>
+              <FaTimes style = {{height: 15, position: 'relative', bottom: 2, color: '#0b172b'}}/>
             </div>
+            </Link>
           </div>
         </div>
         )
@@ -301,9 +305,11 @@ class Purchase extends Component {
                 <div onClick = {this.goBack} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
                   <FaAngleUp className = "typeform-up" style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
                 </div>
+                <Link to = "/dashboard">
                 <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
-                  <FaAngleDown style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b', opacity: 0.2}}/>
+                  <FaTimes style = {{height: 15, position: 'relative', bottom: 2, color: '#0b172b'}}/>
                 </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -352,9 +358,11 @@ class Purchase extends Component {
                 <div onClick = {this.goBack} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
                   <FaAngleUp className = "typeform-up" style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
                 </div>
+                <Link to = "/dashboard">
                 <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
-                  <FaAngleDown style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b', opacity: 0.2}}/>
+                  <FaTimes style = {{height: 15, position: 'relative', bottom: 2, color: '#0b172b'}}/>
                 </div>
+                </Link>
               </div>
             </div>
           </div>

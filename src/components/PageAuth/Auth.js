@@ -10,7 +10,7 @@ import { FaArrowRight } from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'
-import { userLogin, userSignup, logout } from '../../actions/index.js';
+import { userLogin, userSignup, logout, changeTab, subscribeNewsletter } from '../../actions/index.js';
 import { Redirect } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -26,7 +26,7 @@ class Auth extends Component {
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, 
       emailLogin: '', passwordLogin: '', emailSignup: '', passwordSignup: '', passwordConfirmSignup: '',
       validEmail: false, tooShort: false, failed_login_attempt: false, processing: false,
-      failed_signup_attempt: false, termsAccepted: false}
+      failed_signup_attempt: false, termsAccepted: false, subscribed: true}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 
@@ -38,6 +38,9 @@ class Auth extends Component {
   handleSignup = (evt) => {
     this.setState({processing: true, failed_signup_attempt: false})
     this.props.dispatch(userSignup(this.state.emailSignup, this.state.passwordSignup, false))
+    if(this.state.subscribed) {
+      this.props.dispatch(subscribeNewsletter(this.state.emailSignup))
+    }
   }
 
   changeEmailLogin = (evt) => {
@@ -107,10 +110,20 @@ class Auth extends Component {
     }
   }
 
+  subscribe = (event) => {
+    const target = event.target;
+    if(target.checked) {
+      this.setState({subscribed: true})
+    } else {
+      this.setState({subscribed: false})
+    }
+  }
+
   componentDidMount() {
     this.setState({'failures': this.props.failed_login_attempts})
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
+    this.props.dispatch(changeTab('auth'))
   }
 
   componentDidUpdate(prevProps) {
@@ -158,9 +171,9 @@ class Auth extends Component {
         ?
         <Redirect to = "/dashboard"/>
         :
-        <div>
+        <div style = {{position: 'relative'}}>
         <Header  color = "#333333" button = "#5ec3eb" homepage/>
-        <div style = {{minHeight: '100vh', paddingTop: 90, backgroundColor: 'white'}}>
+        <div style = {{minHeight: '100vh', paddingTop: 80, backgroundColor: 'white'}}>
             <div style = {{backgroundColor: 'rgba(0,0,0,0.0)', borderRadius: 2, border: 'solid 1px white', padding: '40px 40px 60px 40px', maxWidth: 425, marginBottom: 80, margin: 'auto'}}>
               <Tabs>
                 <TabList style = {{textAlign: 'center', border: 'none', border: 'none', fontWeight: 'bold', fontSize: 16}}>
@@ -325,13 +338,28 @@ class Auth extends Component {
                       <span className ="checkmark"></span>
                     </label>
 
-                    <div style = {{fontSize: 12}}>
+                    <div style = {{fontSize: 12, position: 'relative', bottom: 4, color: "#333333"}}>
                       I accept the&nbsp; 
                       <Link to = "/termsofservice" style = {{textDecoration: 'none', color: '#5ec3eb'}}>
                         Terms of Service&nbsp;
                       </Link> 
                       and&nbsp;
                       <Link to = "/privacy" style = {{textDecoration: 'none', color: '#5ec3eb'}}>Privacy Policy</Link> 
+                    </div>
+                  </div>
+                  <div style = {{marginTop: 25, display: 'flex'}}>
+                    <label className = "termsContainer">
+                      <input
+                        defaultChecked
+                        type="checkbox"
+                        onChange={this.subscribe}
+                        onKeyPress = {this.signupKeyPress}
+                        /> 
+                      <span className ="checkmark"></span>
+                    </label>
+
+                    <div style = {{fontSize: 12, position: 'relative', bottom: 4, color: "#333333"}}>
+                      Subscribe to the Fractal newsletter and receive (infrequent) major updates
                     </div>
                   </div>
                 </TabPanel>

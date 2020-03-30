@@ -78,6 +78,9 @@ class Header extends Component {
               </Link>
             </div>
             :
+            (
+            this.props.currentPage === 'teams'
+            ?
             <div>
               <HashLink onClick = {() => this.switchTab('personal')} className = 'headerlink' to = '/' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
                 <span style = {this.props.linkStyle}>Personal</span>
@@ -92,6 +95,22 @@ class Header extends Component {
                 <Button style = {{marginLeft: 35, color: `${ this.props.button }`, border: `$solid 1px { this.props.button }`, borderColor: `${ this.props.button }`, fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,background: "rgba(0, 0,0,0.0)"}}>My Account</Button>
               </Link>
             </div>
+            :
+            <div>
+              <HashLink onClick = {() => this.switchTab('personal')} className = 'headerlink' to = '/' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
+                <span style = {this.props.linkStyle}>Personal</span>
+              </HashLink>
+              <HashLink onClick = {() => this.switchTab('teams')} className = 'headerlink' to = '/studios' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
+                <span style = {this.props.linkStyle}>Teams</span>
+              </HashLink>
+              <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
+                <span style = {this.props.linkStyle}>Contact Us</span>
+              </a>
+              <Link to = "/auth">
+                <Button style = {{marginLeft: 35, color: `${ this.props.button }`, border: `$solid 1px { this.props.button }`, borderColor: `${ this.props.button }`, fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,background: "rgba(0, 0,0,0.0)"}}>My Account</Button>
+              </Link>
+            </div>
+            )
             }
           </div>
           :

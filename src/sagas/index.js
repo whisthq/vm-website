@@ -281,25 +281,32 @@ function* sendFriendsEmail(action) {
   }
 }
 
+function* subscribeNewsletter(action) {
+   const {json, response} = yield call(apiPost, config.url.MAIL_SERVER + '/newsletter/subscribe', {
+    username: action.username
+   })
+}
+
 
 export default function* rootSaga() {
  	yield all([
-    	takeEvery(FormAction.USER_LOGIN, sendLoginInfo),
-    	takeEvery(FormAction.USER_SIGNUP, sendSignupInfo),
-      takeEvery(FormAction.CHARGE_STRIPE, chargeStripe),
-      takeEvery(FormAction.CREATE_VM, createVMPost),
-      takeEvery(FormAction.GET_VM_ID, sendVMID),
-      takeEvery(FormAction.REGISTER_VM, sendVMRegister),
-      takeEvery(FormAction.FETCH_VMS, sendVMFetch),
-      takeEvery(FormAction.FORGOT_PASSWORD, sendForgotPassword),
-      takeEvery(FormAction.VALIDATE_TOKEN, sendValidateToken),
-      takeEvery(FormAction.RESET_PASSWORD, sendResetPassword),
-      takeEvery(FormAction.RETRIEVE_CUSTOMER, retrieveCustomer),
-      takeEvery(FormAction.CANCEL_PLAN, cancelPlan),
-      takeEvery(FormAction.SEND_FRIENDS_EMAIL, sendFriendsEmail),
-      takeEvery(FormAction.GET_PROMO_CODE, getPromoCode),
-      takeEvery(FormAction.SEND_SIGNUP_EMAIL, sendSignupEmail),
-      takeEvery(FormAction.SEND_FINAL_CHARGE, sendFinalCharge),
-      takeEvery(FormAction.APPLY_DISCOUNT, applyDiscount)
+  	takeEvery(FormAction.USER_LOGIN, sendLoginInfo),
+  	takeEvery(FormAction.USER_SIGNUP, sendSignupInfo),
+    takeEvery(FormAction.CHARGE_STRIPE, chargeStripe),
+    takeEvery(FormAction.CREATE_VM, createVMPost),
+    takeEvery(FormAction.GET_VM_ID, sendVMID),
+    takeEvery(FormAction.REGISTER_VM, sendVMRegister),
+    takeEvery(FormAction.FETCH_VMS, sendVMFetch),
+    takeEvery(FormAction.FORGOT_PASSWORD, sendForgotPassword),
+    takeEvery(FormAction.VALIDATE_TOKEN, sendValidateToken),
+    takeEvery(FormAction.RESET_PASSWORD, sendResetPassword),
+    takeEvery(FormAction.RETRIEVE_CUSTOMER, retrieveCustomer),
+    takeEvery(FormAction.CANCEL_PLAN, cancelPlan),
+    takeEvery(FormAction.SEND_FRIENDS_EMAIL, sendFriendsEmail),
+    takeEvery(FormAction.GET_PROMO_CODE, getPromoCode),
+    takeEvery(FormAction.SEND_SIGNUP_EMAIL, sendSignupEmail),
+    takeEvery(FormAction.SEND_FINAL_CHARGE, sendFinalCharge),
+    takeEvery(FormAction.APPLY_DISCOUNT, applyDiscount),
+    takeEvery(FormAction.SUBSCRIBE_NEWSLETTER, subscribeNewsletter)
 	]);
 }

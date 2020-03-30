@@ -49,6 +49,7 @@ export const VALIDATE_PROMO_CODE = "VALIDATE_PROMO_CODE"
 export const PROMO_CODE_FAILURE = "PROMO_CODE_FAILURE"
 export const SEND_FINAL_CHARGE = "SEND_FINAL_CHARGE"
 export const APPLY_DISCOUNT = "APPLY_DISCOUNT"
+export const SUBSCRIBE_NEWSLETTER = "SUBSCRIBE_NEWSLETTER"
 
 
 export function userLogin(user, password, create) {
@@ -309,5 +310,12 @@ export function applyDiscount(code) {
 	return {
 		type: APPLY_DISCOUNT,
 		code
+	}
+}
+
+export function subscribeNewsletter(username) {
+	return {
+		type: SUBSCRIBE_NEWSLETTER,
+		username
 	}
 }
