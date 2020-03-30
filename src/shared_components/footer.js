@@ -46,12 +46,12 @@ class Footer extends Component {
                   Fractal streams a powerful computer to any device.
                 </div>
                 <div style = {{display: 'flex', marginTop: 15}}>
-                  <a href = "https://www.linkedin.com/company/fractalcomputers/about/?viewAsMember=true" target = "_blank" style = {{textDecoration: 'none'}}>
+                  <a href = "https://twitter.com/fractalapp" target = "_blank" style = {{textDecoration: 'none'}}>
                   <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative',marginRight: 10, borderRadius: 5}}>
                     <FaTwitter style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
                   </div>
                   </a>
-                  <a href = "https://twitter.com/fractalapp" target = "_blank" style = {{textDecoration: 'none'}}>
+                  <a href = "https://www.linkedin.com/company/fractalcomputers/about/?viewAsMember=true" target = "_blank" style = {{textDecoration: 'none'}}>
                   <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', borderRadius: 5}}>
                     <FaLinkedinIn style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
                   </div>
@@ -124,12 +124,12 @@ class Footer extends Component {
                   Fractal streams a powerful computer to any device.
                 </div>
                 <div style = {{display: 'flex', marginTop: 15}}>
-                  <a href = "https://www.linkedin.com/company/fractalcomputers/about/?viewAsMember=true" target = "_blank" style = {{textDecoration: 'none'}}>
+                  <a href = "https://twitter.com/fractalapp" target = "_blank" style = {{textDecoration: 'none'}}>
                   <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative',marginRight: 10, borderRadius: 5}}>
                     <FaTwitter style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
                   </div>
                   </a>
-                  <a href = "https://twitter.com/fractalapp" target = "_blank" style = {{textDecoration: 'none'}}>
+                  <a href = "https://www.linkedin.com/company/fractalcomputers/about/?viewAsMember=true" target = "_blank" style = {{textDecoration: 'none'}}>
                   <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', borderRadius: 5}}>
                     <FaLinkedinIn style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
                   </div>
