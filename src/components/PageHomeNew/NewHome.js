@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
@@ -27,6 +28,7 @@ import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 import Footer from '../../shared_components/footer.js'
+import { changeTab } from '../../actions/index.js';
 
 class PageHome extends Component {
   constructor(props) {
@@ -60,6 +62,7 @@ class PageHome extends Component {
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
+    this.props.dispatch(changeTab('personal'))
   }
 
   componentWillUnmount() {
@@ -139,26 +142,6 @@ class PageHome extends Component {
             </Row>
           </div>
         </div>
-{/*        <div style = {{paddingTop: 100}}>
-          <div className = "fractal-container" style = {{paddingBottom: 50}}>
-            <Row>
-              <Col xs = {{order: 1, span: 12}} style = {{textAlign: 'center', paddingTop: 20}}>
-                <div style = {{color: '#FFFFFF', fontSize: 30, lineHeight: 1.4, fontWeight: 'bold'}}>Transform any device into a <br/><span className = "blue-gradient">supercomputer</span></div>
-                <p style = {{color: '#DFDFDF', fontSize: 15, maxWidth: 600, margin: 'auto', marginTop: 15}}>Fractal streams GPU-powered, Windows 10 desktops to any macOS, iOS, or Windows device</p>
-                <Button onClick = {this.openForm} style = {{background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", marginTop: 35, padding: "10px 40px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.65)', fontSize: 15}}>REQUEST ACCESS</Button>
-              </Col>
-              <Col xs = {{order: 2, span: 12}} style = {{marginTop: 40}}>
-                {
-                this.state.width > 700
-                ?
-                <img src = {Car} style = {{width: "95%", position: 'relative', maxWidth: 450, paddingTop: 25}}/>
-                :
-                <img src = {Car} style = {{width: "100%"}}/>
-                }
-              </Col>
-            </Row>
-          </div>
-        </div>*/}
         <div style = {{background: 'white', backgroundSize: '100% auto'}}>
           <div className = "fractal-container">
             <Row>
@@ -429,4 +412,10 @@ class PageHome extends Component {
   }
 }
 
-export default PageHome;
+function mapStateToProps(state) {
+  return { 
+    currentPage: state.AccountReducer.currentPage
+  }
+}
+
+export default connect(mapStateToProps)(PageHome)

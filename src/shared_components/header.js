@@ -15,7 +15,7 @@ import { changeTab } from '../actions/index.js';
 class Header extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, menu: false, currentPage: 'personal' }
+    this.state = { width: 0, height: 0, menu: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 

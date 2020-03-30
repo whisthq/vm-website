@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
@@ -27,8 +28,9 @@ import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 import Footer from '../../shared_components/footer.js'
+import { changeTab } from '../../actions/index.js';
 
-class PageHome extends Component {
+class PageStudios extends Component {
   constructor(props) {
     super(props)
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, loaded: false, version: "Windows"}
@@ -52,6 +54,7 @@ class PageHome extends Component {
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
+    this.props.dispatch(changeTab('teams'))
   }
 
   componentWillUnmount() {
@@ -343,4 +346,10 @@ class PageHome extends Component {
   }
 }
 
-export default PageHome;
+function mapStateToProps(state) {
+  return { 
+    currentPage: state.AccountReducer.currentPage
+  }
+}
+
+export default connect(mapStateToProps)(PageStudios)
