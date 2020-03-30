@@ -370,7 +370,7 @@ class Dashboard extends Component {
                       <FaPlus style = {{height: 25, marginTop: 10, color: "#333333"}}/>
                       <div style = {{color: "#333333", fontSize: 20, marginTop: 20, fontWeight: 'bold'}}>Create My Cloud Computer</div>
                       <div style = {{fontSize: 14, maxWidth: 450, margin: 'auto', marginTop: 10, color: '#333333'}}>
-                        Transform your local device into a GPU-powered cloud computer. Setup in less than one minute, and you start with a free trial.
+                        Transform your local device into a GPU-powered cloud computer. Setup in less than one minute, and start with a free trial.
                       </div>
                     </div>
                   </Link>
