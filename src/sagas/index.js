@@ -101,6 +101,8 @@ function *sendFinalCharge(action) {
     code: action.code
   });
 
+  console.log(json)
+  
   if(json) {
    if (json.status === 200) {
     history.push('/dashboard');

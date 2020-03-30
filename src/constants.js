@@ -4,7 +4,7 @@ const production = {
 	 	MAIL_SERVER: "https://fractal-mail-server.herokuapp.com"
 	},
 	stripe: {
-		PUBLIC_KEY: "pk_live_XLjiiZB93KN0EjY8hwCxvKmB00whKEIj3U"
+		PUBLIC_KEY: "pk_test_XLjiiZB93KN0EjY8hwCxvKmB00whKEIj3U"
 	}
 };
 
