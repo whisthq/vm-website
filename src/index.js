@@ -56,6 +56,8 @@ const persistor = persistStore(store)
 
 sagaMiddleware.run(rootSaga)
 
+console.log(process.env.NODE_ENV)
+
 ReactDOM.render(
     <Router history = {history}>
       <Provider store={store}>

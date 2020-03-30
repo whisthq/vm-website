@@ -13,7 +13,8 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { logout, getVMStatus, retrieveCustomer, vmCreating, cancelPlan, fetchVMs, sendFriendsEmail, emailSent } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
 import { FaExclamationTriangle } from 'react-icons/fa'
-import { FaCircle, FaTimes, FaEye, FaEyeSlash, FaCheckCircle, FaCheck, FaUser, FaLock, FaDollarSign, FaArrowRight, FaPlus, FaPlay, FaFastForward, FaPause, FaWindows, FaApple, FaUbuntu } from 'react-icons/fa'
+import { FaCircle, FaTimes, FaEye, FaEyeSlash, FaCheckCircle, FaCheck, FaUser, FaLock, FaDollarSign, 
+  FaArrowRight, FaPlus, FaPlay, FaFastForward, FaPause, FaWindows, FaApple, FaUbuntu, FaAndroid, FaTag } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 
@@ -34,7 +35,7 @@ class Dashboard extends Component {
     super(props)
     this.state = {width: 0, height: 0, modalShow: false, showPopup: false, day: 0, month: 0, year: 0, 
       created: '', billStart: '', billEnd: '', cancelling: false, hidePassword: true, exitSurvey: false,
-      exitFeedback: '', emailShare: false, emails: [], friendsEmail: '',
+      exitFeedback: '', emailShare: false, emails: [], friendsEmail: '', trialEnd: '',
       showEmailButton: false, emailBoxWidth: 45, sendingEmails: false}
     this.customWidth = React.createRef()
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
@@ -70,6 +71,9 @@ class Dashboard extends Component {
       if(this.state.billEnd === '' && this.props.payment.current_period_end) {
         this.setState({billEnd: this.unixToDate(this.props.payment.current_period_end)})
       }
+      if(this.state.trialEnd === '' && this.props.payment.trial_end) {
+        this.setState({trialEnd: this.unixToDate(this.props.payment.trial_end)})
+      }
     } else {
       if(this.state.created != '') {
         this.setState({created: '', cancelling: false})
@@ -79,6 +83,9 @@ class Dashboard extends Component {
       }
       if(this.state.billEnd != '') {
         this.setState({billEnd: '', cancelling: false})
+      }
+      if(this.state.trialEnd != '') {
+        this.setState({trialEnd: '', cancelling: false})
       }
     }
   }
@@ -190,6 +197,23 @@ class Dashboard extends Component {
             <div className = "sign-out-button" onClick = {() => this.props.dispatch(logout())}>Sign Out</div>
           </div>
           <div style = {{paddingTop: 60, paddingLeft: 100, paddingBottom: 100, width: 'calc(100% - 400px)'}}>
+            {
+            this.props.credits && this.props.credits > 0
+            ?
+            (
+            this.props.credits > 1
+            ?
+            <div style = {{width: '100%', padding: '15px 25px', backgroundColor: '#edfae6', color: '#555555', borderRadius: 5, marginBottom: 30, fontSize: 14}}>
+              Someone redeemed your promo code! Create a cloud PC to redeem a free subscription for {this.props.credits} months.
+            </div>
+            :
+            <div style = {{width: '100%', padding: '15px 25px', backgroundColor: '#edfae6', color: '#555555', borderRadius: 5, marginBottom: 30, fontSize: 14}}>
+              Someone redeemed your promo code! Create a cloud PC to redeem a free subscription for {this.props.credits} month.
+            </div>
+            )
+            :
+            <div></div>
+            }
             <div>
               <div style = {{display: 'inline', float: 'left'}}>
                 {this.state.month} {this.state.day}, {this.state.year}
@@ -238,7 +262,7 @@ class Dashboard extends Component {
                   </div>
                   )
                   :
-                  <textarea onChange = {this.changeFriendsEmail} rows = "4" cols = "60" placeholder = "Enter your friends' emails here, and we'll email them your promotional code for you, along with a friendly message. When they create a cloud PC with this code, your account will automatically be accredited."
+                  <textarea onChange = {this.changeFriendsEmail} rows = "4" cols = "60" placeholder = "Enter your friends' emails here, and we'll email them your referral code for you, along with a friendly message. When they create a cloud PC with this code, your account will automatically be accredited."
                     style = {{outline: 'none', resize: 'none', background: 'none', border: 'none', marginTop: 20, fontSize: 14, padding: 0}}>
                   </textarea>
                   }
@@ -346,7 +370,7 @@ class Dashboard extends Component {
                       <FaPlus style = {{height: 25, marginTop: 10, color: "#333333"}}/>
                       <div style = {{color: "#333333", fontSize: 20, marginTop: 20, fontWeight: 'bold'}}>Create My Cloud Computer</div>
                       <div style = {{fontSize: 14, maxWidth: 450, margin: 'auto', marginTop: 10, color: '#333333'}}>
-                        Transform your local device into a GPU-powered cloud computer. Setup in less than one minute, and your first week is free.
+                        Transform your local device into a GPU-powered cloud computer. Setup in less than one minute, and you start with a free trial.
                       </div>
                     </div>
                   </Link>
@@ -416,9 +440,17 @@ class Dashboard extends Component {
                         </div>
                         </a>
                       </Col>
-                      <Col xs = {12} style = {{padding: '0px 20px'}}>
+                      <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                         <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
                           <FaUbuntu style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#666666'}}/> Ubuntu 18.04
+                        </div>
+                        <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
+                          <button disabled = "true" style = {{background: 'none', border: 'solid 0.5px #A9A9A9', fontSize: 12, borderRadius: 5, color: '#A9A9A9', width: 90, padding: '5px 5px'}}>Coming Soon</button>
+                        </div>
+                      </Col>
+                      <Col xs = {12} style = {{padding: '0px 20px'}}>
+                        <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
+                          <FaAndroid style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#666666'}}/> Android
                         </div>
                         <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
                           <button disabled = "true" style = {{background: 'none', border: 'solid 0.5px #A9A9A9', fontSize: 12, borderRadius: 5, color: '#A9A9A9', width: 90, padding: '5px 5px'}}>Coming Soon</button>
@@ -517,6 +549,21 @@ class Dashboard extends Component {
                     }
                   </Col>
                   <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
+                    <div style = {{float: 'left', display: 'inline', fontWeight: 'bold', color: '#555555'}}>
+                      <FaPause style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#DDDDDD'}}/> Current Period End
+                    </div>
+                    {
+                    this.state.billEnd
+                    ?
+                    <div style = {{float: 'right', display: 'inline', color: '#555555'}}>
+                      {this.state.billEnd}
+                    </div>
+                    :
+                    <div style = {{float: 'right', display: 'inline', background: '#EBEBEB', width: 100, height: 6, borderRadius: 3, position: 'relative', top: 8}}>
+                    </div>
+                    }
+                  </Col>
+                  <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                     <div style = {{float: 'left', fontWeight: 'bold', color: '#555555', display: 'inline'}}>
                       <FaPlay style = {{height: 9, position: 'relative', bottom: 1, paddingRight: 5, color: '#DDDDDD'}}/> Plan Created
                     </div>
@@ -533,13 +580,13 @@ class Dashboard extends Component {
                   </Col>
                   <Col xs = {12} style = {{padding: '0px 20px'}}>
                     <div style = {{float: 'left', display: 'inline', fontWeight: 'bold', color: '#555555'}}>
-                      <FaPause style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#DDDDDD'}}/> Current Period End
+                      <FaTag style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#DDDDDD'}}/> Free Trial Ends
                     </div>
                     {
-                    this.state.billEnd
+                    this.state.trialEnd
                     ?
                     <div style = {{float: 'right', display: 'inline', color: '#555555'}}>
-                      {this.state.billEnd}
+                      {this.state.trialEnd}
                     </div>
                     :
                     <div style = {{float: 'right', display: 'inline', background: '#EBEBEB', width: 100, height: 6, borderRadius: 3, position: 'relative', top: 8}}>
@@ -569,7 +616,8 @@ function mapStateToProps(state) {
     id: state.AccountReducer.id,
     payment: state.AccountReducer.payment,
     emailStatus: state.AccountReducer.emailStatus,
-    promoCode: state.AccountReducer.promoCode
+    promoCode: state.AccountReducer.promoCode,
+    credits: state.AccountReducer.credits
   }
 }
 

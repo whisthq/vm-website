@@ -15,7 +15,9 @@ import { FaArrowRight } from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import TypeformButton from '../../shared_components/typeformbutton.js'
 import CheckoutForm from '../../shared_components/checkoutform.js'
+import { config } from '../../constants.js'
 import '../../static/App.css';
+import StripeBadge from '../../assets/powered_by_stripe.svg'
 
 class Purchase extends Component {
   constructor(props) {
@@ -59,7 +61,7 @@ class Purchase extends Component {
   }
 
   handleClick2 = (location) => {
-    var unsupported = ["WA", "OR", "CA", "NV", "ID", "MT", "WY"]
+    var unsupported = ["WA", "OR", "CA", "NV", "ID", "MT", "WY", "AK"]
     if(unsupported.includes(location)) {
       this.setState({step: 2, exit: true})
     } else {
@@ -72,6 +74,9 @@ class Purchase extends Component {
     if (this.state.width > 700 && this.state.modalShow) {
       modalClose()
     }
+
+    const fonts = [{ cssSrc: "https://fonts.googleapis.com/css?family=Maven+Pro" }]
+    var public_key = config.stripe.PUBLIC_KEY
 
     const renderSurvey = () => {
       if(this.state.step === 1) {
@@ -306,18 +311,38 @@ class Purchase extends Component {
       } else if(this.state.step === 3) {
         return(
           <div style = {{paddingTop: 100, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+            <img src = {StripeBadge} style = {{width: 125, position: 'absolute', bottom: 30, marginLeft: 40}}/>
             <div>
               <span style = {{position: 'relative', bottom: 2}}>
                 3 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
               </span>
               <span style = {{fontSize: 22, paddingLeft: 10}}>Create My Cloud Computer</span>
+              {
+              this.props.credits && this.props.credits > 0
+              ?
+              (
+              this.props.credits === 1
+              ?
               <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
-                Your first seven days are free, and you can cancel anytime.
+                Your first month is free, and you can cancel anytime. Get an additional free month for every
+                friend who enters your referral code.
               </div>
+              :
+              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
+                Your first {this.props.credits} months are free, and you can cancel anytime. Get an additional free 
+                month for every friend who enters your referral code.
+              </div>
+              )
+              :
+              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
+                Your first seven days are free, and you can cancel anytime. Get an additional free month for every
+                friend who enters your referral code.
+              </div>
+              }
               <div style = {{marginTop: 40, marginLeft: 39}}>
-                <StripeProvider apiKey="pk_live_XLjiiZB93KN0EjY8hwCxvKmB00whKEIj3U">
-                  <div className="example">
-                    <Elements>
+                <StripeProvider apiKey={public_key}>
+                  <div className="example"> 
+                    <Elements fonts = {fonts}>
                       <CheckoutForm location = {this.state.location}/>
                     </Elements>
                   </div>
@@ -369,7 +394,9 @@ function mapStateToProps(state) {
     user: state.AccountReducer.user,
     vms: typeof state.AccountReducer.vm_credentials == "undefined" ? [] : state.AccountReducer.vm_credentials,
     percentage: typeof state.AccountReducer.progress == "undefined" ? 1 : state.AccountReducer.progress,
-    id: state.AccountReducer.id}
+    id: state.AccountReducer.id,
+    credits: state.AccountReducer.credits
+  }
 }
 
 export default connect(mapStateToProps)(Purchase)
