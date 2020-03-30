@@ -1,10 +1,10 @@
 const production = {
 	url: {
-		PRIMARY_SERVER: "https://cube-celery-staging.herokuapp.com",
+		PRIMARY_SERVER: "https://cube-celery-vm.herokuapp.com",
 	 	MAIL_SERVER: "https://fractal-mail-server.herokuapp.com"
 	},
 	stripe: {
-		PUBLIC_KEY: "pk_test_XLjiiZB93KN0EjY8hwCxvKmB00whKEIj3U"
+		PUBLIC_KEY: "pk_live_XLjiiZB93KN0EjY8hwCxvKmB00whKEIj3U"
 	}
 };
 
@@ -28,4 +28,4 @@ const development = {
 	}
 };
 
-export const config = process.env.NODE_ENV === 'development' ? staging : production;
+export const config = process.env.NODE_ENV === 'development' ? staging : staging;
