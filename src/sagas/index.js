@@ -12,6 +12,8 @@ function* sendLoginInfo(action) {
       username: action.user,
       password: action.password
    })
+   console.log("LOGIN INFO")
+   console.log(json)
    if(json) {
 	   if (json.verified) {
 	     yield put(FormAction.loginSuccess())
