@@ -233,7 +233,7 @@ class Dashboard extends Component {
                 <div>
                   <div style = {{fontWeight: 'bold', fontSize: 22}}><strong>Share Fractal with a Friend</strong></div>
                   <div style = {{fontSize: 14, color: "#333333", marginTop: 20}}>
-                    For every person that types in the following code at checkout, your account will be credited an additional free month.
+                    For every person that types in the following code at checkout, both your accounts will be credited an additional free month.
                   </div>
                   <div style = {{color: "#111111", marginTop: 75, fontSize: 40}}>
                     {this.props.promoCode}
