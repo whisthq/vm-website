@@ -187,7 +187,7 @@ class Dashboard extends Component {
     return (
       <div>
       {
-      !this.props.loggedIn && this.props.email_verified
+      !this.props.loggedIn
       ?
       <Redirect to = "/auth"/>
       :
