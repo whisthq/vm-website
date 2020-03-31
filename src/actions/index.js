@@ -56,6 +56,8 @@ export const VERIFY_TOKEN = "VERIFY_TOKEN"
 export const SEND_VERIFICATION_EMAIL = "SEND_VERIFICATION_EMAIL"
 export const STORE_VERIFICATION_TOKEN = "STORE_VERIFICATION_TOKEN"
 export const INCREMENT_VERIFICATION_EMAILS_SENT = "INCREMENT_VERIFICATION_EMAILS_SENT"
+export const TRIGGER_SURVEY = "TRIGGER_SURVEY"
+export const SUBMIT_PURCHASE_FEEDBACK = "SUBMIT_PURCHASE_FEEDBACK"
 
 export function userLogin(user, password, create) {
 	return {
@@ -364,5 +366,19 @@ export function storeVerificationToken(token) {
 export function incrementVerificationEmailsSent() {
 	return {
 		type: INCREMENT_VERIFICATION_EMAILS_SENT
+	}
+}
+
+export function triggerSurvey(trigger) {
+	return {
+		type: TRIGGER_SURVEY,
+		trigger
+	}
+}
+
+export function submitPurchaseFeedback(feedback) {
+	return {
+		type: SUBMIT_PURCHASE_FEEDBACK,
+		feedback
 	}
 }

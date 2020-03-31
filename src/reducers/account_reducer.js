@@ -4,7 +4,7 @@ const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, 
                  vm_credentials: [], failed_login_attempts: 0, forgot_password: 0, token_status: 'invalid', has_vm: false, 
                  payment: {}, signupStatus: 200, failed_signup_attempts: 0, stripeStatus: 200, failed_payment_attempts: 0,
                  currentPage: 'personal', emailStatus: 0, promoCode: '', credits: 0, failed_referral_attempts: 0, 
-                 email_verified: false, verificationToken: '', verificationEmailsSent: 0}
+                 email_verified: false, verificationToken: '', verificationEmailsSent: 0, show_survey: false}
 
 export default function(state = DEFAULT, action) {
   switch (action.type) {
@@ -164,6 +164,11 @@ export default function(state = DEFAULT, action) {
       return {
         ...state,
         verificationEmailsSent: state.verificationEmailsSent + 1
+      }
+    case AccountAction.TRIGGER_SURVEY:
+      return {
+        ...state,
+        show_survey: action.trigger
       }
     default:
       return state
