@@ -7,6 +7,7 @@ import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux';
 import '../../static/App.css';
+import history from "../../history";
 
 import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -182,6 +183,7 @@ class Dashboard extends Component {
     if (this.state.width > 700 && this.state.modalShow) {
       modalClose()
     }
+
     return (
       <div>
       {
@@ -617,7 +619,8 @@ function mapStateToProps(state) {
     payment: state.AccountReducer.payment,
     emailStatus: state.AccountReducer.emailStatus,
     promoCode: state.AccountReducer.promoCode,
-    credits: state.AccountReducer.credits
+    credits: state.AccountReducer.credits,
+    email_verified: state.AccountReducer.email_verified
   }
 }
 

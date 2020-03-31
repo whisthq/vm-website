@@ -15,19 +15,50 @@ function* sendLoginInfo(action) {
    if(json) {
 	   if (json.verified) {
 	     yield put(FormAction.loginSuccess())
+       yield put(FormAction.storeVerificationToken(json.token))
+       yield put(FormAction.checkVerifiedEmail(action.user))
        yield put(FormAction.getPromoCode(action.user))
        if(json.vm_status === 'is_creating') {
         yield put(FormAction.vmCreating(true))
        } else {
         yield put(FormAction.vmCreating(false))
        }
-       if(!action.create) {
-        history.push('/dashboard')
-       } 
 	   } else {
        yield put(FormAction.loginFailure());
      }
 	}
+}
+
+function* sendSignupInfo(action) {
+   const state = yield select()
+   const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/register', {
+      username: action.user,
+      password: action.password
+   });
+
+   if(json) {
+     if (json.status === 200) {
+       yield put(FormAction.loginSuccess())
+       yield put(FormAction.storeVerificationToken(json.token))
+       yield put(FormAction.checkVerifiedEmail(action.user))
+       yield put(FormAction.getPromoCode(action.user))
+       yield put(FormAction.sendVerificationEmail(action.user, json.token))
+     } else {
+       yield put(FormAction.signupFailure(json.status));
+     }
+  }
+}
+
+function* sendVerificationEmail(action) {
+   if(action.username != '' && action.token != '') {
+     const {json, response} = yield call(apiPost, config.url.MAIL_SERVER + '/verification', {
+        username: action.username,
+        token: action.token
+     });
+     if(json && json.status === 200) {
+      yield put(FormAction.incrementVerificationEmailsSent())
+     }
+  }
 }
 
 function* getPromoCode(action) {
@@ -40,31 +71,14 @@ function* getPromoCode(action) {
    }
 }
 
-function* sendSignupInfo(action) {
-   const state = yield select()
-   const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/register', {
-      username: action.user,
-      password: action.password
-   });
-   console.log(json)
-   if(json) {
-     if (json.status === 200) {
-       yield put(FormAction.loginSuccess())
-       yield put(FormAction.getPromoCode(action.user))
-       if(!action.create) {
-        history.push('/dashboard')
-       }
-     } else {
-       yield put(FormAction.signupFailure(json.status));
-     }
-  }
-}
-
 function* sendSignupEmail(action) {
-   const {json, response} = yield call(apiPost, config.url.MAIL_SERVER + '/signup', {
-      username: action.user,
-      code: action.code
-   });
+   const state = yield select()
+   if(!state.AccountReducer.email_verified) {
+     const {json, response} = yield call(apiPost, config.url.MAIL_SERVER + '/signup', {
+        username: action.user,
+        code: action.code
+     });
+    }
 }
 
 
@@ -287,6 +301,31 @@ function* subscribeNewsletter(action) {
    })
 }
 
+function* checkVerifiedEmail(action) {
+   const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/checkVerified', {
+    username: action.username
+   })
+   if(json && json.status === 200 && json.verified) {
+     yield put(FormAction.emailVerified(true))
+     history.push('/dashboard')
+   } else {
+     yield put(FormAction.emailVerified(false))
+     history.push('/verify')
+   }
+}
+
+function* verifyToken(action) {
+   const state = yield select()
+   const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/verifyUser', {
+    username: state.AccountReducer.user,
+    token: action.token
+   })
+   if(json && json.status === 200 && json.verified) {
+     yield put(FormAction.emailVerified(true))
+   } else {
+     yield put(FormAction.emailVerified(false))
+   }
+}
 
 export default function* rootSaga() {
  	yield all([
@@ -307,6 +346,10 @@ export default function* rootSaga() {
     takeEvery(FormAction.SEND_SIGNUP_EMAIL, sendSignupEmail),
     takeEvery(FormAction.SEND_FINAL_CHARGE, sendFinalCharge),
     takeEvery(FormAction.APPLY_DISCOUNT, applyDiscount),
-    takeEvery(FormAction.SUBSCRIBE_NEWSLETTER, subscribeNewsletter)
+    takeEvery(FormAction.SUBSCRIBE_NEWSLETTER, subscribeNewsletter),
+    takeEvery(FormAction.SEND_SIGNUP_EMAIL, sendSignupEmail),
+    takeEvery(FormAction.CHECK_VERIFIED_EMAIL, checkVerifiedEmail),
+    takeEvery(FormAction.VERIFY_TOKEN, verifyToken),
+    takeEvery(FormAction.SEND_VERIFICATION_EMAIL, sendVerificationEmail)
 	]);
 }

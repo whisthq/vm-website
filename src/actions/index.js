@@ -50,7 +50,12 @@ export const PROMO_CODE_FAILURE = "PROMO_CODE_FAILURE"
 export const SEND_FINAL_CHARGE = "SEND_FINAL_CHARGE"
 export const APPLY_DISCOUNT = "APPLY_DISCOUNT"
 export const SUBSCRIBE_NEWSLETTER = "SUBSCRIBE_NEWSLETTER"
-
+export const CHECK_VERIFIED_EMAIL = "CHECK_VERIFIED_EMAIL"
+export const EMAIL_VERIFIED = "EMAIL_VERIFIED"
+export const VERIFY_TOKEN = "VERIFY_TOKEN"
+export const SEND_VERIFICATION_EMAIL = "SEND_VERIFICATION_EMAIL"
+export const STORE_VERIFICATION_TOKEN = "STORE_VERIFICATION_TOKEN"
+export const INCREMENT_VERIFICATION_EMAILS_SENT = "INCREMENT_VERIFICATION_EMAILS_SENT"
 
 export function userLogin(user, password, create) {
 	return {
@@ -317,5 +322,47 @@ export function subscribeNewsletter(username) {
 	return {
 		type: SUBSCRIBE_NEWSLETTER,
 		username
+	}
+}
+
+export function checkVerifiedEmail(username) {
+	return {
+		type: CHECK_VERIFIED_EMAIL,
+		username
+	}
+}
+
+export function emailVerified(verified) {
+	return {
+		type: EMAIL_VERIFIED,
+		verified
+	}
+}
+
+export function verifyToken(token) {
+	return {
+		type: VERIFY_TOKEN,
+		token
+	}
+}
+
+export function sendVerificationEmail(username, token) {
+	return {
+		type: SEND_VERIFICATION_EMAIL,
+		username,
+		token
+	}
+}
+
+export function storeVerificationToken(token) {
+	return {
+		type: STORE_VERIFICATION_TOKEN,
+		token
+	}
+}
+
+export function incrementVerificationEmailsSent() {
+	return {
+		type: INCREMENT_VERIFICATION_EMAILS_SENT
 	}
 }

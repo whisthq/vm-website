@@ -120,6 +120,13 @@ class Auth extends Component {
   }
 
   componentDidMount() {
+    var token = this.props.location.search
+    var token = token.substring(1,token.length)
+
+    // if(token && token != '') {
+    //   this.props.dispatch(verifyEmail(token))
+    // }
+
     this.setState({'failures': this.props.failed_login_attempts})
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
@@ -167,7 +174,7 @@ class Auth extends Component {
     return (
       <div>
         {
-        this.props.loggedIn
+        this.props.loggedIn && this.props.email_verified
         ?
         <Redirect to = "/dashboard"/>
         :
@@ -379,7 +386,8 @@ function mapStateToProps(state) {
     loggedIn: state.AccountReducer.loggedIn,
     failed_login_attempts: state.AccountReducer.failed_login_attempts,
     failed_signup_attempts: state.AccountReducer.failed_signup_attempts,
-    signupStatus: state.AccountReducer.signupStatus
+    signupStatus: state.AccountReducer.signupStatus,
+    email_verified: state.AccountReducer.email_verified
   }
 }
 

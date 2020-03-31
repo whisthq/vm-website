@@ -322,25 +322,6 @@ class PageHome extends Component {
                 </div>
               </Col>
               }
-{/*              {
-              this.state.width > 700
-              ?
-              <Col md = {6}>
-                <div style = {{backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: "20px 50px", minHeight: 210, margin:'auto', width: '100%'}}>
-                  <div style = {{fontWeight: 'bold', fontSize: 25, color: "#333333", textAlign: 'left'}}>Hardware Flexibility</div>
-                  <div style = {{backgroundColor: "#5ec3eb", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 120, marginTop: 10}}>Coming Soon</div>
-                  <p style = {{textAlign: 'left', marginTop: 20}}>Instantly swap out your CPU, GPU, RAM, or storage at the click of a button.</p>
-                </div>
-              </Col>
-              :
-              <Col md = {6} style = {{marginTop: 40}}>
-                <div style = {{backgroud: 'white', boxShadow: '0px 4px 50px rgba(0, 0, 0, 0.25)', padding: "20px 50px", margin: 'auto', minHeight: 210}}>
-                  <div style = {{fontWeight: 'bold', fontSize: 25, color: "#333333", textAlign: 'left'}}>Hardware Flexibility</div>
-                  <div style = {{backgroundColor: "#5ec3eb", color: 'white', fontWeight: 'bold', padding: "5px 10px", borderRadius: 15, fontSize: 12, width: 120, marginTop: 10}}>Coming Soon</div>
-                  <p style = {{textAlign: 'left', marginTop: 20}}>Instantly swap out your CPU, GPU, RAM, or storage at the click of a button.</p>
-                </div>
-              </Col>
-              }*/}
             </Row>
           </div>
         </div>

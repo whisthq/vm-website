@@ -35,6 +35,7 @@ import Dashboard from './components/PageDashboard/Dashboard'
 import Reset from './components/PageReset/Reset'
 import Privacy from './components/PageLegal/Privacy'
 import TermsOfService from './components/PageLegal/TermsOfService'
+import EmailVerification from './components/PageAuth/EmailVerification'
 
 const persistConfig = {
   key: 'rootKey',
@@ -74,6 +75,7 @@ ReactDOM.render(
               <Route exact path="/reset" component={Reset} />
               <Route exact path="/privacy" component={Privacy} />
               <Route exact path="/termsofservice" component={TermsOfService} />
+              <Route exact path="/verify" component={EmailVerification} />
           </PersistGate>
           </Provider>
       </Router>,
