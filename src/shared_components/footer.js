@@ -108,7 +108,7 @@ class Footer extends Component {
         </div>
         <div style = {{width: '100%', marginTop: 100, background: '#EBEBEB', height: 1}}></div>
         <div style = {{fontSize: 11, marginTop: 20, width: '100%'}}>
-          <p style = {{margin: 0, textAlign: 'left', color: '#555555'}}>Copyright &copy; Fractal Computers Inc., All Rights Reserved.</p>
+          <p style = {{margin: 0, textAlign: 'left', color: '#555555'}}>Copyright &copy; Fractal Computers, Inc. All Rights Reserved.</p>
         </div>
       </Container>
     </div>
