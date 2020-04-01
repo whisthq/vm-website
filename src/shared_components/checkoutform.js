@@ -112,7 +112,7 @@ class CheckoutForm extends Component {
           {
           this.props.credits && this.props.credits > 0
           ?
-          <div style = {{fontSize: 12, marginTop: 1, display: 'block'}}>
+          <div style = {{fontSize: 12, marginTop: 1, display: 'block', marginBottom: 45}}>
             <div style = {{display: 'inline', float: 'left'}}>Free Trial Period</div>
             {
             this.props.credits > 1
@@ -123,7 +123,7 @@ class CheckoutForm extends Component {
             }
           </div>
           :
-          <div style = {{fontSize: 12, marginTop: 1, display: 'block'}}>
+          <div style = {{fontSize: 12, marginTop: 1, display: 'block', marginBottom: 45}}>
             <div style = {{display: 'inline', float: 'left'}}>Free Trial Period</div>
             <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>7 days</div>
           </div>
