@@ -100,7 +100,7 @@ class PageHome extends Component {
                 <div style = {{marginBottom: 30, color: "#D6D6D6", fontSize: 15, height: 40, display: 'flex'}}>
                   <div style = {{height: 30, backgroundColor: '#5ec3eb', padding: '5px 15px', color: '#0b172b', fontWeight: 'bold', fontSize: 14, borderRadius: 5, marginRight: 20}}>NEW</div>
                   <div style = {{position: 'relative', bottom: 5}}>
-                    Support for Linux, Android, and iOS are currently being tested in private beta
+                    Support for Linux, Android, and iOS is currently being tested in private beta
                   </div>
                 </div>
                 <div style = {{color: '#FFFFFF', fontSize: 39, lineHeight: 1.4, fontWeight: 'bold', marginTop: 50}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
