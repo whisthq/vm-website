@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
-import Button from 'react-bootstrap/Button'
+import { Row, Col, Button, Container, InputGroup, FormControl } from 'react-bootstrap'
 import { connect } from 'react-redux';
 import '../../static/App.css';
 import history from "../../history";
@@ -13,7 +8,7 @@ import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import {
   logout, getVMStatus, retrieveCustomer, vmCreating, cancelPlan, fetchVMs, sendFriendsEmail,
-  emailSent, triggerSurvey, submitPurchaseFeedback
+  emailSent, triggerSurvey, submitPurchaseFeedback, deleteAccount
 } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
 import { FaExclamationTriangle } from 'react-icons/fa'
@@ -25,8 +20,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 
 import { withRouter } from "react-router";
-import { Link } from 'react-router-dom'
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom'
 import Popup from "reactjs-popup";
 
 import CPU from '../../assets/cpu.svg'
@@ -41,7 +35,7 @@ class Dashboard extends Component {
     super(props)
     this.state = {
       width: 0, height: 0, modalShow: false, showPopup: false, day: 0, month: 0, year: 0,
-      created: '', billStart: '', billEnd: '', cancelling: false, hidePassword: true, exitSurvey: false,
+      created: '', billStart: '', billEnd: '', cancellingPlan: false, hidePassword: true, exitSurvey: false,
       exitFeedback: '', emailShare: false, emails: [], friendsEmail: '', trialEnd: '',
       showEmailButton: false, emailBoxWidth: 45, sendingEmails: false, purchaseFeedback: ''
     }
@@ -84,16 +78,16 @@ class Dashboard extends Component {
       }
     } else {
       if (this.state.created != '') {
-        this.setState({ created: '', cancelling: false })
+        this.setState({ created: '', cancellingPlan: false })
       }
       if (this.state.billStart != '') {
-        this.setState({ billStart: '', cancelling: false })
+        this.setState({ billStart: '', cancellingPlan: false })
       }
       if (this.state.billEnd != '') {
-        this.setState({ billEnd: '', cancelling: false })
+        this.setState({ billEnd: '', cancellingPlan: false })
       }
       if (this.state.trialEnd != '') {
-        this.setState({ trialEnd: '', cancelling: false })
+        this.setState({ trialEnd: '', cancellingPlan: false })
       }
     }
   }
@@ -103,9 +97,15 @@ class Dashboard extends Component {
   }
 
   cancelPlan = () => {
-    this.setState({ cancelling: true })
+    this.setState({ cancellingPlan: true })
     this.props.dispatch(vmCreating(false))
     this.props.dispatch(cancelPlan(this.state.exitFeedback))
+  }
+
+  deleteAccount = () => {
+    this.setState({ deletingAccount: true });
+    this.props.dispatch(vmCreating(false))
+    this.props.dispatch(deleteAccount(this.state.exitFeedback));
   }
 
   monthConvert = (month) => {
@@ -450,11 +450,11 @@ class Dashboard extends Component {
                         </Row>
                       </div>
                   }
-                  <Row style={{ marginTop: 40 }}>
+                  <Row className="mt-5">
                     <Col sm={6} xs={12}>
                       <div style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 20, display: 'inline' }}>
                         Downloads
-                </div>
+                      </div>
                       <div style={{ width: '100%' }}>
                         <div style={{ fontSize: 14, backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, padding: '30px 10px', marginTop: 35, minHeight: 200 }}>
                           <Row style={{ width: '100%', margin: 0 }}>
@@ -507,12 +507,12 @@ class Dashboard extends Component {
                           this.state.created != ''
                             ?
                             (
-                              !this.state.cancelling
+                              !this.state.cancellingPlan
                                 ?
                                 <Popup trigger={
                                   <button style={{ outline: 'none', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '5px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)' }}>
                                     Cancel Plan
-                  </button>
+                                  </button>
                                 } modal
                                   onClose={() => this.showExitSurvey(false)}
                                   contentStyle={{ width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 275, padding: '30px 50px', textAlign: "center" }}>
@@ -524,11 +524,11 @@ class Dashboard extends Component {
                                           <div style={{ fontWeight: 'bold', fontSize: 22 }}><strong>Are You Sure?</strong></div>
                                           <div style={{ fontSize: 14, color: "#333333", marginTop: 20 }}>
                                             If you cancel, all the data, files, and applications on stored on cloud PC will be <strong>permanently</strong> lost. Please
-                        make sure that you have transferred everything you need from your cloud PC to another device before cancelling.
-                      </div>
+                                            make sure that you have transferred everything you need from your cloud PC to another device before cancelling.
+                                          </div>
                                           <button onClick={() => this.showExitSurvey(true)} style={{ fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)' }}>
                                             I UNDERSTAND, PROCEED
-                      </button>
+                                          </button>
                                         </div>
                                         :
                                         <div className="exit-survey">
@@ -541,11 +541,11 @@ class Dashboard extends Component {
                                               ?
                                               <button onClick={this.cancelPlan} style={{ fontWeight: 'bold', marginTop: 19, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)' }}>
                                                 CANCEL PLAN
-                      </button>
+                                              </button>
                                               :
                                               <button style={{ opacity: 0.5, fontWeight: 'bold', marginTop: 19, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)' }}>
                                                 CANCEL PLAN
-                      </button>
+                                              </button>
                                           }
                                         </div>
                                     }
@@ -554,13 +554,14 @@ class Dashboard extends Component {
                                 :
                                 <div style={{ float: 'right', display: 'inline', fontSize: 13 }}>
                                   <FontAwesomeIcon icon={faCircleNotch} spin style={{ height: 12, marginRight: 4 }} /> Cancelling
-                  </div>
+                                </div>
                             )
                             :
                             <div>
                             </div>
                         }
-                      </div><br />
+                      </div>
+                      <br />
                       <div style={{ display: 'block', fontSize: 13, background: 'white', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, marginTop: 40, padding: '30px 10px', minHeight: 200 }}>
                         <Row style={{ width: '100%', margin: 0, marginBottom: 10 }}>
                           <Col xs={12} style={{ padding: '0px 20px', marginBottom: 15 }}>
@@ -604,7 +605,7 @@ class Dashboard extends Component {
                           <Col xs={12} style={{ padding: '0px 20px', marginBottom: 15 }}>
                             <div style={{ float: 'left', fontWeight: 'bold', color: '#555555', display: 'inline' }}>
                               <FaPlay style={{ height: 9, position: 'relative', bottom: 1, paddingRight: 5, color: '#DDDDDD' }} /> Plan Created
-                    </div>
+                            </div>
                             {
                               this.state.created != ''
                                 ?
@@ -619,7 +620,7 @@ class Dashboard extends Component {
                           <Col xs={12} style={{ padding: '0px 20px' }}>
                             <div style={{ float: 'left', display: 'inline', fontWeight: 'bold', color: '#555555' }}>
                               <FaTag style={{ height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#DDDDDD' }} /> Free Trial Ends
-                    </div>
+                          </div>
                             {
                               this.state.trialEnd
                                 ?
@@ -633,6 +634,51 @@ class Dashboard extends Component {
                           </Col>
                         </Row>
                       </div>
+                    </Col>
+                  </Row>
+                  <Row className="mt-5">
+                    {/* Cancel account button */}
+                    <Col>
+                      <Popup trigger={
+                        <Button style={{ color: '#e34d4d', border: 'solid 1px #e34d4d', fontWeight: 'bold', background: "rgba(227, 77, 77, 0.05)" }}>Close Account</Button>
+                      } modal
+                        onClose={() => this.showExitSurvey(false)}
+                        contentStyle={{ width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 275, padding: '30px 50px', textAlign: "center" }}>
+                        <div>
+                          {
+                            !this.state.exitSurvey
+                              ?
+                              <div>
+                                <h5><strong>Are You Sure?</strong></h5>
+                                <p style={{ fontSize: 14, color: "#333333", marginTop: 20 }}>
+                                  If you delete your account, your plans will be cancelled. All the data, files, and applications on stored on cloud PC will be <strong>permanently</strong> lost. Please
+                                    make sure that you have transferred everything you need from your cloud PC to another device before cancelling.
+                                  </p>
+                                <button onClick={() => this.showExitSurvey(true)} style={{ fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)' }}>
+                                  I UNDERSTAND, PROCEED
+                                  </button>
+                              </div>
+                              :
+                              <div className="exit-survey">
+                                <div style={{ fontWeight: 'bold', fontSize: 22 }}><strong>Your Feedback</strong></div>
+                                <textarea onChange={this.changeExitFeedback} rows="4" cols="52" placeholder="Please give us some feedback on why you're cancelling, so we can improve Fractal for others. Be brutally honest!"
+                                  style={{ outline: 'none', resize: 'none', background: 'none', border: 'none', marginTop: 20, fontSize: 14, padding: 0 }}>
+                                </textarea>
+                                {
+                                  this.state.exitFeedback != ''
+                                    ?
+                                    <button onClick={this.deleteAccount} style={{ fontWeight: 'bold', marginTop: 19, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)' }}>
+                                      DELETE ACCOUNT
+                                      </button>
+                                    :
+                                    <button style={{ opacity: 0.5, fontWeight: 'bold', marginTop: 19, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)' }}>
+                                      DELETE ACCOUNT
+                                      </button>
+                                }
+                              </div>
+                          }
+                        </div>
+                      </Popup>
                     </Col>
                   </Row>
                 </div>
@@ -657,7 +703,8 @@ function mapStateToProps(state) {
     promoCode: state.AccountReducer.promoCode,
     credits: state.AccountReducer.credits,
     email_verified: state.AccountReducer.email_verified,
-    show_survey: state.AccountReducer.show_survey
+    show_survey: state.AccountReducer.show_survey,
+    deleting_account: state.AccountReducer.deleting_account
   }
 }
 

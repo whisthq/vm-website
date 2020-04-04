@@ -19,10 +19,6 @@ import { PersistGate } from 'redux-persist/integration/react'
 import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.css';
 import history from "./history";
-import Button from "react-bootstrap/Button"
-import Container from "react-bootstrap/Container"
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import { HashLink } from 'react-router-hash-link'
 import './static/App.css';
 import Footer from './shared_components/footer'
@@ -60,25 +56,25 @@ sagaMiddleware.run(rootSaga)
 console.log(process.env.NODE_ENV)
 
 ReactDOM.render(
-    <Router history = {history}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <Helmet>
-            <title>Fractal</title>
-          </Helmet>
-              <Route exact path="/" component={NewHome} />
-              <Route exact path="/purchase" component={Purchase}  />
-              <Route exact path="/auth" component={Auth} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/home" component={NewHome} />
-              <Route exact path="/studios" component = {HomeStudios} />
-              <Route exact path="/reset" component={Reset} />
-              <Route exact path="/privacy" component={Privacy} />
-              <Route exact path="/termsofservice" component={TermsOfService} />
-              <Route exact path="/verify" component={EmailVerification} />
-          </PersistGate>
-          </Provider>
-      </Router>,
+  <Router history={history}>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Helmet>
+          <title>Fractal</title>
+        </Helmet>
+        <Route exact path="/" component={NewHome} />
+        <Route exact path="/purchase" component={Purchase} />
+        <Route exact path="/auth" component={Auth} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/home" component={NewHome} />
+        <Route exact path="/studios" component={HomeStudios} />
+        <Route exact path="/reset" component={Reset} />
+        <Route exact path="/privacy" component={Privacy} />
+        <Route exact path="/termsofservice" component={TermsOfService} />
+        <Route exact path="/verify" component={EmailVerification} />
+      </PersistGate>
+    </Provider>
+  </Router>,
   document.getElementById('root')
 )
 
