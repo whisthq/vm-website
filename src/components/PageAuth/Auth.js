@@ -51,12 +51,14 @@ class Auth extends Component {
 
   loginKeyPress = (event) => {
     if(event.key === 'Enter' && this.state.emailLogin.length > 4 && this.state.passwordLogin.length > 6 && this.state.emailLogin.includes('@')){
+      this.setState({processing: true, failed_login_attempt: false})
       this.props.dispatch(userLogin(this.state.emailLogin, this.state.passwordLogin, false));
     }
   }
 
   signupKeyPress = (event) => {
     if(event.key === 'Enter' && this.state.validEmail && !this.state.tooShort && this.state.matches && this.state.termsAccepted) {
+      this.setState({processing: true, failed_signup_attempt: false})
       this.props.dispatch(userSignup(this.state.emailSignup, this.state.passwordSignup, false))
     }
   }

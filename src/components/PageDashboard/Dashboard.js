@@ -86,9 +86,13 @@ class Dashboard extends Component {
       if(this.state.billEnd != '') {
         this.setState({billEnd: '', cancelling: false})
       }
-      if(this.state.trialEnd != '') {
+      if(this.state.trialEnd != '' && Object.keys(this.props.customer).length === 0) {
         this.setState({trialEnd: '', cancelling: false})
       }
+    }
+
+    if(this.state.trialEnd === '' && Object.keys(this.props.customer).length > 0) {
+      this.setState({trialEnd: this.unixToDate(this.props.customer.trial_end)})
     }
   }
 
@@ -378,7 +382,7 @@ class Dashboard extends Component {
             this.props.vms === undefined || this.props.vms.length == 0
             ?
             (
-            this.props.is_creating || (this.state.created != '')
+            this.props.is_creating
             ?
             <div>
               <Row style = {{marginTop: 30}}>
@@ -498,7 +502,7 @@ class Dashboard extends Component {
                   My Info
                 </div>
                 {
-                this.state.created != ''
+                this.state.created != '' || Object.keys(this.props.customer).length > 0
                 ?
                 (
                 !this.state.cancelling
@@ -651,7 +655,8 @@ function mapStateToProps(state) {
     promoCode: state.AccountReducer.promoCode,
     credits: state.AccountReducer.credits,
     email_verified: state.AccountReducer.email_verified,
-    show_survey: state.AccountReducer.show_survey
+    show_survey: state.AccountReducer.show_survey,
+    customer: state.AccountReducer.customer
   }
 }
 

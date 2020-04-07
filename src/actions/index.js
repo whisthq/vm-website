@@ -60,6 +60,7 @@ export const INSERT_CUSTOMER = "INSERT_CUSTOMER"
 export const CUSTOMER_CREATED = "CUSTOMER_CREATED"
 export const TRIGGER_SURVEY = "TRIGGER_SURVEY"
 export const SUBMIT_PURCHASE_FEEDBACK = "SUBMIT_PURCHASE_FEEDBACK"
+export const STORE_CUSTOMER = "STORE_CUSTOMER"
 
 export function userLogin(user, password, create) {
 	return {
@@ -396,5 +397,12 @@ export function submitPurchaseFeedback(feedback) {
 	return {
 		type: SUBMIT_PURCHASE_FEEDBACK,
 		feedback
+	}
+}
+
+export function storeCustomer(customer) {
+	return {
+		type: STORE_CUSTOMER,
+		customer
 	}
 }

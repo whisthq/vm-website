@@ -111,6 +111,7 @@ function* insertCustomer(action) {
   if(json) {
     yield put(FormAction.customerCreated(json.status))
      history.push('/dashboard')
+     yield put(FormAction.triggerSurvey(true))
      yield put(FormAction.vmCreating(true))
      const {json1, response1} = yield call(apiPost, config.url.MAIL_SERVER + '/purchase', {
         username: state.AccountReducer.user,
@@ -156,12 +157,14 @@ function* retrieveCustomer(action) {
    const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/retrieve', {
       email: state.AccountReducer.user
    });
-   console.log(json)
+
    if(json) {
      if (json.status === 200) {
+       yield put(FormAction.storeCustomer(json.customer))
        yield put(FormAction.storePayment(json.subscription))
        yield put(FormAction.storeCredits(json.creditsOutstanding))
      } else {
+       yield put(FormAction.storeCustomer(json.customer))
        yield put(FormAction.storePayment({}))
        yield put(FormAction.storeCredits(json.creditsOutstanding))
      }
@@ -187,6 +190,7 @@ function* cancelPlan(action) {
    if(json) {
      if (json.status === 200) {
        yield put(FormAction.storePayment({}))
+       yield put(FormAction.storeCustomer({}))
        yield put(FormAction.vmCreating(false))
        const {json1, response1} = yield call(apiPost, config.url.PRIMARY_SERVER + '/user/reset', {
           username: 'Fractal',
@@ -199,9 +203,6 @@ function* cancelPlan(action) {
   }
 }
 
-function forwardTo(location) {
-  history.push(location);
-}
 
 function* createVMPost(action) {
    const state = yield select()
