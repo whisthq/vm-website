@@ -100,6 +100,24 @@ function* chargeStripe(action) {
   }
 }
 
+function* insertCustomer(action) {
+  const state = yield select()
+  const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/insert', {
+    email: state.AccountReducer.user,
+    location: action.location
+  })
+  if(json) {
+    yield put(FormAction.customerCreated(json.status))
+     history.push('/dashboard')
+     yield put(FormAction.vmCreating(true))
+     const {json1, response1} = yield call(apiPost, config.url.MAIL_SERVER + '/purchase', {
+        username: state.AccountReducer.user,
+        location: action.location,
+        code: state.AccountReducer.promoCode
+     });
+  }
+}
+
 function* applyDiscount(action) {
   const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/discount', {
     code: action.code
@@ -114,12 +132,10 @@ function *sendFinalCharge(action) {
     location: action.location,
     code: action.code
   });
-
-  console.log(json)
   
   if(json) {
    if (json.status === 200) {
-    history.push('/dashboard');
+     history.push('/dashboard')
      yield put(FormAction.vmCreating(true))
      const {json1, response1} = yield call(apiPost, config.url.MAIL_SERVER + '/purchase', {
         username: state.AccountReducer.user,
@@ -350,6 +366,7 @@ export default function* rootSaga() {
     takeEvery(FormAction.SEND_SIGNUP_EMAIL, sendSignupEmail),
     takeEvery(FormAction.CHECK_VERIFIED_EMAIL, checkVerifiedEmail),
     takeEvery(FormAction.VERIFY_TOKEN, verifyToken),
-    takeEvery(FormAction.SEND_VERIFICATION_EMAIL, sendVerificationEmail)
+    takeEvery(FormAction.SEND_VERIFICATION_EMAIL, sendVerificationEmail),
+    takeEvery(FormAction.INSERT_CUSTOMER, insertCustomer)
 	]);
 }

@@ -56,6 +56,8 @@ export const VERIFY_TOKEN = "VERIFY_TOKEN"
 export const SEND_VERIFICATION_EMAIL = "SEND_VERIFICATION_EMAIL"
 export const STORE_VERIFICATION_TOKEN = "STORE_VERIFICATION_TOKEN"
 export const INCREMENT_VERIFICATION_EMAILS_SENT = "INCREMENT_VERIFICATION_EMAILS_SENT"
+export const INSERT_CUSTOMER = "INSERT_CUSTOMER"
+export const CUSTOMER_CREATED = "CUSTOMER_CREATED"
 
 export function userLogin(user, password, create) {
 	return {
@@ -364,5 +366,19 @@ export function storeVerificationToken(token) {
 export function incrementVerificationEmailsSent() {
 	return {
 		type: INCREMENT_VERIFICATION_EMAILS_SENT
+	}
+}
+
+export function insertCustomer(location) {
+	return {
+		type: INSERT_CUSTOMER,
+		location
+	}
+}
+
+export function customerCreated(status) {
+	return {
+		type: CUSTOMER_CREATED,
+		status
 	}
 }
