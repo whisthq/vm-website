@@ -12,6 +12,8 @@ function* sendLoginInfo(action) {
       username: action.user,
       password: action.password
    })
+   console.log("LOGIN INFO")
+   console.log(json)
    if(json) {
 	   if (json.verified) {
 	     yield put(FormAction.loginSuccess())
@@ -135,8 +137,9 @@ function *sendFinalCharge(action) {
   
   if(json) {
    if (json.status === 200) {
-     history.push('/dashboard')
+     history.push('/dashboard');
      yield put(FormAction.vmCreating(true))
+     yield put(FormAction.triggerSurvey(true))
      const {json1, response1} = yield call(apiPost, config.url.MAIL_SERVER + '/purchase', {
         username: state.AccountReducer.user,
         location: action.location,
@@ -343,6 +346,14 @@ function* verifyToken(action) {
    }
 }
 
+function* submitPurchaseFeedback(action) {
+   const state = yield select()
+   const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/feedback', {
+    username: state.AccountReducer.user,
+    feedback: action.feedback
+   })
+}
+
 export default function* rootSaga() {
  	yield all([
   	takeEvery(FormAction.USER_LOGIN, sendLoginInfo),
@@ -367,6 +378,7 @@ export default function* rootSaga() {
     takeEvery(FormAction.CHECK_VERIFIED_EMAIL, checkVerifiedEmail),
     takeEvery(FormAction.VERIFY_TOKEN, verifyToken),
     takeEvery(FormAction.SEND_VERIFICATION_EMAIL, sendVerificationEmail),
-    takeEvery(FormAction.INSERT_CUSTOMER, insertCustomer)
+    takeEvery(FormAction.INSERT_CUSTOMER, insertCustomer),
+    takeEvery(FormAction.SUBMIT_PURCHASE_FEEDBACK, submitPurchaseFeedback)
 	]);
 }

@@ -58,6 +58,8 @@ export const STORE_VERIFICATION_TOKEN = "STORE_VERIFICATION_TOKEN"
 export const INCREMENT_VERIFICATION_EMAILS_SENT = "INCREMENT_VERIFICATION_EMAILS_SENT"
 export const INSERT_CUSTOMER = "INSERT_CUSTOMER"
 export const CUSTOMER_CREATED = "CUSTOMER_CREATED"
+export const TRIGGER_SURVEY = "TRIGGER_SURVEY"
+export const SUBMIT_PURCHASE_FEEDBACK = "SUBMIT_PURCHASE_FEEDBACK"
 
 export function userLogin(user, password, create) {
 	return {
@@ -380,5 +382,19 @@ export function customerCreated(status) {
 	return {
 		type: CUSTOMER_CREATED,
 		status
+	}
+}
+
+export function triggerSurvey(trigger) {
+	return {
+		type: TRIGGER_SURVEY,
+		trigger
+	}
+}
+
+export function submitPurchaseFeedback(feedback) {
+	return {
+		type: SUBMIT_PURCHASE_FEEDBACK,
+		feedback
 	}
 }

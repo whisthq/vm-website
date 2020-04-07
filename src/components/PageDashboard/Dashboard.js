@@ -11,7 +11,8 @@ import history from "../../history";
 
 import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { logout, getVMStatus, retrieveCustomer, vmCreating, cancelPlan, fetchVMs, sendFriendsEmail, emailSent } from '../../actions/index.js';
+import { logout, getVMStatus, retrieveCustomer, vmCreating, cancelPlan, fetchVMs, sendFriendsEmail, 
+  emailSent, triggerSurvey, submitPurchaseFeedback } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
 import { FaExclamationTriangle } from 'react-icons/fa'
 import { FaCircle, FaTimes, FaEye, FaEyeSlash, FaCheckCircle, FaCheck, FaUser, FaLock, FaDollarSign, 
@@ -37,7 +38,7 @@ class Dashboard extends Component {
     this.state = {width: 0, height: 0, modalShow: false, showPopup: false, day: 0, month: 0, year: 0, 
       created: '', billStart: '', billEnd: '', cancelling: false, hidePassword: true, exitSurvey: false,
       exitFeedback: '', emailShare: false, emails: [], friendsEmail: '', trialEnd: '',
-      showEmailButton: false, emailBoxWidth: 45, sendingEmails: false}
+      showEmailButton: false, emailBoxWidth: 45, sendingEmails: false, purchaseFeedback: ''}
     this.customWidth = React.createRef()
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
@@ -130,6 +131,15 @@ class Dashboard extends Component {
     this.setState({exitFeedback: evt.target.value})
   }
 
+  changePurchaseFeedback = (evt) => {
+    this.setState({purchaseFeedback: evt.target.value})
+  }
+
+  submitPurchaseFeedback = (evt) => {
+    this.props.dispatch(triggerSurvey(false))
+    this.props.dispatch(submitPurchaseFeedback(this.state.purchaseFeedback))
+  }
+
   showEmailShare = (show) => {
     this.setState({emailShare: show})
     if(!show) {
@@ -187,12 +197,32 @@ class Dashboard extends Component {
     return (
       <div>
       {
-      !this.props.loggedIn
+      !this.props.loggedIn || !this.props.email_verified
       ?
       <Redirect to = "/auth"/>
       :
       <div style = {{backgroundColor: "white", minHeight: '100vh', overflowX: 'hidden !important'}}>
         <Header color = "#333333" button = "#5ec3eb"/>
+        {
+        this.props.show_survey
+        ?
+        <Popup
+          open={true}
+          contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 275, padding: '30px 50px', textAlign: "center"}}>
+          <div className = "exit-survey">
+            <div style = {{fontWeight: 'bold', fontSize: 22, margin: 'auto', width: '100%'}}><strong>Thank You For Subscribing!</strong></div>
+            <textarea onChange = {this.changePurchaseFeedback} rows = "4" cols = "52" placeholder = "Please take a minute to tell us how you heard about Fractal, and what you plan on using Fractal for."
+              style = {{outline: 'none', resize: 'none', background: 'none', border: 'none', marginTop: 20, fontSize: 14, padding: 0}}>
+            </textarea>
+            <button onClick = {this.submitPurchaseFeedback} style = {{fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 14, borderRadius: 5, padding: '10px 10px', color: '#5ec3eb', border: 'solid 1px #5ec3eb', background: 'rgba(94, 195, 235,0.1)'}}>
+              SUBMIT FEEDBACK
+            </button> 
+          </div>    
+        </Popup>
+        :
+        <div>
+        </div>
+        }
         <div style = {{display: 'flex', width: '100vw', overflowX: 'hidden'}}>
           <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'rgba(216,216,233,.2)', flex: '0 1 auto', zIndex: 0, position: 'sticky'}}>
             <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>DASHBOARD</div>
@@ -233,7 +263,7 @@ class Dashboard extends Component {
                 <div>
                   <div style = {{fontWeight: 'bold', fontSize: 22}}><strong>Share Fractal with a Friend</strong></div>
                   <div style = {{fontSize: 14, color: "#333333", marginTop: 20}}>
-                    For every person that types in the following code at checkout, your account will be credited an additional free month.
+                    For every person that types in the following code at checkout, both your accounts will be credited an additional free month.
                   </div>
                   <div style = {{color: "#111111", marginTop: 75, fontSize: 40}}>
                     {this.props.promoCode}
@@ -620,7 +650,8 @@ function mapStateToProps(state) {
     emailStatus: state.AccountReducer.emailStatus,
     promoCode: state.AccountReducer.promoCode,
     credits: state.AccountReducer.credits,
-    email_verified: state.AccountReducer.email_verified
+    email_verified: state.AccountReducer.email_verified,
+    show_survey: state.AccountReducer.show_survey
   }
 }
 

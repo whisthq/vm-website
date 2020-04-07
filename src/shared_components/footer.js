@@ -65,12 +65,12 @@ class Footer extends Component {
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>HOME</div>
               <Link to = "/" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 13}}>
-                  <div style = {{color: '#555555', marginBottom: 4}}>Personal Use</div>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Personal</div>
                 </div>
               </Link>
               <Link to = "/studios" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 13}}>
-                  <div style = {{color: '#555555', marginBottom: 4}}>Studios</div>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Teams</div>
                 </div>
               </Link>
               <div style = {{fontSize: 13}}>
@@ -108,7 +108,7 @@ class Footer extends Component {
         </div>
         <div style = {{width: '100%', marginTop: 100, background: '#EBEBEB', height: 1}}></div>
         <div style = {{fontSize: 11, marginTop: 20, width: '100%'}}>
-          <p style = {{margin: 0, textAlign: 'left', color: '#555555'}}>Copyright &copy; Fractal Computers Inc., All Rights Reserved.</p>
+          <p style = {{margin: 0, textAlign: 'left', color: '#555555'}}>Copyright &copy; Fractal Computers, Inc. All Rights Reserved.</p>
         </div>
       </Container>
     </div>
@@ -143,12 +143,12 @@ class Footer extends Component {
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>HOME</div>
               <Link to = "/" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 11}}>
-                  <div style = {{color: '#555555', marginBottom: 4}}>Personal Use</div>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Personal</div>
                 </div>
               </Link>
               <Link to = "/studios" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 11}}>
-                  <div style = {{color: '#555555', marginBottom: 4}}>Studios</div>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Teams</div>
                 </div>
               </Link>
               <div style = {{fontSize: 11}}>
@@ -186,7 +186,7 @@ class Footer extends Component {
         </div>
         <div style = {{width: '100%', marginTop: 100, background: '#EBEBEB', height: 1}}></div>
         <div style = {{fontSize: 11, marginTop: 20, width: '100%'}}>
-          <p style = {{margin: 0, textAlign: 'left', color: '#555555'}}>Copyright &copy; Fractal Computers Inc., All Rights Reserved.</p>
+          <p style = {{margin: 0, textAlign: 'left', color: '#555555'}}>Copyright &copy; Fractal Computers, Inc. All Rights Reserved.</p>
         </div>
       </Container>
     </div>
