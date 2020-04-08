@@ -374,18 +374,18 @@ class Purchase extends Component {
       <div style = {{minHeight: '100vh', height: '100%', background: 'white'}}>
         <Header color = "#333333" button = "#5ec3eb"/>
         <div style = {{display: 'flex', width: '100vw', overflowX: 'hidden'}}>
-          <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'rgba(216,216,233,.2)', height: '100%', minHeight: '100vh', zIndex: 0}}>
+          <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'none', height: '100%', minHeight: '100vh', zIndex: 0}}>
             {
             this.state.step < 3
             ?
             <div>
-              <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>Quick Survey</div>
-              <div style = {{marginBottom: 20, color: '#B9B9B9', fontSize: 14}}>Cloud PC Setup</div>
+              <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>YOUR INFO</div>
+              <div style = {{marginBottom: 20, color: '#B9B9B9', fontSize: 14}}>CREATE CLOUD PC</div>
             </div>
             :
             <div>
-              <div style = {{marginBottom: 20, color: '#B9B9B9'}}>Quick Survey</div>
-              <div style = {{marginBottom: 20, fontWeight: 'bold', fontSize: 14, color: '#111111'}}>Cloud PC Setup</div>
+              <div style = {{marginBottom: 20, color: '#B9B9B9'}}>YOUR INFO</div>
+              <div style = {{marginBottom: 20, fontWeight: 'bold', fontSize: 14, color: '#111111'}}>CREATE CLOUD PC</div>
             </div>
             }         
           </div>

@@ -12,8 +12,6 @@ function* sendLoginInfo(action) {
       username: action.user,
       password: action.password
    })
-   console.log("LOGIN INFO")
-   console.log(json)
    if(json) {
 	   if (json.verified) {
 	     yield put(FormAction.loginSuccess())
@@ -160,14 +158,13 @@ function* retrieveCustomer(action) {
 
    if(json) {
      if (json.status === 200) {
-       yield put(FormAction.storeCustomer(json.customer))
        yield put(FormAction.storePayment(json.subscription))
-       yield put(FormAction.storeCredits(json.creditsOutstanding))
      } else {
-       yield put(FormAction.storeCustomer(json.customer))
        yield put(FormAction.storePayment({}))
-       yield put(FormAction.storeCredits(json.creditsOutstanding))
      }
+     yield put(FormAction.storeAccountLocked(json.account_locked))
+     yield put(FormAction.storeCustomer(json.customer))
+     yield put(FormAction.storeCredits(json.creditsOutstanding))
   }
 }
 

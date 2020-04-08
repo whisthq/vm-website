@@ -15,10 +15,10 @@ import { logout, getVMStatus, retrieveCustomer, vmCreating, cancelPlan, fetchVMs
   emailSent, triggerSurvey, submitPurchaseFeedback } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
 import { FaExclamationTriangle } from 'react-icons/fa'
-import { FaCircle, FaTimes, FaEye, FaEyeSlash, FaCheckCircle, FaCheck, FaUser, FaLock, FaDollarSign, 
+import { FaCircle, FaTimes, FaEye, FaEyeSlash, FaCheckCircle, FaCheck, FaUser, FaLock, FaDollarSign,
   FaArrowRight, FaPlus, FaPlay, FaFastForward, FaPause, FaWindows, FaApple, FaUbuntu, FaAndroid, FaTag } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
+import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom'
@@ -31,6 +31,7 @@ import RAM from '../../assets/ram.svg'
 import SSD from '../../assets/hard-drive-icon.svg'
 import WindowsBin from '../../bin/Fractal.exe'
 import MacBin from '../../bin/Fractal.dmg'
+import Car from '../../assets/Car.jpg'
 
 class Dashboard extends Component {
   constructor(props) {
@@ -214,8 +215,8 @@ class Dashboard extends Component {
           open={true}
           contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 275, padding: '30px 50px', textAlign: "center"}}>
           <div className = "exit-survey">
-            <div style = {{fontWeight: 'bold', fontSize: 22, margin: 'auto', width: '100%'}}><strong>Thank You For Subscribing!</strong></div>
-            <textarea onChange = {this.changePurchaseFeedback} rows = "4" cols = "52" placeholder = "Please take a minute to tell us how you heard about Fractal, and what you plan on using Fractal for."
+            <div style = {{fontWeight: 'bold', fontSize: 22, margin: 'auto', width: '100%'}}><strong>Thank You For Creating a Cloud PC!</strong></div>
+            <textarea onChange = {this.changePurchaseFeedback} rows = "4" cols = "52" placeholder = "We hope you love it. Please take a minute to tell us how you heard about Fractal, and what you plan on using Fractal for."
               style = {{outline: 'none', resize: 'none', background: 'none', border: 'none', marginTop: 20, fontSize: 14, padding: 0}}>
             </textarea>
             <button onClick = {this.submitPurchaseFeedback} style = {{fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 14, borderRadius: 5, padding: '10px 10px', color: '#5ec3eb', border: 'solid 1px #5ec3eb', background: 'rgba(94, 195, 235,0.1)'}}>
@@ -228,11 +229,11 @@ class Dashboard extends Component {
         </div>
         }
         <div style = {{display: 'flex', width: '100vw', overflowX: 'hidden'}}>
-          <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'rgba(216,216,233,.2)', flex: '0 1 auto', zIndex: 0, position: 'sticky'}}>
+          <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'none', flex: '0 1 auto', zIndex: 0, position: 'sticky'}}>
             <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>DASHBOARD</div>
-            <div className = "sign-out-button" onClick = {() => this.props.dispatch(logout())}>Sign Out</div>
+            <div className = "sign-out-button" onClick = {() => this.props.dispatch(logout())}>SIGN OUT</div>
           </div>
-          <div style = {{paddingTop: 60, paddingLeft: 100, paddingBottom: 100, width: 'calc(100% - 400px)'}}>
+          <div style = {{paddingTop: 40, paddingLeft: 25, paddingBottom: 100, width: 'calc(100% - 400px)'}}>
             {
             this.props.credits && this.props.credits > 0
             ?
@@ -385,26 +386,53 @@ class Dashboard extends Component {
             this.props.is_creating
             ?
             <div>
+              {
+              this.props.customer && this.props.customer.paid
+              ?
               <Row style = {{marginTop: 30}}>
                 <Col xs = {12}>
-                  <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
-                    <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25}}/>
-                    <div style = {{color: "#333333", fontSize: 16, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
-                    <div style = {{fontSize: 12, maxWidth: 400, margin: 'auto', marginTop: 10}}>
+                  <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                    <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25, marginTop: 25}}/>
+                    <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
+                    <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
                       Our engineers are currently setting up and testing your cloud PC. Once it's ready within 24 hours, you will receive an email.
                     </div>
                   </div>
                 </Col>
               </Row>
+              :
+              <Row style = {{marginTop: 30}}>
+                <Col xs = {8}>
+                  <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                    <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25, marginTop: 15}}/>
+                    <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
+                    <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
+                      Our engineers are currently setting up and testing your cloud PC. Once it's ready within 24 hours, you will receive an email.
+                    </div>
+                  </div>
+                </Col>
+                <Col xs = {4}>
+                  <Link to = "/card" style = {{textDecoration: 'none'}} className = "pointerOnHover">
+                    <div style = {{borderRadius: 5, textAlign: 'center', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                      <FontAwesomeIcon icon={faPlus} style = {{color: "#333333", height: 25, marginTop: 15}}/>
+                      <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Add Payment</div>
+                      <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
+                        Your cloud PC is free until {this.state.trialEnd}.
+                      </div>
+                    </div>
+                  </Link>
+                </Col>
+              </Row>
+              }
             </div>
             :
             <div>
               <Row style = {{marginTop: 30}}>
                 <Col xs = {12}>
                   <Link style = {{textDecoration: 'none'}} to = "/purchase" className = "create-cloud-pc">
-                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, paddingBottom: 40, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
-                      <FaPlus style = {{height: 25, marginTop: 10, color: "#333333"}}/>
-                      <div style = {{color: "#333333", fontSize: 20, marginTop: 20, fontWeight: 'bold'}}>Create My Cloud Computer</div>
+                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                      <FaPlus style = {{height: 25, marginTop: 25, color: "#333333"}}/>
+                      <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Create My Cloud Computer</div>
                       <div style = {{fontSize: 14, maxWidth: 450, margin: 'auto', marginTop: 10, color: '#333333'}}>
                         Transform your local device into a GPU-powered cloud computer. Setup in less than one minute, no credit card required.
                       </div>
@@ -415,6 +443,9 @@ class Dashboard extends Component {
             </div>
             )
             :
+            (
+            this.props.customer && this.props.customer.paid 
+            ?
             <div>
             <Row style = {{marginTop: 30}}>
               <Col md = {3} sm = {6} xs = {12}>
@@ -447,6 +478,55 @@ class Dashboard extends Component {
               </Col>
             </Row>
             </div>
+            :
+            <div>
+            <Row style = {{marginTop: 30}}>
+              <Col xs = {7}>
+                <Row>
+                  <Col sm = {6} xs = {12}>
+                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                      <img src = {CPU} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
+                      <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>CPU</div>
+                      <div style = {{color: "#555555", fontSize: 13}}>Intel Xeon E5</div>
+                    </div>
+                  </Col>
+                  <Col sm = {6} xs = {12}>
+                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                      <img src = {GPU} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
+                      <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>GPU</div>
+                      <div style = {{color: "#555555", fontSize: 13}}>NVIDIA Tesla M60</div>
+                    </div>
+                  </Col>
+                  <Col sm = {6} xs = {12}>
+                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                      <img src = {RAM} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
+                      <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>RAM</div>
+                      <div style = {{color: "#555555", fontSize: 13}}>56GB DDR4</div>
+                    </div>
+                  </Col>
+                  <Col sm = {6} xs = {12}>
+                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                      <img src = {SSD} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
+                      <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>SSD</div>
+                      <div style = {{color: "#555555", fontSize: 13}}>120GB NVMe</div>
+                    </div>
+                  </Col>
+                </Row>
+              </Col>
+              <Col xs = {5}>
+                <Link to = "/card" style = {{textDecoration: 'none'}} className = "pointerOnHover">
+                  <div style = {{borderRadius: 5, textAlign: 'center', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', padding: '30px 50px', height: 250, margin:'auto', width: '100%', marginBottom: 20}}>
+                    <FontAwesomeIcon icon={faPlus} style = {{color: "#333333", height: 25, marginTop: 15}}/>
+                    <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Add Payment</div>
+                    <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
+                      Your cloud PC is completely free to use until {this.state.trialEnd}.
+                    </div>
+                  </div>
+                </Link>
+              </Col>
+            </Row>
+            </div>
+            )
             }
             <Row style = {{marginTop: 40}}>
               <Col sm = {6} xs = {12}>
@@ -531,7 +611,7 @@ class Dashboard extends Component {
                     :
                     <div className = "exit-survey">
                       <div style = {{fontWeight: 'bold', fontSize: 22}}><strong>Your Feedback</strong></div>
-                      <textarea onChange = {this.changeExitFeedback} rows = "4" cols = "52" placeholder = "Please give us some feedback on why you're cancelling, so we can improve Fractal for others. Be brutally honest!"
+                      <textarea onChange = {this.changeExitFeedback} rows = "4" cols = "52" placeholder = "Please give us some feedback on why you're cancelling, so we can improve Fractal. Be brutally honest!"
                         style = {{outline: 'none', resize: 'none', background: 'none', border: 'none', marginTop: 20, fontSize: 14, padding: 0}}>
                       </textarea>
                       {

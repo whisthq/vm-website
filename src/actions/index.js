@@ -61,6 +61,7 @@ export const CUSTOMER_CREATED = "CUSTOMER_CREATED"
 export const TRIGGER_SURVEY = "TRIGGER_SURVEY"
 export const SUBMIT_PURCHASE_FEEDBACK = "SUBMIT_PURCHASE_FEEDBACK"
 export const STORE_CUSTOMER = "STORE_CUSTOMER"
+export const STORE_ACCOUNT_LOCKED = "STORE_ACCOUNT_LOCKED"
 
 export function userLogin(user, password, create) {
 	return {
@@ -404,5 +405,12 @@ export function storeCustomer(customer) {
 	return {
 		type: STORE_CUSTOMER,
 		customer
+	}
+}
+
+export function storeAccountLocked(locked) {
+	return {
+		type: STORE_ACCOUNT_LOCKED,
+		locked
 	}
 }

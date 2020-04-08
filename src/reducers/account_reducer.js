@@ -5,7 +5,7 @@ const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, 
                  payment: {}, signupStatus: 200, failed_signup_attempts: 0, stripeStatus: 200, failed_payment_attempts: 0,
                  currentPage: 'personal', emailStatus: 0, promoCode: '', credits: 0, failed_referral_attempts: 0, 
                  email_verified: false, verificationToken: '', verificationEmailsSent: 0, customer_status: 0, show_survey: false,
-                 customer: {}}
+                 customer: {}, account_locked: false}
 
 export default function(state = DEFAULT, action) {
   switch (action.type) {
@@ -66,7 +66,9 @@ export default function(state = DEFAULT, action) {
         is_creating: false,
         promoCode: '',
         email_verified: false,
-        verificationToken: ''
+        verificationToken: '',
+        show_survey: false,
+        account_locked: false
       }
     case AccountAction.CREATE_VM:
       return {
@@ -180,6 +182,11 @@ export default function(state = DEFAULT, action) {
       return {
         ...state,
         customer: action.customer
+      }
+    case AccountAction.STORE_ACCOUNT_LOCKED:
+      return {
+        ...state,
+        account_locked: action.locked
       }
     default:
       return state

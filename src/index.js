@@ -36,6 +36,7 @@ import Reset from './components/PageReset/Reset'
 import Privacy from './components/PageLegal/Privacy'
 import TermsOfService from './components/PageLegal/TermsOfService'
 import EmailVerification from './components/PageAuth/EmailVerification'
+import CreditCard from './components/PageCubePurchase/CreditCard'
 
 const persistConfig = {
   key: 'rootKey',
@@ -76,6 +77,7 @@ ReactDOM.render(
               <Route exact path="/privacy" component={Privacy} />
               <Route exact path="/termsofservice" component={TermsOfService} />
               <Route exact path="/verify" component={EmailVerification} />
+              <Route exact path="/card" component={CreditCard} />
           </PersistGate>
           </Provider>
       </Router>,

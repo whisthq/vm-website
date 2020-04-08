@@ -13,7 +13,7 @@ class CheckoutForm extends Component {
     super(props);
     this.state = {
       errorMessage: '', processing: false, failed_payment_attempt: false, code: '',
-      failed_referral_attempt: false, creditCard: true
+      failed_referral_attempt: false, creditCard: true, trial_end: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -50,6 +50,23 @@ class CheckoutForm extends Component {
     this.props.dispatch(insertCustomer(this.props.location))
   }
 
+  monthConvert = (month) => {
+    var months = [ "January", "February", "March", "April", "May", "June", 
+                   "July", "August", "September", "October", "November", "December" ];
+    var selectedMonthName = months[month];
+    return selectedMonthName;
+  }
+
+  unixToDate = (unix) => {
+    const milliseconds = unix * 1000
+    const dateObject = new Date(milliseconds)
+    const humanDateFormat = dateObject.toLocaleString().split(',')[0]
+    var dateArr = humanDateFormat.split('/')
+    const month = this.monthConvert(dateArr[0] - 1)
+    var finalDate = month + " " + dateArr[1].toString() + ", " + dateArr[2].toString()
+    return finalDate
+  }
+
   componentDidUpdate(prevProps) {
     if(prevProps.failed_payment_attempts != this.props.failed_payment_attempts && !this.state.failed_payment_attempt) {
       this.setState({failed_payment_attempt: true, errorMessage: 'Your card info was declined. Please try again.', processing: false})
@@ -57,8 +74,18 @@ class CheckoutForm extends Component {
     if(prevProps.failed_referral_attempts != this.props.failed_referral_attempts && !this.state.failed_referral_attempt) {
       this.setState({failed_referral_attempt: true, errorMessage: 'Your referral code was invalid. Please re-check the code, or contact support@fractalcomputers.com.', processing: false})
     }
+
+    if(this.state.trialEnd === '' && this.props.customer && Object.keys(this.props.customer).length > 0) {
+      this.setState({trialEnd: this.unixToDate(this.props.customer.trial_end)})
+    }
   }
 
+  componentDidMount() {
+    if(this.props.customer && Object.keys(this.props.customer).length > 0) {
+      this.setState({trialEnd: this.unixToDate(this.props.customer.trial_end)})
+    }
+  }
+ 
   render() {
     const style = {
       base: {
@@ -84,6 +111,50 @@ class CheckoutForm extends Component {
         <div className = "referral-code">
           <input onChange = {this.changeToken} type = "text" style = {{fontSize: 14, color: "#333333", maxWidth: 600, border: 'none', borderRadius: 4, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', width: '100%', padding: '8px 5px', paddingLeft: 15}} placeholder = "Referral Code (Optional)"/>
         </div>
+        {
+        this.props.finalPayment
+        ?
+        <div style = {{maxWidth: 600}}>
+          {
+          !this.state.processing
+          ?
+          <div style = {{display: 'block'}}>
+            <div>
+              <Button onClick = {this.handleSubmit} style = {{marginBottom: 10, width: '100%', maxWidth: 600, background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', paddingTop: 8, paddingBottom: 8, height: 40, float: 'left', display: 'inline'}}>
+                PAY
+              </Button>
+            </div><br/>
+          </div>
+          :
+          <div style = {{display: 'block'}}>
+            <div>
+              <Button disabled = "true" style = {{marginBottom: 10, width: '100%', maxWidth: 600, background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', paddingTop: 8, paddingBottom: 8, float: 'left', display: 'inline', height: 40}}>
+                <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 12, marginRight: 5, fontSize: 12}}/>
+              </Button>
+            </div><br/>
+          </div>
+          }
+          <div style = {{marginTop: 25}}>
+          {
+          this.state.errorMessage != ''
+          ?
+          <div style = {{fontSize: 12, color: '#e34d4d'}}>
+            {this.state.errorMessage}
+          </div>
+          :
+          <div style = {{height: 20}}></div>
+          }
+          </div>
+          <div style = {{fontSize: 12, marginTop: 50, display: 'block'}}>
+            <div style = {{display: 'inline', float: 'left'}}>Monthly Charge</div>
+            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>$35.00</div>
+          </div><br/>
+          <div style = {{fontSize: 12, marginTop: 1, display: 'block', marginBottom: 45}}>
+            <div style = {{display: 'inline', float: 'left'}}>Free Trial Ends</div>
+            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>{this.state.trialEnd}</div>
+          </div>
+        </div>
+        :
         <div style = {{maxWidth: 600}}>
           {
           !this.state.processing
@@ -149,6 +220,7 @@ class CheckoutForm extends Component {
           </div>
           }
         </div>
+        }
       </form>
     );
   }
@@ -160,7 +232,8 @@ function mapStateToProps(state) {
     failed_payment_attempts: state.AccountReducer.failed_payment_attempts,
     failed_referral_attempts: state.AccountReducer.failed_referral_attempts,
     credits: state.AccountReducer.credits,
-    customer_status: state.AccountReducer.customer_status
+    customer_status: state.AccountReducer.customer_status,
+    customer: state.AccountReducer.customer
   }
 }
 
