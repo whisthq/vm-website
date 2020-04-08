@@ -36,6 +36,7 @@ export const FORGOT_EMAIL = "FORGOT_EMAIL"
 export const RETRIEVE_CUSTOMER = "RETRIEVE_CUSTOMER"
 export const STORE_PAYMENT = "STORE_PAYMENT"
 export const CANCEL_PLAN = "CANCEL_PLAN"
+export const DELETE_ACCOUNT = "DELETE_ACCOUNT"
 export const SIGNUP_FAILURE = "SIGNUP_FAILURE"
 export const STRIPE_FAILURE = "STRIPE_FAILURE"
 export const CHANGE_TAB = "CHANGE_TAB"
@@ -75,7 +76,7 @@ export function userLogin(user, password, create) {
 export function userSignup(user, password, create) {
 	return {
 		type: USER_SIGNUP,
-		user, 
+		user,
 		password,
 		create
 	}
@@ -231,6 +232,13 @@ export function storePayment(payload) {
 export function cancelPlan(message) {
 	return {
 		type: CANCEL_PLAN,
+		message
+	}
+}
+
+export function deleteAccount(message) {
+	return {
+		type: DELETE_ACCOUNT,
 		message
 	}
 }

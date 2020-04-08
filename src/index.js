@@ -19,10 +19,6 @@ import { PersistGate } from 'redux-persist/integration/react'
 import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.css';
 import history from "./history";
-import Button from "react-bootstrap/Button"
-import Container from "react-bootstrap/Container"
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import { HashLink } from 'react-router-hash-link'
 import './static/App.css';
 import Footer from './shared_components/footer'
