@@ -233,7 +233,7 @@ class Dashboard extends Component {
             <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>DASHBOARD</div>
             <div className = "sign-out-button" onClick = {() => this.props.dispatch(logout())}>SIGN OUT</div>
           </div>
-          <div style = {{paddingTop: 40, paddingLeft: 25, paddingBottom: 100, width: 'calc(100% - 400px)', zIndex: 2000}}>
+          <div style = {{paddingTop: 40, paddingLeft: 25, paddingBottom: 100, width: 'calc(100% - 400px)'}}>
             {
             this.props.credits && this.props.credits > 0
             ?
@@ -256,7 +256,7 @@ class Dashboard extends Component {
                 {this.state.month} {this.state.day}, {this.state.year}
               </div>
               <Popup trigger = {
-              <div style = {{display: 'inline', float: 'right'}}>
+              <div style = {{display: 'inline', float: 'right', marginTop: 40}}>
                 <Button style = {{marginLeft: 35, color: '#5ec3eb', border: 'solid 1px #5ec3eb', fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,background: "rgba(94, 195, 235,0.1)"}}>Get a Free Month</Button>
               </div>
               } modal
