@@ -233,7 +233,7 @@ class Dashboard extends Component {
             <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>DASHBOARD</div>
             <div className = "sign-out-button" onClick = {() => this.props.dispatch(logout())}>SIGN OUT</div>
           </div>
-          <div style = {{paddingTop: 40, paddingLeft: 25, paddingBottom: 100, width: 'calc(100% - 400px)'}}>
+          <div style = {{paddingTop: 40, paddingLeft: 25, paddingBottom: 100, width: 'calc(100% - 400px)', zIndex: 2000}}>
             {
             this.props.credits && this.props.credits > 0
             ?
