@@ -87,12 +87,12 @@ class Dashboard extends Component {
       if(this.state.billEnd != '') {
         this.setState({billEnd: '', cancelling: false})
       }
-      if(this.state.trialEnd != '' && Object.keys(this.props.customer).length === 0) {
+      if(this.state.trialEnd != '' && this.props.customer && Object.keys(this.props.customer).length === 0) {
         this.setState({trialEnd: '', cancelling: false})
       }
     }
 
-    if(this.state.trialEnd === '' && Object.keys(this.props.customer).length > 0) {
+    if(this.state.trialEnd === '' && this.props.customer && Object.keys(this.props.customer).length > 0) {
       this.setState({trialEnd: this.unixToDate(this.props.customer.trial_end)})
     }
   }

@@ -188,6 +188,11 @@ export default function (state = DEFAULT, action) {
         ...state,
         account_locked: action.locked
       }
+    case AccountAction.CANCEL_PLAN:
+      return {
+        ...state,
+        show_survey: false
+      }
     default:
       return state
   }
