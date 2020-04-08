@@ -7,7 +7,6 @@ import { push } from 'connected-react-router'
 
 
 function* sendLoginInfo(action) {
-<<<<<<< HEAD
    const state = yield select()
    const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/login', {
       username: action.user,
@@ -20,22 +19,6 @@ function* sendLoginInfo(action) {
        yield put(FormAction.checkVerifiedEmail(action.user))
        yield put(FormAction.getPromoCode(action.user))
        if(json.vm_status === 'is_creating') {
-=======
-  const state = yield select()
-  const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/login', {
-    username: action.user,
-    password: action.password
-  })
-  console.log("LOGIN INFO")
-  console.log(json)
-  if (json) {
-    if (json.verified) {
-      yield put(FormAction.loginSuccess())
-      yield put(FormAction.storeVerificationToken(json.token))
-      yield put(FormAction.checkVerifiedEmail(action.user))
-      yield put(FormAction.getPromoCode(action.user))
-      if (json.vm_status === 'is_creating') {
->>>>>>> development
         yield put(FormAction.vmCreating(true))
       } else {
         yield put(FormAction.vmCreating(false))
@@ -168,7 +151,6 @@ function* sendFinalCharge(action) {
 }
 
 function* retrieveCustomer(action) {
-<<<<<<< HEAD
    const state = yield select()
    const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/retrieve', {
       email: state.AccountReducer.user
@@ -183,21 +165,6 @@ function* retrieveCustomer(action) {
      yield put(FormAction.storeAccountLocked(json.account_locked))
      yield put(FormAction.storeCustomer(json.customer))
      yield put(FormAction.storeCredits(json.creditsOutstanding))
-=======
-  const state = yield select()
-  const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/retrieve', {
-    email: state.AccountReducer.user
-  });
-  console.log(json)
-  if (json) {
-    if (json.status === 200) {
-      yield put(FormAction.storePayment(json.subscription))
-      yield put(FormAction.storeCredits(json.creditsOutstanding))
-    } else {
-      yield put(FormAction.storePayment({}))
-      yield put(FormAction.storeCredits(json.creditsOutstanding))
-    }
->>>>>>> development
   }
 }
 
@@ -206,7 +173,6 @@ function* cancelPlan(action) {
   var vm_name = ''
   if (state.AccountReducer.vm_credentials && state.AccountReducer.vm_credentials.length > 0) {
     vm_name = state.AccountReducer.vm_credentials[0].vm_name
-<<<<<<< HEAD
    }
 
    const {json2, response2} = yield call(apiPost, config.url.MAIL_SERVER + '/cancel', {
@@ -228,28 +194,6 @@ function* cancelPlan(action) {
           vm_name: vm_name
        });
        if(json1 && json1.status === 200) {
-=======
-  }
-
-  const { json2, response2 } = yield call(apiPost, config.url.MAIL_SERVER + '/cancel', {
-    username: state.AccountReducer.user,
-    feedback: action.message
-  });
-
-  const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/cancel', {
-    email: state.AccountReducer.user
-  });
-
-  if (json) {
-    if (json.status === 200) {
-      yield put(FormAction.storePayment({}))
-      yield put(FormAction.vmCreating(false))
-      const { json1, response1 } = yield call(apiPost, config.url.PRIMARY_SERVER + '/user/reset', {
-        username: 'Fractal',
-        vm_name: vm_name
-      });
-      if (json1 && json1.status === 200) {
->>>>>>> development
         yield put(FormAction.fetchVMs(state.AccountReducer.user))
       }
     }
@@ -404,6 +348,7 @@ function* checkVerifiedEmail(action) {
 }
 
 function* verifyToken(action) {
+  console.log(state)
   const state = yield select()
   const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/verifyUser', {
     username: state.AccountReducer.user,
