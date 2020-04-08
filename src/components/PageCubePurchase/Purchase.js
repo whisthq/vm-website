@@ -331,18 +331,21 @@ class Purchase extends Component {
               ?
               <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
                 Your first month is free, and you can cancel anytime. Get an additional free month for every
-                friend who enters your referral code.
+                friend who enters your referral code. You can choose to enter your credit card now, or at any time 
+                during your free trial.
               </div>
               :
               <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
                 Your first {this.props.credits} months are free, and you can cancel anytime. Get an additional free 
-                month for every friend who enters your referral code.
+                month for every friend who enters your referral code. You can choose to enter your credit card now, or at any time 
+                during your free trial.
               </div>
               )
               :
               <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
                 Your first seven days are free, and you can cancel anytime. Get an additional free month for every
-                friend who enters your referral code.
+                friend who enters your referral code. You can choose to enter your credit card now, or at any time 
+                during your free trial.
               </div>
               }
               <div style = {{marginTop: 40, marginLeft: 39}}>

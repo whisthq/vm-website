@@ -162,10 +162,10 @@ class CheckoutForm extends Component {
           <div style = {{display: 'block'}}>
             <div>
               <Button onClick = {this.handleSubmit} style = {{marginBottom: 10, width: '48%', maxWidth: 600, background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', paddingTop: 8, paddingBottom: 8, height: 40, float: 'left', display: 'inline'}}>
-                BEGIN FREE TRIAL
+                CONTINUE WITH CARD
               </Button>
               <Button onClick = {() => this.submitNoPayment()} style = {{marginBottom: 10, width: '48%', maxWidth: 600, backgroundColor: "rgba(0, 0, 0, 0.05)", border: 'solid 1px #555555', fontWeight: 'bold', marginTop: 20, fontSize: 14, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', paddingTop: 8, paddingBottom: 8, color: '#555555', height: 40, float: 'right', display: 'inline'}}>
-                CONTINUE WITHOUT CREDIT CARD
+                CONTINUE WITHOUT CARD
               </Button>
             </div><br/>
           </div>
