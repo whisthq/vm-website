@@ -26,7 +26,7 @@ class Auth extends Component {
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, 
       emailLogin: '', passwordLogin: '', emailSignup: '', passwordSignup: '', passwordConfirmSignup: '',
       validEmail: false, tooShort: false, failed_login_attempt: false, processing: false,
-      failed_signup_attempt: false, termsAccepted: false, subscribed: true}
+      failed_signup_attempt: false, termsAccepted: false, subscribed: true, lock: true}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 
@@ -182,7 +182,17 @@ class Auth extends Component {
         :
         <div style = {{position: 'relative'}}>
         <Header  color = "#333333" button = "#5ec3eb" homepage/>
-        <div style = {{minHeight: '100vh', paddingTop: 80, backgroundColor: 'white'}}>
+        <div style = {{minHeight: '100vh', paddingTop: 80, backgroundColor: 'white', position: 'relative'}}>
+            {
+              this.state.lock
+              ?
+              <div style = {{zIndex: 3000, position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 500, height: 350, border: 'solid 1px black', padding: '100px 50px', background: 'white'}}>
+                April 11, 2020: Fractal is currently undergoing a major update, and will be back online in less than 48 hours. We apologize for the inconvenience; please check back again soon!
+              </div>
+              :
+              <div>
+              </div>
+            }       
             <div style = {{backgroundColor: 'rgba(0,0,0,0.0)', borderRadius: 2, border: 'solid 1px white', padding: '40px 40px 60px 40px', maxWidth: 425, marginBottom: 80, margin: 'auto'}}>
               <Tabs>
                 <TabList style = {{textAlign: 'center', border: 'none', border: 'none', fontWeight: 'bold', fontSize: 16}}>
