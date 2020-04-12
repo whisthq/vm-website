@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { FaArrowRight } from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'
+import { FaCheck, FaExclamationTriangle } from 'react-icons/fa'
 import { userLogin, userSignup, logout, changeTab, subscribeNewsletter } from '../../actions/index.js';
 import { Redirect } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
@@ -26,7 +26,7 @@ class Auth extends Component {
     this.state = { width: 0, height: 0, modalShow: false, showPopup: false, 
       emailLogin: '', passwordLogin: '', emailSignup: '', passwordSignup: '', passwordConfirmSignup: '',
       validEmail: false, tooShort: false, failed_login_attempt: false, processing: false,
-      failed_signup_attempt: false, termsAccepted: false, subscribed: true, lock: true}
+      failed_signup_attempt: false, termsAccepted: false, subscribed: true, lock: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 
@@ -161,13 +161,13 @@ class Auth extends Component {
     const signupWarning = () => {
       if(this.props.signupStatus === 400 && this.state.failed_signup_attempt) {
         return(
-          <div style = {{textAlign: 'center', fontSize: 14, color: "#a62121"}}>
-            Email already taken. Please try a different email.
+          <div style = {{textAlign: 'center', fontSize: 14, color: "#f9000b", background: "#fdf0f1", width: '100%', padding: 10, borderRadius: 5, fontWeight: 'bold', marginTop: 10}}>
+            Email already taken
           </div>
         )
       } else {
         return(
-          <div style = {{height: 30}}>
+          <div>
           </div>
         )
       }
@@ -182,7 +182,7 @@ class Auth extends Component {
         :
         <div style = {{position: 'relative'}}>
         <Header  color = "#333333" button = "#5ec3eb" homepage/>
-        <div style = {{minHeight: '100vh', paddingTop: 80, backgroundColor: 'white', position: 'relative'}}>
+        <div style = {{minHeight: '100vh', paddingTop: 50, backgroundColor: 'white', position: 'relative'}}>
             {
               this.state.lock
               ?
@@ -200,7 +200,16 @@ class Auth extends Component {
                   <Tab>SIGN UP</Tab>
                 </TabList>
                 <TabPanel style = {{padding: '15px 30px'}}>
-                  <InputGroup className="mb-3" style = {{marginTop: 30}}>
+                  {
+                  this.state.failed_login_attempt
+                  ?
+                  <div style = {{textAlign: 'center', fontSize: 14, color: "#f9000b", background: "#fdf0f1", width: '100%', padding: 10, borderRadius: 5, fontWeight: 'bold', marginTop: 10}}>
+                    Invalid credentials
+                  </div>
+                  :
+                  <div></div>
+                  }
+                  <InputGroup className="mb-3" style = {{marginTop: 20}}>
                     <FormControl
                       type = "email"
                       aria-label="Default"
@@ -208,7 +217,7 @@ class Auth extends Component {
                       placeholder = "Email Address"
                       onChange = {this.changeEmailLogin}
                       onKeyPress = {this.loginKeyPress}
-                      style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
+                      style = {{borderRadius: 5, maxWidth: 600, backgroundColor: "#F4F4F4", border: "none", padding: "30px 20px"}}
                     /><br/>
                   </InputGroup>
                   <InputGroup className="mb-3" style = {{marginTop: 20}}>
@@ -219,35 +228,29 @@ class Auth extends Component {
                       placeholder = "Password"
                       onChange = {this.changePasswordLogin}
                       onKeyPress = {this.loginKeyPress}
-                      style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
+                      style = {{borderRadius: 5, maxWidth: 600, backgroundColor: "#F4F4F4", border: "none", padding: "30px 20px"}}
                     />
                   </InputGroup>
-                  {
-                  this.state.failed_login_attempt
-                  ?
-                  <div style = {{textAlign: 'center', fontSize: 14, color: "#a62121"}}>Invalid credentials</div>
-                  :
-                  <div style = {{height: 20}}></div>
-                  }
                   {
                   !this.state.processing
                   ?
                   (
                   this.state.emailLogin.length > 4 && this.state.passwordLogin.length > 6 && this.state.emailLogin.includes('@')
                   ?
-                  <Button  onClick = {this.handleLogin} style = {{marginTop: 30, color: 'white', width: '100%', border: 'none', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold'}}>LOG IN</Button>
+                  <Button  onClick = {this.handleLogin} style = {{marginTop: 5, color: 'white', width: '100%', border: 'none', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>LOG IN</Button>
                   :
-                  <Button  disabled = "true" style = {{marginTop: 30, color: 'white', width: '100%', border: 'none', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold'}}>LOG IN</Button>
+                  <Button  disabled = "true" style = {{marginTop: 5, color: 'white', width: '100%', border: 'none', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>LOG IN</Button>
                   )
                   :
-                  <Button  disabled = "true" onClick = {this.handleLogin} style = {{marginTop: 30, color: 'white', width: '100%', border: 'none', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold'}}>
+                  <Button  disabled = "true" onClick = {this.handleLogin} style = {{marginTop: 5, color: 'white', width: '100%', border: 'none', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 14, marginRight: 5}}/> Processing
                   </Button>
                   }
                   <HashLink to = "/reset" style = {{textDecoration: 'none'}}><div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 25, color: '#333333', textDecoration: 'none', fontSize: 13}}>Forgot Password?</div></HashLink>
                 </TabPanel>
                 <TabPanel style = {{padding: '15px 30px'}}>
-                  <InputGroup className="mb-3" style = {{marginTop: 30}}>
+                  {signupWarning()}
+                  <InputGroup className="mb-3" style = {{marginTop: 20}}>
                     <FormControl
                       type = "email"
                       aria-label="Default"
@@ -255,20 +258,20 @@ class Auth extends Component {
                       placeholder = "Email Address"
                       onChange = {this.changeEmailSignup}
                       onKeyPress = {this.signupKeyPress}
-                      style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
+                      style = {{borderRadius: 5, maxWidth: 600, backgroundColor: "#F4F4F4", border: "none", padding: "30px 20px"}}
                     />
                     {
                     !this.state.validEmail && this.state.emailSignup.length > 1
                     ?
-                    <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
-                      <FaExclamationTriangle style = {{marginRight: 5, position: 'relative', bottom: 2}}/>Invalid Email
+                    <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 20, fontSize: 14}}>
+                      <FaExclamationTriangle style = {{marginRight: 5, position: 'relative'}}/>
                     </div>
                     :
                     (
                     this.state.emailSignup.length > 1
                     ?
                     <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
-                      <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
+                      <FaCheck style = {{marginRight: 5, position: 'relative', top: 10, color: '#62CEE6'}}/>
                     </div>
                     :
                     <div></div>
@@ -283,20 +286,20 @@ class Auth extends Component {
                       placeholder = "Password"
                       onChange = {this.changePasswordSignup}
                       onKeyPress = {this.signupKeyPress}
-                      style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
+                      style = {{borderRadius: 5, maxWidth: 600, backgroundColor: "#F4F4F4", border: "none", padding: "30px 20px"}}
                     />
                     {
                     this.state.tooShort
                     ?
-                    <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
-                      <FaExclamationTriangle style = {{marginRight: 5, position: 'relative', bottom: 2}}/>Too Short
+                    <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 20, fontSize: 14}}>
+                      <FaExclamationTriangle style = {{marginRight: 5, position: 'relative'}}/>
                     </div>
                     :
                     (
                     this.state.passwordSignup.length > 0
                     ?
                     <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
-                      <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
+                      <FaCheck style = {{marginRight: 5, position: 'relative', top: 10, color: '#62CEE6'}}/>
                     </div>
                     :
                     <div></div>
@@ -311,39 +314,38 @@ class Auth extends Component {
                       placeholder = "Confirm Password"
                       onChange = {this.changePasswordConfirmSignup}
                       onKeyPress = {this.signupKeyPress}
-                      style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
+                      style = {{borderRadius: 5, maxWidth: 600, backgroundColor: "#F4F4F4", border: "none", padding: "30px 20px"}}
                     />
                     {
                     !this.state.matches && this.state.passwordConfirmSignup.length > 0
                     ?
-                    <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
-                      <FaExclamationTriangle style = {{marginRight: 5, position: 'relative', bottom: 2}}/>Doesn't Match
+                    <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 20, fontSize: 14}}>
+                      <FaExclamationTriangle style = {{marginRight: 5, position: 'relative'}}/>
                     </div>
                     :
                     (
                     this.state.passwordConfirmSignup.length > 0
                     ?
                     <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
-                      <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
+                      <FaCheck style = {{marginRight: 5, position: 'relative', top: 10, color: '#62CEE6'}}/>
                     </div>
                     :
                     <div></div>
                     )
                     }
                   </InputGroup>
-                  {signupWarning()}
                   {
                   !this.state.processing
                   ?
                   (
                   this.state.validEmail && !this.state.tooShort && this.state.matches && this.state.termsAccepted
                   ?
-                  <Button onClick = {this.handleSignup} style = {{marginTop: 20, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold'}}>SIGN UP</Button>
+                  <Button onClick = {this.handleSignup} style = {{marginTop: 5, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>SIGN UP</Button>
                   :
-                  <Button disabled = "true" style = {{marginTop: 20, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold'}}>SIGN UP</Button>
+                  <Button disabled = "true" style = {{marginTop: 5, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>SIGN UP</Button>
                   )
                   :
-                  <Button  disabled = "true" style = {{marginTop: 20, color: 'white', width: '100%', border: 'none', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold'}}>
+                  <Button  disabled = "true" style = {{marginTop: 5, color: 'white', width: '100%', border: 'none', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 14, marginRight: 5}}/> Processing
                   </Button>
                   }

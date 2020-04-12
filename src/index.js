@@ -33,6 +33,7 @@ import Privacy from './components/PageLegal/Privacy'
 import TermsOfService from './components/PageLegal/TermsOfService'
 import EmailVerification from './components/PageAuth/EmailVerification'
 import CreditCard from './components/PageCubePurchase/CreditCard'
+import About from './components/PageAbout/About'
 
 const persistConfig = {
   key: 'rootKey',
@@ -74,6 +75,7 @@ ReactDOM.render(
               <Route exact path="/termsofservice" component={TermsOfService} />
               <Route exact path="/verify" component={EmailVerification} />
               <Route exact path="/card" component={CreditCard} />
+              <Route exact path="/about" component={About}/>
           </PersistGate>
           </Provider>
       </Router>,

@@ -42,6 +42,9 @@ div {
   width: 0px;
 }
 
+.mb-3 ::placeholder {
+  color: #AAAAAA !important;
+}
 
 textarea:focus, input:focus{
     outline: none;

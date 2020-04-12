@@ -74,7 +74,7 @@ class Dashboard extends Component {
       if(this.state.billEnd === '' && this.props.payment.current_period_end) {
         this.setState({billEnd: this.unixToDate(this.props.payment.current_period_end)})
       }
-      if(this.state.trialEnd === '' && this.props.payment.trial_end) {
+      if(this.state.trialEnd === '' && this.props.payment.trial_end && this.props.payment.trial_end > 0) {
         this.setState({trialEnd: this.unixToDate(this.props.payment.trial_end)})
       }
     } else {
