@@ -22,6 +22,7 @@ import history from "./history";
 import { HashLink } from 'react-router-hash-link'
 import './static/App.css';
 import Footer from './shared_components/footer'
+import MetaTags from 'react-meta-tags';
 
 import Purchase from './components/PageCubePurchase/Purchase'
 import Auth from './components/PageAuth/Auth'
@@ -61,9 +62,12 @@ ReactDOM.render(
     <Router history = {history}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <Helmet>
+          <MetaTags>
             <title>Fractal</title>
-          </Helmet>
+            <meta name="description" content="Fractal streams a powerful computer to any deivce." />
+            <meta property="og:title" content="Fractal" />
+            <meta property="og:image" content="./assets/datacenter.svg" />
+          </MetaTags>
               <Route exact path="/" component={NewHome} />
               <Route exact path="/purchase" component={Purchase}  />
               <Route exact path="/auth" component={Auth} />
