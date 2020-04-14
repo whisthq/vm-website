@@ -233,7 +233,6 @@ function* deleteAccount(action) {
   }
 }
 
-
 function* getDiskStatus(action) {
   const state = yield select()
 
