@@ -29,6 +29,7 @@ import { HashLink } from 'react-router-hash-link';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 import Footer from '../../shared_components/footer.js'
 import { changeTab } from '../../actions/index.js';
+import ImageFadeIn from 'react-image-fade-in'
 
 class PageHome extends Component {
   constructor(props) {
@@ -94,7 +95,7 @@ class PageHome extends Component {
           style = {{zIndex: -100}}
         />
         <div style = {{paddingTop: 100}}>
-          <div className = "fractal-container" style = {{paddingBottom: 50}}>
+          <div className = "fractal-container" style = {{paddingBottom: 50, height: '80vh'}}>
             <Row>
               <Col md = {{span: 6, order: 1}} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingTop: 50}}>
                 <div style = {{marginBottom: 30, color: "#D6D6D6", fontSize: 15, height: 40, display: 'flex'}}>
@@ -134,9 +135,9 @@ class PageHome extends Component {
                 {
                 this.state.width > 700
                 ?
-                <img src = {Car} style = {{width: "90%", position: 'relative', maxWidth: 1200, paddingTop: 25}}/>
+                <ImageFadeIn src = {Car} style = {{width: "90%", position: 'relative', maxWidth: 1200, paddingTop: 25}}/>
                 :
-                <img src = {Car} style = {{width: "100%"}}/>
+                <ImageFadeIn src = {Car} style = {{width: "100%"}}/>
                 }
               </Col>
             </Row>
@@ -208,10 +209,10 @@ class PageHome extends Component {
         ?
         <div style = {{backgroundColor: 'white', paddingTop: "66.68%", width: '100%', position: 'relative'}}>
           <div style = {{backgroundImage: `url(${SpaceShip})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}}>
-            <div className = "fractal-container" style = {{color: 'white', paddingTop: "37%", textAlign: 'center', fontWeight: 'bold', fontSize: 30, paddingBottom: 40}}>
+            <div className = "fractal-container" style = {{color: 'white', paddingTop: "37%", textAlign: 'center', fontWeight: 'bold', fontSize: 30, paddingBottom: 30}}>
               Fractal Cloud Computers Are <br/>Fast
             </div>
-            <div style = {{color: "#D6D6D6", maxWidth: 600, margin: 'auto', zIndex: 100, fontSize: 15, paddingLeft: 50, paddingRight: 50, lineHeight: 1.6}}>
+            <div style = {{color: "#D6D6D6", maxWidth: 600, margin: 'auto', zIndex: 100, fontSize: 16, paddingLeft: 50, paddingRight: 50, lineHeight: 1.6}}>
               Experience <span style = {{color: 'white', fontWeight: 'bold'}}>60 frames per second</span> without perceivable latency (&lt;9ms software latency). Upload a 5GB video file to cloud storage in under three minutes (coming soon).
             </div>
               <Link to = "/dashboard">

@@ -10,6 +10,7 @@ import { Redirect } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { Link } from 'react-router-dom'
 import Popup from "reactjs-popup";
+import ImageFadeIn from 'react-image-fade-in'
 
 import Header from '../../shared_components/header.js'
 import Footer from '../../shared_components/footer.js'
@@ -60,7 +61,7 @@ class About extends Component {
         <div className = "fractal-container" style = {{minHeight: '100vh', paddingTop: 150}}>
           <Row>
             <Col md = {7} style = {{paddingRight: 60}}>
-              <img src = {Datacenter} style = {{width: '100%', border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
+              <ImageFadeIn src = {Datacenter} style = {{width: '100%', border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
             </Col>
             <Col md = {5}>
               <div style = {{color: "#5ec3eb", fontWeight: 'bold'}}>

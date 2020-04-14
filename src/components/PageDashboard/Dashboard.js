@@ -79,21 +79,26 @@ class Dashboard extends Component {
       }
     } else {
       if(this.state.created != '') {
-        this.setState({created: '', cancelling: false})
+        this.setState({created: ''})
       }
       if(this.state.billStart != '') {
-        this.setState({billStart: '', cancelling: false})
+        this.setState({billStart: ''})
       }
       if(this.state.billEnd != '') {
-        this.setState({billEnd: '', cancelling: false})
+        this.setState({billEnd: ''})
       }
       if(this.state.trialEnd != '' && this.props.customer && Object.keys(this.props.customer).length === 0) {
-        this.setState({trialEnd: '', cancelling: false})
+        this.setState({trialEnd: ''})
       }
     }
 
     if(this.state.trialEnd === '' && this.props.customer && Object.keys(this.props.customer).length > 0) {
       this.setState({trialEnd: this.unixToDate(this.props.customer.trial_end)})
+    }
+
+    if(this.props.disks && this.props.disks.length !== prevProps.disks.length && this.state.cancelling) {
+      console.log("DONE CANCELLING?")
+      this.setState({cancelling: false})
     }
   }
 

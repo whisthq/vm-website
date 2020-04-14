@@ -62,6 +62,8 @@
     "react-fade-in": "^0.1.6",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.7.0",
+    "react-image": "^2.4.0",
+    "react-image-fade-in": "^1.1.0",
     "react-loading": "^2.0.3",
     "react-lottie": "^1.2.3",
     "react-meta-tags": "^0.7.4",
