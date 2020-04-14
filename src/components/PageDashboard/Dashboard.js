@@ -395,7 +395,7 @@ class Dashboard extends Component {
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25, marginTop: 25}}/>
                     <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
                     <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
-                      Our engineers are currently setting up and testing your cloud PC. Once it's ready within 24 hours, you will receive an email.
+                      Your cloud PC will be ready in a few minutes. Once it's ready, simply download our desktop application and log in with your account.
                     </div>
                   </div>
                 </Col>
