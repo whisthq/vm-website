@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import { Link } from 'react-router-dom'
 import Popup from "reactjs-popup";
 
 import Header from '../../shared_components/header.js'
@@ -124,8 +125,8 @@ class About extends Component {
               <Col md = {4} style = {{textAlign: 'right', width: '100%', marginBottom: 20}}>
                 <div style = {{textAlign: 'center', width: '100%'}}>
                   <img src = {Creative} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
-                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 115, margin: 'auto', marginTop: 20}}>
-                    Creative Work
+                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 75, margin: 'auto', marginTop: 20}}>
+                    Graphics
                   </div>
                 </div>
               </Col>
@@ -148,7 +149,7 @@ class About extends Component {
                 <Popup
                   modal 
                   trigger = {
-                  <div className = "pointerOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
                     <img src = {Ming} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
@@ -176,7 +177,7 @@ class About extends Component {
                 <Popup
                   modal 
                   trigger = {
-                  <div className = "pointerOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
                     <img src = {Phil} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
@@ -204,7 +205,7 @@ class About extends Component {
                 <Popup
                   modal 
                   trigger = {
-                  <div className = "pointerOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
                     <img src = {Nick} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
@@ -232,7 +233,7 @@ class About extends Component {
                 <Popup
                   modal 
                   trigger = {
-                  <div className = "pointerOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
                     <img src = {Roshan} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
@@ -299,9 +300,11 @@ class About extends Component {
           <div style = {{color: "#555555", lineHeight: 1.9, maxWidth: 600, margin: 'auto', marginTop: 10}}>
             Experience the next generation of personal computing today.
           </div>
-          <Button style = {{marginTop: 30, backgroundColor: '#111111', padding: '10px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none'}}>
-            GET STARTED
-          </Button>
+          <Link to = "/dashboard" style = {{textDecoration: 'none'}}>
+            <Button style = {{marginTop: 30, backgroundColor: '#111111', padding: '10px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none'}}>
+              GET STARTED
+            </Button>
+          </Link>
         </div>
       <Footer/>
       </div>

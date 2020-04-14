@@ -1,11 +1,11 @@
 import * as AccountAction from '../actions/index'
 
 const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, stripeToken: '', type: '', id: '', vm_created: false, is_creating: false, progress: 1, 
-                 vm_credentials: [], failed_login_attempts: 0, forgot_password: 0, token_status: 'invalid', has_vm: false, 
+                 disks: [], failed_login_attempts: 0, forgot_password: 0, token_status: 'invalid', has_vm: false, 
                  payment: {}, signupStatus: 200, failed_signup_attempts: 0, stripeStatus: 200, failed_payment_attempts: 0,
                  currentPage: 'personal', emailStatus: 0, promoCode: '', credits: 0, failed_referral_attempts: 0, 
                  email_verified: false, verificationToken: '', verificationEmailsSent: 0, customer_status: 0, show_survey: false,
-                 customer: {}, account_locked: false}
+                 customer: {}, account_locked: false, access_token: '', refresh_token: ''}
 
 export default function (state = DEFAULT, action) {
   switch (action.type) {
@@ -61,7 +61,7 @@ export default function (state = DEFAULT, action) {
         user: '',
         password: '',
         stripeToken: '',
-        vm_credentials: [],
+        disks: [],
         payment: {},
         is_creating: false,
         promoCode: '',
@@ -70,25 +70,10 @@ export default function (state = DEFAULT, action) {
         show_survey: false,
         account_locked: false
       }
-    case AccountAction.CREATE_VM:
+    case AccountAction.STORE_DISKS:
       return {
         ...state,
-        vm_size: action.vm_size
-      }
-    case AccountAction.GET_VM_ID:
-      return {
-        ...state,
-        id: action.id
-      }
-    case AccountAction.REGISTER_VM:
-      return {
-        ...state,
-        vm_name: action.vm_name
-      }
-    case AccountAction.VM_TO_STATE:
-      return {
-        ...state,
-        vm_credentials: action.vms
+        disks: action.disks
       }
     case AccountAction.VM_CREATING:
       return {
@@ -192,6 +177,12 @@ export default function (state = DEFAULT, action) {
       return {
         ...state,
         show_survey: false
+      }
+    case AccountAction.STORE_JWT:
+      return {
+        ...state,
+        access_token: action.access_token,
+        refresh_token: action.refresh_token
       }
     default:
       return state

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch, faKey } from '@fortawesome/free-solid-svg-icons'
 
-import {chargeStripe, validatePromoCode, insertCustomer } from '../actions/index.js'
+import {chargeStripe, validatePromoCode, insertCustomer, createDisk } from '../actions/index.js'
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -33,6 +33,7 @@ class CheckoutForm extends Component {
     if(token) {
       if(token.id) {
         this.props.dispatch(chargeStripe(token.id,  3500, this.props.location, this.state.code))
+        this.props.dispatch(createDisk(this.findVMLocation(this.props.location)))
       } else {
         this.setState({processing: false, errorMessage: 'Your card info was declined. Please try again.'})
       }
@@ -48,6 +49,21 @@ class CheckoutForm extends Component {
   submitNoPayment = () => {
     this.setState({processing: true})
     this.props.dispatch(insertCustomer(this.props.location))
+    this.props.dispatch(createDisk(this.findVMLocation(this.props.location)))
+  }
+
+  findVMLocation = (location) => {
+    var eastus = ['ME', 'NH', 'MA', 'NY', 'VT', 'RI', 'CT', 'NJ', 'DE', 'MD', 'DC', 'PA', 'WV', 'NC', 'SC', 'GA', 'FL', 'AL']
+    var southcentralus = ['TX', 'AR', 'OK', 'NM', 'LA', 'CO']
+    var northcentralus = ['IL', 'OH', 'IN', 'KY', 'MI', 'TN', 'WI', 'MN', 'IA', 'MO', 'MS', 'KS', 'NE']
+
+    if(eastus.includes(location)) {
+      return('eastus')
+    } else if(southcentralus.includes(location)) {
+      return('southcentralus')
+    } else {
+      return('northcentralus')
+    }
   }
 
   monthConvert = (month) => {

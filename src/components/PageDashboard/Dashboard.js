@@ -11,7 +11,7 @@ import history from "../../history";
 
 import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { logout, getVMStatus, retrieveCustomer, vmCreating, cancelPlan, fetchVMs, sendFriendsEmail, 
+import { logout, getVMStatus, retrieveCustomer, vmCreating, cancelPlan, fetchDisks, sendFriendsEmail, 
   emailSent, triggerSurvey, submitPurchaseFeedback } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
 import { FaExclamationTriangle } from 'react-icons/fa'
@@ -48,7 +48,7 @@ class Dashboard extends Component {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
 
-    this.props.dispatch(fetchVMs(this.props.user))
+    this.props.dispatch(fetchDisks(this.props.user))
     this.props.dispatch(retrieveCustomer())
 
     var today = new Date();
@@ -380,7 +380,7 @@ class Dashboard extends Component {
               MY CLOUD PC
             </div>
             {
-            this.props.vms === undefined || this.props.vms.length == 0
+            this.props.disks === undefined || this.props.disks.length == 0
             ?
             (
             this.props.is_creating
@@ -727,7 +727,7 @@ function mapStateToProps(state) {
   return { 
     loggedIn: state.AccountReducer.loggedIn,
     user: state.AccountReducer.user,
-    vms: typeof state.AccountReducer.vm_credentials === undefined ? [] : state.AccountReducer.vm_credentials,
+    disks: typeof state.AccountReducer.disks === 'undefined' ? [] : state.AccountReducer.disks,
     is_creating: state.AccountReducer.is_creating,
     id: state.AccountReducer.id,
     payment: state.AccountReducer.payment,

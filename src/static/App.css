@@ -305,3 +305,12 @@ input[type=text], input {
 .pointerOnHover:hover {
   cursor:pointer;
 }
+
+.expandOnHover {
+  transition: 0.5s;
+}
+
+.expandOnHover:hover {
+  cursor:pointer;
+  transform: scale(1.02);
+}

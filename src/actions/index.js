@@ -19,11 +19,8 @@ export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS"
 export const CHANGE_STAGE = "CHANGE_STAGE"
 export const CHARGE_STRIPE = "CHARGE_STRIPE"
 export const LOGOUT = "LOGOUT"
-export const CREATE_VM = "CREATE_VM"
-export const GET_VM_ID = "GET_VM_ID"
-export const REGISTER_VM = "REGISTER_VM"
-export const FETCH_VMS = "FETCH_VMS"
-export const VM_TO_STATE = "VM_TO_STATE"
+export const FETCH_DISKS = "FETCH_DISKS"
+export const STORE_DISKS = "STORE_DISKS"
 export const VM_CREATING = "VM_CREATING"
 export const PROGRESS_BAR = "PROGRESS_BAR"
 export const FORGOT_PASSWORD = "FORGOT_PASSWORD"
@@ -63,6 +60,9 @@ export const TRIGGER_SURVEY = "TRIGGER_SURVEY"
 export const SUBMIT_PURCHASE_FEEDBACK = "SUBMIT_PURCHASE_FEEDBACK"
 export const STORE_CUSTOMER = "STORE_CUSTOMER"
 export const STORE_ACCOUNT_LOCKED = "STORE_ACCOUNT_LOCKED"
+export const STORE_JWT = "STORE_JWT"
+export const CREATE_DISK = "CREATE_DISK"
+export const GET_DISK_STATUS = "GET_DISK_STATUS"
 
 export function userLogin(user, password, create) {
 	return {
@@ -123,39 +123,17 @@ export function logout() {
 	}
 }
 
-export function createVM(vm_size) {
+export function fetchDisks(user) {
 	return {
-		type: CREATE_VM,
-		vm_size
-	}
-}
-
-export function getVMStatus(id) {
-	return {
-		type: GET_VM_ID,
-		id
-	}
-}
-
-export function registerVM(user, vm_name) {
-	return {
-		type: REGISTER_VM,
-		user,
-		vm_name
-	}
-}
-
-export function fetchVMs(user) {
-	return {
-		type: FETCH_VMS,
+		type: FETCH_DISKS,
 		user
 	}
 }
 
-export function vmToState(vms) {
+export function storeDisks(disks) {
 	return {
-		type: VM_TO_STATE,
-		vms
+		type: STORE_DISKS,
+		disks
 	}
 }
 
@@ -420,5 +398,27 @@ export function storeAccountLocked(locked) {
 	return {
 		type: STORE_ACCOUNT_LOCKED,
 		locked
+	}
+}
+
+export function storeJWT(access_token, refresh_token) {
+	return {
+		type: STORE_JWT,
+		access_token,
+		refresh_token
+	}
+}
+
+export function createDisk(location) {
+	return {
+		type: CREATE_DISK,
+		location
+	}
+}
+
+export function getDiskStatus(id) {
+	return {
+		type: GET_DISK_STATUS,
+		id
 	}
 }

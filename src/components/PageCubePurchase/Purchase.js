@@ -61,7 +61,7 @@ class Purchase extends Component {
   }
 
   handleClick2 = (location) => {
-    var unsupported = ["WA", "OR", "CA", "NV", "ID", "MT", "WY", "AK"]
+    var unsupported = ["WA", "OR", "CA", "NV", "ID", "MT", "WY", "AK", "SD", "ND", "AZ", "HI"]
     if(unsupported.includes(location)) {
       this.setState({step: 2, exit: true})
     } else {
