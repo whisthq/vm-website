@@ -103,7 +103,7 @@
   },
   "scripts": {
     "start": "set NODE_ENV='development' && node scripts/start.js",
-    "build": "set NODE_ENV='production' && node scripts/build.js",
+    "build": "set NODE_ENV='production' && node scripts/build.js CI=false",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
