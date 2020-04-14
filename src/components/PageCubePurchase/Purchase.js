@@ -114,7 +114,7 @@ class Purchase extends Component {
           </div>
         )
       } else if(this.state.step === 2 && this.state.exit) {
-        return(
+        return (
         <div style = {{paddingTop: 100, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
           <div style = {{fontSize: 16, maxWidth: 600, lineHeight: 1.7}}>
             Currently, Fractal is only available in the Eastern and Midwestern United States due to the locations of our servers. 
