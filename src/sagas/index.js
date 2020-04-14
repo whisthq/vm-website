@@ -1,20 +1,9 @@
-import { put, takeLatest, takeEvery, all, call, select, delay } from 'redux-saga/effects';
+import { put, takeEvery, all, call, select, delay } from 'redux-saga/effects';
 import * as FormAction from "../actions/index.js"
 import { apiPost, apiGet } from '../utils/Api.js'
 import { config } from '../constants.js'
 import history from "../history";
-import { push } from 'connected-react-router'
 
-
-function* refreshAccess(action) {
-  console.log("REFERESHING TOKEN")
-  const state = yield select()
-  const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/token/refresh', {}, state.AccountReducer.refresh_token) 
-  if(json) {
-    yield put(FormAction.storeJWT(json.access_token, json.refresh_token))
-  }
-  console.log("DONE REFRESHING")
-}
 
 function* sendLoginInfo(action) {
    const state = yield select()
