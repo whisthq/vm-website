@@ -435,7 +435,7 @@ class PageHome extends Component {
               ?
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{paddingTop: '10%', paddingLeft: 50}}>
                 <div style = {{fontWeight: 'bold', fontSize: 40, color: "#333333", textAlign: 'left'}}>Setup in less than <br/><span className = "blue-gradient">one minute</span></div>
-                <p style = {{textAlign: 'left', marginTop: 20}}>Create an account, choose a configuration, and download the Fractal desktop app. Your first week is free, no credit card required.</p>
+                <p style = {{textAlign: 'left', marginTop: 20, fontSize: 18}}>Create an account, choose a configuration, and download the Fractal desktop app. Your first week is free, no credit card required.</p>
               </Col>
               :
               <Col md = {{span: 6, order: 1}} xs = {{order: 1, span: 12}} style = {{paddingTop: 100, width: '100%'}}>
