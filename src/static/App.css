@@ -166,8 +166,8 @@ input[type=text], input {
 .fractal-container {
   width: 100vw;
   margin: 0px;
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 80px;
+  padding-right: 80px;
   max-width: 2000px;
   margin: auto;
   overflow-x: hidden;

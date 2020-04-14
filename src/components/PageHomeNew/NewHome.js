@@ -15,13 +15,15 @@ import PriceCompare from '../../assets/pricecompare.svg'
 import PriceCompareSmall from '../../assets/pricecomparesmall.svg'
 import Car from '../../assets/caribou.svg'
 import Topography from '../../assets/topography.svg'
+import Art from '../../assets/art.svg'
+import Process from '../../assets/process.svg'
 import RGBIcon from '../../assets/rgb-icon.svg'
 import HardDriveIcon from '../../assets/hard-drive-icon.svg'
 import FileIcon from '../../assets/file-icon.svg'
 import WindowsBin from '../../bin/Fractal.exe'
 import MacBin from '../../bin/Fractal.dmg'
 import Logo from '../../assets/logo.svg'
-import {FaRegEnvelope, FaWindows, FaApple} from 'react-icons/fa'
+import {FaRegEnvelope} from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
@@ -97,11 +99,17 @@ class PageHome extends Component {
         <div style = {{paddingTop: 100}}>
           <div className = "fractal-container" style = {{paddingBottom: 50}}>
             <Row>
-              <Col md = {{span: 6, order: 1}} xs = {{order: 2, span: 12}} style = {{textAlign: 'left'}}>
-                <div style = {{color: 'white', fontSize: 50, lineHeight: 1.3, fontWeight: 'bold', marginTop: 50}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
-                <p style = {{textAlign: 'left', marginTop: 25, color: '#D6D6D6', marginBottom: 40, fontSize: 17, maxWidth: 400}}>Fractal streams GPU-powered, Windows and Linux desktops to any macOS or Windows device at ultra-low latency</p>
+              <Col md = {{span: 6, order: 1}} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingTop: 50}}>
+                <div style = {{marginBottom: 30, color: "#D6D6D6", fontSize: 15, height: 40, display: 'flex'}}>
+                  <div style = {{height: 30, backgroundColor: '#5ec3eb', padding: '5px 15px', color: '#0b172b', fontWeight: 'bold', fontSize: 14, borderRadius: 5, marginRight: 20}}>NEW</div>
+                  <div style = {{position: 'relative', bottom: 5}}>
+                    Support for Linux, Android, and iOS is currently being tested in private beta
+                  </div>
+                </div>
+                <div style = {{color: '#FFFFFF', fontSize: 39, lineHeight: 1.4, fontWeight: 'bold', marginTop: 50}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
+                <p style = {{textAlign: 'left', marginTop: 25, color: '#D6D6D6', marginBottom: 40, fontSize: 17}}>Fractal streams GPU-powered, Windows 10 desktops to any macOS or Windows device</p>
                 <Link to = "/dashboard">
-                  <Button style = {{display: 'inline', float: 'left', background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", marginTop: 5, padding: "10px 30px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', fontSize: 14, marginRight: 20, marginBottom: 10}}>GET STARTED</Button>
+                  <Button style = {{display: 'inline', float: 'left', background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", marginTop: 5, padding: "10px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', fontSize: 14, marginRight: 20, minWidth: 194, marginBottom: 10}}>GET STARTED</Button>
                 </Link>
                 <Dropdown as={ButtonGroup} style = {{display: 'inline', float: 'left'}}>
                   <div style = {{display: 'flex'}}>
@@ -109,18 +117,12 @@ class PageHome extends Component {
                     {
                     this.state.version === 'Windows'
                     ?
-                    <a href = {WindowsBin} download = "Fractal.exe" style = {{textDecoration: 'none'}}>
-                      <Button class = "dropdown-toggle" variant="success" style = {{textDecoration: 'none', outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, padding: '10px 5px 10px 0px', border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderLeft: 'none', borderRadius: '0px 4px 4px 0px', minWidth: 200, display: 'flex'}}>
-                        <div style = {{marginLeft: 10, textDecoration: 'none'}}>Download for {this.state.version}</div>
-                        <FaWindows style = {{marginLeft: 10, position: 'relative', top: 3}}/>
-                      </Button>
+                    <a href = {WindowsBin} download = "Fractal.exe">
+                      <Button class = "dropdown-toggle" variant="success" style = {{outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, padding: '10px 5px 10px 0px', border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderLeft: 'none', borderRadius: '0px 4px 4px 0px', minWidth: 170}}>Download for {this.state.version}</Button>
                     </a>
                     :
-                    <a href = {MacBin} download = "Fractal.dmg" style = {{textDecoration: 'none'}}>
-                      <Button class = "dropdown-toggle" variant="success" style = {{textDecoration: 'none', outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, padding: '10px 5px 10px 0px', border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderLeft: 'none', borderRadius: '0px 4px 4px 0px', minWidth: 170, display: 'flex'}}>
-                        <div style = {{marginLeft: 10, textDecoration: 'none'}}>Download for {this.state.version}</div>
-                        <FaApple style = {{marginLeft: 10, position: 'relative', top: 3}}/>
-                      </Button>
+                    <a href = {MacBin} download = "Fractal.dmg">
+                      <Button class = "dropdown-toggle" variant="success" style = {{outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, padding: '10px 5px 10px 0px', border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderLeft: 'none', borderRadius: '0px 4px 4px 0px', minWidth: 170}}>Download for {this.state.version}</Button>
                     </a>
                     }
                   </div>
@@ -135,7 +137,7 @@ class PageHome extends Component {
                 {
                 this.state.width > 700
                 ?
-                <ImageFadeIn src = {Car} style = {{width: "90%", position: 'relative', maxWidth: 1200, paddingTop: 30, maxHeight: '75vh'}}/>
+                <ImageFadeIn src = {Car} style = {{width: "90%", position: 'relative', maxWidth: 1200, paddingTop: 25}}/>
                 :
                 <ImageFadeIn src = {Car} style = {{width: "100%"}}/>
                 }
@@ -146,8 +148,8 @@ class PageHome extends Component {
         <div style = {{background: 'white', backgroundSize: '100% auto'}}>
           <div className = "fractal-container">
             <Row>
-              <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: 100}}>
-                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, margin: "auto", maxWidth: 500}}>
+              <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: '15%'}}>
+                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '100%', maxWidth: 500}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 35px', fontWeight: 'bold'}}>
                     My Cloud PC
                   </div>
@@ -156,12 +158,12 @@ class PageHome extends Component {
                   ?
                   <div style = {{width: '100%', padding: 35, color: '#333333', fontSize: 16}}>
                     <Row>
-                      <Col xs = {6}><strong>1</strong> NVIDIA Tesla M60</Col>
-                      <Col xs = {6} style = {{textAlign: 'right'}}><strong>16 GB+</strong> DDR4 RAM</Col>
+                      <Col xs = {6}>Tesla M60 GPU</Col>
+                      <Col xs = {6} style = {{textAlign: 'right'}}><strong>16 GB+</strong> RAM</Col>
                     </Row>
                     <Row style = {{marginTop: 5}}>
                       <Col xs = {6}><strong>6+</strong> CPU cores</Col>
-                      <Col xs = {6} style = {{textAlign: 'right'}}><strong>512 GB</strong> NVMe SSD</Col>
+                      <Col xs = {6} style = {{textAlign: 'right'}}><strong>512 GB</strong> SSD</Col>
                     </Row>
                     <Link to = "/dashboard">
                       <Button style = {{width: '100%', color: 'white', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", fontWeight: "bold", padding: 12, textAlign: 'center', borderRadius: 5, marginTop: 50, border: 'none', fontSize: 14}}>
@@ -172,12 +174,12 @@ class PageHome extends Component {
                   :
                   <div style = {{width: '100%', padding: 35, color: '#333333', fontSize: 14}}>
                     <Row>
-                      <Col xs = {6}><strong>1</strong> NVIDIA Tesla M60</Col>
-                      <Col xs = {6} style = {{textAlign: 'right'}}><strong>16 GB+</strong> DDR4 RAM</Col>
+                      <Col xs = {6}>Tesla M60 GPU</Col>
+                      <Col xs = {6} style = {{textAlign: 'right'}}><strong>16 GB+</strong> RAM</Col>
                     </Row>
                     <Row style = {{marginTop: 5}}>
                       <Col xs = {6}><strong>6+</strong> CPU cores</Col>
-                      <Col xs = {6} style = {{textAlign: 'right'}}><strong>512 GB</strong> NVMe SSD</Col>
+                      <Col xs = {6} style = {{textAlign: 'right'}}><strong>512 GB</strong> SSD</Col>
                     </Row>
                     <Link to = "/dashboard">
                       <Button style = {{width: '100%', color: 'white', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", fontWeight: "bold", padding: 12, textAlign: 'center', borderRadius: 5, marginTop: 50, border: 'none', fontSize: 14}}>
@@ -193,12 +195,12 @@ class PageHome extends Component {
               ?
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{paddingTop: '10%', paddingLeft: 50}}>
                 <div style = {{fontWeight: 'bold', fontSize: 40, color: "#333333", textAlign: 'left'}}><span className = "blue-gradient">Graphics power</span><br/>minus the bulky hardware</div>
-                <p style = {{textAlign: 'left', marginTop: 20}}>Edit, render, and play at insane speeds from your any Windows or Apple laptop, tablet, or console with NVIDIA Tesla M60 GPUs in the cloud.</p>
+                <p style = {{textAlign: 'left', marginTop: 20, fontSize: 18}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               :
-              <Col md = {{span: 6, order: 1}} xs = {{order: 1, span: 12}} style = {{paddingTop: 50, width: '100%'}}>
+              <Col md = {{span: 6, order: 1}} xs = {{order: 1, span: 12}} style = {{width: '100%', marginTop: 50}}>
                 <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'left', lineHeight: 1.4}}><span className = "blue-gradient">Graphics power</span><br/>minus the bulky hardware</div>
-                <p style = {{textAlign: 'left', marginTop: 20}}>Edit, render, and play at insane speeds from your laptop with NVIDIA Tesla M60 GPUs in the cloud.</p>
+                <p style = {{textAlign: 'left', marginTop: 20}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               }
             </Row>
@@ -207,78 +209,108 @@ class PageHome extends Component {
         {
         this.state.width > 700
         ?
-        <div style = {{backgroundColor: 'white', paddingTop: "66.68%", width: '100%', position: 'relative'}}>
-          <div style = {{backgroundImage: `url(${SpaceShip})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}}>
-            <div className = "fractal-container" style = {{color: 'white', paddingTop: "37%", textAlign: 'center', fontWeight: 'bold', fontSize: 30, paddingBottom: 30}}>
-              Fractal Cloud Computers Are <br/>Fast
-            </div>
-            <div style = {{color: "#D6D6D6", maxWidth: 600, margin: 'auto', zIndex: 100, fontSize: 16, paddingLeft: 50, paddingRight: 50, lineHeight: 1.6}}>
-              Experience <span style = {{color: 'white', fontWeight: 'bold'}}>60 frames per second</span> without perceivable latency (&lt;9ms software latency). Upload a 5GB video file to cloud storage in under three minutes (coming soon).
-            </div>
-              <Link to = "/dashboard">
-                <Button style = {{zIndex: 100, marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.6)', zIndex: 200}}>GET STARTED</Button>
-              </Link>
+        <div style = {{background: 'white', backgroundSize: '100% auto'}}>
+          <div className = "fractal-container">
+            <Row style = {{marginBottom: 30}}>
+              <Col md = {4} xs = {{order: 3}} style = {{textAlign: 'left', paddingBottom: 100, paddingLeft: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250}}>
+                  <img src = {Process} style = {{width: 50}}/>
+                  <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
+                    Sub-9ms Software Latency
+                  </div>
+                  <div style = {{marginTop: 10}}>
+                    Achieve an immersive, native desktop experience.
+                  </div>
+                </div>
+              </Col>
+              <Col md = {4} xs = {{order: 2}} style = {{textAlign: 'left', paddingBottom: 100, paddingLeft: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250}}>
+                  <img src = {Art} style = {{width: 50}}/>
+                  <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
+                    60+ Frames per Second
+                  </div>
+                  <div style = {{marginTop: 10}}>
+                    Scrub through videos or play games effortlessly.
+                  </div>
+                </div>
+              </Col>
+              <Col md = {{span: 4, order: 1}} xs = {{order: 1, span: 12}}>
+                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#333333", textAlign: 'left'}}>Fractal cloud computers are <br/><span className = "blue-gradient">fast</span></div>
+              </Col>
+            </Row>
           </div>
         </div>
         :
-        <div style = {{backgroundColor: 'white', paddingTop: "66.68%", width: '100%', position: 'relative'}}>
-          <div style = {{backgroundImage: `url(${SpaceShip})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 100}}>
-            <div className = "fractal-container" style = {{color: 'white', paddingTop: "55%", textAlign: 'center', fontWeight: 'bold', fontSize: 30, paddingBottom: 40}}>
-              Fractal Cloud Computers Are <br/>Fast
-            </div>
-            <div style = {{color: "#D6D6D6", maxWidth: 600, margin: 'auto', zIndex: 100, paddingLeft: 50, paddingRight: 50}}>
-              Experience <span style = {{color: 'white', fontWeight: 'bold'}}>60 frames per second</span> without latency or input lag. Upload a 5GB video file to cloud storage in under three minutes (coming soon).
-            </div>
-            <Link to = "/dashboard">
-              <Button style = {{zIndex: 100, marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.60)'}}>GET STARTED</Button>
-            </Link>
+        <div style = {{background: 'white', backgroundSize: '100% auto'}}>
+          <div className = "fractal-container" style = {{paddingTop: 50, paddingBottom: 50}}>
+            <Row style = {{marginBottom: 30}}>
+              <Col md = {12} xs = {{order: 3}} style = {{textAlign: 'left'}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250}}>
+                  <img src = {Process} style = {{width: 50}}/>
+                  <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
+                    Sub-9ms Software Latency
+                  </div>
+                  <div style = {{marginTop: 10}}>
+                    Achieve an immersive, native desktop experience.
+                  </div>
+                </div>
+              </Col>
+              <Col md = {12} xs = {{order: 2}} style = {{textAlign: 'left', paddingBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250}}>
+                  <img src = {Art} style = {{width: 50}}/>
+                  <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
+                    60+ Frames per Second
+                  </div>
+                  <div style = {{marginTop: 10}}>
+                    Scrub through videos or play games effortlessly.
+                  </div>
+                </div>
+              </Col>
+              <Col md = {{span: 4, order: 1}} xs = {{order: 1, span: 12}}>
+                <div style = {{fontWeight: 'bold', fontSize: 35, lineHeight: 1.4, color: "#333333", textAlign: 'left', marginBottom: 50}}>Fractal cloud computers are <br/><span className = "blue-gradient">fast</span></div>
+              </Col>
+            </Row>
           </div>
         </div>
         }
-        {
-        this.state.width > 700
-        ?
-        <div></div>
-        :
-        <div style = {{backgroundColor: "#0b172b", height: 250, zIndex: -1}}></div>
-        }
-        <div  style = {{backgroundColor: "#0b172b", paddingBottom: 150, paddingTop: 150, position: 'relative', bottom: 1}}>
-        <div className = "fractal-container">
-            <div style = {{fontWeight: 'bold', fontSize: 35, color: "white", textAlign: 'center'}}>And extremely affordable</div>
-            <div style = {{margin: 'auto', maxWidth: 750}}>
-              <p style = {{textAlign: 'center', marginTop: 20, color: "#D6D6D6", fontSize: 15, lineHeight: 1.6}}>A small monthly (or hourly) fee, versus thousands of dollars upfront for an expensive PC.</p>
-            </div>
+        <div style = {{background: 'linear-gradient(180deg, #FEF8FF 61.47%, #FEF8FF 84.35%, #FFFFFF 100%)', paddingTop: 80}}>
+          <div className = "fractal-container" style = {{paddingBottom: 20}}>
             {
             this.state.width > 700
             ?
-            <img src = {PriceCompare} style = {{width: '100%', margin: 'auto', maxWidth: 800, marginTop: 75}}/>
+            <div style = {{fontWeight: 'bold', fontSize: 40, color: "#333333", textAlign: 'center', marginBottom: 20}}>Access your desktop <span className = "blue-gradient">anywhere</span></div>
             :
-            <img src = {PriceCompareSmall} style = {{width: '90%', margin: 'auto', maxWidth: 800, marginTop: 75}}/>
+            <div style = {{fontWeight: 'bold', fontSize: 35, lineHeight: 1.4, color: "#333333", textAlign: 'left', marginBottom: 20}}>Access your desktop <span className = "blue-gradient">anywhere</span></div>
             }
-        </div>
-        </div>
-        <div style = {{backgroundColor: 'white'}}>
-          <div className = "fractal-container" style = {{paddingTop: 100, paddingBottom: 20}}>
-            <div style = {{fontWeight: 'bold', fontSize: 40, color: "#333333", textAlign: 'center'}}>Access your desktop <span className = "blue-gradient">anywhere</span></div>
+            {
+            this.state.width > 700
+            ?
             <div style = {{margin: 'auto'}}>
-              <p style = {{textAlign: 'center', maxWidth: 750, margin: 'auto',  marginTop: 20 }}>
+              <p style = {{textAlign: 'center', maxWidth: 750, margin: 'auto',  marginTop: 20, fontSize: 18, marginBottom: 75}}>
                 Need to work in more than one location? Forgot to upload a file to the cloud, or to commit a change? Your Fractal instance is accessible from any Internet-connected device.
               </p>
             </div>
-            <Row style = {{margin: 'auto', marginTop: 75, maxWidth: 1500}}>
+            :
+            <div style = {{margin: 'auto'}}>
+              <p style = {{textAlign: 'left', marginTop: 20, marginBottom: 50}}>
+                Need to work in more than one location? Forgot to upload a file to the cloud, or to commit a change? Your Fractal instance is accessible from any Internet-connected device.
+              </p>
+            </div>
+            }
+            <Row style = {{margin: 'auto'}}>
               {
               this.state.width > 700
               ?
-              <Col md = {4}>
-                <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, width: '100%', marginBottom: 20}}>
+              <Col md = {4} style = {{paddingLeft: 0, paddingRight: 40}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, width: '100%', marginBottom: 20}}>
                   <img src = {RGBIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Color Accuracy</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Achieve visually lossless frames with our color-accurate streaming technology.</p>
                 </div>
               </Col>
               :
-              <Col md = {4}>
-                <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+              <Col md = {4} style = {{padding: 0}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
                   <img src = {RGBIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Color Accuracy</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Achieve visually lossless frames with our color-accurate streaming technology.</p>
@@ -289,15 +321,15 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {4}>
-                <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, margin:'auto', width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {HardDriveIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Hard Drive Upload</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Clone your entire hard drive to your cloud PC at the click of a button.</p>
                 </div>
               </Col>
               :
-              <Col md = {4} style = {{margin: 0}}>
-                <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 210, margin:'auto', width: '100%', marginBottom: 20}}>
+              <Col md = {4} style = {{padding: 0}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 210, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {HardDriveIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Hard Drive Upload</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Clone your entire hard drive to your cloud PC at the click of a button.</p>
@@ -307,16 +339,16 @@ class PageHome extends Component {
               {
               this.state.width > 700
               ?
-              <Col md = {4}>
-                <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, margin:'auto', width: '100%', marginBottom: 20}}>
+              <Col md = {4} style = {{paddingRight: 0, paddingLeft: 40}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {FileIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>File Backup</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Fractal can download your entire cloud PC hard drive to your local PC every 24 hours.</p>
                 </div>
               </Col>
               :
-              <Col md = {4}>
-                <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 210, margin:'auto', width: '100%', marginBottom: 20}}>
+              <Col md = {4} style = {{padding: 0}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 210, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {FileIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>File Backup</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Fractal can download your entire cloud PC hard drive to your local PC every 24 hours.</p>
@@ -329,8 +361,11 @@ class PageHome extends Component {
         <div style = {{backgroundColor: 'white'}}>
           <div className = "fractal-container">
             <Row>
-              <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: 100}}>
-                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, margin: "auto", maxWidth: 450}}>
+              {
+              this.state.width > 700
+              ?
+              <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingBottom: 100, marginLeft: 0, marginTop: 100, marginBottom: 25}}>
+                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '100%', maxWidth: 500}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 40px', fontWeight: 'bold'}}>
                     Your Info
                   </div>
@@ -361,6 +396,40 @@ class PageHome extends Component {
                   </div>
                 </div>
               </Col>
+              :
+              <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingBottom: 75, marginTop: 25, marginLeft: 0, marginBottom: 25}}>
+                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '100%'}}>
+                  <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 40px', fontWeight: 'bold'}}>
+                    Your Info
+                  </div>
+                  <div style = {{width: '100%', padding: 20, color: '#333333', fontSize: 16}}>
+                  <div style = {{padding: '8px 20px', marginTop: 10, display: 'flex'}}>
+                    <div style = {{width: '70%', height: 10, backgroundColor: '#e3e3e3', borderRadius: 5}}>
+                    </div>
+                    <div style = {{width: '25%', height: 10, backgroundColor: '#94a8ed', borderRadius: 5, marginLeft: '5%'}}>
+                    </div>
+                  </div>
+                  <div style = {{padding: '8px 20px', display: 'flex'}}>
+                    <div style = {{width: '100%', height: 10, backgroundColor: '#e3e3e3', borderRadius: 5}}>
+                    </div>
+                  </div>
+                  <div style = {{padding: '8px 20px', display: 'flex'}}>
+                    <div style = {{width: '25%', height: 10, backgroundColor: '#94a8ed', borderRadius: 5, marginRight: '5%'}}>
+                    </div>
+                    <div style = {{width: '70%', height: 10, backgroundColor: '#e3e3e3', borderRadius: 5}}>
+                    </div>
+                  </div>
+                   <div style = {{padding: '8px 20px'}}>
+                   <Link to = "/dashboard">
+                    <Button style = {{padding: 15, width: '100%', margin: 'auto', color: 'white', background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", fontWeight: "bold", textAlign: 'center', borderRadius: 5, marginTop: 20, border: 'none', fontSize: 14}}>
+                      + NEW CLOUD PC
+                    </Button>
+                    </Link>
+                  </div>
+                  </div>
+                </div>
+              </Col>
+              }
               {
               this.state.width > 700
               ?
@@ -370,20 +439,43 @@ class PageHome extends Component {
               </Col>
               :
               <Col md = {{span: 6, order: 1}} xs = {{order: 1, span: 12}} style = {{paddingTop: 100, width: '100%'}}>
-                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#333333", textAlign: 'left'}}>Setup in less than <br/><span className = "blue-gradient">one minute</span></div>
+                <div style = {{fontWeight: 'bold', fontSize: 35, lineHeight: 1.4, color: "#333333", textAlign: 'left'}}>Setup in less than <br/><span className = "blue-gradient">one minute</span></div>
                 <p style = {{textAlign: 'left', marginTop: 20}}>Create an account, choose a configuration, and download the Fractal desktop app. That's it.</p>
               </Col>
               }
             </Row>
           </div>
         </div>
-        <div style = {{backgroundColor: "#0b172b", paddingLeft: 40, paddingRight: 40}} id = "beta">
-          <Container style = {{paddingTop: 100, paddingBottom: 150}}>
-            <div style = {{fontWeight: 'bold', fontSize: 35, color: "white", textAlign: 'center'}}>Fractal Is <span className = "blue-gradient">Expanding</span></div>
-            <div style = {{margin: 'auto', maxWidth: 750}}>
-              <p style = {{textAlign: 'center', marginTop: 20, color: '#D6D6D6'}}>We currently have servers across the United States. If you live outside the US, you can request access below.</p>
+        <div style = {{background: 'linear-gradient(180deg, #FEF8FF 61.47%, #FEF8FF 84.35%, #FFFFFF 100%)', paddingLeft: 40, paddingRight: 40}} id = "beta">
+          <Container style = {{paddingTop: 75, paddingBottom: 150}}>
+            {
+            this.state.width > 700
+            ?
+            <div style = {{fontWeight: 'bold', fontSize: 40, color: "#333333", textAlign: 'center'}}>Fractal is <span className = "blue-gradient">expanding</span></div>
+            :
+            <div style = {{fontWeight: 'bold', fontSize: 35, lineHeight: 1.4, color: "#333333", textAlign: 'left'}}>Fractal is <span className = "blue-gradient">expanding</span></div>
+            }
+            {
+            this.state.width > 700
+            ?
+            <div>
+              <div style = {{margin: 'auto', maxWidth: 750}}>
+                <p style = {{textAlign: 'center', marginTop: 20, color: '#333333'}}>We currently have servers across the Eastern and Midwestern United States. If you live outside the US, you can request access below.</p>
+              </div>
+              <Button onClick = {this.openForm} style = {{marginTop: 30, backgroundColor: '#111111', padding: '10px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none'}}>
+                REQUEST ACCESS
+              </Button>
             </div>
-            <Button style = {{zIndex: 100, marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.6)', zIndex: 200}} onClick={this.openForm}>REQUEST ACCESS</Button>
+            :
+            <div style = {{textAlign: 'left'}}>
+              <div>
+                <p style = {{textAlign: 'left', marginTop: 20, color: '#333333'}}>We currently have servers across the Eastern and Midwestern United States. If you live outside the US, you can request access below.</p>
+              </div>
+              <Button onClick = {this.openForm} style = {{marginTop: 30, backgroundColor: '#111111', padding: '10px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none'}}>
+                REQUEST ACCESS
+              </Button>
+            </div>
+            }
           </Container>
         </div>
         <div style = {{textAlign: 'left'}}>
