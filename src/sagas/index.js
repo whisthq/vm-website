@@ -11,6 +11,7 @@ function* sendLoginInfo(action) {
       username: action.user,
       password: action.password
    })
+
    if(json) {
 	   if (json.verified) {
        yield put(FormAction.storeJWT(json.access_token, json.refresh_token))
