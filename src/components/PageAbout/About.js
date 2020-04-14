@@ -161,11 +161,8 @@ class About extends Component {
                         <div style = {{fontSize: 30, fontWeight: 'bold'}}>
                           Ming Ying
                         </div>
-                        <div style = {{color: '#333333'}}>
-                          Co-President
-                        </div>
                         <div style = {{marginTop: 20, color: '#555555'}}>
-                          Prior to founding Fractal, Ming was a software engineer at Fidelity Investments and did quant research at AQR Capital Management.
+                          Prior to founding Fractal, Ming was a software engineer at Fidelity Investments and quant researcher at AQR Capital Management.
                           He graduated from Harvard University, where he studied Statistics and Computer Science.
                         </div>
                       </div>
@@ -188,9 +185,6 @@ class About extends Component {
                       <div style = {{paddingLeft: 50}}>
                         <div style = {{fontSize: 30, fontWeight: 'bold'}}>
                           Philippe Noel
-                        </div>
-                        <div style = {{color: '#333333'}}>
-                          Co-President
                         </div>
                         <div style = {{marginTop: 20, color: '#555555'}}>
                           Prior to founding Fractal, Phil was a product manager at Microsoft Azure, machine learning researcher at Premier Tech, and TedX speaker. 
@@ -217,9 +211,6 @@ class About extends Component {
                         <div style = {{fontSize: 30, fontWeight: 'bold'}}>
                           Nicholas Pipitone
                         </div>
-                        <div style = {{color: '#333333'}}>
-                          CTO
-                        </div>
                         <div style = {{marginTop: 20, color: '#555555'}}>
                           Nick has an affinity for graphics shaders, circuits, and cryptocurrencies, with particular experience in 
                           cybersecurity and penetration testing. He studied Information Systems at Carnegie Mellon.
@@ -244,9 +235,6 @@ class About extends Component {
                       <div style = {{paddingLeft: 50}}>
                         <div style = {{fontSize: 30, fontWeight: 'bold'}}>
                           Roshan Padaki
-                        </div>
-                        <div style = {{color: '#333333'}}>
-                          Engineer 
                         </div>
                         <div style = {{marginTop: 20, color: '#555555'}}>
                           Prior to Fractal, Roshan researched performance lower bounds for matching algorithms in 
