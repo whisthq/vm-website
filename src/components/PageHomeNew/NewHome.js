@@ -460,7 +460,7 @@ class PageHome extends Component {
             ?
             <div>
               <div style = {{margin: 'auto', maxWidth: 750}}>
-                <p style = {{textAlign: 'center', marginTop: 20, color: '#333333'}}>We currently have servers across the Eastern and Midwestern United States. If you live outside the US, you can request access below.</p>
+                <p style = {{textAlign: 'center', marginTop: 20, color: '#333333', fontSize: 18}}>We currently have servers across the Eastern and Midwestern United States. If you live outside the US, you can request access below.</p>
               </div>
               <Button onClick = {this.openForm} style = {{marginTop: 30, backgroundColor: '#111111', padding: '10px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none'}}>
                 REQUEST ACCESS
