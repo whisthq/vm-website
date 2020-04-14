@@ -81,8 +81,8 @@ class Purchase extends Component {
     const renderSurvey = () => {
       if(this.state.step === 1) {
         return(
-          <div style = {{paddingTop: 100, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
-            <div>
+          <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+            <div style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', borderRadius: 10, maxWidth: 700}}>
               <span style = {{position: 'relative', bottom: 2}}>
                 1 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
               </span>
@@ -91,10 +91,10 @@ class Purchase extends Component {
                 Currently, Fractal only has servers in certain geographic locations.
               </div>
               <div style = {{marginTop: 20}}>
-                <div onClick = {() => this.handleClick1(true)}>
+                <div onClick = {() => this.handleClick1(true)} style = {{maxWidth: 200}}>
                   <TypeformButton buttonLabel = "Y" buttonText = "YES"/>
                 </div>
-                <div onClick = {() => this.handleClick1(false)}>
+                <div onClick = {() => this.handleClick1(false)} style = {{maxWidth: 200}}>
                   <TypeformButton buttonLabel = "N" buttonText = "NO" onClick = {() => this.handleClick1(false)}/>
                 </div>
               </div>
@@ -115,15 +115,18 @@ class Purchase extends Component {
         )
       } else if(this.state.step === 2 && this.state.exit) {
         return (
-        <div style = {{paddingTop: 100, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
-          <div style = {{fontSize: 16, maxWidth: 600, lineHeight: 1.7}}>
-            Currently, Fractal is only available in the Eastern and Midwestern United States due to the locations of our servers. 
-            We are quickly expanding to West Coast and beyond; if you'd like to be notified when Fractal is available in your location, 
-            please join our wait list!
+        <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+          <div style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', borderRadius: 10, maxWidth: 700, fontSize: 16, lineHeight: 1.6}}>
+            <div style = {{fontSize: 22, marginBottom: 20}}>We'll be available in your area soon</div>
+            <div>
+              Currently, Fractal is only available in the Eastern and Midwestern United States due to the locations of our servers. 
+              We are quickly expanding to West Coast and beyond; if you'd like to be notified when Fractal is available in your location, 
+              please join our wait list!
+            </div>
+            <HashLink to = "/#beta" style = {{textDecoration: 'none'}}>
+              <Button style = {{display: 'inline', marginTop: 50, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.4)'}}>Join Wait List</Button>
+            </HashLink>
           </div>
-          <HashLink to = "/#beta" style = {{textDecoration: 'none'}}>
-            <Button style = {{display: 'inline', marginTop: 50, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.4)'}}>Join Wait List</Button>
-          </HashLink>
           <div style = {{display: 'inline', fontSize: 12, marginTop: 40, color: '#333333', marginLeft: 25, position: 'relative', top: 24}}>
           </div>
           <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
@@ -140,8 +143,8 @@ class Purchase extends Component {
         )
       } else if(this.state.step === 2 && !this.state.exit) {
         return(
-          <div style = {{paddingTop: 100, paddingLeft: 100, width: 'calc(100% - 400px)'}}>
-            <div className = "state-select">
+          <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 400px)'}}>
+            <div className = "state-select" style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', borderRadius: 10, maxWidth: 700, maxHeight: 'calc(100vh - 250px)'}}>
               <span style = {{position: 'relative', bottom: 2}}>
                 2 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
               </span>
@@ -149,7 +152,7 @@ class Purchase extends Component {
               <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
                 So we can find servers closest to you.
               </div>
-              <div style = {{marginTop: 20, overflowY: 'scroll', maxHeight: 'calc(100vh - 250px)'}}>
+              <div style = {{marginTop: 20, overflowY: 'scroll', maxHeight: 'calc(100vh - 420px)'}}>
                   <div onClick = {() => this.handleClick2("AL")}>
                     <TypeformButton buttonLabel = "A" buttonText = "AL"/>
                   </div>
@@ -316,7 +319,7 @@ class Purchase extends Component {
         )
       } else if(this.state.step === 3) {
         return(
-          <div style = {{paddingTop: 100, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+          <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
             <img src = {StripeBadge} style = {{width: 125, position: 'absolute', bottom: 30, marginLeft: 40}}/>
             <div>
               <span style = {{position: 'relative', bottom: 2}}>

@@ -391,11 +391,11 @@ class Dashboard extends Component {
               ?
               <Row style = {{marginTop: 30}}>
                 <Col xs = {12}>
-                  <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                  <div style = {{borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25, marginTop: 25}}/>
                     <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
                     <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
-                      Your cloud PC will be ready in a few minutes. Once it's ready, simply download our desktop application and log in with your account.
+                      Your cloud PC will be ready within a few minutes. Once it's ready, simply download our desktop application and log in with your account.
                     </div>
                   </div>
                 </Col>
@@ -403,11 +403,11 @@ class Dashboard extends Component {
               :
               <Row style = {{marginTop: 30}}>
                 <Col xs = {8}>
-                  <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                  <div style = {{borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25, marginTop: 15}}/>
                     <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
                     <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
-                      Our engineers are currently setting up and testing your cloud PC. Once it's ready within 24 hours, you will receive an email.
+                      Your cloud PC will be ready within a few minutes. Once it's ready, simply download our desktop application and log in with your account.
                     </div>
                   </div>
                 </Col>
@@ -430,7 +430,7 @@ class Dashboard extends Component {
               <Row style = {{marginTop: 30}}>
                 <Col xs = {12}>
                   <Link style = {{textDecoration: 'none'}} to = "/purchase" className = "create-cloud-pc">
-                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                    <div style = {{borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
                       <FaPlus style = {{height: 25, marginTop: 25, color: "#333333"}}/>
                       <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Create My Cloud Computer</div>
                       <div style = {{fontSize: 14, maxWidth: 450, margin: 'auto', marginTop: 10, color: '#333333'}}>
