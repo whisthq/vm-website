@@ -330,22 +330,19 @@ class Purchase extends Component {
               this.props.credits === 1
               ?
               <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 650}}>
-                Your first month is free, and you can cancel anytime. Get an additional free month for every
-                friend who enters your referral code. You can enter your credit card now, or any time before your free
-                trial expires to access your cloud PC.
+                Your first month is free, and you can cancel anytime. You can enter your credit card now, or any time before your free
+                trial expires to access your cloud PC. 
               </div>
               :
               <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 650}}>
-                Your first {this.props.credits} months are free, and you can cancel anytime. Get an additional free 
-                month for every friend who enters your referral code. You can enter your credit card now, or any time before your free
-                trial expires to access your cloud PC.
+                Your first {this.props.credits} months are free, and you can cancel anytime.  You can enter your credit card now, 
+                or any time before your free trial expires to access your cloud PC.
               </div>
               )
               :
               <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 650}}>
-                Your first seven days are free, and you can cancel anytime. Get an additional free month for every
-                friend who enters your referral code. You can enter your credit card now, or any time before your free
-                trial expires to access your cloud PC.
+                Your first seven days are free, and you can cancel anytime. You can enter your credit card now, or any time before 
+                your free trial expires to access your cloud PC.
               </div>
               }
               <div style = {{marginTop: 40, marginLeft: 39}}>
