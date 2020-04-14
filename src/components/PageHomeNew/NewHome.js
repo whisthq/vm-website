@@ -21,7 +21,7 @@ import FileIcon from '../../assets/file-icon.svg'
 import WindowsBin from '../../bin/Fractal.exe'
 import MacBin from '../../bin/Fractal.dmg'
 import Logo from '../../assets/logo.svg'
-import {FaRegEnvelope} from 'react-icons/fa'
+import {FaRegEnvelope, FaWindows, FaApple} from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
@@ -95,19 +95,13 @@ class PageHome extends Component {
           style = {{zIndex: -100}}
         />
         <div style = {{paddingTop: 100}}>
-          <div className = "fractal-container" style = {{paddingBottom: 50, height: '80vh'}}>
+          <div className = "fractal-container" style = {{paddingBottom: 50}}>
             <Row>
-              <Col md = {{span: 6, order: 1}} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingTop: 50}}>
-                <div style = {{marginBottom: 30, color: "#D6D6D6", fontSize: 15, height: 40, display: 'flex'}}>
-                  <div style = {{height: 30, backgroundColor: '#5ec3eb', padding: '5px 15px', color: '#0b172b', fontWeight: 'bold', fontSize: 14, borderRadius: 5, marginRight: 20}}>NEW</div>
-                  <div style = {{position: 'relative', bottom: 5}}>
-                    Support for Linux, Android, and iOS is currently being tested in private beta
-                  </div>
-                </div>
-                <div style = {{color: '#FFFFFF', fontSize: 39, lineHeight: 1.4, fontWeight: 'bold', marginTop: 50}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
-                <p style = {{textAlign: 'left', marginTop: 25, color: '#D6D6D6', marginBottom: 40, fontSize: 17}}>Fractal streams GPU-powered, Windows 10 desktops to any macOS or Windows device</p>
+              <Col md = {{span: 6, order: 1}} xs = {{order: 2, span: 12}} style = {{textAlign: 'left'}}>
+                <div style = {{color: 'white', fontSize: 50, lineHeight: 1.3, fontWeight: 'bold', marginTop: 50}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
+                <p style = {{textAlign: 'left', marginTop: 25, color: '#D6D6D6', marginBottom: 40, fontSize: 17, maxWidth: 400}}>Fractal streams GPU-powered, Windows and Linux desktops to any macOS or Windows device at ultra-low latency</p>
                 <Link to = "/dashboard">
-                  <Button style = {{display: 'inline', float: 'left', background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", marginTop: 5, padding: "10px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', fontSize: 14, marginRight: 20, minWidth: 194, marginBottom: 10}}>GET STARTED</Button>
+                  <Button style = {{display: 'inline', float: 'left', background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", marginTop: 5, padding: "10px 30px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', fontSize: 14, marginRight: 20, marginBottom: 10}}>GET STARTED</Button>
                 </Link>
                 <Dropdown as={ButtonGroup} style = {{display: 'inline', float: 'left'}}>
                   <div style = {{display: 'flex'}}>
@@ -115,12 +109,18 @@ class PageHome extends Component {
                     {
                     this.state.version === 'Windows'
                     ?
-                    <a href = {WindowsBin} download = "Fractal.exe">
-                      <Button class = "dropdown-toggle" variant="success" style = {{outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, padding: '10px 5px 10px 0px', border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderLeft: 'none', borderRadius: '0px 4px 4px 0px', minWidth: 170}}>Download for {this.state.version}</Button>
+                    <a href = {WindowsBin} download = "Fractal.exe" style = {{textDecoration: 'none'}}>
+                      <Button class = "dropdown-toggle" variant="success" style = {{textDecoration: 'none', outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, padding: '10px 5px 10px 0px', border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderLeft: 'none', borderRadius: '0px 4px 4px 0px', minWidth: 200, display: 'flex'}}>
+                        <div style = {{marginLeft: 10, textDecoration: 'none'}}>Download for {this.state.version}</div>
+                        <FaWindows style = {{marginLeft: 10, position: 'relative', top: 3}}/>
+                      </Button>
                     </a>
                     :
-                    <a href = {MacBin} download = "Fractal.dmg">
-                      <Button class = "dropdown-toggle" variant="success" style = {{outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, padding: '10px 5px 10px 0px', border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderLeft: 'none', borderRadius: '0px 4px 4px 0px', minWidth: 170}}>Download for {this.state.version}</Button>
+                    <a href = {MacBin} download = "Fractal.dmg" style = {{textDecoration: 'none'}}>
+                      <Button class = "dropdown-toggle" variant="success" style = {{textDecoration: 'none', outline: 0, background: "rgba(0,0,0,0.0)", marginTop: 5, padding: '10px 5px 10px 0px', border: 'solid 1px #5ec3eb', color: '#5ec3eb', fontWeight: 'bold', fontSize: 14, borderLeft: 'none', borderRadius: '0px 4px 4px 0px', minWidth: 170, display: 'flex'}}>
+                        <div style = {{marginLeft: 10, textDecoration: 'none'}}>Download for {this.state.version}</div>
+                        <FaApple style = {{marginLeft: 10, position: 'relative', top: 3}}/>
+                      </Button>
                     </a>
                     }
                   </div>
@@ -135,7 +135,7 @@ class PageHome extends Component {
                 {
                 this.state.width > 700
                 ?
-                <ImageFadeIn src = {Car} style = {{width: "90%", position: 'relative', maxWidth: 1200, paddingTop: 25}}/>
+                <ImageFadeIn src = {Car} style = {{width: "90%", position: 'relative', maxWidth: 1200, paddingTop: 30, maxHeight: '75vh'}}/>
                 :
                 <ImageFadeIn src = {Car} style = {{width: "100%"}}/>
                 }
