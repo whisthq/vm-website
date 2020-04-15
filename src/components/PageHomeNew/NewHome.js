@@ -272,7 +272,7 @@ class PageHome extends Component {
         <div style = {{background: 'white', backgroundSize: '100% auto'}}>
           <div className = "fractal-container" style = {{paddingTop: 50, paddingBottom: 50}}>
             <Row style = {{marginBottom: 30}}>
-              <Col md = {12} xs = {{order: 3}} style = {{textAlign: 'left'}}>
+              <Col md = {12} xs = {{order: 3, span: 12}} style = {{textAlign: 'left'}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250, background: 'white'}}>
                   <img src = {Process} style = {{width: 50}}/>
                   <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
@@ -283,7 +283,7 @@ class PageHome extends Component {
                   </div>
                 </div>
               </Col>
-              <Col md = {12} xs = {{order: 2}} style = {{textAlign: 'left', paddingBottom: 20}}>
+              <Col md = {12} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingBottom: 20}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250, background: 'white'}}>
                   <img src = {Art} style = {{width: 50}}/>
                   <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
