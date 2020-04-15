@@ -67,11 +67,11 @@ class About extends Component {
               <div style = {{fontSize: 40, marginTop: 10, lineHeight: 1.4}}>
                 To Democratize Computing Power
               </div>
-              <div style = {{color: "#555555", marginTop: 40, lineHeight: 1.9}}>
+              <div style = {{color: "#555555", marginTop: 40, lineHeight: 1.7, fontSize: 18, maxWidth: 425}}>
                 At Fractal, we envision laptops that render 4K video at lightning speeds. Chromebooks and Macs 
                 that easily run Windows or Linux. PCs whose hardware can be upgraded at the click of a button. 
               </div>
-              <div style = {{color: "#555555", marginTop: 15, lineHeight: 1.9}}>
+              <div style = {{color: "#555555", marginTop: 15, lineHeight: 1.7, fontSize: 18, maxWidth: 425}}>
                 We believe that a single cloud PC should handle all your computing needs.
               </div>
             </Col>
@@ -90,11 +90,11 @@ class About extends Component {
               <div style = {{fontSize: 30, marginTop: 10, lineHeight: 1.4}}>
                 To Democratize Computing Power
               </div>
-              <div style = {{color: "#555555", marginTop: 30, lineHeight: 1.9}}>
+              <div style = {{color: "#555555", marginTop: 30, lineHeight: 1.7, fontSize: 18}}>
                 At Fractal, we envision laptops that render 4K video at lightning speeds. Chromebooks and Macs 
                 that easily run Windows or Linux. PCs whose hardware can be upgraded at the click of a button. 
               </div>
-              <div style = {{color: "#555555", marginTop: 15, lineHeight: 1.9}}>
+              <div style = {{color: "#555555", marginTop: 15, lineHeight: 1.7, fontSize: 18}}>
                 We believe that a single cloud PC should handle all your computing needs.
               </div>
             </Col>
@@ -108,7 +108,7 @@ class About extends Component {
               <div style = {{fontSize: 40, marginTop: 10, lineHeight: 1.4}}>
                 Our Stories
               </div>
-              <div style = {{color: "#555555", lineHeight: 1.9, maxWidth: 600, margin: 'auto', marginTop: 20}}>
+              <div style = {{color: "#555555", lineHeight: 1.7, maxWidth: 600, margin: 'auto', marginTop: 20, fontSize: 18}}>
                 We’re computer scientists passionate about the future of personal computing. Here are a few of our stories.
               </div>
             </Col>
@@ -230,7 +230,7 @@ class About extends Component {
                 <div style = {{fontSize: 40, marginTop: 10, lineHeight: 1.4}}>
                   Our Investors
                 </div>
-                <div style = {{color: "#555555", marginTop: 30, lineHeight: 1.9, marginBottom: 20}}>
+                <div style = {{color: "#555555", marginTop: 30, lineHeight: 1.7, fontSize: 18, marginBottom: 20}}>
                   We’re fortunate to be backed by amazing institutional and individual investors. We'd also like to give special thanks to
                   <a target = "__blank" href = "https://hacklodge.org/" style = {{textDecoration: 'none', fontWeight: 'bold', color: '#555555'}}>&nbsp;Hack Lodge</a>, which connected us with some of our best advisors and engineers.
                 </div>
@@ -256,7 +256,7 @@ class About extends Component {
               Create My Cloud PC
             </span>
           </div>
-          <div style = {{color: "#555555", lineHeight: 1.9, maxWidth: 600, margin: 'auto', marginTop: 10}}>
+          <div style = {{color: "#555555", lineHeight: 1.7, fontSize: 18, maxWidth: 600, margin: 'auto', marginTop: 10}}>
             Experience the next generation of personal computing today.
           </div>
           <Link to = "/dashboard" style = {{textDecoration: 'none'}}>
