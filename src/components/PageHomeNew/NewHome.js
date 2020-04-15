@@ -185,12 +185,12 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{paddingTop: '10%', paddingLeft: 50}}>
-                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'left'}}>Graphics power<br/>on any device</div>
+                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'left'}}>Graphics power on<br/> any device</div>
                 <p style = {{textAlign: 'left', marginTop: 20, fontSize: 18}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               :
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{width: '100%', marginTop: 25}}>
-                <div style = {{fontWeight: 'bold', fontSize: 35, color: "#111111", textAlign: 'left', lineHeight: 1.4}}>Graphics power<br/>on any device</div>
+                <div style = {{fontWeight: 'bold', fontSize: 35, color: "#111111", textAlign: 'left', lineHeight: 1.4}}>Graphics power on<br/> any device</div>
                 <p style = {{textAlign: 'left', marginTop: 20}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               }
@@ -240,7 +240,7 @@ class PageHome extends Component {
         <div style = {{background: '#F9F9F9', backgroundSize: '100% auto', paddingTop: 75}}>
           <div className = "fractal-container">
             <Row style = {{marginBottom: 10, paddingTop: 30}}>
-              <Col md = {4} xs = {{order: 3}} style = {{textAlign: 'left', paddingBottom: 100, paddingLeft: 20}}>
+              <Col md = {4} xs = {{order: 3, span: 12}} style = {{textAlign: 'left', paddingBottom: 100, paddingLeft: 20}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250, background: 'white'}}>
                   <img src = {Process} style = {{width: 50}}/>
                   <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
@@ -251,7 +251,7 @@ class PageHome extends Component {
                   </div>
                 </div>
               </Col>
-              <Col md = {4} xs = {{order: 2}} style = {{textAlign: 'left', paddingBottom: 100, paddingLeft: 20}}>
+              <Col md = {4} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingBottom: 100, paddingLeft: 20}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250, background: 'white'}}>
                   <img src = {Art} style = {{width: 50}}/>
                   <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
