@@ -74,7 +74,9 @@ class Header extends Component {
                 <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
               <Link to = "/auth">
-                <Button style = {{marginLeft: 35, color: `${ this.props.button }`, border: 'solid 1px #5ec3eb', borderColor: `${ this.props.button }`, fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,background: "rgba(0, 0,0,0.0)"}}>My Account</Button>
+                <Button style = {{fontWeight: 'bold', marginLeft: 35, color: '#1ba8e0', border: 'none', fontWeight: 'bold', paddingLeft: 20, paddingRight: 20, padding: '12px 30px', background: "rgba(94, 195, 235, 0.2)"}}>
+                  My Account
+                </Button>
               </Link>
             </div>
             :
@@ -122,9 +124,11 @@ class Header extends Component {
         :
         <div style = {{paddingLeft: 35, paddingRight: 25, minHeight: 30}}>
           <div style = {{color: 'white', fontWeight: 'bold', float: 'left'}}>
-            <Link to = '/' style = {{color: 'white', fontSize: 20}}>
-              <img src = {Logo} style = {{height: 24, position: 'relative', bottom: 2, right: 10}}/>
-              Fractal
+            <Link to = '/' style = {{color: '#111111', fontSize: 20}}>
+              <img src = {Logo} style = {{height: 20, position: 'relative', bottom: 2, right: 10}}/>
+              <span style = {{color: `${ this.props.title }`}}>
+                Fractal
+              </span>
             </Link>
           </div> 
           <div style = {{float: 'right', zIndex: 100}}>
