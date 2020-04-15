@@ -16,9 +16,6 @@ import Header from '../../shared_components/header.js'
 import Footer from '../../shared_components/footer.js'
 
 import Datacenter from '../../assets/datacenter.svg'
-import Software from '../../assets/software.svg'
-import Gaming from '../../assets/gaming.svg'
-import Creative from '../../assets/creative.svg'
 import InvestorBox from './components/InvestorBox.js'
 import Ming from '../../assets/ming.svg'
 import Phil from '../../assets/phil.svg'
@@ -104,37 +101,8 @@ class About extends Component {
           </Row>
         </div>
         }
-        <div style = {{width: '100vw', minHeight: 390, backgroundImage: 'linear-gradient(121.2deg, #D7F5F5 2.24%, #F2DEF8 100%)'}}>
-          <div className = "fractal-container" style = {{paddingTop: 40, paddingBottom: 20}}>
-            <Row>
-              <Col md = {4} style = {{textAlign: 'left', width: '100%', marginBottom: 20}}>
-                <div style = {{textAlign: 'center', width: '100%'}}>
-                  <img src = {Software} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
-                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 100, margin: 'auto', marginTop: 20}}>
-                    Productivity
-                  </div>
-                </div>
-              </Col>
-              <Col md = {4} style = {{textAlign: 'center', width: '100%', marginBottom: 20}}>
-                <div style = {{textAlign: 'center', width: '100%'}}>
-                  <img src = {Gaming} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
-                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 75, margin: 'auto', marginTop: 20}}>
-                    Gaming
-                  </div>
-                </div>
-              </Col>
-              <Col md = {4} style = {{textAlign: 'right', width: '100%', marginBottom: 20}}>
-                <div style = {{textAlign: 'center', width: '100%'}}>
-                  <img src = {Creative} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
-                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 75, margin: 'auto', marginTop: 20}}>
-                    Graphics
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </div>
-        </div>
-        <div className = "fractal-container" style = {{marginTop: 50, paddingBottom: 50}}>
+        <div style = {{background: 'linear-gradient(180deg, #F9F9F9 61.47%, #FFFFFF 100%)', paddingTop: 75}}>
+        <div className = "fractal-container" style = {{paddingBottom: 50}}>
           <Row>
             <Col md = {12} style = {{textAlign: 'center'}}>
               <div style = {{fontSize: 40, marginTop: 10, lineHeight: 1.4}}>
@@ -251,7 +219,8 @@ class About extends Component {
             </Col>
           </Row>
         </div>
-        <div style = {{width: '100vw', background: 'linear-gradient(180deg, #FEF8FF 61.47%, #FEF8FF 84.35%, #FFFFFF 100%)', marginTop: 75}}>
+        </div>
+        <div style = {{width: '100vw', background: 'white', marginTop: 75}}>
           <div className = "fractal-container" style = {{paddingTop: 50, paddingBottom: 100}}>
             <Row>
               <Col md = {5}>
@@ -280,6 +249,7 @@ class About extends Component {
             </Row>
           </div>
         </div>
+        <div style = {{background: 'linear-gradient(180deg, #F9F9F9 61.47%, #FFFFFF 100%)'}}>
         <div className = "fractal-container" style = {{paddingTop: 50, paddingBottom: 100, textAlign: 'center'}}>
           <div style = {{fontSize: 40}}>
             <span className = "blue-gradient">
@@ -294,6 +264,7 @@ class About extends Component {
               GET STARTED
             </Button>
           </Link>
+        </div>
         </div>
       <Footer/>
       </div>
