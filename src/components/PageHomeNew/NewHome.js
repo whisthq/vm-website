@@ -301,14 +301,14 @@ class PageHome extends Component {
           </div>
         </div>
         }
-        <div style = {{background: 'linear-gradient(180deg, #F9F9F9 61.47%, #FFFFFF 100%)', paddingTop: 75}}>
+        <div style = {{background: 'linear-gradient(180deg, #F9F9F9 61.47%, #FFFFFF 100%)', paddingTop: 40}}>
           <div className = "fractal-container" style = {{paddingBottom: 20}}>
             {
             this.state.width > 700
             ?
-            <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'center', marginBottom: 20}}>Access your desktop <span className = "blue-gradient">anywhere</span></div>
+            <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'center', marginBottom: 20}}>Access your desktop anywhere</div>
             :
-            <div style = {{fontWeight: 'bold', fontSize: 35, lineHeight: 1.4, color: "#111111", textAlign: 'left', marginBottom: 20}}>Access your desktop <span className = "blue-gradient">anywhere</span></div>
+            <div style = {{fontWeight: 'bold', fontSize: 35, lineHeight: 1.4, color: "#111111", textAlign: 'left', marginBottom: 20}}>Access your desktop anywhere</div>
             }
             {
             this.state.width > 700
