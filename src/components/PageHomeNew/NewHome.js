@@ -148,7 +148,7 @@ class PageHome extends Component {
         <div style = {{background: 'white', backgroundSize: '100% auto'}}>
           <div className = "fractal-container">
             <Row>
-              <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: '15%'}}>
+              <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: '10%'}}>
                 <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '100%', maxWidth: 500}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 35px', fontWeight: 'bold'}}>
                     My Cloud PC
@@ -211,7 +211,7 @@ class PageHome extends Component {
         ?
         <div style = {{background: 'white', backgroundSize: '100% auto'}}>
           <div className = "fractal-container">
-            <Row style = {{marginBottom: 30}}>
+            <Row style = {{marginBottom: 30, paddingTop: 30}}>
               <Col md = {4} xs = {{order: 3}} style = {{textAlign: 'left', paddingBottom: 100, paddingLeft: 20}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250}}>
                   <img src = {Process} style = {{width: 50}}/>
