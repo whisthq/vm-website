@@ -53,7 +53,7 @@ class About extends Component {
     window.addEventListener('resize', this.updateWindowDimensions)
 
     return(
-      <div style = {{overflowX: 'hidden'}}>
+      <div style = {{overflowX: 'hidden'}} id = 'top'>
       <Header color = "#333333" button = "#5ec3eb" homepage/>
         {
         this.state.width > 700
@@ -290,7 +290,7 @@ class About extends Component {
             Experience the next generation of personal computing today.
           </div>
           <Link to = "/dashboard" style = {{textDecoration: 'none'}}>
-            <Button style = {{marginTop: 30, backgroundColor: '#111111', padding: '10px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none'}}>
+            <Button style = {{marginTop: 30, backgroundColor: '#111111', padding: '10px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none', padding: '15px 30px'}}>
               GET STARTED
             </Button>
           </Link>

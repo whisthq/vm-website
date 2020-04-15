@@ -202,7 +202,7 @@ function* cancelPlan(action) {
        yield put(FormAction.storePayment({}))
        yield put(FormAction.storeCustomer({}))
        yield put(FormAction.vmCreating(false))
-       yield put(FormAction.fetchDisks(state.AccountReducer.user))
+       yield put(FormAction.storeDisks([]));
     }
   }
 }

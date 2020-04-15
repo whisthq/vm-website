@@ -63,16 +63,16 @@ class Footer extends Component {
         <Row style = {{float: 'right', width: 500, paddingRight: 100}}>
             <Col xs = {4} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>HOME</div>
-              <Link to = "/" style = {{textDecoration: 'none'}}>
+              <HashLink to = "/#top" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 13}}>
                   <div style = {{color: '#555555', marginBottom: 4}}>Personal</div>
                 </div>
-              </Link>
-              <Link to = "/studios" style = {{textDecoration: 'none'}}>
+              </HashLink>
+              <HashLink to = "/about#top" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 13}}>
-                  <div style = {{color: '#555555', marginBottom: 4}}>Teams</div>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Company</div>
                 </div>
-              </Link>
+              </HashLink>
               <div style = {{fontSize: 13}}>
                 <div>
                 <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#555555', textDecoration: 'none', marginBottom: 4}}>Contact Us</a>
@@ -141,16 +141,16 @@ class Footer extends Component {
         <Row style= {{marginTop: 20, width: 280}}>
             <Col xs = {4} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>HOME</div>
-              <Link to = "/" style = {{textDecoration: 'none'}}>
+              <HashLink to = "/#top" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 11}}>
                   <div style = {{color: '#555555', marginBottom: 4}}>Personal</div>
                 </div>
-              </Link>
-              <Link to = "/studios" style = {{textDecoration: 'none'}}>
+              </HashLink>
+              <HashLink to = "/about#top" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 11}}>
-                  <div style = {{color: '#555555', marginBottom: 4}}>Teams</div>
+                  <div style = {{color: '#555555', marginBottom: 4}}>Company</div>
                 </div>
-              </Link>
+              </HashLink>
               <div style = {{fontSize: 11}}>
                 <div>
                 <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#555555', textDecoration: 'none', marginBottom: 4}}>Contact Us</a>
