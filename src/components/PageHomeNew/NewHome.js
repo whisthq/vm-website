@@ -126,7 +126,7 @@ class PageHome extends Component {
             </Row>
           </div>
         </div>
-        <div style = {{background: '#FEF8FF', backgroundSize: '100% auto'}}>
+        <div style = {{background: '#F9F9F9', backgroundSize: '100% auto'}}>
           <div className = "fractal-container">
             <Row>
               <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: '10%'}}>
@@ -147,7 +147,7 @@ class PageHome extends Component {
                       <Col xs = {6} style = {{textAlign: 'right'}}><strong>512 GB</strong> NVMe SSD</Col>
                     </Row>
                     <Link to = "/dashboard">
-                      <Button style = {{width: '100%', color: '#1F2635', background: "rgba(0,0,0,0.05)", border: "solid 2px #1F2635", fontWeight: "bold", padding: 12, textAlign: 'center', borderRadius: 5, marginTop: 50,fontSize: 14}}>
+                      <Button style = {{width: '100%', color: '#0980b0', background: "rgba(94, 195, 235, 0.2)", border: "none", fontWeight: "bold", padding: 12, textAlign: 'center', borderRadius: 5, marginTop: 50,fontSize: 16}}>
                         LAUNCH
                       </Button>
                     </Link>
@@ -163,7 +163,7 @@ class PageHome extends Component {
                       <Col xs = {6} style = {{textAlign: 'right'}}><strong>512 GB</strong> SSD</Col>
                     </Row>
                     <Link to = "/dashboard">
-                      <Button style = {{width: '100%', color: '#1F2635', background: "rgba(0,0,0,0.05)", border: "solid 2px #1F2635", fontWeight: "bold", padding: 12, textAlign: 'center', borderRadius: 5, marginTop: 50,fontSize: 14}}>
+                      <Button style = {{width: '100%', color: '#0980b0', background: "rgba(94, 195, 235, 0.2)", border: "none", fontWeight: "bold", padding: 12, textAlign: 'center', borderRadius: 5, marginTop: 50,fontSize: 16}}>
                         LAUNCH
                       </Button>
                     </Link>
@@ -175,12 +175,12 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{paddingTop: '10%', paddingLeft: 50}}>
-                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#333333", textAlign: 'left'}}><span className = "blue-gradient">Graphics power</span><br/>minus the bulky hardware</div>
+                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#333333", textAlign: 'left'}}>Graphics power<br/>minus the bulky hardware</div>
                 <p style = {{textAlign: 'left', marginTop: 20, fontSize: 18}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               :
               <Col md = {{span: 6, order: 1}} xs = {{order: 1, span: 12}} style = {{width: '100%', marginTop: 50}}>
-                <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'left', lineHeight: 1.4}}><span className = "blue-gradient">Graphics power</span><br/>minus the bulky hardware</div>
+                <div style = {{fontWeight: 'bold', fontSize: 35, color: "#333333", textAlign: 'left', lineHeight: 1.4}}>Graphics power<br/>minus the bulky hardware</div>
                 <p style = {{textAlign: 'left', marginTop: 20}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               }
@@ -190,7 +190,7 @@ class PageHome extends Component {
         {
         this.state.width > 700
         ?
-        <div style = {{background: 'linear-gradient(180deg, #FEF8FF 61.47%, #FEF8FF 84.35%, #FFFFFF 100%)', backgroundSize: '100% auto'}}>
+        <div style = {{background: 'linear-gradient(180deg, #F9F9F9 61.47%, #FFFFFF 100%)', backgroundSize: '100% auto'}}>
           <div className = "fractal-container">
             <Row style = {{marginBottom: 30, paddingTop: 30}}>
               <Col md = {4} xs = {{order: 3}} style = {{textAlign: 'left', paddingBottom: 100, paddingLeft: 20}}>
@@ -222,7 +222,7 @@ class PageHome extends Component {
           </div>
         </div>
         :
-        <div style = {{background: 'linear-gradient(180deg, #FEF8FF 61.47%, #FEF8FF 84.35%, #FFFFFF 100%)', backgroundSize: '100% auto'}}>
+        <div style = {{background: 'linear-gradient(180deg, #F9F9F9 61.47%, #FFFFFF 100%)', backgroundSize: '100% auto'}}>
           <div className = "fractal-container" style = {{paddingTop: 50, paddingBottom: 50}}>
             <Row style = {{marginBottom: 30}}>
               <Col md = {12} xs = {{order: 3}} style = {{textAlign: 'left'}}>
@@ -369,7 +369,7 @@ class PageHome extends Component {
                   </div>
                    <div style = {{padding: '8px 20px'}}>
                    <Link to = "/dashboard">
-                    <Button style = {{padding: 15, width: '100%', margin: 'auto', color: '#1F2635', background: "rgba(0,0,0,0.05)", fontWeight: "bold", textAlign: 'center', borderRadius: 5, marginTop: 20, border: 'solid 2px #1F2635', fontSize: 14}}>
+                    <Button style = {{padding: 15, width: '100%', margin: 'auto', color: '#0980b0', background: "rgba(94, 195, 235, 0.2)", border: "none", fontWeight: "bold", textAlign: 'center', borderRadius: 5, marginTop: 20, fontSize: 16}}>
                       + NEW CLOUD PC
                     </Button>
                     </Link>
@@ -402,7 +402,7 @@ class PageHome extends Component {
                   </div>
                    <div style = {{padding: '8px 20px'}}>
                    <Link to = "/dashboard">
-                    <Button style = {{padding: 15, width: '100%', margin: 'auto', color: '#1F2635', background: "rgba(0,0,0,0.05)", fontWeight: "bold", textAlign: 'center', borderRadius: 5, marginTop: 20, border: 'solid 2px #1F2635', fontSize: 14}}>
+                    <Button style = {{padding: 15, width: '100%', margin: 'auto', color: '#0980b0', background: "rgba(94, 195, 235, 0.2)", border: "none", fontWeight: "bold", textAlign: 'center', borderRadius: 5, marginTop: 20, fontSize: 16}}>
                       + NEW CLOUD PC
                     </Button>
                     </Link>
@@ -415,19 +415,19 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{paddingTop: '10%', paddingLeft: 50}}>
-                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#333333", textAlign: 'left'}}>Setup in less than <br/><span className = "blue-gradient">one minute</span></div>
+                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#333333", textAlign: 'left'}}>Setup in less than <br/>one minute</div>
                 <p style = {{textAlign: 'left', marginTop: 20, fontSize: 18}}>Create an account, choose a configuration, and download the Fractal desktop app. Your first week is free, no credit card required.</p>
               </Col>
               :
               <Col md = {{span: 6, order: 1}} xs = {{order: 1, span: 12}} style = {{paddingTop: 50, width: '100%'}}>
-                <div style = {{fontWeight: 'bold', fontSize: 35, lineHeight: 1.4, color: "#333333", textAlign: 'left'}}>Setup in less than <br/><span className = "blue-gradient">one minute</span></div>
+                <div style = {{fontWeight: 'bold', fontSize: 35, lineHeight: 1.4, color: "#333333", textAlign: 'left'}}>Setup in less than <br/>one minute</div>
                 <p style = {{textAlign: 'left', marginTop: 20}}>Create an account, choose a configuration, and download the Fractal desktop app. Your first week is free, no credit card required.</p>
               </Col>
               }
             </Row>
           </div>
         </div>
-        <div style = {{background: 'linear-gradient(180deg, #FEF8FF 61.47%, #FEF8FF 84.35%, #FFFFFF 100%)', paddingLeft: 40, paddingRight: 40}} id = "beta">
+        <div style = {{background: 'linear-gradient(180deg, #F9F9F9 61.47%, #FFFFFF 100%)', paddingLeft: 40, paddingRight: 40}} id = "beta">
           <Container style = {{paddingTop: 75, paddingBottom: 150}}>
             {
             this.state.width > 700
