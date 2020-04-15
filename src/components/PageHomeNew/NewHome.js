@@ -268,13 +268,13 @@ class PageHome extends Component {
             ?
             <div style = {{margin: 'auto'}}>
               <p style = {{textAlign: 'center', maxWidth: 750, margin: 'auto',  marginTop: 20, fontSize: 18, marginBottom: 75}}>
-                Need to work in more than one location? Forgot to upload a file to the cloud, or to commit a change? Your Fractal instance is accessible from any Internet-connected device.
+                Need to work in more than one location? Forgot to upload a file to the cloud, or to commit a change? Your Fractal cloud PC is accessible from any Internet-connected device.
               </p>
             </div>
             :
             <div style = {{margin: 'auto'}}>
               <p style = {{textAlign: 'left', marginTop: 20, marginBottom: 50}}>
-                Need to work in more than one location? Forgot to upload a file to the cloud, or to commit a change? Your Fractal instance is accessible from any Internet-connected device.
+                Need to work in more than one location? Forgot to upload a file to the cloud, or to commit a change? Your Fractal cloud PC is accessible from any Internet-connected device.
               </p>
             </div>
             }
