@@ -100,7 +100,7 @@ class PageHome extends Component {
           style = {{zIndex: -100}}
         />
         <div style = {{paddingTop: 100}}>
-          <div className = "fractal-container" style = {{paddingBottom: 50}}>
+          <div className = "fractal-container" style = {{paddingBottom: 25}}>
             <Row>
               <Col md = {{span: 5, order: 1}} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingTop: 50}}>
                 {
@@ -129,10 +129,17 @@ class PageHome extends Component {
             </Row>
           </div>
         </div>
-        <div style = {{background: '#F9F9F9', backgroundSize: '100% auto'}}>
+        {
+        this.state.width > 700
+        ?
+        <div></div>
+        :
+        <div style = {{height: 50, background: 'white'}}></div>
+        }
+        <div style = {{background: 'white', backgroundSize: '100% auto'}}>
           <div className = "fractal-container">
             <Row>
-              <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: '10%'}}>
+              <Col md = {6} xs = {{order: 1}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: '10%'}}>
                 <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '100%', maxWidth: 500}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 35px', fontWeight: 'bold'}}>
                     My Cloud PC
@@ -182,7 +189,7 @@ class PageHome extends Component {
                 <p style = {{textAlign: 'left', marginTop: 20, fontSize: 18}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               :
-              <Col md = {{span: 6, order: 1}} xs = {{order: 1, span: 12}} style = {{width: '100%', marginTop: 50}}>
+              <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{width: '100%', marginTop: 25}}>
                 <div style = {{fontWeight: 'bold', fontSize: 35, color: "#111111", textAlign: 'left', lineHeight: 1.4}}>Graphics power<br/>minus the bulky hardware</div>
                 <p style = {{textAlign: 'left', marginTop: 20}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
@@ -195,7 +202,7 @@ class PageHome extends Component {
         ?
         <div></div>
         :
-        <div style = {{height: 50, background: '#F9F9F9'}}></div>
+        <div style = {{height: 50, background: 'white'}}></div>
         }
         <div style = {{width: '100vw', minHeight: 390, backgroundImage: 'linear-gradient(121.2deg, #D7F5F5 2.24%, #F2DEF8 100%)'}}>
           <div className = "fractal-container" style = {{paddingTop: 40, paddingBottom: 20}}>
