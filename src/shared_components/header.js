@@ -94,7 +94,9 @@ class Header extends Component {
                 <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
               <Link to = "/auth">
-                <Button style = {{marginLeft: 35, color: `${ this.props.button }`, border: `$solid 1px { this.props.button }`, borderColor: `${ this.props.button }`, fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,background: "rgba(0, 0,0,0.0)"}}>My Account</Button>
+                <Button style = {{fontWeight: 'bold', marginLeft: 35, color: '#1ba8e0', border: 'none', fontWeight: 'bold', paddingLeft: 20, paddingRight: 20, padding: '12px 30px', background: "rgba(94, 195, 235, 0.2)"}}>
+                  My Account
+                </Button>
               </Link>
             </div>
             :
