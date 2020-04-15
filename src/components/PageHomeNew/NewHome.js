@@ -129,37 +129,7 @@ class PageHome extends Component {
             </Row>
           </div>
         </div>
-        <div style = {{width: '100vw', minHeight: 390, backgroundImage: 'linear-gradient(121.2deg, #D7F5F5 2.24%, #F2DEF8 100%)', marginTop: 25}}>
-          <div className = "fractal-container" style = {{paddingTop: 40, paddingBottom: 20}}>
-            <Row>
-              <Col md = {4} style = {{textAlign: 'left', width: '100%', marginBottom: 20}}>
-                <div style = {{textAlign: 'center', width: '100%'}}>
-                  <img src = {Software} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
-                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 100, margin: 'auto', marginTop: 20}}>
-                    Productivity
-                  </div>
-                </div>
-              </Col>
-              <Col md = {4} style = {{textAlign: 'center', width: '100%', marginBottom: 20}}>
-                <div style = {{textAlign: 'center', width: '100%'}}>
-                  <img src = {Gaming} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
-                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 75, margin: 'auto', marginTop: 20}}>
-                    Gaming
-                  </div>
-                </div>
-              </Col>
-              <Col md = {4} style = {{textAlign: 'right', width: '100%', marginBottom: 20}}>
-                <div style = {{textAlign: 'center', width: '100%'}}>
-                  <img src = {Creative} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
-                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 75, margin: 'auto', marginTop: 20}}>
-                    Graphics
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </div>
-        </div>
-        <div style = {{background: 'white', backgroundSize: '100% auto'}}>
+        <div style = {{background: '#F9F9F9', backgroundSize: '100% auto'}}>
           <div className = "fractal-container">
             <Row>
               <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: '10%'}}>
@@ -223,9 +193,46 @@ class PageHome extends Component {
         {
         this.state.width > 700
         ?
-        <div style = {{background: 'white', backgroundSize: '100% auto'}}>
+        <div></div>
+        :
+        <div style = {{height: 50, background: '#F9F9F9'}}></div>
+        }
+        <div style = {{width: '100vw', minHeight: 390, backgroundImage: 'linear-gradient(121.2deg, #D7F5F5 2.24%, #F2DEF8 100%)'}}>
+          <div className = "fractal-container" style = {{paddingTop: 40, paddingBottom: 20}}>
+            <Row>
+              <Col md = {4} style = {{textAlign: 'left', width: '100%', marginBottom: 20}}>
+                <div style = {{textAlign: 'center', width: '100%'}}>
+                  <img src = {Software} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
+                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 100, margin: 'auto', marginTop: 20}}>
+                    Productivity
+                  </div>
+                </div>
+              </Col>
+              <Col md = {4} style = {{textAlign: 'center', width: '100%', marginBottom: 20}}>
+                <div style = {{textAlign: 'center', width: '100%'}}>
+                  <img src = {Gaming} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
+                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 75, margin: 'auto', marginTop: 20}}>
+                    Gaming
+                  </div>
+                </div>
+              </Col>
+              <Col md = {4} style = {{textAlign: 'right', width: '100%', marginBottom: 20}}>
+                <div style = {{textAlign: 'center', width: '100%'}}>
+                  <img src = {Creative} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
+                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 75, margin: 'auto', marginTop: 20}}>
+                    Graphics
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </div>
+        {
+        this.state.width > 700
+        ?
+        <div style = {{background: '#F9F9F9', backgroundSize: '100% auto', paddingTop: 75}}>
           <div className = "fractal-container">
-            <Row style = {{marginBottom: 30, paddingTop: 30}}>
+            <Row style = {{marginBottom: 10, paddingTop: 30}}>
               <Col md = {4} xs = {{order: 3}} style = {{textAlign: 'left', paddingBottom: 100, paddingLeft: 20}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250, background: 'white'}}>
                   <img src = {Process} style = {{width: 50}}/>
@@ -287,7 +294,7 @@ class PageHome extends Component {
           </div>
         </div>
         }
-        <div style = {{background: '#F9F9F9', paddingTop: 80}}>
+        <div style = {{background: 'linear-gradient(180deg, #F9F9F9 61.47%, #FFFFFF 100%)', paddingTop: 75}}>
           <div className = "fractal-container" style = {{paddingBottom: 20}}>
             {
             this.state.width > 700
@@ -372,7 +379,7 @@ class PageHome extends Component {
             </Row>
           </div>
         </div>
-        <div style = {{backgroundColor: '#F9F9F9'}}>
+        <div style = {{backgroundColor: 'white'}}>
           <div className = "fractal-container">
             <Row>
               {
