@@ -557,7 +557,7 @@ class Dashboard extends Component {
                         </div>
                         <a href = {MacBin} download = "Fractal.dmg">
                         <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
-                          <button style = {{background: 'rgba(0,0,0,0.1)', border: 'solid 1px #555555', fontSize: 12, borderRadius: 5, color: '#333333', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
+                          <button disabled = "true" style = {{background: 'none', border: 'solid 0.5px #A9A9A9', fontSize: 12, borderRadius: 5, color: '#A9A9A9', width: 90, padding: '5px 5px'}}>Coming Soon</button>
                         </div>
                         </a>
                       </Col>
