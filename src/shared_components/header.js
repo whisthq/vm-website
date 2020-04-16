@@ -134,7 +134,7 @@ class Header extends Component {
             </Link>
           </div> 
           <div style = {{float: 'right', zIndex: 100}}>
-            <FaBars onClick = {() => this.openMenu(true)} style = {{color: 'white'}}/>
+            <FaBars onClick = {() => this.openMenu(true)} style = {{color: '#111111'}}/>
           </div>
           {
           this.state.menu
