@@ -21,6 +21,10 @@ import Creative from '../../assets/creative.svg'
 import Art from '../../assets/art.svg'
 import Process from '../../assets/process.svg'
 import RGBIcon from '../../assets/rgb-icon.svg'
+import CPU from '../../assets/cpu.svg'
+import GPU from '../../assets/gpu.svg'
+import RAM from '../../assets/ram.svg'
+import SSD from '../../assets/hard-drive-icon.svg'
 import HardDriveIcon from '../../assets/hard-drive-icon.svg'
 import FileIcon from '../../assets/file-icon.svg'
 import WindowsBin from '../../bin/Fractal.exe'
@@ -209,7 +213,7 @@ class PageHome extends Component {
             <Row>
               <Col md = {4} style = {{textAlign: 'left', width: '100%', marginBottom: 20}}>
                 <div style = {{textAlign: 'center', width: '100%'}}>
-                  <img src = {Software} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
+                  <ImageFadeIn src = {Software} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
                   <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 100, margin: 'auto', marginTop: 20}}>
                     Productivity
                   </div>
@@ -217,7 +221,7 @@ class PageHome extends Component {
               </Col>
               <Col md = {4} style = {{textAlign: 'center', width: '100%', marginBottom: 20}}>
                 <div style = {{textAlign: 'center', width: '100%'}}>
-                  <img src = {Gaming} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
+                  <ImageFadeIn src = {Gaming} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
                   <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 75, margin: 'auto', marginTop: 20}}>
                     Gaming
                   </div>
@@ -225,7 +229,7 @@ class PageHome extends Component {
               </Col>
               <Col md = {4} style = {{textAlign: 'right', width: '100%', marginBottom: 20}}>
                 <div style = {{textAlign: 'center', width: '100%'}}>
-                  <img src = {Creative} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
+                  <ImageFadeIn src = {Creative} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
                   <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 75, margin: 'auto', marginTop: 20}}>
                     Graphics
                   </div>
@@ -242,7 +246,7 @@ class PageHome extends Component {
             <Row style = {{marginBottom: 10, paddingTop: 30}}>
               <Col md = {4} xs = {{order: 3, span: 12}} style = {{textAlign: 'left', paddingBottom: 100, paddingLeft: 20}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250, background: 'white'}}>
-                  <img src = {Process} style = {{width: 50}}/>
+                  <ImageFadeIn src = {Process} style = {{width: 50}}/>
                   <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
                     Sub-9ms Software Latency
                   </div>
@@ -253,7 +257,7 @@ class PageHome extends Component {
               </Col>
               <Col md = {4} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingBottom: 100, paddingLeft: 20}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250, background: 'white'}}>
-                  <img src = {Art} style = {{width: 50}}/>
+                  <ImageFadeIn src = {Art} style = {{width: 50}}/>
                   <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
                     60+ Frames per Second
                   </div>
@@ -274,7 +278,7 @@ class PageHome extends Component {
             <Row style = {{marginBottom: 30}}>
               <Col md = {12} xs = {{order: 3, span: 12}} style = {{textAlign: 'left'}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250, background: 'white'}}>
-                  <img src = {Process} style = {{width: 50}}/>
+                  <ImageFadeIn src = {Process} style = {{width: 50}}/>
                   <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
                     Sub-9ms Software Latency
                   </div>
@@ -285,7 +289,7 @@ class PageHome extends Component {
               </Col>
               <Col md = {12} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingBottom: 20}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250, background: 'white'}}>
-                  <img src = {Art} style = {{width: 50}}/>
+                  <ImageFadeIn src = {Art} style = {{width: 50}}/>
                   <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
                     60+ Frames per Second
                   </div>
@@ -331,7 +335,7 @@ class PageHome extends Component {
               ?
               <Col md = {4} style = {{paddingLeft: 0, paddingRight: 40}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, width: '100%', marginBottom: 20}}>
-                  <img src = {RGBIcon} style = {{height: 50}}/>
+                  <ImageFadeIn src = {RGBIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Color Accuracy</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Achieve visually lossless frames with our color-accurate streaming technology.</p>
                 </div>
@@ -339,7 +343,7 @@ class PageHome extends Component {
               :
               <Col md = {4} style = {{padding: 0}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
-                  <img src = {RGBIcon} style = {{height: 50}}/>
+                  <ImageFadeIn src = {RGBIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Color Accuracy</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Achieve visually lossless frames with our color-accurate streaming technology.</p>
                 </div>
@@ -350,7 +354,7 @@ class PageHome extends Component {
               ?
               <Col md = {4}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, margin:'auto', width: '100%', marginBottom: 20}}>
-                  <img src = {HardDriveIcon} style = {{height: 50}}/>
+                  <ImageFadeIn src = {HardDriveIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Hard Drive Upload</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Clone your entire hard drive to your cloud PC at the click of a button.</p>
                 </div>
@@ -358,7 +362,7 @@ class PageHome extends Component {
               :
               <Col md = {4} style = {{padding: 0}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 210, margin:'auto', width: '100%', marginBottom: 20}}>
-                  <img src = {HardDriveIcon} style = {{height: 50}}/>
+                  <ImageFadeIn src = {HardDriveIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Hard Drive Upload</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Clone your entire hard drive to your cloud PC at the click of a button.</p>
                 </div>
@@ -369,7 +373,7 @@ class PageHome extends Component {
               ?
               <Col md = {4} style = {{paddingRight: 0, paddingLeft: 40}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, margin:'auto', width: '100%', marginBottom: 20}}>
-                  <img src = {FileIcon} style = {{height: 50}}/>
+                  <ImageFadeIn src = {FileIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>File Backup</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Fractal can download your entire cloud PC hard drive to your local PC every 24 hours.</p>
                 </div>
@@ -377,7 +381,7 @@ class PageHome extends Component {
               :
               <Col md = {4} style = {{padding: 0}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 210, margin:'auto', width: '100%', marginBottom: 20}}>
-                  <img src = {FileIcon} style = {{height: 50}}/>
+                  <ImageFadeIn src = {FileIcon} style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>File Backup</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Fractal can download your entire cloud PC hard drive to your local PC every 24 hours.</p>
                 </div>
@@ -401,7 +405,7 @@ class PageHome extends Component {
                   <div style = {{padding: '8px 20px', marginTop: 10, display: 'flex'}}>
                     <div style = {{width: '70%', height: 10, backgroundColor: '#e3e3e3', borderRadius: 5}}>
                     </div>
-                    <div style = {{width: '25%', height: 10, backgroundColor: '#5ec3eb', borderRadius: 5, marginLeft: '5%'}}>
+                    <div style = {{width: '25%', height: 10, backgroundColor: 'rgba(94, 195, 235, 0.2)', borderRadius: 5, marginLeft: '5%'}}>
                     </div>
                   </div>
                   <div style = {{padding: '8px 20px', display: 'flex'}}>
@@ -409,7 +413,7 @@ class PageHome extends Component {
                     </div>
                   </div>
                   <div style = {{padding: '8px 20px', display: 'flex'}}>
-                    <div style = {{width: '25%', height: 10, backgroundColor: '#5ec3eb', borderRadius: 5, marginRight: '5%'}}>
+                    <div style = {{width: '25%', height: 10, backgroundColor: 'rgba(94, 195, 235, 0.2)', borderRadius: 5, marginRight: '5%'}}>
                     </div>
                     <div style = {{width: '70%', height: 10, backgroundColor: '#e3e3e3', borderRadius: 5}}>
                     </div>
@@ -434,7 +438,7 @@ class PageHome extends Component {
                   <div style = {{padding: '8px 20px', marginTop: 10, display: 'flex'}}>
                     <div style = {{width: '70%', height: 10, backgroundColor: '#e3e3e3', borderRadius: 5}}>
                     </div>
-                    <div style = {{width: '25%', height: 10, backgroundColor: '#94a8ed', borderRadius: 5, marginLeft: '5%'}}>
+                    <div style = {{width: '25%', height: 10, backgroundColor: 'rgba(94, 195, 235, 0.2)', borderRadius: 5, marginLeft: '5%'}}>
                     </div>
                   </div>
                   <div style = {{padding: '8px 20px', display: 'flex'}}>
@@ -442,7 +446,7 @@ class PageHome extends Component {
                     </div>
                   </div>
                   <div style = {{padding: '8px 20px', display: 'flex'}}>
-                    <div style = {{width: '25%', height: 10, backgroundColor: '#94a8ed', borderRadius: 5, marginRight: '5%'}}>
+                    <div style = {{width: '25%', height: 10, backgroundColor: 'rgba(94, 195, 235, 0.2)', borderRadius: 5, marginRight: '5%'}}>
                     </div>
                     <div style = {{width: '70%', height: 10, backgroundColor: '#e3e3e3', borderRadius: 5}}>
                     </div>
@@ -474,42 +478,289 @@ class PageHome extends Component {
             </Row>
           </div>
         </div>
-        <div style = {{width: '100vw', minHeight: 390, backgroundImage: 'linear-gradient(121.2deg, #D7F5F5 2.24%, #F2DEF8 100%)'}}>
-          <div className = "fractal-container" style = {{paddingTop: 40, paddingBottom: 20}}>
-            <Row>
-              <Col md = {4} style = {{textAlign: 'left', width: '100%', marginBottom: 20}}>
-                <div style = {{textAlign: 'center', width: '100%'}}>
-                  <img src = {Software} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
-                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 100, margin: 'auto', marginTop: 20}}>
-                    Productivity
+        <div style = {{width: '100vw', minHeight: 390, backgroundColor: '#F9F9F9'}}>
+          <div className = "fractal-container" style = {{paddingTop: 75, paddingBottom: 75, textAlign: 'center'}}>
+            {
+            this.state.width > 700
+            ?
+            <div style = {{textAlign: 'center'}}>
+              <div style = {{fontSize: 30, fontWeight: 'bold', color: '#111111'}}>
+                Try Fractal <span className = "blue-gradient">free for seven days</span>.<br/>
+                Start your trial now, pick a plan later.
+              </div>
+              <div style = {{marginTop: 20, color: '#333333'}}>
+                No credit card required.
+              </div>
+              <Link to = "/dashboard">
+                <Button style = {{boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.20)', backgroundColor: '#111111', padding: '15px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none', marginTop: 50}}>
+                  GET STARTED <span style = {{color: '#D6D6D6', fontWeight: 'normal'}}> — it's free</span>
+                </Button>
+              </Link>
+            </div>
+            :
+            <div style = {{textAlign: 'left'}}>
+              <div style = {{fontSize: 25, lineHeight: 1.4, fontWeight: 'bold', color: '#111111', textAlign: 'left'}}>
+                Try Fractal <span className = "blue-gradient">free for seven days</span>.
+                Start your trial now, pick a plan later.
+              </div>
+              <div style = {{marginTop: 20, color: '#333333'}}>
+                No credit card required.
+              </div>
+              <Link to = "/dashboard">
+                <Button style = {{boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.20)', backgroundColor: '#111111', padding: '15px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none', marginRight: 20, marginTop: 50}}>
+                  GET STARTED <span style = {{color: '#D6D6D6', fontWeight: 'normal'}}> — it's free</span>
+                </Button>
+              </Link>
+            </div>
+            }
+            <Row style = {{margin: 'auto', marginTop: 75}}>
+              {
+              this.state.width > 700
+              ?
+              <Col md = {4} style = {{paddingLeft: 0, paddingRight: 40}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                  <div style = {{fontWeight: 'bold'}}>
+                    Hourly
+                  </div>
+                  <div style = {{marginTop: 5, display: 'block', height: 110}}>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', marginRight: 5, top: 25}}>
+                      $
+                    </div>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', fontSize: 70, fontWeight: 'bold'}}>
+                      5
+                    </div>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', marginLeft: 8, top: 60}}>
+                      / mo
+                    </div>
+                  </div>
+                  <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
+                    +$0.50 per hour usage
                   </div>
                 </div>
               </Col>
-              <Col md = {4} style = {{textAlign: 'center', width: '100%', marginBottom: 20}}>
-                <div style = {{textAlign: 'center', width: '100%'}}>
-                  <img src = {Gaming} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
-                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 75, margin: 'auto', marginTop: 20}}>
-                    Gaming
+              :
+              <Col md = {4} style = {{paddingLeft: 0, paddingRight: 0}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                  <div style = {{fontWeight: 'bold'}}>
+                    Hourly
+                  </div>
+                  <div style = {{marginTop: 5, display: 'block', height: 110}}>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', marginRight: 5, top: 25}}>
+                      $
+                    </div>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', fontSize: 70, fontWeight: 'bold'}}>
+                      5
+                    </div>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', marginLeft: 8, top: 60}}>
+                      / mo
+                    </div>
+                  </div>
+                  <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
+                    +$0.50 per hour usage
                   </div>
                 </div>
               </Col>
-              <Col md = {4} style = {{textAlign: 'right', width: '100%', marginBottom: 20}}>
-                <div style = {{textAlign: 'center', width: '100%'}}>
-                  <img src = {Creative} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
-                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 75, margin: 'auto', marginTop: 20}}>
-                    Graphics
+              }
+              {
+              this.state.width > 700
+              ?
+              <Col md = {4} style = {{paddingLeft: 0, paddingRight: 40}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                  <div style = {{fontWeight: 'bold'}}>
+                    Monthly
+                  </div>
+                  <div style = {{marginTop: 5, display: 'block', height: 110}}>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', marginRight: 5, top: 25}}>
+                      $
+                    </div>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', fontSize: 70, fontWeight: 'bold'}}>
+                      35
+                    </div>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', marginLeft: 8, top: 60}}>
+                      / mo
+                    </div>
+                  </div>
+                  <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
+                    8 hours usage per day
+                  </div>
+                </div>
+              </Col>
+              :
+              <Col md = {4} style = {{paddingLeft: 0, paddingRight: 0}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                  <div style = {{fontWeight: 'bold'}}>
+                    Monthly
+                  </div>
+                  <div style = {{marginTop: 5, display: 'block', height: 110}}>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', marginRight: 5, top: 25}}>
+                      $
+                    </div>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', fontSize: 70, fontWeight: 'bold'}}>
+                      35
+                    </div>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', marginLeft: 8, top: 60}}>
+                      / mo
+                    </div>
+                  </div>
+                  <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
+                    8 hours usage per day
+                  </div>
+                </div>
+              </Col>
+              }
+              {
+              this.state.width > 700
+              ?
+              <Col md = {4} style = {{paddingLeft: 0, paddingRight: 40}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                  <div style = {{fontWeight: 'bold'}}>
+                    Unlimited
+                  </div>
+                  <div style = {{marginTop: 5, display: 'block', height: 110}}>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', marginRight: 5, top: 25}}>
+                      $
+                    </div>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', fontSize: 70, fontWeight: 'bold'}}>
+                      90
+                    </div>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', marginLeft: 8, top: 60}}>
+                      / mo
+                    </div>
+                  </div>
+                  <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
+                    Unlimited usage
+                  </div>
+                </div>
+              </Col>
+              :
+              <Col md = {4} style = {{paddingLeft: 0, paddingRight: 0}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                  <div style = {{fontWeight: 'bold'}}>
+                    Unlimited
+                  </div>
+                  <div style = {{marginTop: 5, display: 'block', height: 110}}>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', marginRight: 5, top: 25}}>
+                      $
+                    </div>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', fontSize: 70, fontWeight: 'bold'}}>
+                      90
+                    </div>
+                    <div style = {{display: 'inline', float: 'left', position: 'relative', marginLeft: 8, top: 60}}>
+                      / mo
+                    </div>
+                  </div>
+                  <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
+                    Unlimited usage
+                  </div>
+                </div>
+              </Col>
+              }
+            </Row>
+            {
+            this.state.width > 700
+            ?
+            <Row style = {{marginTop: 50}}>
+              <Col sm = {6} md = {3}>
+                <ImageFadeIn src = {CPU} style = {{display: 'inline', marginRight: 30, height: 30, float: 'left', marginTop: 10}}/>
+                <div style = {{display: 'inline', float: 'left', fontWeight: 'bold', fontSize: 20, textAlign: 'left'}}>
+                  <div style = {{display: 'inline'}}>
+                    CPU
+                  </div>
+                  <div style = {{fontWeight: 'normal', fontSize: 16, color: '#333333'}}>
+                    Intel Xeon E5-2690
+                  </div>
+                </div>
+              </Col>
+              <Col sm = {6} md = {3}>
+                <ImageFadeIn src = {GPU} style = {{display: 'inline', marginRight: 30, height: 30, float: 'left', marginTop: 10}}/>
+                <div style = {{display: 'inline', float: 'left', fontWeight: 'bold', fontSize: 20, textAlign: 'left'}}>
+                  <div style = {{display: 'inline'}}>
+                    GPU
+                  </div>
+                  <div style = {{fontWeight: 'normal', fontSize: 16, color: '#333333'}}>
+                    NVIDIA Tesla M60
+                  </div>
+                </div>
+              </Col>
+              <Col sm = {6} md = {3}>
+                <ImageFadeIn src = {RAM} style = {{display: 'inline', marginRight: 30, height: 30, float: 'left', marginTop: 10}}/>
+                <div style = {{display: 'inline', float: 'left', fontWeight: 'bold', fontSize: 20, textAlign: 'left'}}>
+                  <div style = {{display: 'inline'}}>
+                    RAM
+                  </div>
+                  <div style = {{fontWeight: 'normal', fontSize: 16, color: '#333333'}}>
+                    56GB DDR4 RAM
+                  </div>
+                </div>
+              </Col>
+              <Col sm = {6} md = {3}>
+                <ImageFadeIn src = {SSD} style = {{display: 'inline', marginRight: 30, height: 30, float: 'left', marginTop: 10}}/>
+                <div style = {{display: 'inline', float: 'left', fontWeight: 'bold', fontSize: 20, textAlign: 'left'}}>
+                  <div style = {{display: 'inline'}}>
+                    SSD
+                  </div>
+                  <div style = {{fontWeight: 'normal', fontSize: 16, color: '#333333'}}>
+                    120GB SSD
                   </div>
                 </div>
               </Col>
             </Row>
+            :
+            <Row style = {{marginTop: 30}}>
+              <Col xs = {6} md = {3} style = {{marginBottom: 10}}>
+                <div style = {{fontWeight: 'bold', fontSize: 18, textAlign: 'left'}}>
+                  <ImageFadeIn src = {CPU} style = {{height: 20, marginTop: 10, marginBottom: 10}}/>
+                  <div>
+                    CPU
+                  </div>
+                  <div style = {{fontWeight: 'normal', fontSize: 14, color: '#333333'}}>
+                    Six Core Xeon
+                  </div>
+                </div>
+              </Col>
+              <Col xs = {6} md = {3} style = {{marginBottom: 10}}>
+                <div style = {{fontWeight: 'bold', fontSize: 18, textAlign: 'left'}}>
+                  <ImageFadeIn src = {GPU} style = {{height: 20, marginTop: 10, marginBottom: 10}}/>
+                  <div>
+                    GPU
+                  </div>
+                  <div style = {{fontWeight: 'normal', fontSize: 14, color: '#333333'}}>
+                    NVIDIA Tesla M60
+                  </div>
+                </div>
+              </Col>
+              <Col xs = {6} md = {3} style = {{marginBottom: 10}}>
+                <div style = {{fontWeight: 'bold', fontSize: 18, textAlign: 'left'}}>
+                  <ImageFadeIn src = {RAM} style = {{height: 20, marginTop: 10, marginBottom: 10}}/>
+                  <div>
+                    RAM
+                  </div>
+                  <div style = {{fontWeight: 'normal', fontSize: 14, color: '#333333'}}>
+                    56 GB RAM
+                  </div>
+                </div>
+              </Col>
+              <Col xs = {6} md = {3} style = {{marginBottom: 10}}>
+                <div style = {{fontWeight: 'bold', fontSize: 18, textAlign: 'left'}}>
+                  <ImageFadeIn src = {SSD} style = {{height: 20, marginTop: 10, marginBottom: 10}}/>
+                  <div>
+                    SSD
+                  </div>
+                  <div style = {{fontWeight: 'normal', fontSize: 14, color: '#333333'}}>
+                    120 GB SSD
+                  </div>
+                </div>
+              </Col>
+            </Row>
+            }
           </div>
         </div>
-        <div style = {{background: 'linear-gradient(180deg, #F9F9F9 61.47%, #FFFFFF 100%)', paddingLeft: 40, paddingRight: 40}} id = "beta">
+        <div style = {{background: 'white', paddingLeft: 40, paddingRight: 40}} id = "beta">
           <Container style = {{paddingTop: 75, paddingBottom: 150}}>
             {
             this.state.width > 700
             ?
-            <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'center'}}>Fractal is <span className = "blue-gradient">Expanding</span></div>
+            <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'center'}}>Fractal is <span className = "blue-gradient">expanding</span></div>
             :
             <div style = {{fontWeight: 'bold', fontSize: 35, lineHeight: 1.4, color: "#111111", textAlign: 'left'}}>Fractal is <span className = "blue-gradient">Expanding</span></div>
             }

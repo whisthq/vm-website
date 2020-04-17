@@ -81,7 +81,7 @@ class About extends Component {
         <div className = "fractal-container" style = {{minHeight: '100vh', paddingTop: 100, paddingBottom: 50}}>
           <Row>
             <Col md = {7} style = {{marginBottom: 40}}>
-              <img src = {Datacenter} style = {{width: '100%', border: 'solid 5px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
+              <ImageFadeIn src = {Datacenter} style = {{width: '100%', border: 'solid 5px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
             </Col>
             <Col md = {5}>
               <div style = {{color: "#5ec3eb", fontWeight: 'bold'}}>
@@ -119,13 +119,13 @@ class About extends Component {
                   modal 
                   trigger = {
                   <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
-                    <img src = {Ming} style = {{maxWidth: 125, maxHeight: 125}}/>
+                    <ImageFadeIn src = {Ming} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
                   contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 325, padding: '30px 50px'}}>
                   <div>
                     <div style = {{display: 'flex'}}>
-                      <img src = {Ming} style = {{maxWidth: 75, maxHeight: 75}}/>
+                      <ImageFadeIn src = {Ming} style = {{maxWidth: 75, maxHeight: 75}}/>
                       <div style = {{paddingLeft: 50}}>
                         <div style = {{fontSize: 30, fontWeight: 'bold'}}>
                           Ming Ying
@@ -144,13 +144,13 @@ class About extends Component {
                   modal 
                   trigger = {
                   <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
-                    <img src = {Phil} style = {{maxWidth: 125, maxHeight: 125}}/>
+                    <ImageFadeIn src = {Phil} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
                   contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 325, padding: '30px 50px'}}>
                   <div>
                     <div style = {{display: 'flex'}}>
-                      <img src = {Phil} style = {{maxWidth: 75, maxHeight: 75}}/>
+                      <ImageFadeIn src = {Phil} style = {{maxWidth: 75, maxHeight: 75}}/>
                       <div style = {{paddingLeft: 50}}>
                         <div style = {{fontSize: 30, fontWeight: 'bold'}}>
                           Philippe Noel
@@ -169,13 +169,13 @@ class About extends Component {
                   modal 
                   trigger = {
                   <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
-                    <img src = {Nick} style = {{maxWidth: 125, maxHeight: 125}}/>
+                    <ImageFadeIn src = {Nick} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
                   contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 325, padding: '30px 50px'}}>
                   <div>
                     <div style = {{display: 'flex'}}>
-                      <img src = {Nick} style = {{maxWidth: 75, maxHeight: 75}}/>
+                      <ImageFadeIn src = {Nick} style = {{maxWidth: 75, maxHeight: 75}}/>
                       <div style = {{paddingLeft: 50}}>
                         <div style = {{fontSize: 30, fontWeight: 'bold'}}>
                           Nicholas Pipitone
@@ -194,13 +194,13 @@ class About extends Component {
                   modal 
                   trigger = {
                   <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
-                    <img src = {Roshan} style = {{maxWidth: 125, maxHeight: 125}}/>
+                    <ImageFadeIn src = {Roshan} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
                   contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 350, padding: '30px 50px'}}>
                   <div>
                     <div style = {{display: 'flex'}}>
-                      <img src = {Roshan} style = {{maxWidth: 75, maxHeight: 75}}/>
+                      <ImageFadeIn src = {Roshan} style = {{maxWidth: 75, maxHeight: 75}}/>
                       <div style = {{paddingLeft: 50}}>
                         <div style = {{fontSize: 30, fontWeight: 'bold'}}>
                           Roshan Padaki
