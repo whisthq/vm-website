@@ -474,6 +474,36 @@ class PageHome extends Component {
             </Row>
           </div>
         </div>
+        <div style = {{width: '100vw', minHeight: 390, backgroundImage: 'linear-gradient(121.2deg, #D7F5F5 2.24%, #F2DEF8 100%)'}}>
+          <div className = "fractal-container" style = {{paddingTop: 40, paddingBottom: 20}}>
+            <Row>
+              <Col md = {4} style = {{textAlign: 'left', width: '100%', marginBottom: 20}}>
+                <div style = {{textAlign: 'center', width: '100%'}}>
+                  <img src = {Software} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
+                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 100, margin: 'auto', marginTop: 20}}>
+                    Productivity
+                  </div>
+                </div>
+              </Col>
+              <Col md = {4} style = {{textAlign: 'center', width: '100%', marginBottom: 20}}>
+                <div style = {{textAlign: 'center', width: '100%'}}>
+                  <img src = {Gaming} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
+                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 75, margin: 'auto', marginTop: 20}}>
+                    Gaming
+                  </div>
+                </div>
+              </Col>
+              <Col md = {4} style = {{textAlign: 'right', width: '100%', marginBottom: 20}}>
+                <div style = {{textAlign: 'center', width: '100%'}}>
+                  <img src = {Creative} style = {{height: '100%', maxHeight: 260, border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
+                  <div style = {{color: 'white', background: 'rgba(0,0,0,0.9)', borderRadius: 15, height: 30, fontSize: 14, padding: '4px', textAlign: 'center', fontWeight: 'bold', width: 75, margin: 'auto', marginTop: 20}}>
+                    Graphics
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </div>
         <div style = {{background: 'linear-gradient(180deg, #F9F9F9 61.47%, #FFFFFF 100%)', paddingLeft: 40, paddingRight: 40}} id = "beta">
           <Container style = {{paddingTop: 75, paddingBottom: 150}}>
             {
