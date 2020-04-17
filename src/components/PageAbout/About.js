@@ -58,14 +58,14 @@ class About extends Component {
         <div className = "fractal-container" style = {{minHeight: '100vh', paddingTop: 150}}>
           <Row>
             <Col md = {7} style = {{paddingRight: 60}}>
-              <ImageFadeIn src = {Datacenter} style = {{width: '100%', border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
+              <ImageFadeIn src = {Datacenter} style = {{width: '100%', border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', marginTop: 20}}/>
             </Col>
             <Col md = {5}>
               <div style = {{color: "#5ec3eb", fontWeight: 'bold'}}>
                 Our Mission
               </div>
-              <div style = {{fontSize: 40, marginTop: 10, lineHeight: 1.4}}>
-                To Democratize Computing Power
+              <div style = {{fontSize: 55, marginTop: 10, lineHeight: 1.3, fontWeight: 'bold'}}>
+                To Democratize Computing<br/> Power
               </div>
               <div style = {{color: "#555555", marginTop: 40, lineHeight: 1.7, fontSize: 18, maxWidth: 425}}>
                 At Fractal, we envision laptops that render 4K video at lightning speeds. Chromebooks and Macs 
@@ -87,7 +87,7 @@ class About extends Component {
               <div style = {{color: "#5ec3eb", fontWeight: 'bold'}}>
                 Our Mission
               </div>
-              <div style = {{fontSize: 30, marginTop: 10, lineHeight: 1.4}}>
+              <div style = {{fontSize: 40, marginTop: 10, lineHeight: 1.4, fontWeight: 'bold'}}>
                 To Democratize Computing Power
               </div>
               <div style = {{color: "#555555", marginTop: 30, lineHeight: 1.7, fontSize: 18}}>
@@ -105,7 +105,7 @@ class About extends Component {
         <div className = "fractal-container" style = {{paddingBottom: 50}}>
           <Row>
             <Col md = {12} style = {{textAlign: 'center'}}>
-              <div style = {{fontSize: 40, marginTop: 10, lineHeight: 1.4}}>
+              <div style = {{fontSize: 40, marginTop: 10, lineHeight: 1.4, fontWeight: 'bold'}}>
                 Our Stories
               </div>
               <div style = {{color: "#555555", lineHeight: 1.7, maxWidth: 600, margin: 'auto', marginTop: 20, fontSize: 18}}>
@@ -122,7 +122,7 @@ class About extends Component {
                     <ImageFadeIn src = {Ming} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
-                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 325, padding: '30px 50px'}}>
+                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", minHeight: 325, padding: '30px 50px'}}>
                   <div>
                     <div style = {{display: 'flex'}}>
                       <ImageFadeIn src = {Ming} style = {{maxWidth: 75, maxHeight: 75}}/>
@@ -131,7 +131,7 @@ class About extends Component {
                           Ming Ying
                         </div>
                         <div style = {{marginTop: 20, color: '#555555'}}>
-                          Prior to founding Fractal, Ming was a software engineer at Fidelity Investments and quant researcher at AQR Capital Management.
+                          Prior to Fractal, Ming was a software engineer at Fidelity Investments and quant researcher at AQR Capital Management.
                           He graduated from Harvard University, where he studied Statistics and Computer Science.
                         </div>
                       </div>
@@ -147,7 +147,7 @@ class About extends Component {
                     <ImageFadeIn src = {Phil} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
-                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 325, padding: '30px 50px'}}>
+                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", minHeight: 325, padding: '30px 50px'}}>
                   <div>
                     <div style = {{display: 'flex'}}>
                       <ImageFadeIn src = {Phil} style = {{maxWidth: 75, maxHeight: 75}}/>
@@ -172,7 +172,7 @@ class About extends Component {
                     <ImageFadeIn src = {Nick} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
-                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 325, padding: '30px 50px'}}>
+                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", minHeight: 325, padding: '30px 50px'}}>
                   <div>
                     <div style = {{display: 'flex'}}>
                       <ImageFadeIn src = {Nick} style = {{maxWidth: 75, maxHeight: 75}}/>
@@ -197,7 +197,7 @@ class About extends Component {
                     <ImageFadeIn src = {Roshan} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
-                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 350, padding: '30px 50px'}}>
+                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", minHeight: 350, padding: '30px 50px'}}>
                   <div>
                     <div style = {{display: 'flex'}}>
                       <ImageFadeIn src = {Roshan} style = {{maxWidth: 75, maxHeight: 75}}/>
@@ -227,7 +227,7 @@ class About extends Component {
                 <div style = {{color: "#5ec3eb", fontWeight: "bold"}}>
                   Support
                 </div>
-                <div style = {{fontSize: 40, marginTop: 10, lineHeight: 1.4}}>
+                <div style = {{fontSize: 40, marginTop: 10, lineHeight: 1.4, fontWeight: 'bold'}}>
                   Our Investors
                 </div>
                 <div style = {{color: "#555555", marginTop: 30, lineHeight: 1.7, fontSize: 18, marginBottom: 20}}>

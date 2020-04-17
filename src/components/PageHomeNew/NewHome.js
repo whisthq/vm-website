@@ -485,7 +485,7 @@ class PageHome extends Component {
             ?
             <div style = {{textAlign: 'center'}}>
               <div style = {{fontSize: 30, fontWeight: 'bold', color: '#111111'}}>
-                Try Fractal <span className = "blue-gradient">free for seven days</span>.<br/>
+                Try Fractal free for seven days.<br/>
                 Start your trial now, pick a plan later.
               </div>
               <div style = {{marginTop: 20, color: '#333333'}}>
@@ -500,7 +500,7 @@ class PageHome extends Component {
             :
             <div style = {{textAlign: 'left'}}>
               <div style = {{fontSize: 25, lineHeight: 1.4, fontWeight: 'bold', color: '#111111', textAlign: 'left'}}>
-                Try Fractal <span className = "blue-gradient">free for seven days</span>.
+                Try Fractal free for seven days.
                 Start your trial now, pick a plan later.
               </div>
               <div style = {{marginTop: 20, color: '#333333'}}>
@@ -564,8 +564,8 @@ class PageHome extends Component {
               {
               this.state.width > 700
               ?
-              <Col md = {4} style = {{paddingLeft: 0, paddingRight: 40}}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+              <Col md = {4} style = {{paddingLeft: 20, paddingRight: 20, textAlign: 'center'}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundColor: 'rgba(94, 195, 235, 0.1)', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
                   <div style = {{fontWeight: 'bold'}}>
                     Monthly
                   </div>
@@ -611,7 +611,7 @@ class PageHome extends Component {
               {
               this.state.width > 700
               ?
-              <Col md = {4} style = {{paddingLeft: 0, paddingRight: 40}}>
+              <Col md = {4} style = {{paddingLeft: 40, paddingRight: 0, textAlign: 'right'}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
                   <div style = {{fontWeight: 'bold'}}>
                     Unlimited

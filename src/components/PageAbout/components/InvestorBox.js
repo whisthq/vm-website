@@ -21,7 +21,31 @@ import Neo from '../../../assets/neo.png'
 import RDV from '../../../assets/rdv.png'
 
 class InvestorBox extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { width: 0, height: 0 }
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
+  }
+
+  componentDidMount() {
+    this.updateWindowDimensions()
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateWindowDimensions)
+  }
+
+  updateWindowDimensions() {
+    this.setState({ width: window.innerWidth, height: window.innerHeight })
+  }
+
 	render() {
+    let modalClose = () => this.setState({ modalShow: false })
+    if (this.state.width > 700 && this.state.modalShow) {
+      modalClose()
+    } 
+    window.addEventListener('resize', this.updateWindowDimensions)
+
 		return(
             <Row>
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
@@ -29,11 +53,21 @@ class InvestorBox extends Component {
                   <img src = {Neo} style = {{maxWidth: 75, maxHeight: 75, paddingTop: 20}}/>
                 </div>
               </Col>
+              {
+              this.state.width > 700
+              ?
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
                 <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center', height: 125}}>
                   <img src = {BSV} style = {{width: 115, height: 75}}/>
                 </div>
               </Col>
+              :
+              <Col xs = {6} md = {4} style = {{marginTop: 20}}>
+                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: '30px 20px', textAlign: 'center', height: 125}}>
+                  <img src = {BSV} style = {{width: 100, height: 70}}/>
+                </div>
+              </Col>
+              }
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
                 <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center', height: 125}}>
                   <img src = {DRF} style = {{maxWidth: 65, maxHeight: 65}}/>
@@ -52,7 +86,7 @@ class InvestorBox extends Component {
                       <img src = {Pankaj} style = {{maxWidth: 70, maxHeight: 70, borderRadius: 35, filter: 'grayscale(100%)'}}/>
                     </div>
                   }
-                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 325, padding: '30px 50px'}}>
+                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", minHeight: 325, padding: '30px 50px'}}>
                   <div>
                     <div style = {{display: 'flex'}}>
                       <img src = {Pankaj} style = {{maxWidth: 75, maxHeight: 75, borderRadius: 37.5}}/>
@@ -84,7 +118,7 @@ class InvestorBox extends Component {
                       <img src = {Michael} style = {{maxWidth: 70, maxHeight: 70, borderRadius: 35, filter: 'grayscale(100%)'}}/>
                     </div>
                   }
-                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 325, padding: '30px 50px'}}>
+                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", minHeight: 325, padding: '30px 50px'}}>
                   <div>
                     <div style = {{display: 'flex'}}>
                       <img src = {Michael} style = {{maxWidth: 75, maxHeight: 75, borderRadius: 37.5}}/>
@@ -92,7 +126,7 @@ class InvestorBox extends Component {
                         <div style = {{fontSize: 30, fontWeight: 'bold'}}>
                           Michael Stoppelman
                         </div>
-                        <div style = {{marginTop: 20, color: '#555555', maxHeight: 200, overflowY: 'scroll'}}>
+                        <div style = {{marginTop: 20, color: '#555555', overflowY: 'scroll'}}>
                           Michael Stoppelman was a former exec at Yelp and is now a full-time early stage investor who has backed companies like Wish, Lyft, Flexport, Benchling and Confluent.  Prior to investing he was SVP of Engineering of Yelp (2007-2017) and a software engineer at Google (2003-2007).
                         </div>
                       </div>
