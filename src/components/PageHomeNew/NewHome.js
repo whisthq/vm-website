@@ -628,7 +628,7 @@ class PageHome extends Component {
                     </div>
                   </div>
                   <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
-                    Unlimited usage
+                    Unlimited monthly usage
                   </div>
                 </div>
               </Col>
@@ -650,7 +650,7 @@ class PageHome extends Component {
                     </div>
                   </div>
                   <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
-                    Unlimited usage
+                    Unlimited monthly usage
                   </div>
                 </div>
               </Col>
