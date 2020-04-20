@@ -40,7 +40,7 @@ class Dashboard extends Component {
     this.state = {width: 0, height: 0, modalShow: false, showPopup: false, day: 0, month: 0, year: 0, 
       created: '', billStart: '', billEnd: '', cancelling: false, hidePassword: true, exitSurvey: false,
       exitFeedback: '', emailShare: false, emails: [], friendsEmail: '', trialEnd: '',
-      showEmailButton: false, emailBoxWidth: 45, sendingEmails: false, purchaseFeedback: '', waitlist: false}
+      showEmailButton: false, emailBoxWidth: 45, sendingEmails: false, purchaseFeedback: '', waitlist: false, loaded: false}
     this.customWidth = React.createRef()
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
@@ -57,6 +57,8 @@ class Dashboard extends Component {
       day: today.getDate(),
       month: this.monthConvert(today.getMonth()),
       year: today.getFullYear()
+    }, function() {
+      this.setState({loaded: true})
     })
   }
 
@@ -220,6 +222,15 @@ class Dashboard extends Component {
           </HashLink>
         </div>
       )
+    } else if(!this.state.loaded) {
+      return(
+        <div style = {{backgroundColor: "white", minHeight: '100vh', overflowX: 'hidden !important', textAlign: 'center'}}>
+          <Header color = "#333333" button = "#5ec3eb"/>
+          <div style = {{paddingTop: 250, textAlign: 'center', maxWidth: 500, margin: 'auto', marginBottom: 60, fontSize: 50}}>
+            <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#111111"}}/>
+          </div>
+        </div>
+      )
     } else {
     return (
       <div>
@@ -295,7 +306,7 @@ class Dashboard extends Component {
                   <div style = {{color: "#111111", marginTop: 75, fontSize: 40}}>
                     {this.props.promoCode}
                   </div>
-                  <button onClick = {() => this.showEmailShare(true)} style = {{fontWeight: 'bold', marginTop: 75, outline: 'none', width: '100%', fontSize: 14, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', color: '#5ec3eb', border: 'solid 1px #5ec3eb', background: 'rgba(94, 195, 235,0.1)'}}>
+                  <button onClick = {() => this.showEmailShare(true)} style = {{fontWeight: 'bold', marginTop: 75, outline: 'none', width: '100%', fontSize: 14, borderRadius: 3, float: 'right', display: 'inline', padding: '10px 10px', color: '#5ec3eb', border: 'none', background: 'rgba(94, 195, 235,0.1)'}}>
                     Start Sharing
                   </button> 
                 </div> 
@@ -352,16 +363,16 @@ class Dashboard extends Component {
                   (
                   !this.state.sendingEmails
                   ?
-                  <button onClick = {() => this.sendEmails()} style = {{fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 14, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', color: '#5ec3eb', border: 'solid 1px #5ec3eb', background: 'rgba(94, 195, 235,0.1)'}}>
+                  <button onClick = {() => this.sendEmails()} style = {{fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 14, borderRadius: 3, float: 'right', display: 'inline', padding: '10px 10px', color: '#5ec3eb', border: 'none', background: 'rgba(94, 195, 235,0.1)'}}>
                     Send Emails
                   </button> 
                   :
-                  <Button disabled = "true" style = {{fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 14, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', color: '#5ec3eb', border: 'solid 1px #5ec3eb', background: 'rgba(94, 195, 235,0.1)'}}>
+                  <Button disabled = "true" style = {{fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 14, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', color: '#5ec3eb', border: 'none', background: 'rgba(94, 195, 235,0.1)'}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#5ec3eb", marginRight: 7}}/> Sending
                   </Button> 
                   )
                   :
-                  <Button disabled = "true" style = {{fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 14, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', color: '#5ec3eb', border: 'solid 1px #5ec3eb', background: 'rgba(94, 195, 235,0.1)'}}>
+                  <Button disabled = "true" style = {{fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 14, borderRadius: 3, float: 'right', display: 'inline', padding: '10px 10px', color: '#5ec3eb', border: 'none', background: 'rgba(94, 195, 235,0.1)'}}>
                     Send Emails
                   </Button> 
                   }
@@ -474,7 +485,7 @@ class Dashboard extends Component {
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {CPU} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>CPU</div>
-                  <div style = {{color: "#555555", fontSize: 13}}>Intel Xeon E5</div>
+                  <div style = {{color: "#555555", fontSize: 13}}>6 Core Intel Xeon E5</div>
                 </div>
               </Col>
               <Col md = {3} sm = {6} xs = {12}>
@@ -626,7 +637,7 @@ class Dashboard extends Component {
                         If you cancel, all the data, files, and applications on stored on cloud PC will be <strong>permanently</strong> lost. Please 
                         make sure that you have transferred everything you need from your cloud PC to another device before cancelling.
                       </div>
-                      <button onClick = {() => this.showExitSurvey(true)} style = {{fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
+                      <button onClick = {() => this.showExitSurvey(true)} style = {{fontWeight: 'bold', marginTop: 30, outline: 'none', width: '100%', fontSize: 12, borderRadius: 3, float: 'right', display: 'inline', padding: '10px 10px', border: 'none', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
                         I UNDERSTAND, PROCEED
                       </button>
                     </div>
@@ -639,11 +650,11 @@ class Dashboard extends Component {
                       {
                       this.state.exitFeedback != ''
                       ?
-                      <button onClick = {this.cancelPlan} style = {{fontWeight: 'bold', marginTop: 19, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
+                      <button onClick = {this.cancelPlan} style = {{fontWeight: 'bold', marginTop: 19, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'none', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
                         CANCEL PLAN
                       </button>
                       :
-                      <button style = {{opacity: 0.5, fontWeight: 'bold', marginTop: 19, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
+                      <button style = {{opacity: 0.5, fontWeight: 'bold', marginTop: 19, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'none', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
                         CANCEL PLAN
                       </button>
                       }
