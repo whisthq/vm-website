@@ -421,7 +421,7 @@ class Purchase extends Component {
                 <Col md = {6} className = "pointerOnHover" onClick = {() => this.setState({computer: 'Medium'})}>
                   <SpecBox name = "Medium" cpu = "6" gpu = "1/2" ram = "56" 
                     description = "For 3D modelling, medium rendering, gaming."
-                    pricing = "$5/mo + $0.70/hr"
+                    pricing = "Starts with free trial"
                     color = "rgba(94, 195, 235, 0.1)"
                     checked/>
                 </Col>
@@ -437,7 +437,7 @@ class Purchase extends Component {
                 <Col md = {6} className = "pointerOnHover" onClick = {() => this.setState({computer: 'Medium'})}>
                   <SpecBox name = "Medium" cpu = "6" gpu = "1/2" ram = "56" 
                     description = "For 3D modelling, medium rendering, gaming."
-                    pricing = "$5/mo + $1.30/hr"
+                    pricing = "Starts with free trial"
                     color = "white"/>
                 </Col>
                 <Col md = {6}>

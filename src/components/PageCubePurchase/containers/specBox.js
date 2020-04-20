@@ -52,7 +52,7 @@ class SpecBox extends Component {
             }
           </div>
           <div style = {{fontSize: 12, color: "#555555"}}>
-            Starts at {this.props.pricing}
+            {this.props.pricing}
           </div>
           <div style = {{color: '#111111', marginTop: 20, height: 50}}>
             {this.props.description}
