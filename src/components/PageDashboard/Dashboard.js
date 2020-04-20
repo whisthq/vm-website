@@ -40,7 +40,7 @@ class Dashboard extends Component {
     this.state = {width: 0, height: 0, modalShow: false, showPopup: false, day: 0, month: 0, year: 0, 
       created: '', billStart: '', billEnd: '', cancelling: false, hidePassword: true, exitSurvey: false,
       exitFeedback: '', emailShare: false, emails: [], friendsEmail: '', trialEnd: '',
-      showEmailButton: false, emailBoxWidth: 45, sendingEmails: false, purchaseFeedback: '', waitlist: true}
+      showEmailButton: false, emailBoxWidth: 45, sendingEmails: false, purchaseFeedback: '', waitlist: false}
     this.customWidth = React.createRef()
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }

@@ -27,13 +27,11 @@ class CheckoutForm extends Component {
   async handleSubmit(evt) {
     this.setState({processing: true, failed_payment_attempt: false, failed_referral_attempt: false, errorMessage: ''})
 
-
     evt.preventDefault();
     let {token} = await this.props.stripe.createToken();
     if(token) {
       if(token.id) {
-        this.props.dispatch(chargeStripe(token.id,  3500, this.props.location, this.state.code))
-        this.props.dispatch(createDisk(this.findVMLocation(this.props.location, this.props.vm_size)))
+        this.props.dispatch(chargeStripe(token.id, 3500, this.state.code, this.props.plan.toLowerCase()))
       } else {
         this.setState({processing: false, errorMessage: 'Your card info was declined. Please try again.'})
       }
@@ -43,36 +41,16 @@ class CheckoutForm extends Component {
   };
 
   changeToken = (evt) => {
-    this.setState({code: evt.target.value})
+    this.setState({code: evt.target.value}, function() {
+      console.log(this.state.code)
+    })
   }
 
-  submitNoPayment = () => {
-    this.setState({processing: true})
-    this.props.dispatch(insertCustomer(this.props.location))
-    this.props.dispatch(createDisk(this.findVMLocation(this.props.location)))
-  }
-
-  findVMLocation = (location) => {
-    var eastus = ['Maine', 'New Hampshire', 'Massachusetts', 'New York', 'Vermont', 'Rhode Island', 
-      'Connecticut', 'New Jersey', 'Delaware', 'Maryland', 'Pennsylvania', 'Virginia', 'West Virginia', 
-      'North Carolina', 'South Carolina', 'Georgia', 'Florida', 'Alabama']
-    var southcentralus = ['Texas', 'Arkansas', 'Oklahoma', 'New Mexico', 'Louisiana', 'Colorado']
-    var northcentralus = ['Illinois', 'Ohio', 'Indiana', 'Kentucky', 'Michigan', 'Tennessee', 
-      'Wisconsin', 'Minnesota', 'Iowa', 'Missouri', 'Mississippi', 'Kansas', 'Nebraska']
-
-    if(eastus.includes(location)) {
-      return('eastus')
-    } else if(southcentralus.includes(location)) {
-      return('southcentralus')
-    } else {
-      return('northcentralus')
-    }
-  }
-
-  submitNoPayment = () => {
-    this.setState({processing: true})
-    this.props.dispatch(insertCustomer(this.props.purchase_location))
-    this.props.dispatch(createDisk(this.findVMLocation(this.props.purchase_location)))
+  monthConvert = (month) => {
+    var months = [ "January", "February", "March", "April", "May", "June", 
+                   "July", "August", "September", "October", "November", "December" ];
+    var selectedMonthName = months[month];
+    return selectedMonthName;
   }
 
   unixToDate = (unix) => {
@@ -91,6 +69,16 @@ class CheckoutForm extends Component {
     }
     if(prevProps.failed_referral_attempts != this.props.failed_referral_attempts && !this.state.failed_referral_attempt) {
       this.setState({failed_referral_attempt: true, errorMessage: 'Your referral code was invalid. Please re-check the code, or contact support@fractalcomputers.com.', processing: false})
+    }
+
+    if(this.props.payment && Object.keys(this.props.payment).length > 0) {
+      if(this.state.trialEnd === '' && this.props.payment.trial_end && this.props.payment.trial_end > 0) {
+        this.setState({trialEnd: this.unixToDate(this.props.payment.trial_end)})
+      }
+    } else {
+      if(this.state.trialEnd != '' && this.props.customer && Object.keys(this.props.customer).length === 0) {
+        this.setState({trialEnd: ''})
+      }
     }
 
     if(this.state.trialEnd === '' && this.props.customer && Object.keys(this.props.customer).length > 0) {
@@ -129,16 +117,13 @@ class CheckoutForm extends Component {
         <div className = "referral-code">
           <input onChange = {this.changeToken} type = "text" style = {{fontSize: 14, color: "#333333", maxWidth: 600, border: 'none', borderRadius: 4, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', width: '100%', padding: '8px 5px', paddingLeft: 15}} placeholder = "Referral Code (Optional)"/>
         </div>
-        {
-        this.props.finalPayment
-        ?
         <div style = {{maxWidth: 600}}>
           {
           !this.state.processing
           ?
           <div style = {{display: 'block'}}>
             <div>
-              <Button onClick = {this.handleSubmit} style = {{marginBottom: 10, width: '100%', maxWidth: 600, background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', paddingTop: 8, paddingBottom: 8, height: 40, float: 'left', display: 'inline'}}>
+              <Button onClick = {this.handleSubmit} style = {{color: '#1ba8e0', marginBottom: 10, width: '100%', maxWidth: 600, background: "rgba(94, 195, 235, 0.2)", border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14, paddingTop: 10, paddingBottom: 10, height: 42, float: 'left', display: 'inline'}}>
                 PAY
               </Button>
             </div><br/>
@@ -163,82 +148,38 @@ class CheckoutForm extends Component {
           <div style = {{height: 20}}></div>
           }
           </div>
+          {
+          this.props.plan === 'Hourly'
+          ?
           <div style = {{fontSize: 12, marginTop: 50, display: 'block'}}>
             <div style = {{display: 'inline', float: 'left'}}>Monthly Charge</div>
-            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>$35.00</div>
+            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>$5.00</div>
+          </div>
+          :
+          (
+          this.props.paln === 'Monthly'
+          ?
+          <div style = {{fontSize: 12, marginTop: 50, display: 'block'}}>
+            <div style = {{display: 'inline', float: 'left'}}>Monthly Charge</div>
+            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>$39.00</div>
+          </div>
+          :
+          <div style = {{fontSize: 12, marginTop: 50, display: 'block'}}>
+            <div style = {{display: 'inline', float: 'left'}}>Monthly Charge</div>
+            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>$99.00</div>
+          </div>
+          )
+          }
+          <br/>
+          <div style = {{fontSize: 12, marginTop: 1, display: 'block'}}>
+            <div style = {{display: 'inline', float: 'left'}}>Plan</div>
+            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>{this.props.plan}</div>
           </div><br/>
           <div style = {{fontSize: 12, marginTop: 1, display: 'block', marginBottom: 45}}>
             <div style = {{display: 'inline', float: 'left'}}>Free Trial Ends</div>
             <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>{this.state.trialEnd}</div>
           </div>
         </div>
-        :
-        <div style = {{maxWidth: 600}}>
-          {
-          !this.state.processing
-          ?
-          <div style = {{display: 'block'}}>
-            <div>
-              <Button onClick = {this.handleSubmit} style = {{marginBottom: 10, width: '48%', maxWidth: 600, background: "#111111", border: 0, marginTop: 20, fontSize: 14, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', paddingTop: 8, paddingBottom: 8, height: 40, float: 'left', display: 'inline'}}>
-                CONTINUE WITH CARD
-              </Button>
-              <Button onClick = {() => this.submitNoPayment()} style = {{marginBottom: 10, width: '48%', maxWidth: 600, background: "rgba(94, 195, 235, 0.2)", fontWeight: 'bold', border: 'none', marginTop: 20, fontSize: 14, paddingTop: 8, paddingBottom: 8, color: '#1ba8e0', height: 40, float: 'right', display: 'inline'}}>
-                CONTINUE WITHOUT CARD
-              </Button>
-            </div><br/>
-          </div>
-          :
-          <div style = {{display: 'block'}}>
-            <div>
-              <Button disabled = "true" style = {{marginBottom: 10, width: '48%', maxWidth: 600, background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', paddingTop: 8, paddingBottom: 8, float: 'left', display: 'inline', height: 40}}>
-                <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 12, marginRight: 5, fontSize: 12}}/>
-              </Button>
-              <Button disabled = "true" style = {{marginBottom: 10, width: '48%', maxWidth: 600, backgroundColor: "rgba(0, 0, 0, 0.05)", border: 'solid 1px #555555', fontWeight: 'bold', marginTop: 20, fontSize: 14, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', paddingTop: 8, paddingBottom: 8, color: '#555555', height: 40, float: 'right', display: 'inline'}}>
-                <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#555555", height: 12, marginRight: 5, fontSize: 12}}/>
-              </Button>
-            </div><br/>
-          </div>
-          }
-          <div style = {{marginTop: 25}}>
-          {
-          this.state.errorMessage != ''
-          ?
-          <div style = {{fontSize: 12, color: '#e34d4d'}}>
-            {this.state.errorMessage}
-          </div>
-          :
-          <div style = {{height: 20}}></div>
-          }
-          </div>
-          <div style = {{fontSize: 12, marginTop: 50, display: 'block'}}>
-            <div style = {{display: 'inline', float: 'left'}}>Due Today</div>
-            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>$0.00</div>
-          </div><br/>
-          <div style = {{fontSize: 12, marginTop: 1, display: 'block'}}>
-            <div style = {{display: 'inline', float: 'left'}}>Plan</div>
-            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>{this.props.plan}</div>
-          </div><br/>
-          {
-          this.props.credits && this.props.credits > 0
-          ?
-          <div style = {{fontSize: 12, marginTop: 1, display: 'block', marginBottom: 45}}>
-            <div style = {{display: 'inline', float: 'left'}}>Free Trial Period</div>
-            {
-            this.props.credits > 1
-            ?
-            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>{this.props.credits} months</div>
-            :
-            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>{this.props.credits} month</div>
-            }
-          </div>
-          :
-          <div style = {{fontSize: 12, marginTop: 1, display: 'block', marginBottom: 45}}>
-            <div style = {{display: 'inline', float: 'left'}}>Free Trial Period</div>
-            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>7 days</div>
-          </div>
-          }
-        </div>
-        }
       </form>
     );
   }
@@ -251,7 +192,8 @@ function mapStateToProps(state) {
     failed_referral_attempts: state.AccountReducer.failed_referral_attempts,
     credits: state.AccountReducer.credits,
     customer_status: state.AccountReducer.customer_status,
-    customer: state.AccountReducer.customer
+    customer: state.AccountReducer.customer,
+    payment: state.AccountReducer.payment
   }
 }
 

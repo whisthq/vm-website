@@ -108,13 +108,13 @@ export function changeStage(stage) {
 	}
 }
 
-export function chargeStripe(token, amount, location, code) {
+export function chargeStripe(token, amount, code, plan) {
 	return {
 		type: CHARGE_STRIPE,
 		token,
 		amount,
-		location,
-		code
+		code,
+		plan
 	}
 }
 
@@ -294,13 +294,13 @@ export function promoCodeFailure() {
 	}
 }
 
-export function sendFinalCharge(token, amount, location, code) {
+export function sendFinalCharge(token, amount, code, plan) {
 	return {
 		type: SEND_FINAL_CHARGE,
 		token,
 		amount,
-		location,
-		code
+		code,
+		plan
 	}
 }
 

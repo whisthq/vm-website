@@ -90,6 +90,7 @@ function* sendSignupEmail(action) {
 
 function* chargeStripe(action) {
   const state = yield select()
+
   if (action.code != '') {
     const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/referral/validate', {
       code: action.code,
@@ -98,11 +99,11 @@ function* chargeStripe(action) {
     if (!(json && json.status === 200 && json.verified)) {
       yield put(FormAction.promoCodeFailure())
     } else {
-      yield put(FormAction.sendFinalCharge(action.token, action.amount, action.location, action.code))
+      yield put(FormAction.sendFinalCharge(action.token, action.amount, action.code, action.plan))
       yield put(FormAction.applyDiscount(action.code))
     }
   } else {
-    yield put(FormAction.sendFinalCharge(action.token, action.amount, action.location, null))
+    yield put(FormAction.sendFinalCharge(action.token, action.amount, null, action.plan))
   }
 }
 
@@ -141,7 +142,7 @@ function* sendFinalCharge(action) {
   const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/charge', {
     token: action.token,
     email: state.AccountReducer.user,
-    location: action.location,
+    plan: action.plan,
     code: action.code
   }, state.AccountReducer.access_token);
 

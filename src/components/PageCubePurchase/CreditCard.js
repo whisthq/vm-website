@@ -185,8 +185,8 @@ class CreditCard extends Component {
             </div>
             }
             <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
-              <div onClick = {this.goBack} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
-                <FaAngleUp className = "typeform-up" style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
+              <div style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
+                <FaAngleUp className = "typeform-up" style = {{opacity: 0.5, height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
               </div>
               <Link to = "/dashboard">
               <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
@@ -198,7 +198,7 @@ class CreditCard extends Component {
         )
       } else {
         return(
-          <div style = {{paddingTop: 100, paddingLeft: 100, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+          <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
             <img src = {StripeBadge} style = {{width: 125, position: 'absolute', bottom: 30, marginLeft: 40}}/>
             <div>
               <span style = {{position: 'relative', bottom: 2}}>
@@ -231,19 +231,19 @@ class CreditCard extends Component {
                 <StripeProvider apiKey={public_key}>
                   <div className="example"> 
                     <Elements fonts = {fonts}>
-                      <CheckoutForm location = {this.state.location} finalPayment/>
+                      <CheckoutForm plan = {this.state.plan}/>
                     </Elements>
                   </div>
                 </StripeProvider>
               </div>
               <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
-                <div style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
-                  <FaAngleUp className = "typeform-up" style = {{opacity: 0.5, height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
+                <div onClick = {() => this.setState({step: 1})} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
+                  <FaAngleUp className = "typeform-up" style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
                 </div>
                 <Link to = "/dashboard">
-                <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
-                  <FaTimes style = {{height: 15, position: 'relative', bottom: 2, color: '#0b172b'}}/>
-                </div>
+                  <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
+                    <FaTimes style = {{height: 15, position: 'relative', bottom: 2, color: '#0b172b'}}/>
+                  </div>
                 </Link>
               </div>
             </div>
