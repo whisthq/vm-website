@@ -64,7 +64,7 @@ class About extends Component {
               <div style = {{color: "#5ec3eb", fontWeight: 'bold'}}>
                 Our Mission
               </div>
-              <div style = {{fontSize: 55, marginTop: 10, lineHeight: 1.3, fontWeight: 'bold'}}>
+              <div style = {{fontSize: 45, marginTop: 10, lineHeight: 1.3, fontWeight: 'bold'}}>
                 To Democratize Computing<br/> Power
               </div>
               <div style = {{color: "#555555", marginTop: 40, lineHeight: 1.7, fontSize: 18, maxWidth: 425}}>
@@ -87,14 +87,14 @@ class About extends Component {
               <div style = {{color: "#5ec3eb", fontWeight: 'bold'}}>
                 Our Mission
               </div>
-              <div style = {{fontSize: 40, marginTop: 10, lineHeight: 1.4, fontWeight: 'bold'}}>
+              <div style = {{fontSize: 30, marginTop: 10, lineHeight: 1.4, fontWeight: 'bold'}}>
                 To Democratize Computing Power
               </div>
-              <div style = {{color: "#555555", marginTop: 30, lineHeight: 1.7, fontSize: 18}}>
+              <div style = {{color: "#555555", marginTop: 30, lineHeight: 1.7, fontSize: 16}}>
                 At Fractal, we envision laptops that render 4K video at lightning speeds. Chromebooks and Macs 
                 that easily run Windows or Linux. PCs whose hardware can be upgraded at the click of a button. 
               </div>
-              <div style = {{color: "#555555", marginTop: 15, lineHeight: 1.7, fontSize: 18}}>
+              <div style = {{color: "#555555", marginTop: 15, lineHeight: 1.7, fontSize: 16}}>
                 We believe that a single cloud PC should handle all your computing needs.
               </div>
             </Col>
@@ -251,11 +251,19 @@ class About extends Component {
         </div>
         <div style = {{background: 'linear-gradient(180deg, #F9F9F9 61.47%, #FFFFFF 100%)'}}>
         <div className = "fractal-container" style = {{paddingTop: 50, paddingBottom: 100, textAlign: 'center'}}>
+          {
+          this.state.width > 700
+          ?
           <div style = {{fontSize: 40}}>
             <span className = "blue-gradient">
               Create My Cloud PC
             </span>
           </div>
+          :
+          <div style = {{fontSize: 40}}>
+            Create My Cloud PC
+          </div>
+          }
           <div style = {{color: "#555555", lineHeight: 1.7, fontSize: 18, maxWidth: 600, margin: 'auto', marginTop: 10}}>
             Experience the next generation of personal computing today.
           </div>

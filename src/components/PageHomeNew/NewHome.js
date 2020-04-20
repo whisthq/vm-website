@@ -533,8 +533,8 @@ class PageHome extends Component {
                       / mo
                     </div>
                   </div>
-                  <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
-                    +$0.50 per hour usage
+                  <div style = {{color: "#555555", display: 'block', position: 'relative', bottom: 5}}>
+                    +$0.70 per hour usage
                   </div>
                 </div>
               </Col>
@@ -555,8 +555,8 @@ class PageHome extends Component {
                       / mo
                     </div>
                   </div>
-                  <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
-                    +$0.50 per hour usage
+                  <div style = {{color: "#555555", display: 'block', position: 'relative', bottom: 5}}>
+                    +$0.70 per hour usage
                   </div>
                 </div>
               </Col>
@@ -574,14 +574,14 @@ class PageHome extends Component {
                       $
                     </div>
                     <div style = {{display: 'inline', float: 'left', position: 'relative', fontSize: 70, fontWeight: 'bold'}}>
-                      35
+                      39
                     </div>
                     <div style = {{display: 'inline', float: 'left', position: 'relative', marginLeft: 8, top: 60}}>
                       / mo
                     </div>
                   </div>
-                  <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
-                    8 hours usage per day
+                  <div style = {{color: "#555555", display: 'block', position: 'relative', bottom: 5}}>
+                    6 hours usage per day
                   </div>
                 </div>
               </Col>
@@ -596,14 +596,14 @@ class PageHome extends Component {
                       $
                     </div>
                     <div style = {{display: 'inline', float: 'left', position: 'relative', fontSize: 70, fontWeight: 'bold'}}>
-                      35
+                      39
                     </div>
                     <div style = {{display: 'inline', float: 'left', position: 'relative', marginLeft: 8, top: 60}}>
                       / mo
                     </div>
                   </div>
-                  <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
-                    8 hours usage per day
+                  <div style = {{color: "#555555", display: 'block', position: 'relative', bottom: 5}}>
+                    6 hours usage per day
                   </div>
                 </div>
               </Col>
@@ -621,13 +621,13 @@ class PageHome extends Component {
                       $
                     </div>
                     <div style = {{display: 'inline', float: 'left', position: 'relative', fontSize: 70, fontWeight: 'bold'}}>
-                      90
+                      99
                     </div>
                     <div style = {{display: 'inline', float: 'left', position: 'relative', marginLeft: 8, top: 60}}>
                       / mo
                     </div>
                   </div>
-                  <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
+                  <div style = {{color: "#555555", display: 'block', position: 'relative', bottom: 5}}>
                     Unlimited monthly usage
                   </div>
                 </div>
@@ -643,13 +643,13 @@ class PageHome extends Component {
                       $
                     </div>
                     <div style = {{display: 'inline', float: 'left', position: 'relative', fontSize: 70, fontWeight: 'bold'}}>
-                      90
+                      99
                     </div>
                     <div style = {{display: 'inline', float: 'left', position: 'relative', marginLeft: 8, top: 60}}>
                       / mo
                     </div>
                   </div>
-                  <div style = {{color: "#777777", display: 'block', position: 'relative', bottom: 5}}>
+                  <div style = {{color: "#555555", display: 'block', position: 'relative', bottom: 5}}>
                     Unlimited monthly usage
                   </div>
                 </div>

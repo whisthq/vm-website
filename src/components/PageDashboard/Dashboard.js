@@ -19,6 +19,7 @@ import { FaCircle, FaTimes, FaEye, FaEyeSlash, FaCheckCircle, FaCheck, FaUser, F
   FaArrowRight, FaPlus, FaPlay, FaFastForward, FaPause, FaWindows, FaApple, FaUbuntu, FaAndroid, FaTag } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { HashLink } from 'react-router-hash-link';
 
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom'
@@ -39,7 +40,7 @@ class Dashboard extends Component {
     this.state = {width: 0, height: 0, modalShow: false, showPopup: false, day: 0, month: 0, year: 0, 
       created: '', billStart: '', billEnd: '', cancelling: false, hidePassword: true, exitSurvey: false,
       exitFeedback: '', emailShare: false, emails: [], friendsEmail: '', trialEnd: '',
-      showEmailButton: false, emailBoxWidth: 45, sendingEmails: false, purchaseFeedback: ''}
+      showEmailButton: false, emailBoxWidth: 45, sendingEmails: false, purchaseFeedback: '', waitlist: true}
     this.customWidth = React.createRef()
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
@@ -204,6 +205,22 @@ class Dashboard extends Component {
       modalClose()
     }
 
+    if(this.state.waitlist) {
+      return(
+        <div style = {{backgroundColor: "white", minHeight: '100vh', overflowX: 'hidden !important', textAlign: 'center'}}>
+          <Header color = "#333333" button = "#5ec3eb"/>
+          <div style = {{paddingTop: 200, textAlign: 'center', maxWidth: 500, margin: 'auto', marginBottom: 60}}>
+            {this.state.month} {this.state.day}, {this.state.year}: Fractal is currently undergoing a major update and will be back online within a few days.
+            We apologize for the inconvenience!
+          </div>
+          <HashLink to = "/#top" style = {{outline: 'none', textDecoration: 'none'}}>
+            <Button style = {{color: '#5ec3eb', border: 'none', fontWeight: 'bold', padding: '12px 25px', outline: 'none', background: "rgba(94, 195, 235,0.1)"}}>
+              Back to Home
+            </Button>
+          </HashLink>
+        </div>
+      )
+    } else {
     return (
       <div>
       {
@@ -262,7 +279,7 @@ class Dashboard extends Component {
               </div>
               <Popup trigger = {
               <div style = {{display: 'inline', float: 'right', marginTop: 40}}>
-                <Button style = {{marginLeft: 35, color: '#5ec3eb', border: 'solid 1px #5ec3eb', fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,background: "rgba(94, 195, 235,0.1)"}}>Get a Free Month</Button>
+                <Button style = {{marginLeft: 35, color: '#5ec3eb', border: 'none', fontWeight: 'bold', padding: '12px 25px', outline: 'none', background: "rgba(94, 195, 235,0.1)"}}>Get a Free Month</Button>
               </div>
               } modal
                 onClose = {() => this.showEmailShare(false)} 
@@ -724,6 +741,7 @@ class Dashboard extends Component {
       }
       </div>
     );
+  }
   }
 }
 

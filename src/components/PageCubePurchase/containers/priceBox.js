@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 import '../../../static/App.css';
 
-class SpecBox extends Component {
+class PriceBox extends Component {
   constructor(props) {
     super(props)
     this.state = { width: 0, height: 0, modalShow: false }
@@ -35,10 +35,9 @@ class SpecBox extends Component {
     }
 
     return(
-      <div style = {{background: `${ this.props.color }`, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', borderRadius: 5, minHeight: 300}}>
-        <div style = {{padding: '40px 40px 0px 40px', color: '#111111', borderRadius: '5px 5px 0px 0px'}}>
+      <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: `${ this.props.color }`, padding: 30, minHeight: 190, width: '100%', marginBottom: 20}}>
           <div style = {{display: 'flex', justifyContent: 'space-between'}}>
-            <div style = {{color: '#111111', fontSize: 26, fontWeight: 'bold', float: 'left'}}>
+            <div style = {{color: '#111111', fontSize: 22, fontWeight: 'bold', float: 'left'}}>
               {this.props.name}
             </div>
             {
@@ -51,30 +50,26 @@ class SpecBox extends Component {
             </div>
             }
           </div>
-          <div style = {{fontSize: 12, color: "#555555"}}>
-            Starts at {this.props.pricing}
+          <div style = {{fontSize: 12, color: '#555555'}}>
+            Start with free trial
           </div>
-          <div style = {{color: '#111111', marginTop: 20, height: 50}}>
-            {this.props.description}
+        <div style = {{marginTop: 10, display: 'block', height: 80}}>
+          <div style = {{display: 'inline', float: 'left', position: 'relative', marginRight: 5, top: 10}}>
+            $
+          </div>
+          <div style = {{display: 'inline', float: 'left', position: 'relative', fontSize: 40, fontWeight: 'bold'}}>
+            {this.props.price}
+          </div>
+          <div style = {{display: 'inline', float: 'left', position: 'relative', marginLeft: 8, top: 30, fontSize: 14}}>
+            / mo
           </div>
         </div>
-        <Row style = {{color: '#333333', padding: 40, fontSize: 12}}>
-          <Col style = {{marginBottom: 10}} md = {5}>
-            {this.props.cpu} CPU Cores
-          </Col>
-          <Col style = {{marginBottom: 10}} md = {7}>
-            {this.props.gpu} NVIDIA Tesla M60
-          </Col>
-          <Col style = {{marginBottom: 10}} md = {5}>
-            {this.props.ram}GB RAM
-          </Col>
-          <Col style = {{marginBottom: 10}} md = {7}>
-            Starts at 120GB SSD
-          </Col>
-        </Row>
+        <div style = {{color: "#333333", display: 'block', position: 'relative', bottom: 5, fontSize: 14}}>
+          {this.props.details}
+        </div>
       </div>
     )
   }
 }
 
-export default SpecBox
+export default PriceBox

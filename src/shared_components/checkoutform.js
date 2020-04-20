@@ -33,7 +33,7 @@ class CheckoutForm extends Component {
     if(token) {
       if(token.id) {
         this.props.dispatch(chargeStripe(token.id,  3500, this.props.location, this.state.code))
-        this.props.dispatch(createDisk(this.findVMLocation(this.props.location)))
+        this.props.dispatch(createDisk(this.findVMLocation(this.props.location, this.props.vm_size)))
       } else {
         this.setState({processing: false, errorMessage: 'Your card info was declined. Please try again.'})
       }
@@ -53,9 +53,12 @@ class CheckoutForm extends Component {
   }
 
   findVMLocation = (location) => {
-    var eastus = ['ME', 'NH', 'MA', 'NY', 'VT', 'RI', 'CT', 'NJ', 'DE', 'MD', 'DC', 'PA', 'WV', 'NC', 'SC', 'GA', 'FL', 'AL']
-    var southcentralus = ['TX', 'AR', 'OK', 'NM', 'LA', 'CO']
-    var northcentralus = ['IL', 'OH', 'IN', 'KY', 'MI', 'TN', 'WI', 'MN', 'IA', 'MO', 'MS', 'KS', 'NE']
+    var eastus = ['Maine', 'New Hampshire', 'Massachusetts', 'New York', 'Vermont', 'Rhode Island', 
+      'Connecticut', 'New Jersey', 'Delaware', 'Maryland', 'Pennsylvania', 'Virginia', 'West Virginia', 
+      'North Carolina', 'South Carolina', 'Georgia', 'Florida', 'Alabama']
+    var southcentralus = ['Texas', 'Arkansas', 'Oklahoma', 'New Mexico', 'Louisiana', 'Colorado']
+    var northcentralus = ['Illinois', 'Ohio', 'Indiana', 'Kentucky', 'Michigan', 'Tennessee', 
+      'Wisconsin', 'Minnesota', 'Iowa', 'Missouri', 'Mississippi', 'Kansas', 'Nebraska']
 
     if(eastus.includes(location)) {
       return('eastus')
@@ -66,11 +69,10 @@ class CheckoutForm extends Component {
     }
   }
 
-  monthConvert = (month) => {
-    var months = [ "January", "February", "March", "April", "May", "June", 
-                   "July", "August", "September", "October", "November", "December" ];
-    var selectedMonthName = months[month];
-    return selectedMonthName;
+  submitNoPayment = () => {
+    this.setState({processing: true})
+    this.props.dispatch(insertCustomer(this.props.purchase_location))
+    this.props.dispatch(createDisk(this.findVMLocation(this.props.purchase_location)))
   }
 
   unixToDate = (unix) => {
@@ -177,10 +179,10 @@ class CheckoutForm extends Component {
           ?
           <div style = {{display: 'block'}}>
             <div>
-              <Button onClick = {this.handleSubmit} style = {{marginBottom: 10, width: '48%', maxWidth: 600, background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', paddingTop: 8, paddingBottom: 8, height: 40, float: 'left', display: 'inline'}}>
+              <Button onClick = {this.handleSubmit} style = {{marginBottom: 10, width: '48%', maxWidth: 600, background: "#111111", border: 0, marginTop: 20, fontSize: 14, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', paddingTop: 8, paddingBottom: 8, height: 40, float: 'left', display: 'inline'}}>
                 CONTINUE WITH CARD
               </Button>
-              <Button onClick = {() => this.submitNoPayment()} style = {{marginBottom: 10, width: '48%', maxWidth: 600, backgroundColor: "rgba(0, 0, 0, 0.05)", border: 'solid 1px #555555', fontWeight: 'bold', marginTop: 20, fontSize: 14, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', paddingTop: 8, paddingBottom: 8, color: '#555555', height: 40, float: 'right', display: 'inline'}}>
+              <Button onClick = {() => this.submitNoPayment()} style = {{marginBottom: 10, width: '48%', maxWidth: 600, background: "rgba(94, 195, 235, 0.2)", fontWeight: 'bold', border: 'none', marginTop: 20, fontSize: 14, paddingTop: 8, paddingBottom: 8, color: '#1ba8e0', height: 40, float: 'right', display: 'inline'}}>
                 CONTINUE WITHOUT CARD
               </Button>
             </div><br/>
@@ -213,8 +215,8 @@ class CheckoutForm extends Component {
             <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>$0.00</div>
           </div><br/>
           <div style = {{fontSize: 12, marginTop: 1, display: 'block'}}>
-            <div style = {{display: 'inline', float: 'left'}}>Monthly Charge</div>
-            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>$35.00</div>
+            <div style = {{display: 'inline', float: 'left'}}>Plan</div>
+            <div style = {{display: 'inline', float: 'right', fontWeight: 'bold'}}>{this.props.plan}</div>
           </div><br/>
           {
           this.props.credits && this.props.credits > 0

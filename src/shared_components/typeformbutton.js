@@ -10,11 +10,19 @@ class TypeformButton extends Component {
   render() {
     return (
       <div>
-          <button style = {{fontWeight: 'bold', textAlign: 'left', marginLeft: 39, marginTop: 10, border: 'solid 1px #5ec3eb', color: '#5ec3eb', borderRadius: 5, padding: '5px 10px', background: 'rgba(94, 195, 235, 0.25)', width: 175}}>
-            <span style = {{border: 'solid 1px #5ec3eb', fontSize: 10, borderRadius: 2, background: '#edf6fa', padding: '4px 8px', fontWeight: 'bold', marginRight: 10, position: 'relative', bottom: 2}}>
-              {this.props.buttonLabel}
-            </span>
-            {this.props.buttonText}
+          <button style = {{outline: 'none', fontWeight: 'bold', textAlign: 'left', marginTop: 10, border: 'none', color: '#1ba8e0', borderRadius: 3, padding: '2px 20px', background: 'rgba(94, 195, 235, 0.2)', width: 140}}>
+            {
+            this.props.checked
+            ?
+            <div style = {{width: 15, height: 15, borderRadius: 8, border: 'solid 1px #1ba8e0', background: '#27a7d6', position: 'relative', top: 13}}>
+            </div>
+            :
+            <div style = {{width: 15, height: 15, borderRadius: 8, border: 'solid 1px #1ba8e0', background: 'none', position: 'relative', top: 13}}>
+            </div>
+            }
+            <div style = {{position: 'relative', bottom: 7, marginLeft: 30}}>
+              {this.props.buttonText}
+            </div>
           </button>
       </div>
     )

@@ -139,7 +139,7 @@ class Header extends Component {
           {
           this.state.menu
           ?
-          <div style = {{position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'white', zIndex: 1000}}>
+          <div style = {{position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'white', zIndex: 1000, textAlign: 'center'}}>
             <div style = {{padding: 35, paddingTop: 30}}>
               <FaTimes onClick = {() => this.openMenu(false)} style = {{color: "#333333", float: 'right', height: 30}}/>
             </div>

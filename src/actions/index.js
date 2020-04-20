@@ -63,6 +63,7 @@ export const STORE_ACCOUNT_LOCKED = "STORE_ACCOUNT_LOCKED"
 export const STORE_JWT = "STORE_JWT"
 export const CREATE_DISK = "CREATE_DISK"
 export const GET_DISK_STATUS = "GET_DISK_STATUS"
+export const STORE_PURCHASE_LOCATION = "STORE_PURCHASE_LOCATION"
 
 export function userLogin(user, password, create) {
 	return {
@@ -409,10 +410,11 @@ export function storeJWT(access_token, refresh_token) {
 	}
 }
 
-export function createDisk(location) {
+export function createDisk(location, vm_size) {
 	return {
 		type: CREATE_DISK,
-		location
+		location,
+		vm_size
 	}
 }
 
@@ -420,5 +422,12 @@ export function getDiskStatus(id) {
 	return {
 		type: GET_DISK_STATUS,
 		id
+	}
+}
+
+export function storePurchaseLocation(location) {
+	return {
+		type: STORE_PURCHASE_LOCATION,
+		location
 	}
 }

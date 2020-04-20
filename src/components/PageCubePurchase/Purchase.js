@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom'
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import { HashLink } from 'react-router-hash-link';
 import { FaArrowRight } from 'react-icons/fa'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleNotch, faKey } from '@fortawesome/free-solid-svg-icons'
 
 import Header from '../../shared_components/header.js'
 import TypeformButton from '../../shared_components/typeformbutton.js'
@@ -18,11 +20,16 @@ import CheckoutForm from '../../shared_components/checkoutform.js'
 import { config } from '../../constants.js'
 import '../../static/App.css';
 import StripeBadge from '../../assets/powered_by_stripe.svg'
+import Autocomplete from './AutoComplete.js'
+import { options } from './Options.js'
+import { storePurchaseLocation, insertCustomer, createDisk } from '../../actions/index.js'
+import SpecBox from './containers/specBox.js'
 
 class Purchase extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, modalShow: false, continue: false, step: 1.0, exit: false, location: '' }
+    this.state = { width: 0, height: 0, modalShow: false, continue: false, step: 1.0, exit: false, 
+      location: '', continue2: false, computer: '', plan: '', country: '', processing: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 
@@ -30,9 +37,7 @@ class Purchase extends Component {
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
-    if(this.props.enhanced > 0 || this.props.base > 0 || this.props.power > 0) {
-      this.setState({ continue: true })
-    }
+    this.props.dispatch(storePurchaseLocation(''))
   }
 
   componentWillUnmount() {
@@ -52,6 +57,18 @@ class Purchase extends Component {
     this.setState({step: this.state.step + 1})
   }
 
+  setCountry = (country) => {
+    this.setState({country: country})
+  }
+
+  encodeComputer = (computer) => {
+    if(computer === 'Medium') {
+      return 'NV6'
+    } else {
+      return 'NV12'
+    }
+  }
+
   handleClick1 = (supported) => {
     if(supported) {
       this.setState({step: 2, exit: false})
@@ -60,14 +77,71 @@ class Purchase extends Component {
     }
   }
 
-  handleClick2 = (location) => {
-    var unsupported = ["WA", "OR", "CA", "NV", "ID", "MT", "WY", "AK", "SD", "ND", "AZ", "HI"]
-    if(unsupported.includes(location)) {
-      this.setState({step: 2, exit: true})
-    } else {
-      this.setState({step: 3, location: location})
+  handleClick2 = () => {
+    if(options.includes(this.props.purchase_location)) {
+      var unsupported = ["Washington", "Oregon", "California", "Nevada", "Idaho", "Montana", "Wyoming", "Alaska", 
+      "South Dakota", "North Dakota", "Arizona", "Hawaii"]
+      if(unsupported.includes(this.props.purchase_location)) {
+        this.setState({step: 2, exit: true, continue2: false}, function() {
+          this.props.dispatch(storePurchaseLocation(''))
+        })
+      } else {
+        this.setState({step: 3, location: this.props.purchase_location, continue2: false}, function() {
+          this.props.dispatch(storePurchaseLocation(''))
+        })
+      }
     }
   }
+
+  findVMLocation = (location) => {
+    var eastus = ['Maine', 'New Hampshire', 'Massachusetts', 'New York', 'Vermont', 'Rhode Island', 
+      'Connecticut', 'New Jersey', 'Delaware', 'Maryland', 'Pennsylvania', 'Virginia', 'West Virginia', 
+      'North Carolina', 'South Carolina', 'Georgia', 'Florida', 'Alabama']
+    var southcentralus = ['Texas', 'Arkansas', 'Oklahoma', 'New Mexico', 'Louisiana', 'Colorado']
+    var northcentralus = ['Illinois', 'Ohio', 'Indiana', 'Kentucky', 'Michigan', 'Tennessee', 
+      'Wisconsin', 'Minnesota', 'Iowa', 'Missouri', 'Mississippi', 'Kansas', 'Nebraska']
+
+    if(eastus.includes(location)) {
+      return('eastus')
+    } else if(southcentralus.includes(location)) {
+      return('southcentralus')
+    } else {
+      return('northcentralus')
+    }
+  }
+
+  submitNoPayment = () => {
+    this.setState({processing: true})
+    this.props.dispatch(insertCustomer(this.state.location))
+    this.props.dispatch(createDisk(this.findVMLocation(this.state.location), this.encodeComputer(this.state.computer)))
+  }
+
+  handleKeyPress1 = (event) => {
+    if(event.key === 'Enter') {
+      if(this.state.country === 'United States') {
+        this.setState({step: 2, exit: false})
+      } else if(this.state.country === 'Non-US') {
+        this.setState({step: 2, exit: true})
+      }
+    }
+  }
+
+  handleKeyPress2 = (event) => {
+    if(event.key === 'Enter' && options.includes(this.props.purchase_location)) {
+      if(this.state.continue2) {
+       this.handleClick2()
+      } else {
+        this.setState({continue2: true})
+      }
+    }
+  }
+
+  handleKeyPress3 = (event) => {
+    if(event.key === 'Enter') {
+      this.submitNoPayment()
+    }
+  }
+
 
   render() {
     let modalClose = () => this.setState({ modalShow: false })
@@ -78,26 +152,157 @@ class Purchase extends Component {
     const fonts = [{ cssSrc: "https://fonts.googleapis.com/css?family=Maven+Pro" }]
     var public_key = config.stripe.PUBLIC_KEY
 
+    const renderLeftMenu = () => {
+      if(this.state.step === 1) {
+        return(
+          <div>
+            <div style = {{paddingBottom: 20}}>
+              <div style = {{fontWeight: 'bold', color: '#111111'}}>Country</div>  
+              <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                {this.state.country}
+              </div>
+            </div>
+            <div style = {{paddingBottom: 20}}>
+              <div style = {{color: '#B9B9B9'}}>State</div>  
+              <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                {this.state.location}
+              </div>
+            </div>
+            <div style = {{paddingBottom: 20}}>
+              <div style = {{color: '#B9B9B9'}}>Cloud PC Type</div>  
+              <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                {this.state.computer}
+              </div>
+            </div>
+          </div>
+        )
+      } else if(this.state.step === 2) {
+        return(
+          <div>
+            <div style = {{paddingBottom: 20}}>
+              <div style = {{color: '#B9B9B9'}}>Country</div>  
+              <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                {this.state.country}
+              </div>
+            </div>
+            <div style = {{paddingBottom: 20}}>
+              <div style = {{fontWeight: 'bold', color: '#111111'}}>State</div>  
+              <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                {this.state.location}
+              </div>
+            </div>
+            <div style = {{paddingBottom: 20}}>
+              <div style = {{color: '#B9B9B9'}}>Cloud PC Type</div>  
+              <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                {this.state.computer}
+              </div>
+            </div>
+          </div>
+        )
+      } else if(this.state.step === 3) {
+        return(
+          <div>
+            <div style = {{paddingBottom: 20}}>
+              <div style = {{color: '#B9B9B9'}}>Country</div>  
+              <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                {this.state.country}
+              </div>
+            </div>
+            <div style = {{paddingBottom: 20}}>
+              <div style = {{color: '#B9B9B9'}}>State</div>  
+              <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                {this.state.location}
+              </div>
+            </div>
+            <div style = {{paddingBottom: 20}}>
+              <div style = {{color: '#111111', fontWeight: 'bold'}}>Cloud PC Type</div>  
+              <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                {this.state.computer}
+              </div>
+            </div>
+          </div>
+        )
+      } else {
+        return(
+          <div>
+            <div style = {{paddingBottom: 20}}>
+              <div style = {{color: '#B9B9B9'}}>Country</div>  
+              <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                {this.state.country}
+              </div>
+            </div>
+            <div style = {{paddingBottom: 20}}>
+              <div style = {{color: '#B9B9B9'}}>State</div>  
+              <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                {this.state.location}
+              </div>
+            </div>
+            <div style = {{paddingBottom: 20}}>
+              <div style = {{color: '#B9B9B9'}}>Cloud PC Type</div>  
+              <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                {this.state.computer}
+              </div>
+            </div>
+          </div>
+        )
+      }
+    }
+
     const renderSurvey = () => {
       if(this.state.step === 1) {
         return(
-          <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
-            <div style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', borderRadius: 10, maxWidth: 700}}>
+          <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 300px)', overflowX: 'hidden !important'}}>
+            <div style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', borderRadius: 5, maxWidth: 700}}>
               <span style = {{position: 'relative', bottom: 2}}>
                 1 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
               </span>
               <span style = {{fontSize: 22, paddingLeft: 10}}>Do you live in the United States?</span>
-              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
+              <div style = {{marginTop: 5, color: '#333333', paddingLeft: 39, fontSize: 16}}>
                 Currently, Fractal only has servers in certain geographic locations.
               </div>
-              <div style = {{marginTop: 20}}>
-                <div onClick = {() => this.handleClick1(true)} style = {{maxWidth: 200}}>
-                  <TypeformButton buttonLabel = "Y" buttonText = "YES"/>
+              {
+              this.state.country === ''
+              ?
+              <div style = {{outline: 'none', marginTop: 20, display: 'flex', justifyContent: 'space-between', width: 480, paddingLeft: 39}}>
+                <div onClick = {() => this.setCountry('United States')} style = {{maxWidth: 150, marginBottom: 5}}>
+                  <TypeformButton buttonLabel = "Y" buttonText = "Yes"/>
                 </div>
-                <div onClick = {() => this.handleClick1(false)} style = {{maxWidth: 200}}>
-                  <TypeformButton buttonLabel = "N" buttonText = "NO" onClick = {() => this.handleClick1(false)}/>
+                <div onClick = {() => this.setCountry('Non-US')} style = {{maxWidth: 150}}>
+                  <TypeformButton buttonLabel = "N" buttonText = "No"/>
                 </div>
+                <Button disabled = "true" style = {{background: '#111111', border: 'none', width: 120, height: 42, fontSize: 14, marginTop: 10}}>
+                  Continue
+                </Button>
               </div>
+              :
+              (
+              this.state.country === 'United States'
+              ?
+              <div tabIndex="0" onKeyDown={(e) => this.handleKeyPress1(e)}  style = {{marginTop: 20, display: 'flex', justifyContent: 'space-between', width: 480, paddingLeft: 39}}>
+                <div onClick = {() => this.setCountry('United States')} style = {{maxWidth: 150, marginBottom: 5}}>
+                  <TypeformButton buttonLabel = "Y" buttonText = "Yes" checked/>
+                </div>
+                <div onClick = {() => this.setCountry('Non-US')} style = {{maxWidth: 150}}>
+                  <TypeformButton buttonLabel = "N" buttonText = "No" />
+                </div>
+                <Button onClick = {() => this.handleClick1(true)} style = {{background: '#111111', border: 'none', width: 120, height: 42, fontSize: 14, marginTop: 10}}>
+                  Continue
+                </Button>
+              </div>
+              :
+              <div tabIndex="0" onKeyDown={(e) => this.handleKeyPress1(e)} style = {{marginTop: 20, display: 'flex', justifyContent: 'space-between', width: 480, paddingLeft: 39}}>
+                <div onClick = {() => this.setCountry('United States')} style = {{maxWidth: 150, marginBottom: 5}}>
+                  <TypeformButton buttonLabel = "Y" buttonText = "Yes"/>
+                </div>
+                <div onClick = {() => this.setCountry('Non-US')} style = {{maxWidth: 150}}>
+                  <TypeformButton buttonLabel = "N" buttonText = "No" checked/>
+                </div>
+                <Button onClick = {() => this.handleClick1(false)} style = {{background: '#111111', border: 'none', width: 120, height: 42, fontSize: 14, marginTop: 10}}>
+                  Continue
+                </Button>
+              </div>
+              )
+              }
               <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
                 <Link to = "/dashboard">
                 <div className = "typeform-up" style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
@@ -115,16 +320,16 @@ class Purchase extends Component {
         )
       } else if(this.state.step === 2 && this.state.exit) {
         return (
-        <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
-          <div style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', borderRadius: 10, maxWidth: 700, fontSize: 16, lineHeight: 1.6}}>
-            <div style = {{fontSize: 22, marginBottom: 20}}>We'll be available in your area soon</div>
+        <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 300px)', overflowX: 'hidden !important'}}>
+          <div style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', borderRadius: 5, maxWidth: 700, fontSize: 16, lineHeight: 1.6}}>
+            <div style = {{fontSize: 26, marginBottom: 20}}>We'll be available in your area soon</div>
             <div>
               Currently, Fractal is only available in the Eastern and Midwestern United States due to the locations of our servers. 
               We are quickly expanding to West Coast and beyond; if you'd like to be notified when Fractal is available in your location, 
               please join our wait list!
             </div>
             <HashLink to = "/#beta" style = {{textDecoration: 'none'}}>
-              <Button style = {{display: 'inline', marginTop: 50, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.4)'}}>Join Wait List</Button>
+              <Button style = {{display: 'inline', marginTop: 50, padding: "12px 50px", background: "#111111", border: 'none', color: 'white', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)'}}>Join Wait List</Button>
             </HashLink>
           </div>
           <div style = {{display: 'inline', fontSize: 12, marginTop: 40, color: '#333333', marginLeft: 25, position: 'relative', top: 24}}>
@@ -143,168 +348,31 @@ class Purchase extends Component {
         )
       } else if(this.state.step === 2 && !this.state.exit) {
         return(
-          <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 400px)'}}>
-            <div className = "state-select" style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', borderRadius: 10, maxWidth: 700, maxHeight: 'calc(100vh - 250px)'}}>
+          <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 300px)'}} onKeyPress = {this.handleKeyPress2}>
+            <div className = "state-select" style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', borderRadius: 5, maxWidth: 700, maxHeight: 'calc(100vh - 150px)'}}>
               <span style = {{position: 'relative', bottom: 2}}>
                 2 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
               </span>
               <span style = {{fontSize: 22, paddingLeft: 10}}>What state do you live in?</span>
-              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16}}>
+              <div style = {{marginTop: 5, color: '#333333', paddingLeft: 39, fontSize: 16}}>
                 So we can find servers closest to you.
               </div>
-              <div style = {{marginTop: 20, overflowY: 'scroll', maxHeight: 'calc(100vh - 420px)'}}>
-                  <div onClick = {() => this.handleClick2("AL")}>
-                    <TypeformButton buttonLabel = "A" buttonText = "AL"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("AK")}>
-                    <TypeformButton buttonLabel = "B" buttonText = "AK"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("AZ")}>
-                    <TypeformButton buttonLabel = "C" buttonText = "AZ"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("AR")}>
-                    <TypeformButton buttonLabel = "D" buttonText = "AR"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("CA")}>
-                    <TypeformButton buttonLabel = "E" buttonText = "CA"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("CO")}>
-                    <TypeformButton buttonLabel = "F" buttonText = "CO"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("CT")}>         
-                    <TypeformButton buttonLabel = "G" buttonText = "CT"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("DE")}> 
-                    <TypeformButton buttonLabel = "H" buttonText = "DE"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("FL")}> 
-                    <TypeformButton buttonLabel = "I" buttonText = "FL"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("GA")}> 
-                    <TypeformButton buttonLabel = "J" buttonText = "GA"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("HI")}> 
-                    <TypeformButton buttonLabel = "K" buttonText = "HI"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("ID")}> 
-                    <TypeformButton buttonLabel = "L" buttonText = "ID"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("IL")}> 
-                    <TypeformButton buttonLabel = "M" buttonText = "IL"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("IN")}> 
-                    <TypeformButton buttonLabel = "N" buttonText = "IN"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("IA")}> 
-                    <TypeformButton buttonLabel = "O" buttonText = "IA"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("KS")}> 
-                    <TypeformButton buttonLabel = "P" buttonText = "KS"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("KY")}> 
-                    <TypeformButton buttonLabel = "Q" buttonText = "KY"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("LA")}> 
-                    <TypeformButton buttonLabel = "R" buttonText = "LA"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("ME")}> 
-                    <TypeformButton buttonLabel = "S" buttonText = "ME"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("MD")}> 
-                    <TypeformButton buttonLabel = "T" buttonText = "MD"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("MA")}> 
-                    <TypeformButton buttonLabel = "U" buttonText = "MA"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("MI")}> 
-                    <TypeformButton buttonLabel = "V" buttonText = "MI"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("MN")}> 
-                    <TypeformButton buttonLabel = "W" buttonText = "MN"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("MS")}> 
-                    <TypeformButton buttonLabel = "X" buttonText = "MS"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("MO")}> 
-                    <TypeformButton buttonLabel = "Y" buttonText = "MO"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("MT")}> 
-                    <TypeformButton buttonLabel = "Z" buttonText = "MT"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("NE")}> 
-                    <TypeformButton buttonLabel = "AA" buttonText = "NE"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("NV")}> 
-                    <TypeformButton buttonLabel = "BB" buttonText = "NV"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("NH")}> 
-                    <TypeformButton buttonLabel = "CC" buttonText = "NH"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("NJ")}> 
-                    <TypeformButton buttonLabel = "DD" buttonText = "NJ"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("NM")}> 
-                    <TypeformButton buttonLabel = "EE" buttonText = "NM"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("NY")}> 
-                    <TypeformButton buttonLabel = "FF" buttonText = "NY"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("NC")}> 
-                    <TypeformButton buttonLabel = "GG" buttonText = "NC"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("ND")}> 
-                    <TypeformButton buttonLabel = "HH" buttonText = "ND"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("OH")}> 
-                    <TypeformButton buttonLabel = "II" buttonText = "OH"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("OK")}> 
-                    <TypeformButton buttonLabel = "JJ" buttonText = "OK"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("OR")}> 
-                    <TypeformButton buttonLabel = "KK" buttonText = "OR"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("PA")}> 
-                    <TypeformButton buttonLabel = "LL" buttonText = "PA"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("RI")}> 
-                    <TypeformButton buttonLabel = "MM" buttonText = "RI"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("SC")}> 
-                    <TypeformButton buttonLabel = "NN" buttonText = "SC"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("SD")}> 
-                    <TypeformButton buttonLabel = "OO" buttonText = "SD"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("TN")}> 
-                    <TypeformButton buttonLabel = "PP" buttonText = "TN"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("TX")}> 
-                    <TypeformButton buttonLabel = "QQ" buttonText = "TX"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("UT")}> 
-                    <TypeformButton buttonLabel = "RR" buttonText = "UT"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("VT")}> 
-                    <TypeformButton buttonLabel = "SS" buttonText = "VT"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("VA")}> 
-                    <TypeformButton buttonLabel = "TT" buttonText = "VA"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("WA")}> 
-                    <TypeformButton buttonLabel = "UU" buttonText = "WA"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("WV")}> 
-                    <TypeformButton buttonLabel = "VV" buttonText = "WV"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("WI")}> 
-                    <TypeformButton buttonLabel = "WW" buttonText = "WI"/>
-                  </div>
-                  <div onClick = {() => this.handleClick2("WY")}> 
-                    <TypeformButton buttonLabel = "XX" buttonText = "WY"/>
-                  </div>
+              <div style = {{marginTop: 30, paddingLeft: 39}}>
+                <Autocomplete
+                  default={this.state.location}
+                  options={options}
+                />
+                {
+                options.includes(this.props.purchase_location)
+                ?
+                <Button onClick = {this.handleClick2} style = {{background: '#111111', border: 'none', padding: '10px 25px', display: 'inline', position: 'relative', bottom: 2}}>
+                  Continue
+                </Button>
+                :
+                <div></div>
+                }
               </div>
-              <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
+              <div style = {{position: 'fixed', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
                 <div onClick = {this.goBack} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
                   <FaAngleUp className = "typeform-up" style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
                 </div>
@@ -319,44 +387,93 @@ class Purchase extends Component {
         )
       } else if(this.state.step === 3) {
         return(
-          <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
-            <img src = {StripeBadge} style = {{width: 125, position: 'absolute', bottom: 30, marginLeft: 40}}/>
+          <div tabIndex="0" onKeyDown={(e) => this.handleKeyPress3(e)} style = {{outline: 'none', paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
             <div>
               <span style = {{position: 'relative', bottom: 2}}>
                 3 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
               </span>
-              <span style = {{fontSize: 22, paddingLeft: 10}}>Create My Cloud Computer</span>
+              <span style = {{fontSize: 22, paddingLeft: 10}}>Choose Your Cloud Computer</span>
+              <div style = {{marginTop: 5, color: '#333333', paddingLeft: 39, fontSize: 16, maxWidth: 650}}>
+                Select the specs that best suit your needs. You and always upgrade or downgrade later.
+              </div>
               {
-              this.props.credits && this.props.credits > 0
+              this.state.computer === ''
+              ?
+              <Row style = {{marginTop: 50, paddingLeft: 39, maxWidth: 800}}>
+                <Col md = {6} className = "pointerOnHover" onClick = {() => this.setState({computer: 'Medium'})}>
+                  <SpecBox name = "Medium" cpu = "6" gpu = "1/2" ram = "56" 
+                    description = "For 3D modelling, medium rendering, gaming."
+                    pricing = "Start with free trial"
+                    color = "white"/>
+                </Col>
+                <Col md = {6}>
+                  <SpecBox name = "Heavy" cpu = "12" gpu = "1" ram = "112" 
+                    description = {<div style = {{background: '#111111', color: "white", padding: '5px 10px', borderRadius: 5, width: 125, textAlign: 'center', fontSize: 14}}>Coming Soon</div>}
+                    pricing = "$5/mo + $1.30/hr"
+                    color = "white"/>
+                </Col>
+              </Row>
+              :
+              (
+              this.state.computer === 'Medium'
+              ?
+              <Row style = {{marginTop: 50, paddingLeft: 39, maxWidth: 800}}>
+                <Col md = {6} className = "pointerOnHover" onClick = {() => this.setState({computer: 'Medium'})}>
+                  <SpecBox name = "Medium" cpu = "6" gpu = "1/2" ram = "56" 
+                    description = "For 3D modelling, medium rendering, gaming."
+                    pricing = "$5/mo + $0.70/hr"
+                    color = "rgba(94, 195, 235, 0.1)"
+                    checked/>
+                </Col>
+                <Col md = {6}>
+                  <SpecBox name = "Heavy" cpu = "12" gpu = "1" ram = "112" 
+                    description = {<div style = {{background: '#111111', color: "white", padding: '5px 10px', borderRadius: 5, width: 125, textAlign: 'center', fontSize: 14}}>Coming Soon</div>}
+                    pricing = "$5/mo + $1.30/hr"
+                    color = "white"/>
+                </Col>
+              </Row>
+              :
+              <Row style = {{marginTop: 50, paddingLeft: 39, maxWidth: 800}}>
+                <Col md = {6} className = "pointerOnHover" onClick = {() => this.setState({computer: 'Medium'})}>
+                  <SpecBox name = "Medium" cpu = "6" gpu = "1/2" ram = "56" 
+                    description = "For 3D modelling, medium rendering, gaming."
+                    pricing = "$5/mo + $1.30/hr"
+                    color = "white"/>
+                </Col>
+                <Col md = {6}>
+                  <SpecBox name = "Heavy" cpu = "12" gpu = "1" ram = "112" 
+                    description = {<div style = {{background: '#111111', color: "white", padding: '5px 10px', borderRadius: 5, width: 125, textAlign: 'center', fontSize: 14}}>Coming Soon</div>}
+                    pricing = "$5/mo + $1.30/hr"
+                    color = "white"/>
+                </Col>
+              </Row>
+              )
+              }
+              {
+              this.state.computer !== ''
               ?
               (
-              this.props.credits === 1
+              this.state.processing
               ?
-              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 650}}>
-                Your first month is free, and you can cancel anytime. You can choose to enter a payment method now, or at any time 
-                before your free trial expires to access your cloud PC. 
+              <div style = {{display: 'flex', justifyContent: 'space-between', width: 355, marginTop: 40, paddingLeft: 39}}>
+                <Button disabled = "true" style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline'}}>
+                  <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 12, marginRight: 5, fontSize: 12}}/>
+                </Button>
               </div>
               :
-              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 650}}>
-                Your first {this.props.credits} months are free, and you can cancel anytime. You can choose to enter a payment method now, 
-                or at any time before your free trial expires to access your cloud PC. 
+              <div style = {{display: 'flex', justifyContent: 'space-between', width: 355, marginTop: 40, paddingLeft: 39}}>
+                <Button  onClick = {this.submitNoPayment} style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline'}}>Create Cloud PC</Button>
+                <div style = {{fontSize: 14, color: '#555555', position: 'relative', top: 12}}>
+                  <FaArrowRight style = {{marginRight: 6, height: 8, width: 15, position: 'relative', bottom: 1}}/>
+                  Press Enter
+                </div>
               </div>
               )
               :
-              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 650}}>
-                Your first seven days are free, and you can cancel anytime. You can choose to enter a payment method now, or at any time 
-                before your free trial expires to access your cloud PC. 
+              <div style = {{display: 'flex', justifyContent: 'space-between', width: 375, marginTop: 40, paddingLeft: 39}}>
+                <Button disabled = "true" style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline'}}>Create Cloud PC</Button>
               </div>
               }
-              <div style = {{marginTop: 40, marginLeft: 39}}>
-                <StripeProvider apiKey={public_key}>
-                  <div className="example"> 
-                    <Elements fonts = {fonts}>
-                      <CheckoutForm location = {this.state.location}/>
-                    </Elements>
-                  </div>
-                </StripeProvider>
-              </div>
               <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
                 <div onClick = {this.goBack} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
                   <FaAngleUp className = "typeform-up" style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
@@ -370,27 +487,15 @@ class Purchase extends Component {
             </div>
           </div>
         )
-      }
+      } 
     }
 
     return (
-      <div style = {{minHeight: '100vh', height: '100%', background: 'white'}}>
+      <div style = {{minHeight: '100vh', paddingBottom: 50, background: 'white'}}>
         <Header color = "#333333" button = "#5ec3eb"/>
         <div style = {{display: 'flex', width: '100vw', overflowX: 'hidden'}}>
           <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'none', height: '100%', minHeight: '100vh', zIndex: 0}}>
-            {
-            this.state.step < 3
-            ?
-            <div>
-              <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>YOUR INFO</div>
-              <div style = {{marginBottom: 20, color: '#B9B9B9', fontSize: 14}}>CREATE CLOUD PC</div>
-            </div>
-            :
-            <div>
-              <div style = {{marginBottom: 20, color: '#B9B9B9'}}>YOUR INFO</div>
-              <div style = {{marginBottom: 20, fontWeight: 'bold', fontSize: 14, color: '#111111'}}>CREATE CLOUD PC</div>
-            </div>
-            }         
+          {renderLeftMenu()}      
           </div>
           {renderSurvey()}
         </div>
@@ -406,7 +511,8 @@ function mapStateToProps(state) {
     vms: typeof state.AccountReducer.vm_credentials == "undefined" ? [] : state.AccountReducer.vm_credentials,
     percentage: typeof state.AccountReducer.progress == "undefined" ? 1 : state.AccountReducer.progress,
     id: state.AccountReducer.id,
-    credits: state.AccountReducer.credits
+    credits: state.AccountReducer.credits,
+    purchase_location: state.AccountReducer.purchase_location
   }
 }
 

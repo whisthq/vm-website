@@ -108,10 +108,14 @@ function* chargeStripe(action) {
 
 function* insertCustomer(action) {
   const state = yield select()
+
   const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/insert', {
     email: state.AccountReducer.user,
     location: action.location
   }, state.AccountReducer.access_token)
+
+  console.log("STRIPE RESPONSE")
+  console.log(json)
   if(json) {
     yield put(FormAction.customerCreated(json.status))
      history.push('/dashboard')
@@ -357,12 +361,16 @@ function* submitPurchaseFeedback(action) {
 
 function* createDisk(action) {
   const state = yield select()
+
   const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/disk/createFromImage', {
     username: state.AccountReducer.user,
-    location: action.location 
+    location: action.location,
+    vm_size: action.vm_size 
   }, state.AccountReducer.access_token)
 
+  console.log("DISK RESPOSNE")
   console.log(json)
+
   if (json) {
     if (json.ID) {
       yield put(FormAction.getDiskStatus(json.ID));
@@ -389,7 +397,6 @@ export default function* rootSaga() {
     takeEvery(FormAction.SEND_FINAL_CHARGE, sendFinalCharge),
     takeEvery(FormAction.APPLY_DISCOUNT, applyDiscount),
     takeEvery(FormAction.SUBSCRIBE_NEWSLETTER, subscribeNewsletter),
-    takeEvery(FormAction.SEND_SIGNUP_EMAIL, sendSignupEmail),
     takeEvery(FormAction.CHECK_VERIFIED_EMAIL, checkVerifiedEmail),
     takeEvery(FormAction.VERIFY_TOKEN, verifyToken),
     takeEvery(FormAction.SEND_VERIFICATION_EMAIL, sendVerificationEmail),
