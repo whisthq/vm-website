@@ -156,7 +156,7 @@ class About extends Component {
                           Philippe Noel
                         </div>
                         <div style = {{marginTop: 20, color: '#555555'}}>
-                          Prior to founding Fractal, Phil was a product manager at Microsoft Azure, machine learning researcher at Premier Tech, and TedX speaker. 
+                          Prior to Fractal, Phil was a product manager at Microsoft Azure, machine learning researcher at Premier Tech, and TedX speaker. 
                           Phil graduated from Harvard University, where he studied Computer Science and neuroscience.
                         </div>
                       </div>
