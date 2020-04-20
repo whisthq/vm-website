@@ -228,7 +228,7 @@ class Dashboard extends Component {
       ?
       <Redirect to = "/auth"/>
       :
-      <div style = {{backgroundColor: "white", minHeight: '100vh', overflowX: 'hidden !important'}}>
+      <div style = {{backgroundColor: "#F6F6F6", minHeight: '100vh', overflowX: 'hidden !important'}}>
         <Header color = "#333333" button = "#5ec3eb"/>
         {
         this.props.show_survey
@@ -471,28 +471,28 @@ class Dashboard extends Component {
             <div>
             <Row style = {{marginTop: 30}}>
               <Col md = {3} sm = {6} xs = {12}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {CPU} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>CPU</div>
                   <div style = {{color: "#555555", fontSize: 13}}>Intel Xeon E5</div>
                 </div>
               </Col>
               <Col md = {3} sm = {6} xs = {12}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {GPU} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>GPU</div>
                   <div style = {{color: "#555555", fontSize: 13}}>NVIDIA Tesla M60</div>
                 </div>
               </Col>
               <Col md = {3} sm = {6} xs = {12}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {RAM} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>RAM</div>
                   <div style = {{color: "#555555", fontSize: 13}}>56GB DDR4</div>
                 </div>
               </Col>
               <Col md = {3} sm = {6} xs = {12}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {SSD} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>SSD</div>
                   <div style = {{color: "#555555", fontSize: 13}}>120GB NVMe</div>
@@ -556,42 +556,42 @@ class Dashboard extends Component {
                   Downloads
                 </div>
                 <div style = {{width: '100%'}}>
-                  <div style = {{fontSize: 14, backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', borderRadius: 7, padding: '30px 10px', marginTop: 35, minHeight: 200}}>
+                  <div style = {{fontSize: 14, background: '#0B172B', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', borderRadius: 7, padding: '40px 15px', marginTop: 35, minHeight: 245}}>
                     <Row style = {{width: '100%', margin: 0}}>
                       <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
-                          <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
-                            <FaWindows style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#666666'}}/> Windows 64-Bit
+                          <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
+                            <FaWindows style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> Windows 64-Bit
                           </div>
                         <a href = {WindowsBin} download = "Fractal.exe">
-                        <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
-                          <button style = {{background: 'rgba(0,0,0,0.1)', border: 'solid 1px #555555', fontSize: 12, borderRadius: 5, color: '#333333', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
+                        <div style = {{float: 'right', display: 'inline', color: 'white'}}>
+                          <button style = {{background: 'rgba(94, 195, 235,0.9)', border: 'none', fontSize: 12, borderRadius: 2, color: 'white', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
                         </div>
                         </a>
                       </Col>
                       <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
-                        <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
-                          <FaApple style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#666666'}}/> macOS
+                        <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
+                          <FaApple style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> macOS
                         </div>
                         <a href = {MacBin} download = "Fractal.dmg">
-                        <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
-                          <button disabled = "true" style = {{background: 'none', border: 'solid 0.5px #A9A9A9', fontSize: 12, borderRadius: 5, color: '#A9A9A9', width: 90, padding: '5px 5px'}}>Coming Soon</button>
+                        <div style = {{float: 'right', display: 'inline', color: 'white'}}>
+                          <button disabled = "true" style = {{background: 'none', border: 'none', fontSize: 12, borderRadius: 2, color: '#A9A9A9', width: 90, padding: '5px 5px'}}>Coming Soon</button>
                         </div>
                         </a>
                       </Col>
                       <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
-                        <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
-                          <FaUbuntu style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#666666'}}/> Ubuntu 18.04
+                        <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
+                          <FaUbuntu style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> Ubuntu 18.04
                         </div>
-                        <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
-                          <button disabled = "true" style = {{background: 'none', border: 'solid 0.5px #A9A9A9', fontSize: 12, borderRadius: 5, color: '#A9A9A9', width: 90, padding: '5px 5px'}}>Coming Soon</button>
+                        <div style = {{float: 'right', display: 'inline', color: 'white'}}>
+                          <button disabled = "true" style = {{background: 'none', border: 'none', fontSize: 12, borderRadius: 2, color: '#A9A9A9', width: 90, padding: '5px 5px'}}>Coming Soon</button>
                         </div>
                       </Col>
                       <Col xs = {12} style = {{padding: '0px 20px'}}>
-                        <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
-                          <FaAndroid style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: '#666666'}}/> Android
+                        <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
+                          <FaAndroid style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> Android
                         </div>
-                        <div style = {{float: 'right', display: 'inline', color: '#333333'}}>
-                          <button disabled = "true" style = {{background: 'none', border: 'solid 0.5px #A9A9A9', fontSize: 12, borderRadius: 5, color: '#A9A9A9', width: 90, padding: '5px 5px'}}>Coming Soon</button>
+                        <div style = {{float: 'right', display: 'inline', color: 'white'}}>
+                          <button disabled = "true" style = {{background: 'none', border: 'none', fontSize: 12, borderRadius: 2, color: '#A9A9A9', width: 90, padding: '5px 5px'}}>Coming Soon</button>
                         </div>
                       </Col>
                     </Row>
@@ -610,7 +610,7 @@ class Dashboard extends Component {
                 !this.state.cancelling
                 ?
                   <Popup trigger = {
-                  <button style = {{outline: 'none', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '5px 10px', border: 'solid 1px #e34d4d', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
+                  <button style = {{outline: 'none', fontSize: 12, borderRadius: 2, float: 'right', display: 'inline', padding: '6px 12px', border: 'none', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)', fontWeight: 'bold'}}>
                     Cancel Plan
                   </button>
                   } modal
@@ -661,7 +661,7 @@ class Dashboard extends Component {
                 </div>
                 }
               </div><br/>
-              <div style = {{display: 'block', fontSize: 13, background: 'white', boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', borderRadius: 7, marginTop: 40, padding: '30px 10px', minHeight: 200}}>
+              <div style = {{display: 'block', fontSize: 13, background: 'white', boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', borderRadius: 7, marginTop: 40, padding: '40px 15px', minHeight: 200}}>
                 <Row style = {{width: '100%', margin: 0, marginBottom: 10}}>
                   <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                     <div style = {{float: 'left', fontWeight: 'bold', color: '#555555', display: 'inline'}}>

@@ -491,7 +491,7 @@ class Purchase extends Component {
     }
 
     return (
-      <div style = {{minHeight: '100vh', paddingBottom: 50, background: 'white'}}>
+      <div style = {{minHeight: '100vh', paddingBottom: 50, background: '#F6F6F6'}}>
         <Header color = "#333333" button = "#5ec3eb"/>
         <div style = {{display: 'flex', width: '100vw', overflowX: 'hidden'}}>
           <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'none', height: '100%', minHeight: '100vh', zIndex: 0}}>

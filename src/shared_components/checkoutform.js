@@ -131,8 +131,8 @@ class CheckoutForm extends Component {
           :
           <div style = {{display: 'block'}}>
             <div>
-              <Button disabled = "true" style = {{marginBottom: 10, width: '100%', maxWidth: 600, background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', paddingTop: 8, paddingBottom: 8, float: 'left', display: 'inline', height: 40}}>
-                <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 12, marginRight: 5, fontSize: 12}}/>
+              <Button disabled = "true" style = {{marginBottom: 10, width: '100%', maxWidth: 600, background: "rgba(94, 195, 235, 0.2)", border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', paddingTop: 8, paddingBottom: 8, float: 'left', display: 'inline', height: 40}}>
+                <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: '#1ba8e0', height: 12, marginRight: 5, fontSize: 12}}/>
               </Button>
             </div><br/>
           </div>
