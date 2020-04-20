@@ -18,7 +18,7 @@ import { FaExclamationTriangle } from 'react-icons/fa'
 import { FaCircle, FaTimes, FaEye, FaEyeSlash, FaCheckCircle, FaCheck, FaUser, FaLock, FaDollarSign,
   FaArrowRight, FaPlus, FaPlay, FaFastForward, FaPause, FaWindows, FaApple, FaUbuntu, FaAndroid, FaTag } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faCircleNotch, faPlus, faCreditCard } from '@fortawesome/free-solid-svg-icons'
 import { HashLink } from 'react-router-hash-link';
 
 import { withRouter } from "react-router";
@@ -413,7 +413,7 @@ class Dashboard extends Component {
               ?
               <Row style = {{marginTop: 30}}>
                 <Col xs = {12}>
-                  <div style = {{borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                  <div style = {{borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25, marginTop: 25}}/>
                     <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
                     <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
@@ -425,7 +425,7 @@ class Dashboard extends Component {
               :
               <Row style = {{marginTop: 30}}>
                 <Col xs = {8}>
-                  <div style = {{borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                  <div style = {{borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25, marginTop: 15}}/>
                     <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
                     <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
@@ -435,8 +435,8 @@ class Dashboard extends Component {
                 </Col>
                 <Col xs = {4}>
                   <Link to = "/card" style = {{textDecoration: 'none'}} className = "pointerOnHover">
-                    <div style = {{borderRadius: 5, textAlign: 'center', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
-                      <FontAwesomeIcon icon={faPlus} style = {{color: "#333333", height: 25, marginTop: 15}}/>
+                    <div style = {{borderRadius: 5, textAlign: 'center', boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                      <FontAwesomeIcon icon={faCreditCard} style = {{color: "#333333", height: 25, marginTop: 15}}/>
                       <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Add Payment</div>
                       <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
                         Your cloud PC is free until {this.state.trialEnd}.
@@ -452,7 +452,7 @@ class Dashboard extends Component {
               <Row style = {{marginTop: 30}}>
                 <Col xs = {12}>
                   <Link style = {{textDecoration: 'none'}} to = "/purchase" className = "create-cloud-pc">
-                    <div style = {{borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                    <div style = {{borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
                       <FaPlus style = {{height: 25, marginTop: 25, color: "#333333"}}/>
                       <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Create My Cloud Computer</div>
                       <div style = {{fontSize: 14, maxWidth: 450, margin: 'auto', marginTop: 10, color: '#333333'}}>
@@ -471,28 +471,28 @@ class Dashboard extends Component {
             <div>
             <Row style = {{marginTop: 30}}>
               <Col md = {3} sm = {6} xs = {12}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {CPU} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>CPU</div>
                   <div style = {{color: "#555555", fontSize: 13}}>Intel Xeon E5</div>
                 </div>
               </Col>
               <Col md = {3} sm = {6} xs = {12}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {GPU} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>GPU</div>
                   <div style = {{color: "#555555", fontSize: 13}}>NVIDIA Tesla M60</div>
                 </div>
               </Col>
               <Col md = {3} sm = {6} xs = {12}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {RAM} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>RAM</div>
                   <div style = {{color: "#555555", fontSize: 13}}>56GB DDR4</div>
                 </div>
               </Col>
               <Col md = {3} sm = {6} xs = {12}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
                   <img src = {SSD} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>SSD</div>
                   <div style = {{color: "#555555", fontSize: 13}}>120GB NVMe</div>
@@ -506,28 +506,28 @@ class Dashboard extends Component {
               <Col xs = {7}>
                 <Row>
                   <Col sm = {6} xs = {12}>
-                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
                       <img src = {CPU} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                       <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>CPU</div>
-                      <div style = {{color: "#555555", fontSize: 13}}>Intel Xeon E5</div>
+                      <div style = {{color: "#555555", fontSize: 13}}>6 Core Intel Xeon E5</div>
                     </div>
                   </Col>
                   <Col sm = {6} xs = {12}>
-                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
                       <img src = {GPU} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                       <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>GPU</div>
                       <div style = {{color: "#555555", fontSize: 13}}>NVIDIA Tesla M60</div>
                     </div>
                   </Col>
                   <Col sm = {6} xs = {12}>
-                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
                       <img src = {RAM} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                       <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>RAM</div>
                       <div style = {{color: "#555555", fontSize: 13}}>56GB DDR4</div>
                     </div>
                   </Col>
                   <Col sm = {6} xs = {12}>
-                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
+                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
                       <img src = {SSD} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                       <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>SSD</div>
                       <div style = {{color: "#555555", fontSize: 13}}>120GB NVMe</div>
@@ -537,10 +537,10 @@ class Dashboard extends Component {
               </Col>
               <Col xs = {5}>
                 <Link to = "/card" style = {{textDecoration: 'none'}} className = "pointerOnHover">
-                  <div style = {{borderRadius: 5, textAlign: 'center', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', padding: '30px 50px', height: 250, margin:'auto', width: '100%', marginBottom: 20}}>
-                    <FontAwesomeIcon icon={faPlus} style = {{color: "#333333", height: 25, marginTop: 15}}/>
-                    <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Add Payment</div>
-                    <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
+                  <div style = {{borderRadius: 5, textAlign: 'center', boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', padding: '30px 50px', height: 250, margin:'auto', width: '100%', marginBottom: 20, background: '#0B172B'}}>
+                    <FontAwesomeIcon icon={faCreditCard} style = {{color: "white", height: 25, marginTop: 15}}/>
+                    <div style = {{color: "white", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Add Payment</div>
+                    <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#D6D6D6"}}>
                       Your cloud PC is completely free to use until {this.state.trialEnd}.
                     </div>
                   </div>
@@ -556,7 +556,7 @@ class Dashboard extends Component {
                   Downloads
                 </div>
                 <div style = {{width: '100%'}}>
-                  <div style = {{fontSize: 14, backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, padding: '30px 10px', marginTop: 35, minHeight: 200}}>
+                  <div style = {{fontSize: 14, backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', borderRadius: 7, padding: '30px 10px', marginTop: 35, minHeight: 200}}>
                     <Row style = {{width: '100%', margin: 0}}>
                       <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                           <div style = {{float: 'left', fontWeight: 'bold', color: '#333333', display: 'inline'}}>
@@ -661,7 +661,7 @@ class Dashboard extends Component {
                 </div>
                 }
               </div><br/>
-              <div style = {{display: 'block', fontSize: 13, background: 'white', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 7, marginTop: 40, padding: '30px 10px', minHeight: 200}}>
+              <div style = {{display: 'block', fontSize: 13, background: 'white', boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', borderRadius: 7, marginTop: 40, padding: '30px 10px', minHeight: 200}}>
                 <Row style = {{width: '100%', margin: 0, marginBottom: 10}}>
                   <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                     <div style = {{float: 'left', fontWeight: 'bold', color: '#555555', display: 'inline'}}>
