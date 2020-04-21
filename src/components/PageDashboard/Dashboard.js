@@ -575,7 +575,7 @@ class Dashboard extends Component {
                           </div>
                         <a href = {WindowsBin} download = "Fractal.exe">
                         <div style = {{float: 'right', display: 'inline', color: 'white'}}>
-                          <button style = {{background: 'rgba(94, 195, 235,0.9)', border: 'none', fontSize: 12, borderRadius: 2, color: 'white', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
+                          <button style = {{background: 'none', border: 'solid 1px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
                         </div>
                         </a>
                       </Col>
