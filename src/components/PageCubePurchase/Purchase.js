@@ -459,7 +459,7 @@ class Purchase extends Component {
               {
               this.state.computer !== ''
               ?
-              <div style = {{display: 'flex', justifyContent: 'space-between', width: 355, marginTop: 40, paddingLeft: 39}}>
+              <div style = {{display: 'flex', justifyContent: 'space-between', width: 310, marginTop: 40, paddingLeft: 39}}>
                 <Button onClick = {() => this.setState({step: 4})} style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline'}}>Continue</Button>
                 <div style = {{fontSize: 14, color: '#555555', position: 'relative', top: 12}}>
                   <FaArrowRight style = {{marginRight: 6, height: 8, width: 15, position: 'relative', bottom: 1}}/>
@@ -523,13 +523,13 @@ class Purchase extends Component {
               this.state.processing
               ?
               <div style = {{display: 'flex', justifyContent: 'space-between', width: 355, marginTop: 40, paddingLeft: 39}}>
-                <Button disabled = "true" style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline', width: 150}}>
+                <Button disabled = "true" style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline', width: 235}}>
                   <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 12, marginRight: 5, fontSize: 12}}/>
                 </Button>
               </div>
               :
               <div style = {{display: 'flex', justifyContent: 'space-between', width: 300, marginTop: 40, paddingLeft: 39}}>
-                <Button onClick = {this.submitNoPayment} style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline'}}>Create My Cloud PC</Button>
+                <Button onClick = {this.submitNoPayment} style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline', width: 235}}>Create My Cloud PC</Button>
               </div>
               }
               <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
