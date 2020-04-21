@@ -446,10 +446,10 @@ class Dashboard extends Component {
                 </Col>
                 <Col xs = {4}>
                   <Link to = "/card" style = {{textDecoration: 'none'}} className = "pointerOnHover">
-                    <div style = {{borderRadius: 5, textAlign: 'center', boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
-                      <FontAwesomeIcon icon={faCreditCard} style = {{color: "#333333", height: 25, marginTop: 15}}/>
-                      <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Add Payment</div>
-                      <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
+                    <div style = {{background: '#0B172B', borderRadius: 5, textAlign: 'center', boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                      <FontAwesomeIcon icon={faCreditCard} style = {{color: "white", height: 25, marginTop: 15}}/>
+                      <div style = {{color: "white", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Add Payment</div>
+                      <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#D6D6D6"}}>
                         Your cloud PC is free until {this.state.trialEnd}.
                       </div>
                     </div>

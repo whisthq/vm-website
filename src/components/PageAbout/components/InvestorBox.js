@@ -49,7 +49,7 @@ class InvestorBox extends Component {
 		return(
             <Row>
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center', height: 125}}>
+                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
                   <img src = {Neo} style = {{maxWidth: 75, maxHeight: 75, paddingTop: 20}}/>
                 </div>
               </Col>
@@ -57,24 +57,24 @@ class InvestorBox extends Component {
               this.state.width > 700
               ?
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center', height: 125}}>
+                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
                   <img src = {BSV} style = {{width: 115, height: 75}}/>
                 </div>
               </Col>
               :
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: '30px 20px', textAlign: 'center', height: 125}}>
+                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: '30px 20px', textAlign: 'center', height: 125}}>
                   <img src = {BSV} style = {{width: 100, height: 70}}/>
                 </div>
               </Col>
               }
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center', height: 125}}>
+                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
                   <img src = {DRF} style = {{maxWidth: 65, maxHeight: 65}}/>
                 </div>
               </Col>
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center', height: 125}}>
+                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
                   <img src = {RDV} style = {{maxWidth: 70, maxHeight: 70}}/>
                 </div>
               </Col>
@@ -82,7 +82,7 @@ class InvestorBox extends Component {
                 <Popup
                   modal 
                   trigger = {
-                    <div className = "pointerOnHover" style = {{background: 'rgba(215, 245, 245, 0.4)', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center', height: 125}}>
+                    <div className = "pointerOnHover" style = {{background: 'rgba(215, 245, 245, 0.4)', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
                       <img src = {Pankaj} style = {{maxWidth: 70, maxHeight: 70, borderRadius: 35, filter: 'grayscale(100%)'}}/>
                     </div>
                   }
@@ -114,7 +114,7 @@ class InvestorBox extends Component {
                 <Popup
                   modal 
                   trigger = {
-                    <div className = "pointerOnHover" style = {{background: 'rgba(215, 245, 245, 0.4)', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center', height: 125}}>
+                    <div className = "pointerOnHover" style = {{background: 'rgba(215, 245, 245, 0.4)', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
                       <img src = {Michael} style = {{maxWidth: 70, maxHeight: 70, borderRadius: 35, filter: 'grayscale(100%)'}}/>
                     </div>
                   }
@@ -135,17 +135,17 @@ class InvestorBox extends Component {
                 </Popup>
               </Col>
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'rgba(215, 245, 245, 0.4)', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center', height: 125}}>
+                <div style = {{background: 'rgba(215, 245, 245, 0.4)', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
                   <img src = {Vijay} style = {{maxWidth: 70, maxHeight: 70, borderRadius: 35, filter: 'grayscale(100%)'}}/>
                 </div>
               </Col>
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'rgba(215, 245, 245, 0.4)', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center', height: 125}}>
+                <div style = {{background: 'rgba(215, 245, 245, 0.4)', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
                   <img src = {DC} style = {{maxWidth: 70, maxHeight: 70, borderRadius: 35, filter: 'grayscale(100%)'}}/>
                 </div>
               </Col>
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'rgba(215, 245, 245, 0.4)', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center', height: 125}}>
+                <div style = {{background: 'rgba(215, 245, 245, 0.4)', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
                   <img src = {Brian} style = {{maxWidth: 70, maxHeight: 70, borderRadius: 35, filter: 'grayscale(100%)'}}/>
                 </div>
               </Col>

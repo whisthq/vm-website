@@ -29,7 +29,7 @@ import PriceBox from './containers/priceBox.js'
 class Purchase extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, modalShow: false, continue: false, step: 4.0, exit: false, 
+    this.state = { width: 0, height: 0, modalShow: false, continue: false, step: 1.0, exit: false, 
       location: '', continue2: false, computer: '', plan: '', country: '', processing: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
@@ -401,7 +401,7 @@ class Purchase extends Component {
               </span>
               <span style = {{fontSize: 22, paddingLeft: 10}}>Choose Your Cloud Computer</span>
               <div style = {{marginTop: 5, color: '#333333', paddingLeft: 39, fontSize: 16, maxWidth: 650}}>
-                Select the specs that best suit your needs. You and always upgrade or downgrade later.
+                Select the specs that best suit your needs. You can always upgrade or downgrade later.
               </div>
               {
               this.state.computer === ''
@@ -409,7 +409,7 @@ class Purchase extends Component {
               <Row style = {{marginTop: 50, paddingLeft: 39, maxWidth: 800}}>
                 <Col md = {6} className = "pointerOnHover" onClick = {() => this.setState({computer: 'Medium'})}>
                   <SpecBox name = "Medium" cpu = "6" gpu = "1/2" ram = "56" 
-                    description = "For 3D modelling, medium rendering, gaming."
+                    description = "For 3D modeling, medium rendering, gaming."
                     pricing = "Start with free trial"
                     color = "white"/>
                 </Col>
@@ -427,7 +427,7 @@ class Purchase extends Component {
               <Row style = {{marginTop: 50, paddingLeft: 39, maxWidth: 800}}>
                 <Col md = {6} className = "pointerOnHover" onClick = {() => this.setState({computer: 'Medium'})}>
                   <SpecBox name = "Medium" cpu = "6" gpu = "1/2" ram = "56" 
-                    description = "For 3D modelling, medium rendering, gaming."
+                    description = "For 3D modeling, medium rendering, gaming."
                     pricing = "Starts with free trial"
                     color = "rgba(94, 195, 235, 0.1)"
                     checked/>
@@ -443,7 +443,7 @@ class Purchase extends Component {
               <Row style = {{marginTop: 50, paddingLeft: 39, maxWidth: 800}}>
                 <Col md = {6} className = "pointerOnHover" onClick = {() => this.setState({computer: 'Medium'})}>
                   <SpecBox name = "Medium" cpu = "6" gpu = "1/2" ram = "56" 
-                    description = "For 3D modelling, medium rendering, gaming."
+                    description = "For 3D modeling, medium rendering, gaming."
                     pricing = "Starts with free trial"
                     color = "white"/>
                 </Col>
