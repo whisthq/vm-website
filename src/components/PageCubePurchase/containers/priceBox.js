@@ -41,6 +41,9 @@ class PriceBox extends Component {
               {this.props.name}
             </div>
             {
+            !this.props.hide_checkbox
+            ?
+            (
             this.props.checked
             ?
             <div style = {{float: 'right', width: 15, height: 15, borderRadius: 8, border: 'solid 0.5px #111111', background: '#27a7d6', position: 'relative', top: 13}}>
@@ -48,6 +51,9 @@ class PriceBox extends Component {
             :
             <div style = {{float: 'right', width: 15, height: 15, borderRadius: 8, border: 'solid 0.5px #111111', background: 'none', position: 'relative', top: 13}}>
             </div>
+            )
+            :
+            <div></div>
             }
           </div>
           <div style = {{fontSize: 12, color: '#555555'}}>

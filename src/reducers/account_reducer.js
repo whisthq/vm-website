@@ -5,7 +5,7 @@ const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, 
                  payment: {}, signupStatus: 200, failed_signup_attempts: 0, stripeStatus: 200, failed_payment_attempts: 0,
                  currentPage: 'personal', emailStatus: 0, promoCode: '', credits: 0, failed_referral_attempts: 0, 
                  email_verified: false, verificationToken: '', verificationEmailsSent: 0, customer_status: 0, show_survey: false,
-                 customer: {}, account_locked: false, access_token: '', refresh_token: '', purchase_location: ''}
+                 customer: {}, account_locked: false, access_token: '', refresh_token: '', purchase_location: '', dashboard_loaded: false}
 
 export default function (state = DEFAULT, action) {
   switch (action.type) {
@@ -174,6 +174,11 @@ export default function (state = DEFAULT, action) {
       return {
         ...state,
         purchase_location: action.location
+      }
+    case AccountAction.DASHBOARD_LOADED:
+      return {
+        ...state,
+        dashboard_loaded: action.loaded
       }
     default:
       return state

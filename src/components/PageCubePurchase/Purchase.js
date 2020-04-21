@@ -24,11 +24,12 @@ import Autocomplete from './AutoComplete.js'
 import { options } from './Options.js'
 import { storePurchaseLocation, insertCustomer, createDisk } from '../../actions/index.js'
 import SpecBox from './containers/specBox.js'
+import PriceBox from './containers/priceBox.js'
 
 class Purchase extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, modalShow: false, continue: false, step: 1.0, exit: false, 
+    this.state = { width: 0, height: 0, modalShow: false, continue: false, step: 4.0, exit: false, 
       location: '', continue2: false, computer: '', plan: '', country: '', processing: false}
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
@@ -137,6 +138,12 @@ class Purchase extends Component {
   }
 
   handleKeyPress3 = (event) => {
+    if(event.key === 'Enter') {
+      this.setState({step: 4})
+    }
+  }
+
+  handleKeyPress4 = (event) => {
     if(event.key === 'Enter') {
       this.submitNoPayment()
     }
@@ -452,26 +459,16 @@ class Purchase extends Component {
               {
               this.state.computer !== ''
               ?
-              (
-              this.state.processing
-              ?
               <div style = {{display: 'flex', justifyContent: 'space-between', width: 355, marginTop: 40, paddingLeft: 39}}>
-                <Button disabled = "true" style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline'}}>
-                  <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 12, marginRight: 5, fontSize: 12}}/>
-                </Button>
-              </div>
-              :
-              <div style = {{display: 'flex', justifyContent: 'space-between', width: 355, marginTop: 40, paddingLeft: 39}}>
-                <Button  onClick = {this.submitNoPayment} style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline'}}>Create Cloud PC</Button>
+                <Button onClick = {() => this.setState({step: 4})} style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline'}}>Continue</Button>
                 <div style = {{fontSize: 14, color: '#555555', position: 'relative', top: 12}}>
                   <FaArrowRight style = {{marginRight: 6, height: 8, width: 15, position: 'relative', bottom: 1}}/>
                   Press Enter
                 </div>
               </div>
-              )
               :
               <div style = {{display: 'flex', justifyContent: 'space-between', width: 375, marginTop: 40, paddingLeft: 39}}>
-                <Button disabled = "true" style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline'}}>Create Cloud PC</Button>
+                <Button disabled = "true" style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline'}}>Continue</Button>
               </div>
               }
               <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
@@ -487,8 +484,69 @@ class Purchase extends Component {
             </div>
           </div>
         )
-      } 
-    }
+      } else {
+        return(
+          <div tabIndex="0" onKeyDown={(e) => this.handleKeyPress4(e)} style = {{outline: 'none', paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+            <div>
+              <span style = {{position: 'relative', bottom: 2}}>
+                4 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
+              </span>
+              {
+              this.props.credits === 0
+              ?
+              <span style = {{fontSize: 22, paddingLeft: 10}}>Your First Week Is On Us!</span>
+              :
+              (
+              this.props.credits === 1
+              ?
+              <span style = {{fontSize: 22, paddingLeft: 10}}>Your First Month Is On Us!</span>
+              :
+              <span style = {{fontSize: 22, paddingLeft: 10}}>Your First {this.props.credits} Months Is On Us!</span>
+              )
+              } 
+              <div style = {{marginTop: 5, color: '#333333', paddingLeft: 39, fontSize: 16, maxWidth: 650}}>
+                After your free trial, you'll have the opportunity to select one of these plans, depending on your computing needs. We hope that your free trial 
+                will help you figure out which plan works best for you!
+              </div>
+              <Row style = {{marginTop: 50, paddingLeft: 55}}>
+                <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Hourly'})}>
+                  <PriceBox color = "white" name = "Hourly" price = "5" details = "+0.70 per hour of usage" hide_checkbox/>
+                </Col>
+                <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Monthly'})}>
+                  <PriceBox color = "white" name = "Monthly" price = "39" details = "6 hours per day of usage" hide_checkbox/>
+                </Col>
+                <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Unlimited'})}>
+                  <PriceBox color = "white" name = "Unlimited" price = "99" details = "Unlimited daily usage" hide_checkbox/>
+                </Col>
+              </Row>
+              {
+              this.state.processing
+              ?
+              <div style = {{display: 'flex', justifyContent: 'space-between', width: 355, marginTop: 40, paddingLeft: 39}}>
+                <Button disabled = "true" style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline', width: 150}}>
+                  <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 12, marginRight: 5, fontSize: 12}}/>
+                </Button>
+              </div>
+              :
+              <div style = {{display: 'flex', justifyContent: 'space-between', width: 300, marginTop: 40, paddingLeft: 39}}>
+                <Button onClick = {this.submitNoPayment} style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline'}}>Create My Cloud PC</Button>
+              </div>
+              }
+              <div style = {{position: 'absolute', bottom: 25, right: 40, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}>
+                <div onClick = {this.goBack} style = {{display: 'inline', borderRadius: '5px 0px 0px 5px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px', borderRight: 'solid 0.5px #0b172b'}}>
+                  <FaAngleUp className = "typeform-up" style = {{height: 20, position: 'relative', bottom: 2, color: '#0b172b'}}/>
+                </div>
+                <Link to = "/dashboard">
+                <div style = {{display: 'inline', borderRadius: '0px 5px 5px 0px', backgroundColor: '#5ec3eb', color: 'white', padding: '5px 10px'}}>
+                  <FaTimes style = {{height: 15, position: 'relative', bottom: 2, color: '#0b172b'}}/>
+                </div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    } 
 
     return (
       <div style = {{minHeight: '100vh', paddingBottom: 50, background: '#F6F6F6'}}>

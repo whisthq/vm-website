@@ -178,6 +178,7 @@ function* retrieveCustomer(action) {
      yield put(FormAction.storeAccountLocked(json.account_locked))
      yield put(FormAction.storeCustomer(json.customer))
      yield put(FormAction.storeCredits(json.creditsOutstanding))
+     yield put(FormAction.dashboardLoaded(true))
   }
 }
 

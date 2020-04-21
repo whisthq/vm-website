@@ -37,6 +37,7 @@ export class Autocomplete extends Component {
     const { options } = this.props;
     const { showOptions } = this.state;
     const userInput = this.formatUserEntry(e.currentTarget.value)
+    console.log(userInput)
 
     this.props.dispatch(storePurchaseLocation(userInput))
     if(options.includes(userInput)) {

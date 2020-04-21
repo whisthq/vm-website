@@ -12,7 +12,7 @@ import history from "../../history";
 import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { logout, getVMStatus, retrieveCustomer, vmCreating, cancelPlan, fetchDisks, sendFriendsEmail, 
-  emailSent, triggerSurvey, submitPurchaseFeedback } from '../../actions/index.js';
+  emailSent, triggerSurvey, submitPurchaseFeedback, dashboardLoaded } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
 import { FaExclamationTriangle } from 'react-icons/fa'
 import { FaCircle, FaTimes, FaEye, FaEyeSlash, FaCheckCircle, FaCheck, FaUser, FaLock, FaDollarSign,
@@ -48,7 +48,7 @@ class Dashboard extends Component {
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
-
+    this.props.dispatch(dashboardLoaded(false))
     this.props.dispatch(fetchDisks(this.props.user))
     this.props.dispatch(retrieveCustomer())
 
@@ -222,7 +222,7 @@ class Dashboard extends Component {
           </HashLink>
         </div>
       )
-    } else if(!this.state.loaded) {
+    } else if(!this.props.dashboard_loaded && this.props.user) {
       return(
         <div style = {{backgroundColor: "white", minHeight: '100vh', overflowX: 'hidden !important', textAlign: 'center'}}>
           <Header color = "#333333" button = "#5ec3eb"/>
@@ -463,7 +463,7 @@ class Dashboard extends Component {
               <Row style = {{marginTop: 30}}>
                 <Col xs = {12}>
                   <Link style = {{textDecoration: 'none'}} to = "/purchase" className = "create-cloud-pc">
-                    <div style = {{borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
                       <FaPlus style = {{height: 25, marginTop: 25, color: "#333333"}}/>
                       <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Create My Cloud Computer</div>
                       <div style = {{fontSize: 14, maxWidth: 450, margin: 'auto', marginTop: 10, color: '#333333'}}>
@@ -770,7 +770,8 @@ function mapStateToProps(state) {
     credits: state.AccountReducer.credits,
     email_verified: state.AccountReducer.email_verified,
     show_survey: state.AccountReducer.show_survey,
-    customer: state.AccountReducer.customer
+    customer: state.AccountReducer.customer,
+    dashboard_loaded: state.AccountReducer.dashboard_loaded
   }
 }
 

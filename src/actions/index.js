@@ -64,6 +64,7 @@ export const STORE_JWT = "STORE_JWT"
 export const CREATE_DISK = "CREATE_DISK"
 export const GET_DISK_STATUS = "GET_DISK_STATUS"
 export const STORE_PURCHASE_LOCATION = "STORE_PURCHASE_LOCATION"
+export const DASHBOARD_LOADED = "DASHBOARD_LOADED"
 
 export function userLogin(user, password, create) {
 	return {
@@ -429,5 +430,12 @@ export function storePurchaseLocation(location) {
 	return {
 		type: STORE_PURCHASE_LOCATION,
 		location
+	}
+}
+
+export function dashboardLoaded(loaded) {
+	return {
+		type: DASHBOARD_LOADED,
+		loaded
 	}
 }
