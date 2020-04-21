@@ -58,7 +58,7 @@ class About extends Component {
         <div className = "fractal-container" style = {{minHeight: '100vh', paddingTop: 150}}>
           <Row>
             <Col md = {7} style = {{paddingRight: 60}}>
-              <ImageFadeIn src = {Datacenter} style = {{width: '100%', border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', marginTop: 20}}/>
+              <ImageFadeIn src = {Datacenter} style = {{width: '100%', border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', marginTop: 20}}/>
             </Col>
             <Col md = {5}>
               <div style = {{color: "#5ec3eb", fontWeight: 'bold'}}>
@@ -81,7 +81,7 @@ class About extends Component {
         <div className = "fractal-container" style = {{minHeight: '100vh', paddingTop: 100, paddingBottom: 50}}>
           <Row>
             <Col md = {7} style = {{marginBottom: 40}}>
-              <ImageFadeIn src = {Datacenter} style = {{width: '100%', border: 'solid 5px white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)'}}/>
+              <ImageFadeIn src = {Datacenter} style = {{width: '100%', border: 'solid 5px white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}/>
             </Col>
             <Col md = {5}>
               <div style = {{color: "#5ec3eb", fontWeight: 'bold'}}>
@@ -118,7 +118,7 @@ class About extends Component {
                 <Popup
                   modal 
                   trigger = {
-                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', padding: 30, textAlign: 'center'}}>
                     <ImageFadeIn src = {Ming} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
@@ -143,7 +143,7 @@ class About extends Component {
                 <Popup
                   modal 
                   trigger = {
-                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', padding: 30, textAlign: 'center'}}>
                     <ImageFadeIn src = {Phil} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
@@ -168,7 +168,7 @@ class About extends Component {
                 <Popup
                   modal 
                   trigger = {
-                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', padding: 30, textAlign: 'center'}}>
                     <ImageFadeIn src = {Nick} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
@@ -193,7 +193,7 @@ class About extends Component {
                 <Popup
                   modal 
                   trigger = {
-                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', padding: 30, textAlign: 'center'}}>
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', padding: 30, textAlign: 'center'}}>
                     <ImageFadeIn src = {Roshan} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }

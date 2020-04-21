@@ -49,34 +49,44 @@ class InvestorBox extends Component {
 		return(
             <Row>
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
-                  <img src = {Neo} style = {{maxWidth: 75, maxHeight: 75, paddingTop: 20}}/>
-                </div>
+                <a href = "https://techcrunch.com/2018/08/21/ali-partovi-neo/" target = "_blank" style = {{textDecoration: 'none', outline: 'none'}}>
+                  <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
+                    <img src = {Neo} style = {{maxWidth: 75, maxHeight: 75, paddingTop: 20}}/>
+                  </div>
+                </a>
               </Col>
               {
               this.state.width > 700
               ?
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
-                  <img src = {BSV} style = {{width: 115, height: 75}}/>
-                </div>
+                <a href = "https://www.basisset.ventures/" target = "_blank" style = {{textDecoration: 'none', outline: 'none'}}>
+                  <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
+                    <img src = {BSV} style = {{width: 115, height: 75}}/>
+                  </div>
+                </a>
               </Col>
               :
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: '30px 20px', textAlign: 'center', height: 125}}>
-                  <img src = {BSV} style = {{width: 100, height: 70}}/>
-                </div>
+                <a href = "https://www.basisset.ventures/" target = "_blank" style = {{textDecoration: 'none', outline: 'none'}}>
+                  <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: '30px 20px', textAlign: 'center', height: 125}}>
+                    <img src = {BSV} style = {{width: 100, height: 70}}/>
+                  </div>
+                </a>
               </Col>
               }
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
-                  <img src = {DRF} style = {{maxWidth: 65, maxHeight: 65}}/>
-                </div>
+                <a href = "https://www.dormroomfund.com/" target = "_blank" style = {{textDecoration: 'none', outline: 'none'}}>
+                  <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
+                    <img src = {DRF} style = {{maxWidth: 65, maxHeight: 65}}/>
+                  </div>
+                </a>
               </Col>
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
-                  <img src = {RDV} style = {{maxWidth: 70, maxHeight: 70}}/>
-                </div>
+                <a href = "https://www.roughdraft.vc/" target = "_blank" style = {{textDecoration: 'none', outline: 'none'}}>
+                  <div style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
+                    <img src = {RDV} style = {{maxWidth: 70, maxHeight: 70}}/>
+                  </div>
+                </a>
               </Col>
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
                 <Popup
@@ -140,9 +150,28 @@ class InvestorBox extends Component {
                 </div>
               </Col>
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
-                <div style = {{background: 'rgba(215, 245, 245, 0.4)', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
-                  <img src = {DC} style = {{maxWidth: 70, maxHeight: 70, borderRadius: 35, filter: 'grayscale(100%)'}}/>
-                </div>
+                <Popup
+                  modal 
+                  trigger = {
+                    <div className = "pointerOnHover" style = {{background: 'rgba(215, 245, 245, 0.4)', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
+                      <img src = {DC} style = {{maxWidth: 70, maxHeight: 70, borderRadius: 35, filter: 'grayscale(100%)'}}/>
+                    </div>
+                  }
+                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", minHeight: 325, padding: '30px 50px'}}>
+                  <div>
+                    <div style = {{display: 'flex'}}>
+                      <img src = {DC} style = {{maxWidth: 75, maxHeight: 75, borderRadius: 37.5}}/>
+                      <div style = {{paddingLeft: 50}}>
+                        <div style = {{fontSize: 30, fontWeight: 'bold'}}>
+                          Dan (DC) Posch
+                        </div>
+                        <div style = {{marginTop: 20, color: '#555555', overflowY: 'scroll'}}>
+                          DC Posch currently serves as the Directory of Technology at AppFolio. Previously, he was the CTO of Dynasty.com, which was acquired by AppFolio. DC graduated from Stanford University with a degree in Computer Science in 2013.
+                        </div>
+                      </div>
+                    </div>
+                  </div>    
+                </Popup>
               </Col>
               <Col xs = {6} md = {4} style = {{marginTop: 20}}>
                 <div style = {{background: 'rgba(215, 245, 245, 0.4)', borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.20)', padding: 30, textAlign: 'center', height: 125}}>
