@@ -249,10 +249,10 @@ class Dashboard extends Component {
           contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: 275, padding: '30px 50px', textAlign: "center"}}>
           <div className = "exit-survey">
             <div style = {{fontWeight: 'bold', fontSize: 22, margin: 'auto', width: '100%'}}><strong>Thank You For Creating a Cloud PC!</strong></div>
-            <textarea onChange = {this.changePurchaseFeedback} rows = "4" cols = "52" placeholder = "We hope you love it. Please take a minute to tell us how you heard about Fractal, and what you plan on using Fractal for."
+            <textarea onChange = {this.changePurchaseFeedback} rows = "4" cols = "52" placeholder = "We hope you love it. Please take a minute to tell us what you plan on using Fractal for (i.e. creative work, gaming, etc)."
               style = {{outline: 'none', resize: 'none', background: 'none', border: 'none', marginTop: 20, fontSize: 14, padding: 0}}>
             </textarea>
-            <button onClick = {this.submitPurchaseFeedback} style = {{fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 14, borderRadius: 5, padding: '10px 10px', color: '#5ec3eb', border: 'solid 1px #5ec3eb', background: 'rgba(94, 195, 235,0.1)'}}>
+            <button onClick = {this.submitPurchaseFeedback} style = {{border: 'none', fontWeight: 'bold', marginTop: 25, outline: 'none', width: '100%', fontSize: 14, borderRadius: 5, padding: '10px 10px', color: '#5ec3eb', background: 'rgba(94, 195, 235,0.1)'}}>
               SUBMIT FEEDBACK
             </button> 
           </div>    
@@ -585,7 +585,7 @@ class Dashboard extends Component {
                         </div>
                         <a href = {MacBin} download = "Fractal.dmg">
                         <div style = {{float: 'right', display: 'inline', color: 'white'}}>
-                          <button disabled = "true" style = {{background: 'none', border: 'none', fontSize: 12, borderRadius: 2, color: '#A9A9A9', width: 90, padding: '5px 5px'}}>Coming Soon</button>
+                          <button style = {{background: 'none', border: 'solid 1px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
                         </div>
                         </a>
                       </Col>

@@ -510,10 +510,10 @@ class Purchase extends Component {
               </div>
               <Row style = {{marginTop: 50, paddingLeft: 55}}>
                 <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Hourly'})}>
-                  <PriceBox color = "white" name = "Hourly" price = "5" details = "+0.70 per hour of usage" hide_checkbox/>
+                  <PriceBox color = "white" name = "Hourly" price = "5" details = "+$0.70 / hr of usage" hide_checkbox/>
                 </Col>
                 <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Monthly'})}>
-                  <PriceBox color = "white" name = "Monthly" price = "39" details = "6 hours per day of usage" hide_checkbox/>
+                  <PriceBox color = "white" name = "Monthly" price = "39" details = "6 hr / day + $0.50 per extra hr" hide_checkbox/>
                 </Col>
                 <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Unlimited'})}>
                   <PriceBox color = "white" name = "Unlimited" price = "99" details = "Unlimited daily usage" hide_checkbox/>

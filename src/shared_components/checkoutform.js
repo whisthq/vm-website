@@ -157,7 +157,7 @@ class CheckoutForm extends Component {
           </div>
           :
           (
-          this.props.paln === 'Monthly'
+          this.props.plan === 'Monthly'
           ?
           <div style = {{fontSize: 12, marginTop: 50, display: 'block'}}>
             <div style = {{display: 'inline', float: 'left'}}>Monthly Charge</div>

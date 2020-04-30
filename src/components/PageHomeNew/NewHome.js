@@ -581,7 +581,7 @@ class PageHome extends Component {
                     </div>
                   </div>
                   <div style = {{color: "#555555", display: 'block', position: 'relative', bottom: 5}}>
-                    6 hours usage per day
+                    6 hr / day + $0.50 per extra hr
                   </div>
                 </div>
               </Col>
@@ -603,7 +603,7 @@ class PageHome extends Component {
                     </div>
                   </div>
                   <div style = {{color: "#555555", display: 'block', position: 'relative', bottom: 5}}>
-                    6 hours usage per day
+                    6 hr / day + $0.50 per extra hr
                   </div>
                 </div>
               </Col>
