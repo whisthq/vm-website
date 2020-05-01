@@ -120,7 +120,7 @@ class Reset extends Component {
           <div style = {{color: '#333333', textAlign: 'center', fontWeight: 'bold', marginBottom: 50, fontSize: 20}}>
             Reset Your Password
           </div>
-          <InputGroup className="mb-3" style = {{marginTop: 20}}>
+          <InputGroup className="mb-3" style = {{marginTop: 10}}>
             <FormControl
               aria-label="Default"
               type = "password"
@@ -128,19 +128,19 @@ class Reset extends Component {
               placeholder = "Password"
               onChange = {this.changePasswordSignup}
               onKeyPress = {this.handlePasswordResetKey}
-              style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
+              style = {{borderRadius: 5, maxWidth: 600, backgroundColor: "#F4F4F4", border: "none", padding: "30px 20px"}}
             />
             {
             this.state.tooShort
             ?
-            <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+            <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 20, fontSize: 14}}>
               <FaExclamationTriangle style = {{marginRight: 5, position: 'relative', bottom: 2}}/>Too Short
             </div>
             :
             (
             this.state.passwordSignup.length > 0
             ?
-            <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+            <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 20, fontSize: 14}}>
               <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
             </div>
             :
@@ -156,19 +156,19 @@ class Reset extends Component {
               placeholder = "Confirm Password"
               onChange = {this.changePasswordConfirmSignup}
               onKeyPress = {this.handlePasswordResetKey}
-              style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
+              style = {{borderRadius: 5, maxWidth: 600, backgroundColor: "#F4F4F4", border: "none", padding: "30px 20px"}}
             />
             {
             !this.state.matches && this.state.passwordConfirmSignup.length > 0
             ?
-            <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+            <div style = {{color: '#a62121', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 20, fontSize: 14}}>
               <FaExclamationTriangle style = {{marginRight: 5, position: 'relative', bottom: 2}}/>Doesn't Match
             </div>
             :
             (
             this.state.passwordConfirmSignup.length > 0
             ?
-            <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 9, fontSize: 14}}>
+            <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 20, fontSize: 14}}>
               <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
             </div>
             :
@@ -182,16 +182,16 @@ class Reset extends Component {
           (
           !this.state.processing
           ?
-            <Button onClick = {this.handlePasswordReset} onKeyPress = {this.handlePasswordResetKey} style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: 'linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>
+            <Button onClick = {this.handlePasswordReset} onKeyPress = {this.handlePasswordResetKey} style = {{padding: 12, marginTop: 5, color: 'white', width: '100%', border: 'none', background: '#0B172B', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>
               RESET
             </Button>
           :
-            <Button disabled = "true" style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: 'linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>
+            <Button disabled = "true" style = {{padding: 12, marginTop: 5, color: 'white', width: '100%', border: 'none', background: '#0B172B', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>
               <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 14, marginRight: 5}}/> Processing
             </Button>
           )
           :
-          <Button disabled = "true" style = {{marginTop: 40, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: 'linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>
+          <Button disabled = "true" style = {{padding: 12, marginTop: 5, color: 'white', width: '100%', border: 'none', background: '#0B172B', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>
             RESET
           </Button>
           }
@@ -211,7 +211,7 @@ class Reset extends Component {
               For your security, this password link has expired. You can request a new password reset link <a onClick = {this.resetEmail} style = {{color: '#94A8ED', textDecoration: 'none', cursor: 'pointer'}}>here</a>.
             </div>
             <HashLink to = "/auth">
-              <Button style = {{color: 'white', width: '100%', border: 'none', background: 'linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', marginTop: 40}}>BACK TO LOGIN</Button>
+              <Button style = {{padding: 12, color: 'white', width: '100%', border: 'none', background: '#0B172B', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', marginTop: 40}}>BACK TO LOGIN</Button>
             </HashLink>
           </div>
         </div>
@@ -229,8 +229,15 @@ class Reset extends Component {
             <div style =  {{color: '#333333', textAlign: 'center', marginTop: 15, fontSize: 14}}>
               Enter your email below to receive a password reset email.
             </div>
-            <div style = {{backgroundColor: 'rgba(0,0,0,0.0)', borderRadius: 2, border: 'solid 1px white', padding: '40px 40px 60px 40px', maxWidth: 500, marginBottom: 80, margin: 'auto'}}>
-              <InputGroup className="mb-3" style = {{marginTop: 30}}>
+            <div style = {{backgroundColor: 'rgba(0,0,0,0.0)', borderRadius: 2, border: 'solid 1px white', padding: '20px 40px 60px 40px', maxWidth: 500, marginBottom: 80, margin: 'auto'}}>
+              {
+              this.state.forgot_password > 0 && !this.state.validEmail
+              ?
+              <div style = {{textAlign: 'center', fontSize: 14, color: "#f9000b", background: "#fdf0f1", width: '100%', padding: 10, borderRadius: 5, fontWeight: 'bold', marginBottom: 15}}>Email does not exist</div>
+              :
+              <div></div>
+              }
+              <InputGroup className="mb-3" style = {{marginTop: 10}}>
                 <FormControl
                   type = "email"
                   aria-label="Default"
@@ -238,30 +245,23 @@ class Reset extends Component {
                   placeholder = "Email Address"
                   onChange = {this.changeEmail}
                   onKeyPress = {this.handleKeyPress}
-                  style = {{borderRadius: 0, maxWidth: 600, backgroundColor: "rgba(0,0,0,0.0)", border: "solid 1px #F8F8F8"}}
+                  style = {{borderRadius: 5, maxWidth: 600, backgroundColor: "#F4F4F4", border: "none", padding: "30px 20px"}}
                 /><br/>
               </InputGroup>
-              {
-              this.state.forgot_password > 0 && !this.state.validEmail
-              ?
-              <div style = {{textAlign: 'center', fontSize: 14, color: "#a62121"}}>Email does not exist</div>
-              :
-              <div style = {{height: 20}}></div>
-              }
               {
               this.state.email.length > 4 && this.state.email.includes('@')
               ?
               (
               !this.state.processing
               ?
-                <Button  onClick = {this.handleButton} style = {{color: 'white', width: '100%', border: 'none', background: 'linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', marginTop: 20}}>SEND EMAIL</Button>
+                <Button  onClick = {this.handleButton} style = {{padding: 12, color: 'white', width: '100%', border: 'none', background: '#0B172B', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>SEND EMAIL</Button>
               :
-                <Button disabled = "true" style = {{color: 'white', width: '100%', border: 'none', background: 'linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', marginTop: 20}}>
+                <Button disabled = "true" style = {{padding: 12, color: 'white', width: '100%', border: 'none', background: '#0B172B', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>
                   <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 14, marginRight: 5}}/> Processing
                 </Button>
               )
               :
-              <Button  disabled = "true" style = {{color: 'white', width: '100%', border: 'none', background: 'linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', marginTop: 20}}>SEND EMAIL</Button>
+              <Button  disabled = "true" style = {{padding: 12, color: 'white', width: '100%', border: 'none', background: '#0B172B', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)'}}>SEND EMAIL</Button>
               }
           </div>
         </div>
@@ -273,7 +273,7 @@ class Reset extends Component {
           <Header  color = "#333333" button = "#94a8ed"/>
           <div style = {{minHeight: '100vh', paddingTop: 90, backgroundColor: 'white', fontSize: 20}}>
           <div style = {{margin: 'auto', maxWidth: 500}}>
-            <div style = {{color: '#333333', textAlign: 'center', fontWeight: 'bold', marginTop: 50}}>
+            <div style = {{color: '#333333', textAlign: 'center', fontWeight: 'bold', marginTop: 50, fontSize: 20}}>
               Check Your Inbox
             </div>
             <div style =  {{color: '#333333', textAlign: 'center', marginTop: 15, fontSize: 14}}>
@@ -281,7 +281,7 @@ class Reset extends Component {
               the link will expire in ten minutes.
             </div>
             <HashLink to = "/auth">
-              <Button style = {{color: 'white', width: '100%', border: 'none', background: 'linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', marginTop: 40}}>BACK TO LOGIN</Button>
+              <Button style = {{color: 'white', width: '100%', border: 'none', background: '#0B172B', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', marginTop: 40, padding: 12}}>BACK TO LOGIN</Button>
             </HashLink>
           </div>
         </div></div>

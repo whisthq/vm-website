@@ -298,6 +298,7 @@ function* sendValidateToken(action) {
 
 function* sendResetPassword(action) {
   const state = yield select()
+  console.log(action)
   const { json, response } = yield call(apiPost, config.url.MAIL_SERVER + '/mail/reset', {
     username: action.username,
     password: action.password

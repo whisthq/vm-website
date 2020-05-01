@@ -111,13 +111,15 @@ input[type=text], input {
 
 .react-tabs__tab {
   padding: 10px 30px !important;
-  color: #111111 !important;
+  color: #0B172B !important;
 }
 
 .react-tabs__tab--selected {
   border: 0px !important;
-  border-bottom: solid 3px #111111 !important;
-  color: #111111 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border-bottom: solid 0.5px #0B172B !important;
+  color: #0B172B !important;
   background-color: rgba(0,0,0,0.0) !important;
 }
 
