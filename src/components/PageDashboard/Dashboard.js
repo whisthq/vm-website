@@ -32,6 +32,7 @@ import RAM from '../../assets/ram.svg'
 import SSD from '../../assets/hard-drive-icon.svg'
 import WindowsBin from '../../bin/Fractal.exe'
 import MacBin from '../../bin/Fractal.dmg'
+import LinuxBin from '../../bin/Fractal.deb'
 import Car from '../../assets/Car.jpg'
 
 class Dashboard extends Component {
@@ -575,7 +576,7 @@ class Dashboard extends Component {
                           </div>
                         <a href = {WindowsBin} download = "Fractal.exe">
                         <div style = {{float: 'right', display: 'inline', color: 'white'}}>
-                          <button style = {{background: 'none', border: 'solid 1px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
+                          <button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
                         </div>
                         </a>
                       </Col>
@@ -585,7 +586,7 @@ class Dashboard extends Component {
                         </div>
                         <a href = {MacBin} download = "Fractal.dmg">
                         <div style = {{float: 'right', display: 'inline', color: 'white'}}>
-                          <button style = {{background: 'none', border: 'solid 1px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
+                          <button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
                         </div>
                         </a>
                       </Col>
@@ -593,9 +594,11 @@ class Dashboard extends Component {
                         <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
                           <FaUbuntu style = {{height: 11, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> Ubuntu 18.04
                         </div>
+                        <a href = {LinuxBin} download = "Fractal.deb">
                         <div style = {{float: 'right', display: 'inline', color: 'white'}}>
-                          <button disabled = "true" style = {{background: 'none', border: 'none', fontSize: 12, borderRadius: 2, color: '#A9A9A9', width: 90, padding: '5px 5px'}}>Coming Soon</button>
+                          <button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
                         </div>
+                        </a>
                       </Col>
                       <Col xs = {12} style = {{padding: '0px 20px'}}>
                         <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
