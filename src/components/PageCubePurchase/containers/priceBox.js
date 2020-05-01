@@ -35,7 +35,7 @@ class PriceBox extends Component {
     }
 
     return(
-      <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: `${ this.props.color }`, padding: 30, minHeight: 190, width: '100%', marginBottom: 20}}>
+      <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: `${ this.props.color }`, padding: 30, minHeight: 240, width: '100%', marginBottom: 20}}>
           <div style = {{display: 'flex', justifyContent: 'space-between'}}>
             <div style = {{color: '#111111', fontSize: 22, fontWeight: 'bold', float: 'left'}}>
               {this.props.name}

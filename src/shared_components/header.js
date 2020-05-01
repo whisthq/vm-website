@@ -50,7 +50,7 @@ class Header extends Component {
         <div style = {{display: 'flex', width: '100%'}}>
           <div style = {{width: '40%', textAlign: 'left', zIndex: 1}}>
             <Link to = '/' style = {{textDecoration: 'none', color: `${ this.props.color }`, fontWeight: 'bold', fontSize: 24}}>
-              <img src = {Logo} style = {{height: 24, position: 'relative', bottom: 2, right: 10}}/>
+              <img src = {Logo} style = {{height: 19, position: 'relative', bottom: 2, right: 12}}/>
               <span style = {{color: `${ this.props.title }`}}>
               Fractal
               </span>

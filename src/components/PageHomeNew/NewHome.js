@@ -374,16 +374,16 @@ class PageHome extends Component {
               <Col md = {4} style = {{paddingRight: 0, paddingLeft: 40}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, margin:'auto', width: '100%', marginBottom: 20}}>
                   <ImageFadeIn src = {FileIcon} style = {{height: 50}}/>
-                  <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>File Backup</div>
-                  <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Fractal can download your entire cloud PC hard drive to your local PC every 24 hours.</p>
+                  <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>4K Resolution</div>
+                  <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Experience crisp, native images with support for up to 4K resolution.</p>
                 </div>
               </Col>
               :
               <Col md = {4} style = {{padding: 0}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 210, margin:'auto', width: '100%', marginBottom: 20}}>
                   <ImageFadeIn src = {FileIcon} style = {{height: 50}}/>
-                  <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>File Backup</div>
-                  <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Fractal can download your entire cloud PC hard drive to your local PC every 24 hours.</p>
+                  <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>4K Resolution</div>
+                  <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Experience crisp, native images with support for up to 4K resolution.</p>
                 </div>
               </Col>
               }

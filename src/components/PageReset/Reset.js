@@ -11,7 +11,7 @@ import { FaArrowRight } from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
-import { FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'
+import { FaCheck, FaExclamationTriangle } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import { forgotPassword, validateToken, tokenStatus, resetPassword } from '../../actions/index.js';
@@ -141,7 +141,7 @@ class Reset extends Component {
             this.state.passwordSignup.length > 0
             ?
             <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 20, fontSize: 14}}>
-              <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
+              <FaCheck style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
             </div>
             :
             <div></div>
@@ -169,7 +169,7 @@ class Reset extends Component {
             this.state.passwordConfirmSignup.length > 0
             ?
             <div style = {{color: 'green', marginLeft: 5, position: 'absolute', right: '5%', zIndex: 100, top: 20, fontSize: 14}}>
-              <FaCheckCircle style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
+              <FaCheck style = {{marginRight: 5, position: 'relative', bottom: 2, color: '#62CEE6'}}/>
             </div>
             :
             <div></div>
