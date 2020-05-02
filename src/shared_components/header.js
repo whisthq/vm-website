@@ -105,13 +105,15 @@ class Header extends Component {
                 <span style = {this.props.linkStyle}>Product</span>
               </HashLink>
               <HashLink onClick = {() => this.switchTab('about')} className = 'headerlink' to = '/about' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
-                <span style = {this.props.linkStyle}>About</span>
+                <span style = {this.props.linkStyle}>Company</span>
               </HashLink>
               <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
-                <span style = {this.props.linkStyle}>Contact Us Us</span>
+                <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
               <Link to = "/auth">
-                <Button style = {{marginLeft: 35, color: `${ this.props.button }`, border: `$solid 1px { this.props.button }`, borderColor: `${ this.props.button }`, fontWeight: 'bold', paddingLeft: 20, paddingRight: 20,background: "rgba(0, 0,0,0.0)"}}>My Account</Button>
+                <Button style = {{fontWeight: 'bold', marginLeft: 35, color: '#1ba8e0', border: 'none', fontWeight: 'bold', paddingLeft: 20, paddingRight: 20, padding: '12px 30px', background: "rgba(94, 195, 235, 0.2)"}}>
+                  My Account
+                </Button>
               </Link>
             </div>
             )

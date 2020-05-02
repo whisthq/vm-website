@@ -342,7 +342,7 @@ class Auth extends Component {
                   ?
                   <Button onClick = {this.handleSignup} style = {{marginTop: 5, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: "#0B172B", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>SIGN UP</Button>
                   :
-                  <Button disabled = "true" style = {{marginTop: 5, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: "#0B172B", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>SIGN UP</Button>
+                  <Button disabled = "true" style = {{marginTop: 5, color: 'white', width: '100%', border: 'none', background: "#0B172B", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>SIGN UP</Button>
                   )
                   :
                   <Button  disabled = "true" style = {{marginTop: 5, color: 'white', width: '100%', border: 'none', background: "#0B172B", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>

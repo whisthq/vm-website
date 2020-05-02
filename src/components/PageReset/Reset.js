@@ -115,7 +115,7 @@ class Reset extends Component {
     if(this.props.token_status === 'verified') {
       return (
         <div style = {{minHeight: '100vh'}}>
-        <Header  color = "#333333" button = "#94a8ed"/>
+        <Header color = "#111111" button = "#5ec3eb" homepage/>
         <div style = {{maxWidth: 350, margin: 'auto', paddingTop: 150}}>
           <div style = {{color: '#333333', textAlign: 'center', fontWeight: 'bold', marginBottom: 50, fontSize: 20}}>
             Reset Your Password

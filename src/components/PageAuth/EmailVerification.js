@@ -65,7 +65,7 @@ class EmailVerification extends Component {
     if(!this.props.verificationToken || this.props.verificationToken == '' || !this.props.user || this.props.user == '') {
       return (
         <div>
-          <Header  color = "#333333" button = "#5ec3eb" homepage/>
+          <Header color = "#111111" button = "#5ec3eb" homepage/>
           <div style = {{margin: 'auto', paddingTop: 170, maxWidth: 600, lineHeight: 1.7, textAlign: 'center'}}>
             <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25., marginBottom: 20}}/> 
             <div style = {{fontSize: 26, fontWeight: 'bold', marginBottom: 20, color: "#333333"}}>
@@ -75,7 +75,7 @@ class EmailVerification extends Component {
               Your account has been signed out. To verify your email, please log in to re-send a verification email.
             </div>
             <Link to = "/auth">
-              <Button style = {{background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", padding: "10px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', fontSize: 14, minWidth: 225, marginBottom: 10}}>
+              <Button style = {{background: '#0B172B', padding: "12px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', fontSize: 14, minWidth: 225, marginBottom: 10}}>
                 LOG IN
               </Button>
             </Link>
@@ -94,7 +94,7 @@ class EmailVerification extends Component {
             this.state.isRedirect
             ?
             <div>
-              <Header  color = "#333333" button = "#5ec3eb" homepage/>
+              <Header color = "#111111" button = "#5ec3eb" homepage/>
               <div style = {{margin: 'auto', paddingTop: 170, maxWidth: 600, lineHeight: 1.7, textAlign: 'center'}}>
                 <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25., marginBottom: 20}}/> 
                 <div style = {{fontSize: 26, fontWeight: 'bold', marginBottom: 20, color: "#333333"}}>
@@ -107,11 +107,11 @@ class EmailVerification extends Component {
                 {
                 !this.state.isSending
                 ?
-                <Button onClick = {this.sendVerificationEmail} style = {{background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", padding: "10px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', fontSize: 14, minWidth: 225, marginBottom: 10}}>
+                <Button onClick = {this.sendVerificationEmail} style = {{background: '#0B172B', padding: "12px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', fontSize: 14, minWidth: 225, marginBottom: 10}}>
                   RESEND EMAIL
                 </Button>
                 :
-                <Button disabled = "true" style = {{background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", padding: "10px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', fontSize: 14, minWidth: 225, marginBottom: 10}}>
+                <Button disabled = "true" style = {{background: '#0B172B', padding: "12px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', fontSize: 14, minWidth: 225, marginBottom: 10}}>
                   <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 13, marginRight: 5}}/> Sending
                 </Button>
                 }
@@ -129,7 +129,7 @@ class EmailVerification extends Component {
             </div>
             :
             <div style = {{position: 'relative'}}>
-              <Header  color = "#333333" button = "#5ec3eb" homepage/>
+              <Header color = "#111111" button = "#5ec3eb" homepage/>
               <div style = {{margin: 'auto', paddingTop: 180, maxWidth: 600, lineHeight: 1.7, textAlign: 'center'}}>
                 <div style = {{fontSize: 26, fontWeight: 'bold', marginBottom: 25}}>
                   Please Verify Your Email
@@ -143,11 +143,11 @@ class EmailVerification extends Component {
                 {
                 !this.state.isSending
                 ?
-                <Button onClick = {this.sendVerificationEmail} style = {{background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", padding: "10px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', fontSize: 14, minWidth: 225, marginBottom: 10}}>
+                <Button onClick = {this.sendVerificationEmail} style = {{background: '#0B172B', padding: "12px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', fontSize: 14, minWidth: 225, marginBottom: 10}}>
                   RESEND EMAIL
                 </Button>
                 :
-                <Button disabled = "true" style = {{background: "linear-gradient(258.54deg, #5ec3eb 0%, #d023eb 100%)", padding: "10px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.45)', fontSize: 14, minWidth: 225, marginBottom: 10}}>
+                <Button disabled = "true" style = {{background: '#0B172B', padding: "12px 35px", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', fontSize: 14, minWidth: 225, marginBottom: 10}}>
                   <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 13, marginRight: 5}}/> Sending
                 </Button>
                 }
