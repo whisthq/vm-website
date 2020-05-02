@@ -62,23 +62,18 @@ ReactDOM.render(
     <Router history = {history}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <MetaTags>
-            <title>Fractal</title>
-            <meta name="description" content="Fractal streams a powerful computer to any device." />
-            <meta property="og:title" content="Fractal" />
-          </MetaTags>
-              <Route exact path="/" component={NewHome} />
-              <Route exact path="/purchase" component={Purchase}  />
-              <Route exact path="/auth" component={Auth} />
-              <Route exact path="/dashboard" component={Dashboard} />
-              <Route exact path="/home" component={NewHome} />
-              <Route exact path="/studios" component = {HomeStudios} />
-              <Route exact path="/reset" component={Reset} />
-              <Route exact path="/privacy" component={Privacy} />
-              <Route exact path="/termsofservice" component={TermsOfService} />
-              <Route exact path="/verify" component={EmailVerification} />
-              <Route exact path="/card" component={CreditCard} />
-              <Route exact path="/about" component={About}/>
+            <Route exact path="/" component={NewHome} />
+            <Route exact path="/purchase" component={Purchase}  />
+            <Route exact path="/auth" component={Auth} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/home" component={NewHome} />
+            <Route exact path="/studios" component = {HomeStudios} />
+            <Route exact path="/reset" component={Reset} />
+            <Route exact path="/privacy" component={Privacy} />
+            <Route exact path="/termsofservice" component={TermsOfService} />
+            <Route exact path="/verify" component={EmailVerification} />
+            <Route exact path="/card" component={CreditCard} />
+            <Route exact path="/about" component={About}/>
           </PersistGate>
           </Provider>
       </Router>,
