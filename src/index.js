@@ -64,9 +64,8 @@ ReactDOM.render(
         <PersistGate loading={null} persistor={persistor}>
           <MetaTags>
             <title>Fractal</title>
-            <meta name="description" content="Fractal streams a powerful computer to any deivce." />
+            <meta name="description" content="Fractal streams a powerful computer to any device." />
             <meta property="og:title" content="Fractal" />
-            <meta property="og:image" content="./assets/datacenter.svg" />
           </MetaTags>
               <Route exact path="/" component={NewHome} />
               <Route exact path="/purchase" component={Purchase}  />
