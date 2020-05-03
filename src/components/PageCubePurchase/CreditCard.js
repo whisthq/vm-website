@@ -158,7 +158,7 @@ class CreditCard extends Component {
     const renderSurvey = () => {
       if(this.state.step === 1) {
         return(
-          <div tabIndex="0" onKeyDown={(e) => this.handleKeyPress1(e)} style = {{outline: 'none', paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+          <div tabIndex="0" onKeyDown={(e) => this.handleKeyPress1(e)} style = {{outline: 'none', paddingTop: 100, paddingLeft: 0, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
             <div>
               <span style = {{position: 'relative', bottom: 2}}>
                 1 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
@@ -198,7 +198,7 @@ class CreditCard extends Component {
         )
       } else {
         return(
-          <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+          <div style = {{paddingTop: 100, paddingLeft: 0, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
             <img src = {StripeBadge} style = {{width: 125, position: 'absolute', bottom: 30, marginLeft: 40}}/>
             <div>
               <span style = {{position: 'relative', bottom: 2}}>
@@ -256,7 +256,7 @@ class CreditCard extends Component {
       <div style = {{minHeight: '100vh', height: '100%', background: '#F6F6F6'}}>
         <div style = {{maxWidth: 1920, margin: 'auto'}}>
           <Header color = "#333333" button = "#5ec3eb"/>
-          <div style = {{display: 'flex', overflowX: 'hidden'}}>
+          <div style = {{display: 'flex', overflowX: 'hidden', position: 'relative', bottom: 60}}>
             <div style = {{width: 300, paddingLeft: 80, paddingTop: 120, backgroundColor: 'none', height: '100%', minHeight: '100vh', zIndex: 0}}>
               {renderLeftMenu()}         
             </div>

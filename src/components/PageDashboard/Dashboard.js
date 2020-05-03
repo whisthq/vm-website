@@ -263,12 +263,12 @@ class Dashboard extends Component {
         <div>
         </div>
         }
-        <div style = {{display: 'flex', overflowX: 'hidden'}}>
+        <div style = {{display: 'flex', overflowX: 'hidden', position: 'relative', bottom: 60}}>
           <div style = {{width: 300, paddingLeft: 80, paddingTop: 120, backgroundColor: 'none', flex: '0 1 auto', zIndex: 0, position: 'sticky'}}>
             <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>DASHBOARD</div>
             <div className = "sign-out-button" onClick = {() => this.props.dispatch(logout())}>SIGN OUT</div>
           </div>
-          <div style = {{paddingTop: 40, paddingLeft: 25, paddingBottom: 100, width: 'calc(100% - 400px)'}}>
+          <div style = {{paddingTop: 40, paddingLeft: 25, paddingBottom: 50, width: 'calc(100% - 400px)'}}>
             {
             this.props.credits && this.props.credits > 0
             ?
