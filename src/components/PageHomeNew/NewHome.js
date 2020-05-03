@@ -90,6 +90,7 @@ class PageHome extends Component {
     }
     return (
       <div className='App' style = {{backgroundColor: 'white'}} id = 'top'>
+        <div style = {{maxWidth: 1920, margin: 'auto'}}>
         <Header color = "#111111" button = "#5ec3eb" homepage/>
         <ReactTypeformEmbed
           popup
@@ -103,20 +104,20 @@ class PageHome extends Component {
           }}
           style = {{zIndex: -100}}
         />
-        <div style = {{paddingTop: 100}}>
+        <div style = {{paddingTop: 50}}>
           <div className = "fractal-container" style = {{paddingBottom: 25}}>
             <Row>
               <Col md = {{span: 5, order: 1}} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingTop: 50}}>
                 {
                 this.state.width > 700
                 ?
-                <div style = {{color: '#111111', fontSize: 50, lineHeight: 1.3, fontWeight: 'bold', marginTop: 30}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
+                <div style = {{color: '#111111', fontSize: 'calc(40px + 1.5vw)', lineHeight: 1.3, fontWeight: 'bold', marginTop: 30}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
                 :
                 <div style = {{color: '#111111', fontSize: 35, lineHeight: 1.3, fontWeight: 'bold', marginTop: 30}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
                 }
-                <p style = {{textAlign: 'left', marginTop: 25, color: '#111111', marginBottom: 40, fontSize: 17}}>Fractal streams powerful Windows desktops to any computer.</p>
+                <p style = {{textAlign: 'left', marginTop: 25, color: '#111111', marginBottom: 40, maxWidth: 650, fontSize: 'calc(18px + 0.5vw)'}}>Fractal streams powerful Windows desktops to any computer.</p>
                 <Link to = "/dashboard">
-                  <Button style = {{boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.20)', display: 'inline', float: 'left', backgroundColor: '#111111', padding: '15px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none', marginRight: 20}}>
+                  <Button style = {{fontSize: 'calc(15px + 0.4vw)', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.20)', display: 'inline', float: 'left', backgroundColor: '#111111', padding: '15px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none', marginRight: 20, marginTop: 10}}>
                     GET STARTED <span style = {{color: '#D6D6D6', fontWeight: 'normal'}}> — it's free</span>
                   </Button>
                 </Link>
@@ -133,6 +134,7 @@ class PageHome extends Component {
             </Row>
           </div>
         </div>
+        </div>
         {
         this.state.width > 700
         ?
@@ -144,14 +146,14 @@ class PageHome extends Component {
           <div className = "fractal-container">
             <Row>
               <Col md = {6} xs = {{order: 1}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: '10%'}}>
-                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '100%', maxWidth: 500}}>
+                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '95%', maxWidth: 750}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 35px', fontWeight: 'bold'}}>
                     My Cloud PC
                   </div>
                   {
                   this.state.width > 700
                   ?
-                  <div style = {{width: '100%', padding: 35, color: '#333333', fontSize: 16}}>
+                  <div style = {{width: '100%', padding: 35, color: '#333333', fontSize: 'calc(12px + 0.4vw)'}}>
                     <Row>
                       <Col xs = {6}>NVIDIA Tesla M60 GPU</Col>
                       <Col xs = {6} style = {{textAlign: 'right'}}><strong>16 GB+</strong> DDR4 RAM</Col>
@@ -189,8 +191,8 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{paddingTop: '10%', paddingLeft: 50}}>
-                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'left'}}>Graphics power on<br/> any device</div>
-                <p style = {{textAlign: 'left', marginTop: 20, fontSize: 18}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
+                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'left', fontSize: 'calc(30px + 1.1vw)'}}>Graphics power on<br/> any device</div>
+                <p style = {{textAlign: 'left', marginTop: 20, fontSize: 'calc(15px + 0.4vw)', maxWidth: 500}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               :
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{width: '100%', marginTop: 25}}>
@@ -245,29 +247,29 @@ class PageHome extends Component {
           <div className = "fractal-container">
             <Row style = {{marginBottom: 10, paddingTop: 30}}>
               <Col md = {4} xs = {{order: 3, span: 12}} style = {{textAlign: 'left', paddingBottom: 100, paddingLeft: 20}}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250, background: 'white'}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, minHeight: 250, background: 'white'}}>
                   <ImageFadeIn src = {Process} style = {{width: 50}}/>
-                  <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
+                  <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 'calc(15px + 0.4vw)'}}>
                     Sub-9ms Software Latency
                   </div>
-                  <div style = {{marginTop: 10}}>
+                  <div style = {{marginTop: 10, fontSize: 'calc(12px + 0.4vw)'}}>
                     Achieve an immersive, native desktop experience.
                   </div>
                 </div>
               </Col>
               <Col md = {4} xs = {{order: 2, span: 12}} style = {{textAlign: 'left', paddingBottom: 100, paddingLeft: 20}}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, height: 250, background: 'white'}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.20)', padding: 30, minHeight: 250, background: 'white'}}>
                   <ImageFadeIn src = {Art} style = {{width: 50}}/>
-                  <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 20}}>
+                  <div style = {{marginTop: 30, fontWeight: 'bold', fontSize: 'calc(15px + 0.4vw)'}}>
                     60+ Frames per Second
                   </div>
-                  <div style = {{marginTop: 10}}>
+                  <div style = {{marginTop: 10, fontSize: 'calc(12px + 0.4vw)'}}>
                     Scrub through videos or play games effortlessly.
                   </div>
                 </div>
               </Col>
               <Col md = {{span: 4, order: 1}} xs = {{order: 1, span: 12}}>
-                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'left'}}>Fractal cloud computers are <br/><span className = "blue-gradient">fast</span></div>
+                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'left', fontSize: 'calc(35px + 1.0vw)'}}>Fractal cloud computers are <span className = "blue-gradient">fast</span></div>
               </Col>
             </Row>
           </div>
@@ -310,7 +312,7 @@ class PageHome extends Component {
             {
             this.state.width > 700
             ?
-            <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'center', marginBottom: 20}}>Access your desktop anywhere</div>
+            <div style = {{fontWeight: 'bold', fontSize: 'calc(30px + 1.1vw)', color: "#111111", textAlign: 'center', marginBottom: 20}}>Access your desktop anywhere</div>
             :
             <div style = {{fontWeight: 'bold', fontSize: 35, lineHeight: 1.4, color: "#111111", textAlign: 'left', marginBottom: 20}}>Access your desktop anywhere</div>
             }
@@ -318,7 +320,7 @@ class PageHome extends Component {
             this.state.width > 700
             ?
             <div style = {{margin: 'auto'}}>
-              <p style = {{textAlign: 'center', maxWidth: 750, margin: 'auto',  marginTop: 20, fontSize: 18, marginBottom: 75}}>
+              <p style = {{fontSize: 'calc(12px + 0.4vw)', textAlign: 'center', maxWidth: 750, margin: 'auto',  marginTop: 20, marginBottom: 75}}>
                 Need to work in more than one location? Forgot to upload a file to the cloud, or to commit a change? Your Fractal cloud PC is accessible from any Internet-connected device.
               </p>
             </div>
@@ -336,8 +338,8 @@ class PageHome extends Component {
               <Col md = {4} style = {{paddingLeft: 0, paddingRight: 40}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, width: '100%', marginBottom: 20}}>
                   <ImageFadeIn src = {RGBIcon} style = {{height: 50}}/>
-                  <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Color Accuracy</div>
-                  <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Achieve visually lossless frames with our color-accurate streaming technology.</p>
+                  <div style = {{fontWeight: 'bold', fontSize: 'calc(15px + 0.4vw)', color: "#333333", textAlign: 'left', marginTop: 30}}>Color Accuracy</div>
+                  <p style = {{textAlign: 'left', marginTop: 10, fontSize: 'calc(12px + 0.4vw)'}}>Achieve visually lossless frames with our color-accurate streaming technology.</p>
                 </div>
               </Col>
               :
@@ -355,8 +357,8 @@ class PageHome extends Component {
               <Col md = {4}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, margin:'auto', width: '100%', marginBottom: 20}}>
                   <ImageFadeIn src = {HardDriveIcon} style = {{height: 50}}/>
-                  <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Hard Drive Upload</div>
-                  <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Clone your entire hard drive to your cloud PC at the click of a button.</p>
+                  <div style = {{fontWeight: 'bold', fontSize: 'calc(15px + 0.4vw)', color: "#333333", textAlign: 'left', marginTop: 30}}>Hard Drive Upload</div>
+                  <p style = {{textAlign: 'left', marginTop: 10, fontSize: 'calc(12px + 0.4vw)'}}>Clone your entire hard drive to your cloud PC at the click of a button.</p>
                 </div>
               </Col>
               :
@@ -374,8 +376,8 @@ class PageHome extends Component {
               <Col md = {4} style = {{paddingRight: 0, paddingLeft: 40}}>
                 <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, margin:'auto', width: '100%', marginBottom: 20}}>
                   <ImageFadeIn src = {FileIcon} style = {{height: 50}}/>
-                  <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>4K Resolution</div>
-                  <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Experience crisp, native images with support for up to 4K resolution.</p>
+                  <div style = {{fontWeight: 'bold', fontSize: 'calc(15px + 0.4vw)', color: "#333333", textAlign: 'left', marginTop: 30}}>4K Resolution</div>
+                  <p style = {{textAlign: 'left', marginTop: 10, fontSize: 'calc(12px + 0.4vw)'}}>Experience crisp, native images with support for up to 4K resolution.</p>
                 </div>
               </Col>
               :
@@ -391,13 +393,13 @@ class PageHome extends Component {
           </div>
         </div>
         <div style = {{backgroundColor: 'white'}}>
-          <div className = "fractal-container">
+          <div className = "fractal-container" style = {{marginTop: 100}}>
             <Row>
               {
               this.state.width > 700
               ?
-              <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingBottom: 100, marginLeft: 0, marginTop: 100, marginBottom: 25}}>
-                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '100%', maxWidth: 500}}>
+              <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingBottom: 100, marginLeft: 0, marginBottom: 25}}>
+                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '95%', maxWidth: 750}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 40px', fontWeight: 'bold'}}>
                     Your Info
                   </div>
@@ -465,9 +467,9 @@ class PageHome extends Component {
               {
               this.state.width > 700
               ?
-              <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{paddingTop: '10%', paddingLeft: 50}}>
-                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'left'}}>Setup in less than <br/>one minute</div>
-                <p style = {{textAlign: 'left', marginTop: 20, fontSize: 18}}>Sign up, choose a cloud PC, and download the Fractal desktop app. Your first week is free, no credit card required.</p>
+              <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{paddingLeft: 50}}>
+                <div style = {{fontWeight: 'bold', fontSize: 'calc(30px + 1.1vw)', color: "#111111", textAlign: 'left'}}>Setup in less than <br/>one minute</div>
+                <p style = {{textAlign: 'left', marginTop: 20, fontSize: 'calc(12px + 0.4vw)'}}>Sign up, choose a cloud PC, and download the Fractal desktop app. Your first week is free, no credit card required.</p>
               </Col>
               :
               <Col md = {{span: 6, order: 1}} xs = {{order: 1, span: 12}} style = {{paddingTop: 50, width: '100%'}}>
@@ -488,7 +490,7 @@ class PageHome extends Component {
                 Try Fractal free for seven days.<br/>
                 Start your trial now, pick a plan later.
               </div>
-              <div style = {{marginTop: 20, color: '#333333'}}>
+              <div style = {{marginTop: 20, color: '#333333', fontSize: 'calc(12px + 0.4vw)'}}>
                 No credit card required.
               </div>
               <Link to = "/dashboard">
@@ -760,7 +762,7 @@ class PageHome extends Component {
             {
             this.state.width > 700
             ?
-            <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'center'}}>Fractal is <span className = "blue-gradient">expanding</span></div>
+            <div style = {{fontWeight: 'bold', fontSize: 'calc(30px + 1.1vw)', color: "#111111", textAlign: 'center'}}>Fractal is <span className = "blue-gradient">expanding</span></div>
             :
             <div style = {{fontWeight: 'bold', fontSize: 35, lineHeight: 1.4, color: "#111111", textAlign: 'left'}}>Fractal is <span className = "blue-gradient">Expanding</span></div>
             }
@@ -769,7 +771,7 @@ class PageHome extends Component {
             ?
             <div>
               <div style = {{margin: 'auto', maxWidth: 750}}>
-                <p style = {{textAlign: 'center', marginTop: 20, color: '#333333', fontSize: 18}}>We currently have servers across the Eastern and Midwestern United States. If you live outside the US, you can request access below.</p>
+                <p style = {{textAlign: 'center', marginTop: 20, color: '#333333', fontSize: 'calc(12px + 0.4vw)'}}>We currently have servers across the Eastern and Midwestern United States. If you live outside the US, you can request access below.</p>
               </div>
               <Button onClick = {this.openForm} style = {{marginTop: 30, backgroundColor: '#111111', padding: '15px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none'}}>
                 REQUEST ACCESS

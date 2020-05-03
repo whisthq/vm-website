@@ -180,7 +180,7 @@ class Auth extends Component {
         ?
         <Redirect to = "/dashboard"/>
         :
-        <div style = {{position: 'relative'}}>
+        <div style = {{position: 'relative', margin: 'auto', maxWidth: 1920}}>
         <Header  color = "#333333" button = "#5ec3eb" homepage/>
         <div style = {{minHeight: '100vh', paddingTop: 50, backgroundColor: 'white', position: 'relative'}}>
             {

@@ -65,6 +65,7 @@ class EmailVerification extends Component {
     if(!this.props.verificationToken || this.props.verificationToken == '' || !this.props.user || this.props.user == '') {
       return (
         <div>
+          <div style = {{maxWidth: 1920, margin: 'auto'}}>
           <Header color = "#111111" button = "#5ec3eb" homepage/>
           <div style = {{margin: 'auto', paddingTop: 170, maxWidth: 600, lineHeight: 1.7, textAlign: 'center'}}>
             <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25., marginBottom: 20}}/> 
@@ -80,6 +81,7 @@ class EmailVerification extends Component {
               </Button>
             </Link>
           </div>
+          </div>
         </div>
       )
     } else {
@@ -93,7 +95,7 @@ class EmailVerification extends Component {
             (
             this.state.isRedirect
             ?
-            <div>
+            <div style = {{maxWidth: 1920, margin: 'auto'}}>
               <Header color = "#111111" button = "#5ec3eb" homepage/>
               <div style = {{margin: 'auto', paddingTop: 170, maxWidth: 600, lineHeight: 1.7, textAlign: 'center'}}>
                 <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25., marginBottom: 20}}/> 
@@ -128,7 +130,7 @@ class EmailVerification extends Component {
               </div>
             </div>
             :
-            <div style = {{position: 'relative'}}>
+            <div style = {{position: 'relative', maxWidth: 1920, margin: 'auto'}}>
               <Header color = "#111111" button = "#5ec3eb" homepage/>
               <div style = {{margin: 'auto', paddingTop: 180, maxWidth: 600, lineHeight: 1.7, textAlign: 'center'}}>
                 <div style = {{fontSize: 26, fontWeight: 'bold', marginBottom: 25}}>

@@ -164,7 +164,7 @@ class CreditCard extends Component {
                 1 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
               </span>
               <span style = {{fontSize: 22, paddingLeft: 10}}>Choose Your Plan</span>
-              <div style = {{marginTop: 5, color: '#333333', paddingLeft: 39, fontSize: 16, maxWidth: 650}}>
+              <div style = {{marginTop: 5, color: '#333333', paddingLeft: 39, fontSize: 16, maxWidth: 1200}}>
                 No payment is required until your free trial has ended. You can change or cancel your plan at any time.
               </div>
             </div>
@@ -211,18 +211,18 @@ class CreditCard extends Component {
               (
               this.props.credits === 1
               ?
-              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 650}}>
+              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 1200}}>
                 Your first month is free, and you can cancel anytime. Get an additional free month for every
                 friend who enters your referral code.
               </div>
               :
-              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 650}}>
+              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 1200}}>
                 Your first {this.props.credits} months are free, and you can cancel anytime. Get an additional free 
                 month for every friend who enters your referral code.
               </div>
               )
               :
-              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 650}}>
+              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 1200}}>
                 Your first seven days are free, and you can cancel anytime. Get an additional free month for every
                 friend who enters your referral code.
               </div>
@@ -254,12 +254,14 @@ class CreditCard extends Component {
 
     return (
       <div style = {{minHeight: '100vh', height: '100%', background: '#F6F6F6'}}>
-        <Header color = "#333333" button = "#5ec3eb"/>
-        <div style = {{display: 'flex', width: '100vw', overflowX: 'hidden'}}>
-          <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'none', height: '100%', minHeight: '100vh', zIndex: 0}}>
-            {renderLeftMenu()}         
+        <div style = {{maxWidth: 1920, margin: 'auto'}}>
+          <Header color = "#333333" button = "#5ec3eb"/>
+          <div style = {{display: 'flex', overflowX: 'hidden'}}>
+            <div style = {{width: 300, paddingLeft: 80, paddingTop: 120, backgroundColor: 'none', height: '100%', minHeight: '100vh', zIndex: 0}}>
+              {renderLeftMenu()}         
+            </div>
+            {renderSurvey()}
           </div>
-          {renderSurvey()}
         </div>
       </div>
     );

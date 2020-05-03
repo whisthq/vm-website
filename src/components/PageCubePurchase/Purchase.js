@@ -259,7 +259,7 @@ class Purchase extends Component {
       if(this.state.step === 1) {
         return(
           <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 300px)', overflowX: 'hidden !important'}}>
-            <div style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', borderRadius: 5, maxWidth: 700}}>
+            <div style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', borderRadius: 5, maxWidth: 1200}}>
               <span style = {{position: 'relative', bottom: 2}}>
                 1 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
               </span>
@@ -328,7 +328,7 @@ class Purchase extends Component {
       } else if(this.state.step === 2 && this.state.exit) {
         return (
         <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 300px)', overflowX: 'hidden !important'}}>
-          <div style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', borderRadius: 5, maxWidth: 700, fontSize: 16, lineHeight: 1.6}}>
+          <div style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', borderRadius: 5, maxWidth: 1200, fontSize: 16, lineHeight: 1.6}}>
             <div style = {{fontSize: 26, marginBottom: 20}}>We'll be available in your area soon</div>
             <div>
               Currently, Fractal is only available in the Eastern and Midwestern United States due to the locations of our servers. 
@@ -356,7 +356,7 @@ class Purchase extends Component {
       } else if(this.state.step === 2 && !this.state.exit) {
         return(
           <div style = {{paddingTop: 100, paddingLeft: 50, width: 'calc(100% - 300px)'}} onKeyPress = {this.handleKeyPress2}>
-            <div className = "state-select" style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', borderRadius: 5, maxWidth: 700, maxHeight: 'calc(100vh - 150px)'}}>
+            <div className = "state-select" style = {{padding: '40px 50px', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.1)', borderRadius: 5, maxWidth: 1200, maxHeight: 'calc(100vh - 150px)'}}>
               <span style = {{position: 'relative', bottom: 2}}>
                 2 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
               </span>
@@ -550,13 +550,15 @@ class Purchase extends Component {
 
     return (
       <div style = {{minHeight: '100vh', paddingBottom: 50, background: '#F6F6F6'}}>
-        <Header color = "#333333" button = "#5ec3eb"/>
-        <div style = {{display: 'flex', width: '100vw', overflowX: 'hidden'}}>
-          <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'none', height: '100%', minHeight: '100vh', zIndex: 0}}>
-          {renderLeftMenu()}      
+        <div style = {{maxWidth: 1920, margin: 'auto'}}>
+          <Header color = "#333333" button = "#5ec3eb"/>
+          <div style = {{display: 'flex', overflowX: 'hidden'}}>
+            <div style = {{width: 300, paddingLeft: 80, paddingTop: 120, backgroundColor: 'none', height: '100%', minHeight: '100vh', zIndex: 0}}>
+            {renderLeftMenu()}      
+            </div>
+            {renderSurvey()}
           </div>
-          {renderSurvey()}
-        </div>
+         </div>
       </div>
     );
   }

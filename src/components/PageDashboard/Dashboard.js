@@ -234,13 +234,14 @@ class Dashboard extends Component {
       )
     } else {
     return (
-      <div>
+      <div style = {{backgroundColor: "#F6F6F6", minHeight: '100vh', overflowX: 'hidden !important', justifyContent: 'center'}}>
       {
       !this.props.loggedIn || !this.props.email_verified
       ?
       <Redirect to = "/auth"/>
       :
-      <div style = {{backgroundColor: "#F6F6F6", minHeight: '100vh', overflowX: 'hidden !important'}}>
+      <div style = {{maxWidth: 1920, margin: 'auto'}}>
+        <div>
         <Header color = "#333333" button = "#5ec3eb"/>
         {
         this.props.show_survey
@@ -262,8 +263,8 @@ class Dashboard extends Component {
         <div>
         </div>
         }
-        <div style = {{display: 'flex', width: '100vw', overflowX: 'hidden'}}>
-          <div style = {{width: 300, paddingLeft: 135, paddingTop: 120, backgroundColor: 'none', flex: '0 1 auto', zIndex: 0, position: 'sticky'}}>
+        <div style = {{display: 'flex', overflowX: 'hidden'}}>
+          <div style = {{width: 300, paddingLeft: 80, paddingTop: 120, backgroundColor: 'none', flex: '0 1 auto', zIndex: 0, position: 'sticky'}}>
             <div style = {{marginBottom: 20, fontWeight: 'bold', color: '#111111'}}>DASHBOARD</div>
             <div className = "sign-out-button" onClick = {() => this.props.dispatch(logout())}>SIGN OUT</div>
           </div>
@@ -749,6 +750,7 @@ class Dashboard extends Component {
               </div>
               </Col>
             </Row>
+          </div>
           </div>
         </div>
       </div>

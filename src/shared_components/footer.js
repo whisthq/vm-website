@@ -35,9 +35,8 @@ class Footer extends Component {
       {
       this.state.width > 700
       ?
-      <div style = {{width: '100%', backgroundColor: 'white', padding: 30, paddingTop: 60, fontSize: 15, borderTop: 'solid 1px white'}}>
-       <Container>
-        <div style = {{width: '100%', minHeight: 100}}>
+      <div style = {{width: '100%', backgroundColor: 'white', paddingTop: 60, fontSize: 15, borderTop: 'solid 1px white'}}>
+        <div style = {{width: '100%', minHeight: 100, maxWidth: 1920, margin: 'auto'}} className = "fractal-container">
         <Row style = {{float: 'left', width: 400, display: 'inline'}}>
             <Col xs = {12} style = {{maxWidth: 350}}>
               <div style = {{fontWeight: 'bold', marginBottom: 10, fontSize: 25}}>Fractal</div>
@@ -106,11 +105,12 @@ class Footer extends Component {
             </Col>
           </Row>
         </div>
-        <div style = {{width: '100%', marginTop: 100, background: '#EBEBEB', height: 1}}></div>
-        <div style = {{fontSize: 11, marginTop: 20, width: '100%'}}>
-          <p style = {{margin: 0, textAlign: 'left', color: '#555555'}}>Copyright &copy; Fractal Computers, Inc. All Rights Reserved.</p>
+        <div className = "fractal-container" style = {{paddingBottom: 30}}>
+          <div style = {{width: '100%', marginTop: 100, background: '#EBEBEB', height: 1}}></div>
+          <div style = {{fontSize: 11, marginTop: 20, width: '100%'}}>
+            <p style = {{margin: 0, textAlign: 'left', color: '#555555'}}>Copyright &copy; Fractal Computers, Inc. All Rights Reserved.</p>
+          </div>
         </div>
-      </Container>
     </div>
     :
       <div style = {{width: '100%', backgroundColor: 'white', padding: 30, paddingTop: 60, fontSize: 15, borderTop: 'solid 1px white'}}>
