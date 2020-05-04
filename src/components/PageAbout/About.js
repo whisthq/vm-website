@@ -55,23 +55,23 @@ class About extends Component {
         {
         this.state.width > 700
         ?
-        <div className = "fractal-container" style = {{minHeight: '100vh', paddingTop: 150}}>
+        <div className = "fractal-container" style = {{paddingTop: 125, paddingBottom: 150}}>
           <Row>
             <Col md = {7} style = {{paddingRight: 60}}>
-              <ImageFadeIn src = {Datacenter} style = {{width: '100%', border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', marginTop: 20}}/>
+              <ImageFadeIn src = {Datacenter} style = {{width: '95%', border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}/>
             </Col>
             <Col md = {5}>
               <div style = {{color: "#5ec3eb", fontWeight: 'bold'}}>
                 Our Mission
               </div>
-              <div style = {{fontSize: 45, marginTop: 10, lineHeight: 1.3, fontWeight: 'bold'}}>
+              <div style = {{fontSize: 'calc(30px + 1.1vw)', marginTop: 10, lineHeight: 1.3, fontWeight: 'bold'}}>
                 To Democratize Computing<br/> Power
               </div>
-              <div style = {{color: "#555555", marginTop: 40, lineHeight: 1.7, fontSize: 18, maxWidth: 425}}>
+              <div style = {{color: "#555555", marginTop: 40, lineHeight: 1.7, fontSize: 'calc(12px + 0.4vw)', maxWidth: 550}}>
                 At Fractal, we envision laptops that render 4K video at lightning speeds. Chromebooks and Macs 
                 that easily run Windows or Linux. PCs whose hardware can be upgraded at the click of a button. 
               </div>
-              <div style = {{color: "#555555", marginTop: 15, lineHeight: 1.7, fontSize: 18, maxWidth: 425}}>
+              <div style = {{color: "#555555", marginTop: 15, lineHeight: 1.7, fontSize: 'calc(12px + 0.4vw)', maxWidth: 550}}>
                 We believe that a single cloud PC should handle all your computing needs.
               </div>
             </Col>

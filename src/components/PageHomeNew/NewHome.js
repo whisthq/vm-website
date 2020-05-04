@@ -111,7 +111,7 @@ class PageHome extends Component {
                 {
                 this.state.width > 700
                 ?
-                <div style = {{color: '#111111', fontSize: 'calc(35px + 1.5vw)', lineHeight: 1.3, fontWeight: 'bold', marginTop: 30}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
+                <div style = {{color: '#111111', fontSize: 'calc(28px + 2.0vw)', lineHeight: 1.3, fontWeight: 'bold', marginTop: 30}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
                 :
                 <div style = {{color: '#111111', fontSize: 35, lineHeight: 1.3, fontWeight: 'bold', marginTop: 30}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
                 }
