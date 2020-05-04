@@ -42,11 +42,11 @@ class Header extends Component {
 
   render() {
     return (
-      <div style = {{width: '100%', padding: 10, paddingTop: 20, overflowX: 'hidden', paddingLeft: '80px', paddingRight: '80px'}}>  
+      <div style = {{width: '100%', padding: 10, paddingTop: 20, overflowX: 'hidden'}}>  
         {
         this.state.width > 700 
         ?
-        <div>
+        <div style = {{paddingLeft: '80px', paddingRight: '80px'}}>
         <div style = {{display: 'flex', width: '100%'}}>
           <div style = {{width: '40%', textAlign: 'left', zIndex: 1}}>
             <Link to = '/' style = {{textDecoration: 'none', color: `${ this.props.color }`, fontWeight: 'bold', fontSize: 24}}>
