@@ -42,7 +42,7 @@ class Header extends Component {
 
   render() {
     return (
-      <div style = {{width: '100%', padding: 10, paddingTop: 20, overflowX: 'hidden'}}>  
+      <div style = {{width: '100%', paddingTop: 20, overflowX: 'hidden'}}>  
         {
         this.state.width > 700 
         ?
