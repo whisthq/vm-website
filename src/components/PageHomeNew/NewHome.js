@@ -192,12 +192,12 @@ class PageHome extends Component {
               ?
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{paddingTop: '10%', paddingLeft: 50}}>
                 <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'left', fontSize: 'calc(30px + 1.1vw)'}}>Graphics power on<br/> any device</div>
-                <p style = {{textAlign: 'left', marginTop: 20, fontSize: 'calc(12px + 0.4vw)', maxWidth: 700}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
+                <p style = {{textAlign: 'left', marginTop: 20, fontSize: 'calc(12px + 0.4vw)', maxWidth: 700}}>Edit, render, and play at insane speeds from any Windows, Apple, or Linux computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               :
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{width: '100%', marginTop: 25}}>
                 <div style = {{fontWeight: 'bold', fontSize: 35, color: "#111111", textAlign: 'left', lineHeight: 1.4}}>Graphics power on<br/> any device</div>
-                <p style = {{textAlign: 'left', marginTop: 20}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
+                <p style = {{textAlign: 'left', marginTop: 20}}>Edit, render, and play at insane speeds from any Windows, Apple, or Linux computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               }
             </Row>
