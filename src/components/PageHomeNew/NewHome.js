@@ -115,7 +115,7 @@ class PageHome extends Component {
                 :
                 <div style = {{color: '#111111', fontSize: 35, lineHeight: 1.3, fontWeight: 'bold', marginTop: 30}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
                 }
-                <p style = {{textAlign: 'left', marginTop: 25, color: '#111111', marginBottom: 40, maxWidth: 650, fontSize: 'calc(15px + 0.5vw)'}}>Fractal streams powerful Windows desktops to any computer.</p>
+                <p style = {{textAlign: 'left', marginTop: 25, color: '#111111', marginBottom: 40, maxWidth: 650, fontSize: 'calc(14px + 0.4vw)'}}>Fractal brings the power of a workstation to any Internet-connected device.</p>
                 <Link to = "/dashboard">
                   <Button style = {{fontSize: 'calc(12px + 0.4vw)', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.20)', display: 'inline', float: 'left', backgroundColor: '#111111', padding: '15px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none', marginRight: 20, marginTop: 10}}>
                     GET STARTED <span style = {{color: '#D6D6D6', fontWeight: 'normal'}}> — it's free</span>
@@ -192,12 +192,12 @@ class PageHome extends Component {
               ?
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{paddingTop: '10%', paddingLeft: 50}}>
                 <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'left', fontSize: 'calc(30px + 1.1vw)'}}>Graphics power on<br/> any device</div>
-                <p style = {{textAlign: 'left', marginTop: 20, fontSize: 'calc(15px + 0.4vw)', maxWidth: 700}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
+                <p style = {{textAlign: 'left', marginTop: 20, fontSize: 'calc(12px + 0.4vw)', maxWidth: 700}}>Edit, render, and play at insane speeds from any Windows, Apple, or Linux computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               :
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{width: '100%', marginTop: 25}}>
                 <div style = {{fontWeight: 'bold', fontSize: 35, color: "#111111", textAlign: 'left', lineHeight: 1.4}}>Graphics power on<br/> any device</div>
-                <p style = {{textAlign: 'left', marginTop: 20}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
+                <p style = {{textAlign: 'left', marginTop: 20}}>Edit, render, and play at insane speeds from any Windows, Apple, or Linux computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               }
             </Row>
