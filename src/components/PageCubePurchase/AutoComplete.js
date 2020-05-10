@@ -124,7 +124,7 @@ export class Autocomplete extends Component {
     if (showOptions && userInput) {
       if (filteredOptions.length) {
         optionList = (
-          <div className="options">
+          <div className="options" style = {{width: this.props.width > 500 ? 400 : '90%'}}>
             {filteredOptions.map((optionName, index) => {
               let className;
               if (index === activeOption) {
@@ -157,7 +157,7 @@ export class Autocomplete extends Component {
             onKeyDown={onKeyDown}
             value={userInput}
             placeholder = "Alabama"
-            style = {{marginRight: 10, display: 'inline', width: 400, padding: '10px 20px', border: 'none', borderRadius: 3, backgroundColor: '#EFEFEF', color: '#111111'}}
+            style = {{marginRight: 10, display: 'inline', width: this.props.width > 500 ? 400 : '90%', padding: '10px 20px', border: 'none', borderRadius: 3, backgroundColor: '#EFEFEF', color: '#111111'}}
           />
         </div>
         {optionList}

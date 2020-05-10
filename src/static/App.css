@@ -324,7 +324,6 @@ input[type=text], input {
 .options {
   display: block;
   list-style: none;
-  width: 400px;
   transition: width 0.3s;
   position: relative;
 }

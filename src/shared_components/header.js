@@ -42,11 +42,11 @@ class Header extends Component {
 
   render() {
     return (
-      <div style = {{width: '100%', padding: 10, paddingTop: 20, overflowX: 'hidden', paddingLeft: '80px', paddingRight: '80px'}}>  
+      <div style = {{width: '100%', padding: 10, paddingTop: 20, overflowX: 'hidden'}}>  
         {
         this.state.width > 700 
         ?
-        <div>
+        <div style = {{paddingLeft: '80px', paddingRight: '80px'}}>
         <div style = {{display: 'flex', width: '100%'}}>
           <div style = {{width: '40%', textAlign: 'left', zIndex: 1}}>
             <Link to = '/' style = {{textDecoration: 'none', color: `${ this.props.color }`, fontWeight: 'bold', fontSize: 24}}>
@@ -135,9 +135,16 @@ class Header extends Component {
               </span>
             </Link>
           </div> 
+          {
+          this.props.homepage 
+          ?
           <div style = {{float: 'right', zIndex: 100}}>
             <FaBars onClick = {() => this.openMenu(true)} style = {{color: '#111111'}}/>
           </div>
+          :
+          <div>
+          </div>
+          }
           {
           this.state.menu
           ?

@@ -23,7 +23,7 @@ import PriceBox from './containers/priceBox.js'
 class CreditCard extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, modalShow: false, continue: false, exit: false, location: '', step: 1, plan: '' }
+    this.state = { width: 0, height: 0, modalShow: false, continue: false, exit: false, location: '', step: 2, plan: '' }
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 
@@ -64,41 +64,45 @@ class CreditCard extends Component {
     var public_key = config.stripe.PUBLIC_KEY
 
     const renderLeftMenu = () => {
-      if(this.state.step === 1) {
-        return(
-          <div>
-            <div style = {{paddingBottom: 20}}>
-              <div style = {{fontWeight: 'bold', color: '#111111'}}>Plan</div>  
-              <div style = {{color: '#B9B9B9', fontSize: 12}}>
-                {this.state.plan}
+      if(this.state.width > 700) {
+        if(this.state.step === 1) {
+          return(
+            <div>
+              <div style = {{paddingBottom: 20}}>
+                <div style = {{fontWeight: 'bold', color: '#111111'}}>Plan</div>  
+                <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                  {this.state.plan}
+                </div>
+              </div>
+              <div style = {{paddingBottom: 20}}>
+                <div style = {{color: '#B9B9B9'}}>Payment</div>  
               </div>
             </div>
-            <div style = {{paddingBottom: 20}}>
-              <div style = {{color: '#B9B9B9'}}>Payment</div>  
-            </div>
-          </div>
-        )
-      } else {
-        return(
-          <div>
-            <div style = {{paddingBottom: 20}}>
-              <div style = {{color: '#B9B9B9'}}>Plan</div>  
-              <div style = {{color: '#B9B9B9', fontSize: 12}}>
-                {this.state.plan}
+          )
+        } else {
+          return(
+            <div>
+              <div style = {{paddingBottom: 20}}>
+                <div style = {{color: '#B9B9B9'}}>Plan</div>  
+                <div style = {{color: '#B9B9B9', fontSize: 12}}>
+                  {this.state.plan}
+                </div>
+              </div>
+              <div style = {{paddingBottom: 20}}>
+                <div style = {{fontWeight: 'bold', color: '#111111'}}>Payment</div>  
               </div>
             </div>
-            <div style = {{paddingBottom: 20}}>
-              <div style = {{fontWeight: 'bold', color: '#111111'}}>Payment</div>  
-            </div>
-          </div>
-        )
-      }
+          )
+        }
+    } else {
+      return(<div></div>)
+    }
     }
 
     const renderPrice = () => {
       if(this.state.plan === '') {
         return(
-          <Row style = {{marginTop: 50, paddingLeft: 39}}>
+          <Row style = {{marginTop: 50, paddingLeft: this.state.width > 700 ? 39 : 15}}>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Hourly'})} className = "pointerOnHover">
               <PriceBox color = "white" name = "Hourly" price = "5" details = "+$0.70 / hr of usage"/>
             </Col>
@@ -112,7 +116,7 @@ class CreditCard extends Component {
         )
       } else if(this.state.plan === 'Hourly') {
         return(
-          <Row style = {{marginTop: 50, paddingLeft: 39}}>
+          <Row style = {{marginTop: 50, paddingLeft: this.state.width > 700 ? 39 : 15}}>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Hourly'})} className = "pointerOnHover">
               <PriceBox color = "rgba(94, 195, 235, 0.1)" name = "Hourly" price = "5" details = "+$0.70 / hr of usage" checked/>
             </Col>
@@ -126,7 +130,7 @@ class CreditCard extends Component {
         )
       }  else if(this.state.plan === 'Monthly') {
         return(
-          <Row style = {{marginTop: 50, paddingLeft: 39}}>
+          <Row style = {{marginTop: 50, paddingLeft: this.state.width > 700 ? 39 : 15}}>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Hourly'})} className = "pointerOnHover">
               <PriceBox color = "white" name = "Hourly" price = "5" details = "+$0.70 / hr of usage"/>
             </Col>
@@ -140,7 +144,7 @@ class CreditCard extends Component {
         )
       } else {
         return(
-          <Row style = {{marginTop: 50, paddingLeft: 39}}>
+          <Row style = {{marginTop: 50, paddingLeft: this.state.width > 700 ? 39 : 15}}>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Hourly'})} className = "pointerOnHover">
               <PriceBox color = "white" name = "Hourly" price = "5" details = "+$0.70 / hr of usage"/>
             </Col>
@@ -158,13 +162,19 @@ class CreditCard extends Component {
     const renderSurvey = () => {
       if(this.state.step === 1) {
         return(
-          <div tabIndex="0" onKeyDown={(e) => this.handleKeyPress1(e)} style = {{outline: 'none', paddingTop: 100, paddingLeft: 0, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
+          <div tabIndex="0" onKeyDown={(e) => this.handleKeyPress1(e)} style = {{outline: 'none', paddingTop: 100, paddingLeft: this.state.width > 700 ? 0 : 40, paddingRight: this.state.width > 700 ? 0 : 40, width: this.state.width > 700 ? 'calc(100% - 400px)' : '95%', overflowX: 'hidden !important'}}>
             <div>
+              {
+              this.state.width > 700
+              ?
               <span style = {{position: 'relative', bottom: 2}}>
                 1 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
               </span>
-              <span style = {{fontSize: 22, paddingLeft: 10}}>Choose Your Plan</span>
-              <div style = {{marginTop: 5, color: '#333333', paddingLeft: 39, fontSize: 16, maxWidth: 1200}}>
+              :
+              <div></div>
+              }
+              <span style = {{fontSize: 22, paddingLeft: this.state.width > 700 ? 10 : 0}}>Choose Your Plan</span>
+              <div style = {{marginTop: 5, color: '#333333', paddingLeft: this.state.width > 700 ? 39 : 0, fontSize: 16, maxWidth: 1200}}>
                 No payment is required until your free trial has ended. You can change or cancel your plan at any time.
               </div>
             </div>
@@ -172,15 +182,21 @@ class CreditCard extends Component {
             {
             this.state.plan !== ''
             ?
-            <div style = {{display: 'flex', justifyContent: 'space-between', width: 285, marginTop: 20, paddingLeft: 25}}>
+            <div style = {{display: 'flex', justifyContent: 'space-between', width: 285, marginTop: 20, paddingLeft: this.state.width > 700 ? 25 : 0}}>
               <Button  onClick = {this.handleClick1} style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline'}}>Continue</Button>
+              {
+              this.state.width > 700
+              ?
               <div style = {{fontSize: 14, color: '#555555', position: 'relative', top: 12}}>
                 <FaArrowRight style = {{marginRight: 6, height: 8, width: 15, position: 'relative', bottom: 1}}/>
                 Press Enter
               </div>
+              :
+              <div></div>
+              }
             </div>
             :
-            <div style = {{marginTop: 20, paddingLeft: 25}}>
+            <div style = {{marginTop: 20, paddingLeft: this.state.width > 700 ? 25 : 0}}>
               <Button disabled = "true" style = {{background: '#111111', border: 'none', padding: '10px 45px', display: 'inline'}}>Continue</Button>
             </div>
             }
@@ -198,36 +214,42 @@ class CreditCard extends Component {
         )
       } else {
         return(
-          <div style = {{paddingTop: 100, paddingLeft: 0, width: 'calc(100% - 400px)', overflowX: 'hidden !important'}}>
-            <img src = {StripeBadge} style = {{width: 125, position: 'absolute', bottom: 30, marginLeft: 40}}/>
+          <div style = {{paddingTop: 100, paddingLeft: this.state.width > 700 ? 0 : 40, paddingRight: this.state.width > 700 ? 0 : 40,  width: this.state.width > 700 ? 'calc(100% - 400px)' : '95%', overflowX: 'hidden !important'}}>
+            <img src = {StripeBadge} style = {{width: 125, position: 'absolute', bottom: 30, marginLeft: this.state.width > 700 ? 40 : 0}}/>
             <div>
+              {
+              this.state.width > 700
+              ?
               <span style = {{position: 'relative', bottom: 2}}>
                 2 <FaArrowRight style = {{height: 10, position: 'relative', bottom: 2}}/> 
               </span>
-              <span style = {{fontSize: 22, paddingLeft: 10}}>Submit Payment Details</span>
+              :
+              <div></div>
+              }
+              <span style = {{fontSize: 22, paddingLeft: this.state.width > 700 ? 10 : 0}}>Submit Payment Details</span>
               {
               this.props.credits && this.props.credits > 0
               ?
               (
               this.props.credits === 1
               ?
-              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 1200}}>
+              <div style = {{marginTop: 5, color: '#555555', paddingLeft: this.state.width > 700 ? 39 : 0, fontSize: 16, maxWidth: 1200}}>
                 Your first month is free, and you can cancel anytime. Get an additional free month for every
                 friend who enters your referral code.
               </div>
               :
-              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 1200}}>
+              <div style = {{marginTop: 5, color: '#555555', paddingLeft: this.state.width > 700 ? 39 : 0, fontSize: 16, maxWidth: 1200}}>
                 Your first {this.props.credits} months are free, and you can cancel anytime. Get an additional free 
                 month for every friend who enters your referral code.
               </div>
               )
               :
-              <div style = {{marginTop: 5, color: '#555555', paddingLeft: 39, fontSize: 16, maxWidth: 1200}}>
+              <div style = {{marginTop: 5, color: '#555555', paddingLeft: this.state.width > 700 ? 39 : 0, fontSize: 16, maxWidth: 1200}}>
                 Your first seven days are free, and you can cancel anytime. Get an additional free month for every
                 friend who enters your referral code.
               </div>
               }
-              <div style = {{marginTop: 40, marginLeft: 39}}>
+              <div style = {{marginTop: 40, marginLeft: this.state.width > 700 ? 39 : 0}}>
                 <StripeProvider apiKey={public_key}>
                   <div className="example"> 
                     <Elements fonts = {fonts}>
@@ -257,7 +279,7 @@ class CreditCard extends Component {
         <div style = {{maxWidth: 1920, margin: 'auto'}}>
           <Header color = "#333333" button = "#5ec3eb"/>
           <div style = {{display: 'flex', overflowX: 'hidden', position: 'relative', bottom: 60}}>
-            <div style = {{width: 300, paddingLeft: 80, paddingTop: 120, backgroundColor: 'none', height: '100%', minHeight: '100vh', zIndex: 0}}>
+            <div style = {{width: this.state.width > 700 ? 300 : 0, paddingLeft: this.state.width > 700 ? 80 : 0, paddingTop: 120, backgroundColor: 'none', height: '100%', minHeight: '100vh', zIndex: 0}}>
               {renderLeftMenu()}         
             </div>
             {renderSurvey()}
