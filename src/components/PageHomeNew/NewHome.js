@@ -520,7 +520,7 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {4} style = {{paddingLeft: 0, paddingRight: 40}}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
                   <div style = {{fontWeight: 'bold'}}>
                     Hourly
                   </div>
@@ -542,7 +542,7 @@ class PageHome extends Component {
               </Col>
               :
               <Col md = {4} style = {{paddingLeft: 0, paddingRight: 0}}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
                   <div style = {{fontWeight: 'bold'}}>
                     Hourly
                   </div>
@@ -589,7 +589,7 @@ class PageHome extends Component {
               </Col>
               :
               <Col md = {4} style = {{paddingLeft: 0, paddingRight: 0}}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
                   <div style = {{fontWeight: 'bold'}}>
                     Monthly
                   </div>
@@ -614,7 +614,7 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {4} style = {{paddingLeft: 40, paddingRight: 0, textAlign: 'right'}}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
                   <div style = {{fontWeight: 'bold'}}>
                     Unlimited
                   </div>
@@ -636,7 +636,7 @@ class PageHome extends Component {
               </Col>
               :
               <Col md = {4} style = {{paddingLeft: 0, paddingRight: 0}}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
                   <div style = {{fontWeight: 'bold'}}>
                     Unlimited
                   </div>
