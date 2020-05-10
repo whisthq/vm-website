@@ -534,18 +534,18 @@ class Dashboard extends Component {
                     <div style = {{color: "white", fontSize: this.state.width > 700 ? 24 : 20, marginTop: 20, fontWeight: 'bold', marginBottom: 10}}>Change Plan</div>
                     {this.props.payment.plan.nickname === 'Fractal Hourly'
                     ?
-                    <div style = {{fontSize: this.state.width > 700 ? 16 : 13, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#D6D6D6"}}>
+                    <div style = {{fontSize: this.state.width > 700 ? 15 : 13, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#D6D6D6"}}>
                       You are subscribed to the Hourly plan. Change plan feature coming soon.
                     </div>
                     :
                     (
                     this.props.payment.plan.nickname === 'Fractal Monthly'
                     ?
-                    <div style = {{fontSize: 16, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#D6D6D6"}}>
+                    <div style = {{fontSize: this.state.width > 700 ? 15 : 13, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#D6D6D6"}}>
                       You are subscribed to the Monthly plan. Change plan feature coming soon.
                     </div>
                     :
-                    <div style = {{fontSize: 16, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#D6D6D6"}}>
+                    <div style = {{fontSize: this.state.width > 700 ? 15 : 13, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#D6D6D6"}}>
                       You are subscribed to the Unlimited plan. Change plan feature coming soon.
                     </div>
                     )
