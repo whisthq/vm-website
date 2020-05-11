@@ -126,7 +126,7 @@ class Dashboard extends Component {
   unixToDate = (unix) => {
     const milliseconds = unix * 1000
     const dateObject = new Date(milliseconds)
-    const humanDateFormat = dateObject.toLocaleString().split(',')[0]
+    const humanDateFormat = dateObject.toLocaleString('en-US').split(',')[0]
     var dateArr = humanDateFormat.split('/')
     const month = this.monthConvert(dateArr[0] - 1)
     var finalDate = month + " " + dateArr[1].toString() + ", " + dateArr[2].toString()
