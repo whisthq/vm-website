@@ -188,7 +188,7 @@ class Purchase extends Component {
       createDisk(
         this.findVMLocation(this.state.location),
         this.encodeComputer(this.state.computer),
-        True
+        true
       )
     );
   };

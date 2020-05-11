@@ -1,6 +1,6 @@
 {
-  "name": "fractal-frontend-full",
-  "version": "0.1.0",
+  "name": "fractal-website",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@babel/core": "7.8.4",
