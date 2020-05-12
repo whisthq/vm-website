@@ -1,29 +1,31 @@
-import { existsSync } from 'fs';
-import { relative, resolve as _resolve } from 'path';
-import { DefinePlugin, HotModuleReplacementPlugin, IgnorePlugin } from 'webpack';
-import { sync } from 'resolve';
-import PnpWebpackPlugin, { moduleLoader } from 'pnp-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
-import InlineChunkHtmlPlugin from 'react-dev-utils/InlineChunkHtmlPlugin';
-import TerserPlugin from 'terser-webpack-plugin';
-import MiniCssExtractPlugin, { loader as _loader } from 'mini-css-extract-plugin';
-import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
-import safePostCssParser from 'postcss-safe-parser';
-import ManifestPlugin from 'webpack-manifest-plugin';
-import InterpolateHtmlPlugin from 'react-dev-utils/InterpolateHtmlPlugin';
-import { GenerateSW } from 'workbox-webpack-plugin';
-import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
-import ModuleScopePlugin from 'react-dev-utils/ModuleScopePlugin';
-import getCSSModuleLocalIdent from 'react-dev-utils/getCSSModuleLocalIdent';
-import paths from './paths';
-import { additionalModulePaths, webpackAliases } from './modules';
-import getClientEnvironment from './env';
-import ModuleNotFoundPlugin from 'react-dev-utils/ModuleNotFoundPlugin';
-import ForkTsCheckerWebpackPlugin from 'react-dev-utils/ForkTsCheckerWebpackPlugin';
-import typescriptFormatter from 'react-dev-utils/typescriptFormatter';
+'use strict';
 
-import postcssNormalize from 'postcss-normalize';
+const fs = require('fs');
+const path = require('path');
+const webpack = require('webpack');
+const resolve = require('resolve');
+const PnpWebpackPlugin = require('pnp-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
+const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const safePostCssParser = require('postcss-safe-parser');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
+const paths = require('./paths');
+const modules = require('./modules');
+const getClientEnvironment = require('./env');
+const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
+const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
+const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+
+const postcssNormalize = require('postcss-normalize');
 
 const appPackageJson = require(paths.appPackageJson);
 
@@ -38,7 +40,7 @@ const imageInlineSizeLimit = parseInt(
 );
 
 // Check if TypeScript is setup
-const useTypeScript = existsSync(paths.appTsConfig);
+const useTypeScript = fs.existsSync(paths.appTsConfig);
 
 // style files regexes
 const cssRegex = /\.css$/;
@@ -48,7 +50,7 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
-export default function(webpackEnv) {
+module.exports = function(webpackEnv) {
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
 
@@ -68,7 +70,7 @@ export default function(webpackEnv) {
     const loaders = [
       isEnvDevelopment && require.resolve('style-loader'),
       isEnvProduction && {
-        loader: _loader,
+        loader: MiniCssExtractPlugin.loader,
         // css is located in `static/css`, use '../../' to locate index.html folder
         // in production `paths.publicUrlOrPath` can be a relative path
         options: paths.publicUrlOrPath.startsWith('.')
@@ -177,10 +179,11 @@ export default function(webpackEnv) {
       // Point sourcemap entries to original disk location (format as URL on Windows)
       devtoolModuleFilenameTemplate: isEnvProduction
         ? info =>
-            relative(paths.appSrc, info.absoluteResourcePath)
+            path
+              .relative(paths.appSrc, info.absoluteResourcePath)
               .replace(/\\/g, '/')
         : isEnvDevelopment &&
-          (info => _resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
+          (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
       // Prevents conflicts when multiple webpack runtimes (from different apps)
       // are used on the same page.
       jsonpFunction: `webpackJsonp${appPackageJson.name}`,
@@ -272,7 +275,7 @@ export default function(webpackEnv) {
       // if there are any conflicts. This matches Node resolution mechanism.
       // https://github.com/facebook/create-react-app/issues/253
       modules: ['node_modules', paths.appNodeModules].concat(
-        additionalModulePaths || []
+        modules.additionalModulePaths || []
       ),
       // These are the reasonable defaults supported by the Node ecosystem.
       // We also include JSX as a common component filename extension to support
@@ -292,7 +295,7 @@ export default function(webpackEnv) {
           'react-dom$': 'react-dom/profiling',
           'scheduler/tracing': 'scheduler/tracing-profiling',
         }),
-        ...(webpackAliases || {}),
+        ...(modules.webpackAliases || {}),
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -310,7 +313,7 @@ export default function(webpackEnv) {
       plugins: [
         // Also related to Plug'n'Play, but this time it tells webpack to load its loaders
         // from the current package.
-        moduleLoader(module),
+        PnpWebpackPlugin.moduleLoader(module),
       ],
     },
     module: {
@@ -549,9 +552,9 @@ export default function(webpackEnv) {
       // It is absolutely essential that NODE_ENV is set to production
       // during a production build.
       // Otherwise React will be compiled in the very slow development mode.
-      new DefinePlugin(env.stringified),
+      new webpack.DefinePlugin(env.stringified),
       // This is necessary to emit hot updates (currently CSS only):
-      isEnvDevelopment && new HotModuleReplacementPlugin(),
+      isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
       // Watcher doesn't work well if you mistype casing in a path so we use
       // a plugin that prints an error when you attempt to do this.
       // See https://github.com/facebook/create-react-app/issues/240
@@ -598,11 +601,11 @@ export default function(webpackEnv) {
       // solution that requires the user to opt into importing specific locales.
       // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
       // You can remove this if you don't use Moment.js:
-      new IgnorePlugin(/^\.\/locale$/, /moment$/),
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
       // Generate a service worker script that will precache, and keep up to date,
       // the HTML & assets that are part of the webpack build.
       isEnvProduction &&
-        new GenerateSW({
+        new WorkboxWebpackPlugin.GenerateSW({
           clientsClaim: true,
           exclude: [/\.map$/, /asset-manifest\.json$/],
           importWorkboxFrom: 'cdn',
@@ -620,7 +623,7 @@ export default function(webpackEnv) {
       // TypeScript type checking
       useTypeScript &&
         new ForkTsCheckerWebpackPlugin({
-          typescript: sync('typescript', {
+          typescript: resolve.sync('typescript', {
             basedir: paths.appNodeModules,
           }),
           async: isEnvDevelopment,
