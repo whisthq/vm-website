@@ -42,7 +42,7 @@ class Footer extends Component {
               <div style = {{fontWeight: 'bold', marginBottom: 10, fontSize: 25}}>Fractal</div>
               <div style = {{fontSize: 14}}>
                 <div style = {{marginTop: 10, color: '#555555', textDecoration: 'none', marginBottom: 4, lineHeight: 1.7}}>
-                  Fractal streams a powerful computer to any device.
+                  Fractal brings the power of a workstation to any Internet-connected device.
                 </div>
                 <div style = {{display: 'flex', marginTop: 15}}>
                   <a href = "https://twitter.com/fractalapp" target = "_blank" style = {{textDecoration: 'none'}}>

@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { FaArrowRight } from "react-icons/fa";
 import Header from "../../shared_components/header.js";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { FaCheck, FaExclamationTriangle } from "react-icons/fa";
 import {
   userLogin,
   userSignup,
-  logout,
   changeTab,
   subscribeNewsletter,
 } from "../../actions/index.js";
@@ -161,8 +159,8 @@ class Auth extends Component {
   };
 
   componentDidMount() {
-    var token = this.props.location.search;
-    var token = token.substring(1, token.length);
+    // var token_tmp = this.props.location.search;
+    // var token = token_tmp.substring(1, token_tmp.length);
 
     // if(token && token != '') {
     //   this.props.dispatch(verifyEmail(token))
@@ -176,13 +174,13 @@ class Auth extends Component {
 
   componentDidUpdate(prevProps) {
     if (
-      prevProps.failed_login_attempts != this.props.failed_login_attempts &&
+      prevProps.failed_login_attempts !== this.props.failed_login_attempts &&
       !this.state.failed_login_attempt
     ) {
       this.setState({ failed_login_attempt: true, processing: false });
     }
     if (
-      prevProps.failed_signup_attempts != this.props.failed_signup_attempts &&
+      prevProps.failed_signup_attempts !== this.props.failed_signup_attempts &&
       !this.state.failed_signup_attempt
     ) {
       this.setState({ failed_signup_attempt: true, processing: false });
@@ -249,7 +247,7 @@ class Auth extends Component {
             }       
             <div style = {{backgroundColor: 'rgba(0,0,0,0.0)', borderRadius: 2, border: 'solid 1px white', padding: '20px 40px 60px 40px', maxWidth: 425, marginBottom: 80, margin: 'auto'}}>
               <Tabs>
-                <TabList style = {{textAlign: 'center', border: 'none', border: 'none', fontWeight: 'bold', fontSize: 16}}>
+                <TabList style = {{textAlign: 'center', border: 'none', fontWeight: 'bold', fontSize: 16}}>
                   <Tab>LOG IN</Tab>
                   <Tab>SIGN UP</Tab>
                 </TabList>
@@ -300,7 +298,7 @@ class Auth extends Component {
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 14, marginRight: 5}}/> Processing
                   </Button>
                   }
-                  <HashLink to = "/reset" style = {{textDecoration: 'none'}}><div style = {{color: '#94a8ed', textAlign: 'center', marginTop: 25, color: '#333333', textDecoration: 'none', fontSize: 13}}>Forgot Password?</div></HashLink>
+                  <HashLink to = "/reset" style = {{textDecoration: 'none'}}><div style = {{textAlign: 'center', marginTop: 25, color: '#333333', textDecoration: 'none', fontSize: 13}}>Forgot Password?</div></HashLink>
                 </TabPanel>
                 <TabPanel style = {{padding: '15px 30px'}}>
                   {signupWarning()}

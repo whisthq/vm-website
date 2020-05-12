@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import '../static/App.css';
 import Banner from './banner.js';
 import SignupBox from './signupbox.js'

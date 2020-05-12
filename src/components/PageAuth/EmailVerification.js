@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux';
-import { FaArrowRight } from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'

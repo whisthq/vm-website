@@ -2,16 +2,6 @@ import React, { Component } from 'react';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import '../static/App.css';
-import Banner from './banner.js';
-import SignupBox from './signupbox.js'
-import Header from './header.js'
-import LandingTop from '../assets/landingtop.svg'
-import LandingLeft from '../assets/landingleft.svg'
-import FractalOutline from '../assets/fractaloutline.svg'
-import CubeRender1 from '../assets/bluecube.png'
-import CubeRender2 from '../assets/cubegif.gif'
-import CubeRender3 from '../assets/closeup.png'
-import CubeRender4 from '../assets/pricingchart.svg'
 import CubeSection from './cubesection.js'
 import {FaRegEnvelope} from 'react-icons/fa'
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';

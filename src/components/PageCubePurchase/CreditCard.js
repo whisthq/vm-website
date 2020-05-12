@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
-import Popover from 'react-bootstrap/Popover'
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button'
 import { FaTrashAlt, FaAngleUp, FaTimes } from 'react-icons/fa'

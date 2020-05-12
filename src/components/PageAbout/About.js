@@ -1,13 +1,7 @@
 import React, { Component } from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
 import { Link } from 'react-router-dom'
 import Popup from "reactjs-popup";
 import ImageFadeIn from 'react-image-fade-in'
@@ -268,7 +262,7 @@ class About extends Component {
             Experience the next generation of personal computing today.
           </div>
           <Link to = "/dashboard" style = {{textDecoration: 'none'}}>
-            <Button style = {{marginTop: 30, backgroundColor: '#111111', padding: '10px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none', padding: '15px 30px'}}>
+            <Button style = {{marginTop: 30, backgroundColor: '#111111', fontWeight: 'bold', borderRadius: 5, border: 'none', padding: '15px 30px'}}>
               GET STARTED
             </Button>
           </Link>
@@ -279,7 +273,5 @@ class About extends Component {
     )
   }
 }
-
-
 
 export default About;
