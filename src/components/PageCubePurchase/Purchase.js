@@ -14,7 +14,6 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "../../shared_components/header.js";
 import TypeformButton from "../../shared_components/typeformbutton.js";
-import { config } from "../../constants.js";
 import "../../static/App.css";
 import Autocomplete from "./AutoComplete.js";
 import { options } from "./Options.js";
@@ -169,7 +168,7 @@ class Purchase extends Component {
       return "eastus";
     } else if (southcentralus.includes(location)) {
       return "southcentralus";
-    } else {
+    } else if (northcentralus.includes(location)) {
       return "northcentralus";
     }
   };
@@ -231,11 +230,6 @@ class Purchase extends Component {
     if (this.state.width > 700 && this.state.modalShow) {
       modalClose();
     }
-
-    const fonts = [
-      { cssSrc: "https://fonts.googleapis.com/css?family=Maven+Pro" },
-    ];
-    var public_key = config.stripe.PUBLIC_KEY;
 
     const renderLeftMenu = () => {
       if (this.state.width > 700) {

@@ -202,7 +202,7 @@ class Reset extends Component {
               Your Session Has Expired
             </div>
             <div style =  {{color: '#333333', textAlign: 'center', marginTop: 15, fontSize: 14}}>
-              For your security, this password link has expired. You can request a new password reset link <a onClick = {this.resetEmail} style = {{color: '#94A8ED', textDecoration: 'none', cursor: 'pointer'}}>here</a>.
+              For your security, this password link has expired. You can request a new password reset link <a href = "https://fractalcomputers.com/reset" onClick = {this.resetEmail} style = {{color: '#94A8ED', textDecoration: 'none', cursor: 'pointer'}}>here</a>.
             </div>
             <HashLink to = "/auth">
               <Button style = {{padding: 12, color: 'white', width: '100%', border: 'none', background: '#0B172B', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', marginTop: 40}}>BACK TO LOGIN</Button>

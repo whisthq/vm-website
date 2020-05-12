@@ -5,7 +5,7 @@ import { config } from "../constants.js";
 import history from "../history";
 
 function* sendLoginInfo(action) {
-  const state = yield select();
+  yield select();
   const { json, } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/account/login",
@@ -34,7 +34,7 @@ function* sendLoginInfo(action) {
 }
 
 function* sendSignupInfo(action) {
-  const state = yield select();
+  yield select();
   const { json, } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/account/register",
@@ -59,7 +59,7 @@ function* sendSignupInfo(action) {
 }
 
 function* sendVerificationEmail(action) {
-  const state = yield select();
+  yield select();
   if (action.username !== "" && action.token !== "") {
     const { json, } = yield call(
       apiPost,
@@ -77,7 +77,7 @@ function* sendVerificationEmail(action) {
 }
 
 function* getPromoCode(action) {
-  const state = yield select();
+  yield select();
   const { json, } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/account/fetchCode",
@@ -97,7 +97,7 @@ function* getPromoCode(action) {
 function* sendSignupEmail(action) {
   const state = yield select();
   if (!state.AccountReducer.email_verified) {
-    const { json, } = yield call(
+    yield call(
       apiPost,
       config.url.MAIL_SERVER + "/signup",
       {
@@ -160,7 +160,7 @@ function* insertCustomer(action) {
     history.push("/dashboard");
     yield put(FormAction.triggerSurvey(true));
     yield put(FormAction.vmCreating(true));
-    const { json1, } = yield call(
+    yield call(
       apiPost,
       config.url.MAIL_SERVER + "/trial",
       {
@@ -175,7 +175,7 @@ function* insertCustomer(action) {
 
 function* applyDiscount(action) {
   const state = yield select();
-  const { json, } = yield call(
+  yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/stripe/discount",
     {
@@ -204,7 +204,7 @@ function* sendFinalCharge(action) {
       history.push("/dashboard");
       yield put(FormAction.vmCreating(true));
       yield put(FormAction.triggerSurvey(true));
-      const { json1, } = yield call(
+      yield call(
         apiPost,
         config.url.MAIL_SERVER + "/purchase",
         {
@@ -247,15 +247,15 @@ function* retrieveCustomer(action) {
 
 function* cancelPlan(action) {
   const state = yield select();
-  var vm_name = "";
-  if (
-    state.AccountReducer.vm_credentials &&
-    state.AccountReducer.vm_credentials.length > 0
-  ) {
-    vm_name = state.AccountReducer.vm_credentials[0].vm_name;
-  }
+  // var vm_name = "";
+  // if (
+  //   state.AccountReducer.vm_credentials &&
+  //   state.AccountReducer.vm_credentials.length > 0
+  // ) {
+  //   vm_name = state.AccountReducer.vm_credentials[0].vm_name;
+  // }
 
-  const { json2, } = yield call(
+  yield call(
     apiPost,
     config.url.MAIL_SERVER + "/cancel",
     {
@@ -265,7 +265,7 @@ function* cancelPlan(action) {
     ""
   );
 
-  const { json1, } = yield call(
+  yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/disk/delete",
     {
@@ -405,7 +405,7 @@ function* sendValidateToken(action) {
 function* sendResetPassword(action) {
   yield select();
   console.log(action);
-  const { json, } = yield call(
+  yield call(
     apiPost,
     config.url.MAIL_SERVER + "/mail/reset",
     {
