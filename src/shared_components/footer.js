@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { Link } from 'react-router-dom'
 import { FaLinkedinIn, FaTwitter } from 'react-icons/fa'
 import '../static/App.css';
 import { HashLink } from 'react-router-hash-link';
@@ -48,7 +47,7 @@ class Footer extends Component {
                     <FaTwitter style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
                   </div>
                   </a>
-                  <a href = "https://www.linkedin.com/company/fractalcomputers/about/?viewAsMember=true" target = "_blank" rel="noopener noreferrer" style = {{textDecoration: 'none'}}>
+                  <a href = "https://www.linkedin.com/company/fractalcomputers" target = "_blank" rel="noopener noreferrer" style = {{textDecoration: 'none'}}>
                   <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', borderRadius: 5}}>
                     <FaLinkedinIn style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
                   </div>
@@ -78,16 +77,16 @@ class Footer extends Component {
             </Col>
             <Col xs = {4} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>LEGAL</div>
-              <Link to = "/termsofservice" style = {{textDecoration: 'none'}}>
+              <HashLink to = "/termsofservice#top" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 13}}>
                   <div style = {{color: '#555555', marginBottom: 4}}>Terms of Service</div>
                 </div>
-              </Link>
-              <Link to = "/privacy" style = {{textDecoration: 'none'}}>
+              </HashLink>
+              <HashLink to = "/privacy#top" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 13}}>
                   <div style = {{color: '#555555', marginBottom: 4}}>Privacy Policy</div>
                 </div>
-              </Link>
+              </HashLink>
             </Col>
             <Col xs = {4} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>CONTACT</div>
@@ -119,7 +118,7 @@ class Footer extends Component {
               <div style = {{fontWeight: 'bold', marginBottom: 10, fontSize: 25}}>Fractal</div>
               <div style = {{fontSize: 14}}>
                 <div style = {{marginTop: 10, color: '#555555', textDecoration: 'none', marginBottom: 4, lineHeight: 1.7}}>
-                  Fractal streams a powerful computer to any device.
+                  Fractal brings the power of a workstation to any Internet-connected.
                 </div>
                 <div style = {{display: 'flex', marginTop: 15}}>
                   <a href = "https://twitter.com/fractalapp" target = "_blank" rel="noopener noreferrer" style = {{textDecoration: 'none'}}>
@@ -157,16 +156,16 @@ class Footer extends Component {
             </Col>
             <Col xs = {4} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>LEGAL</div>
-              <Link to = "/termsofservice" style = {{textDecoration: 'none'}}>
+              <HashLink to = "/termsofservice#top" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 11}}>
                   <div style = {{color: '#555555', marginBottom: 4}}>Terms of Service</div>
                 </div>
-              </Link>
-              <Link to = "/privacy" style = {{textDecoration: 'none'}}>
+              </HashLink>
+              <HashLink to = "/privacy#top" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 11}}>
                   <div style = {{color: '#555555', marginBottom: 4}}>Privacy Policy</div>
                 </div>
-              </Link>
+              </HashLink>
             </Col>
             <Col xs = {4} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>CONTACT</div>

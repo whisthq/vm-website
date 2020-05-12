@@ -29,7 +29,7 @@ class Privacy extends Component {
       modalClose()
     }
     return(
-      <div>
+      <div style = {{overflowX: 'hidden'}} id = 'top'>
       <Header color = "#333333" button = "#5ec3eb" homepage/>
       <div style = {{padding: '125px 150px', maxWidth: 1280}}>
         <div style = {{fontSize: 40}}>
@@ -372,10 +372,8 @@ class Privacy extends Component {
           <p>
           Class arbitrations, class actions, private attorney general actions, and consolidation with other arbitrations are NOT allowed.  You may not bring a claim as a plaintiff or a class member in a class, consolidated, or representative action. You may only resolve disputes with us on an individual basis. If this specific paragraph is held unenforceable, then the entirety of this "Mandatory Arbitration Provisions" section will be deemed void.
           </p>
-
         </div>
       </div>
-      <div style = {{width: '100vw', background: '#111111', height: 1}}></div>
       <Footer/>
       </div>
     )

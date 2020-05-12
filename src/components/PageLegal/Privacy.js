@@ -29,7 +29,7 @@ class Privacy extends Component {
       modalClose()
     }
     return(
-      <div>
+      <div style = {{overflowX: 'hidden'}} id = 'top'>
       <Header color = "#333333" button = "#5ec3eb" homepage/>
       <div style = {{padding: '125px 150px', maxWidth: 1280}}>
         <div style = {{fontSize: 40}}>
@@ -363,7 +363,6 @@ class Privacy extends Component {
         Based on the laws of some countries, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, please submit a request form by emailing the above contact email. We will respond to your request within 30 days.
         </p>
       </div>
-      <div style = {{width: '100vw', background: '#111111', height: 1}}></div>
       <Footer/>
       </div>
     )
