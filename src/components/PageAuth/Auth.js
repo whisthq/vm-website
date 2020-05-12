@@ -248,8 +248,8 @@ class Auth extends Component {
             <div style = {{backgroundColor: 'rgba(0,0,0,0.0)', borderRadius: 2, border: 'solid 1px white', padding: '20px 40px 60px 40px', maxWidth: 425, marginBottom: 80, margin: 'auto'}}>
               <Tabs>
                 <TabList style = {{textAlign: 'center', border: 'none', fontWeight: 'bold', fontSize: 16}}>
-                  <Tab>LOG IN</Tab>
-                  <Tab>SIGN UP</Tab>
+                  <Tab onClick = {() => this.setState({failed_signup_attempt: false})}>LOG IN</Tab>
+                  <Tab onClick = {() => this.setState({failed_login_attempt: false})}>SIGN UP</Tab>
                 </TabList>
                 <TabPanel style = {{padding: '15px 30px'}}>
                   {
