@@ -324,7 +324,7 @@ function* getDiskStatus(action) {
   );
 
   while (json.state === "PENDING" || json.state === "STARTED") {
-    var { json, } = yield call(
+    yield call(
       apiGet,
       (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
       ""
@@ -361,8 +361,8 @@ function* fetchDisks(action) {
 }
 
 function* sendForgotPassword(action) {
-  const state = yield select();
-  const { json, } = yield call(
+  yield select();
+  const {json, } = yield call(
     apiPost,
     config.url.MAIL_SERVER + "/mail/forgot",
     {
@@ -380,7 +380,7 @@ function* sendForgotPassword(action) {
 }
 
 function* sendValidateToken(action) {
-  const state = yield select();
+  yield select();
   const { json, } = yield call(
     apiPost,
     config.url.MAIL_SERVER + "/token/validate",
@@ -403,7 +403,7 @@ function* sendValidateToken(action) {
 }
 
 function* sendResetPassword(action) {
-  const state = yield select();
+  yield select();
   console.log(action);
   const { json, } = yield call(
     apiPost,
@@ -438,7 +438,7 @@ function* sendFriendsEmail(action) {
 }
 
 function* subscribeNewsletter(action) {
-  const { json, } = yield call(
+  yield call(
     apiPost,
     config.url.MAIL_SERVER + "/newsletter/subscribe",
     {
@@ -449,8 +449,8 @@ function* subscribeNewsletter(action) {
 }
 
 function* checkVerifiedEmail(action) {
-  const state = yield select();
-  const { json, } = yield call(
+  yield select();
+  const {json, } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/account/checkVerified",
     {
@@ -469,7 +469,7 @@ function* checkVerifiedEmail(action) {
 
 function* verifyToken(action) {
   const state = yield select();
-  const { json, } = yield call(
+  const {json, } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/account/verifyUser",
     {
@@ -487,7 +487,7 @@ function* verifyToken(action) {
 
 function* submitPurchaseFeedback(action) {
   const state = yield select();
-  const { json, } = yield call(
+  yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/account/feedback",
     {
@@ -500,8 +500,7 @@ function* submitPurchaseFeedback(action) {
 
 function* createDisk(action) {
   const state = yield select();
-
-  const { json, } = yield call(
+  const {json, } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/disk/createFromImage",
     {
