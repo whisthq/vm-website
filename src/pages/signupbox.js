@@ -18,7 +18,7 @@ class SignupBox extends Component {
 
   storeEmail(email) {
     (async () => {
-      const rawResponse = await fetch('https://infinite-everglades-29230.herokuapp.com/email', {
+      await fetch('https://infinite-everglades-29230.herokuapp.com/email', {
         method: 'POST',
         mode: 'cors',
         headers: {

@@ -1,4 +1,4 @@
-/**/import React from 'react';
+import React from 'react';
 import createSagaMiddleware from 'redux-saga';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
@@ -72,4 +72,3 @@ ReactDOM.render(
       </Router>,
   document.getElementById('root')
 )
-

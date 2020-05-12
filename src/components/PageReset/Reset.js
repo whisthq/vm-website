@@ -285,7 +285,6 @@ class Reset extends Component {
   }
 }
 
-
 function mapStateToProps(state) {
   return { 
     forgot_password: state.AccountReducer.forgot_password,
@@ -293,6 +292,5 @@ function mapStateToProps(state) {
     forgot_email: state.AccountReducer.forgot_email
   }
 }
-
 
 export default connect(mapStateToProps)(Reset);

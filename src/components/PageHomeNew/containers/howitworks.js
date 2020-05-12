@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import '../static/App.css';
 import CubeSection from './cubesection.js'
-import {FaRegEnvelope} from 'react-icons/fa'
-import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 
 export default class Story extends Component {
