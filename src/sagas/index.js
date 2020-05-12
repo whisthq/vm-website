@@ -113,10 +113,8 @@ function* insertCustomer(action) {
   const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/insert', {
     email: state.AccountReducer.user,
     location: action.location
-  }, state.AccountReducer.access_token)
+  }, state.AccountReduce r.access_token)
 
-  console.log("STRIPE RESPONSE")
-  console.log(json)
   if(json) {
     yield put(FormAction.customerCreated(json.status))
      history.push('/dashboard')
