@@ -2,26 +2,20 @@ import React, { Component } from "react";
 import {
   Row,
   Col,
-  Container,
-  Popover,
-  OverlayTrigger,
   Button,
 } from "react-bootstrap";
 import { connect } from "react-redux";
-import { FaTrashAlt, FaAngleUp, FaTimes } from "react-icons/fa";
+import { FaAngleUp, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Elements, StripeProvider } from "react-stripe-elements";
 import { HashLink } from "react-router-hash-link";
 import { FaArrowRight } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleNotch, faKey } from "@fortawesome/free-solid-svg-icons";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "../../shared_components/header.js";
 import TypeformButton from "../../shared_components/typeformbutton.js";
-import CheckoutForm from "../../shared_components/checkoutform.js";
 import { config } from "../../constants.js";
 import "../../static/App.css";
-import StripeBadge from "../../assets/powered_by_stripe.svg";
 import Autocomplete from "./AutoComplete.js";
 import { options } from "./Options.js";
 import {

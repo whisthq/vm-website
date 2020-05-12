@@ -5,7 +5,6 @@ import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
 import '../../static/App.css';
 import Cloud from '../../assets/cloud-computing.svg'
-import Topography from '../../assets/topography.svg'
 import Software from '../../assets/software.svg'
 import Gaming from '../../assets/gaming.svg'
 import Creative from '../../assets/creative.svg'
@@ -18,14 +17,9 @@ import RAM from '../../assets/ram.svg'
 import SSD from '../../assets/hard-drive-icon.svg'
 import HardDriveIcon from '../../assets/hard-drive-icon.svg'
 import FileIcon from '../../assets/file-icon.svg'
-import WindowsBin from '../../bin/Fractal.exe'
-import MacBin from '../../bin/Fractal.dmg'
-import Logo from '../../assets/logo.svg'
-import {FaRegEnvelope} from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
-import { HashLink } from 'react-router-hash-link';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 import Footer from '../../shared_components/footer.js'
 import { changeTab } from '../../actions/index.js';
@@ -137,7 +131,7 @@ class PageHome extends Component {
           <div className = "fractal-container">
             <Row>
               <Col md = {6} xs = {{order: 1}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: '10%'}}>
-                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '95%', maxWidth: 750}}>
+                <div style = {{backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '95%', maxWidth: 750}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 35px', fontWeight: 'bold'}}>
                     My Cloud PC
                   </div>
@@ -182,7 +176,7 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{paddingTop: '10%', paddingLeft: 50}}>
-                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'left', fontSize: 'calc(30px + 1.1vw)'}}>Graphics power on<br/> any device</div>
+                <div style = {{fontWeight: 'bold', color: "#111111", textAlign: 'left', fontSize: 'calc(30px + 1.1vw)'}}>Graphics power on<br/> any device</div>
                 <p style = {{textAlign: 'left', marginTop: 20, fontSize: 'calc(12px + 0.4vw)', maxWidth: 700}}>Edit, render, and play at insane speeds from any Windows, Apple, or Linux computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               :
@@ -260,7 +254,7 @@ class PageHome extends Component {
                 </div>
               </Col>
               <Col md = {{span: 4, order: 1}} xs = {{order: 1, span: 12}}>
-                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'left', fontSize: 'calc(35px + 1.0vw)'}}>Fractal cloud computers are <span className = "blue-gradient">fast</span></div>
+                <div style = {{fontWeight: 'bold', color: "#111111", textAlign: 'left', fontSize: 'calc(35px + 1.0vw)'}}>Fractal cloud computers are <span className = "blue-gradient">fast</span></div>
               </Col>
             </Row>
           </div>
@@ -390,7 +384,7 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingBottom: 100, marginLeft: 0, marginBottom: 25}}>
-                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '95%', maxWidth: 750}}>
+                <div style = {{backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '95%', maxWidth: 750}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 40px', fontWeight: 'bold'}}>
                     Your Info
                   </div>
@@ -423,7 +417,7 @@ class PageHome extends Component {
               </Col>
               :
               <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingBottom: 75, marginTop: 40, marginLeft: 0, marginBottom: 25}}>
-                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '100%'}}>
+                <div style = {{backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '100%'}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 40px', fontWeight: 'bold'}}>
                     Your Info
                   </div>

@@ -3,14 +3,12 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { connect } from 'react-redux';
 import Button from 'react-bootstrap/Button'
-import { FaTrashAlt, FaAngleUp, FaTimes } from 'react-icons/fa'
+import { FaAngleUp, FaTimes } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import {Elements, StripeProvider} from 'react-stripe-elements';
-import { HashLink } from 'react-router-hash-link';
 import { FaArrowRight } from 'react-icons/fa'
 
 import Header from '../../shared_components/header.js'
-import TypeformButton from '../../shared_components/typeformbutton.js'
 import CheckoutForm from '../../shared_components/checkoutform.js'
 import { config } from '../../constants.js'
 import '../../static/App.css';
@@ -212,7 +210,7 @@ class CreditCard extends Component {
       } else {
         return(
           <div style = {{paddingTop: 100, paddingLeft: this.state.width > 700 ? 0 : 40, paddingRight: this.state.width > 700 ? 0 : 40,  width: this.state.width > 700 ? 'calc(100% - 400px)' : '95%', overflowX: 'hidden !important'}}>
-            <img src = {StripeBadge} style = {{width: 125, position: 'absolute', bottom: 30, marginLeft: this.state.width > 700 ? 40 : 0}}/>
+            <img src = {StripeBadge} alt = "" style = {{width: 125, position: 'absolute', bottom: 30, marginLeft: this.state.width > 700 ? 40 : 0}}/>
             <div>
               {
               this.state.width > 700

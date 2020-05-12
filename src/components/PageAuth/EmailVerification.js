@@ -2,18 +2,14 @@ import React, { Component } from 'react'
 import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux';
 import Header from '../../shared_components/header.js'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { FaCheckCircle, FaExclamationTriangle } from 'react-icons/fa'
 import { verifyToken, sendVerificationEmail } from '../../actions/index.js';
 import { Redirect } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch, faCheck } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
 import "react-tabs/style/react-tabs.css";
 import '../../static/App.css';
-import history from "../../history";
 
 class EmailVerification extends Component {
   constructor(props) {
@@ -30,14 +26,14 @@ class EmailVerification extends Component {
   componentDidMount() {
     var token = this.props.location.search
     token = token.substring(1,token.length)
-    if(token && token != '') {
+    if(token && token !== '') {
       this.setState({isRedirect: true})
       this.props.dispatch(verifyToken(token))
     }
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.verificationEmailsSent != this.props.verificationEmailsSent && this.state.isSending) {
+    if(prevProps.verificationEmailsSent !== this.props.verificationEmailsSent && this.state.isSending) {
       this.setState({isSending: false, sent: true})
     } 
   }
@@ -56,7 +52,7 @@ class EmailVerification extends Component {
       modalClose()
     }
 
-    if(!this.props.verificationToken || this.props.verificationToken == '' || !this.props.user || this.props.user == '') {
+    if(!this.props.verificationToken || this.props.verificationToken === '' || !this.props.user || this.props.user === '') {
       return (
         <div>
           <div style = {{maxWidth: 1920, margin: 'auto'}}>
@@ -169,7 +165,6 @@ class EmailVerification extends Component {
   }
 }
 
-
 function mapStateToProps(state) {
   console.log(state)
   return { 
@@ -179,6 +174,5 @@ function mapStateToProps(state) {
     verificationEmailsSent: state.AccountReducer.verificationEmailsSent
   }
 }
-
 
 export default connect(mapStateToProps)(EmailVerification);

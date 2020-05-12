@@ -4,15 +4,12 @@ import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux';
 import '../../static/App.css';
-import { FaArrowRight } from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
 import { FaCheck, FaExclamationTriangle } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import { forgotPassword, validateToken, tokenStatus, resetPassword } from '../../actions/index.js';
-import { Redirect } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 class Reset extends Component {
@@ -82,8 +79,8 @@ class Reset extends Component {
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
-    var token = this.props.location.search
-    var token = token.substring(1,token.length)
+    var token_tmp = this.props.location.search
+    var token = token_tmp.substring(1, token_tmp.length)
     this.props.dispatch(validateToken(token))
   }
 
