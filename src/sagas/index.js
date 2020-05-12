@@ -1,29 +1,32 @@
-import { put, takeEvery, all, call, select, delay } from 'redux-saga/effects';
-import * as FormAction from "../actions/index.js"
-import { apiPost, apiGet } from '../utils/Api.js'
-import { config } from '../constants.js'
+import { put, takeEvery, all, call, select, delay } from "redux-saga/effects";
+import * as FormAction from "../actions/index.js";
+import { apiPost, apiGet } from "../utils/Api.js";
+import { config } from "../constants.js";
 import history from "../history";
 
-
 function* sendLoginInfo(action) {
-   const state = yield select()
-   const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/login', {
+  const state = yield select();
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/account/login",
+    {
       username: action.user,
-      password: action.password
-   })
+      password: action.password,
+    }
+  );
 
-   if(json) {
-	   if (json.verified) {
-       yield put(FormAction.storeJWT(json.access_token, json.refresh_token))
-	     yield put(FormAction.loginSuccess())
-       yield put(FormAction.storeVerificationToken(json.token))
-       yield put(FormAction.checkVerifiedEmail(action.user))
-       yield put(FormAction.getPromoCode(action.user))
-       if(json.vm_status === 'is_creating') {
-         yield put(FormAction.vmCreating(true))
-       } else {
-         yield put(FormAction.vmCreating(false))
-       }
+  if (json) {
+    if (json.verified) {
+      yield put(FormAction.storeJWT(json.access_token, json.refresh_token));
+      yield put(FormAction.loginSuccess());
+      yield put(FormAction.storeVerificationToken(json.token));
+      yield put(FormAction.checkVerifiedEmail(action.user));
+      yield put(FormAction.getPromoCode(action.user));
+      if (json.vm_status === "is_creating") {
+        yield put(FormAction.vmCreating(true));
+      } else {
+        yield put(FormAction.vmCreating(false));
+      }
     } else {
       yield put(FormAction.loginFailure());
     }
@@ -31,20 +34,24 @@ function* sendLoginInfo(action) {
 }
 
 function* sendSignupInfo(action) {
-  const state = yield select()
-  const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/register', {
-    username: action.user,
-    password: action.password
-  });
+  const state = yield select();
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/account/register",
+    {
+      username: action.user,
+      password: action.password,
+    }
+  );
 
   if (json) {
     if (json.status === 200) {
-      yield put(FormAction.storeJWT(json.access_token, json.refresh_token))
-      yield put(FormAction.loginSuccess())
-      yield put(FormAction.storeVerificationToken(json.token))
-      yield put(FormAction.checkVerifiedEmail(action.user))
-      yield put(FormAction.getPromoCode(action.user))
-      yield put(FormAction.sendVerificationEmail(action.user, json.token))
+      yield put(FormAction.storeJWT(json.access_token, json.refresh_token));
+      yield put(FormAction.loginSuccess());
+      yield put(FormAction.storeVerificationToken(json.token));
+      yield put(FormAction.checkVerifiedEmail(action.user));
+      yield put(FormAction.getPromoCode(action.user));
+      yield put(FormAction.sendVerificationEmail(action.user, json.token));
     } else {
       yield put(FormAction.signupFailure(json.status));
     }
@@ -52,175 +59,255 @@ function* sendSignupInfo(action) {
 }
 
 function* sendVerificationEmail(action) {
-  const state = yield select()
-  if (action.username != '' && action.token != '') {
-    const { json, response } = yield call(apiPost, config.url.MAIL_SERVER + '/verification', {
-      username: action.username,
-      token: action.token
-    }, '');
+  const state = yield select();
+  if (action.username !== "" && action.token !== "") {
+    const { json, } = yield call(
+      apiPost,
+      config.url.MAIL_SERVER + "/verification",
+      {
+        username: action.username,
+        token: action.token,
+      },
+      ""
+    );
     if (json && json.status === 200) {
-      yield put(FormAction.incrementVerificationEmailsSent())
+      yield put(FormAction.incrementVerificationEmailsSent());
     }
   }
 }
 
 function* getPromoCode(action) {
-  const state = yield select()
-  const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/fetchCode', {
-    username: action.user
-  }, '')
-  console.log("Promo code")
-  console.log(json)
+  const state = yield select();
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/account/fetchCode",
+    {
+      username: action.user,
+    },
+    ""
+  );
+  console.log("Promo code");
+  console.log(json);
   if (json && json.status === 200) {
-    yield put(FormAction.sendSignupEmail(action.user, json.code))
-    yield put(FormAction.storePromoCode(json.code))
+    yield put(FormAction.sendSignupEmail(action.user, json.code));
+    yield put(FormAction.storePromoCode(json.code));
   }
 }
 
 function* sendSignupEmail(action) {
-  const state = yield select()
+  const state = yield select();
   if (!state.AccountReducer.email_verified) {
-    const { json, response } = yield call(apiPost, config.url.MAIL_SERVER + '/signup', {
-      username: action.user,
-      code: action.code
-    }, '');
+    const { json, } = yield call(
+      apiPost,
+      config.url.MAIL_SERVER + "/signup",
+      {
+        username: action.user,
+        code: action.code,
+      },
+      ""
+    );
   }
 }
 
-
 function* chargeStripe(action) {
-  const state = yield select()
+  const state = yield select();
 
-  if (action.code != '') {
-    const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/referral/validate', {
-      code: action.code,
-      username: state.AccountReducer.user
-    }, state.AccountReducer.access_token)
+  if (action.code !== "") {
+    const { json, } = yield call(
+      apiPost,
+      config.url.PRIMARY_SERVER + "/referral/validate",
+      {
+        code: action.code,
+        username: state.AccountReducer.user,
+      },
+      state.AccountReducer.access_token
+    );
     if (!(json && json.status === 200 && json.verified)) {
-      yield put(FormAction.promoCodeFailure())
+      yield put(FormAction.promoCodeFailure());
     } else {
-      yield put(FormAction.sendFinalCharge(action.token, action.amount, action.code, action.plan))
-      yield put(FormAction.applyDiscount(action.code))
+      yield put(
+        FormAction.sendFinalCharge(
+          action.token,
+          action.amount,
+          action.code,
+          action.plan
+        )
+      );
+      yield put(FormAction.applyDiscount(action.code));
     }
   } else {
-    yield put(FormAction.sendFinalCharge(action.token, action.amount, null, action.plan))
+    yield put(
+      FormAction.sendFinalCharge(action.token, action.amount, null, action.plan)
+    );
   }
 }
 
 function* insertCustomer(action) {
-  const state = yield select()
+  const state = yield select();
 
-  const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/insert', {
-    email: state.AccountReducer.user,
-    location: action.location
-  }, state.AccountReduce r.access_token)
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/stripe/insert",
+    {
+      email: state.AccountReducer.user,
+      location: action.location,
+    },
+    state.AccountReducer.access_token
+  );
 
-  if(json) {
-    yield put(FormAction.customerCreated(json.status))
-     history.push('/dashboard')
-     yield put(FormAction.triggerSurvey(true))
-     yield put(FormAction.vmCreating(true))
-     const {json1, response1} = yield call(apiPost, config.url.MAIL_SERVER + '/purchase', {
+  if (json) {
+    yield put(FormAction.customerCreated(json.status));
+    history.push("/dashboard");
+    yield put(FormAction.triggerSurvey(true));
+    yield put(FormAction.vmCreating(true));
+    const { json1, } = yield call(
+      apiPost,
+      config.url.MAIL_SERVER + "/trial",
+      {
         username: state.AccountReducer.user,
         location: action.location,
-        code: state.AccountReducer.promoCode
-     }, '');
+        code: state.AccountReducer.promoCode,
+      },
+      ""
+    );
   }
 }
 
 function* applyDiscount(action) {
-  const state = yield select()
-  const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/discount', {
-    code: action.code
-  }, state.AccountReducer.access_token)
+  const state = yield select();
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/stripe/discount",
+    {
+      code: action.code,
+    },
+    state.AccountReducer.access_token
+  );
 }
 
 function* sendFinalCharge(action) {
-  const state = yield select()
-  const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/charge', {
-    token: action.token,
-    email: state.AccountReducer.user,
-    plan: action.plan,
-    code: action.code
-  }, state.AccountReducer.access_token);
+  const state = yield select();
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/stripe/charge",
+    {
+      token: action.token,
+      email: state.AccountReducer.user,
+      plan: action.plan,
+      code: action.code,
+    },
+    state.AccountReducer.access_token
+  );
 
   if (json) {
     if (json.status === 200) {
-      history.push('/dashboard');
-      yield put(FormAction.vmCreating(true))
-      yield put(FormAction.triggerSurvey(true))
-      const { json1, response1 } = yield call(apiPost, config.url.MAIL_SERVER + '/purchase', {
-        username: state.AccountReducer.user,
-        location: action.location,
-        code: state.AccountReducer.promoCode
-      }, '');
+      history.push("/dashboard");
+      yield put(FormAction.vmCreating(true));
+      yield put(FormAction.triggerSurvey(true));
+      const { json1, } = yield call(
+        apiPost,
+        config.url.MAIL_SERVER + "/purchase",
+        {
+          username: state.AccountReducer.user,
+          location: action.location,
+          code: state.AccountReducer.promoCode,
+        },
+        ""
+      );
     } else {
-      yield put(FormAction.stripeFailure(json.status))
+      yield put(FormAction.stripeFailure(json.status));
     }
   }
 }
 
 function* retrieveCustomer(action) {
-   const state = yield select()
-   console.log(state)
-   const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/retrieve', {
-      email: state.AccountReducer.user
-   }, state.AccountReducer.access_token);
+  const state = yield select();
+  console.log(state);
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/stripe/retrieve",
+    {
+      email: state.AccountReducer.user,
+    },
+    state.AccountReducer.access_token
+  );
 
-   if(json) {
-     if (json.status === 200) {
-       yield put(FormAction.storePayment(json.subscription))
-     } else {
-       yield put(FormAction.storePayment({}))
-     }
-     yield put(FormAction.storeAccountLocked(json.account_locked))
-     yield put(FormAction.storeCustomer(json.customer))
-     yield put(FormAction.storeCredits(json.creditsOutstanding))
-     yield put(FormAction.dashboardLoaded(true))
+  if (json) {
+    if (json.status === 200) {
+      yield put(FormAction.storePayment(json.subscription));
+    } else {
+      yield put(FormAction.storePayment({}));
+    }
+    yield put(FormAction.storeAccountLocked(json.account_locked));
+    yield put(FormAction.storeCustomer(json.customer));
+    yield put(FormAction.storeCredits(json.creditsOutstanding));
+    yield put(FormAction.dashboardLoaded(true));
   }
 }
 
 function* cancelPlan(action) {
-  const state = yield select()
-  var vm_name = ''
-  if (state.AccountReducer.vm_credentials && state.AccountReducer.vm_credentials.length > 0) {
-    vm_name = state.AccountReducer.vm_credentials[0].vm_name
-   }
+  const state = yield select();
+  var vm_name = "";
+  if (
+    state.AccountReducer.vm_credentials &&
+    state.AccountReducer.vm_credentials.length > 0
+  ) {
+    vm_name = state.AccountReducer.vm_credentials[0].vm_name;
+  }
 
-   const {json2, response2} = yield call(apiPost, config.url.MAIL_SERVER + '/cancel', {
+  const { json2, } = yield call(
+    apiPost,
+    config.url.MAIL_SERVER + "/cancel",
+    {
       username: state.AccountReducer.user,
-      feedback: action.message
-   }, '');
+      feedback: action.message,
+    },
+    ""
+  );
 
-
-   const {json1, response1} = yield call(apiPost, config.url.PRIMARY_SERVER + '/disk/delete', {
+  const { json1, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/disk/delete",
+    {
       username: state.AccountReducer.user,
-   }, state.AccountReducer.access_token);
+    },
+    state.AccountReducer.access_token
+  );
 
-   const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/stripe/cancel', {
-      email: state.AccountReducer.user
-   }, state.AccountReducer.access_token);
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/stripe/cancel",
+    {
+      email: state.AccountReducer.user,
+    },
+    state.AccountReducer.access_token
+  );
 
-   if(json) {
-     if (json.status === 200) {
-       yield put(FormAction.storePayment({}))
-       yield put(FormAction.storeCustomer({}))
-       yield put(FormAction.vmCreating(false))
-       yield put(FormAction.storeDisks([]));
+  if (json) {
+    if (json.status === 200) {
+      yield put(FormAction.storePayment({}));
+      yield put(FormAction.storeCustomer({}));
+      yield put(FormAction.vmCreating(false));
+      yield put(FormAction.storeDisks([]));
     }
   }
 }
 
 function* deleteAccount(action) {
-  const state = yield select()
+  const state = yield select();
 
   if (state.AccountReducer.has_vm) {
-    yield cancelPlan(action)
+    yield cancelPlan(action);
   }
 
-  const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/delete', {
-    username: state.AccountReducer.user,
-  }, state.AccountReducer.access_token);
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/account/delete",
+    {
+      username: state.AccountReducer.user,
+    },
+    state.AccountReducer.access_token
+  );
 
   if (json && json.status === 200) {
     yield put(FormAction.logout());
@@ -228,31 +315,43 @@ function* deleteAccount(action) {
 }
 
 function* getDiskStatus(action) {
-  const state = yield select()
+  const state = yield select();
 
-  var { json, response } = yield call(apiGet, (config.url.PRIMARY_SERVER + '/status/').concat(action.id), '')
+  var { json, } = yield call(
+    apiGet,
+    (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
+    ""
+  );
 
   while (json.state === "PENDING" || json.state === "STARTED") {
-    var { json, response } = yield call(apiGet, (config.url.PRIMARY_SERVER + '/status/').concat(action.id), '')
-    yield delay(5000)
+    var { json, } = yield call(
+      apiGet,
+      (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
+      ""
+    );
+    yield delay(5000);
   }
 
-  console.log("STATUS IS SUCCESS")
-  console.log(json)
+  console.log("STATUS IS SUCCESS");
+  console.log(json);
 
-  if(json && json.output) {
-    yield put(FormAction.fetchDisks(state.AccountReducer.user))
+  if (json && json.output) {
+    yield put(FormAction.fetchDisks(state.AccountReducer.user));
   }
 }
 
-
 function* fetchDisks(action) {
-  const state = yield select()
-  const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/user/fetchdisks', {
-    username: state.AccountReducer.user
-  }, '')
+  const state = yield select();
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/user/fetchdisks",
+    {
+      username: state.AccountReducer.user,
+    },
+    ""
+  );
 
-  console.log(json)
+  console.log(json);
 
   if (json.disks) {
     yield put(FormAction.storeDisks(json.disks));
@@ -262,10 +361,15 @@ function* fetchDisks(action) {
 }
 
 function* sendForgotPassword(action) {
-  const state = yield select()
-  const { json, response } = yield call(apiPost, config.url.MAIL_SERVER + '/mail/forgot', {
-    username: action.username
-  }, '')
+  const state = yield select();
+  const { json, } = yield call(
+    apiPost,
+    config.url.MAIL_SERVER + "/mail/forgot",
+    {
+      username: action.username,
+    },
+    ""
+  );
   if (json) {
     if (json.verified) {
       yield put(FormAction.forgotPasswordEmailCorrect(action.username));
@@ -276,101 +380,140 @@ function* sendForgotPassword(action) {
 }
 
 function* sendValidateToken(action) {
-  const state = yield select()
-  const { json, response } = yield call(apiPost, config.url.MAIL_SERVER + '/token/validate', {
-    token: action.token
-  }, '')
+  const state = yield select();
+  const { json, } = yield call(
+    apiPost,
+    config.url.MAIL_SERVER + "/token/validate",
+    {
+      token: action.token,
+    },
+    ""
+  );
   if (json) {
     if (json.status === 200) {
-      yield put(FormAction.tokenStatus('verified'));
+      yield put(FormAction.tokenStatus("verified"));
     } else {
-      if (json.error === 'Expired token') {
-        yield put(FormAction.tokenStatus('expired'));
-      }
-      else {
-        yield put(FormAction.tokenStatus('invalid'));
+      if (json.error === "Expired token") {
+        yield put(FormAction.tokenStatus("expired"));
+      } else {
+        yield put(FormAction.tokenStatus("invalid"));
       }
     }
   }
 }
 
 function* sendResetPassword(action) {
-  const state = yield select()
-  console.log(action)
-  const { json, response } = yield call(apiPost, config.url.MAIL_SERVER + '/mail/reset', {
-    username: action.username,
-    password: action.password
-  }, '')
-  history.push('/auth')
+  const state = yield select();
+  console.log(action);
+  const { json, } = yield call(
+    apiPost,
+    config.url.MAIL_SERVER + "/mail/reset",
+    {
+      username: action.username,
+      password: action.password,
+    },
+    ""
+  );
+  history.push("/auth");
 }
 
 function* sendFriendsEmail(action) {
-  const state = yield select()
-  const { json, response } = yield call(apiPost, config.url.MAIL_SERVER + '/referral', {
-    username: state.AccountReducer.user,
-    recipients: action.recipients,
-    code: action.code
-  }, '')
+  const state = yield select();
+  const { json, } = yield call(
+    apiPost,
+    config.url.MAIL_SERVER + "/referral",
+    {
+      username: state.AccountReducer.user,
+      recipients: action.recipients,
+      code: action.code,
+    },
+    ""
+  );
   if (json) {
-    console.log(json)
-    yield put(FormAction.emailSent(json.status))
+    console.log(json);
+    yield put(FormAction.emailSent(json.status));
   } else {
-    yield put(FormAction.emailSent(500))
+    yield put(FormAction.emailSent(500));
   }
 }
 
 function* subscribeNewsletter(action) {
-  const { json, response } = yield call(apiPost, config.url.MAIL_SERVER + '/newsletter/subscribe', {
-    username: action.username
-  }, '')
+  const { json, } = yield call(
+    apiPost,
+    config.url.MAIL_SERVER + "/newsletter/subscribe",
+    {
+      username: action.username,
+    },
+    ""
+  );
 }
 
 function* checkVerifiedEmail(action) {
-  const state = yield select()
-  const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/checkVerified', {
-    username: action.username
-  }, '')
+  const state = yield select();
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/account/checkVerified",
+    {
+      username: action.username,
+    },
+    ""
+  );
   if (json && json.status === 200 && json.verified) {
-    yield put(FormAction.emailVerified(true))
-    history.push('/dashboard')
+    yield put(FormAction.emailVerified(true));
+    history.push("/dashboard");
   } else {
-    yield put(FormAction.emailVerified(false))
-    history.push('/verify')
+    yield put(FormAction.emailVerified(false));
+    history.push("/verify");
   }
 }
 
 function* verifyToken(action) {
-  const state = yield select()
-  const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/verifyUser', {
-    username: state.AccountReducer.user,
-    token: action.token
-  }, state.AccountReducer.access_token)
+  const state = yield select();
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/account/verifyUser",
+    {
+      username: state.AccountReducer.user,
+      token: action.token,
+    },
+    state.AccountReducer.access_token
+  );
   if (json && json.status === 200 && json.verified) {
-    yield put(FormAction.emailVerified(true))
+    yield put(FormAction.emailVerified(true));
   } else {
-    yield put(FormAction.emailVerified(false))
+    yield put(FormAction.emailVerified(false));
   }
 }
 
 function* submitPurchaseFeedback(action) {
-  const state = yield select()
-  const { json, response } = yield call(apiPost, config.url.PRIMARY_SERVER + '/account/feedback', {
-    username: state.AccountReducer.user,
-    feedback: action.feedback
-  }, state.AccountReducer.access_token)
+  const state = yield select();
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/account/feedback",
+    {
+      username: state.AccountReducer.user,
+      feedback: action.feedback,
+    },
+    state.AccountReducer.access_token
+  );
 }
 
 function* createDisk(action) {
-  const state = yield select()
+  const state = yield select();
 
-  const {json, response} = yield call(apiPost, config.url.PRIMARY_SERVER + '/disk/createFromImage', {
-    username: state.AccountReducer.user,
-    location: action.location,
-    vm_size: action.vm_size 
-  }, state.AccountReducer.access_token)
+  const { json, } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + "/disk/createFromImage",
+    {
+      username: state.AccountReducer.user,
+      location: action.location,
+      vm_size: action.vm_size,
+    },
+    state.AccountReducer.access_token
+  );
 
-  console.log("DISK RESPOSNE")
-  console.log(json)
+  console.log("DISK RESPOSNE");
+  console.log(json);
 
   if (json) {
     if (json.ID) {
@@ -403,6 +546,6 @@ export default function* rootSaga() {
     takeEvery(FormAction.SEND_VERIFICATION_EMAIL, sendVerificationEmail),
     takeEvery(FormAction.INSERT_CUSTOMER, insertCustomer),
     takeEvery(FormAction.SUBMIT_PURCHASE_FEEDBACK, submitPurchaseFeedback),
-    takeEvery(FormAction.CREATE_DISK, createDisk)
+    takeEvery(FormAction.CREATE_DISK, createDisk),
   ]);
 }

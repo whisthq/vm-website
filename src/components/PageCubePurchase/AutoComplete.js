@@ -35,7 +35,6 @@ export class Autocomplete extends Component {
 
   onChange = (e) => {
     const { options } = this.props;
-    const { showOptions } = this.state;
     const userInput = this.formatUserEntry(e.currentTarget.value)
     console.log(userInput)
 
@@ -64,7 +63,6 @@ export class Autocomplete extends Component {
 
   onClick = (e) => {
     const { options } = this.props;
-    const { showOptions, userInput } = this.state;
     var input = e.currentTarget.innerText;
     input = input.replace("Suggested: ", "")
 
@@ -82,7 +80,7 @@ export class Autocomplete extends Component {
   };
 
   onKeyDown = (e) => {
-    const { activeOption, filteredOptions, showOptions, userInput } = this.state;
+    const { activeOption, filteredOptions, } = this.state;
     const { options } = this.props;
 
     if (e.keyCode === 13) {
@@ -134,6 +132,11 @@ export class Autocomplete extends Component {
                     style = {{zIndex: 100, position: 'relative', bottom: 3, paddingTop: 5, fontSize: 12, color: '#555555', paddingBottom: 10, borderRadius: '0px 0px 3px 3px', backgroundColor: '#EFEFEF', width: '100%'}}>
                     Suggested: {optionName}
                   </div>
+                );
+              } else {
+                // else return empty div
+                return (
+                  <div></div>
                 );
               }
             })}

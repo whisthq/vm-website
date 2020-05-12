@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import {CardElement, injectStripe, PaymentRequestButtonElement} from 'react-stripe-elements';
+import {CardElement, injectStripe } from 'react-stripe-elements';
 import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleNotch, faKey } from '@fortawesome/free-solid-svg-icons'
+import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 
-import {chargeStripe, validatePromoCode, insertCustomer, createDisk } from '../actions/index.js'
+import {chargeStripe } from '../actions/index.js'
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -64,10 +63,10 @@ class CheckoutForm extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.failed_payment_attempts != this.props.failed_payment_attempts && !this.state.failed_payment_attempt) {
+    if(prevProps.failed_payment_attempts !== this.props.failed_payment_attempts && !this.state.failed_payment_attempt) {
       this.setState({failed_payment_attempt: true, errorMessage: 'Your card info was declined. Please try again.', processing: false})
     }
-    if(prevProps.failed_referral_attempts != this.props.failed_referral_attempts && !this.state.failed_referral_attempt) {
+    if(prevProps.failed_referral_attempts !== this.props.failed_referral_attempts && !this.state.failed_referral_attempt) {
       this.setState({failed_referral_attempt: true, errorMessage: 'Your referral code was invalid. Please re-check the code, or contact support@fractalcomputers.com.', processing: false})
     }
 
@@ -76,7 +75,7 @@ class CheckoutForm extends Component {
         this.setState({trialEnd: this.unixToDate(this.props.payment.trial_end)})
       }
     } else {
-      if(this.state.trialEnd != '' && this.props.customer && Object.keys(this.props.customer).length === 0) {
+      if(this.state.trialEnd !== '' && this.props.customer && Object.keys(this.props.customer).length === 0) {
         this.setState({trialEnd: ''})
       }
     }
@@ -139,7 +138,7 @@ class CheckoutForm extends Component {
           }
           <div style = {{marginTop: 25}}>
           {
-          this.state.errorMessage != ''
+          this.state.errorMessage !== ''
           ?
           <div style = {{fontSize: 12, color: '#e34d4d'}}>
             {this.state.errorMessage}
@@ -196,6 +195,5 @@ function mapStateToProps(state) {
     payment: state.AccountReducer.payment
   }
 }
-
 
 export default connect(mapStateToProps)(injectStripe(CheckoutForm));
