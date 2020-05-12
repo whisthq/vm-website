@@ -1,9 +1,4 @@
 import React, { Component } from 'react'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux';
 import { FaArrowRight } from 'react-icons/fa'

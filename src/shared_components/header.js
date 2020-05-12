@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Logo from '../assets/logo.svg'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'react-bootstrap'
 import { FaBars, FaTimes } from 'react-icons/fa'
 import '../static/App.css';
 import { HashLink } from 'react-router-hash-link';
@@ -50,7 +46,7 @@ class Header extends Component {
         <div style = {{display: 'flex', width: '100%'}}>
           <div style = {{width: '40%', textAlign: 'left', zIndex: 1}}>
             <Link to = '/' style = {{textDecoration: 'none', color: `${ this.props.color }`, fontWeight: 'bold', fontSize: 24}}>
-              <img src = {Logo} style = {{height: 19, position: 'relative', bottom: 2, marginRight: 12}}/>
+              <img src = {Logo} alt = "" style = {{height: 19, position: 'relative', bottom: 2, marginRight: 12}}/>
               <span style = {{color: `${ this.props.title }`}}>
               Fractal
               </span>
@@ -74,7 +70,7 @@ class Header extends Component {
                 <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
               <Link to = "/auth">
-                <Button style = {{fontWeight: 'bold', marginLeft: 35, color: '#1ba8e0', border: 'none', fontWeight: 'bold', paddingLeft: 20, paddingRight: 20, padding: '12px 30px', background: "rgba(94, 195, 235, 0.2)"}}>
+                <Button style = {{fontWeight: 'bold', marginLeft: 35, color: '#1ba8e0', border: 'none', paddingLeft: 20, paddingRight: 20, padding: '12px 30px', background: "rgba(94, 195, 235, 0.2)"}}>
                   My Account
                 </Button>
               </Link>
@@ -94,7 +90,7 @@ class Header extends Component {
                 <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
               <Link to = "/auth">
-                <Button style = {{fontWeight: 'bold', marginLeft: 35, color: '#1ba8e0', border: 'none', fontWeight: 'bold', paddingLeft: 20, paddingRight: 20, padding: '12px 30px', background: "rgba(94, 195, 235, 0.2)"}}>
+                <Button style = {{fontWeight: 'bold', marginLeft: 35, color: '#1ba8e0', border: 'none', paddingLeft: 20, paddingRight: 20, padding: '12px 30px', background: "rgba(94, 195, 235, 0.2)"}}>
                   My Account
                 </Button>
               </Link>
@@ -111,7 +107,7 @@ class Header extends Component {
                 <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
               <Link to = "/auth">
-                <Button style = {{fontWeight: 'bold', marginLeft: 35, color: '#1ba8e0', border: 'none', fontWeight: 'bold', paddingLeft: 20, paddingRight: 20, padding: '12px 30px', background: "rgba(94, 195, 235, 0.2)"}}>
+                <Button style = {{fontWeight: 'bold', marginLeft: 35, color: '#1ba8e0', border: 'none', paddingLeft: 20, paddingRight: 20, padding: '12px 30px', background: "rgba(94, 195, 235, 0.2)"}}>
                   My Account
                 </Button>
               </Link>
@@ -129,7 +125,7 @@ class Header extends Component {
         <div style = {{paddingLeft: 35, paddingRight: 25, minHeight: 30}}>
           <div style = {{color: 'white', fontWeight: 'bold', float: 'left'}}>
             <Link to = '/' style = {{color: '#111111', fontSize: 20}}>
-              <img src = {Logo} style = {{height: 20, position: 'relative', bottom: 2, right: 10}}/>
+              <img src = {Logo} alt = "" style = {{height: 20, position: 'relative', bottom: 2, right: 10}}/>
               <span style = {{color: `${ this.props.title }`}}>
                 Fractal
               </span>
@@ -216,6 +212,5 @@ function mapStateToProps(state) {
     currentPage: state.AccountReducer.currentPage
   }
 }
-
 
 export default connect(mapStateToProps)(Header)
