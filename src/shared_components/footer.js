@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import { FaLinkedinIn, FaTwitter } from 'react-icons/fa'
+import { FaLinkedinIn, FaTwitter, FaFacebook, FaInstagram } from 'react-icons/fa'
 import '../static/App.css';
 import { HashLink } from 'react-router-hash-link';
 
@@ -48,8 +48,18 @@ class Footer extends Component {
                   </div>
                   </a>
                   <a href = "https://www.linkedin.com/company/fractalcomputers" target = "_blank" rel="noopener noreferrer" style = {{textDecoration: 'none'}}>
-                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', borderRadius: 5}}>
+                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', marginRight: 10, borderRadius: 5}}>
                     <FaLinkedinIn style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
+                  </div>
+                  </a>
+                  <a href = "https://www.facebook.com/fractalcomputing" target = "_blank" rel="noopener noreferrer" style = {{textDecoration: 'none'}}>
+                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', marginRight: 10, borderRadius: 5}}>
+                    <FaFacebook style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
+                  </div>
+                  </a>
+                  <a href = "https://www.instagram.com/fractalcloud" target = "_blank" rel="noopener noreferrer" style = {{textDecoration: 'none'}}>
+                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', borderRadius: 5}}>
+                    <FaInstagram style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
                   </div>
                   </a>
                 </div>
@@ -122,13 +132,23 @@ class Footer extends Component {
                 </div>
                 <div style = {{display: 'flex', marginTop: 15}}>
                   <a href = "https://twitter.com/fractalapp" target = "_blank" rel="noopener noreferrer" style = {{textDecoration: 'none'}}>
-                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative',marginRight: 10, borderRadius: 5}}>
+                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', marginRight: 10, borderRadius: 5}}>
                     <FaTwitter style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
                   </div>
                   </a>
-                  <a href = "https://www.linkedin.com/company/fractalcomputers/about/?viewAsMember=true" target = "_blank" rel="noopener noreferrer" style = {{textDecoration: 'none'}}>
-                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', borderRadius: 5}}>
+                  <a href = "https://www.linkedin.com/company/fractalcomputers" target = "_blank" rel="noopener noreferrer" style = {{textDecoration: 'none'}}>
+                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', marginRight: 10, borderRadius: 5}}>
                     <FaLinkedinIn style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
+                  </div>
+                  </a>
+                  <a href = "https://www.facebook.com/fractalcomputing" target = "_blank" rel="noopener noreferrer" style = {{textDecoration: 'none'}}>
+                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', marginRight: 10, borderRadius: 5}}>
+                    <FaFacebook style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
+                  </div>
+                  </a>
+                  <a href = "https://www.instagram.com/fractalcloud" target = "_blank" rel="noopener noreferrer" style = {{textDecoration: 'none'}}>
+                  <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative', borderRadius: 5}}>
+                    <FaInstagram style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
                   </div>
                   </a>
                 </div>

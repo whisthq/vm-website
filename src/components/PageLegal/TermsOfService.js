@@ -36,7 +36,7 @@ class Privacy extends Component {
         TERMS OF SERVICE
         </div>
         <div style = {{color: "#555555", marginBottom: 40}}>
-        Last updated March 20th, 2020
+        Last updated May 12th, 2020
         </div>
         <div>
           <p> 
@@ -297,11 +297,11 @@ class Privacy extends Component {
           <p>
           Philippe Noël <br/>
           Fractal Computers, Inc. <br/>
-          2 Earhart Street <br/>
-          Unit 510 <br/>
-          Cambridge, MA 02141 <br/>
+          103 Greaton Road <br/>
+          Unit 2 <br/>
+          Boston, MA 02132 <br/>
           Phone: 8572729715 <br/>
-          Email: phil@fractalcomputers.com <br/>
+          Email: support@fractalcomputers.com <br/>
           </p>
           
           <p>
