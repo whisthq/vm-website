@@ -634,6 +634,7 @@ class Dashboard extends Component {
                         </div>
                         </a>
                       </Col>
+                      {/*
                       <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                         <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
                           <FaUbuntu style = {{fontSize: 18, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> Linux Ubuntu
@@ -643,6 +644,15 @@ class Dashboard extends Component {
                           <button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
                         </div>
                         </a>
+                      </Col>
+                      */}
+                      <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
+                        <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
+                          <FaUbuntu style = {{fontSize: 18, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> Linux Ubuntu
+                        </div>
+                        <div style = {{float: 'right', display: 'inline', color: 'white'}}>
+                          <button disabled = "true" style = {{background: 'none', border: 'none', fontSize: 12, borderRadius: 2, color: '#A9A9A9', width: 90, padding: '5px 5px'}}>Coming Soon</button>
+                        </div>
                       </Col>
                       <Col xs = {12} style = {{padding: '0px 20px'}}>
                         <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
