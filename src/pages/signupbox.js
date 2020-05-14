@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import { FaArrowRight } from 'react-icons/fa';
-import apiClient from './apiClient'
-import requestClient from './requestClient'
 
 class SignupBox extends Component {
   constructor(props) {
@@ -23,7 +18,7 @@ class SignupBox extends Component {
 
   storeEmail(email) {
     (async () => {
-      const rawResponse = await fetch('https://infinite-everglades-29230.herokuapp.com/email', {
+      await fetch('https://infinite-everglades-29230.herokuapp.com/email', {
         method: 'POST',
         mode: 'cors',
         headers: {

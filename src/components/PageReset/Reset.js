@@ -1,21 +1,15 @@
 import React, { Component } from 'react'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux';
 import '../../static/App.css';
-import { FaArrowRight } from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import "react-tabs/style/react-tabs.css";
 import { FaCheck, FaExclamationTriangle } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 import { forgotPassword, validateToken, tokenStatus, resetPassword } from '../../actions/index.js';
-import { Redirect } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 class Reset extends Component {
@@ -85,8 +79,8 @@ class Reset extends Component {
   componentDidMount() {
     this.updateWindowDimensions()
     window.addEventListener('resize', this.updateWindowDimensions)
-    var token = this.props.location.search
-    var token = token.substring(1,token.length)
+    var token_tmp = this.props.location.search
+    var token = token_tmp.substring(1, token_tmp.length)
     this.props.dispatch(validateToken(token))
   }
 
@@ -208,7 +202,7 @@ class Reset extends Component {
               Your Session Has Expired
             </div>
             <div style =  {{color: '#333333', textAlign: 'center', marginTop: 15, fontSize: 14}}>
-              For your security, this password link has expired. You can request a new password reset link <a onClick = {this.resetEmail} style = {{color: '#94A8ED', textDecoration: 'none', cursor: 'pointer'}}>here</a>.
+              For your security, this password link has expired. You can request a new password reset link <a href = "https://fractalcomputers.com/reset" onClick = {this.resetEmail} style = {{color: '#94A8ED', textDecoration: 'none', cursor: 'pointer'}}>here</a>.
             </div>
             <HashLink to = "/auth">
               <Button style = {{padding: 12, color: 'white', width: '100%', border: 'none', background: '#0B172B', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', marginTop: 40}}>BACK TO LOGIN</Button>
@@ -291,7 +285,6 @@ class Reset extends Component {
   }
 }
 
-
 function mapStateToProps(state) {
   return { 
     forgot_password: state.AccountReducer.forgot_password,
@@ -299,6 +292,5 @@ function mapStateToProps(state) {
     forgot_email: state.AccountReducer.forgot_email
   }
 }
-
 
 export default connect(mapStateToProps)(Reset);

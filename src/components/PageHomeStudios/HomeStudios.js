@@ -3,29 +3,16 @@ import { connect } from 'react-redux';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
-import Dropdown from 'react-bootstrap/Dropdown'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import '../../static/App.css';
-import LandingTop from '../../assets/landingtop.svg'
-import LandingLeft from '../../assets/landingleft.svg'
-import WhiteBackground from '../../assets/whitebackground.svg'
 import SpaceShip from '../../assets/spaceship.svg'
-import InfoBox from '../../assets/infobox.svg'
 import Car from '../../assets/caribou.svg'
-import Topography from '../../assets/topography.svg'
 import RGBIcon from '../../assets/rgb-icon.svg'
 import HardDriveIcon from '../../assets/hard-drive-icon.svg'
 import FileIcon from '../../assets/file-icon.svg'
-import WindowsBin from '../../bin/Fractal.exe'
-import MacBin from '../../bin/Fractal.dmg'
-import Logo from '../../assets/logo.svg'
 import Desktop from '../../assets/desktop.svg'
 import StreamCompare from '../../assets/streamcompare.svg'
-import {FaRegEnvelope} from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom'
-import { HashLink } from 'react-router-hash-link';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 import Footer from '../../shared_components/footer.js'
 import { changeTab } from '../../actions/index.js';
@@ -107,9 +94,9 @@ class PageStudios extends Component {
                 {
                 this.state.width > 700
                 ?
-                <img src = {Car} style = {{width: "90%", position: 'relative', maxWidth: 1200, paddingTop: 25}}/>
+                <img src = {Car} alt = "" style = {{width: "90%", position: 'relative', maxWidth: 1200, paddingTop: 25}}/>
                 :
-                <img src = {Car} style = {{width: "100%"}}/>
+                <img src = {Car} alt = "" style = {{width: "100%"}}/>
                 }
               </Col>
             </Row>
@@ -123,9 +110,9 @@ class PageStudios extends Component {
                   {
                   this.state.width > 700
                   ?
-                  <img src = {Desktop} style = {{width: '100%'}}/>
+                  <img src = {Desktop} alt = "" style = {{width: '100%'}}/>
                   :
-                  <img src = {Desktop} style = {{width: '100%'}}/>
+                  <img src = {Desktop} alt = "" style = {{width: '100%'}}/>
                   }
                 </div>
               </Col>
@@ -156,7 +143,7 @@ class PageStudios extends Component {
             <div style = {{color: "#D6D6D6", maxWidth: 600, margin: 'auto', zIndex: 100, fontSize: 18, paddingLeft: 50, paddingRight: 50, lineHeight: 1.6}}>
               Experience <span style = {{color: 'white', fontWeight: 'bold'}}>60 frames per second</span> without perceivable latency at 13 Mbps bandwidth.
             </div>
-            <Button onClick = {this.openForm} style = {{zIndex: 100, marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.6)', zIndex: 200}}>GET STARTED</Button>
+            <Button onClick = {this.openForm} style = {{marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.6)', zIndex: 200}}>GET STARTED</Button>
           </div>
         </div>
         :
@@ -185,10 +172,10 @@ class PageStudios extends Component {
             this.state.width > 700
             ?
             <div style = {{boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.6)', padding: 0, margin: 'auto', marginTop: 75, width: '100%', maxWidth: 1000}}>
-              <img src = {StreamCompare} style = {{width: '100%'}}/>
+              <img src = {StreamCompare} alt = "" style = {{width: '100%'}}/>
             </div>
             :
-            <img src = {StreamCompare} style = {{width: '90%', margin: 'auto', maxWidth: 1000, marginTop: 75}}/>
+            <img src = {StreamCompare} alt = "" style = {{width: '90%', margin: 'auto', maxWidth: 1000, marginTop: 75}}/>
             }
         </div>
         </div>
@@ -206,7 +193,7 @@ class PageStudios extends Component {
               ?
               <Col md = {4}>
                 <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, width: '100%', marginBottom: 20}}>
-                  <img src = {RGBIcon} style = {{height: 50}}/>
+                  <img src = {RGBIcon} alt = "" style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Color Accuracy</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Achieve visually lossless frames with our color-accurate streaming technology.</p>
                 </div>
@@ -214,7 +201,7 @@ class PageStudios extends Component {
               :
               <Col md = {4}>
                 <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
-                  <img src = {RGBIcon} style = {{height: 50}}/>
+                  <img src = {RGBIcon} alt = "" style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Color Accuracy</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Achieve visually lossless frames with our color-accurate streaming technology.</p>
                 </div>
@@ -225,7 +212,7 @@ class PageStudios extends Component {
               ?
               <Col md = {4}>
                 <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, margin:'auto', width: '100%', marginBottom: 20}}>
-                  <img src = {HardDriveIcon} style = {{height: 50}}/>
+                  <img src = {HardDriveIcon} alt = "" style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Advanced Encryption</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Your entire stream — video, audio, peripheral inputs — is fully AES encrypted.</p>
                 </div>
@@ -233,7 +220,7 @@ class PageStudios extends Component {
               :
               <Col md = {4} style = {{margin: 0}}>
                 <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 210, margin:'auto', width: '100%', marginBottom: 20}}>
-                  <img src = {HardDriveIcon} style = {{height: 50}}/>
+                  <img src = {HardDriveIcon} alt = "" style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Advanced Encryption</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Your entire stream — video, audio, peripheral inputs — is fully AES encrypted.</p>
                 </div>
@@ -244,7 +231,7 @@ class PageStudios extends Component {
               ?
               <Col md = {4}>
                 <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 270, margin:'auto', width: '100%', marginBottom: 20}}>
-                  <img src = {FileIcon} style = {{height: 50}}/>
+                  <img src = {FileIcon} alt = "" style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Easy to Use</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Create an account, download our application on both computers, and connect. That's it.</p>
                 </div>
@@ -252,7 +239,7 @@ class PageStudios extends Component {
               :
               <Col md = {4}>
                 <div style = {{boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'linear-gradient(121.2deg, #F2DEF8 2.24%, #D7F5F5 100%)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 210, margin:'auto', width: '100%', marginBottom: 20}}>
-                  <img src = {FileIcon} style = {{height: 50}}/>
+                  <img src = {FileIcon} alt = "" style = {{height: 50}}/>
                   <div style = {{fontWeight: 'bold', fontSize: 20, color: "#333333", textAlign: 'left', marginTop: 30}}>Easy to Use</div>
                   <p style = {{textAlign: 'left', marginTop: 10, fontSize: 15}}>Create an account, download our application on both computers, and connect. That's it.</p>
                 </div>
@@ -335,7 +322,7 @@ class PageStudios extends Component {
             <div style = {{margin: 'auto', maxWidth: 750}}>
               <p style = {{textAlign: 'center', marginTop: 20, color: '#D6D6D6', fontSize: 18}}>Fill out your info below, and one of our engineers will set you up with a free trial within 24 hours.</p>
             </div>
-            <Button style = {{zIndex: 100, marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.6)', zIndex: 200}} onClick={this.openForm}>REQUEST ACCESS</Button>
+            <Button style = {{marginTop: 40, padding: "12px 50px", background: "linear-gradient(110.1deg, #5ec3eb 0%, #d023eb 100%)", border: 'none', color: 'white', fontWeight: 'bold', boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.6)', zIndex: 200}} onClick={this.openForm}>REQUEST ACCESS</Button>
           </Container>
         </div>
         <div style = {{textAlign: 'left'}}>

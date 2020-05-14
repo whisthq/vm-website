@@ -2,26 +2,19 @@ import React, { Component } from "react";
 import {
   Row,
   Col,
-  Container,
-  Popover,
-  OverlayTrigger,
   Button,
 } from "react-bootstrap";
 import { connect } from "react-redux";
-import { FaTrashAlt, FaAngleUp, FaTimes } from "react-icons/fa";
+import { FaAngleUp, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { Elements, StripeProvider } from "react-stripe-elements";
 import { HashLink } from "react-router-hash-link";
 import { FaArrowRight } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleNotch, faKey } from "@fortawesome/free-solid-svg-icons";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "../../shared_components/header.js";
 import TypeformButton from "../../shared_components/typeformbutton.js";
-import CheckoutForm from "../../shared_components/checkoutform.js";
-import { config } from "../../constants.js";
 import "../../static/App.css";
-import StripeBadge from "../../assets/powered_by_stripe.svg";
 import Autocomplete from "./AutoComplete.js";
 import { options } from "./Options.js";
 import {
@@ -175,7 +168,7 @@ class Purchase extends Component {
       return "eastus";
     } else if (southcentralus.includes(location)) {
       return "southcentralus";
-    } else {
+    } else if (northcentralus.includes(location)) {
       return "northcentralus";
     }
   };
@@ -188,7 +181,7 @@ class Purchase extends Component {
       createDisk(
         this.findVMLocation(this.state.location),
         this.encodeComputer(this.state.computer),
-        True
+        true
       )
     );
   };
@@ -237,11 +230,6 @@ class Purchase extends Component {
     if (this.state.width > 700 && this.state.modalShow) {
       modalClose();
     }
-
-    const fonts = [
-      { cssSrc: "https://fonts.googleapis.com/css?family=Maven+Pro" },
-    ];
-    var public_key = config.stripe.PUBLIC_KEY;
 
     const renderLeftMenu = () => {
       if (this.state.width > 700) {
@@ -856,7 +844,6 @@ class Purchase extends Component {
                 Select the specs that best suit your needs. You can always
                 upgrade or downgrade later.
               </div>
-              {this.state.computer === "" ? (
                 <Row
                   style={{
                     marginTop: 50,
@@ -880,7 +867,8 @@ class Purchase extends Component {
                       ram="56"
                       description="For 3D modeling, medium rendering, gaming."
                       pricing="Start with free trial"
-                      color="white"
+                      color= {this.state.computer === "Medium" ? "rgba(94, 195, 235, 0.1)" : "white"}
+                      checked = {this.state.computer === "Medium"}
                     />
                   </Col>
                   <Col
@@ -911,130 +899,11 @@ class Purchase extends Component {
                         </div>
                       }
                       pricing="$5/mo + $1.30/hr"
-                      color="white"
+                      color= {this.state.computer === "Heavy" ? "rgba(94, 195, 235, 0.1)" : "white"}
+                      checked = {this.state.computer === "Heavy"}
                     />
                   </Col>
                 </Row>
-              ) : this.state.computer === "Medium" ? (
-                <Row
-                  style={{
-                    marginTop: 50,
-                    paddingLeft: this.state.width > 700 ? 39 : 0,
-                    maxWidth: 800,
-                  }}
-                >
-                  <Col
-                    md={6}
-                    className="pointerOnHover"
-                    style={{
-                      marginBottom: this.state.width > 700 ? 0 : 20,
-                      paddingRight: this.state.width > 700 ? 0 : 40,
-                    }}
-                    onClick={() => this.setState({ computer: "Medium" })}
-                  >
-                    <SpecBox
-                      name="Medium"
-                      cpu="6"
-                      gpu="1/2"
-                      ram="56"
-                      description="For 3D modeling, medium rendering, gaming."
-                      pricing="Starts with free trial"
-                      color="rgba(94, 195, 235, 0.1)"
-                      checked
-                    />
-                  </Col>
-                  <Col
-                    md={6}
-                    style={{
-                      marginBottom: this.state.width > 700 ? 0 : 20,
-                      paddingRight: this.state.width > 700 ? 0 : 40,
-                    }}
-                  >
-                    <SpecBox
-                      name="Heavy"
-                      cpu="12"
-                      gpu="1"
-                      ram="112"
-                      description={
-                        <div
-                          style={{
-                            background: "#111111",
-                            color: "white",
-                            padding: "5px 10px",
-                            borderRadius: 5,
-                            width: 125,
-                            textAlign: "center",
-                            fontSize: 14,
-                          }}
-                        >
-                          Coming Soon
-                        </div>
-                      }
-                      pricing="$5/mo + $1.30/hr"
-                      color="white"
-                    />
-                  </Col>
-                </Row>
-              ) : (
-                <Row
-                  style={{
-                    marginTop: 50,
-                    paddingLeft: this.state.width > 700 ? 39 : 0,
-                    maxWidth: 800,
-                  }}
-                >
-                  <Col
-                    md={6}
-                    className="pointerOnHover"
-                    style={{
-                      marginBottom: this.state.width > 700 ? 0 : 20,
-                      paddingRight: this.state.width > 700 ? 0 : 40,
-                    }}
-                    onClick={() => this.setState({ computer: "Medium" })}
-                  >
-                    <SpecBox
-                      name="Medium"
-                      cpu="6"
-                      gpu="1/2"
-                      ram="56"
-                      description="For 3D modeling, medium rendering, gaming."
-                      pricing="Starts with free trial"
-                      color="white"
-                    />
-                  </Col>
-                  <Col
-                    md={6}
-                    style={{
-                      marginBottom: this.state.width > 700 ? 0 : 20,
-                      paddingRight: this.state.width > 700 ? 0 : 40,
-                    }}
-                  >
-                    <SpecBox
-                      name="Heavy"
-                      cpu="12"
-                      gpu="1"
-                      ram="112"
-                      description={
-                        <div
-                          style={{
-                            background: "#111111",
-                            color: "white",
-                            padding: "5px 10px",
-                            borderRadius: 5,
-                            width: 125,
-                            textAlign: "center",
-                            fontSize: 14,
-                          }}
-                        >
-                          Coming Soon
-                        </div>
-                      }
-                      pricing="$5/mo + $1.30/hr"
-                      color="white"
-                    />
-                  </Col>
-                </Row>
-              )}
               {this.state.computer !== "" ? (
                 <div
                   style={{

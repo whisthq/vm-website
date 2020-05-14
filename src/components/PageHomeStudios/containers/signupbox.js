@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import Container from 'react-bootstrap/Container'
-import { bindActionCreators } from 'redux'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-import DropdownButton from 'react-bootstrap/DropdownButton'
-import Dropdown from 'react-bootstrap/Dropdown'
-import { FaArrowRight } from 'react-icons/fa';
 import { sendFormData } from '../../../actions/index.js';
 
 class SignupBox extends Component {
@@ -115,10 +110,8 @@ class SignupBox extends Component {
           </Col>
         </Row>
       </Form>
-
     )
   }
 }
-
 
 export default connect()(SignupBox)

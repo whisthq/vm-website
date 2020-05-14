@@ -1,13 +1,4 @@
 import React, { Component } from 'react'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
-import Button from 'react-bootstrap/Button'
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
 
 import Header from '../../shared_components/header.js'
 import Footer from '../../shared_components/footer.js'
@@ -38,14 +29,14 @@ class Privacy extends Component {
       modalClose()
     }
     return(
-      <div>
+      <div style = {{overflowX: 'hidden'}} id = 'top'>
       <Header color = "#333333" button = "#5ec3eb" homepage/>
       <div style = {{padding: '125px 150px', maxWidth: 1280}}>
         <div style = {{fontSize: 40}}>
         PRIVACY POLICY
         </div>
         <div style = {{color: "#555555", marginBottom: 40}}>
-        Last updated March 20th, 2020
+        Last updated May 12th, 2020
         </div>
 
         <p>
@@ -357,9 +348,9 @@ class Privacy extends Component {
         </p>
         <p>
         Fractal Computers, Inc.  <br/>
-        2 Earhart Street <br/>
-        Unit 510 <br/>
-        Cambridge, MA 02141 <br/>
+        103 Greaton Road <br/>
+        Unit 2 <br/>
+        Boston, MA 02132 <br/>
         United States <br/>
         </p>
         <p style = {{fontWeight: 'bold', fontSize: 20}}>
@@ -372,13 +363,10 @@ class Privacy extends Component {
         Based on the laws of some countries, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, please submit a request form by emailing the above contact email. We will respond to your request within 30 days.
         </p>
       </div>
-      <div style = {{width: '100vw', background: '#111111', height: 1}}></div>
       <Footer/>
       </div>
     )
   }
 }
-
-
 
 export default Privacy;

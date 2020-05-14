@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import { Link } from 'react-router-dom'
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'react-bootstrap'
+import { Dropdown } from 'react-bootstrap'
 
 class Header extends Component {
   constructor(props) {

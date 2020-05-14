@@ -3,18 +3,8 @@ import { connect } from 'react-redux';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Container from 'react-bootstrap/Container'
-import Dropdown from 'react-bootstrap/Dropdown'
-import ButtonGroup from 'react-bootstrap/ButtonGroup'
 import '../../static/App.css';
-import LandingTop from '../../assets/landingtop.svg'
-import LandingLeft from '../../assets/landingleft.svg'
-import WhiteBackground from '../../assets/whitebackground.svg'
-import SpaceShip from '../../assets/spaceship.svg'
-import InfoBox from '../../assets/infobox.svg'
-import PriceCompare from '../../assets/pricecompare.svg'
-import PriceCompareSmall from '../../assets/pricecomparesmall.svg'
 import Cloud from '../../assets/cloud-computing.svg'
-import Topography from '../../assets/topography.svg'
 import Software from '../../assets/software.svg'
 import Gaming from '../../assets/gaming.svg'
 import Creative from '../../assets/creative.svg'
@@ -27,14 +17,9 @@ import RAM from '../../assets/ram.svg'
 import SSD from '../../assets/hard-drive-icon.svg'
 import HardDriveIcon from '../../assets/hard-drive-icon.svg'
 import FileIcon from '../../assets/file-icon.svg'
-import WindowsBin from '../../bin/Fractal.exe'
-import MacBin from '../../bin/Fractal.dmg'
-import Logo from '../../assets/logo.svg'
-import {FaRegEnvelope} from 'react-icons/fa'
 import Header from '../../shared_components/header.js'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
-import { HashLink } from 'react-router-hash-link';
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 import Footer from '../../shared_components/footer.js'
 import { changeTab } from '../../actions/index.js';
@@ -115,7 +100,7 @@ class PageHome extends Component {
                 :
                 <div style = {{color: '#111111', fontSize: 35, lineHeight: 1.3, fontWeight: 'bold', marginTop: 30}}>Transform your laptop into a <span className = "blue-gradient">supercomputer</span></div>
                 }
-                <p style = {{textAlign: 'left', marginTop: 25, color: '#111111', marginBottom: 40, maxWidth: 650, fontSize: 'calc(15px + 0.5vw)'}}>Fractal streams powerful Windows desktops to any computer.</p>
+                <p style = {{textAlign: 'left', marginTop: 25, color: '#111111', marginBottom: 40, maxWidth: 650, fontSize: 'calc(14px + 0.4vw)'}}>Fractal brings the power of a workstation to any Internet-connected device.</p>
                 <Link to = "/dashboard">
                   <Button style = {{fontSize: 'calc(12px + 0.4vw)', boxShadow: '0px 4px 30px rgba(0, 0, 0, 0.20)', display: 'inline', float: 'left', backgroundColor: '#111111', padding: '15px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none', marginRight: 20, marginTop: 10}}>
                     GET STARTED <span style = {{color: '#D6D6D6', fontWeight: 'normal'}}> — it's free</span>
@@ -146,7 +131,7 @@ class PageHome extends Component {
           <div className = "fractal-container">
             <Row>
               <Col md = {6} xs = {{order: 1}} style = {{textAlign: 'left', paddingTop: '10%', paddingBottom: '10%'}}>
-                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '95%', maxWidth: 750}}>
+                <div style = {{backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '95%', maxWidth: 750}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 35px', fontWeight: 'bold'}}>
                     My Cloud PC
                   </div>
@@ -191,13 +176,13 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{paddingTop: '10%', paddingLeft: 50}}>
-                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'left', fontSize: 'calc(30px + 1.1vw)'}}>Graphics power on<br/> any device</div>
-                <p style = {{textAlign: 'left', marginTop: 20, fontSize: 'calc(15px + 0.4vw)', maxWidth: 700}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
+                <div style = {{fontWeight: 'bold', color: "#111111", textAlign: 'left', fontSize: 'calc(30px + 1.1vw)'}}>Graphics power on<br/> any device</div>
+                <p style = {{textAlign: 'left', marginTop: 20, fontSize: 'calc(12px + 0.4vw)', maxWidth: 700}}>Edit, render, and play at insane speeds from any Windows, Apple, or Linux computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               :
               <Col md = {{span: 6, order: 2}} xs = {{order: 1, span: 12}} style = {{width: '100%', marginTop: 25}}>
                 <div style = {{fontWeight: 'bold', fontSize: 35, color: "#111111", textAlign: 'left', lineHeight: 1.4}}>Graphics power on<br/> any device</div>
-                <p style = {{textAlign: 'left', marginTop: 20}}>Edit, render, and play at insane speeds from any Windows or Apple computer with cloud GPU, RAM, and CPUs.</p>
+                <p style = {{textAlign: 'left', marginTop: 20}}>Edit, render, and play at insane speeds from any Windows, Apple, or Linux computer with cloud GPU, RAM, and CPUs.</p>
               </Col>
               }
             </Row>
@@ -269,7 +254,7 @@ class PageHome extends Component {
                 </div>
               </Col>
               <Col md = {{span: 4, order: 1}} xs = {{order: 1, span: 12}}>
-                <div style = {{fontWeight: 'bold', fontSize: 40, color: "#111111", textAlign: 'left', fontSize: 'calc(35px + 1.0vw)'}}>Fractal cloud computers are <span className = "blue-gradient">fast</span></div>
+                <div style = {{fontWeight: 'bold', color: "#111111", textAlign: 'left', fontSize: 'calc(35px + 1.0vw)'}}>Fractal cloud computers are <span className = "blue-gradient">fast</span></div>
               </Col>
             </Row>
           </div>
@@ -399,7 +384,7 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingBottom: 100, marginLeft: 0, marginBottom: 25}}>
-                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '95%', maxWidth: 750}}>
+                <div style = {{backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '95%', maxWidth: 750}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 40px', fontWeight: 'bold'}}>
                     Your Info
                   </div>
@@ -432,7 +417,7 @@ class PageHome extends Component {
               </Col>
               :
               <Col md = {6} xs = {{order: 2}} style = {{textAlign: 'left', paddingBottom: 75, marginTop: 40, marginLeft: 0, marginBottom: 25}}>
-                <div style = {{width: '100%', backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '100%'}}>
+                <div style = {{backgroundColor: 'white', boxShadow: '0px 4px 25px rgba(0, 0, 0, 0.3)', borderRadius: 5, width: '100%'}}>
                   <div style = {{width: '100%', height: 50, backgroundColor: '#1F2635', borderRadius: '5px 5px 0px 0px', color: 'white', padding: '13px 40px', fontWeight: 'bold'}}>
                     Your Info
                   </div>
@@ -520,7 +505,7 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {4} style = {{paddingLeft: 0, paddingRight: 40}}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
                   <div style = {{fontWeight: 'bold'}}>
                     Hourly
                   </div>
@@ -542,7 +527,7 @@ class PageHome extends Component {
               </Col>
               :
               <Col md = {4} style = {{paddingLeft: 0, paddingRight: 0}}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
                   <div style = {{fontWeight: 'bold'}}>
                     Hourly
                   </div>
@@ -589,7 +574,7 @@ class PageHome extends Component {
               </Col>
               :
               <Col md = {4} style = {{paddingLeft: 0, paddingRight: 0}}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
                   <div style = {{fontWeight: 'bold'}}>
                     Monthly
                   </div>
@@ -614,7 +599,7 @@ class PageHome extends Component {
               this.state.width > 700
               ?
               <Col md = {4} style = {{paddingLeft: 40, paddingRight: 0, textAlign: 'right'}}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
                   <div style = {{fontWeight: 'bold'}}>
                     Unlimited
                   </div>
@@ -636,7 +621,7 @@ class PageHome extends Component {
               </Col>
               :
               <Col md = {4} style = {{paddingLeft: 0, paddingRight: 0}}>
-                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', backgroundImage: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
+                <div style = {{borderRadius: 5, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', padding: 30, minHeight: 210, width: '100%', marginBottom: 20}}>
                   <div style = {{fontWeight: 'bold'}}>
                     Unlimited
                   </div>
