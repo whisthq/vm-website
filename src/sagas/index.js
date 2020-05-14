@@ -164,7 +164,7 @@ function* insertCustomer(action) {
     yield put(FormAction.vmCreating(true));
     const { json1, response1 } = yield call(
       apiPost,
-      config.url.MAIL_SERVER + "/trial",
+      config.url.MAIL_SERVER + "/trial/start",
       {
         username: state.AccountReducer.user,
         location: action.location,
