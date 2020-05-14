@@ -44,8 +44,9 @@ class About extends Component {
     window.addEventListener('resize', this.updateWindowDimensions)
 
     return(
-      <div style = {{overflowX: 'hidden'}} id = 'top'>
-      <Header color = "#333333" button = "#5ec3eb" homepage/>
+      <div style = {{overflowX: 'hidden'}} id = 'top' className = 'App'>
+      <div style = {{maxWidth: 1920, margin: 'auto'}}>
+        <Header color = "#333333" button = "#5ec3eb" homepage/>
         {
         this.state.width > 700
         ?
@@ -54,7 +55,7 @@ class About extends Component {
             <Col md = {7} style = {{paddingRight: 60}}>
               <ImageFadeIn src = {Datacenter} style = {{width: '95%', border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}/>
             </Col>
-            <Col md = {5}>
+            <Col md = {5} style = {{textAlign: 'left'}}>
               <div style = {{color: "#5ec3eb", fontWeight: 'bold'}}>
                 Our Mission
               </div>
@@ -77,7 +78,7 @@ class About extends Component {
             <Col md = {7} style = {{marginBottom: 40}}>
               <ImageFadeIn src = {Datacenter} style = {{width: '100%', border: 'solid 5px white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}/>
             </Col>
-            <Col md = {5}>
+            <Col md = {5} style = {{textAlign: 'left'}}>
               <div style = {{color: "#5ec3eb", fontWeight: 'bold'}}>
                 Our Mission
               </div>
@@ -95,6 +96,7 @@ class About extends Component {
           </Row>
         </div>
         }
+        </div>
         <div style = {{background: 'linear-gradient(180deg, #F9F9F9 61.47%, #FFFFFF 100%)', paddingTop: 75}}>
         <div className = "fractal-container" style = {{paddingBottom: 50}}>
           <Row>
@@ -268,7 +270,7 @@ class About extends Component {
           </Link>
         </div>
         </div>
-      <Footer/>
+        <Footer/>
       </div>
     )
   }

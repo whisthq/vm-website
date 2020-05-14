@@ -844,7 +844,6 @@ class Purchase extends Component {
                 Select the specs that best suit your needs. You can always
                 upgrade or downgrade later.
               </div>
-              {this.state.computer === "" ? (
                 <Row
                   style={{
                     marginTop: 50,
@@ -868,7 +867,8 @@ class Purchase extends Component {
                       ram="56"
                       description="For 3D modeling, medium rendering, gaming."
                       pricing="Start with free trial"
-                      color="white"
+                      color= {this.state.computer === "Medium" ? "rgba(94, 195, 235, 0.1)" : "white"}
+                      checked = {this.state.computer === "Medium"}
                     />
                   </Col>
                   <Col
@@ -899,130 +899,11 @@ class Purchase extends Component {
                         </div>
                       }
                       pricing="$5/mo + $1.30/hr"
-                      color="white"
+                      color= {this.state.computer === "Heavy" ? "rgba(94, 195, 235, 0.1)" : "white"}
+                      checked = {this.state.computer === "Heavy"}
                     />
                   </Col>
                 </Row>
-              ) : this.state.computer === "Medium" ? (
-                <Row
-                  style={{
-                    marginTop: 50,
-                    paddingLeft: this.state.width > 700 ? 39 : 0,
-                    maxWidth: 800,
-                  }}
-                >
-                  <Col
-                    md={6}
-                    className="pointerOnHover"
-                    style={{
-                      marginBottom: this.state.width > 700 ? 0 : 20,
-                      paddingRight: this.state.width > 700 ? 0 : 40,
-                    }}
-                    onClick={() => this.setState({ computer: "Medium" })}
-                  >
-                    <SpecBox
-                      name="Medium"
-                      cpu="6"
-                      gpu="1/2"
-                      ram="56"
-                      description="For 3D modeling, medium rendering, gaming."
-                      pricing="Starts with free trial"
-                      color="rgba(94, 195, 235, 0.1)"
-                      checked
-                    />
-                  </Col>
-                  <Col
-                    md={6}
-                    style={{
-                      marginBottom: this.state.width > 700 ? 0 : 20,
-                      paddingRight: this.state.width > 700 ? 0 : 40,
-                    }}
-                  >
-                    <SpecBox
-                      name="Heavy"
-                      cpu="12"
-                      gpu="1"
-                      ram="112"
-                      description={
-                        <div
-                          style={{
-                            background: "#111111",
-                            color: "white",
-                            padding: "5px 10px",
-                            borderRadius: 5,
-                            width: 125,
-                            textAlign: "center",
-                            fontSize: 14,
-                          }}
-                        >
-                          Coming Soon
-                        </div>
-                      }
-                      pricing="$5/mo + $1.30/hr"
-                      color="white"
-                    />
-                  </Col>
-                </Row>
-              ) : (
-                <Row
-                  style={{
-                    marginTop: 50,
-                    paddingLeft: this.state.width > 700 ? 39 : 0,
-                    maxWidth: 800,
-                  }}
-                >
-                  <Col
-                    md={6}
-                    className="pointerOnHover"
-                    style={{
-                      marginBottom: this.state.width > 700 ? 0 : 20,
-                      paddingRight: this.state.width > 700 ? 0 : 40,
-                    }}
-                    onClick={() => this.setState({ computer: "Medium" })}
-                  >
-                    <SpecBox
-                      name="Medium"
-                      cpu="6"
-                      gpu="1/2"
-                      ram="56"
-                      description="For 3D modeling, medium rendering, gaming."
-                      pricing="Starts with free trial"
-                      color="white"
-                    />
-                  </Col>
-                  <Col
-                    md={6}
-                    style={{
-                      marginBottom: this.state.width > 700 ? 0 : 20,
-                      paddingRight: this.state.width > 700 ? 0 : 40,
-                    }}
-                  >
-                    <SpecBox
-                      name="Heavy"
-                      cpu="12"
-                      gpu="1"
-                      ram="112"
-                      description={
-                        <div
-                          style={{
-                            background: "#111111",
-                            color: "white",
-                            padding: "5px 10px",
-                            borderRadius: 5,
-                            width: 125,
-                            textAlign: "center",
-                            fontSize: 14,
-                          }}
-                        >
-                          Coming Soon
-                        </div>
-                      }
-                      pricing="$5/mo + $1.30/hr"
-                      color="white"
-                    />
-                  </Col>
-                </Row>
-              )}
               {this.state.computer !== "" ? (
                 <div
                   style={{

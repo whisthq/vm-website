@@ -36,12 +36,12 @@ class Footer extends Component {
         <div style = {{width: '100%', minHeight: 100, maxWidth: 1920, margin: 'auto'}} className = "fractal-container">
         <Row style = {{float: 'left', width: 400, display: 'inline'}}>
             <Col xs = {12} style = {{maxWidth: 350}}>
-              <div style = {{fontWeight: 'bold', marginBottom: 10, fontSize: 25}}>Fractal</div>
+              <div style = {{fontWeight: 'bold', marginBottom: 10, fontSize: 25, textAlign: 'left'}}>Fractal</div>
               <div style = {{fontSize: 14}}>
-                <div style = {{marginTop: 10, color: '#555555', textDecoration: 'none', marginBottom: 4, lineHeight: 1.7}}>
+                <div style = {{marginTop: 10, color: '#555555', textDecoration: 'none', marginBottom: 4, lineHeight: 1.7, textAlign: 'left'}}>
                   Fractal brings the power of a workstation to any Internet-connected device.
                 </div>
-                <div style = {{display: 'flex', marginTop: 15}}>
+                <div style = {{display: 'flex', marginTop: 15, textAlign: 'left'}}>
                   <a href = "https://twitter.com/fractalapp" target = "_blank" rel="noopener noreferrer" style = {{textDecoration: 'none'}}>
                   <div style = {{backgroundColor: '#EBEBEB', width: 40, height: 40, position: 'relative',marginRight: 10, borderRadius: 5}}>
                     <FaTwitter style = {{color: '#888888', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>
@@ -66,7 +66,7 @@ class Footer extends Component {
               </div>
             </Col>
         </Row>
-        <Row style = {{float: 'right', width: 500, paddingRight: 100}}>
+        <Row style = {{float: 'right', width: 500, paddingRight: 100, textAlign: 'left'}}>
             <Col xs = {4} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>HOME</div>
               <HashLink to = "/#top" style = {{textDecoration: 'none'}}>

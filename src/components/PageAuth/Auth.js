@@ -392,12 +392,12 @@ class Auth extends Component {
                   (
                   this.state.validEmail && !this.state.tooShort && this.state.matches && this.state.termsAccepted
                   ?
-                  <Button onClick = {this.handleSignup} style = {{marginTop: 5, color: 'white', width: '100%', backgroundColor: '#94a8ed', border: 'none', background: "#0B172B", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>SIGN UP</Button>
+                  <Button onClick = {this.handleSignup} style = {{marginTop: 5, color: 'white', width: '100%', border: 'none', backgroundColor: "#0B172B", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>SIGN UP</Button>
                   :
-                  <Button disabled = "true" style = {{marginTop: 5, color: 'white', width: '100%', border: 'none', background: "#0B172B", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>SIGN UP</Button>
+                  <Button disabled = "true" style = {{marginTop: 5, color: 'white', width: '100%', border: 'none', backgroundColor: "#0B172B", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>SIGN UP</Button>
                   )
                   :
-                  <Button  disabled = "true" style = {{marginTop: 5, color: 'white', width: '100%', border: 'none', background: "#0B172B", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>
+                  <Button  disabled = "true" style = {{marginTop: 5, color: 'white', width: '100%', border: 'none', backgroundColor: "#0B172B", boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.25)', fontWeight: 'bold', padding: 12}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "white", height: 14, marginRight: 5}}/> Processing
                   </Button>
                   }
@@ -416,7 +416,7 @@ class Auth extends Component {
                           fontSize: 12,
                           position: "relative",
                           bottom: 4,
-                          color: "#333333",
+                          color: "#111111",
                         }}
                       >
                         I accept the&nbsp;
@@ -451,7 +451,7 @@ class Auth extends Component {
                           fontSize: 12,
                           position: "relative",
                           bottom: 4,
-                          color: "#333333",
+                          color: "#111111",
                         }}
                       >
                         Subscribe to the Fractal newsletter and receive

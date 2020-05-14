@@ -41,10 +41,10 @@ class SpecBox extends Component {
             {
             this.props.checked
             ?
-            <div style = {{float: 'right', width: 15, height: 15, borderRadius: 8, border: 'solid 0.5px #111111', background: '#27a7d6', position: 'relative', top: 13}}>
+            <div style = {{float: 'right', width: 15, height: 15, borderRadius: 9, border: 'solid 0.5px #111111', background: '#27a7d6', position: 'relative', top: 13}}>
             </div>
             :
-            <div style = {{float: 'right', width: 15, height: 15, borderRadius: 8, border: 'solid 0.5px #111111', background: 'none', position: 'relative', top: 13}}>
+            <div style = {{float: 'right', width: 15, height: 15, borderRadius: 9, border: 'solid 0.5px #111111', background: 'none', position: 'relative', top: 13}}>
             </div>
             }
           </div>
