@@ -6,7 +6,7 @@ import history from "../history";
 
 function* sendLoginInfo(action) {
   yield select();
-  const { json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/account/login",
     {
@@ -35,7 +35,7 @@ function* sendLoginInfo(action) {
 
 function* sendSignupInfo(action) {
   yield select();
-  const { json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/account/register",
     {
@@ -61,7 +61,7 @@ function* sendSignupInfo(action) {
 function* sendVerificationEmail(action) {
   yield select();
   if (action.username !== "" && action.token !== "") {
-    const { json, } = yield call(
+    const { json } = yield call(
       apiPost,
       config.url.MAIL_SERVER + "/verification",
       {
@@ -78,7 +78,7 @@ function* sendVerificationEmail(action) {
 
 function* getPromoCode(action) {
   yield select();
-  const { json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/account/fetchCode",
     {
@@ -113,7 +113,7 @@ function* chargeStripe(action) {
   const state = yield select();
 
   if (action.code !== "") {
-    const { json, } = yield call(
+    const { json } = yield call(
       apiPost,
       config.url.PRIMARY_SERVER + "/referral/validate",
       {
@@ -145,7 +145,7 @@ function* chargeStripe(action) {
 function* insertCustomer(action) {
   const state = yield select();
 
-  const { json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/stripe/insert",
     {
@@ -155,6 +155,7 @@ function* insertCustomer(action) {
     state.AccountReducer.access_token
   );
 
+  // Start trial
   if (json) {
     yield put(FormAction.customerCreated(json.status));
     history.push("/dashboard");
@@ -187,7 +188,7 @@ function* applyDiscount(action) {
 
 function* sendFinalCharge(action) {
   const state = yield select();
-  const { json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/stripe/charge",
     {
@@ -223,7 +224,7 @@ function* sendFinalCharge(action) {
 function* retrieveCustomer(action) {
   const state = yield select();
   console.log(state);
-  const { json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/stripe/retrieve",
     {
@@ -274,7 +275,7 @@ function* cancelPlan(action) {
     state.AccountReducer.access_token
   );
 
-  const { json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/stripe/cancel",
     {
@@ -300,7 +301,7 @@ function* deleteAccount(action) {
     yield cancelPlan(action);
   }
 
-  const { json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/account/delete",
     {
@@ -317,7 +318,7 @@ function* deleteAccount(action) {
 function* getDiskStatus(action) {
   const state = yield select();
 
-  var { json, } = yield call(
+  var { json } = yield call(
     apiGet,
     (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
     ""
@@ -342,7 +343,7 @@ function* getDiskStatus(action) {
 
 function* fetchDisks(action) {
   const state = yield select();
-  const { json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/user/fetchdisks",
     {
@@ -362,7 +363,7 @@ function* fetchDisks(action) {
 
 function* sendForgotPassword(action) {
   yield select();
-  const {json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.MAIL_SERVER + "/mail/forgot",
     {
@@ -381,7 +382,7 @@ function* sendForgotPassword(action) {
 
 function* sendValidateToken(action) {
   yield select();
-  const { json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.MAIL_SERVER + "/token/validate",
     {
@@ -419,7 +420,7 @@ function* sendResetPassword(action) {
 
 function* sendFriendsEmail(action) {
   const state = yield select();
-  const { json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.MAIL_SERVER + "/referral",
     {
@@ -450,7 +451,7 @@ function* subscribeNewsletter(action) {
 
 function* checkVerifiedEmail(action) {
   yield select();
-  const {json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/account/checkVerified",
     {
@@ -469,7 +470,7 @@ function* checkVerifiedEmail(action) {
 
 function* verifyToken(action) {
   const state = yield select();
-  const {json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/account/verifyUser",
     {
@@ -500,7 +501,7 @@ function* submitPurchaseFeedback(action) {
 
 function* createDisk(action) {
   const state = yield select();
-  const {json, } = yield call(
+  const { json } = yield call(
     apiPost,
     config.url.PRIMARY_SERVER + "/disk/createFromImage",
     {
