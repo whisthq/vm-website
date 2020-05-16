@@ -9,7 +9,7 @@ import Header from '../../shared_components/header.js'
 import { logout, retrieveCustomer, vmCreating, cancelPlan, fetchDisks, sendFriendsEmail, 
   emailSent, triggerSurvey, submitPurchaseFeedback, dashboardLoaded } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
-import { FaTimes, FaCheck, FaUser, FaPlus, FaPlay, FaFastForward, FaPause, FaWindows, FaApple, FaUbuntu, FaAndroid, FaTag } from 'react-icons/fa'
+import { FaClone, FaTimes, FaCheck, FaUser, FaPlus, FaPlay, FaFastForward, FaPause, FaWindows, FaApple, FaUbuntu, FaAndroid, FaTag } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleNotch, faCreditCard, faTag } from '@fortawesome/free-solid-svg-icons'
 import { HashLink } from 'react-router-hash-link';
@@ -34,7 +34,8 @@ class Dashboard extends Component {
     this.state = {width: 0, height: 0, modalShow: false, showPopup: false, day: 0, month: 0, year: 0, 
       created: '', billStart: '', billEnd: '', cancelling: false, hidePassword: true, exitSurvey: false,
       exitFeedback: '', emailShare: false, emails: [], friendsEmail: '', trialEnd: '',
-      showEmailButton: false, emailBoxWidth: 45, sendingEmails: false, purchaseFeedback: '', waitlist: false, loaded: false}
+      showEmailButton: false, emailBoxWidth: 45, sendingEmails: false, purchaseFeedback: '', waitlist: false, loaded: false,
+      clipboardCopied: false}
     this.customWidth = React.createRef()
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
@@ -193,6 +194,11 @@ class Dashboard extends Component {
   sendEmails = () => {
     this.setState({sendingEmails: true})
     this.props.dispatch(sendFriendsEmail(this.state.emails, this.props.promoCode))
+  }
+
+  copyToClipboard = (e) => {
+    this.setState({clipboardCopied: true})
+    navigator.clipboard.writeText('sudo apt-get install libavcodec-dev libavdevice-dev libx11-dev libxtst-dev xclip x11-xserver-utils -y')
   }
 
   render() {
@@ -619,7 +625,7 @@ class Dashboard extends Component {
                       </Col>
                       <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                         <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
-                          <FaApple style = {{fontSize: 16, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> macOS
+                          <FaApple style = {{fontSize: 16, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> macOS 10.13+
                         </div>
                         <a href = {MacBin} download = "Fractal.dmg">
                         <div style = {{float: 'right', display: 'inline', color: 'white'}}>
@@ -631,11 +637,35 @@ class Dashboard extends Component {
                         <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
                           <FaUbuntu style = {{fontSize: 18, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> Linux Ubuntu
                         </div>
-                        <a href = {LinuxBin} download = "Fractal.AppImage">
-                        <div style = {{float: 'right', display: 'inline', color: 'white'}}>
-                          <button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
-                        </div>
-                        </a>
+                        <Popup trigger = {
+                          <div onClick = {() => this.setState({clipboardCopied: false})} style = {{float: 'right', display: 'inline', color: 'white'}}>
+                            <button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
+                          </div>
+                        } modal
+                          onClose = {() => this.showExitSurvey(false)} 
+                          contentStyle = {{width: this.state.width > 500 ? 500 : '95%', borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: this.state.width > 700 ? 300 : 350, padding: '30px 50px', textAlign: "center"}}>
+                          <div style = {{fontSize: 16, textAlign: 'left'}}>
+                            <div>
+                              Our Linux client application relies on a few system libraries. Before downloading our application, please
+                              run the following command in a terminal.
+                            </div>
+                            <div style = {{padding: 20, background: '#0B172B', borderRadius: 4, textAlign: 'left', fontSize: 12, marginTop: 25, color: 'white'}}>
+                              <div style = {{display: 'flex'}}>
+                                <div style = {{width: 310, marginRight: 25}}>
+                                  sudo apt-get install libavcodec-dev libavdevice-dev libx11-dev libxtst-dev xclip x11-xserver-utils -y
+                                </div>
+                                <div style = {{width: 50, fontSize: 18, textAlign: 'right'}}>
+                                  <FaClone className = "pointerOnHover" onClick = {this.copyToClipboard} style = {{color: this.state.clipboardCopied ? '#5ec3eb' : 'white'}}/>
+                                </div>
+                              </div>
+                            </div>
+                            <a href = {LinuxBin} download = "Fractal.AppImage">
+                              <Button style = {{border: 'none', fontWeight: 'bold', padding: 10, marginTop: 20, width: '100%', background: 'rgba(94, 195, 235,0.1)', color: '#5ec3eb'}}>
+                                Download
+                              </Button>
+                            </a>
+                          </div>
+                        </Popup>
                       </Col>
                       <Col xs = {12} style = {{padding: '0px 20px'}}>
                         <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
