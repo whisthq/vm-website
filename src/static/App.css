@@ -347,3 +347,22 @@ div .options div:hover {
 .no-options {
   color: white;
 }
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 40px !important;
+    height: 3px !important;
+    text-indent: 0;
+    cursor: pointer;
+    border: none;
+    background-color: #0B172B !important;
+    opacity: 0.5 !important;
+    box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);    
+    position: relative;
+    top: 30px;
+}
+
+.carousel-indicators .active {
+    background-color: #0B172B !important;
+    opacity: 1.0 !important;
+}
