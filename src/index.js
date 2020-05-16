@@ -17,16 +17,15 @@ import 'bootstrap/dist/css/bootstrap.css';
 import history from "./history";
 import './static/App.css';
 
-import Purchase from './components/PageCubePurchase/Purchase'
+import Purchase from './components/PagePurchase/Purchase'
 import Auth from './components/PageAuth/Auth'
 import NewHome from './components/PageHomeNew/NewHome'
-import HomeStudios from './components/PageHomeStudios/HomeStudios'
 import Dashboard from './components/PageDashboard/Dashboard'
 import Reset from './components/PageReset/Reset'
 import Privacy from './components/PageLegal/Privacy'
 import TermsOfService from './components/PageLegal/TermsOfService'
 import EmailVerification from './components/PageAuth/EmailVerification'
-import CreditCard from './components/PageCubePurchase/CreditCard'
+import CreditCard from './components/PagePurchase/CreditCard'
 import About from './components/PageAbout/About'
 
 const persistConfig = {
@@ -60,7 +59,6 @@ ReactDOM.render(
             <Route exact path="/auth" component={Auth} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/home" component={NewHome} />
-            <Route exact path="/studios" component = {HomeStudios} />
             <Route exact path="/reset" component={Reset} />
             <Route exact path="/privacy" component={Privacy} />
             <Route exact path="/termsofservice" component={TermsOfService} />
