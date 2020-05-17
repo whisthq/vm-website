@@ -36,7 +36,7 @@ class Privacy extends Component {
         PRIVACY POLICY
         </div>
         <div style = {{color: "#555555", marginBottom: 40}}>
-        Last updated May 16th, 2020
+        Last updated May 17th, 2020
         </div>
 
         <p>
@@ -292,7 +292,7 @@ class Privacy extends Component {
         </p>
         <div style = {{paddingLeft: 20}}>
         <p style = {{fontWeight: 'bold'}}>
-        Account information
+        Account Information
         </p>
         <p>
         If you would like to review or change the information in your account, or terminate your account, you can:
@@ -305,13 +305,13 @@ class Privacy extends Component {
         </p>
         <p>
         <p style = {{fontWeight: 'bold'}}>
-        Cookies and similar technologies
+        Cookies and Similar Technologies
         </p>
         Most Web browsers are set to accept cookies by default. You may be able to configure your browser to remove and reject cookies. Removing or rejecting cookies may  reduce the effectiveness of certain features of our Services. To opt-out of interest-based advertising by advertisers on our Services visit <a href = "https://www.aboutads.info/choices">www.aboutads.info/choices</a>. 
         </p>
         <p>
         <p style = {{fontWeight: 'bold'}}>
-        Opting out of email marketing
+        Opting Out of Email Marketing
         </p>
         You can unsubscribe from our marketing email list at any time by clicking on the unsubscribe link in the emails that we send or by contacting us using the details provided below. Subsequently, we  will only send service-related emails that are necessary for the administration and use of your account. To otherwise opt-out of marketing emails, you may:
         </p>
