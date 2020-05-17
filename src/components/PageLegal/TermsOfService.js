@@ -36,7 +36,7 @@ class Privacy extends Component {
         TERMS OF SERVICE
         </div>
         <div style = {{color: "#555555", marginBottom: 40}}>
-        Last updated May 12th, 2020
+        Last updated May 17th, 2020
         </div>
         <div>
           <p> 
