@@ -115,8 +115,9 @@ class Footer extends Component {
         <div className = "fractal-container" style = {{paddingBottom: 30}}>
           <div style = {{width: '100%', marginTop: 100, background: '#EBEBEB', height: 1}}></div>
           <div style = {{fontSize: 11, marginTop: 20, width: '100%'}}>
-            <p style = {{margin: 0, textAlign: 'left', color: '#555555'}}>Copyright &copy; Fractal Computers, Inc. All Rights Reserved.</p>
-          </div>
+            <span style = {{margin: 0, color: '#555555', overflow: 'hidden', float: 'left'}}>Copyright &copy; Fractal Computers, Inc. All Rights Reserved.</span>
+            <span style = {{margin: 0, color: '#555555', overflow: 'hidden', float: 'right'}}>Terms of Service & Privacy Policy</span>
+            </div>
         </div>
     </div>
     :
@@ -203,7 +204,8 @@ class Footer extends Component {
         </div>
         <div style = {{width: '100%', marginTop: 100, background: '#EBEBEB', height: 1}}></div>
         <div style = {{fontSize: 11, marginTop: 20, width: '100%'}}>
-          <p style = {{margin: 0, textAlign: 'left', color: '#555555'}}>Copyright &copy; Fractal Computers, Inc. All Rights Reserved.</p>
+          <span style = {{margin: 0, color: '#555555', overflow: 'hidden', float: 'left'}}>Copyright &copy; Fractal Computers, Inc. All Rights Reserved.</span>
+          <span style = {{margin: 0, color: '#555555', overflow: 'hidden', float: 'right'}}>Terms of Service & Privacy Policy</span>
         </div>
       </Container>
     </div>

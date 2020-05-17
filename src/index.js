@@ -23,6 +23,7 @@ import NewHome from './components/PageHomeNew/NewHome'
 import Dashboard from './components/PageDashboard/Dashboard'
 import Reset from './components/PageReset/Reset'
 import Privacy from './components/PageLegal/Privacy'
+import CookiePolicy from './components/PageLegal/CookiePolicy'
 import TermsOfService from './components/PageLegal/TermsOfService'
 import EmailVerification from './components/PageAuth/EmailVerification'
 import CreditCard from './components/PagePurchase/CreditCard'
@@ -62,6 +63,7 @@ ReactDOM.render(
             <Route exact path="/reset" component={Reset} />
             <Route exact path="/privacy" component={Privacy} />
             <Route exact path="/termsofservice" component={TermsOfService} />
+            <Route exact path="/cookie" component={CookiePolicy} />
             <Route exact path="/verify" component={EmailVerification} />
             <Route exact path="/card" component={CreditCard} />
             <Route exact path="/about" component={About}/>
