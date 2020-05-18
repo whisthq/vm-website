@@ -325,7 +325,7 @@ function* getDiskStatus(action) {
   );
 
   while (json.state === "PENDING" || json.state === "STARTED") {
-    yield call(
+    var { json } = yield call(
       apiGet,
       (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
       ""
@@ -333,15 +333,13 @@ function* getDiskStatus(action) {
     yield delay(5000);
   }
 
-  console.log("STATUS IS SUCCESS");
-  console.log(json);
-
   if (json && json.output) {
     yield put(FormAction.fetchDisks(state.AccountReducer.user));
   }
 }
 
 function* fetchDisks(action) {
+  console.log("FETCH DISK SAGA")
   const state = yield select();
   const { json } = yield call(
     apiPost,
@@ -351,8 +349,6 @@ function* fetchDisks(action) {
     },
     ""
   );
-
-  console.log(json);
 
   if (json.disks) {
     yield put(FormAction.storeDisks(json.disks));

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { HashLink } from 'react-router-hash-link';
 
 import Header from '../../shared_components/header.js'
 import Footer from '../../shared_components/footer.js'
@@ -31,7 +32,7 @@ class Privacy extends Component {
     return(
       <div style = {{overflowX: 'hidden'}} id = 'top'>
       <Header color = "#333333" button = "#5ec3eb" homepage/>
-      <div style = {{padding: '125px 150px', maxWidth: 1280}}>
+      <div style = {{padding: '125px 150px', maxWidth: 1280, margin: 'auto'}}>
         <div style = {{fontSize: 40}}>
         COOKIE POLICY
         </div>
@@ -39,7 +40,7 @@ class Privacy extends Component {
         Last updated May 17th, 2020
         </div>
         <p>
-        Fractal Computers, Inc. (“we” or “us” or “our”) may use cookies and other tracking technologies when you visit our website, <a href = "https://www.fractalcomputers.com">www.fractalcomputers.com</a>, including any other media form, media channel, mobile website, or mobile application related or connected thereto (collectively, the “Site”) to help customize the Site and improve your experience.
+        Fractal Computers, Inc. (“we” or “us” or “our”) may use cookies and other tracking technologies when you visit our website, <HashLink to = "/privacy#top">www.fractalcomputers.com</HashLink>, including any other media form, media channel, mobile website, or mobile application related or connected thereto (collectively, the “Site”) to help customize the Site and improve your experience.
         </p>
         <p>
         We reserve the right to make changes to this Cookie Policy at any time and for any reason. We will alert you about any changes by updating the “Last Updated” date of this Cookie Policy. Any changes or modifications will be effective immediately upon posting the updated Cookie Policy on the Site, and you waive the right to receive specific notice of each such change or modification.
@@ -130,7 +131,7 @@ class Privacy extends Component {
         Privacy Policy
         </p>
         <p>
-        For more information about how we use information collected by cookies and other tracking technologies, please refer to our <a href = "https://www.fractalcomputers.com/privacy">Privacy Policy</a>. This Cookie Policy is part of and is incorporated into our Privacy Policy. By using the Site, you agree to be bound by this Cookie Policy and our Privacy Policy.
+        For more information about how we use information collected by cookies and other tracking technologies, please refer to our <HashLink to = "/privacy#top">Privacy Policy</HashLink>. This Cookie Policy is part of and is incorporated into our Privacy Policy. By using the Site, you agree to be bound by this Cookie Policy and our Privacy Policy.
         </p>
         <p style = {{fontWeight: 'bold', fontSize: 20}}>
         More Information

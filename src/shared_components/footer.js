@@ -72,8 +72,8 @@ class Footer extends Component {
               </div>
             </Col>
         </Row>
-        <Row style = {{float: 'right', width: 500, paddingRight: 100, textAlign: 'left'}}>
-            <Col xs = {4} style = {{paddingTop: 12}}>
+        <Row style = {{float: 'right', width: 325, paddingRight: 100, textAlign: 'left'}}>
+            <Col xs = {6} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>HOME</div>
               <HashLink to = "/#top" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 13}}>
@@ -91,20 +91,7 @@ class Footer extends Component {
                 </div>
               </div>
             </Col>
-            <Col xs = {4} style = {{paddingTop: 12}}>
-              <div style = {{fontWeight: 'bold', marginBottom: 15}}>LEGAL</div>
-              <HashLink to = "/termsofservice#top" style = {{textDecoration: 'none'}}>
-                <div style = {{fontSize: 13}}>
-                  <div style = {{color: '#555555', marginBottom: 4}}>Terms of Service</div>
-                </div>
-              </HashLink>
-              <HashLink to = "/privacy#top" style = {{textDecoration: 'none'}}>
-                <div style = {{fontSize: 13}}>
-                  <div style = {{color: '#555555', marginBottom: 4}}>Privacy Policy</div>
-                </div>
-              </HashLink>
-            </Col>
-            <Col xs = {4} style = {{paddingTop: 12}}>
+            <Col xs = {6} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>CONTACT</div>
               <div style = {{fontSize: 13}}>
                 <div style = {{color: '#555555', marginBottom: 4}}>sales@fractalcomputers.com</div>
@@ -118,11 +105,11 @@ class Footer extends Component {
             </Col>
           </Row>
         </div>
-        <div className = "fractal-container" style = {{paddingBottom: 30}}>
+        <div className = "fractal-container" style = {{paddingBottom: 30, maxWidth: 1920}}>
           <div style = {{width: '100%', marginTop: 100, background: '#EBEBEB', height: 1}}></div>
           <div style = {{fontSize: 11, marginTop: 20, width: '100%'}}>
             <span style = {{margin: 0, color: '#555555', overflow: 'hidden', float: 'left'}}>Copyright &copy; Fractal Computers, Inc. All Rights Reserved.</span>
-            <span style = {{margin: 0, color: '#555555', overflow: 'hidden', float: 'right'}}>Terms of Service & Privacy Policy</span>
+            <span style = {{margin: 0, color: '#555555', overflow: 'hidden', float: 'right'}}><HashLink to = "/termsofservice#top" style = {{color: "#555555"}}>Terms of Service</HashLink> & <HashLink to = "/privacy#top" style = {{color: "#555555"}}>Privacy Policy</HashLink></span>
             </div>
         </div>
     </div>
@@ -162,8 +149,8 @@ class Footer extends Component {
               </div>
             </Col>
         </Row>
-        <Row style= {{marginTop: 20, width: 280}}>
-            <Col xs = {4} style = {{paddingTop: 12}}>
+        <Row style= {{marginTop: 20, width: '100%'}}>
+            <Col xs = {5} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>HOME</div>
               <HashLink to = "/#top" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 11}}>
@@ -181,20 +168,7 @@ class Footer extends Component {
                 </div>
               </div>
             </Col>
-            <Col xs = {4} style = {{paddingTop: 12}}>
-              <div style = {{fontWeight: 'bold', marginBottom: 15}}>LEGAL</div>
-              <HashLink to = "/termsofservice#top" style = {{textDecoration: 'none'}}>
-                <div style = {{fontSize: 11}}>
-                  <div style = {{color: '#555555', marginBottom: 4}}>Terms of Service</div>
-                </div>
-              </HashLink>
-              <HashLink to = "/privacy#top" style = {{textDecoration: 'none'}}>
-                <div style = {{fontSize: 11}}>
-                  <div style = {{color: '#555555', marginBottom: 4}}>Privacy Policy</div>
-                </div>
-              </HashLink>
-            </Col>
-            <Col xs = {4} style = {{paddingTop: 12}}>
+            <Col xs = {7} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>CONTACT</div>
               <div style = {{fontSize: 11}}>
                 <div style = {{color: '#555555', marginBottom: 4}}>sales@fractalcomputers.com</div>

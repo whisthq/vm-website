@@ -668,7 +668,7 @@ class Dashboard extends Component {
                         </Popup>
                       </Col>
                       <Col xs = {12} style = {{padding: '0px 20px'}}>
-                        <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
+                        <div style = {{float: 'left', color: 'white', display: 'inline'}}>
                           <FaAndroid style = {{fontSize: 18, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> Android
                         </div>
                         <div style = {{float: 'right', display: 'inline', color: 'white'}}>
