@@ -421,11 +421,13 @@ function* sendForgotPassword(action) {
     },
     ""
   );
+  console.log("FORGOT PASSWORD SAGA POST RESPONSE")
+  console.log(json)
   if (json) {
     if (json.verified) {
       yield put(FormAction.forgotPasswordEmailCorrect(action.username));
     } else {
-      yield put(FormAction.forgotPasswordEmailIncorrect());
+      yield put(FormAction.forgotPasswordEmailIncorrect(null));
     }
   }
 }

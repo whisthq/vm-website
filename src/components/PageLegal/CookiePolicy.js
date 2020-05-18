@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { HashLink } from 'react-router-hash-link';
-
 import Header from '../../shared_components/header.js'
 import Footer from '../../shared_components/footer.js'
 
