@@ -5,7 +5,8 @@ const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, 
                  payment: {}, signupStatus: 200, failed_signup_attempts: 0, stripeStatus: 200, failed_payment_attempts: 0,
                  currentPage: 'personal', emailStatus: 0, promoCode: '', credits: 0, failed_referral_attempts: 0, 
                  email_verified: false, verificationToken: '', verificationEmailsSent: 0, customer_status: 0, show_survey: false,
-                 customer: {}, account_locked: false, access_token: '', refresh_token: '', purchase_location: '', dashboard_loaded: false}
+                 customer: {}, account_locked: false, access_token: '', refresh_token: '', purchase_location: '', dashboard_loaded: false, status_id: null,
+                 disk_creation_message: ''}
 
 export default function (state = DEFAULT, action) {
   switch (action.type) {
@@ -179,6 +180,16 @@ export default function (state = DEFAULT, action) {
       return {
         ...state,
         dashboard_loaded: action.loaded
+      }
+    case AccountAction.STORE_ID:
+      return {
+        ...state,
+        status_id: action.status_id
+      }
+    case AccountAction.CHANGE_STATUS_MESSAGE:
+      return {
+        ...state,
+        disk_creation_message: action.disk_creation_message
       }
     default:
       return state
