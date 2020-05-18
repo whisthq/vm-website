@@ -316,8 +316,6 @@ function* deleteAccount(action) {
 }
 
 function* getDiskStatus(action) {
-  const state = yield select();
-
   var { json } = yield call(
     apiGet,
     (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
@@ -333,10 +331,6 @@ function* getDiskStatus(action) {
     yield delay(5000);
   }
 
-  console.log("DISK SUCCESFULLY CREATED")
-  console.log(json)
-  console.log(json.output)
-
   if (json && json.output) {
     yield put(FormAction.vmCreating(true))
     yield call(attachDisk, json.output.disk_name)
@@ -344,7 +338,6 @@ function* getDiskStatus(action) {
 }
 
 function* attachDisk(disk_name) {
-  console.log("SENDING ATTACH DISK COMMAND")
   const state = yield select();
   const { json } = yield call(
     apiPost,
@@ -393,7 +386,6 @@ function* fetchDiskStatus(action) {
 
 
 function* fetchDisks(action) {
-  console.log("FETCH DISK SAGA")
   const state = yield select();
   const { json } = yield call(
     apiPost,
