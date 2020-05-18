@@ -57,7 +57,6 @@ class Dashboard extends Component {
     })
 
     if(this.props.status_id && this.props.is_creating) {
-      console.log("FETCH DISK STATUS")
       this.props.dispatch(fetchDiskStatus(this.props.status_id))
     }
   }
@@ -632,7 +631,7 @@ class Dashboard extends Component {
                           </div>
                         <a href = {WindowsBin} download = "Fractal.exe">
                         <div style = {{float: 'right', display: 'inline', color: 'white'}}>
-                          <button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
+                          <Button disabled = {this.props.disks === undefined || this.props.disks.length === 0 || this.props.is_creating ? "true" : "false"} style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</Button>
                         </div>
                         </a>
                       </Col>
@@ -642,7 +641,7 @@ class Dashboard extends Component {
                         </div>
                         <a href = {MacBin} download = "Fractal.dmg">
                         <div style = {{float: 'right', display: 'inline', color: 'white'}}>
-                          <button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
+                          <Button disabled = {this.props.disks === undefined || this.props.disks.length === 0 || this.props.is_creating ? "true" : "false"} style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</Button>
                         </div>
                         </a>
                       </Col>
@@ -673,7 +672,7 @@ class Dashboard extends Component {
                               </div>
                             </div>
                             <a href = {LinuxBin} download = "Fractal.AppImage">
-                              <Button style = {{border: 'none', fontWeight: 'bold', padding: 10, marginTop: 20, width: '100%', background: 'rgba(94, 195, 235,0.1)', color: '#5ec3eb'}}>
+                              <Button disabled = {this.props.disks === undefined || this.props.disks.length === 0 || this.props.is_creating ? "true" : "false"} style = {{border: 'none', fontWeight: 'bold', padding: 10, marginTop: 20, width: '100%', background: 'rgba(94, 195, 235,0.1)', color: '#5ec3eb'}}>
                                 Download
                               </Button>
                             </a>
