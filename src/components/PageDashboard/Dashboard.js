@@ -629,55 +629,99 @@ class Dashboard extends Component {
                           <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
                             <FaWindows style = {{fontSize: 16, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> Windows 64-Bit
                           </div>
-                        <a href = {WindowsBin} download = "Fractal.exe">
                         <div style = {{float: 'right', display: 'inline', color: 'white'}}>
-                          <Button disabled = {this.props.disks === undefined || this.props.disks.length === 0 || this.props.is_creating ? "true" : "false"} style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</Button>
+                          {
+                          this.props.disks === undefined || this.props.disks.length === 0 || this.props.is_creating
+                          ?
+                          <Popup trigger = {
+                            <Button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</Button>
+                          } modal
+                            onClose = {() => this.showExitSurvey(false)} 
+                            contentStyle = {{color: '#111111', width: this.state.width > 500 ? 500 : '95%', borderRadius: 5, backgroundColor: "white", border: "none", height: this.state.width > 700 ? 150 : 200, padding: '30px 50px', textAlign: "center"}}>
+                            <div style = {{fontSize: 16, textAlign: 'left'}}>
+                              Once your cloud PC is finished creating, you will be able to download our client application to access your cloud PC.
+                            </div>
+                          </Popup>
+                          :
+                          <a href = {WindowsBin} download = "Fractal.exe">
+                            <Button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</Button>
+                          </a>
+                          }
                         </div>
-                        </a>
                       </Col>
                       <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                         <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
                           <FaApple style = {{fontSize: 16, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> macOS 10.13+
                         </div>
-                        <a href = {MacBin} download = "Fractal.dmg">
                         <div style = {{float: 'right', display: 'inline', color: 'white'}}>
-                          <Button disabled = {this.props.disks === undefined || this.props.disks.length === 0 || this.props.is_creating ? "true" : "false"} style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</Button>
+                          {
+                          this.props.disks === undefined || this.props.disks.length === 0 || this.props.is_creating
+                          ?
+                          <Popup trigger = {
+                            <Button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</Button>
+                          } modal
+                            onClose = {() => this.showExitSurvey(false)} 
+                            contentStyle = {{color: '#111111', width: this.state.width > 500 ? 500 : '95%', borderRadius: 5, backgroundColor: "white", border: "none", height: this.state.width > 700 ? 150 : 200, padding: '30px 50px', textAlign: "center"}}>
+                            <div style = {{fontSize: 16, textAlign: 'left'}}>
+                              Once your cloud PC is finished creating, you will be able to download our client application to access your cloud PC.
+                            </div>
+                          </Popup>
+                          :
+                          <a href = {MacBin} download = "Fractal.dmg">
+                            <Button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</Button>
+                          </a>
+                          }
                         </div>
-                        </a>
                       </Col>
                       <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                         <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
                           <FaUbuntu style = {{fontSize: 18, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> Linux Ubuntu
                         </div>
-                        <Popup trigger = {
-                          <div onClick = {() => this.setState({clipboardCopied: false})} style = {{float: 'right', display: 'inline', color: 'white'}}>
-                            <button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
-                          </div>
-                        } modal
-                          onClose = {() => this.showExitSurvey(false)} 
-                          contentStyle = {{width: this.state.width > 500 ? 500 : '95%', borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: this.state.width > 700 ? 300 : 350, padding: '30px 50px', textAlign: "center"}}>
-                          <div style = {{fontSize: 16, textAlign: 'left'}}>
-                            <div>
-                              Our Linux client application relies on a few system libraries. Before downloading our application, please
-                              run the following command in a terminal.
+                        <div style = {{float: 'right', display: 'inline', color: 'white'}}>
+                          {
+                          this.props.disks === undefined || this.props.disks.length === 0 || this.props.is_creating
+                          ?
+                          <Popup trigger = {
+                            <Button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</Button>
+                          } modal
+                            onClose = {() => this.showExitSurvey(false)} 
+                            contentStyle = {{color: '#111111', width: this.state.width > 500 ? 500 : '95%', borderRadius: 5, backgroundColor: "white", border: "none", height: this.state.width > 700 ? 150 : 200, padding: '30px 50px', textAlign: "center"}}>
+                            <div style = {{fontSize: 16, textAlign: 'left'}}>
+                              Once your cloud PC is finished creating, you will be able to download our client application to access your cloud PC.
                             </div>
-                            <div style = {{padding: 20, background: '#0B172B', borderRadius: 4, textAlign: 'left', fontSize: 12, marginTop: 25, color: 'white'}}>
-                              <div style = {{display: 'flex'}}>
-                                <div style = {{width: 310, marginRight: 25}}>
-                                  sudo apt-get install libavcodec-dev libavdevice-dev libx11-dev libxtst-dev xclip x11-xserver-utils -y
-                                </div>
-                                <div style = {{width: 50, fontSize: 18, textAlign: 'right'}}>
-                                  <FaClone className = "pointerOnHover" onClick = {this.copyToClipboard} style = {{color: this.state.clipboardCopied ? '#5ec3eb' : 'white'}}/>
+                          </Popup>
+                          :
+                          <Popup trigger = {
+                            <div onClick = {() => this.setState({clipboardCopied: false})} style = {{float: 'right', display: 'inline', color: 'white'}}>
+                              <button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
+                            </div>
+                          } modal
+                            onClose = {() => this.showExitSurvey(false)} 
+                            contentStyle = {{color: '#111111', width: this.state.width > 500 ? 500 : '95%', borderRadius: 5, backgroundColor: "white", border: "none", height: this.state.width > 700 ? 300 : 350, padding: '30px 50px', textAlign: "center"}}>
+                            <div style = {{fontSize: 16, textAlign: 'left'}}>
+                              <div>
+                                Our Linux client application relies on a few system libraries. Before downloading our application, please
+                                run the following command in a terminal.
+                              </div>
+                              <div style = {{padding: 20, background: '#0B172B', borderRadius: 4, textAlign: 'left', fontSize: 12, marginTop: 25, color: 'white'}}>
+                                <div style = {{display: 'flex'}}>
+                                  <div style = {{width: 310, marginRight: 25}}>
+                                    sudo apt-get install libavcodec-dev libavdevice-dev libx11-dev libxtst-dev xclip x11-xserver-utils -y
+                                  </div>
+                                  <div style = {{width: 50, fontSize: 18, textAlign: 'right'}}>
+                                    <FaClone className = "pointerOnHover" onClick = {this.copyToClipboard} style = {{color: this.state.clipboardCopied ? '#5ec3eb' : 'white'}}/>
+                                  </div>
                                 </div>
                               </div>
+                              <a href = {LinuxBin} download = "Fractal.AppImage">
+                                <Button disabled = {this.props.disks === undefined || this.props.disks.length === 0 || this.props.is_creating ? "true" : "false"} style = {{border: 'none', fontWeight: 'bold', padding: 10, marginTop: 20, width: '100%', background: 'rgba(94, 195, 235,0.1)', color: '#5ec3eb'}}>
+                                  Download
+                                </Button>
+                              </a>
                             </div>
-                            <a href = {LinuxBin} download = "Fractal.AppImage">
-                              <Button disabled = {this.props.disks === undefined || this.props.disks.length === 0 || this.props.is_creating ? "true" : "false"} style = {{border: 'none', fontWeight: 'bold', padding: 10, marginTop: 20, width: '100%', background: 'rgba(94, 195, 235,0.1)', color: '#5ec3eb'}}>
-                                Download
-                              </Button>
-                            </a>
-                          </div>
-                        </Popup>
+                          </Popup>
+                          }
+                        </div>
                       </Col>
                       <Col xs = {12} style = {{padding: '0px 20px'}}>
                         <div style = {{float: 'left', color: 'white', display: 'inline'}}>
