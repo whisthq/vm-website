@@ -1,12 +1,4 @@
 import React, { Component } from 'react'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
-import Button from 'react-bootstrap/Button'
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 import Header from '../../shared_components/header.js'
@@ -38,20 +30,20 @@ class Privacy extends Component {
       modalClose()
     }
     return(
-      <div>
+      <div style = {{overflowX: 'hidden'}} id = 'top'>
       <Header color = "#333333" button = "#5ec3eb" homepage/>
-      <div style = {{padding: '125px 150px', maxWidth: 1280}}>
+      <div style = {{padding: '125px 150px', maxWidth: 1280, margin: 'auto'}}>
         <div style = {{fontSize: 40}}>
         PRIVACY POLICY
         </div>
         <div style = {{color: "#555555", marginBottom: 40}}>
-        Last updated March 20th, 2020
+        Last updated May 17th, 2020
         </div>
 
         <p>
-        Thank you for choosing to be part of our community at Fractal Computers, Inc., doing business as Fractal (“Fractal”, “we”, “us”, or “our”). When you visit our website, https://www.fractalcomputers.com, and use our services, you trust us with your personal information. 
-        We want you to know that we are committed to protecting your personal information and your right to privacy. This privacy policy explains what happens to the personal information we collect through our website (such as https://www.fractalcomputers.com), and/or any related services, sales, marketing or events (we refer to them collectively in this privacy policy as the "Services"). This policy will also identify your rights regarding your personal information. If you have any questions or concerns about our policy, or our practices with regards to your personal information, please contact us at support@fractalcomputers.com.
-        We encourage you to read through this important information. If there are any terms in this privacy policy that you disagree with, please discontinue the use of our Sites and our services.
+        Thank you for choosing to be part of our community at Fractal Computers, Inc., doing business as Fractal (“Fractal”, “we”, “us”, or “our”). When you visit our website, <a href = "https://www.fractalcomputers.com">www.fractalcomputers.com</a>, and use our services, you trust us with your personal information. 
+        We want you to know that we are committed to protecting your personal information and your right to privacy. This privacy policy explains what happens to the personal information we collect through our website (such as <a href = "https://www.fractalcomputers.com">www.fractalcomputers.com</a>), and/or any related services, sales, marketing or events (we refer to them collectively in this privacy policy as the "Services"). This policy will also identify your rights regarding your personal information. If you have any questions or concerns about our policy, or our practices with regards to your personal information, please contact us at <a href = "mailto: support@fractalcomputers.com">support@fractalcomputers.com</a>.
+        We encourage you to read through this important information. If there are any terms in this privacy policy that you disagree with, please discontinue the use of our Sites and our Services.
         </p>
 
         <p style = {{fontWeight: 'bold', fontSize: 20}}>
@@ -81,19 +73,19 @@ class Privacy extends Component {
         <p>
         Much of the information we collect is personal information you disclose to us. For example, this includes all publicly available personal information, information provided by you through your usage, credentials and payment data. Likewise, we use online identifiers to collect information automatically.
         </p>
+        <p style = {{fontWeight: 'bold'}}>
+        Personal information you disclose to us
+        </p>
+        <p>
+        <u>Summary:</u> We collect personal information that you provide to us such as your name, address, contact information, passwords and security data, payment information, and social media login data.
+        </p>
+        <p>
+        We also collect personal information that you provide when you register your interest in our services and products, when you register your interest in information and promotional offers regarding our services or when you register to participate in activities related to the service or when you contact us. 
+        </p>
+        <p>
+        The personal information that we collect depends on the type of interaction you have with our Services, the choices you make and the products and features you use. We collect personal information, including but not limited to: publicly available personal information, personal information provided by you, credentials, payment.
+        </p>
         <div style = {{paddingLeft: 20}}>
-          <p style = {{fontWeight: 'bold'}}>
-          Personal information you disclose to us
-          </p>
-          <p>
-          Summary: We collect personal information that you provide to us such as your name, address, contact information, passwords and security data, payment information, and social media login data.
-          </p>
-          <p>
-          We also collect personal information that you provide when you register your interest in our services and products, when you register your interest in information and promotional offers regarding our services or when you register to participate in activities related to the service or when you contact us. 
-          </p>
-          <p>
-          The personal information that we collect depends on the type of interaction you have with our Services, the choices you make and the products and features you use. We collect personal information, including but not limited to: publicly available personal information, personal information provided by you, credentials, payment.
-          </p>
           <p style = {{fontWeight: 'bold'}}>
           Publicly Available Personal Information 
           </p>
@@ -116,7 +108,7 @@ class Privacy extends Component {
           Payment Data 
           </p>
           <p>
-          We collect data necessary to process your payment if you make purchases, such as your payment instrument reference numbers. For example, if you are using a credit card we would collect the credit card’s number, its card verification code and its expiration date. All payment data is stored by Stripe. You may find their privacy policy linked here: https://stripe.com/privacy.
+          We collect data necessary to process your payment if you make purchases, such as your payment instrument reference numbers. For example, if you are using a credit card we would collect the credit card’s number, its card verification code and its expiration date. All payment data is stored by Stripe. You may find their privacy policy linked here: <a href = "https://www.stripe.com/privacy">stripe.com/privacy</a>.
           </p>
           <p style = {{fontWeight: 'bold'}}>
           Social Media Login Data 
@@ -127,15 +119,17 @@ class Privacy extends Component {
           <p>
           All personal information that you provide to us must be true, complete and accurate, and you must notify us of any changes to such personal information. Failure to do so might result in your access to our Services being jeopardized.
           </p>
-          <p style = {{fontWeight: 'bold'}}>
-          Information automatically collected
-          </p>
-          <p>
-          Summary: Some information — such as IP address and/or browser and device characteristics — is collected automatically when you visit our Services but it is not tied to your name.
-          </p>
-          <p>
-          Each time you interact with the Services, we automatically collect some information to maintain the security and operation of our Services, generate internal analytics and comply with reporting requirements. The information collected for these purposes include your device and usage information, IP address, browser and device characteristics, operating system, language preferences, referring URLs, device name, country, location, information about how and when you use our Services and other technical information However, this information is not connected to your name or other personal identifiers (like your contact details). 
-          </p>
+        </div>
+        <p style = {{fontWeight: 'bold'}}>
+        Information automatically collected
+        </p>
+        <p>
+        <u>Summary:</u> Some information — such as IP address and/or browser and device characteristics — is collected automatically when you visit our Services but it is not tied to your name.
+        </p>
+        <p>
+        Each time you interact with the Services, we automatically collect some information to maintain the security and operation of our Services, generate internal analytics and comply with reporting requirements. The information collected for these purposes include your device and usage information, IP address, browser and device characteristics, operating system, language preferences, referring URLs, device name, country, location, information about how and when you use our Services and other technical information However, this information is not connected to your name or other personal identifiers (like your contact details). 
+        </p>
+        <div style = {{paddingLeft: 20}}>
           <p style = {{fontWeight: 'bold'}}>
           Online Identifiers
           </p>
@@ -147,7 +141,7 @@ class Privacy extends Component {
         2. How Do We Use Your Information?
         </p>
         <p>
-        Summary: We process your information with your consent, to advance our legitimate business interests in compliance with our legal obligations. We use personal information collected via our Services for a variety of business purposes described below. We process your personal information for these purposes in reliance on our legitimate business interests, in order to enter into or perform a contract with you, with your consent, and/or for compliance with our legal obligations. We indicate the specific processing grounds we rely on next to each purpose listed below.
+        <u>Summary:</u> We process your information with your consent, to advance our legitimate business interests in compliance with our legal obligations. We use personal information collected via our Services for a variety of business purposes described below. We process your personal information for these purposes in reliance on our legitimate business interests, in order to enter into or perform a contract with you, with your consent, and/or for compliance with our legal obligations. We indicate the specific processing grounds we rely on next to each purpose listed below.
         </p>
         <div style = {{paddingLeft: 20}}>
           <p style = {{fontWeight: 'bold'}}>
@@ -163,16 +157,16 @@ class Privacy extends Component {
           To send administrative information to you. We may use your personal information to send you information about our product, service and new features or information about changes to our terms, conditions, and policies.
           </p>
           <p>
-          Fulfill and manage your orders. We may use your information to fulfill and manage your orders, payments, returns, and exchanges made through the Services.
+          To fulfill and manage your orders. We may use your information to fulfill and manage your orders, payments, returns, and exchanges made through the Services.
           </p>
           <p>
-          To post testimonials. We post testimonials on our Services that may contain personal information. Prior to posting a testimonial, we will seek your consent to use your name and testimonial. If you wish to update, or delete your testimonial, please contact us at support@fractalcomputers.com and be sure to include your name, testimonial location, and contact information.
+          To post testimonials. We post testimonials on our Services that may contain personal information. Prior to posting a testimonial, we will seek your consent to use your name and testimonial. If you wish to update, or delete your testimonial, please contact us at <a href = "mailto: support@fractalcomputers.com">support@fractalcomputers.com</a> and be sure to include your name, testimonial location, and contact information.
           </p>
           <p>
-          Administer prize draws and competitions. We may use your information to administer prize draws and competitions when you elect to participate in competitions.
+          To administer prize draws and competitions. We may use your information to administer prize draws and competitions when you elect to participate in competitions.
           </p>
           <p>
-          Request Feedback. We may use your information to request feedback and to contact you about your use of our Services.
+          To request Feedback. We may use your information to request feedback and to contact you about your use of our Services.
           </p>
           <p>
           To protect our Services. We may use your information as part of our efforts to keep our Services safe and secure (for example, to monitor and prevent fraud).
@@ -197,26 +191,26 @@ class Privacy extends Component {
         3. Will Your Information Be Shared With Anyone?
         </p>
         <p>
-        Summary: We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations.
+        <u>Summary:</u> We only share information with your consent, to comply with laws, to provide you with services, to protect your rights, or to fulfill business obligations.
         </p>
         <div style = {{paddingLeft: 20}}>
         <p style = {{fontWeight: 'bold'}}>
         We may process or share data based on the following legal basis:
         </p>
         <p>
-        Consent: We may process your data if you have given us specific consent to use your personal information for a specific purpose.
+        <u>Consent:</u> We may process your data if you have given us specific consent to use your personal information for a specific purpose.
         </p>
         <p>
-        Legal Obligations: We may disclose your information where we are legally required to do so in order to comply with applicable law, governmental requests, a judicial proceeding, court order, or legal process, such as in response to a court order or a subpoena (including in response to public authorities to meet national security or law enforcement requirements).
+        <u>Legal Obligations:</u> We may disclose your information where we are legally required to do so in order to comply with applicable law, governmental requests, a judicial proceeding, court order, or legal process, such as in response to a court order or a subpoena (including in response to public authorities to meet national security or law enforcement requirements).
         </p>
         <p>
-        Vital Interests: We may disclose your information where we believe it is necessary to investigate, prevent, or take action regarding potential violations of our policies, suspected fraud, situations involving potential threats to the safety of any person and illegal activities, or as evidence in litigation in which we are involved.
+        <u>Vital Interests:</u> We may disclose your information where we believe it is necessary to investigate, prevent, or take action regarding potential violations of our policies, suspected fraud, situations involving potential threats to the safety of any person and illegal activities, or as evidence in litigation in which we are involved.
         </p>
         <p>
-        Legitimate Interests: We may process your data when it is reasonably necessary to achieve our legitimate business interests.
+        <u>Legitimate Interests:</u> We may process your data when it is reasonably necessary to achieve our legitimate business interests.
         </p>
         <p>
-        Performance of a Contract: Where we have entered into a contract with you, we may process your personal information to fulfill the terms of our contract.
+        <u>Performance of a Contract:</u> Where we have entered into a contract with you, we may process your personal information to fulfill the terms of our contract.
         </p>
         <p>
         More specifically, we may need to process your data or share your personal information in the following situations:
@@ -235,16 +229,16 @@ class Privacy extends Component {
         4. Do We Use Cookies And Other Tracking Technologies?
         </p>
         <p>
-        Summary: We may use cookies and other tracking technologies to collect and store your information.
+        <u>Summary:</u> We may use cookies and other tracking technologies to collect and store your information.
         </p>
         <p>
-        We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information. Specific information about how we use such technologies and how you can refuse certain cookies is set out in our Cookie Policy. If you would like to access our Cookie Policy, please contact support@fractalcomputers.com and we will provide you with a copy of our policy within 48 hours. Our Services are currently not officially offered in the European Union, but they may be accessible from that area; we take no responsibility for access from the European Union region. 
+        We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information. Specific information about how we use such technologies and how you can refuse certain cookies is set out in our <HashLink to = "/cookie#top">Cookie Policy</HashLink>. Our Services are currently not officially offered in the European Union, but they may be accessible from that area; we take no responsibility for access from the European Union region with regards to cookies and other tracking technologies, as defined in the GDPR. 
         </p>
         <p style = {{fontWeight: 'bold', fontSize: 20}}>
         5. How Do We Handle Your Social Logins?
         </p>
         <p>
-        Summary: If you choose to register or log in to our services using a social media account, we may have access to certain information about you.
+        <u>Summary:</u> If you choose to register or log in to our services using a social media account, we may have access to certain information about you.
         </p>
         <p>
         Our Services offer you the ability to register and login using your third party social media account details (like your Facebook or Twitter logins). Where you choose to do this, we will receive your profile information from your social media provider. The profile Information we receive may vary depending on the social media provider concerned, but will often include your name, e-mail address, friends list, profile picture and other information you chose to make public.
@@ -256,74 +250,81 @@ class Privacy extends Component {
         6. How Long Do We Keep Your Information?
         </p>
         <p>
-        Summary: We keep your information for as long as necessary to fulfill the purposes outlined in this privacy policy, unless otherwise required by law.
+        <u>Summary:</u> We keep your information for as long as necessary to fulfill the purposes outlined in this privacy policy, unless otherwise required by law.
         </p>
         <p>
-        We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy policy, unless a longer retention period is required or permitted by law (for tax, accounting or other legal obligations). None of our business purposes (described in this privacy policy) require us to keep  your personal information after you no longer have an account with us. Once we no longer need to process your personal information, we will either delete or anonymize.. In some cases it may not be possible to delete or anonymize your data immediately - for example if your personal information has been backed up in an archive. In these cases, we will securely store your personal information and isolate it from any further processing until deletion is possible.
+        We will only keep your personal information for as long as it is necessary for the purposes set out in this privacy policy, unless a longer retention period is required or permitted by law (for tax, accounting or other legal obligations). None of our business purposes (described in this privacy policy) require us to keep  your personal information after you no longer have an account with us. Once we no longer need to process your personal information, we will either delete or anonymize. In some cases it may not be possible to delete or anonymize your data immediately - for example if your personal information has been backed up in an archive. In these cases, we will securely store your personal information and isolate it from any further processing until deletion is possible.
         </p>
         <p style = {{fontWeight: 'bold', fontSize: 20}}>
         7. How Do We Keep Your Information Safe?
         </p>
         <p>
-        Summary: We aim to protect your personal information through a system of organizational and technical security measures.
+        <u>Summary:</u> We aim to protect your personal information through a system of organizational and technical security measures.
         </p>
-        Although we do our best to protect your personal information, transmission of personal information to and from our Services is at your own risk. We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process. However, we cannot guarantee that the internet itself is 100% secure. Consequently, you should only access the services within a secure environment.
-
+        <p>
+        Although we do our best to protect your personal information, transmission of personal information to and from our Services is at your own risk. We have implemented appropriate technical and organizational security measures designed to protect the security of any personal information we process. However, we cannot guarantee that the Internet itself is 100% secure. Consequently, you should only access the Services within a secure environment.
+        </p>
         <p style = {{fontWeight: 'bold', fontSize: 20}}>
         8. Do We Collect Information From Minors?
         </p>
         <p>
-        Summary: We do not knowingly collect data from or market to children under 18 years of age.
+        <u>Summary:</u> We do not knowingly collect data from, or market, to children under 18 years of age.
         </p>
-        By using the Services, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the Services. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we have collected from children under age 18, please contact us at support@fractalcomputers.com.
-
+        <p>
+        By using the Services, you represent that you are at least 18 or that you are the parent or guardian of such a minor and consent to such minor dependent’s use of the Services. If we learn that personal information from users less than 18 years of age has been collected, we will deactivate the account and take reasonable measures to promptly delete such data from our records. If you become aware of any data we have collected from children under age 18, please contact us at <a href = "mailto: support@fractalcomputers.com">support@fractalcomputers.com</a>.
+        </p>
         <p style = {{fontWeight: 'bold', fontSize: 20}}>
         9. Advertising and Analytics Services Provided by Others
         </p>
         <p>
-        We may allow third parties to serve advertisements on our behalf across the Internet and to provide analytics services in relation to the use of our Services. These entities may use cookies, web beacons and other technologies to collect information about your use of the Services and other websites, including your IP address and information about your web browser and operating system, pages viewed, time spent on pages, links clicked and conversion information. This information may be used to, among other things, analyze and track data, determine the popularity of certain content, deliver advertising and content targeted to your interests on our Services and other websites and better understand your online activity. Please note that we may share aggregated, non-personal information, or personal information in a hashed, non-human readable form, with these third parties. For example, we may engage a third party data provider who may collect web log data from you or place or recognize a unique cookie on your browser to enable you to receive customized ads or content. These cookies may reflect de-identified demographic or other data linked to information you voluntarily provide to us (e.g., an email address) in a hashed, non-human readable form. For more information about interest-based ads, or to opt out of having your web browsing information used for behavioral advertising purposes, please visit www.aboutads.info/choices. 
+          <u>Summary:</u> We may work with, and share non-personal information with, third parties to serve advertisements on our behalf.
         </p>
-
+        <p>
+        We may allow third parties to serve advertisements on our behalf across the Internet and to provide analytics services in relation to the use of our Services. These entities may use cookies, web beacons and other technologies to collect information about your use of the Services and other websites, including your IP address and information about your web browser and operating system, pages viewed, time spent on pages, links clicked and conversion information. This information may be used to, among other things, analyze and track data, determine the popularity of certain content, deliver advertising and content targeted to your interests on our Services and other websites and better understand your online activity. Please note that we may share aggregated, non-personal information, or personal information in a hashed, non-human readable form, with these third parties. For example, we may engage a third party data provider who may collect web log data from you or place or recognize a unique cookie on your browser to enable you to receive customized ads or content. These cookies may reflect de-identified demographic or other data linked to information you voluntarily provide to us (e.g., an email address) in a hashed, non-human readable form. For more information about interest-based ads, or to opt out of having your web browsing information used for behavioral advertising purposes, please visit <a href = "https://www.aboutads.info/choices">www.aboutads.info/choices</a>. 
+        </p>
         <p style = {{fontWeight: 'bold', fontSize: 20}}>
         10. What Are Your Privacy Rights?
         </p>
         <p>
-        Summary: You may review, change, or terminate your account at any time.
+        <u>Summary:</u> You may review, change, or terminate your account at any time.
         </p>
         <p>
-        If you are resident in the European Economic Area and you believe we are unlawfully processing your personal information, you have the right to complain to your local data protection supervisory authority. You can find their contact details here: http://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm. If you have questions or comments about your privacy rights, you may email us at support@fractalcomputers.com.
+        If you are resident in the European Economic Area and you believe we are unlawfully processing your personal information, you have the right to complain to your local data protection supervisory authority. You can find their contact details <a href = "http://ec.europa.eu/justice/data-protection/bodies/authorities/index_en.htm">here</a>. If you have questions or comments about your privacy rights, you may email us at <a href = "mailto: support@fractalcomputers.com">support@fractalcomputers.com</a>.
         </p>
         <div style = {{paddingLeft: 20}}>
         <p style = {{fontWeight: 'bold'}}>
         Account Information
         </p>
         <p>
-        If you would like to review or change the information in your account or terminate your account, you can:
+        If you would like to review or change the information in your account, or terminate your account, you can:
         </p>
         <p>
-        Log into your account settings and update your user account.
+        Log into your account settings and update your user account, or contact us at <a href = "mailto: support@fractalcomputers.com">support@fractalcomputers.com</a>.
         </p>
         <p>
-        Contact us at support@fractalcomputers.com 
+        Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. However, some information may be retained in our files to prevent fraud, troubleshoot problems, assist with any investigations, enforce our <a href = "https://www.fractalcomputers.com/termsofservice">Terms of Service</a> and/or comply with legal requirements.
         </p>
         <p>
-        Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. However, some information may be retained in our files to prevent fraud, troubleshoot problems, assist with any investigations, enforce our Terms of Use and/or comply with legal requirements.
+        <p style = {{fontWeight: 'bold'}}>
+        Cookies and Similar Technologies
+        </p>
+        Most Web browsers are set to accept cookies by default. You may be able to configure your browser to remove and reject cookies. Removing or rejecting cookies may  reduce the effectiveness of certain features of our Services. To opt-out of interest-based advertising by advertisers on our Services visit <a href = "https://www.aboutads.info/choices">www.aboutads.info/choices</a>. 
         </p>
         <p>
-        Cookies and similar technologies: Most Web browsers are set to accept cookies by default. You may be able to configure your browser to remove and reject cookies.. Removing or rejecting cookies may  reduce the effectiveness of certain features of our Services. To opt-out of interest-based advertising by advertisers on our Services visit http://www.aboutads.info/choices/.
+        <p style = {{fontWeight: 'bold'}}>
+        Opting Out of Email Marketing
+        </p>
+        You can unsubscribe from our marketing email list at any time by clicking on the unsubscribe link in the emails that we send or by contacting us using the details provided below. Subsequently, we  will only send service-related emails that are necessary for the administration and use of your account. To otherwise opt-out of marketing emails, you may:
         </p>
         <p>
-        Opting out of email marketing: You can unsubscribe from our marketing email list at any time by clicking on the unsubscribe link in the emails that we send or by contacting us using the details provided below. Subsequently, we  will only send service-related emails that are necessary for the administration and use of your account. To otherwise opt-out of marketing emails, you may:
-        </p>
-        <p>
-        Note your preferences when you register an account with the site, access your account settings and update preferences, or contact us using the contact information provided.
+        Note your preferences when you register an account with the site, access your account settings and update preferences, or contact us by email at <a href = "mailto: support@fractalcomputers.com">support@fractalcomputers.com</a>.
         </p>
         </div>
         <p style = {{fontWeight: 'bold', fontSize: 20}}>
         11. Controls For Do-not-track Features
         </p>
         <p>
-        Summary: You may opt-in to Do-not-track features in your browser, but we will not respond to DNT browser signals unless a standard for online tracking is adopted in the future.
+        <u>Summary:</u> You may opt-in to Do-not-track features in your browser, but we will not respond to DNT browser signals unless a standard for online tracking is adopted in the future.
         </p>
         <p>
         Most web browsers and some mobile operating systems and mobile applications include a Do-Not-Track (“DNT”) feature or setting you can activate to signal your privacy preference not to have data about your online browsing activities monitored and collected. No uniform technology standard for recognizing and implementing DNT signals has been finalized. As such, we do not currently respond to DNT browser signals or any other mechanism that automatically communicates your choice not to be tracked online. If a standard for online tracking is adopted that we must follow in the future, we will inform you about that practice in a revised version of this privacy policy.
@@ -332,7 +333,7 @@ class Privacy extends Component {
         12. Do California Residents Have Specific Privacy Rights?
         </p>
         <p>
-        Summary: Yes, if you are a resident of California, you are granted specific rights regarding access to your personal information.
+        <u>Summary:</u> Yes, if you are a resident of California, you are granted specific rights regarding access to your personal information.
         </p>
         <p>
         California Civil Code Section 1798.83, also known as the “Shine The Light” law, permits our users who are California residents to request and obtain from us, once a year and free of charge, information about categories of personal information (if any) we disclosed to third parties for direct marketing purposes and the names and addresses of all third parties with which we shared personal information in the immediately preceding calendar year. If you are a California resident and would like to make such a request, please submit your request in writing to us using the contact information provided below.
@@ -344,7 +345,7 @@ class Privacy extends Component {
         13. Do We Make Updates To This Policy?
         </p>
         <p>
-        Summary: Yes, we will update this policy as necessary to stay compliant with relevant laws.
+        <u>Summary:</u> Yes, we will update this policy as necessary to stay compliant with relevant laws.
         </p>
         <p>
         We may update this privacy policy from time to time. The updated version will be indicated by the “Revised” date and the updated version will be effective as soon as it is accessible. If we make material changes to this privacy policy, we may notify you either by prominently posting a notice of such changes on our Services’ platform or by directly sending you a notification. We encourage you to review this privacy policy frequently to be informed of how we are protecting your information.
@@ -353,32 +354,28 @@ class Privacy extends Component {
         14. How Can You Contact Us About This Policy?
         </p>
         <p>
-        If you have questions or comments about this policy, you may email us at support@fractalcomputers.com or by post to:
+        If you have questions or comments about this policy, you may email us at <a href = "mailto: support@fractalcomputers.com">support@fractalcomputers.com</a> or by post to:
         </p>
         <p>
         Fractal Computers, Inc.  <br/>
-        2 Earhart Street <br/>
-        Unit 510 <br/>
-        Cambridge, MA 02141 <br/>
+        103 Greaton Road, Unit 2 <br/>
+        Boston, MA 02132 <br/>
         United States <br/>
         </p>
         <p style = {{fontWeight: 'bold', fontSize: 20}}>
         15. How Can You Review, Update, Or Delete The Data We Collect From You? 
         </p>
         <p>
-        Summary: Please contact us via email to update the data we collect from you.
+        <u>Summary:</u> Please contact us via email to update the data we collect from you.
         </p>
         <p>
         Based on the laws of some countries, you may have the right to request access to the personal information we collect from you, change that information, or delete it in some circumstances. To request to review, update, or delete your personal information, please submit a request form by emailing the above contact email. We will respond to your request within 30 days.
         </p>
       </div>
-      <div style = {{width: '100vw', background: '#111111', height: 1}}></div>
       <Footer/>
       </div>
     )
   }
 }
-
-
 
 export default Privacy;

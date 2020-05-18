@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { FaCheck, FaArrowRight } from 'react-icons/fa'
 
 class TypeformButton extends Component {
   constructor(props) {

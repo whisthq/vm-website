@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import '../static/App.css';
 import LandingTop from '../assets/landingtop.svg'
 import LandingLeft from '../assets/landingleft.svg'
 import FractalOutline from '../assets/fractaloutline.svg'
-import FractalOutlineSmall from '../assets/fractaloutlinesmall.svg'
 import CubeRender1 from '../assets/cuberender.png'
 import CubeRender2 from '../assets/cubegif.gif'
 import CubeRender3 from '../assets/closeup.png'
 import CubeRender4 from '../assets/pricingchart.svg'
 import CubeSection from './cubesection.js'
 import SignupBox from './signupbox.js'
-import {FaRegEnvelope} from 'react-icons/fa'
 
 export default class PageHome extends Component {
   constructor(props) {
@@ -56,11 +52,11 @@ export default class PageHome extends Component {
           this.state.width > 700 
           ?
           <div style = {{width: '60%', float: 'left', marginLeft: '20%', marginBottom: 20}}>
-            <img src = {LandingTop} style = {{width: '100%'}}/>
+            <img src = {LandingTop} alt = "" style = {{width: '100%'}}/>
           </div>
           :
           <div style = {{width: '110%', float: 'left', marginLeft: '10%', marginBottom: 20}}>
-            <img src = {LandingTop} style = {{width: '100%'}}/>
+            <img src = {LandingTop} alt = "" style = {{width: '100%'}}/>
           </div>
           }
           <div style = {{width: '100%', display: 'flex'}}>
@@ -68,11 +64,11 @@ export default class PageHome extends Component {
             this.state.width > 700 
             ?
             <div style = {{width: '25%', textAlign: 'right'}}>
-              <img src = {LandingLeft} style = {{maxHeight: 300}}/>
+              <img src = {LandingLeft} alt = "" style = {{maxHeight: 300}}/>
             </div>
             :
             <div style = {{width: '9%', textAlign: 'right'}}>
-              <img src = {LandingLeft} style = {{maxHeight: 200}}/>
+              <img src = {LandingLeft} alt = "" style = {{maxHeight: 200}}/>
             </div> 
             }
             {
@@ -108,13 +104,13 @@ export default class PageHome extends Component {
           ?
           <CubeSection subtitle = 'Introducing the Cube'
                        title = 'A next generation, cloud-powered desktop computer.'
-                       image = {<img src = {CubeRender1} style = {{width: '100%', margin: 'auto', maxWidth: 1200}}
+                       image = {<img src = {CubeRender1} alt = "" style = {{width: '100%', margin: 'auto', maxWidth: 1200}}
                        /> }
           />
           :
           <CubeSection subtitle = 'Introducing the Cube'
                        title = 'A next generation, cloud-powered desktop computer.'
-                       image = {<img src = {CubeRender1} style = {{width: '150%', margin: 'auto', maxWidth: 700, position: 'relative', right: '25%'}}
+                       image = {<img src = {CubeRender1} alt = "" style = {{width: '150%', margin: 'auto', maxWidth: 700, position: 'relative', right: '25%'}}
                        /> }
           />
           }
@@ -130,7 +126,7 @@ export default class PageHome extends Component {
                                   It runs Windows 10, but unlike any computer you’ve ever owned, it's way more affordable, 
                                   easily upgradeable, and accessible from any Internet-connected device.
                                </p></div>}
-                       image = {<img src = {CubeRender2} style = {{width: '110%', margin: 'auto', maxWidth: 900}}
+                       image = {<img src = {CubeRender2} alt = "" style = {{width: '110%', margin: 'auto', maxWidth: 900}}
                        /> }
           />
           :
@@ -143,7 +139,7 @@ export default class PageHome extends Component {
                                   It runs Windows 10, but unlike any computer you’ve ever owned, it's way more affordable, 
                                   easily upgradeable, and accessible from any Internet-connected device.
                                </p></div>}
-                       image = {<img src = {CubeRender2} style = {{width: '150%', margin: 'auto', maxWidth: 700, position: 'relative', right: '25%'}}
+                       image = {<img src = {CubeRender2} alt = "" style = {{width: '150%', margin: 'auto', maxWidth: 700, position: 'relative', right: '25%'}}
                        /> }
           />
           }
@@ -157,7 +153,7 @@ export default class PageHome extends Component {
                                any computer can be your computer.</p>
                                <p>Gone, too, are the days of buying and installing new hardware. Need more processing power to run heavy applications? Want more storage? 
                                   Simply click a button to upgrade your Cube instantly. With the Cube, you’ll always have the computer that perfectly fits your needs.</p></div>}
-                       image = {<img src = {CubeRender3} style = {{width: '100%', margin: 'auto', maxWidth: 900}}
+                       image = {<img src = {CubeRender3} alt = "" style = {{width: '100%', margin: 'auto', maxWidth: 900}}
                        /> }
           />
           :
@@ -168,7 +164,7 @@ export default class PageHome extends Component {
                                any computer can be your computer.</p>
                                <p style = {{fontSize: 14}}>Gone, too, are the days of buying and installing new hardware. Need more processing power to run heavy applications? Want more storage? 
                                   Simply click a button to upgrade your Cube instantly. With the Cube, you’ll always have the computer that perfectly fits your needs.</p></div>}
-                       image = {<img src = {CubeRender3} style = {{width: '100%', margin: 'auto', maxWidth: 900}}
+                       image = {<img src = {CubeRender3} alt = "" style = {{width: '100%', margin: 'auto', maxWidth: 900}}
                        /> }
           />
           }
@@ -181,7 +177,7 @@ export default class PageHome extends Component {
                        text = {<div style = {{color: '#999999',  fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                <p>The Cube drastically reduces the cost of a computer. We’ll ship a Cube to your door for $75 — shipping on us. 
                                   Afterward, you’ll select a plan based on the computer that best fits your needs.</p></div>}
-                       image = {<img src = {CubeRender4} style = {{width: '100%', margin: 'auto', marginTop: 50, marginLeft: 5, maxWidth: 900}}
+                       image = {<img src = {CubeRender4} alt = "" style = {{width: '100%', margin: 'auto', marginTop: 50, marginLeft: 5, maxWidth: 900}}
                        /> }
           /><br/><br/></div>
           :
@@ -191,7 +187,7 @@ export default class PageHome extends Component {
                        text = {<div style = {{color: '#999999',  fontSize: 20, lineHeight: 1.8, paddingLeft: 5}}>
                                <p style = {{fontSize: 14}}>The Cube drastically reduces the cost of a computer. We’ll ship a Cube to your door for $75 — shipping on us. 
                                   Afterward, you’ll select a plan based on the computer that best fits your needs.</p></div>}
-                       image = {<img src = {CubeRender4} style = {{width: '100%', margin: 'auto', marginTop: 20, marginLeft: 5, maxWidth: 700}}
+                       image = {<img src = {CubeRender4} alt = "" style = {{width: '100%', margin: 'auto', marginTop: 20, marginLeft: 5, maxWidth: 700}}
                        /> }
           /><br/><br/></div>
           }

@@ -1,39 +1,32 @@
-/**/import React from 'react';
+import React from 'react';
 import createSagaMiddleware from 'redux-saga';
-import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { logger } from 'redux-logger';
 import rootReducer from './reducers';
-import { combineReducers, applyMiddleware, createStore } from 'redux'
-import createHistory from 'history/createBrowserHistory';
+import { applyMiddleware, createStore } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { connectRouter, routerMiddleware } from 'connected-react-router'
+import { routerMiddleware } from 'connected-react-router'
 import ReduxPromise from 'redux-promise'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import rootSaga from './sagas';
-import { Route, Switch, Link, HashRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { Router } from 'react-router';
-import { Helmet } from 'react-helmet'
 import { PersistGate } from 'redux-persist/integration/react'
 import ReactDOM from 'react-dom'
 import 'bootstrap/dist/css/bootstrap.css';
 import history from "./history";
-import { HashLink } from 'react-router-hash-link'
 import './static/App.css';
-import Footer from './shared_components/footer'
-import MetaTags from 'react-meta-tags';
 
-import Purchase from './components/PageCubePurchase/Purchase'
+import Purchase from './components/PagePurchase/Purchase'
 import Auth from './components/PageAuth/Auth'
 import NewHome from './components/PageHomeNew/NewHome'
-import HomeStudios from './components/PageHomeStudios/HomeStudios'
 import Dashboard from './components/PageDashboard/Dashboard'
 import Reset from './components/PageReset/Reset'
 import Privacy from './components/PageLegal/Privacy'
+import Cookie from './components/PageLegal/CookiePolicy'
 import TermsOfService from './components/PageLegal/TermsOfService'
 import EmailVerification from './components/PageAuth/EmailVerification'
-import CreditCard from './components/PageCubePurchase/CreditCard'
+import CreditCard from './components/PagePurchase/CreditCard'
 import About from './components/PageAbout/About'
 
 const persistConfig = {
@@ -67,10 +60,10 @@ ReactDOM.render(
             <Route exact path="/auth" component={Auth} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/home" component={NewHome} />
-            <Route exact path="/studios" component = {HomeStudios} />
             <Route exact path="/reset" component={Reset} />
             <Route exact path="/privacy" component={Privacy} />
             <Route exact path="/termsofservice" component={TermsOfService} />
+            <Route exact path="/cookie" component={Cookie} />
             <Route exact path="/verify" component={EmailVerification} />
             <Route exact path="/card" component={CreditCard} />
             <Route exact path="/about" component={About}/>
@@ -79,4 +72,3 @@ ReactDOM.render(
       </Router>,
   document.getElementById('root')
 )
-

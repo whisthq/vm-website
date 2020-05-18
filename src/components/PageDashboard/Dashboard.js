@@ -1,24 +1,17 @@
 import React, { Component } from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import { connect } from 'react-redux';
 import '../../static/App.css';
-import history from "../../history";
 
 import Header from '../../shared_components/header.js'
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { logout, getVMStatus, retrieveCustomer, vmCreating, cancelPlan, fetchDisks, sendFriendsEmail, 
+import { logout, retrieveCustomer, vmCreating, cancelPlan, fetchDisks, sendFriendsEmail, 
   emailSent, triggerSurvey, submitPurchaseFeedback, dashboardLoaded } from '../../actions/index.js';
 import "react-tabs/style/react-tabs.css";
-import { FaExclamationTriangle } from 'react-icons/fa'
-import { FaCircle, FaTimes, FaEye, FaEyeSlash, FaCheckCircle, FaCheck, FaUser, FaLock, FaDollarSign,
-  FaArrowRight, FaPlus, FaPlay, FaFastForward, FaPause, FaWindows, FaApple, FaUbuntu, FaAndroid, FaTag } from 'react-icons/fa'
+import { FaClone, FaTimes, FaCheck, FaUser, FaPlus, FaPlay, FaFastForward, FaPause, FaWindows, FaApple, FaUbuntu, FaAndroid, FaTag } from 'react-icons/fa'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleNotch, faPlus, faCreditCard, faTag } from '@fortawesome/free-solid-svg-icons'
+import { faCircleNotch, faCreditCard, faTag } from '@fortawesome/free-solid-svg-icons'
 import { HashLink } from 'react-router-hash-link';
 
 import { withRouter } from "react-router";
@@ -41,7 +34,8 @@ class Dashboard extends Component {
     this.state = {width: 0, height: 0, modalShow: false, showPopup: false, day: 0, month: 0, year: 0, 
       created: '', billStart: '', billEnd: '', cancelling: false, hidePassword: true, exitSurvey: false,
       exitFeedback: '', emailShare: false, emails: [], friendsEmail: '', trialEnd: '',
-      showEmailButton: false, emailBoxWidth: 45, sendingEmails: false, purchaseFeedback: '', waitlist: false, loaded: false}
+      showEmailButton: false, emailBoxWidth: 45, sendingEmails: false, purchaseFeedback: '', waitlist: false, loaded: false,
+      clipboardCopied: false}
     this.customWidth = React.createRef()
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
@@ -82,16 +76,16 @@ class Dashboard extends Component {
         this.setState({trialEnd: this.unixToDate(this.props.payment.trial_end)})
       }
     } else {
-      if(this.state.created != '') {
+      if(this.state.created !== '') {
         this.setState({created: ''})
       }
-      if(this.state.billStart != '') {
+      if(this.state.billStart !== '') {
         this.setState({billStart: ''})
       }
-      if(this.state.billEnd != '') {
+      if(this.state.billEnd !== '') {
         this.setState({billEnd: ''})
       }
-      if(this.state.trialEnd != '' && this.props.customer && Object.keys(this.props.customer).length === 0) {
+      if(this.state.trialEnd !== '' && this.props.customer && Object.keys(this.props.customer).length === 0) {
         this.setState({trialEnd: ''})
       }
     }
@@ -165,7 +159,7 @@ class Dashboard extends Component {
   changeFriendsEmail = (evt) => {
     let component = this
     this.setState({friendsEmail: evt.target.value}, function() {
-      if(this.state.friendsEmail != '') {
+      if(this.state.friendsEmail !== '') {
         this.setState({showEmailButton: true, emailBoxWidth: 7.1 * component.state.friendsEmail.length + 45})
       } else {
         this.setState({showEmailButton: false, emailBoxWidth: 45})
@@ -200,6 +194,11 @@ class Dashboard extends Component {
   sendEmails = () => {
     this.setState({sendingEmails: true})
     this.props.dispatch(sendFriendsEmail(this.state.emails, this.props.promoCode))
+  }
+
+  copyToClipboard = (e) => {
+    this.setState({clipboardCopied: true})
+    navigator.clipboard.writeText('sudo apt-get install libavcodec-dev libavdevice-dev libx11-dev libxtst-dev xclip x11-xserver-utils -y')
   }
 
   render() {
@@ -339,7 +338,7 @@ class Dashboard extends Component {
                   </div>
                   :
                   <div ref={this.customWidth} style = {{textAlign: 'left', display: 'flex', marginTop: 20, height: 89}}>
-                    <input autoFocus defaultValue = {this.state.friendsEmail} type = "text" onChange = {this.changeFriendsEmail} style = {{color: '#666666', maxWidth: 'calc(100% - 20px)', height: 30, border: 'none', background: 'none', padding: 5, border: 'solid 1px #666666', borderRadius: '4px', width: `${ this.state.emailBoxWidth }px`}}/>
+                    <input autoFocus defaultValue = {this.state.friendsEmail} type = "text" onChange = {this.changeFriendsEmail} style = {{color: '#666666', maxWidth: 'calc(100% - 20px)', height: 30, background: 'none', padding: 5, border: 'solid 1px #666666', borderRadius: '4px', width: `${ this.state.emailBoxWidth }px`}}/>
                   </div>
                   )
                   :
@@ -427,7 +426,7 @@ class Dashboard extends Component {
               MY CLOUD PC
             </div>
             {
-            this.props.disks === undefined || this.props.disks.length == 0
+            this.props.disks === undefined || this.props.disks.length === 0
             ?
             (
             this.props.is_creating
@@ -438,7 +437,7 @@ class Dashboard extends Component {
               ?
               <Row style = {{marginTop: 30}}>
                 <Col xs = {12}>
-                  <div style = {{borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                  <div style = {{borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25, marginTop: 25}}/>
                     <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
                     <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
@@ -450,7 +449,7 @@ class Dashboard extends Component {
               :
               <Row style = {{marginTop: 30}}>
                 <Col xs = {12} md = {8}>
-                  <div style = {{borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
+                  <div style = {{borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25, marginTop: 15}}/>
                     <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
                     <div style = {{fontSize: 14, maxWidth: 400, margin: 'auto', marginTop: 15, color: "#222222"}}>
@@ -477,7 +476,7 @@ class Dashboard extends Component {
               <Row style = {{marginTop: 30}}>
                 <Col xs = {12}>
                   <Link style = {{textDecoration: 'none'}} to = "/purchase" className = "create-cloud-pc">
-                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", width: "100%", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: this.state.width > 700 ? 260 : 340, margin:'auto', width: '100%', marginBottom: 20}}>
+                    <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: this.state.width > 700 ? 260 : 340, margin:'auto', width: '100%', marginBottom: 20}}>
                       <FaPlus style = {{height: 25, marginTop: 25, color: "#333333"}}/>
                       <div style = {{color: "#333333", fontSize: 22, marginTop: 20, fontWeight: 'bold'}}>Create My Cloud Computer</div>
                       <div style = {{fontSize: 14, maxWidth: 450, margin: 'auto', marginTop: 10, color: '#333333'}}>
@@ -499,28 +498,28 @@ class Dashboard extends Component {
                 <Row>
                   <Col sm = {6} xs = {12}>
                     <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
-                      <img src = {CPU} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
+                      <img src = {CPU} alt = "" style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                       <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>CPU</div>
                       <div style = {{color: "#555555", fontSize: 13}}>6 Core Intel Xeon E5</div>
                     </div>
                   </Col>
                   <Col sm = {6} xs = {12}>
                     <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
-                      <img src = {GPU} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
+                      <img src = {GPU} alt = "" style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                       <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>GPU</div>
                       <div style = {{color: "#555555", fontSize: 13}}>NVIDIA Tesla M60</div>
                     </div>
                   </Col>
                   <Col sm = {6} xs = {12}>
                     <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
-                      <img src = {RAM} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
+                      <img src = {RAM} alt = "" style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                       <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>RAM</div>
                       <div style = {{color: "#555555", fontSize: 13}}>56GB DDR4</div>
                     </div>
                   </Col>
                   <Col sm = {6} xs = {12}>
                     <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
-                      <img src = {SSD} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
+                      <img src = {SSD} alt = "" style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                       <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>SSD</div>
                       <div style = {{color: "#555555", fontSize: 13}}>120GB NVMe</div>
                     </div>
@@ -563,28 +562,28 @@ class Dashboard extends Component {
                 <Row>
                   <Col sm = {6} xs = {12}>
                     <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
-                      <img src = {CPU} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
+                      <img src = {CPU} alt = "" style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                       <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>CPU</div>
                       <div style = {{color: "#555555", fontSize: 13}}>6 Core Intel Xeon E5</div>
                     </div>
                   </Col>
                   <Col sm = {6} xs = {12}>
                     <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
-                      <img src = {GPU} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
+                      <img src = {GPU} alt = "" style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                       <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>GPU</div>
                       <div style = {{color: "#555555", fontSize: 13}}>NVIDIA Tesla M60</div>
                     </div>
                   </Col>
                   <Col sm = {6} xs = {12}>
                     <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
-                      <img src = {RAM} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
+                      <img src = {RAM} alt = "" style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                       <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>RAM</div>
                       <div style = {{color: "#555555", fontSize: 13}}>56GB DDR4</div>
                     </div>
                   </Col>
                   <Col sm = {6} xs = {12}>
                     <div style = {{borderRadius: 5, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'left', background: 'white', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', padding: 30, minHeight: 160, margin:'auto', width: '100%', marginBottom: 20}}>
-                      <img src = {SSD} style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
+                      <img src = {SSD} alt = "" style = {{textAlign: 'left', marginTop: 5, height: 45}}/>
                       <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 20}}>SSD</div>
                       <div style = {{color: "#555555", fontSize: 13}}>120GB NVMe</div>
                     </div>
@@ -626,7 +625,7 @@ class Dashboard extends Component {
                       </Col>
                       <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
                         <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
-                          <FaApple style = {{fontSize: 16, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> macOS
+                          <FaApple style = {{fontSize: 16, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> macOS 10.13+
                         </div>
                         <a href = {MacBin} download = "Fractal.dmg">
                         <div style = {{float: 'right', display: 'inline', color: 'white'}}>
@@ -639,11 +638,35 @@ class Dashboard extends Component {
                         <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
                           <FaUbuntu style = {{fontSize: 18, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> Linux Ubuntu
                         </div>
-                        <a href = {LinuxBin} download = "Fractal.AppImage">
-                        <div style = {{float: 'right', display: 'inline', color: 'white'}}>
-                          <button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
-                        </div>
-                        </a>
+                        <Popup trigger = {
+                          <div onClick = {() => this.setState({clipboardCopied: false})} style = {{float: 'right', display: 'inline', color: 'white'}}>
+                            <button style = {{background: 'rgba(94, 195, 235, 0.1)', border: 'solid 0.5px rgb(94, 195, 235)', fontSize: 12, borderRadius: 2, color: 'rgb(94, 195, 235)', fontWeight: 'bold', width: 90, padding: '5px 5px'}}>Download</button>
+                          </div>
+                        } modal
+                          onClose = {() => this.showExitSurvey(false)} 
+                          contentStyle = {{width: this.state.width > 500 ? 500 : '95%', borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", height: this.state.width > 700 ? 300 : 350, padding: '30px 50px', textAlign: "center"}}>
+                          <div style = {{fontSize: 16, textAlign: 'left'}}>
+                            <div>
+                              Our Linux client application relies on a few system libraries. Before downloading our application, please
+                              run the following command in a terminal.
+                            </div>
+                            <div style = {{padding: 20, background: '#0B172B', borderRadius: 4, textAlign: 'left', fontSize: 12, marginTop: 25, color: 'white'}}>
+                              <div style = {{display: 'flex'}}>
+                                <div style = {{width: 310, marginRight: 25}}>
+                                  sudo apt-get install libavcodec-dev libavdevice-dev libx11-dev libxtst-dev xclip x11-xserver-utils -y
+                                </div>
+                                <div style = {{width: 50, fontSize: 18, textAlign: 'right'}}>
+                                  <FaClone className = "pointerOnHover" onClick = {this.copyToClipboard} style = {{color: this.state.clipboardCopied ? '#5ec3eb' : 'white'}}/>
+                                </div>
+                              </div>
+                            </div>
+                            <a href = {LinuxBin} download = "Fractal.AppImage">
+                              <Button style = {{border: 'none', fontWeight: 'bold', padding: 10, marginTop: 20, width: '100%', background: 'rgba(94, 195, 235,0.1)', color: '#5ec3eb'}}>
+                                Download
+                              </Button>
+                            </a>
+                          </div>
+                        </Popup>
                       </Col>
                       */}
                       <Col xs = {12} style = {{padding: '0px 20px', marginBottom: 15}}>
@@ -655,7 +678,7 @@ class Dashboard extends Component {
                         </div>
                       </Col>
                       <Col xs = {12} style = {{padding: '0px 20px'}}>
-                        <div style = {{float: 'left', color: 'white', display: 'inline', fontSize: 13}}>
+                        <div style = {{float: 'left', color: 'white', display: 'inline'}}>
                           <FaAndroid style = {{fontSize: 18, position: 'relative', bottom: 1, paddingRight: 5, color: 'white'}}/> Android
                         </div>
                         <div style = {{float: 'right', display: 'inline', color: 'white'}}>
@@ -672,7 +695,7 @@ class Dashboard extends Component {
                   My Info
                 </div>
                 {
-                this.state.created != '' || (this.props.customer && Object.keys(this.props.customer).length > 0)
+                this.state.created !== '' || (this.props.customer && Object.keys(this.props.customer).length > 0)
                 ?
                 (
                 !this.state.cancelling
@@ -705,7 +728,7 @@ class Dashboard extends Component {
                         style = {{outline: 'none', resize: 'none', background: 'none', border: 'none', marginTop: 20, fontSize: 14, padding: 0}}>
                       </textarea>
                       {
-                      this.state.exitFeedback != ''
+                      this.state.exitFeedback !== ''
                       ?
                       <button onClick = {this.cancelPlan} style = {{fontWeight: 'bold', marginTop: this.state.width > 700 ? 19 : 65, outline: 'none', width: '100%', fontSize: 12, borderRadius: 5, float: 'right', display: 'inline', padding: '10px 10px', border: 'none', color: '#e34d4d', backgroundColor: 'rgba(227, 77, 77, 0.05)'}}>
                         CANCEL PLAN

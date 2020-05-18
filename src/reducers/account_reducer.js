@@ -77,6 +77,8 @@ export default function (state = DEFAULT, action) {
         forgot_password: state.forgot_password + 1
       }
     case AccountAction.FORGOT_PASSWORD_EMAIL_CORRECT:
+      console.log("FORGOT PASSWORD EMAIL CORRECT")
+      console.log(action)
       return {
         ...state,
         forgot_password: state.forgot_password - 1,

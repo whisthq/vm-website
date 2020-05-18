@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
+import Carousel from 'react-bootstrap/Carousel'
 import { Link } from 'react-router-dom'
 import Popup from "reactjs-popup";
 import ImageFadeIn from 'react-image-fade-in'
@@ -21,6 +16,9 @@ import Ming from '../../assets/ming.svg'
 import Phil from '../../assets/phil.svg'
 import Nick from '../../assets/nick.svg'
 import Roshan from '../../assets/roshan.svg'
+import Hamish from '../../assets/hamish.svg'
+import Matt from '../../assets/matt.svg'
+import Jonathan from '../../assets/jonathan.svg'
 
 class About extends Component {
   constructor(props) {
@@ -50,17 +48,18 @@ class About extends Component {
     window.addEventListener('resize', this.updateWindowDimensions)
 
     return(
-      <div style = {{overflowX: 'hidden'}} id = 'top'>
-      <Header color = "#333333" button = "#5ec3eb" homepage/>
+      <div style = {{overflowX: 'hidden'}} id = 'top' className = 'App'>
+      <div style = {{maxWidth: 1920, margin: 'auto'}}>
+        <Header color = "#333333" button = "#5ec3eb" homepage/>
         {
         this.state.width > 700
         ?
         <div className = "fractal-container" style = {{paddingTop: 125, paddingBottom: 150}}>
           <Row>
             <Col md = {7} style = {{paddingRight: 60}}>
-              <ImageFadeIn src = {Datacenter} style = {{width: '95%', border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}/>
+              <ImageFadeIn src = {Datacenter} style = {{width: '95%', border: 'solid 10px white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)'}}/>
             </Col>
-            <Col md = {5}>
+            <Col md = {5} style = {{textAlign: 'left'}}>
               <div style = {{color: "#5ec3eb", fontWeight: 'bold'}}>
                 Our Mission
               </div>
@@ -81,9 +80,9 @@ class About extends Component {
         <div className = "fractal-container" style = {{minHeight: '100vh', paddingTop: 100, paddingBottom: 50}}>
           <Row>
             <Col md = {7} style = {{marginBottom: 40}}>
-              <ImageFadeIn src = {Datacenter} style = {{width: '100%', border: 'solid 5px white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)'}}/>
+              <ImageFadeIn src = {Datacenter} style = {{width: '100%', border: 'solid 5px white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)'}}/>
             </Col>
-            <Col md = {5}>
+            <Col md = {5} style = {{textAlign: 'left'}}>
               <div style = {{color: "#5ec3eb", fontWeight: 'bold'}}>
                 Our Mission
               </div>
@@ -101,6 +100,7 @@ class About extends Component {
           </Row>
         </div>
         }
+        </div>
         <div style = {{background: 'linear-gradient(180deg, #F9F9F9 61.47%, #FFFFFF 100%)', paddingTop: 75}}>
         <div className = "fractal-container" style = {{paddingBottom: 50}}>
           <Row>
@@ -112,13 +112,15 @@ class About extends Component {
                 We’re computer scientists passionate about the future of personal computing. Here are a few of our stories.
               </div>
             </Col>
-            <Col md = {12} style = {{marginTop: 50}}>
+            <Col md = {12} style = {{marginTop: 50, textAlign: 'left'}}>
+              <Carousel controls = {false}>
+              <Carousel.Item style = {{padding: 20}}>
               <Row>
                 <Col md = {3} style = {{marginBottom: 20}}>
                 <Popup
                   modal 
                   trigger = {
-                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', padding: 30, textAlign: 'center'}}>
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', padding: 30, textAlign: 'center'}}>
                     <ImageFadeIn src = {Ming} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
@@ -131,8 +133,9 @@ class About extends Component {
                           Ming Ying
                         </div>
                         <div style = {{marginTop: 20, color: '#555555'}}>
-                          Prior to Fractal, Ming was a software engineer at Fidelity Investments and quant researcher at AQR Capital Management.
-                          He graduated from Harvard University, where he studied Statistics and Computer Science.
+                          A Boston native, Ming was a software engineer at Fidelity Investments and quant researcher at AQR Capital Management.
+                          His previous research interests include linear optimization algorithms in the context of daily fantasy baseball betting and
+                          Bayesian modelling. He graduated from Harvard University, where he studied Statistics and Computer Science.
                         </div>
                       </div>
                     </div>
@@ -143,7 +146,7 @@ class About extends Component {
                 <Popup
                   modal 
                   trigger = {
-                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', padding: 30, textAlign: 'center'}}>
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', padding: 30, textAlign: 'center'}}>
                     <ImageFadeIn src = {Phil} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
@@ -156,8 +159,8 @@ class About extends Component {
                           Philippe Noel
                         </div>
                         <div style = {{marginTop: 20, color: '#555555'}}>
-                          Prior to Fractal, Phil was a product manager at Microsoft Azure, machine learning researcher at Premier Tech, and TedX speaker. 
-                          Phil graduated from Harvard University, where he studied Computer Science and neuroscience.
+                          Prior to Fractal, Phil was a product manager at Microsoft Azure, machine learning researcher at Premier Tech, and speaker at TedX Harvard
+                          and TedX Quebec. Phil graduated from Harvard University, where he studied Computer Science and Neuroscience.
                         </div>
                       </div>
                     </div>
@@ -168,7 +171,7 @@ class About extends Component {
                 <Popup
                   modal 
                   trigger = {
-                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', padding: 30, textAlign: 'center'}}>
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', padding: 30, textAlign: 'center'}}>
                     <ImageFadeIn src = {Nick} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
@@ -193,7 +196,7 @@ class About extends Component {
                 <Popup
                   modal 
                   trigger = {
-                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', padding: 30, textAlign: 'center'}}>
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', padding: 30, textAlign: 'center'}}>
                     <ImageFadeIn src = {Roshan} style = {{maxWidth: 125, maxHeight: 125}}/>
                   </div>
                   }
@@ -216,12 +219,97 @@ class About extends Component {
                 </Popup>
                 </Col>
               </Row>
+              </Carousel.Item>
+              <Carousel.Item style = {{padding: 20}}>
+              <Row>
+                <Col md = {3} style = {{marginBottom: 20}}>
+                <Popup
+                  modal 
+                  trigger = {
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', padding: 30, textAlign: 'center'}}>
+                    <ImageFadeIn src = {Hamish} style = {{maxWidth: 125, maxHeight: 125}}/>
+                  </div>
+                  }
+                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", minHeight: 325, padding: '30px 50px'}}>
+                  <div>
+                    <div style = {{display: 'flex'}}>
+                      <ImageFadeIn src = {Hamish} style = {{maxWidth: 75, maxHeight: 75}}/>
+                      <div style = {{paddingLeft: 50}}>
+                        <div style = {{fontSize: 30, fontWeight: 'bold'}}>
+                          Hamish Nicholson
+                        </div>
+                        <div style = {{marginTop: 20, color: '#555555'}}>
+                          Originally from Melbourne, Hamish has spent his time in the US working as a data scientist 
+                          at NASA's Jet Propulsion Laboratory, as a deep learning researcher at Perceptive Automata,
+                          and as a research partner at the Radcliffe Institute, where he studied the formation of molecular
+                          clouds in young stars. Hamish studied Computer Science and Statistics at Harvard University.
+                        </div>
+                      </div>
+                    </div>
+                  </div>    
+                </Popup>
+                </Col>
+                <Col md = {3} style = {{marginBottom: 20}}>
+                <Popup
+                  modal 
+                  trigger = {
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', padding: 30, textAlign: 'center'}}>
+                    <ImageFadeIn src = {Matt} style = {{maxWidth: 125, maxHeight: 125}}/>
+                  </div>
+                  }
+                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", minHeight: 325, padding: '30px 50px'}}>
+                  <div>
+                    <div style = {{display: 'flex'}}>
+                      <ImageFadeIn src = {Matt} style = {{maxWidth: 75, maxHeight: 75}}/>
+                      <div style = {{paddingLeft: 50}}>
+                        <div style = {{fontSize: 30, fontWeight: 'bold'}}>
+                          Mathieu Lochet
+                        </div>
+                        <div style = {{marginTop: 20, color: '#555555'}}>
+                          Mathieu Lochet studied Computer Science and engineering at INSA in France. 
+                          He has worked in software architecture, framework design, optimization and game 
+                          engines for the last 10 years.
+                        </div>
+                      </div>
+                    </div>
+                  </div>    
+                </Popup>
+                </Col>
+                <Col md = {3} style = {{marginBottom: 20}}>
+                <Popup
+                  modal 
+                  trigger = {
+                  <div className = "expandOnHover" style = {{background: 'white', borderRadius: 10, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', padding: 30, textAlign: 'center'}}>
+                    <ImageFadeIn src = {Jonathan} style = {{maxWidth: 125, maxHeight: 125}}/>
+                  </div>
+                  }
+                  contentStyle = {{width: 500, borderRadius: 5, backgroundColor: "#EBEBEB", border: "none", minHeight: 325, padding: '30px 50px'}}>
+                  <div>
+                    <div style = {{display: 'flex'}}>
+                      <ImageFadeIn src = {Jonathan} style = {{maxWidth: 75, maxHeight: 75}}/>
+                      <div style = {{paddingLeft: 50}}>
+                        <div style = {{fontSize: 30, fontWeight: 'bold'}}>
+                          Jonathan Xu
+                        </div>
+                        <div style = {{marginTop: 20, color: '#555555'}}>
+                          Jonathan is an avid hackathon-goer, and loves to build creative projects from the ground up. 
+                          Prior to Fractal, he did full stack development for startups. He is studying software engineering at 
+                          the University of Waterloo.
+                        </div>
+                      </div>
+                    </div>
+                  </div>    
+                </Popup>
+                </Col>
+              </Row>
+              </Carousel.Item>
+              </Carousel>
             </Col>
           </Row>
         </div>
         </div>
         <div style = {{width: '100vw', background: 'white', marginTop: 75}}>
-          <div className = "fractal-container" style = {{paddingTop: 50, paddingBottom: 100}}>
+          <div className = "fractal-container" style = {{paddingTop: 50, paddingBottom: 100, textAlign: 'left'}}>
             <Row>
               <Col md = {5}>
                 <div style = {{color: "#5ec3eb", fontWeight: "bold"}}>
@@ -268,18 +356,16 @@ class About extends Component {
             Experience the next generation of personal computing today.
           </div>
           <Link to = "/dashboard" style = {{textDecoration: 'none'}}>
-            <Button style = {{marginTop: 30, backgroundColor: '#111111', padding: '10px 30px', fontWeight: 'bold', borderRadius: 5, border: 'none', padding: '15px 30px'}}>
+            <Button style = {{marginTop: 30, backgroundColor: '#111111', fontWeight: 'bold', borderRadius: 5, border: 'none', padding: '15px 30px'}}>
               GET STARTED
             </Button>
           </Link>
         </div>
         </div>
-      <Footer/>
+        <Footer/>
       </div>
     )
   }
 }
-
-
 
 export default About;

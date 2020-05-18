@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const production = {
 	url: {
 		PRIMARY_SERVER: "https://cube-celery-vm.herokuapp.com",
@@ -28,4 +29,4 @@ const development = {
 	}
 };
 
-export const config = process.env.NODE_ENV === 'development' ? staging : production;
+export const config = process.env.NODE_ENV === 'development' ? staging : staging;
