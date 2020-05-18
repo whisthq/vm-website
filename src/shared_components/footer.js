@@ -32,7 +32,7 @@ class Footer extends Component {
       {
       this.state.width > 700
       ?
-      <div style = {{width: '100%', backgroundColor: 'white', paddingTop: 60, fontSize: 15, borderTop: 'solid 1px white'}}>
+      <div style = {{width: '100%', backgroundColor: 'white', paddingTop: 60, fontSize: 15}}>
         <div style = {{width: '100%', marginTop: 25, marginBottom: 25, background: '#EBEBEB', height: 1}}></div>
         <div style = {{width: '100%', minHeight: 100, maxWidth: 1920, margin: 'auto'}} className = "fractal-container">
         <Row style = {{float: 'left', width: 400, display: 'inline'}}>
@@ -128,7 +128,7 @@ class Footer extends Component {
         </div>
     </div>
     :
-      <div style = {{width: '100%', backgroundColor: 'white', padding: 30, paddingTop: 60, fontSize: 15, borderTop: 'solid 1px white', textAlign: 'left'}}>
+      <div style = {{width: '100%', backgroundColor: 'white', padding: 30, paddingTop: 60, fontSize: 15, textAlign: 'left'}}>
         <div style = {{width: '100%', marginTop: 25, marginBottom: 25, background: '#EBEBEB', height: 1}}></div>
        <Container>
         <div style = {{width: '100%', minHeight: 100}}>
