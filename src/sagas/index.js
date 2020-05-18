@@ -324,8 +324,8 @@ function* getDiskStatus(action) {
     ""
   );
 
-  while (json.state === "PENDING" || json.state === "STARTED") {
-    json = yield call(
+  while (json.state !== 'SUCCESS' && json.state !== 'FAILURE') {
+    var { json } = yield call(
       apiGet,
       (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
       ""
@@ -334,6 +334,7 @@ function* getDiskStatus(action) {
   }
 
   console.log("DISK SUCCESFULLY CREATED")
+  console.log(json)
   console.log(json.output)
 
   if (json && json.output) {
