@@ -31,7 +31,7 @@ class Privacy extends Component {
     return(
       <div style = {{overflowX: 'hidden'}} id = 'top'>
       <Header color = "#333333" button = "#5ec3eb" homepage/>
-      <div style = {{padding: '125px 150px', maxWidth: 1280}}>
+      <div style = {{padding: '125px 150px', maxWidth: 1280, margin: 'auto'}}>
         <div style = {{fontSize: 40}}>
         TERMS OF SERVICE
         </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { HashLink } from 'react-router-hash-link';
 
 import Header from '../../shared_components/header.js'
 import Footer from '../../shared_components/footer.js'
@@ -31,7 +32,7 @@ class Privacy extends Component {
     return(
       <div style = {{overflowX: 'hidden'}} id = 'top'>
       <Header color = "#333333" button = "#5ec3eb" homepage/>
-      <div style = {{padding: '125px 150px', maxWidth: 1280}}>
+      <div style = {{padding: '125px 150px', maxWidth: 1280, margin: 'auto'}}>
         <div style = {{fontSize: 40}}>
         PRIVACY POLICY
         </div>
@@ -231,7 +232,7 @@ class Privacy extends Component {
         <u>Summary:</u> We may use cookies and other tracking technologies to collect and store your information.
         </p>
         <p>
-        We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information. Specific information about how we use such technologies and how you can refuse certain cookies is set out in our <a href = "https://www.fractalcomputers.com/cookie">Cookie Policy</a>. Our Services are currently not officially offered in the European Union, but they may be accessible from that area; we take no responsibility for access from the European Union region with regards to cookies and other tracking technologies, as defined in the GDPR. 
+        We may use cookies and similar tracking technologies (like web beacons and pixels) to access or store information. Specific information about how we use such technologies and how you can refuse certain cookies is set out in our <HashLink to = "/cookie#top">Cookie Policy</HashLink>. Our Services are currently not officially offered in the European Union, but they may be accessible from that area; we take no responsibility for access from the European Union region with regards to cookies and other tracking technologies, as defined in the GDPR. 
         </p>
         <p style = {{fontWeight: 'bold', fontSize: 20}}>
         5. How Do We Handle Your Social Logins?
