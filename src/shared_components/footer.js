@@ -29,6 +29,12 @@ class Footer extends Component {
   render() {
     return (
       <div>
+
+
+
+
+
+
       {
       this.state.width > 700
       ?
@@ -101,13 +107,13 @@ class Footer extends Component {
             <Col xs = {4} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>CONTACT</div>
               <div style = {{fontSize: 13}}>
-                <div style = {{color: '#555555', marginBottom: 4}}>hello@fractalcomputers.com</div>
+                <div style = {{color: '#555555', marginBottom: 4}}>sales@fractalcomputers.com</div>
               </div>
               <div style = {{fontSize: 13}}>
                 <div style = {{color: '#555555', marginBottom: 4}}>support@fractalcomputers.com</div>
               </div>
               <div style = {{fontSize: 13}}>
-                <div style = {{color: '#555555', marginBottom: 4}}>sales@fractalcomputers.com</div>
+                <div style = {{color: '#555555', marginBottom: 4}}>careers@fractalcomputers.com</div>
               </div>
             </Col>
           </Row>
@@ -191,13 +197,13 @@ class Footer extends Component {
             <Col xs = {4} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>CONTACT</div>
               <div style = {{fontSize: 11}}>
-                <div style = {{color: '#555555', marginBottom: 4}}>hello@fractalcomputers.com</div>
+                <div style = {{color: '#555555', marginBottom: 4}}>sales@fractalcomputers.com</div>
               </div>
               <div style = {{fontSize: 11}}>
                 <div style = {{color: '#555555', marginBottom: 4}}>support@fractalcomputers.com</div>
               </div>
               <div style = {{fontSize: 11}}>
-                <div style = {{color: '#555555', marginBottom: 4}}>sales@fractalcomputers.com</div>
+                <div style = {{color: '#555555', marginBottom: 4}}>careers@fractalcomputers.com</div>
               </div>
             </Col>
           </Row>

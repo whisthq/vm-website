@@ -136,7 +136,7 @@ class Privacy extends Component {
         More Information
         </p>
         <p>
-        If you are looking for more information, you can contact us via email <a href = "mailto: support@fractalcomputers.com">support@fractalcomputers.com</a>.
+        If you are looking for more information, you can contact us via email at <a href = "mailto: support@fractalcomputers.com">support@fractalcomputers.com</a>.
         </p>
       </div>
       <Footer/>
