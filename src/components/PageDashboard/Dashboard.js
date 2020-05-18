@@ -639,7 +639,7 @@ class Dashboard extends Component {
                             onClose = {() => this.showExitSurvey(false)} 
                             contentStyle = {{color: '#111111', width: this.state.width > 500 ? 500 : '95%', borderRadius: 5, backgroundColor: "white", border: "none", height: this.state.width > 700 ? 150 : 200, padding: '30px 50px', textAlign: "center"}}>
                             <div style = {{fontSize: 16, textAlign: 'left'}}>
-                              Once your cloud PC is finished creating, you will be able to download our client application to access your cloud PC.
+                              Once your cloud PC is finished creating, you will be able to download our client applications to access your cloud PC.
                             </div>
                           </Popup>
                           :
@@ -663,7 +663,7 @@ class Dashboard extends Component {
                             onClose = {() => this.showExitSurvey(false)} 
                             contentStyle = {{color: '#111111', width: this.state.width > 500 ? 500 : '95%', borderRadius: 5, backgroundColor: "white", border: "none", height: this.state.width > 700 ? 150 : 200, padding: '30px 50px', textAlign: "center"}}>
                             <div style = {{fontSize: 16, textAlign: 'left'}}>
-                              Once your cloud PC is finished creating, you will be able to download our client application to access your cloud PC.
+                              Once your cloud PC is finished creating, you will be able to download our client applications to access your cloud PC.
                             </div>
                           </Popup>
                           :
@@ -687,7 +687,7 @@ class Dashboard extends Component {
                             onClose = {() => this.showExitSurvey(false)} 
                             contentStyle = {{color: '#111111', width: this.state.width > 500 ? 500 : '95%', borderRadius: 5, backgroundColor: "white", border: "none", height: this.state.width > 700 ? 150 : 200, padding: '30px 50px', textAlign: "center"}}>
                             <div style = {{fontSize: 16, textAlign: 'left'}}>
-                              Once your cloud PC is finished creating, you will be able to download our client application to access your cloud PC.
+                              Once your cloud PC is finished creating, you will be able to download our client applications to access your cloud PC.
                             </div>
                           </Popup>
                           :
