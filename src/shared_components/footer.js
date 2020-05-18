@@ -33,6 +33,7 @@ class Footer extends Component {
       this.state.width > 700
       ?
       <div style = {{width: '100%', backgroundColor: 'white', paddingTop: 60, fontSize: 15, borderTop: 'solid 1px white'}}>
+        <div style = {{width: '100%', marginTop: 25, marginBottom: 25, background: '#EBEBEB', height: 1}}></div>
         <div style = {{width: '100%', minHeight: 100, maxWidth: 1920, margin: 'auto'}} className = "fractal-container">
         <Row style = {{float: 'left', width: 400, display: 'inline'}}>
             <Col xs = {12} style = {{maxWidth: 350}}>
@@ -71,17 +72,17 @@ class Footer extends Component {
               </div>
             </Col>
         </Row>
-        <Row style = {{float: 'right', width: 325, paddingRight: 100, textAlign: 'left'}}>
-            <Col xs = {6} style = {{paddingTop: 12}}>
-              <div style = {{fontWeight: 'bold', marginBottom: 15}}>PRODUCTS</div>
+        <Row style = {{float: 'right', width: 400, paddingRight: 100, textAlign: 'left'}}>
+            <Col xs = {5} style = {{paddingTop: 12}}>
+              <div style = {{fontWeight: 'bold', marginBottom: 15}}>HOME</div>
               <HashLink to = "/#top" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 13}}>
-                  <div style = {{color: '#555555', marginBottom: 10}}>Personal</div>
+                  <div style = {{color: '#555555', marginBottom: 10}}>Product</div>
                 </div>
               </HashLink>
               <HashLink to = "/about#top" style = {{textDecoration: 'none'}}>
                 <div style = {{fontSize: 13}}>
-                  <div style = {{color: '#555555', marginBottom: 10}}>Company</div>
+                  <div style = {{color: '#555555', marginBottom: 10}}>About</div>
                 </div>
               </HashLink>
               <div style = {{fontSize: 13}}>
@@ -90,7 +91,7 @@ class Footer extends Component {
                 </div>
               </div>
             </Col>
-            <Col xs = {6} style = {{paddingTop: 12}}>
+            <Col xs = {7} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>CONTACT</div>
               <div style = {{fontSize: 13, marginBottom: 10}}>
                 <div>
@@ -112,7 +113,7 @@ class Footer extends Component {
         </div>
         <div className = "fractal-container" style = {{paddingBottom: 30, maxWidth: 1920}}>
           <div style = {{width: '100%', marginTop: 100, background: '#EBEBEB', height: 1}}></div>
-          <div style = {{fontSize: 12, marginTop: 20, width: '100%'}}>
+          <div style = {{fontSize: 13, marginTop: 20, width: '100%'}}>
             <span style = {{margin: 0, color: '#555555', overflow: 'hidden', float: 'left'}}>Copyright &copy; Fractal Computers, Inc. All Rights Reserved.</span>
             <span style = {{margin: 0, color: '#555555', overflow: 'hidden', float: 'right'}}><HashLink to = "/termsofservice#top" style = {{color: "#555555"}}>Terms of Service</HashLink> & <HashLink to = "/privacy#top" style = {{color: "#555555"}}>Privacy Policy</HashLink></span>
             </div>
@@ -120,6 +121,7 @@ class Footer extends Component {
     </div>
     :
       <div style = {{width: '100%', backgroundColor: 'white', padding: 30, paddingTop: 60, fontSize: 15, borderTop: 'solid 1px white'}}>
+        <div style = {{width: '100%', marginTop: 25, marginBottom: 25, background: '#EBEBEB', height: 1}}></div>
        <Container>
         <div style = {{width: '100%', minHeight: 100}}>
         <Row style = {{width: 400}}>
@@ -163,16 +165,16 @@ class Footer extends Component {
             <Col xs = {5} style = {{paddingTop: 12}}>
               <div style = {{fontWeight: 'bold', marginBottom: 15}}>PRODUCTS</div>
               <HashLink to = "/#top" style = {{textDecoration: 'none'}}>
-                <div style = {{fontSize: 11}}>
+                <div style = {{fontSize: 13}}>
                   <div style = {{color: '#555555', marginBottom: 10}}>Personal</div>
                 </div>
               </HashLink>
               <HashLink to = "/about#top" style = {{textDecoration: 'none'}}>
-                <div style = {{fontSize: 11}}>
+                <div style = {{fontSize: 13}}>
                   <div style = {{color: '#555555', marginBottom: 10}}>Company</div>
                 </div>
               </HashLink>
-              <div style = {{fontSize: 11}}>
+              <div style = {{fontSize: 13}}>
                 <div>
                 <a href = "mailto: hello@fractalcomputers.com" style = {{color: '#555555', textDecoration: 'none', marginBottom: 10}}>Contact Us</a>
                 </div>
@@ -199,7 +201,7 @@ class Footer extends Component {
           </Row>
         </div>
         <div style = {{width: '100%', marginTop: 100, background: '#EBEBEB', height: 1}}></div>
-        <div style = {{fontSize: 12, marginTop: 20, width: '100%'}}>
+        <div style = {{fontSize: 13, marginTop: 20, width: '100%'}}>
           <span style = {{margin: 0, color: '#555555', overflow: 'hidden', float: 'left'}}>Copyright &copy; Fractal Computers, Inc. All Rights Reserved.</span>
           <span style = {{margin: 0, color: '#555555', overflow: 'hidden', float: 'right'}}>Terms of Service & Privacy Policy</span>
         </div>
