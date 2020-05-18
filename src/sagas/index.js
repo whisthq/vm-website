@@ -325,7 +325,7 @@ function* getDiskStatus(action) {
   );
 
   while (json.state === "PENDING" || json.state === "STARTED") {
-    var { json } = yield call(
+    json = yield call(
       apiGet,
       (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
       ""

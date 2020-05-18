@@ -60,13 +60,13 @@ class Header extends Component {
             this.props.currentPage === 'personal'
             ?
             <div>
-              <HashLink onClick = {() => this.switchTab('personal')} className = 'headerlink' to = '/' style={{color: `${ this.props.button }`, fontWeight: 'bold', textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
+              <HashLink onClick = {() => this.switchTab('personal')} className = 'headerlink' to = '/' style={{color: `${ this.props.button }`, fontWeight: 'bold', textDecoration: 'none', textAlign: 'center', fontSize: 16, marginTop: 12}}>
                 <span style = {this.props.linkStyle}>Product</span>
               </HashLink>
-              <HashLink onClick = {() => this.switchTab('about')} className = 'headerlink' to = '/about' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
+              <HashLink onClick = {() => this.switchTab('about')} className = 'headerlink' to = '/about' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 16, marginTop: 12, marginLeft: 20}}>
                 <span style = {this.props.linkStyle}>Company</span>
               </HashLink>
-              <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
+              <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 16, marginTop: 12, marginLeft: 20}}>
                 <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
               <Link to = "/auth">
@@ -80,13 +80,13 @@ class Header extends Component {
             this.props.currentPage === 'about'
             ?
             <div>
-              <HashLink onClick = {() => this.switchTab('personal')} className = 'headerlink' to = '/' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
+              <HashLink onClick = {() => this.switchTab('personal')} className = 'headerlink' to = '/' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 16, marginTop: 12}}>
                 <span style = {this.props.linkStyle}>Product</span>
               </HashLink>
-              <HashLink onClick = {() => this.switchTab('about')} className = 'headerlink' to = '/about' style={{color: `${ this.props.button }`, fontWeight: 'bold', textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
+              <HashLink onClick = {() => this.switchTab('about')} className = 'headerlink' to = '/about' style={{color: `${ this.props.button }`, fontWeight: 'bold', textDecoration: 'none', textAlign: 'center', fontSize: 16, marginTop: 12, marginLeft: 20}}>
                 <span style = {this.props.linkStyle}>Company</span>
               </HashLink>
-              <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
+              <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 16, marginTop: 12, marginLeft: 20}}>
                 <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
               <Link to = "/auth">
@@ -97,13 +97,13 @@ class Header extends Component {
             </div>
             :
             <div>
-              <HashLink onClick = {() => this.switchTab('personal')} className = 'headerlink' to = '/' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12}}>
+              <HashLink onClick = {() => this.switchTab('personal')} className = 'headerlink' to = '/' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 16, marginTop: 12}}>
                 <span style = {this.props.linkStyle}>Product</span>
               </HashLink>
-              <HashLink onClick = {() => this.switchTab('about')} className = 'headerlink' to = '/about' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
+              <HashLink onClick = {() => this.switchTab('about')} className = 'headerlink' to = '/about' style={{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 16, marginTop: 12, marginLeft: 20}}>
                 <span style = {this.props.linkStyle}>Company</span>
               </HashLink>
-              <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 14, marginTop: 12, marginLeft: 20}}>
+              <a href = "mailto: hello@fractalcomputers.com" style = {{color: `${ this.props.color }`, textDecoration: 'none', textAlign: 'center', fontSize: 16, marginTop: 12, marginLeft: 20}}>
                 <span style = {this.props.linkStyle}>Contact Us</span>
               </a>
               <Link to = "/auth">
