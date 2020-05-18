@@ -67,6 +67,9 @@ export const CREATE_DISK = "CREATE_DISK";
 export const GET_DISK_STATUS = "GET_DISK_STATUS";
 export const STORE_PURCHASE_LOCATION = "STORE_PURCHASE_LOCATION";
 export const DASHBOARD_LOADED = "DASHBOARD_LOADED";
+export const STORE_ID = "STORE_ID"
+export const FETCH_DISK_STATUS = "FETCH_DISK_STATUS"
+export const CHANGE_STATUS_MESSAGE = "CHANGE_STATUS_MESSAGE"
 
 export function userLogin(user, password, create) {
   return {
@@ -439,4 +442,25 @@ export function dashboardLoaded(loaded) {
     type: DASHBOARD_LOADED,
     loaded,
   };
+}
+
+export function storeID(status_id) {
+  return {
+    type: STORE_ID,
+    status_id
+  }
+}
+
+export function fetchDiskStatus(status_id) {
+  return {
+    type: FETCH_DISK_STATUS,
+    status_id
+  }
+}
+
+export function changeStatusMessage(disk_creation_message) {
+  return {
+    type: CHANGE_STATUS_MESSAGE,
+    disk_creation_message
+  }
 }

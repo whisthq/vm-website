@@ -32,7 +32,7 @@ class Privacy extends Component {
     return(
       <div style = {{overflowX: 'hidden'}} id = 'top'>
       <Header color = "#333333" button = "#5ec3eb" homepage/>
-      <div style = {{padding: '125px 150px', maxWidth: 1280, margin: 'auto'}}>
+      <div style = {{padding: this.state.width > 700 ? '75px 150px' : '50px 40px', maxWidth: 1280, margin: 'auto'}}>
         <div style = {{fontSize: 40}}>
         COOKIE POLICY
         </div>
@@ -137,7 +137,7 @@ class Privacy extends Component {
         More Information
         </p>
         <p>
-        If you are looking for more information, you can contact us via email <a href = "mailto: support@fractalcomputers.com">support@fractalcomputers.com</a>.
+        If you are looking for more information, you can contact us via email at <a href = "mailto: support@fractalcomputers.com">support@fractalcomputers.com</a>.
         </p>
       </div>
       <Footer/>

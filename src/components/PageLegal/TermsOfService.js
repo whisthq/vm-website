@@ -22,7 +22,6 @@ class Privacy extends Component {
     this.setState({ width: window.innerWidth, height: window.innerHeight })
   }
 
-
   render() {
     let modalClose = () => this.setState({ modalShow: false })
     if (this.state.width > 700 && this.state.modalShow) {
@@ -31,7 +30,7 @@ class Privacy extends Component {
     return(
       <div style = {{overflowX: 'hidden'}} id = 'top'>
       <Header color = "#333333" button = "#5ec3eb" homepage/>
-      <div style = {{padding: '125px 150px', maxWidth: 1280, margin: 'auto'}}>
+      <div style = {{padding: this.state.width > 700 ? '75px 150px' : '50px 40px', maxWidth: 1280, margin: 'auto'}}>
         <div style = {{fontSize: 40}}>
         TERMS OF SERVICE
         </div>
@@ -40,13 +39,13 @@ class Privacy extends Component {
         </div>
         <div>
           <p> 
-          PLEASE READ THESE TERMS OF SERVICE (COLLECTIVELY WITH FRACTAL'S PRIVACY POLICY https://www.fractalcomputers.com/privacy AND http://www.copyright.gov/legislation/dmca.pdf, THE "TERMS OF SERVICE ") FULLY AND CAREFULLY BEFORE USING WWW.FRACTALCOMPUTERS.COM (THE "SITE"), ANY DESKTOP OR MOBILE APPLICATIONS PROVIDED BY FRACTAL (THE "APPLICATIONS") AND THE CLOUD COMPUTING SERVICES, FEATURES, CONTENT OR APPLICATIONS OFFERED BY FRACTAL COMPUTERS, INC. ("FRACTAL," "WE," "US," OR "OUR") (TOGETHER WITH THE SITE AND THE APPLICATIONS, THE "SERVICES"). THESE TERMS OF SERVICE SET FORTH THE LEGALLY BINDING TERMS AND CONDITIONS FOR YOUR USE OF THE SITE, THE APPLICATIONS AND THE SERVICES.
+          PLEASE READ THESE TERMS OF SERVICE (COLLECTIVELY WITH FRACTAL'S PRIVACY POLICY <a href = "https://www.fractalcomputers.com/privacy">www.fractalcomputers.com/privacy</a> AND <a href = "http://www.copyright.gov/legislation/dmca.pdf">www.copyright.gov/legislation/dmca.pdf</a>, THE "TERMS OF SERVICE ") FULLY AND CAREFULLY BEFORE USING <a href = "https://www.fractalcomputers.com">WWW.FRACTALCOMPUTERS.COM</a> (THE "SITE"), ANY DESKTOP OR MOBILE APPLICATIONS PROVIDED BY FRACTAL (THE "APPLICATIONS") AND THE CLOUD COMPUTING SERVICES, FEATURES, CONTENT OR APPLICATIONS OFFERED BY FRACTAL COMPUTERS, INC. ("FRACTAL," "WE," "US," OR "OUR") (TOGETHER WITH THE SITE AND THE APPLICATIONS, THE "SERVICES"). THESE TERMS OF SERVICE SET FORTH THE LEGALLY BINDING TERMS AND CONDITIONS FOR YOUR USE OF THE SITE, THE APPLICATIONS AND THE SERVICES.
           </p>
           <p>
           YOUR RIGHT TO USE THE SERVICES IS EXPRESSLY CONDITIONED ON ACCEPTANCE OF THESE TERMS OF SERVICE. BY CLICKING ON THE "ACCEPT" BUTTON AND USING THE SERVICES, YOU UNCONDITIONALLY AGREE TO BE BOUND BY THESE TERMS OF SERVICE. IF THESE TERMS OF SERVICE ARE CONSIDERED AN OFFER, ACCEPTANCE IS EXPRESSLY LIMITED TO THESE TERMS OF SERVICE. IF YOU DO NOT AGREE WITH ANY PROVISION OF THESE TERMS OF SERVICE, YOU MUST CLICK ON THE "CANCEL" BUTTON AND MAY NOT ACCESS OR USE THE SERVICES IN ANY MANNER FOR ANY PURPOSE.
           </p>
           <p>
-          These Terms of Services were last updated on March 25, 2020. It is effective between Fractal and you as of the date you accept these Terms of Service.
+          These Terms of Service were last updated on the date listed above. It is effective between Fractal and you as of the date you accept these Terms of Service.
           </p>
           <p style = {{fontWeight: 'bold', fontSize: 20}}>
           Acceptance of Terms of Service
@@ -78,7 +77,7 @@ class Privacy extends Component {
           Product
           </p>
           <p>
-          Fractal is a provider of cloud-based personal computers ("Cloud Computers") and of peer-to-peer low-latency streaming technologies (“Streaming Technology”). A Fractal cloud computer is similar to a standard PC in that once your Fractal subscription is active, it allows you to install software for which you have a legitimate license. Fractal is not designed to support pirated or otherwise illegitimately obtained software. Unless indicated otherwise, your Fractal cloud computer runs on Windows 10 Professional or Linux Ubuntu.
+          Fractal is a provider of cloud-based personal computers ("Cloud Computers") and of peer-to-peer low-latency streaming technologies (“Streaming Technology”). A Fractal cloud computer is similar to a standard PC in that once your Fractal subscription is active, it allows you to install software for which you have a legitimate license. Fractal is not designed to support pirated or otherwise illegitimately obtained software. Unless indicated otherwise, your Fractal cloud computer runs on Windows 10 Professional or Linux Ubuntu 18.04, depending on which plan you select. In certain world regions, Windows 10 Professional may be replaced by Windows Server 2016, which is indicated to you before you select your cloud computer.
           </p>
           <p>
           The Fractal Streaming Technology can be used to stream your own computer, provided that you have a legitimate license for it, to another of your devices over the Internet. The Fractal Streaming Technology cannot be used to stream your own computer to a third party or to a device which you do not own and cannot be used to stream pirated or otherwise illegitimately obtained software.
@@ -87,7 +86,7 @@ class Privacy extends Component {
           Your cloud computer and/or your personal computer streamed through Fractal can be accessed from any Internet-connected device (a “User Device”), provided that a Fractal local application has been developed for the device’s operating system.
           </p>
           <p>
-          Given the nature of cloud-based personal computing, your inputs (keystrokes, mouse/touchpad movements, etc.) are sent from the User Device to Fractal’s data center infrastructure. The servers in Fractal’s data center infrastructure interpret these signals on your personal cloud computer, which allows for the Fractal local application to display the cloud computers. All communications between your User Device and your Fractal Cloud Computer, including audio and video components of the streaming, are fully encrypted, and Fractal does not observe directly any of your stream components.
+          Given the nature of cloud-based personal computing, your inputs (keystrokes, mouse/touchpad movements, etc.) are sent from the User Device to Fractal’s data center infrastructure. The servers in Fractal’s data center infrastructure interpret these signals on your personal cloud computer, which allows for the Fractal local application to display the cloud computers. All communications between your User Device and your Fractal Cloud Computer, including audio and video components of the streaming, are fully AES encrypted, and Fractal does not observe directly any of your stream components.
           </p>
           <p style = {{fontWeight: 'bold', fontSize: 20}}>
           Fractal Plans and Subscriptions
@@ -295,15 +294,11 @@ class Privacy extends Component {
           If you believe that any content made available on or through our Services has been used or exploited in a manner that infringes an intellectual property right you own or control, then please promptly send a DMCA Notice to the Designated Agent identified below:
           </p>
           <p>
-          Philippe Noël <br/>
           Fractal Computers, Inc. <br/>
-          103 Greaton Road <br/>
-          Unit 2 <br/>
+          103 Greaton Road, Unit 2 <br/>
           Boston, MA 02132 <br/>
-          Phone: 8572729715 <br/>
-          Email: support@fractalcomputers.com <br/>
+          <a href = "mailto: support@fractalcomputers.com">support@fractalcomputers.com</a> <br/>
           </p>
-          
           <p>
           We reserve the right to delete or disable any content alleged to be infringing, and/or terminate the subscription of repeat infringers.
           </p>
@@ -364,7 +359,7 @@ class Privacy extends Component {
           You and we agree to resolve any claims relating to these Terms or the Services through final and binding arbitration by the American Arbitration Association (AAA), in accordance with its Commercial Arbitration Rules and the Supplementary Procedures for Consumer Related Disputes. The AAA rules will govern payment of all arbitration fees.  The arbitration will be held in the United States county where you live or work or in Middlesex County, Massachusetts, or any other location we agree upon. If the agreement to arbitrate is found not to apply to you or your claim, you agree to the exclusive jurisdiction of the state and federal courts in Middlesex County, Massachusetts to resolve your claim.
           </p>
           <p>
-          You can opt-out of the requirement to arbitrate by emailing support@fractalcomputers.com with the subject line “Arbitration Opt-Out” within 30 days of the date you first register your account. You can obtain the opt-form, free of charge, by contacting Fractal via the Fractal website. This step is not necessary if you have already opted-out in a previous version of these terms: your previous decision regarding arbitration is still binding unless you update it.
+          You can opt-out of the requirement to arbitrate by emailing <a href = "mailto: support@fractalcomputers.com">support@fractalcomputers.com</a> with the subject line “Arbitration Opt-Out” within 30 days of the date you first register your account. You can obtain the opt-form, free of charge, by contacting Fractal via the Fractal website. This step is not necessary if you have already opted-out in a previous version of these terms: your previous decision regarding arbitration is still binding unless you update it.
           </p>
           <p>
           Notwithstanding the foregoing, either you or we may assert claims in small claims court in Middlesex County (MA) or any United States county where you live or work. Either party may bring a lawsuit solely for injunctive relief to stop unauthorized use or abuse of the Services, violation of these Terms, or intellectual property infringement without first engaging in arbitration or the informal dispute-resolution process described above.

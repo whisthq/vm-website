@@ -324,7 +324,7 @@ function* getDiskStatus(action) {
     ""
   );
 
-  while (json.state === "PENDING" || json.state === "STARTED") {
+  while (json.state !== 'SUCCESS' && json.state !== 'FAILURE') {
     var { json } = yield call(
       apiGet,
       (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
@@ -333,10 +333,64 @@ function* getDiskStatus(action) {
     yield delay(5000);
   }
 
+  console.log("DISK SUCCESFULLY CREATED")
+  console.log(json)
+  console.log(json.output)
+
   if (json && json.output) {
-    yield put(FormAction.fetchDisks(state.AccountReducer.user));
+    yield put(FormAction.vmCreating(true))
+    yield call(attachDisk, json.output.disk_name)
   }
 }
+
+function* attachDisk(disk_name) {
+  console.log("SENDING ATTACH DISK COMMAND")
+  const state = yield select();
+  const { json } = yield call(
+    apiPost,
+    config.url.PRIMARY_SERVER + '/disk/attach',
+    {
+      disk_name: disk_name,
+    },
+    state.AccountReducer.access_token
+  );
+
+  if (json && json.ID) {
+    yield put(FormAction.storeID(json.ID))
+    yield put(FormAction.fetchDiskStatus(json.ID))
+  }
+}
+
+function* fetchDiskStatus(action) {
+  const state = yield select();
+  var { json } = yield call(
+    apiGet,
+    (config.url.PRIMARY_SERVER + '/status/').concat(action.status_id),
+    state.AccountReducer.access_token
+  );
+
+  while (json.state === 'PENDING' || json.state === 'STARTED') {
+    var { json } = yield call(
+      apiGet,
+      (config.url.PRIMARY_SERVER + '/status/').concat(action.status_id),
+      state.AccountReducer.access_token
+    );
+
+    if (json && json.output && json.state === 'PENDING') {
+      yield put(FormAction.changeStatusMessage(json.output.msg));
+    }
+
+    console.log(json)
+    
+    yield delay(5000);
+  }
+
+  if (json && json.state && json.state === 'SUCCESS') {
+    yield put(FormAction.vmCreating(false))
+    yield put(FormAction.fetchDisks(state.AccountReducer.user))
+  }
+}
+
 
 function* fetchDisks(action) {
   console.log("FETCH DISK SAGA")
@@ -545,5 +599,6 @@ export default function* rootSaga() {
     takeEvery(FormAction.INSERT_CUSTOMER, insertCustomer),
     takeEvery(FormAction.SUBMIT_PURCHASE_FEEDBACK, submitPurchaseFeedback),
     takeEvery(FormAction.CREATE_DISK, createDisk),
+    takeEvery(FormAction.FETCH_DISK_STATUS, fetchDiskStatus)
   ]);
 }
