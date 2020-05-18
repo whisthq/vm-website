@@ -444,7 +444,7 @@ class Dashboard extends Component {
                   <div style = {{borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25, marginTop: 25}}/>
                     <div style = {{color: "#333333", fontSize: 24, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
-                    <div style = {{fontSize: 16, maxWidth: 500, margin: 'auto', marginTop: 15, color: "#111111"}}>
+                    <div style = {{fontSize: 14, maxWidth: 500, margin: 'auto', marginTop: 15, color: "#111111"}}>
                       This should take no more than 20-30 minutes.
                       Once your cloud PC is ready, you'll be able to download our desktop application below to launch your cloud PC.
                     </div>
@@ -460,7 +460,7 @@ class Dashboard extends Component {
                   <div style = {{borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25, marginTop: 15}}/>
                     <div style = {{color: "#333333", fontSize: 24, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
-                    <div style = {{fontSize: 16, maxWidth: 500, margin: 'auto', marginTop: 15, color: "#111111"}}>
+                    <div style = {{fontSize: 14, maxWidth: 500, margin: 'auto', marginTop: 15, color: "#111111"}}>
                       This should take no more than 20-30 minutes.
                       Once your cloud PC is ready, you'll be able to download our desktop application below to launch your cloud PC.
                     </div>
