@@ -441,31 +441,33 @@ class Dashboard extends Component {
               ?
               <Row style = {{marginTop: 30}}>
                 <Col xs = {12}>
+                  <div style = {{background: 'rgba(195, 245, 179, 0.2)', boxShadow: '0px 4px 5px rgba(0, 0, 0, 0.05)', fontSize: 14, width: '100%', margin: 'auto', marginBottom: 20, color: "#2f960e", padding: '13px 28px', borderRadius: 10}}>
+                    <span style = {{fontWeight: 'bold'}}>Current Status: </span>{this.props.disk_creation_message}
+                  </div>
                   <div style = {{borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25, marginTop: 25}}/>
                     <div style = {{color: "#333333", fontSize: 24, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
                     <div style = {{fontSize: 14, maxWidth: 500, margin: 'auto', marginTop: 15, color: "#111111"}}>
-                      This should take no more than 20-30 minutes.
+                      This should take no more than 15-20 minutes.
                       Once your cloud PC is ready, you'll be able to download our desktop application below to launch your cloud PC.
-                    </div>
-                    <div style = {{fontSize: 14, maxWidth: 500, margin: 'auto', marginTop: 25, color: "#333333"}}>
-                      <span style = {{fontWeight: 'bold'}}>Current Status: </span>{this.props.disk_creation_message}
                     </div>
                   </div>
                 </Col>
               </Row>
               :
               <Row style = {{marginTop: 30}}>
+                <Col xs = {12} style = {{paddingLeft: 15, paddingRight: 15}}>
+                  <div style = {{background: 'rgba(195, 245, 179, 0.2)', boxShadow: '0px 4px 5px rgba(0, 0, 0, 0.05)', fontSize: 14, width: '100%', margin: 'auto', marginBottom: 20, color: "#2f960e", padding: '13px 28px', borderRadius: 10}}>
+                    <span style = {{fontWeight: 'bold'}}>Current Status: </span>{this.props.disk_creation_message}
+                  </div>
+                </Col>
                 <Col xs = {12} md = {8}>
                   <div style = {{borderRadius: 10, boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.2)', textAlign: 'center', backgroundImage: "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" + Car + ")", backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center", padding: '30px 50px', minHeight: 260, margin:'auto', width: '100%', marginBottom: 20}}>
                     <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: "#333333", height: 25, marginTop: 15}}/>
                     <div style = {{color: "#333333", fontSize: 24, marginTop: 20, fontWeight: 'bold'}}>Your Cloud PC Is Creating</div>
                     <div style = {{fontSize: 14, maxWidth: 500, margin: 'auto', marginTop: 15, color: "#111111"}}>
-                      This should take no more than 20-30 minutes.
+                      This should take no more than 15-20 minutes.
                       Once your cloud PC is ready, you'll be able to download our desktop application below to launch your cloud PC.
-                    </div>
-                    <div style = {{fontSize: 14, maxWidth: 500, margin: 'auto', marginTop: 25, color: "#333333"}}>
-                      <span style = {{fontWeight: 'bold'}}>Current Status: </span>{this.props.disk_creation_message}
                     </div>
                   </div>
                 </Col>
@@ -570,6 +572,17 @@ class Dashboard extends Component {
             :
             <div>
             <Row style = {{marginTop: 30}}>
+              {
+              this.props.disk_creation_message !== 'Create Cloud PC command sent to server.'
+              ?
+              <Col xs = {12} style = {{paddingLeft: 15, paddingRight: 15}}>
+                <div style = {{background: 'rgba(195, 245, 179, 0.2)', boxShadow: '0px 4px 5px rgba(0, 0, 0, 0.05)', fontSize: 14, width: '100%', margin: 'auto', marginBottom: 20, color: "#2f960e", padding: '13px 28px', borderRadius: 10}}>
+                  Success! Your cloud PC is ready to use. Simply download the appropriate client application below.
+                </div>
+              </Col>
+              :
+              <div></div>
+              }
               <Col xs = {12} md = {7}>
                 <Row>
                   <Col sm = {6} xs = {12}>

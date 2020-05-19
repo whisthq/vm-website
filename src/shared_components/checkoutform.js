@@ -40,9 +40,7 @@ class CheckoutForm extends Component {
   };
 
   changeToken = (evt) => {
-    this.setState({code: evt.target.value}, function() {
-      console.log(this.state.code)
-    })
+    this.setState({code: evt.target.value})
   }
 
   monthConvert = (month) => {

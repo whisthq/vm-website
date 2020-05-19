@@ -205,16 +205,6 @@ function* sendFinalCharge(action) {
       history.push("/dashboard");
       yield put(FormAction.vmCreating(true));
       yield put(FormAction.triggerSurvey(true));
-      yield call(
-        apiPost,
-        config.url.MAIL_SERVER + "/purchase",
-        {
-          username: state.AccountReducer.user,
-          location: action.location,
-          code: state.AccountReducer.promoCode,
-        },
-        ""
-      );
     } else {
       yield put(FormAction.stripeFailure(json.status));
     }
