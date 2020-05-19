@@ -344,6 +344,15 @@ function* attachDisk(disk_name) {
   }
 }
 
+function formatDate(num) {
+  num = String(num)
+  var singleDigits = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+  if(singleDigits.includes(num)) {
+    num = "0" + num 
+  }
+  return(num)
+}
+
 function* fetchDiskStatus(action) {
   const state = yield select();
   var { json } = yield call(
@@ -360,7 +369,9 @@ function* fetchDiskStatus(action) {
     );
 
     if (json && json.output && json.state === 'PENDING') {
-      yield put(FormAction.changeStatusMessage(json.output.msg));
+      var now = new Date();
+      var message = "(" + formatDate(now.getHours()) + ":" + formatDate(now.getMinutes())+ ":" + formatDate(now.getSeconds()) + ") " + json.output.msg
+      yield put(FormAction.changeStatusMessage(message));
     }
 
     console.log(json)
