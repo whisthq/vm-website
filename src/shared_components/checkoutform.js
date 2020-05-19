@@ -108,11 +108,11 @@ class CheckoutForm extends Component {
 
     return (
       <form onSubmit={this.handleSubmit} onKeyPress = {this.handleSubmitKey}>
-        <label style = {{width: '100%', maxWidth: 900, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', borderRadius: 4}}>
+        <label style = {{width: '100%', maxWidth: 900, boxShadow: '0px 4px 5px rgba(0, 0, 0, 0.05)', borderRadius: 4}}>
           <CardElement className="MyCardElement" style={style} />
         </label>
         <div className = "referral-code">
-          <input onChange = {this.changeToken} type = "text" style = {{fontSize: 14, color: "#333333", maxWidth: 900, border: 'none', borderRadius: 4, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', width: '100%', padding: '8px 5px', paddingLeft: 15}} placeholder = "Referral Code (Optional)"/>
+          <input onChange = {this.changeToken} type = "text" style = {{fontSize: 14, color: "#333333", maxWidth: 900, border: 'none', borderRadius: 4, boxShadow: '0px 4px 5px rgba(0, 0, 0, 0.05)', width: '100%', padding: '8px 5px', paddingLeft: 15}} placeholder = "Referral Code (Optional)"/>
         </div>
         <div style = {{maxWidth: 900}}>
           {
@@ -128,7 +128,7 @@ class CheckoutForm extends Component {
           :
           <div style = {{display: 'block'}}>
             <div>
-              <Button disabled = "true" style = {{marginBottom: 10, width: '100%', maxWidth: 900, background: "rgba(94, 195, 235, 0.2)", border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)', paddingTop: 8, paddingBottom: 8, float: 'left', display: 'inline', height: 40}}>
+              <Button disabled = "true" style = {{marginBottom: 10, width: '100%', maxWidth: 900, background: "rgba(94, 195, 235, 0.2)", border: 0, marginTop: 20, fontWeight: 'bold', fontSize: 14, boxShadow: '0px 4px 5px rgba(0, 0, 0, 0.05)', paddingTop: 8, paddingBottom: 8, float: 'left', display: 'inline', height: 40}}>
                 <FontAwesomeIcon icon={faCircleNotch} spin style = {{color: '#1ba8e0', height: 12, marginRight: 5, fontSize: 12}}/>
               </Button>
             </div><br/>
