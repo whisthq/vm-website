@@ -6,7 +6,7 @@ const DEFAULT = {user: '', password: '', loggedIn: false, stage: 1, amount: 25, 
                  currentPage: 'personal', emailStatus: 0, promoCode: '', credits: 0, failed_referral_attempts: 0, 
                  email_verified: false, verificationToken: '', verificationEmailsSent: 0, customer_status: 0, show_survey: false,
                  customer: {}, account_locked: false, access_token: '', refresh_token: '', purchase_location: '', dashboard_loaded: false, status_id: null,
-                 disk_creation_message: ''}
+                 disk_creation_message: '', current_disk: null}
 
 export default function (state = DEFAULT, action) {
   switch (action.type) {
@@ -192,6 +192,11 @@ export default function (state = DEFAULT, action) {
       return {
         ...state,
         disk_creation_message: action.disk_creation_message
+      }
+    case AccountAction.STORE_CURRENT_DISK:
+      return {
+        ...state,
+        current_disk: action.current_disk
       }
     default:
       return state

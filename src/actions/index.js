@@ -70,6 +70,7 @@ export const DASHBOARD_LOADED = "DASHBOARD_LOADED";
 export const STORE_ID = "STORE_ID"
 export const FETCH_DISK_STATUS = "FETCH_DISK_STATUS"
 export const CHANGE_STATUS_MESSAGE = "CHANGE_STATUS_MESSAGE"
+export const STORE_CURRENT_DISK = "STORE_CURRENT_DISK"
 
 export function userLogin(user, password, create) {
   return {
@@ -462,5 +463,12 @@ export function changeStatusMessage(disk_creation_message) {
   return {
     type: CHANGE_STATUS_MESSAGE,
     disk_creation_message
+  }
+}
+
+export function storeCurrentDisk(current_disk) {
+  return {
+    type: STORE_CURRENT_DISK,
+    current_disk
   }
 }

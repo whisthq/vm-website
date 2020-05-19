@@ -323,6 +323,7 @@ function* getDiskStatus(action) {
 
   if (json && json.output) {
     yield put(FormAction.vmCreating(true))
+    yield put(FormAction.storeCurrentDisk(json.output.disk_name))
     yield call(attachDisk, json.output.disk_name)
   }
 }
@@ -382,6 +383,12 @@ function* fetchDiskStatus(action) {
   if (json && json.state && json.state === 'SUCCESS') {
     yield put(FormAction.vmCreating(false))
     yield put(FormAction.fetchDisks(state.AccountReducer.user))
+  }
+
+  if (json && json.state && json.state === 'FAILURE') {
+    var now = new Date();
+    var message = "(" + formatDate(now.getHours()) + ":" + formatDate(now.getMinutes())+ ":" + formatDate(now.getSeconds()) + ") " + 'Unexpectedly lost connection with server. Trying again.'
+    yield call(attachDisk, state.AccountReducer.current_disk)
   }
 }
 
