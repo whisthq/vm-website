@@ -1,13 +1,13 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import { getNews } from '../../../actions';
+import { getNews } from "../../../actions";
 
-let Button=({getNews})=>(
-   <button onClick={getNews}>Press to see news</button>
-)
+let Button = ({ getNews }) => (
+    <button onClick={getNews}>Press to see news</button>
+);
 const mapDispatchToProps = {
-     getNews: getNews,
+    getNews: getNews,
 };
-Button = connect(null,mapDispatchToProps)(Button);
+Button = connect(null, mapDispatchToProps)(Button);
 export default Button;
