@@ -74,7 +74,7 @@ class CreditCard extends Component {
               </div>
             </div>
           )
-        } else {
+        } else{
           return(
             <div>
               <div style = {{paddingBottom: 20}}>
