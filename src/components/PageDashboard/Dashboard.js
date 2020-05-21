@@ -55,7 +55,7 @@ import SSD from "../../assets/hard-drive-icon.svg";
 import WindowsBin from "../../bin/Fractal.exe";
 import MacBin from "../../bin/Fractal.dmg";
 import LinuxBin from "../../bin/Fractal.AppImage";
-import Car from "../../assets/Car.jpg";
+import Mountain from "../../assets/mountain.jpg";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -1306,7 +1306,7 @@ class Dashboard extends Component {
                                                                             "center",
                                                                         backgroundImage:
                                                                             "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" +
-                                                                            Car +
+                                                                            Mountain +
                                                                             ")",
                                                                         backgroundSize:
                                                                             "cover",
@@ -1638,7 +1638,7 @@ class Dashboard extends Component {
                                                                             "center",
                                                                         backgroundImage:
                                                                             "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" +
-                                                                            Car +
+                                                                            Mountain +
                                                                             ")",
                                                                         backgroundSize:
                                                                             "cover",
