@@ -21,12 +21,6 @@ https://packagecontrol.io/packages/JsPrettier
 Install prettier if you haven't yet.
 
 ```
-# yarn (local):
-yarn add prettier --dev
-
-# yarn (global):
-yarn global add prettier
-
 # npm (local):
 npm install --save-dev prettier
 
