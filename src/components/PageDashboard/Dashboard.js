@@ -2049,7 +2049,7 @@ class Dashboard extends Component {
                                                                         to the
                                                                         Hourly
                                                                         plan.
-                                                                        Change
+                                                                        You can change
                                                                         your 
                                                                         plan here.
                                                                     </div>
@@ -2080,7 +2080,7 @@ class Dashboard extends Component {
                                                                         to the
                                                                         Monthly
                                                                         plan.
-                                                                        Change
+                                                                        You can change
                                                                         your plan here.
                                                                     </div>
                                                                 ) : (
@@ -2106,7 +2106,7 @@ class Dashboard extends Component {
                                                                         to the
                                                                         Unlimited
                                                                         plan.
-                                                                        Change
+                                                                        You can change
                                                                         your plan here.
                                                                     </div>
                                                                 )}
