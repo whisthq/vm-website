@@ -71,6 +71,8 @@ export const STORE_ID = "STORE_ID";
 export const FETCH_DISK_STATUS = "FETCH_DISK_STATUS";
 export const CHANGE_STATUS_MESSAGE = "CHANGE_STATUS_MESSAGE";
 export const STORE_CURRENT_DISK = "STORE_CURRENT_DISK";
+export const CHANGE_PLAN = "CHANGE_PLAN";
+export const CHANGE_PLAN_STATUS = "CHANGE_PLAN_STATUS"
 
 export function userLogin(user, password, create) {
     return {
@@ -471,4 +473,18 @@ export function storeCurrentDisk(current_disk) {
         type: STORE_CURRENT_DISK,
         current_disk,
     };
+}
+
+export function changePlan(plan) {
+    return {
+        type: CHANGE_PLAN,
+        plan
+    }
+}
+
+export function changePlanStatus(status) {
+    return {
+        type: CHANGE_PLAN_STATUS,
+        status
+    }
 }

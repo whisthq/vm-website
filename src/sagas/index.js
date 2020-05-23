@@ -588,12 +588,30 @@ function* createDisk(action) {
         state.AccountReducer.access_token
     );
 
-    console.log("DISK RESPOSNE");
-    console.log(json);
-
     if (json) {
         if (json.ID) {
             yield put(FormAction.getDiskStatus(json.ID));
+        }
+    }
+}
+
+function* changePlan(action) {
+    const state = yield select();
+    const { json } = yield call(
+        apiPost,
+        config.url.PRIMARY_SERVER + "/stripe/update",
+        {
+            username: state.AccountReducer.user,
+            plan: action.plan 
+        },
+        state.AccountReducer.access_token
+    );
+
+    if(json) {
+        yield put(FormAction.changePlanStatus(json.status))
+
+        if(json.status === 200) {
+            history.push("/dashboard")
         }
     }
 }
@@ -624,5 +642,6 @@ export default function* rootSaga() {
         takeEvery(FormAction.SUBMIT_PURCHASE_FEEDBACK, submitPurchaseFeedback),
         takeEvery(FormAction.CREATE_DISK, createDisk),
         takeEvery(FormAction.FETCH_DISK_STATUS, fetchDiskStatus),
+        takeEvery(FormAction.CHANGE_PLAN, changePlan)
     ]);
 }

@@ -28,6 +28,7 @@ import TermsOfService from "./components/PageLegal/TermsOfService";
 import EmailVerification from "./components/PageAuth/EmailVerification";
 import CreditCard from "./components/PagePurchase/CreditCard";
 import About from "./components/PageAbout/About";
+import Plan from "./components/PagePurchase/Plan"
 
 const persistConfig = {
     key: "rootKey",
@@ -54,7 +55,11 @@ ReactDOM.render(
     <Router history={history}>
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-                <Route exact path="/" component={NewHome} />
+                <Route 
+                    exact 
+                    path="/" 
+                    component={NewHome} 
+                />
                 <Route exact path="/purchase" component={Purchase} />
                 <Route exact path="/auth" component={Auth} />
                 <Route exact path="/dashboard" component={Dashboard} />
@@ -70,6 +75,7 @@ ReactDOM.render(
                 <Route exact path="/verify" component={EmailVerification} />
                 <Route exact path="/card" component={CreditCard} />
                 <Route exact path="/about" component={About} />
+                <Route exact path="/plan" component={Plan} />
             </PersistGate>
         </Provider>
     </Router>,

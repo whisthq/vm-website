@@ -1970,13 +1970,11 @@ class Dashboard extends Component {
                                                         </Row>
                                                     </Col>
                                                     <Col md={5} xs={12}>
-                                                        <Link
+                                                        <HashLink 
+                                                            to="/plan/#top"
                                                             style={{
-                                                                textDecoration:
-                                                                    "none",
-                                                                color: "white",
-                                                            }}
-                                                        >
+                                                                textDecoration: "none"
+                                                            }}>
                                                             <div
                                                                 style={{
                                                                     borderRadius: 5,
@@ -2052,10 +2050,8 @@ class Dashboard extends Component {
                                                                         Hourly
                                                                         plan.
                                                                         Change
-                                                                        plan
-                                                                        feature
-                                                                        coming
-                                                                        soon.
+                                                                        your 
+                                                                        plan here.
                                                                     </div>
                                                                 ) : this.props
                                                                       .payment
@@ -2085,10 +2081,7 @@ class Dashboard extends Component {
                                                                         Monthly
                                                                         plan.
                                                                         Change
-                                                                        plan
-                                                                        feature
-                                                                        coming
-                                                                        soon.
+                                                                        your plan here.
                                                                     </div>
                                                                 ) : (
                                                                     <div
@@ -2114,14 +2107,11 @@ class Dashboard extends Component {
                                                                         Unlimited
                                                                         plan.
                                                                         Change
-                                                                        plan
-                                                                        feature
-                                                                        coming
-                                                                        soon.
+                                                                        your plan here.
                                                                     </div>
                                                                 )}
                                                             </div>
-                                                        </Link>
+                                                        </HashLink>
                                                     </Col>
                                                 </Row>
                                             </div>
