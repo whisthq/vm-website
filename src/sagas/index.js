@@ -405,8 +405,8 @@ function* fetchDiskStatus(action) {
     }
 
     if (json && json.state && json.state === "FAILURE") {
-        var now2 = new Date();
-        // var message = // TODO: NEVER CALLED, IS THIS STILL NEEDED?
+        // var now2 = new Date(); // TODO: NEVER CALLED, IS THIS STILL NEEDED?
+        // var message =
         //     "(" +
         //     formatDate(now2.getHours()) +
         //     ":" +
