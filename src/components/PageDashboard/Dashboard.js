@@ -1448,7 +1448,7 @@ class Dashboard extends Component {
                                                                             "center",
                                                                         backgroundImage:
                                                                             "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" +
-                                                                            Car +
+                                                                            Mountain +
                                                                             ")",
                                                                         backgroundSize:
                                                                             "cover",

@@ -214,8 +214,6 @@ function* sendFinalCharge(action) {
     if (json) {
         if (json.status === 200) {
             history.push("/dashboard");
-            yield put(FormAction.vmCreating(true));
-            yield put(FormAction.triggerSurvey(true));
         } else {
             yield put(FormAction.stripeFailure(json.status));
         }
