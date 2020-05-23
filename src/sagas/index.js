@@ -324,7 +324,7 @@ function* getDiskStatus(action) {
     );
 
     while (json.state !== "SUCCESS" && json.state !== "FAILURE") {
-        var { json } = yield call(
+        json = yield call(
             apiGet,
             (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
             ""
@@ -374,24 +374,24 @@ function* fetchDiskStatus(action) {
     );
 
     while (json.state === "PENDING" || json.state === "STARTED") {
-        var { json } = yield call(
+        json = yield call(
             apiGet,
             (config.url.PRIMARY_SERVER + "/status/").concat(action.status_id),
             state.AccountReducer.access_token
         );
 
         if (json && json.output && json.state === "PENDING") {
-            var now = new Date();
-            var message =
+            var now1 = new Date();
+            var message1 =
                 "(" +
-                formatDate(now.getHours()) +
+                formatDate(now1.getHours()) +
                 ":" +
-                formatDate(now.getMinutes()) +
+                formatDate(now1.getMinutes()) +
                 ":" +
-                formatDate(now.getSeconds()) +
+                formatDate(now1.getSeconds()) +
                 ") " +
                 json.output.msg;
-            yield put(FormAction.changeStatusMessage(message));
+            yield put(FormAction.changeStatusMessage(message1));
         }
 
         console.log(json);
@@ -405,16 +405,16 @@ function* fetchDiskStatus(action) {
     }
 
     if (json && json.state && json.state === "FAILURE") {
-        var now = new Date();
-        var message =
-            "(" +
-            formatDate(now.getHours()) +
-            ":" +
-            formatDate(now.getMinutes()) +
-            ":" +
-            formatDate(now.getSeconds()) +
-            ") " +
-            "Unexpectedly lost connection with server. Trying again.";
+        var now2 = new Date();
+        // var message = // TODO: NEVER CALLED, IS THIS STILL NEEDED?
+        //     "(" +
+        //     formatDate(now2.getHours()) +
+        //     ":" +
+        //     formatDate(now2.getMinutes()) +
+        //     ":" +
+        //     formatDate(now2.getSeconds()) +
+        //     ") " +
+        //     "Unexpectedly lost connection with server. Trying again.";
         yield call(attachDisk, state.AccountReducer.current_disk);
     }
 }
