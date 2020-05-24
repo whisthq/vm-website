@@ -3,21 +3,15 @@ import { Row, Col, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { FaAngleUp, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
-import { FaArrowRight } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "../../shared_components/header.js";
-import TypeformButton from "../../shared_components/typeformbutton.js";
 import "../../static/App.css";
-import Autocomplete from "./AutoComplete.js";
-import { options } from "./Options.js";
 import {
     addStorage,
     addStorageStatus
 } from "../../actions/index.js";
-import SpecBox from "./containers/specBox.js";
 import PriceBox from "./containers/priceBox.js";
 
 class Storage extends Component {
@@ -137,7 +131,6 @@ class Storage extends Component {
                                 }
                             >
                                 <PriceBox
-                                    color="white"
                                     name="Small Hard Drive"
                                     subText="Automatically added to cloud PC"
                                     price="12"
@@ -165,7 +158,6 @@ class Storage extends Component {
                                 }
                             >
                                 <PriceBox
-                                    color="white"
                                     name="Medium Hard Drive"
                                     subText="Automatically added to cloud PC"
                                     price="24"

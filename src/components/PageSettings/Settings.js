@@ -9,39 +9,18 @@ import Header from "../../shared_components/header.js";
 import {
     logout,
     retrieveCustomer,
-    vmCreating,
-    cancelPlan,
     fetchDisks,
-    sendFriendsEmail,
-    fetchDiskStatus,
-    emailSent,
-    triggerSurvey,
-    submitPurchaseFeedback,
-    dashboardLoaded,
+    dashboardLoaded
 } from "../../actions/index.js";
 import "react-tabs/style/react-tabs.css";
 import {
-    FaClone,
-    FaTimes,
-    FaCheck,
-    FaUser,
     FaPlus,
-    FaPlay,
-    FaFastForward,
-    FaPause,
-    FaWindows,
-    FaApple,
-    FaUbuntu,
-    FaAndroid,
-    FaTag,
     FaFighterJet,
     FaSpaceShuttle
 } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-    faCircleNotch,
-    faCreditCard,
-    faTag,
+    faCircleNotch
 } from "@fortawesome/free-solid-svg-icons";
 import { HashLink } from "react-router-hash-link";
 
@@ -50,14 +29,7 @@ import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import Popup from "reactjs-popup";
 
-import CPU from "../../assets/cpu.svg";
-import GPU from "../../assets/gpu.svg";
-import RAM from "../../assets/ram.svg";
 import SSD from "../../assets/hard-drive-icon.svg";
-import WindowsBin from "../../bin/Fractal.exe";
-import MacBin from "../../bin/Fractal.dmg";
-import LinuxBin from "../../bin/Fractal.AppImage";
-import Mountain from "../../assets/mountain.jpg";
 
 class Settings extends Component {
     constructor(props) {
@@ -412,18 +384,8 @@ class Settings extends Component {
                                         {
                                         this.props.disks 
                                         ?
-                                        <Row style={{ marginTop: 40 }}>
+                                        <Row style={{ marginTop: 5 }}>
                                             <Col xs={12}>
-                                                <div
-                                                    style={{
-                                                        fontSize: 20,
-                                                        fontWeight: "bold",
-                                                        marginBottom: 20,
-                                                        display: "inline",
-                                                    }}
-                                                >
-                                                    Cloud PC Storage
-                                                </div>
                                                 <Row style = {{width: "100%"}}>
                                                     {this.props.disks.map((value, index) => {
                                                         return(
@@ -608,7 +570,7 @@ class Settings extends Component {
                                                                 }}
                                                             >    
                                                                 <FaFighterJet style = {{
-                                                                    color: "#111111",
+                                                                    color: "#444444",
                                                                     fontSize: 40,
                                                                     marginTop: 10
                                                                 }}/>
@@ -676,7 +638,7 @@ class Settings extends Component {
                                                                 }}
                                                             >    
                                                                 <FaSpaceShuttle style = {{
-                                                                    color: "#111111",
+                                                                    color: "#444444",
                                                                     fontSize: 40,
                                                                     marginTop: 10
                                                                 }}/>

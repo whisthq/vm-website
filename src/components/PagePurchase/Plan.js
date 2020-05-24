@@ -3,21 +3,15 @@ import { Row, Col, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { FaAngleUp, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
-import { FaArrowRight } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "../../shared_components/header.js";
-import TypeformButton from "../../shared_components/typeformbutton.js";
 import "../../static/App.css";
-import Autocomplete from "./AutoComplete.js";
-import { options } from "./Options.js";
 import {
     changePlan, 
     changePlanStatus
 } from "../../actions/index.js";
-import SpecBox from "./containers/specBox.js";
 import PriceBox from "./containers/priceBox.js";
 
 class Plan extends Component {
@@ -41,11 +35,11 @@ class Plan extends Component {
         window.addEventListener("resize", this.updateWindowDimensions);
         if (this.props.payment && Object.keys(this.props.payment).length > 0 && this.props.payment.plan) {
             const nickname = this.props.payment.plan.nickname
-            if(nickname == 'Fractal Hourly') {
+            if(nickname === 'Fractal Hourly') {
                 this.setState({old_plan: "Hourly", plan: "Hourly"})
-            } else if(nickname == "Fractal Monthly") {
+            } else if(nickname === "Fractal Monthly") {
                 this.setState({old_plan: "Monthly", plan: "Monthly"})
-            } else if (nickname == "Fractal Unlimited") {
+            } else if (nickname === "Fractal Unlimited") {
                 this.setState({old_plan: "Unlimited", plan: "Unlimited"})
             }
         }
@@ -150,7 +144,6 @@ class Plan extends Component {
                                 }
                             >
                                 <PriceBox
-                                    color="white"
                                     name="Monthly"
                                     price="39"
                                     details={
@@ -179,7 +172,6 @@ class Plan extends Component {
                                 }
                             >
                                 <PriceBox
-                                    color="white"
                                     name="Unlimited"
                                     price="99"
                                     details="Unlimited daily usage"
@@ -214,7 +206,6 @@ class Plan extends Component {
                                 }
                             >
                                 <PriceBox
-                                    color="white"
                                     name="Hourly"
                                     price="5"
                                     details="+$0.70 / hr of usage"
@@ -237,7 +228,6 @@ class Plan extends Component {
                                 }
                             >
                                 <PriceBox
-                                    color="white"
                                     name="Unlimited"
                                     price="99"
                                     details="Unlimited daily usage"
@@ -269,7 +259,6 @@ class Plan extends Component {
                                 }
                             >
                                 <PriceBox
-                                    color="white"
                                     name="Hourly"
                                     price="5"
                                     details="+$0.70 / hr of usage"
@@ -292,7 +281,6 @@ class Plan extends Component {
                                 }
                             >
                                 <PriceBox
-                                    color="white"
                                     name="Monthly"
                                     price="39"
                                     details={

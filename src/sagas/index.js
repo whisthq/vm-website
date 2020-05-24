@@ -322,13 +322,18 @@ function* getDiskStatus(action) {
     );
 
     while (json.state !== "SUCCESS" && json.state !== "FAILURE") {
-        var { json } = yield call(
+        json = yield call(
             apiGet,
             (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
             ""
         );
+        if(json) {
+            json = json.json
+        }
         yield delay(5000);
     }
+
+    console.log(json)
 
     if (json && json.output) {
         yield put(FormAction.vmCreating(true));
@@ -347,6 +352,8 @@ function* attachDisk(disk_name) {
         },
         state.AccountReducer.access_token
     );
+
+    console.log(json)
 
     if (json && json.ID) {
         yield put(FormAction.storeID(json.ID));
@@ -377,6 +384,10 @@ function* fetchDiskStatus(action) {
             (config.url.PRIMARY_SERVER + "/status/").concat(action.status_id),
             state.AccountReducer.access_token
         );
+
+        if(json) {
+            json = json.json
+        }
 
         if (json && json.output && json.state === "PENDING") {
             var now1 = new Date();
@@ -648,12 +659,16 @@ function* getStorageStatus(ID) {
     );
 
     while (json.state !== "SUCCESS" && json.state !== "FAILURE") {
-        var { json } = yield call(
+        json = yield call(
             apiGet,
             (config.url.PRIMARY_SERVER + "/status/").concat(ID),
             ""
         );
-        console.log(json)
+
+        if(json) {
+            json = json.json 
+        }
+
         yield delay(2500);
     }
 

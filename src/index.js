@@ -16,7 +16,6 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import history from "./history";
 import "./static/App.css";
-import { config } from "./constants.js";
 
 import Purchase from "./components/PagePurchase/Purchase";
 import Auth from "./components/PageAuth/Auth";
