@@ -86,6 +86,7 @@ class Dashboard extends Component {
             waitlist: false,
             loaded: false,
             clipboardCopied: false,
+            total_storage: "120GB"
         };
         this.customWidth = React.createRef();
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -113,6 +114,16 @@ class Dashboard extends Component {
         if (this.props.status_id && this.props.is_creating) {
             this.props.dispatch(fetchDiskStatus(this.props.status_id));
         }
+
+        if(this.props.disks && Object.keys(this.props.disks).length > 1) {
+            var total_storage = 0
+            this.props.disks.forEach(function(disk) {
+                total_storage = total_storage + Number(disk["disk_size"]) 
+            });
+            this.setState({
+               total_storage: total_storage.toString() + "GB"
+            });
+        };
     }
 
     componentWillUnmount() {
@@ -533,6 +544,13 @@ class Dashboard extends Component {
                                             >
                                                 DASHBOARD
                                             </div>
+                                            <Link to = "/settings" 
+                                                className="sign-out-button" 
+                                                style = {{textDecoration: "none",
+                                                          color: "#B9B9B9"}}
+                                            >
+                                                SETTINGS
+                                            </Link>
                                             <div
                                                 className="sign-out-button"
                                                 onClick={() =>
@@ -540,6 +558,9 @@ class Dashboard extends Component {
                                                         logout()
                                                     )
                                                 }
+                                                style = {{
+                                                    marginTop: 15
+                                                }}
                                             >
                                                 SIGN OUT
                                             </div>
@@ -1962,8 +1983,8 @@ class Dashboard extends Component {
                                                                             fontSize: 13,
                                                                         }}
                                                                     >
-                                                                        120GB
-                                                                        NVMe
+                                                                        {this.state.total_storage} 
+                                                                        &nbsp;Storage
                                                                     </div>
                                                                 </div>
                                                             </Col>
@@ -2395,8 +2416,8 @@ class Dashboard extends Component {
                                                                             fontSize: 13,
                                                                         }}
                                                                     >
-                                                                        120GB
-                                                                        NVMe
+                                                                        {this.state.total_storage}
+                                                                        &nbsp;Storage
                                                                     </div>
                                                                 </div>
                                                             </Col>
@@ -2439,6 +2460,7 @@ class Dashboard extends Component {
                                                                             "white",
                                                                         height: 25,
                                                                         marginTop: 15,
+                                                                        fontSize: 20
                                                                     }}
                                                                 />
                                                                 <div

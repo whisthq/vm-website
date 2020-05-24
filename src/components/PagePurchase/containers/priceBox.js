@@ -52,7 +52,7 @@ class PriceBox extends Component {
             }
           </div>
           <div style = {{fontSize: 12, color: '#555555'}}>
-            Start with free trial
+            {this.props.subText}
           </div>
         <div style = {{marginTop: 10, display: 'block', height: 80}}>
           <div style = {{display: 'inline', float: 'left', position: 'relative', marginRight: 5, top: 10}}>

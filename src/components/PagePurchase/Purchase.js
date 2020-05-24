@@ -1286,6 +1286,7 @@ class Purchase extends Component {
                                 >
                                     <PriceBox
                                         color="white"
+                                        subText="Starts with free trial"
                                         name="Hourly"
                                         price="5"
                                         details="+$0.70 / hr of usage"
@@ -1301,6 +1302,7 @@ class Purchase extends Component {
                                 >
                                     <PriceBox
                                         color="white"
+                                        subText="Starts with free trial"
                                         name="Monthly"
                                         price="39"
                                         details={
@@ -1322,6 +1324,7 @@ class Purchase extends Component {
                                 >
                                     <PriceBox
                                         color="white"
+                                        subText="Starts with free trial"
                                         name="Unlimited"
                                         price="99"
                                         details="Unlimited daily usage"
