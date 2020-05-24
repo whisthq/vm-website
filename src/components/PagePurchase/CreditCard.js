@@ -99,13 +99,13 @@ class CreditCard extends Component {
         return(
           <Row style = {{marginTop: 50, paddingLeft: this.state.width > 700 ? 39 : 15}}>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Hourly'})} className = "pointerOnHover">
-              <PriceBox color = "white" name = "Hourly" price = "5" details = "+$0.70 / hr of usage"/>
+              <PriceBox color = "white" subText="Starts with free trial" name = "Hourly" price = "5" details = "+$0.70 / hr of usage"/>
             </Col>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Monthly'})} className = "pointerOnHover">
-              <PriceBox color = "white" name = "Monthly" price = "39" details = {<div>6 hr / day<br/>+$0.50 per extra hr</div>}/>
+              <PriceBox color = "white" subText="Starts with free trial" name = "Monthly" price = "39" details = {<div>6 hr / day<br/>+$0.50 per extra hr</div>}/>
             </Col>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Unlimited'})} className = "pointerOnHover">
-              <PriceBox color = "white" name = "Unlimited" price = "99" details = "Unlimited daily usage"/>
+              <PriceBox color = "white" subText="Starts with free trial" name = "Unlimited" price = "99" details = "Unlimited daily usage"/>
             </Col>
           </Row>
         )
@@ -113,13 +113,13 @@ class CreditCard extends Component {
         return(
           <Row style = {{marginTop: 50, paddingLeft: this.state.width > 700 ? 39 : 15}}>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Hourly'})} className = "pointerOnHover">
-              <PriceBox color = "rgba(94, 195, 235, 0.1)" name = "Hourly" price = "5" details = "+$0.70 / hr of usage" checked/>
+              <PriceBox color = "rgba(94, 195, 235, 0.1)" subText="Starts with free trial" name = "Hourly" price = "5" details = "+$0.70 / hr of usage" checked/>
             </Col>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Monthly'})} className = "pointerOnHover">
-              <PriceBox color = "white" name = "Monthly" price = "39" details = {<div>6 hr / day<br/>+$0.50 per extra hr</div>}/>
+              <PriceBox color = "white" name = "Monthly" subText="Starts with free trial" price = "39" details = {<div>6 hr / day<br/>+$0.50 per extra hr</div>}/>
             </Col>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Unlimited'})} className = "pointerOnHover">
-              <PriceBox color = "white" name = "Unlimited" price = "99" details = "Unlimited daily usage"/>
+              <PriceBox color = "white" name = "Unlimited" subText="Starts with free trial" price = "99" details = "Unlimited daily usage"/>
             </Col>
           </Row>
         )
@@ -127,13 +127,13 @@ class CreditCard extends Component {
         return(
           <Row style = {{marginTop: 50, paddingLeft: this.state.width > 700 ? 39 : 15}}>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Hourly'})} className = "pointerOnHover">
-              <PriceBox color = "white" name = "Hourly" price = "5" details = "+$0.70 / hr of usage"/>
+              <PriceBox color = "white" name = "Hourly" subText="Starts with free trial" price = "5" details = "+$0.70 / hr of usage"/>
             </Col>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Monthly'})} className = "pointerOnHover">
-              <PriceBox color = "rgba(94, 195, 235, 0.1)" name = "Monthly" price = "39" details = {<div>6 hr / day<br/>+$0.50 per extra hr</div>} checked/>
+              <PriceBox color = "rgba(94, 195, 235, 0.1)" subText="Starts with free trial" name = "Monthly" price = "39" details = {<div>6 hr / day<br/>+$0.50 per extra hr</div>} checked/>
             </Col>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Unlimited'})} className = "pointerOnHover">
-              <PriceBox color = "white" name = "Unlimited" price = "99" details = "Unlimited daily usage"/>
+              <PriceBox color = "white" name = "Unlimited" subText="Starts with free trial" price = "99" details = "Unlimited daily usage"/>
             </Col>
           </Row>
         )
@@ -141,13 +141,13 @@ class CreditCard extends Component {
         return(
           <Row style = {{marginTop: 50, paddingLeft: this.state.width > 700 ? 39 : 15}}>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Hourly'})} className = "pointerOnHover">
-              <PriceBox color = "white" name = "Hourly" price = "5" details = "+$0.70 / hr of usage"/>
+              <PriceBox color = "white" name = "Hourly" subText="Starts with free trial" price = "5" details = "+$0.70 / hr of usage"/>
             </Col>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Monthly'})} className = "pointerOnHover">
-              <PriceBox color = "white" name = "Monthly" price = "39" details = {<div>6 hr / day<br/>+$0.50 per extra hr</div>}/>
+              <PriceBox color = "white" name = "Monthly" subText="Starts with free trial" price = "39" details = {<div>6 hr / day<br/>+$0.50 per extra hr</div>}/>
             </Col>
             <Col md = {4} style = {{paddingLeft: 0}} onClick = {() => this.setState({plan: 'Unlimited'})} className = "pointerOnHover">
-              <PriceBox color = "rgba(94, 195, 235, 0.1)" name = "Unlimited" price = "99" details = "Unlimited daily usage" checked/>
+              <PriceBox color = "rgba(94, 195, 235, 0.1)" subText="Starts with free trial" name = "Unlimited" price = "99" details = "Unlimited daily usage" checked/>
             </Col>
           </Row>
         )

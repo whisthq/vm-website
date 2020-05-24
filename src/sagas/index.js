@@ -322,7 +322,7 @@ function* getDiskStatus(action) {
     );
 
     while (json.state !== "SUCCESS" && json.state !== "FAILURE") {
-        json = yield call(
+        var { json } = yield call(
             apiGet,
             (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
             ""
@@ -424,6 +424,7 @@ function* fetchDisks(action) {
         config.url.PRIMARY_SERVER + "/user/fetchdisks",
         {
             username: state.AccountReducer.user,
+            main: false
         },
         ""
     );
@@ -616,6 +617,56 @@ function* changePlan(action) {
     }
 }
 
+function* addStorage(action) {
+    const state = yield select(); 
+    console.log(action)
+    console.log(state.AccountReducer.user)
+    const { json } = yield call(
+        apiPost,
+        config.url.PRIMARY_SERVER + "/disk/createEmpty",
+        {
+            username: state.AccountReducer.user,
+            disk_size: action.storage
+        },
+        state.AccountReducer.access_token
+    )
+
+    console.log(json)
+
+    if (json) {
+        if (json.ID) {
+            yield call(getStorageStatus, json.ID)
+        }
+    }
+}
+
+function* getStorageStatus(ID) {
+    var { json } = yield call(
+        apiGet,
+        (config.url.PRIMARY_SERVER + "/status/").concat(ID),
+        ""
+    );
+
+    while (json.state !== "SUCCESS" && json.state !== "FAILURE") {
+        var { json } = yield call(
+            apiGet,
+            (config.url.PRIMARY_SERVER + "/status/").concat(ID),
+            ""
+        );
+        console.log(json)
+        yield delay(2500);
+    }
+
+    if (json && json.state) {
+        if(json.state === "SUCCESS") {
+            yield put(FormAction.addStorageStatus(200))
+            history.push("/settings")
+        } else {
+            yield put(FormAction.addStorageStatus(400))
+        }
+    }
+}
+
 export default function* rootSaga() {
     yield all([
         takeEvery(FormAction.USER_LOGIN, sendLoginInfo),
@@ -642,6 +693,7 @@ export default function* rootSaga() {
         takeEvery(FormAction.SUBMIT_PURCHASE_FEEDBACK, submitPurchaseFeedback),
         takeEvery(FormAction.CREATE_DISK, createDisk),
         takeEvery(FormAction.FETCH_DISK_STATUS, fetchDiskStatus),
-        takeEvery(FormAction.CHANGE_PLAN, changePlan)
+        takeEvery(FormAction.CHANGE_PLAN, changePlan),
+        takeEvery(FormAction.ADD_STORAGE, addStorage)
     ]);
 }

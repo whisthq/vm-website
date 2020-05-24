@@ -41,7 +41,8 @@ const DEFAULT = {
     status_id: null,
     disk_creation_message: "",
     current_disk: null,
-    change_plan_status: 0
+    change_plan_status: 0,
+    add_storage_status: 0
 };
 
 export default function (state = DEFAULT, action) {
@@ -238,6 +239,11 @@ export default function (state = DEFAULT, action) {
             return {
                 ...state,
                 change_plan_status: action.status
+            }
+        case AccountAction.ADD_STORAGE_STATUS:
+            return {
+                ...state,
+                add_storage_status: action.status
             }
         default:
             return state;

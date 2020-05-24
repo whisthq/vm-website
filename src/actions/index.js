@@ -73,6 +73,8 @@ export const CHANGE_STATUS_MESSAGE = "CHANGE_STATUS_MESSAGE";
 export const STORE_CURRENT_DISK = "STORE_CURRENT_DISK";
 export const CHANGE_PLAN = "CHANGE_PLAN";
 export const CHANGE_PLAN_STATUS = "CHANGE_PLAN_STATUS"
+export const ADD_STORAGE = "ADD_STORAGE"
+export const ADD_STORAGE_STATUS = "ADD_STORAGE_STATUS"
 
 export function userLogin(user, password, create) {
     return {
@@ -485,6 +487,20 @@ export function changePlan(plan) {
 export function changePlanStatus(status) {
     return {
         type: CHANGE_PLAN_STATUS,
+        status
+    }
+}
+
+export function addStorage(storage) {
+    return {
+        type: ADD_STORAGE,
+        storage
+    }
+}
+
+export function addStorageStatus(status) {
+    return {
+        type: ADD_STORAGE_STATUS,
         status
     }
 }
