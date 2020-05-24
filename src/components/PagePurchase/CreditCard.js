@@ -18,7 +18,7 @@ import PriceBox from './containers/priceBox.js'
 class CreditCard extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, modalShow: false, continue: false, exit: false, location: '', step: 2, plan: '' }
+    this.state = { width: 0, height: 0, modalShow: false, continue: false, exit: false, location: '', step: 1, plan: '' }
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
   }
 

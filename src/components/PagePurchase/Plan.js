@@ -207,6 +207,7 @@ class Plan extends Component {
                             >
                                 <PriceBox
                                     name="Hourly"
+                                    subText="Takes effect immediately"
                                     price="5"
                                     details="+$0.70 / hr of usage"
                                     color={
@@ -229,6 +230,7 @@ class Plan extends Component {
                             >
                                 <PriceBox
                                     name="Unlimited"
+                                    subText="Takes effect immediately"
                                     price="99"
                                     details="Unlimited daily usage"
                                     color={
