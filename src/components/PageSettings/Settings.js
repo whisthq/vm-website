@@ -466,18 +466,8 @@ class Settings extends Component {
                                             </Col>
                                         </Row>
                                         :
-                                        <Row style={{ marginTop: 40 }}>
+                                        <Row style={{ marginTop: 5}}>
                                             <Col xs={12}>
-                                                <div
-                                                    style={{
-                                                        fontSize: 20,
-                                                        fontWeight: "bold",
-                                                        marginBottom: 20,
-                                                        display: "inline",
-                                                    }}
-                                                >
-                                                    Storage
-                                                </div>
                                                 <Row style = {{width: "100%"}}>
 
                                                     <Col sm = {6} md = {3}
