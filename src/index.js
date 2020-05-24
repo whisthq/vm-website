@@ -16,6 +16,7 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import history from "./history";
 import "./static/App.css";
+import { config } from "./constants.js";
 
 import Purchase from "./components/PagePurchase/Purchase";
 import Auth from "./components/PageAuth/Auth";
@@ -51,7 +52,6 @@ const persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
 
-console.log(process.env.NODE_ENV);
 
 ReactDOM.render(
     <Router history={history}>
