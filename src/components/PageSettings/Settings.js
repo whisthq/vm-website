@@ -382,7 +382,7 @@ class Settings extends Component {
                                             SETTINGS
                                         </div>
                                         {
-                                        this.props.disks 
+                                        this.props.disks && this.props.disks.length > 0
                                         ?
                                         <Row style={{ marginTop: 5 }}>
                                             <Col xs={12}>
