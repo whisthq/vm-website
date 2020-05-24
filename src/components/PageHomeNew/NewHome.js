@@ -549,7 +549,7 @@ class PageHome extends Component {
                             >
                                 <div
                                     style={{
-                                        textAlign: "center",
+                                        textAlign: "right",
                                         width: "100%",
                                         height: "100%",
                                         maxHeight: 260,
@@ -564,7 +564,7 @@ class PageHome extends Component {
                                         src={Creative}
                                         style={{
                                             height: "100%",
-                                            width: "100%"
+                                            float: "right"
                                         }}
                                     />
                                 </div>
