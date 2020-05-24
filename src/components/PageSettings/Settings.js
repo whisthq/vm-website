@@ -389,7 +389,7 @@ class Settings extends Component {
                                                 <Row style = {{width: "100%"}}>
                                                     {this.props.disks.map((value, index) => {
                                                         return(
-                                                            <Col sm = {6} md = {3}
+                                                            <Col sm = {6} md = {4} xl = {3}
                                                                 style = {{paddingRight: this.state.width > 700 ? 20 : 0}}
                                                             >
                                                                 <div style={{
@@ -426,7 +426,7 @@ class Settings extends Component {
                                                             </Col>
                                                         );
                                                     })}
-                                                    <Col sm = {6} md = {3}
+                                                    <Col sm = {6} md = {4} xl = {3}
                                                         className = "pointerOnHover"
                                                         style = {{paddingRight: this.state.width > 700 ? 20 : 0}}
                                                     >
@@ -470,7 +470,7 @@ class Settings extends Component {
                                             <Col xs={12}>
                                                 <Row style = {{width: "100%"}}>
 
-                                                    <Col sm = {6} md = {3}
+                                                    <Col sm = {6} md = {4} xl = {3}
                                                         className = "pointerOnHover"
                                                         style = {{paddingRight: this.state.width > 700 ? 20 : 0}}
                                                     >
