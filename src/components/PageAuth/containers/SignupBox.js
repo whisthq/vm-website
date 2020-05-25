@@ -36,7 +36,7 @@ class SignupBox extends Component {
             subscribed: true,
             name: "",
             feedback: "",
-            step: 1
+            step: 2
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
@@ -603,12 +603,10 @@ class SignupBox extends Component {
         } else if (this.state.step === 2) {
             return(
                 <div style = {{
-                    maxWidth: 600, 
+                    maxWidth: 500, 
                     margin: "10px auto"}}
                 >
-                    <div style = {{
-                        padding: "0px 50px 60px 50px"
-                    }}>
+                    <div>
                         <div style = {{fontSize: 30, textAlign: "center", fontWeight: "bold"}}>
                             <span style = {{fontSize: 18}}>Welcome!</span><br/>
                             How should we greet you?
@@ -620,11 +618,11 @@ class SignupBox extends Component {
                                 value = {this.state.name}
                                 style={{
                                     borderRadius: 5,
-                                    maxWidth: 600,
+                                    maxWidth: 400,
                                     backgroundColor: "#F4F4F4",
                                     border: "none",
                                     padding: "15px 25px",
-                                    width: 400
+                                    width: '100%'
                                 }}
                                 onChange = {this.changeName}
                                 onKeyPress = {this.toStepThreeKeyPress}
@@ -634,12 +632,13 @@ class SignupBox extends Component {
                             <Button 
                                 style = {{
                                     padding: "12px 75px",
-                                    width: 400,
+                                    maxWidth: 400,
                                     fontWeight: "bold",
                                     fontSize: 16,
                                     background: "#0B172B",
                                     color: "white",
-                                    border: "none"
+                                    border: "none",
+                                    width: "100%"
                                 }}
                                 disabled = {this.state.name.length < 1}
                                 onClick = {this.toStepThree}
@@ -662,12 +661,10 @@ class SignupBox extends Component {
         } else if (this.state.step === 3) {
             return(
                 <div style = {{
-                    maxWidth: 600, 
+                    maxWidth: 500, 
                     margin: "auto"}}
                 >
-                    <div style = {{
-                        padding: "0px 50px 60px 50px"
-                    }}>
+                    <div>
                         <div style = {{paddingLeft: 30, paddingRight: 30}}>
                             {signupWarning()}
                         </div>
@@ -684,11 +681,11 @@ class SignupBox extends Component {
                                 placeholder = "e.g. Google search"
                                 style={{
                                     borderRadius: 5,
-                                    maxWidth: 600,
                                     backgroundColor: "#F4F4F4",
                                     border: "none",
                                     padding: "15px 25px",
-                                    width: 400
+                                    maxWidth: 400,
+                                    width: "100%"
                                 }}
                             />
                         </div>
@@ -702,11 +699,12 @@ class SignupBox extends Component {
                                     background: "#0B172B",
                                     color: "white",
                                     border: "none",
-                                    width: 400
+                                    maxWidth: 400,
+                                    width: "100%"
                                 }}
                                 onClick = {this.handleSignup}
                             >
-                                FINISH & SIGN UP
+                                FINISH
                             </Button>
                         </div>
                         <div 
