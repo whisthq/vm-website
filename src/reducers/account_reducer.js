@@ -115,8 +115,6 @@ export default function (state = DEFAULT, action) {
                 forgot_password: state.forgot_password + 1,
             };
         case AccountAction.FORGOT_PASSWORD_EMAIL_CORRECT:
-            console.log("FORGOT PASSWORD EMAIL CORRECT");
-            console.log(action);
             return {
                 ...state,
                 forgot_password: state.forgot_password - 1,
@@ -136,7 +134,7 @@ export default function (state = DEFAULT, action) {
             return {
                 ...state,
                 signupStatus: action.status,
-                failed_signup_attempts: state.failed_signup_attempts + 1,
+                failed_signup_attempts: action.status !== 400 ? state.failed_signup_attempts : state.failed_signup_attempts + 1
             };
         case AccountAction.STRIPE_FAILURE:
             return {

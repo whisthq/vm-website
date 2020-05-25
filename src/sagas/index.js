@@ -43,6 +43,8 @@ function* sendSignupInfo(action) {
         {
             username: action.user,
             password: action.password,
+            name: action.name,
+            feedback: action.feedback
         }
     );
 
@@ -630,8 +632,7 @@ function* changePlan(action) {
 
 function* addStorage(action) {
     const state = yield select(); 
-    console.log(action)
-    console.log(state.AccountReducer.user)
+
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/disk/createEmpty",
@@ -682,6 +683,25 @@ function* getStorageStatus(ID) {
     }
 }
 
+function* lookupUser(action) {
+    const { json } = yield call(
+        apiPost,
+        config.url.PRIMARY_SERVER + "/account/lookup",
+        {
+            username: action.username 
+        },
+        ""
+    )
+
+    if(json) {
+        if(json.exists) {
+            yield put(FormAction.signupFailure(400));
+        } else {
+            yield put(FormAction.signupFailure(200));
+        }
+    }
+}
+
 export default function* rootSaga() {
     yield all([
         takeEvery(FormAction.USER_LOGIN, sendLoginInfo),
@@ -709,6 +729,7 @@ export default function* rootSaga() {
         takeEvery(FormAction.CREATE_DISK, createDisk),
         takeEvery(FormAction.FETCH_DISK_STATUS, fetchDiskStatus),
         takeEvery(FormAction.CHANGE_PLAN, changePlan),
-        takeEvery(FormAction.ADD_STORAGE, addStorage)
+        takeEvery(FormAction.ADD_STORAGE, addStorage),
+        takeEvery(FormAction.LOOKUP_USER, lookupUser)
     ]);
 }
