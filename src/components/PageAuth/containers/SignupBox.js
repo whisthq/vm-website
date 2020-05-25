@@ -36,7 +36,7 @@ class SignupBox extends Component {
             subscribed: true,
             name: "",
             feedback: "",
-            step: 2
+            step: 1
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
