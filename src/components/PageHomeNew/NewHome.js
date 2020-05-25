@@ -528,7 +528,7 @@ class PageHome extends Component {
                                         borderRadius: 15,
                                         height: 30,
                                         fontSize: 14,
-                                        padding: "5px 4px",
+                                        padding: "4px 4px",
                                         textAlign: "center",
                                         fontWeight: "bold",
                                         width: 75,
