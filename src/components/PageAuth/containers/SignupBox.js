@@ -545,7 +545,7 @@ class SignupBox extends Component {
                                 color: "#111111",
                             }}
                         >
-                            I accept the&nbsp;
+                            I accept the Fractal&nbsp;
                             <Link
                                 to="/termsofservice"
                                 style={{
