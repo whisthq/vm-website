@@ -3203,6 +3203,7 @@ class Dashboard extends Component {
                                                                                             this
                                                                                                 .props
                                                                                                 .is_creating
+                                                                                            ? "true" : "true"
                                                                                         }
                                                                                         style={{
                                                                                             border:
