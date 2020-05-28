@@ -1,36 +1,36 @@
 import React from "react";
 import createSagaMiddleware from "redux-saga";
 import { Provider } from "react-redux";
-import rootReducer from "./reducers";
+import rootReducer from "store/reducers";
 import { applyMiddleware, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { routerMiddleware } from "connected-react-router";
 import ReduxPromise from "redux-promise";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import rootSaga from "./sagas";
+import rootSaga from "store/sagas";
 import { Route } from "react-router-dom";
 import { Router } from "react-router";
 import { PersistGate } from "redux-persist/integration/react";
 import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
-import history from "./history";
-import "./static/App.css";
+import history from "utils/history";
+import "static/App.css";
 
-import Purchase from "./components/PagePurchase/Purchase";
-import Auth from "./components/PageAuth/Auth";
-import NewHome from "./components/PageHomeNew/NewHome";
-import Dashboard from "./components/PageDashboard/Dashboard";
-import Reset from "./components/PageReset/Reset";
-import Privacy from "./components/PageLegal/Privacy";
-import Cookie from "./components/PageLegal/CookiePolicy";
-import TermsOfService from "./components/PageLegal/TermsOfService";
-import EmailVerification from "./components/PageAuth/EmailVerification";
-import CreditCard from "./components/PagePurchase/CreditCard";
-import About from "./components/PageAbout/About";
-import Plan from "./components/PagePurchase/Plan";
-import Settings from "./components/PageSettings/Settings"
-import Storage from "./components/PagePurchase/Storage"
+import Purchase from "pages/PagePurchase/Purchase";
+import Auth from "pages/PageAuth/Auth";
+import NewHome from "pages/PageHomeNew/NewHome";
+import Dashboard from "pages/PageDashboard/Dashboard";
+import Reset from "pages/PageReset/Reset";
+import Privacy from "pages/PageLegal/Privacy";
+import Cookie from "pages/PageLegal/CookiePolicy";
+import TermsOfService from "pages/PageLegal/TermsOfService";
+import EmailVerification from "pages/PageAuth/EmailVerification";
+import CreditCard from "pages/PagePurchase/CreditCard";
+import About from "pages/PageAbout/About";
+import Plan from "pages/PagePurchase/Plan";
+import Settings from "pages/PageSettings/Settings"
+import Storage from "pages/PagePurchase/Storage"
 
 const persistConfig = {
     key: "rootKey",
