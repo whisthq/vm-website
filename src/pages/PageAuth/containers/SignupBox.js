@@ -3,12 +3,14 @@ import { InputGroup, FormControl, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { FaCheck, FaExclamationTriangle, FaCaretLeft } from "react-icons/fa";
 import {
-    userSignup,
     changeTab,
+} from "store/actions/index";
+import {
+    userSignup,
+    signupFailure,
     subscribeNewsletter,
-    lookupUser,
-    signupFailure
-} from "store/actions/index.js";
+    checkUserExists
+} from "store/actions/auth/signup_actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -63,7 +65,7 @@ class SignupBox extends Component {
             this.state.termsAccepted
         ) {
             this.setState({processing: true, failed_signup_attempt: false})
-            this.props.dispatch(lookupUser(this.state.emailSignup))
+            this.props.dispatch(checkUserExists(this.state.emailSignup))
         }
     }
 
@@ -74,7 +76,7 @@ class SignupBox extends Component {
 
     toStepTwo = () => {
         this.setState({processing: true, failed_signup_attempt: false})
-        this.props.dispatch(lookupUser(this.state.emailSignup))
+        this.props.dispatch(checkUserExists(this.state.emailSignup))
     }
 
     signupKeyPress = (event) => {

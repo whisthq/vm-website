@@ -1,10 +1,13 @@
 import AccountReducer from "./account_reducer";
 
-import LoginReducer from "store/reducers/auth/login_reducer";
+import AuthReducer from "store/reducers/auth_reducer";
+import DashboardReducer from "store/reducers/dashboard_reducer"
+
 import { combineReducers } from "redux";
 
 const reducers = combineReducers({
-	LoginReducer: LoginReducer,
+	AuthReducer: AuthReducer,
+	DashboardReducer: DashboardReducer,
     AccountReducer: AccountReducer,
 });
 

@@ -1,7 +1,5 @@
 import * as Action from "store/actions/index";
-import * as LoginAction from "store/actions/auth/login_actions"
-import * as TokenAction from "store/actions/auth/token_actions"
-import * as SignupAction from "store/actions/auth/signup_actions"
+import * as DiskAction from "store/actions/dashboard/disk_actions"
 
 const DEFAULT = {
     stage: 1,
@@ -12,6 +10,7 @@ const DEFAULT = {
     vm_created: false,
     is_creating: false,
     progress: 1,
+    disks: [],
     has_vm: false,
     payment: {},
     stripeStatus: 200,
@@ -28,29 +27,23 @@ const DEFAULT = {
     purchase_location: "",
     dashboard_loaded: false,
     status_id: null,
+    disk_creation_message: "",
+    current_disk: null,
     change_plan_status: 0,
     add_storage_status: 0
 };
 
 export default function (state = DEFAULT, action) {
     switch (action.type) {
-        case Action.PROMO_CODE_FAILURE:
+        case DiskAction.STORE_DISKS:
             return {
                 ...state,
-                failed_referral_attempts: state.failed_referral_attempts + 1,
+                disks: action.disks,
             };
-        case Action.CHANGE_STAGE:
+        case DiskAction.DISK_CREATING:
             return {
                 ...state,
-                vm_created: false,
-                stage: action.stage,
-            };
-        case Action.CHARGE_STRIPE:
-            return {
-                ...state,
-                vm_created: false,
-                amount: action.amount,
-                stripeToken: action.token,
+                is_creating: action.is_creating,
             };
         case Action.STORE_PAYMENT:
             return {
@@ -122,6 +115,16 @@ export default function (state = DEFAULT, action) {
             return {
                 ...state,
                 status_id: action.status_id,
+            };
+        case DiskAction.CHANGE_DISK_STATUS_MESSAGE:
+            return {
+                ...state,
+                disk_creation_message: action.disk_creation_message,
+            };
+        case DiskAction.STORE_CURRENT_DISK:
+            return {
+                ...state,
+                current_disk: action.current_disk,
             };
         case Action.CHANGE_PLAN_STATUS:
             return {

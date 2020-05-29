@@ -4,67 +4,14 @@ import { apiPost, apiGet } from "utils/Api.js";
 import { config } from "utils/constants.js";
 import history from "utils/history";
 
-function* sendLoginInfo(action) {
-    yield select();
-    const { json } = yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/account/login",
-        {
-            username: action.username,
-            password: action.password,
-        }
-    );
 
-    if (json) {
-        if (json.verified) {
-            yield put(
-                FormAction.storeJWT(json.access_token, json.refresh_token)
-            );
-            yield put(FormAction.loginSuccess());
-            yield put(FormAction.storeVerificationToken(json.token));
-            yield put(FormAction.checkVerifiedEmail(action.username));
-            yield put(FormAction.getPromoCode(action.username));
-            if (json.vm_status === "is_creating") {
-                yield put(FormAction.vmCreating(true));
-            } else {
-                yield put(FormAction.vmCreating(false));
-            }
-        } else {
-            yield put(FormAction.loginFailure());
-        }
-    }
-}
+import * as LoginAction from "store/actions/auth/login_actions"
+import * as TokenAction from "store/actions/auth/token_actions"
+import * as SignupAction from "store/actions/auth/signup_actions"
+import * as DiskAction from "store/actions/dashboard/disk_actions"
 
-function* sendSignupInfo(action) {
-    yield select();
-    const { json } = yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/account/register",
-        {
-            username: action.user,
-            password: action.password,
-            name: action.name,
-            feedback: action.feedback
-        }
-    );
+import AuthSaga from "store/sagas/auth_saga"
 
-    if (json) {
-        if (json.status === 200) {
-            yield put(
-                FormAction.storeJWT(json.access_token, json.refresh_token)
-            );
-            yield put(FormAction.loginSuccess());
-            yield put(FormAction.storeVerificationToken(json.token));
-            yield put(FormAction.checkVerifiedEmail(action.user));
-            yield put(FormAction.getPromoCode(action.user));
-            yield put(
-                FormAction.sendVerificationEmail(action.user, json.token)
-            );
-        } else {
-            yield put(FormAction.signupFailure(json.status));
-        }
-    }
-}
 
 function* sendVerificationEmail(action) {
     yield select();
@@ -97,7 +44,7 @@ function* getPromoCode(action) {
     console.log("Promo code");
     console.log(json);
     if (json && json.status === 200) {
-        yield put(FormAction.sendSignupEmail(action.user, json.code));
+        yield put(SignupAction.sendSignupEmail(action.user, json.code));
         yield put(FormAction.storePromoCode(json.code));
     }
 }
@@ -173,7 +120,7 @@ function* insertCustomer(action) {
         yield put(FormAction.customerCreated(json.status));
         history.push("/dashboard");
         yield put(FormAction.triggerSurvey(true));
-        yield put(FormAction.vmCreating(true));
+        yield put(DiskAction.diskCreating(true));
         yield call(
             apiPost,
             config.url.MAIL_SERVER + "/trial/start",
@@ -289,8 +236,8 @@ function* cancelPlan(action) {
         if (json.status === 200) {
             yield put(FormAction.storePayment({}));
             yield put(FormAction.storeCustomer({}));
-            yield put(FormAction.vmCreating(false));
-            yield put(FormAction.storeDisks([]));
+            yield put(DiskAction.diskCreating(false));
+            yield put(DiskAction.storeDisks([]));
         }
     }
 }
@@ -316,17 +263,17 @@ function* deleteAccount(action) {
     }
 }
 
-function* getDiskStatus(action) {
+function* fetchDiskCreationStatus(ID) {
     var { json } = yield call(
         apiGet,
-        (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
+        (config.url.PRIMARY_SERVER + "/status/").concat(ID),
         ""
     );
 
     while (json.state !== "SUCCESS" && json.state !== "FAILURE") {
         json = yield call(
             apiGet,
-            (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
+            (config.url.PRIMARY_SERVER + "/status/").concat(ID),
             ""
         );
         if(json) {
@@ -338,8 +285,8 @@ function* getDiskStatus(action) {
     console.log(json)
 
     if (json && json.output) {
-        yield put(FormAction.vmCreating(true));
-        yield put(FormAction.storeCurrentDisk(json.output.disk_name));
+        yield put(DiskAction.diskCreating(true));
+        yield put(DiskAction.storeCurrentDisk(json.output.disk_name));
         yield call(attachDisk, json.output.disk_name);
     }
 }
@@ -359,7 +306,7 @@ function* attachDisk(disk_name) {
 
     if (json && json.ID) {
         yield put(FormAction.storeID(json.ID));
-        yield put(FormAction.fetchDiskStatus(json.ID));
+        yield put(DiskAction.fetchDiskAttachStatus(json.ID));
     }
 }
 
@@ -372,7 +319,7 @@ function formatDate(num) {
     return num;
 }
 
-function* fetchDiskStatus(action) {
+function* fetchDiskAttachStatus(action) {
     const state = yield select();
     var { json } = yield call(
         apiGet,
@@ -402,7 +349,7 @@ function* fetchDiskStatus(action) {
                 formatDate(now1.getSeconds()) +
                 ") " +
                 json.output.msg;
-            yield put(FormAction.changeStatusMessage(message1));
+            yield put(DiskAction.changeDiskStatusMessage(message1));
         }
 
         console.log(json);
@@ -411,8 +358,8 @@ function* fetchDiskStatus(action) {
     }
 
     if (json && json.state && json.state === "SUCCESS") {
-        yield put(FormAction.vmCreating(false));
-        yield put(FormAction.fetchDisks(state.AccountReducer.user));
+        yield put(DiskAction.diskCreating(false));
+        yield put(DiskAction.fetchDisks(state.AccountReducer.user));
     }
 
     if (json && json.state && json.state === "FAILURE") {
@@ -443,9 +390,9 @@ function* fetchDisks(action) {
     );
 
     if (json.disks) {
-        yield put(FormAction.storeDisks(json.disks));
+        yield put(DiskAction.storeDisks(json.disks));
     } else {
-        yield put(FormAction.storeDisks([]));
+        yield put(DiskAction.storeDisks([]));
     }
 }
 
@@ -459,18 +406,16 @@ function* sendForgotPassword(action) {
         },
         ""
     );
-    console.log("FORGOT PASSWORD SAGA POST RESPONSE");
-    console.log(json);
     if (json) {
         if (json.verified) {
-            yield put(FormAction.forgotPasswordEmailCorrect(action.username));
+            yield put(LoginAction.forgotPasswordEmailCorrect(action.username));
         } else {
-            yield put(FormAction.forgotPasswordEmailIncorrect(null));
+            yield put(LoginAction.forgotPasswordEmailIncorrect(null));
         }
     }
 }
 
-function* sendValidateToken(action) {
+function* validateResetToken(action) {
     yield select();
     const { json } = yield call(
         apiPost,
@@ -482,12 +427,12 @@ function* sendValidateToken(action) {
     );
     if (json) {
         if (json.status === 200) {
-            yield put(FormAction.tokenStatus("verified"));
+            yield put(TokenAction.tokenStatus("verified"));
         } else {
             if (json.error === "Expired token") {
-                yield put(FormAction.tokenStatus("expired"));
+                yield put(TokenAction.tokenStatus("expired"));
             } else {
-                yield put(FormAction.tokenStatus("invalid"));
+                yield put(TokenAction.tokenStatus("invalid"));
             }
         }
     }
@@ -539,26 +484,8 @@ function* subscribeNewsletter(action) {
     );
 }
 
-function* checkVerifiedEmail(action) {
-    yield select();
-    const { json } = yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/account/checkVerified",
-        {
-            username: action.username,
-        },
-        ""
-    );
-    if (json && json.status === 200 && json.verified) {
-        yield put(FormAction.emailVerified(true));
-        history.push("/dashboard");
-    } else {
-        yield put(FormAction.emailVerified(false));
-        history.push("/verify");
-    }
-}
 
-function* verifyToken(action) {
+function* validateSignupToken(action) {
     const state = yield select();
     const { json } = yield call(
         apiPost,
@@ -570,9 +497,9 @@ function* verifyToken(action) {
         state.AccountReducer.access_token
     );
     if (json && json.status === 200 && json.verified) {
-        yield put(FormAction.emailVerified(true));
+        yield put(SignupAction.emailVerified(true));
     } else {
-        yield put(FormAction.emailVerified(false));
+        yield put(SignupAction.emailVerified(false));
     }
 }
 
@@ -604,7 +531,7 @@ function* createDisk(action) {
 
     if (json) {
         if (json.ID) {
-            yield put(FormAction.getDiskStatus(json.ID));
+            yield call(fetchDiskCreationStatus, json.ID);
         }
     }
 }
@@ -683,7 +610,7 @@ function* getStorageStatus(ID) {
     }
 }
 
-function* lookupUser(action) {
+function* checkUserExists(action) {
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/account/lookup",
@@ -695,41 +622,38 @@ function* lookupUser(action) {
 
     if(json) {
         if(json.exists) {
-            yield put(FormAction.signupFailure(400));
+            yield put(SignupAction.signupFailure(400));
         } else {
-            yield put(FormAction.signupFailure(200));
+            yield put(SignupAction.signupFailure(200));
         }
     }
 }
 
 export default function* rootSaga() {
     yield all([
-        takeEvery(FormAction.USER_LOGIN, sendLoginInfo),
-        takeEvery(FormAction.USER_SIGNUP, sendSignupInfo),
+        AuthSaga(),
         takeEvery(FormAction.CHARGE_STRIPE, chargeStripe),
-        takeEvery(FormAction.GET_DISK_STATUS, getDiskStatus),
-        takeEvery(FormAction.FETCH_DISKS, fetchDisks),
-        takeEvery(FormAction.FORGOT_PASSWORD, sendForgotPassword),
-        takeEvery(FormAction.VALIDATE_TOKEN, sendValidateToken),
-        takeEvery(FormAction.RESET_PASSWORD, sendResetPassword),
+        takeEvery(DiskAction.FETCH_DISKS, fetchDisks),
+        takeEvery(LoginAction.FORGOT_PASSWORD, sendForgotPassword),
+        takeEvery(TokenAction.VALIDATE_RESET_TOKEN, validateResetToken),
+        takeEvery(LoginAction.RESET_PASSWORD, sendResetPassword),
         takeEvery(FormAction.RETRIEVE_CUSTOMER, retrieveCustomer),
         takeEvery(FormAction.CANCEL_PLAN, cancelPlan),
         takeEvery(FormAction.DELETE_ACCOUNT, deleteAccount),
         takeEvery(FormAction.SEND_FRIENDS_EMAIL, sendFriendsEmail),
         takeEvery(FormAction.GET_PROMO_CODE, getPromoCode),
-        takeEvery(FormAction.SEND_SIGNUP_EMAIL, sendSignupEmail),
+        takeEvery(SignupAction.SEND_SIGNUP_EMAIL, sendSignupEmail),
         takeEvery(FormAction.SEND_FINAL_CHARGE, sendFinalCharge),
         takeEvery(FormAction.APPLY_DISCOUNT, applyDiscount),
-        takeEvery(FormAction.SUBSCRIBE_NEWSLETTER, subscribeNewsletter),
-        takeEvery(FormAction.CHECK_VERIFIED_EMAIL, checkVerifiedEmail),
-        takeEvery(FormAction.VERIFY_TOKEN, verifyToken),
-        takeEvery(FormAction.SEND_VERIFICATION_EMAIL, sendVerificationEmail),
+        takeEvery(SignupAction.SUBSCRIBE_NEWSLETTER, subscribeNewsletter),
+        takeEvery(SignupAction.VALIDATE_SIGNUP_TOKEN, validateSignupToken),
+        takeEvery(SignupAction.SEND_VERIFICATION_EMAIL, sendVerificationEmail),
         takeEvery(FormAction.INSERT_CUSTOMER, insertCustomer),
         takeEvery(FormAction.SUBMIT_PURCHASE_FEEDBACK, submitPurchaseFeedback),
-        takeEvery(FormAction.CREATE_DISK, createDisk),
-        takeEvery(FormAction.FETCH_DISK_STATUS, fetchDiskStatus),
+        takeEvery(DiskAction.CREATE_DISK, createDisk),
+        takeEvery(DiskAction.FETCH_DISK_ATTACH_STATUS, fetchDiskAttachStatus),
         takeEvery(FormAction.CHANGE_PLAN, changePlan),
         takeEvery(FormAction.ADD_STORAGE, addStorage),
-        takeEvery(FormAction.LOOKUP_USER, lookupUser)
+        takeEvery(SignupAction.CHECK_USER_EXISTS, checkUserExists)
     ]);
 }

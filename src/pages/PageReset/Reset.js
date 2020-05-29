@@ -11,10 +11,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import {
     forgotPassword,
-    validateToken,
-    tokenStatus,
     resetPassword,
-} from "store/actions/index.js";
+} from "store/actions/auth/login_actions";
+import {
+    validateResetToken,
+    tokenStatus,
+} from "store/actions/auth/token_actions";
 import { HashLink } from "react-router-hash-link";
 
 class Reset extends Component {
@@ -109,7 +111,7 @@ class Reset extends Component {
         window.addEventListener("resize", this.updateWindowDimensions);
         var token_tmp = this.props.location.search;
         var token = token_tmp.substring(1, token_tmp.length);
-        this.props.dispatch(validateToken(token));
+        this.props.dispatch(validateResetToken(token));
     }
 
     componentWillUnmount() {

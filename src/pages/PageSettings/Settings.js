@@ -9,9 +9,11 @@ import Header from "components/header.js";
 import {
     logout,
     retrieveCustomer,
-    fetchDisks,
     dashboardLoaded
-} from "store/actions/index.js";
+} from "store/actions/index";
+import {
+    fetchDisks
+} from "store/actions/dashboard/disk_actions";
 import "react-tabs/style/react-tabs.css";
 import {
     FaPlus,

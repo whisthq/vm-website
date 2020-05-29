@@ -9,16 +9,18 @@ import Header from "components/header.js";
 import {
     logout,
     retrieveCustomer,
-    vmCreating,
     cancelPlan,
-    fetchDisks,
     sendFriendsEmail,
-    fetchDiskStatus,
     emailSent,
     triggerSurvey,
     submitPurchaseFeedback,
     dashboardLoaded,
-} from "store/actions/index.js";
+} from "store/actions/index";
+import {
+    fetchDisks,
+    diskCreating,
+    fetchDiskAttachStatus,
+} from "store/actions/dashboard/disk_actions"
 import "react-tabs/style/react-tabs.css";
 import {
     FaClone,
@@ -112,7 +114,7 @@ class Dashboard extends Component {
         );
 
         if (this.props.status_id && this.props.is_creating) {
-            this.props.dispatch(fetchDiskStatus(this.props.status_id));
+            this.props.dispatch(fetchDiskAttachStatus(this.props.status_id));
         }
 
         if(this.props.disks && Object.keys(this.props.disks).length > 1) {
@@ -211,7 +213,7 @@ class Dashboard extends Component {
 
     cancelPlan = () => {
         this.setState({ cancelling: true });
-        this.props.dispatch(vmCreating(false));
+        this.props.dispatch(diskCreating(false));
         this.props.dispatch(cancelPlan(this.state.exitFeedback));
     };
 

@@ -4,8 +4,10 @@ import { connect } from "react-redux";
 
 import {
     userLogin,
-    changeTab
-} from "store/actions/index.js";
+} from "store/actions/auth/login_actions";
+
+import {changeTab} from "store/actions/index"
+
 import { HashLink } from "react-router-hash-link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";

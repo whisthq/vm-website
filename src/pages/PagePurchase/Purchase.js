@@ -16,8 +16,10 @@ import { options } from "./Options.js";
 import {
     storePurchaseLocation,
     insertCustomer,
-    createDisk,
 } from "store/actions/index.js";
+import {
+    createDisk
+} from "store/actions/dashboard/disk_actions";
 import SpecBox from "./containers/specBox.js";
 import PriceBox from "./containers/priceBox.js";
 

@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import Header from "components/header.js";
-import { verifyToken, sendVerificationEmail } from "store/actions/index.js";
+import { 
+    validateSignupToken,
+    sendVerificationEmail } 
+from "store/actions/auth/signup_actions"
 import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch, faCheck } from "@fortawesome/free-solid-svg-icons";
@@ -37,7 +40,7 @@ class EmailVerification extends Component {
         token = token.substring(1, token.length);
         if (token && token !== "") {
             this.setState({ isRedirect: true });
-            this.props.dispatch(verifyToken(token));
+            this.props.dispatch(validateSignupToken(token));
         }
     }
 
