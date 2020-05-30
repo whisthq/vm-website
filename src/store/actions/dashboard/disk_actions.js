@@ -4,8 +4,8 @@ export const STORE_DISKS                = "STORE_DISKS";
 export const DISK_CREATING              = "DISK_CREATING";
 export const FETCH_DISK_ATTACH_STATUS   = "FETCH_DISK_ATTACH_STATUS";
 export const STORE_CURRENT_DISK         = "STORE_CURRENT_DISK";
-export const CHANGE_DISK_STATUS_MESSAGE = "CHANGE_DISK_STATUS_MESSAGE"
-
+export const CHANGE_DISK_STATUS_MESSAGE = "CHANGE_DISK_STATUS_MESSAGE";
+export const STORE_DISK_ATTACH_ID       = "STORE_DISK_ATTACH_ID";
 
 export function createDisk(location, vm_size) {
     return {
@@ -29,17 +29,17 @@ export function storeDisks(disks) {
     };
 }
 
-export function diskCreating(is_creating) {
+export function diskCreating(disk_is_creating) {
     return {
         type: DISK_CREATING,
-        is_creating,
+        disk_is_creating,
     };
 }
 
-export function fetchDiskAttachStatus(status_id) {
+export function fetchDiskAttachStatus(disk_attach_status_id) {
     return {
         type: FETCH_DISK_ATTACH_STATUS,
-        status_id,
+        disk_attach_status_id,
     };
 }
 
@@ -54,5 +54,12 @@ export function changeDiskStatusMessage(disk_creation_message) {
     return {
         type: CHANGE_DISK_STATUS_MESSAGE,
         disk_creation_message,
+    };
+}
+
+export function storeDiskAttachID(disk_attach_status_id) {
+    return {
+        type: STORE_DISK_ATTACH_ID,
+        disk_attach_status_id,
     };
 }

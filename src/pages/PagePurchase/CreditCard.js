@@ -287,12 +287,12 @@ class CreditCard extends Component {
 
 function mapStateToProps(state) {
   return { 
-    loggedIn: state.AccountReducer.loggedIn,
-    user: state.AccountReducer.user,
-    vms: typeof state.AccountReducer.vm_credentials == "undefined" ? [] : state.AccountReducer.vm_credentials,
-    percentage: typeof state.AccountReducer.progress == "undefined" ? 1 : state.AccountReducer.progress,
-    id: state.AccountReducer.id,
-    credits: state.AccountReducer.credits
+    loggedIn: state.AuthReducer.logged_in,
+    user: state.AuthReducer.username,
+    vms: typeof state.DashboardReducer.vm_credentials == "undefined" ? [] : state.DashboardReducer.vm_credentials,
+    percentage: typeof state.DashboardReducer.progress == "undefined" ? 1 : state.DashboardReducer.progress,
+    id: state.DashboardReducer.id,
+    credits: state.DashboardReducer.credits
   }
 }
 

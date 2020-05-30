@@ -6,7 +6,7 @@ import {
     userLogin,
 } from "store/actions/auth/login_actions";
 
-import {changeTab} from "store/actions/index"
+import { changeTab } from "store/actions/general/homepage_actions"
 
 import { HashLink } from "react-router-hash-link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -265,7 +265,7 @@ class LoginBox extends Component {
 
 function mapStateToProps(state) {
     return {
-        failed_login_attempts: state.AccountReducer.failed_login_attempts
+        failed_login_attempts: state.AuthReducer.failed_login_attempts
     };
 }
 

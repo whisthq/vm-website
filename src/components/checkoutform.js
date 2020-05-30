@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
-import { chargeStripe } from "store/actions/index.js";
+import { chargeStripe } from "store/actions/dashboard/stripe_actions";
 
 class CheckoutForm extends Component {
     constructor(props) {
@@ -400,13 +400,13 @@ class CheckoutForm extends Component {
 
 function mapStateToProps(state) {
     return {
-        stripeStatus: state.AccountReducer.stripeStatus,
-        failed_payment_attempts: state.AccountReducer.failed_payment_attempts,
-        failed_referral_attempts: state.AccountReducer.failed_referral_attempts,
-        credits: state.AccountReducer.credits,
-        customer_status: state.AccountReducer.customer_status,
-        customer: state.AccountReducer.customer,
-        payment: state.AccountReducer.payment,
+        stripe_status: state.DashboardReducer.stripe_status,
+        failed_payment_attempts: state.DashboardReducer.failed_payment_attempts,
+        failed_referral_attempts: state.DashboardReducer.failed_referral_attempts,
+        credits: state.DashboardReducer.credits,
+        customer_status: state.DashboardReducer.customer_status,
+        customer: state.DashboardReducer.customer,
+        payment: state.DashboardReducer.payment,
     };
 }
 

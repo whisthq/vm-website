@@ -7,10 +7,11 @@ import "static/App.css";
 
 import Header from "components/header.js";
 import {
-    logout,
-    retrieveCustomer,
     dashboardLoaded
-} from "store/actions/index";
+} from "store/actions/dashboard/rendering_actions";
+import {
+    logout 
+} from "store/actions/auth/login_actions"
 import {
     fetchDisks
 } from "store/actions/dashboard/disk_actions";
@@ -53,9 +54,7 @@ class Settings extends Component {
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
-        this.props.dispatch(dashboardLoaded(false));
         this.props.dispatch(fetchDisks(this.props.user));
-        this.props.dispatch(retrieveCustomer());
 
         var today = new Date();
         this.setState(
@@ -662,15 +661,15 @@ class Settings extends Component {
 
 function mapStateToProps(state) {
     return {
-        loggedIn: state.AccountReducer.loggedIn,
-        user: state.AccountReducer.user,
+        loggedIn: state.AuthReducer.logged_in,
+        user: state.AuthReducer.username,
         disks:
-            typeof state.AccountReducer.disks === "undefined"
+            typeof state.DashboardReducer.disks === "undefined"
                 ? []
-                : state.AccountReducer.disks,
-        id: state.AccountReducer.id,
-        email_verified: state.AccountReducer.email_verified,
-        customer: state.AccountReducer.customer
+                : state.DashboardReducer.disks,
+        id: state.DashboardReducer.id,
+        email_verified: state.AuthReducer.email_verified,
+        customer: state.DashboardReducer.customer
     };
 }
 

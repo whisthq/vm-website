@@ -1,9 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+import { ReactTypeformEmbed } from "react-typeform-embed";
+import ImageFadeIn from "react-image-fade-in";
+
 import "static/App.css";
+import Header from "components/header.js";
+import Footer from "components/footer.js";
+
+import { changeTab } from "store/actions/general/homepage_actions";
+
 import Cloud from "assets/cloud-computing.svg";
 import Software from "assets/software.svg";
 import Gaming from "assets/gaming.svg";
@@ -17,13 +27,6 @@ import RAM from "assets/ram.svg";
 import SSD from "assets/hard-drive-icon.svg";
 import HardDriveIcon from "assets/hard-drive-icon.svg";
 import FileIcon from "assets/file-icon.svg";
-import Header from "components/header.js";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
-import { ReactTypeformEmbed } from "react-typeform-embed";
-import Footer from "components/footer.js";
-import { changeTab } from "store/actions/index.js";
-import ImageFadeIn from "react-image-fade-in";
 
 class PageHome extends Component {
     constructor(props) {
@@ -37,29 +40,7 @@ class PageHome extends Component {
             version: "Windows",
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-        this.learnmore = this.learnmore.bind(this);
-        this.joinbeta = this.joinbeta.bind(this);
     }
-
-    learnmore() {
-        this.refs.learnmore.scrollIntoView();
-    }
-
-    joinbeta() {
-        this.refs.joinbeta.scrollIntoView();
-    }
-
-    openForm = () => {
-        this.typeformEmbed.typeform.open();
-    };
-
-    changeVersion = (version) => {
-        if (version === "Windows") {
-            this.setState({ version: "Windows" });
-        } else if (version === "Mac") {
-            this.setState({ version: "Mac" });
-        }
-    };
 
     componentDidMount() {
         this.updateWindowDimensions();
@@ -74,6 +55,10 @@ class PageHome extends Component {
     updateWindowDimensions() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
+
+    openForm = () => {
+        this.typeformEmbed.typeform.open();
+    };
 
     render() {
         let modalClose = () => this.setState({ modalShow: false });
@@ -2460,7 +2445,7 @@ class PageHome extends Component {
 
 function mapStateToProps(state) {
     return {
-        currentPage: state.AccountReducer.currentPage,
+        current_page: state.GeneralReducer.current_page,
     };
 }
 

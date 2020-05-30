@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "static/App.css";
 import { HashLink } from "react-router-hash-link";
-import { changeTab } from "store/actions/index.js";
+import { changeTab } from "store/actions/general/homepage_actions";
 
 class Header extends Component {
     constructor(props) {
@@ -79,7 +79,7 @@ class Header extends Component {
                                 <div
                                     style={{ width: "60%", textAlign: "right" }}
                                 >
-                                    {this.props.currentPage === "personal" ? (
+                                    {this.props.current_page === "personal" ? (
                                         <div>
                                             <HashLink
                                                 onClick={() =>
@@ -158,7 +158,7 @@ class Header extends Component {
                                                 </Button>
                                             </Link>
                                         </div>
-                                    ) : this.props.currentPage === "about" ? (
+                                    ) : this.props.current_page === "about" ? (
                                         <div>
                                             <HashLink
                                                 onClick={() =>
@@ -390,7 +390,7 @@ class Header extends Component {
                                     />
                                 </div>
                                 <div style={{ padding: 35, marginTop: 50 }}>
-                                    {this.props.currentPage === "personal" ? (
+                                    {this.props.current_page === "personal" ? (
                                         <div>
                                             <div
                                                 onClick={() =>
@@ -496,7 +496,7 @@ class Header extends Component {
 
 function mapStateToProps(state) {
     return {
-        currentPage: state.AccountReducer.currentPage,
+        current_page: state.GeneralReducer.current_page,
     };
 }
 

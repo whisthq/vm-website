@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { storePurchaseLocation } from "store/actions/index.js";
+import { storePurchaseLocation } from "store/actions/dashboard/customer_actions";
 
 export class Autocomplete extends Component {
     static propTypes = {

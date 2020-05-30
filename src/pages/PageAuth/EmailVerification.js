@@ -46,8 +46,8 @@ class EmailVerification extends Component {
 
     componentDidUpdate(prevProps) {
         if (
-            prevProps.verificationEmailsSent !==
-                this.props.verificationEmailsSent &&
+            prevProps.verification_emails_sent !==
+                this.props.verification_emails_sent &&
             this.state.isSending
         ) {
             this.setState({ isSending: false, sent: true });
@@ -360,10 +360,10 @@ class EmailVerification extends Component {
 function mapStateToProps(state) {
     console.log(state);
     return {
-        email_verified: state.AccountReducer.email_verified,
-        user: state.AccountReducer.user,
-        verificationToken: state.AccountReducer.verificationToken,
-        verificationEmailsSent: state.AccountReducer.verificationEmailsSent,
+        email_verified: state.AuthReducer.email_verified,
+        user: state.AuthReducer.username,
+        verificationToken: state.AuthReducer.verification_token,
+        verification_emails_sent: state.AuthReducer.verification_emails_sent,
     };
 }
 

@@ -626,9 +626,9 @@ class Reset extends Component {
 
 function mapStateToProps(state) {
     return {
-        forgot_password: state.AccountReducer.forgot_password,
-        token_status: state.AccountReducer.token_status,
-        forgot_email: state.AccountReducer.forgot_email,
+        forgot_password: state.AuthReducer.forgot_password,
+        token_status: state.AuthReducer.token_status,
+        forgot_email: state.AuthReducer.forgot_email,
     };
 }
 

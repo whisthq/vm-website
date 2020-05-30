@@ -117,8 +117,8 @@ class Auth extends Component {
 
 function mapStateToProps(state) {
     return {
-        loggedIn: state.AccountReducer.loggedIn,
-        email_verified: state.AccountReducer.email_verified
+        loggedIn: state.AuthReducer.logged_in,
+        email_verified: state.AuthReducer.email_verified
     };
 }
 

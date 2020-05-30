@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { FaCheck, FaExclamationTriangle, FaCaretLeft } from "react-icons/fa";
-import {
-    changeTab,
-} from "store/actions/index";
+import {changeTab} from "store/actions/general/homepage_actions"
 import {
     userSignup,
     signupFailure,
@@ -191,8 +189,8 @@ class SignupBox extends Component {
             this.setState({ failed_signup_attempt: true, processing: false });
         }
 
-        if(prevProps.signupStatus !== this.props.signupStatus && 
-                this.props.signupStatus === 200 && this.state.processing) {
+        if(prevProps.signup_status !== this.props.signup_status && 
+                this.props.signup_status === 200 && this.state.processing) {
             this.setState({step: 2, processing: false})
         }
     }
@@ -213,7 +211,7 @@ class SignupBox extends Component {
 
         const signupWarning = () => {
             if (
-                this.props.signupStatus === 400 &&
+                this.props.signup_status === 400 &&
                 this.state.failed_signup_attempt
             ) {
                 return (
@@ -727,8 +725,8 @@ class SignupBox extends Component {
 
 function mapStateToProps(state) {
     return {
-        failed_signup_attempts: state.AccountReducer.failed_signup_attempts,
-        signupStatus: state.AccountReducer.signupStatus
+        failed_signup_attempts: state.AuthReducer.failed_signup_attempts,
+        signup_status: state.AuthReducer.signup_status
     };
 }
 

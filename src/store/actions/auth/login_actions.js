@@ -5,6 +5,8 @@ export const FORGOT_PASSWORD                 = "FORGOT_PASSWORD";
 export const FORGOT_PASSWORD_EMAIL_CORRECT   = "FORGOT_PASSWORD_EMAIL_CORRECT";
 export const FORGOT_PASSWORD_EMAIL_INCORRECT = "FORGOT_PASSWORD_EMAIL_INCORRECT";
 export const RESET_PASSWORD                  = "RESET_PASSWORD";
+export const STORE_ACCOUNT_LOCKED            = "STORE_ACCOUNT_LOCKED";
+export const LOGOUT                          = "LOGOUT";
 
 
 export function userLogin(username, password) {
@@ -52,5 +54,18 @@ export function resetPassword(username, password) {
         type: RESET_PASSWORD,
         username,
         password,
+    };
+}
+
+export function storeAccountLocked(locked) {
+    return {
+        type: STORE_ACCOUNT_LOCKED,
+        locked,
+    };
+}
+
+export function logout() {
+    return {
+        type: LOGOUT,
     };
 }

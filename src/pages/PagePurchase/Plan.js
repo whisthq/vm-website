@@ -11,7 +11,7 @@ import "static/App.css";
 import {
     changePlan, 
     changePlanStatus
-} from "store/actions/index.js";
+} from "store/actions/dashboard/stripe_actions";
 import PriceBox from "./containers/priceBox.js";
 
 class Plan extends Component {
@@ -479,8 +479,8 @@ class Plan extends Component {
 
 function mapStateToProps(state) {
     return {
-        payment: state.AccountReducer.payment,
-        change_plan_status: state.AccountReducer.change_plan_status ? state.AccountReducer.change_plan_status : 0
+        payment: state.DashboardReducer.payment,
+        change_plan_status: state.DashboardReducer.change_plan_status ? state.DashboardReducer.change_plan_status : 0
     };
 }
 

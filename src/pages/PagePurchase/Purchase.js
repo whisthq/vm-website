@@ -16,7 +16,7 @@ import { options } from "./Options.js";
 import {
     storePurchaseLocation,
     insertCustomer,
-} from "store/actions/index.js";
+} from "store/actions/dashboard/customer_actions";
 import {
     createDisk
 } from "store/actions/dashboard/disk_actions";
@@ -1501,19 +1501,14 @@ class Purchase extends Component {
 
 function mapStateToProps(state) {
     return {
-        loggedIn: state.AccountReducer.loggedIn,
-        user: state.AccountReducer.user,
+        loggedIn: state.AuthReducer.logged_in,
+        user: state.AuthReducer.username,
         vms:
-            typeof state.AccountReducer.vm_credentials == "undefined"
+            typeof state.DashboardReducer.vm_credentials == "undefined"
                 ? []
-                : state.AccountReducer.vm_credentials,
-        percentage:
-            typeof state.AccountReducer.progress == "undefined"
-                ? 1
-                : state.AccountReducer.progress,
-        id: state.AccountReducer.id,
-        credits: state.AccountReducer.credits,
-        purchase_location: state.AccountReducer.purchase_location,
+                : state.DashboardReducer.vm_credentials,
+        credits: state.DashboardReducer.credits,
+        purchase_location: state.DashboardReducer.purchase_location,
     };
 }
 

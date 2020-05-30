@@ -11,7 +11,7 @@ import "static/App.css";
 import {
     addStorage,
     addStorageStatus
-} from "store/actions/index.js";
+} from "store/actions/settings/storage_actions";
 import PriceBox from "./containers/priceBox.js";
 
 class Storage extends Component {
@@ -347,7 +347,7 @@ class Storage extends Component {
 
 function mapStateToProps(state) {
     return {
-        add_storage_status: state.AccountReducer.add_storage_status ? state.AccountReducer.add_storage_status : 0
+        add_storage_status: state.DashboardReducer.add_storage_status ? state.DashboardReducer.add_storage_status : 0
     };
 }
 

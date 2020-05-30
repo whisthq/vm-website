@@ -1,27 +1,11 @@
-import * as Action from "store/actions/index";
 import * as LoginAction from "store/actions/auth/login_actions"
 import * as TokenAction from "store/actions/auth/token_actions"
 import * as SignupAction from "store/actions/auth/signup_actions"
 
-const DEFAULT = {
-    username: "",
-    password: "",
-    logged_in: false,
-    failed_login_attempts: 0,
-    forgot_password: 0,
-    token_status: "invalid",
-    has_vm: false,
-    payment: {},
-    signupStatus: 200,
-    failed_signup_attempts: 0,
-    email_verified: false,
-    verificationToken: "",
-    account_locked: false,
-    access_token: "",
-    refresh_token: ""
-};
+import { AUTH_DEFAULT } from "store/reducers/defaults"
 
-export default function (state = DEFAULT, action) {
+
+export default function (state = AUTH_DEFAULT, action) {
     switch (action.type) {
         case LoginAction.USER_LOGIN:
             return {
@@ -64,7 +48,7 @@ export default function (state = DEFAULT, action) {
         case SignupAction.SIGNUP_FAILURE:
             return {
                 ...state,
-                signupStatus: action.status,
+                signup_status: action.status,
                 failed_signup_attempts: action.status !== 400 ? state.failed_signup_attempts : state.failed_signup_attempts + 1
             };
         case SignupAction.EMAIL_VERIFIED:
@@ -75,14 +59,14 @@ export default function (state = DEFAULT, action) {
         case TokenAction.STORE_VERIFICATION_TOKEN:
             return {
                 ...state,
-                verificationToken: action.token,
+                verification_token: action.token,
             };
-        case Action.INCREMENT_VERIFICATION_EMAILS_SENT:
+        case SignupAction.INCREMENT_VERIFICATION_EMAILS_SENT:
             return {
                 ...state,
-                verificationEmailsSent: state.verificationEmailsSent + 1,
+                verification_emails_sent: state.verification_emails_sent + 1,
             };
-        case Action.STORE_ACCOUNT_LOCKED:
+        case LoginAction.STORE_ACCOUNT_LOCKED:
             return {
                 ...state,
                 account_locked: action.locked,
@@ -98,8 +82,8 @@ export default function (state = DEFAULT, action) {
                 ...state,
                 token_status: action.tokenStatus,
             };
-        case Action.LOGOUT:
-            return DEFAULT;
+        case LoginAction.LOGOUT:
+            return AUTH_DEFAULT;
         default:
             return state;
     }

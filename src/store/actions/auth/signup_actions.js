@@ -9,6 +9,8 @@ export const CHECK_VERIFIED_EMAIL     = "CHECK_VERIFIED_EMAIL";
 export const EMAIL_VERIFIED           = "EMAIL_VERIFIED";
 export const SEND_VERIFICATION_EMAIL  = "SEND_VERIFICATION_EMAIL";
 export const STORE_VERIFICATION_TOKEN = "STORE_VERIFICATION_TOKEN";
+export const INCREMENT_VERIFICATION_EMAILS_SENT =
+    "INCREMENT_VERIFICATION_EMAILS_SENT";
 
 export function userSignup(user, password, name, feedback) {
     return {
@@ -82,5 +84,11 @@ export function sendVerificationEmail(username, token) {
         type: SEND_VERIFICATION_EMAIL,
         username,
         token,
+    };
+}
+
+export function incrementVerificationEmailsSent() {
+    return {
+        type: INCREMENT_VERIFICATION_EMAILS_SENT,
     };
 }

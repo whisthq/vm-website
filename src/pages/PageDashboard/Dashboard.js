@@ -7,20 +7,28 @@ import "static/App.css";
 
 import Header from "components/header.js";
 import {
-    logout,
-    retrieveCustomer,
-    cancelPlan,
     sendFriendsEmail,
-    emailSent,
+    friendsEmailSent,
     triggerSurvey,
-    submitPurchaseFeedback,
+} from "store/actions/dashboard/popup_actions"
+import {
+    retrieveCustomer,
+    submitPurchaseFeedback
+} from "store/actions/dashboard/customer_actions"
+import {
     dashboardLoaded,
-} from "store/actions/index";
+} from "store/actions/dashboard/rendering_actions"
 import {
     fetchDisks,
     diskCreating,
     fetchDiskAttachStatus,
 } from "store/actions/dashboard/disk_actions"
+import {
+    cancelPlan
+} from "store/actions/dashboard/stripe_actions"
+import {
+    logout 
+} from "store/actions/auth/login_actions"
 import "react-tabs/style/react-tabs.css";
 import {
     FaClone,
@@ -113,8 +121,8 @@ class Dashboard extends Component {
             }
         );
 
-        if (this.props.status_id && this.props.is_creating) {
-            this.props.dispatch(fetchDiskAttachStatus(this.props.status_id));
+        if (this.props.disk_attach_status_id && this.props.disk_is_creating) {
+            this.props.dispatch(fetchDiskAttachStatus(this.props.disk_attach_status_id));
         }
 
         if(this.props.disks && Object.keys(this.props.disks).length > 1) {
@@ -280,7 +288,7 @@ class Dashboard extends Component {
                 emails: [],
                 emailBoxWidth: 45,
             });
-            this.props.dispatch(emailSent(0));
+            this.props.dispatch(friendsEmailSent(0));
         }
     };
 
@@ -341,7 +349,7 @@ class Dashboard extends Component {
     sendEmails = () => {
         this.setState({ sendingEmails: true });
         this.props.dispatch(
-            sendFriendsEmail(this.state.emails, this.props.promoCode)
+            sendFriendsEmail(this.state.emails, this.props.promo_code)
         );
     };
 
@@ -743,7 +751,7 @@ class Dashboard extends Component {
                                                             >
                                                                 {
                                                                     this.props
-                                                                        .promoCode
+                                                                        .promo_code
                                                                 }
                                                             </div>
                                                             <button
@@ -780,7 +788,7 @@ class Dashboard extends Component {
                                                             </button>
                                                         </div>
                                                     ) : this.props
-                                                          .emailStatus === 0 ? (
+                                                          .friend_email_status === 0 ? (
                                                         <div className="referral-code">
                                                             <div
                                                                 style={{
@@ -1148,7 +1156,7 @@ class Dashboard extends Component {
                                                     ) : (
                                                         <div>
                                                             {this.props
-                                                                .emailStatus ===
+                                                                .friend_email_status ===
                                                             200 ? (
                                                                 <div
                                                                     style={{
@@ -1275,8 +1283,8 @@ class Dashboard extends Component {
                                         </div>
                                         {this.props.disks === undefined ||
                                         this.props.disks.length === 0 ||
-                                        this.props.is_creating ? (
-                                            this.props.is_creating ? (
+                                        this.props.disk_is_creating ? (
+                                            this.props.disk_is_creating ? (
                                                 <div>
                                                     {this.props.customer &&
                                                     this.props.customer.paid ? (
@@ -2596,7 +2604,7 @@ class Dashboard extends Component {
                                                                         .length ===
                                                                         0 ||
                                                                     this.props
-                                                                        .is_creating ? (
+                                                                        .disk_is_creating ? (
                                                                         <Popup
                                                                             trigger={
                                                                                 <Button
@@ -2763,7 +2771,7 @@ class Dashboard extends Component {
                                                                         .length ===
                                                                         0 ||
                                                                     this.props
-                                                                        .is_creating ? (
+                                                                        .disk_is_creating ? (
                                                                         <Popup
                                                                             trigger={
                                                                                 <Button
@@ -2930,7 +2938,7 @@ class Dashboard extends Component {
                                                                         .length ===
                                                                         0 ||
                                                                     this.props
-                                                                        .is_creating ? (
+                                                                        .disk_is_creating ? (
                                                                         <Popup
                                                                             trigger={
                                                                                 <Button
@@ -3204,7 +3212,7 @@ class Dashboard extends Component {
                                                                                                 0 ||
                                                                                             this
                                                                                                 .props
-                                                                                                .is_creating
+                                                                                                .disk_is_creating
                                                                                             ? "true" : "true"
                                                                                         }
                                                                                         style={{
@@ -4220,27 +4228,27 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
     return {
-        loggedIn: state.AccountReducer.loggedIn,
-        user: state.AccountReducer.user,
+        loggedIn: state.AuthReducer.logged_in,
+        user: state.AuthReducer.username,
         disks:
-            typeof state.AccountReducer.disks === "undefined"
+            typeof state.DashboardReducer.disks === "undefined"
                 ? []
-                : state.AccountReducer.disks,
-        is_creating: state.AccountReducer.is_creating,
-        id: state.AccountReducer.id,
-        payment: state.AccountReducer.payment,
-        emailStatus: state.AccountReducer.emailStatus,
-        promoCode: state.AccountReducer.promoCode,
-        credits: state.AccountReducer.credits,
-        email_verified: state.AccountReducer.email_verified,
-        show_survey: state.AccountReducer.show_survey,
-        customer: state.AccountReducer.customer,
-        dashboard_loaded: state.AccountReducer.dashboard_loaded,
-        status_id: state.AccountReducer.status_id
-            ? state.AccountReducer.status_id
+                : state.DashboardReducer.disks,
+        disk_is_creating: state.DashboardReducer.disk_is_creating,
+        id: state.DashboardReducer.id,
+        payment: state.DashboardReducer.payment,
+        friend_email_status: state.DashboardReducer.friend_email_status,
+        promoCode: state.DashboardReducer.promo_code,
+        credits: state.DashboardReducer.credits,
+        email_verified: state.AuthReducer.email_verified,
+        show_survey: state.DashboardReducer.show_survey,
+        customer: state.DashboardReducer.customer,
+        dashboard_loaded: state.DashboardReducer.dashboard_loaded,
+        disk_attach_status_id: state.DashboardReducer.disk_attach_status_id
+            ? state.DashboardReducer.disk_attach_status_id
             : null,
-        disk_creation_message: state.AccountReducer.disk_creation_message
-            ? state.AccountReducer.disk_creation_message
+        disk_creation_message: state.DashboardReducer.disk_creation_message
+            ? state.DashboardReducer.disk_creation_message
             : "Create Cloud PC command sent to server.",
     };
 }
