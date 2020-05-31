@@ -3,7 +3,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
+
 import "static/Shared.css";
+import "static/PageDashboard.css"
 
 import Header from "components/header.js";
 import {
@@ -67,7 +69,13 @@ import MacBin from "bin/Fractal.dmg";
 import LinuxBin from "bin/Fractal.AppImage";
 import Mountain from "assets/mountain.jpg";
 
+
+import ReferralButton from "pages/PageDashboard/containers/referralButton"
+import FeedbackBox from "pages/PageDashboard/containers/feedbackBox"
+
 import OfflineSection from "pages/PageDashboard/sections/OfflineSection"
+import LoadingSection from "pages/PageDashboard/sections/LoadingSection"
+import LeftSection from "pages/PageDashboard/sections/LeftSection"
 
 class Dashboard extends Component {
     constructor(props) {
@@ -75,7 +83,6 @@ class Dashboard extends Component {
         this.state = {
             width: 0,
             height: 0,
-            modalShow: false,
             showPopup: false,
             day: 0,
             month: 0,
@@ -87,21 +94,13 @@ class Dashboard extends Component {
             hidePassword: true,
             exitSurvey: false,
             exitFeedback: "",
-            emailShare: false,
-            emails: [],
-            friendsEmail: "",
             trialEnd: "",
-            showEmailButton: false,
-            emailBoxWidth: 45,
-            sendingEmails: false,
-            purchaseFeedback: "",
             waitlist: false,
             loaded: false,
             clipboardCopied: false,
             total_storage: "120GB"
         };
         this.customWidth = React.createRef();
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
     componentDidMount() {
@@ -217,7 +216,7 @@ class Dashboard extends Component {
         }
     }
 
-    updateWindowDimensions() {
+    updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
@@ -271,90 +270,6 @@ class Dashboard extends Component {
         this.setState({ exitFeedback: evt.target.value });
     };
 
-    changePurchaseFeedback = (evt) => {
-        this.setState({ purchaseFeedback: evt.target.value });
-    };
-
-    submitPurchaseFeedback = (evt) => {
-        this.props.dispatch(triggerSurvey(false));
-        this.props.dispatch(
-            submitPurchaseFeedback(this.state.purchaseFeedback)
-        );
-    };
-
-    showEmailShare = (show) => {
-        this.setState({ emailShare: show });
-        if (!show) {
-            this.setState({
-                sendingEmails: false,
-                emails: [],
-                emailBoxWidth: 45,
-            });
-            this.props.dispatch(friendsEmailSent(0));
-        }
-    };
-
-    changeFriendsEmail = (evt) => {
-        let component = this;
-        this.setState({ friendsEmail: evt.target.value }, function () {
-            if (this.state.friendsEmail !== "") {
-                this.setState({
-                    showEmailButton: true,
-                    emailBoxWidth:
-                        7.1 * component.state.friendsEmail.length + 45,
-                });
-            } else {
-                this.setState({ showEmailButton: false, emailBoxWidth: 45 });
-            }
-        });
-    };
-
-    addEmailToList = () => {
-        var new_list = [...this.state.emails, this.state.friendsEmail];
-        if (this.state.friendsEmail.length > 40) {
-            new_list = [
-                ...this.state.emails,
-                this.state.friendsEmail.substring(0, 40),
-            ];
-        }
-        this.setState({
-            emails: new_list,
-            friendsEmail: "",
-            emailBoxWidth: 45,
-        });
-    };
-
-    addEmailToListPress = (evt) => {
-        if (evt.key === "Enter") {
-            var new_list = [...this.state.emails, this.state.friendsEmail];
-            if (this.state.friendsEmail.length > 40) {
-                new_list = [
-                    ...this.state.emails,
-                    this.state.friendsEmail.substring(0, 40),
-                ];
-            }
-            this.setState({
-                emails: new_list,
-                friendsEmail: "",
-                emailBoxWidth: 45,
-            });
-        }
-    };
-
-    removeEmail = (value) => {
-        var new_list = this.state.emails.filter(function (e) {
-            return e !== value;
-        });
-        this.setState({ emails: new_list });
-    };
-
-    sendEmails = () => {
-        this.setState({ sendingEmails: true });
-        this.props.dispatch(
-            sendFriendsEmail(this.state.emails, this.props.promo_code)
-        );
-    };
-
     copyToClipboard = (e) => {
         this.setState({ clipboardCopied: true });
         navigator.clipboard.writeText(
@@ -363,11 +278,6 @@ class Dashboard extends Component {
     };
 
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-        if (this.state.width > 700 && this.state.modalShow) {
-            modalClose();
-        }
-
         if (this.state.waitlist) {
             return (
                 <OfflineSection
@@ -378,32 +288,7 @@ class Dashboard extends Component {
             );
         } else if (!this.props.dashboard_loaded && this.props.user) {
             return (
-                <div
-                    style={{
-                        backgroundColor: "white",
-                        minHeight: "100vh",
-                        overflowX: "hidden !important",
-                        textAlign: "center",
-                    }}
-                >
-                    <Header color="#333333" button="#5ec3eb" />
-                    <div
-                        style={{
-                            paddingTop: 250,
-                            textAlign: "center",
-                            maxWidth: 500,
-                            margin: "auto",
-                            marginBottom: 60,
-                            fontSize: 50,
-                        }}
-                    >
-                        <FontAwesomeIcon
-                            icon={faCircleNotch}
-                            spin
-                            style={{ color: "#111111" }}
-                        />
-                    </div>
-                </div>
+                <LoadingSection/>
             );
         } else {
             return (
@@ -421,129 +306,9 @@ class Dashboard extends Component {
                         <div style={{ maxWidth: 1920, margin: "auto" }}>
                             <div>
                                 <Header color="#111111" button="#5ec3eb" />
-                                {this.props.show_survey &&
-                                this.state.width > 700 ? (
-                                    <Popup
-                                        open={true}
-                                        contentStyle={{
-                                            width: 500,
-                                            borderRadius: 5,
-                                            backgroundColor: "#EBEBEB",
-                                            border: "none",
-                                            height: 275,
-                                            padding: "30px 50px",
-                                            textAlign: "center",
-                                        }}
-                                    >
-                                        <div className="exit-survey">
-                                            <div
-                                                style={{
-                                                    fontWeight: "bold",
-                                                    fontSize: 22,
-                                                    margin: "auto",
-                                                    width: "100%",
-                                                }}
-                                            >
-                                                <strong>
-                                                    Thank You For Creating a
-                                                    Cloud PC!
-                                                </strong>
-                                            </div>
-                                            <textarea
-                                                onChange={
-                                                    this.changePurchaseFeedback
-                                                }
-                                                rows="4"
-                                                cols="52"
-                                                placeholder="We hope you love it. Please take a minute to tell us what you plan on using Fractal for (i.e. creative work, gaming, etc)."
-                                                style={{
-                                                    outline: "none",
-                                                    resize: "none",
-                                                    background: "none",
-                                                    border: "none",
-                                                    marginTop: 20,
-                                                    fontSize: 14,
-                                                    padding: 0,
-                                                }}
-                                            ></textarea>
-                                            <button
-                                                onClick={
-                                                    this.submitPurchaseFeedback
-                                                }
-                                                style={{
-                                                    border: "none",
-                                                    fontWeight: "bold",
-                                                    marginTop: 25,
-                                                    outline: "none",
-                                                    width: "100%",
-                                                    fontSize: 14,
-                                                    borderRadius: 5,
-                                                    padding: "10px 10px",
-                                                    color: "#5ec3eb",
-                                                    background:
-                                                        "rgba(94, 195, 235,0.1)",
-                                                }}
-                                            >
-                                                SUBMIT FEEDBACK
-                                            </button>
-                                        </div>
-                                    </Popup>
-                                ) : (
-                                    <div></div>
-                                )}
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        overflowX: "hidden",
-                                        position: "relative",
-                                        bottom: 60,
-                                    }}
-                                >
-                                    {this.state.width > 700 ? (
-                                        <div
-                                            style={{
-                                                width: 300,
-                                                paddingLeft: 80,
-                                                paddingTop: 120,
-                                                backgroundColor: "none",
-                                                flex: "0 1 auto",
-                                                zIndex: 0,
-                                                position: "sticky",
-                                            }}
-                                        >
-                                            <div
-                                                style={{
-                                                    marginBottom: 20,
-                                                    fontWeight: "bold",
-                                                    color: "#111111",
-                                                }}
-                                            >
-                                                DASHBOARD
-                                            </div>
-                                            <Link to = "/settings" 
-                                                className="sign-out-button" 
-                                                style = {{textDecoration: "none",
-                                                          color: "#B9B9B9"}}
-                                            >
-                                                SETTINGS
-                                            </Link>
-                                            <div
-                                                className="sign-out-button"
-                                                onClick={() =>
-                                                    this.props.dispatch(
-                                                        logout()
-                                                    )
-                                                }
-                                                style = {{
-                                                    marginTop: 15
-                                                }}
-                                            >
-                                                SIGN OUT
-                                            </div>
-                                        </div>
-                                    ) : (
-                                        <div></div>
-                                    )}
+                                <FeedbackBox/>
+                                <div className = "dashboard">
+                                    <LeftSection/>
                                     <div
                                         style={{
                                             paddingTop: 40,
@@ -626,612 +391,7 @@ class Dashboard extends Component {
                                                 {this.state.year}
                                             </div>
                                             {this.state.width > 700 ? (
-                                                <Popup
-                                                    trigger={
-                                                        <div
-                                                            style={{
-                                                                display:
-                                                                    "inline",
-                                                                float: "right",
-                                                                marginTop: 10,
-                                                            }}
-                                                        >
-                                                            <Button
-                                                                style={{
-                                                                    marginLeft: 35,
-                                                                    color:
-                                                                        "#5ec3eb",
-                                                                    border:
-                                                                        "none",
-                                                                    fontWeight:
-                                                                        "bold",
-                                                                    padding:
-                                                                        "12px 25px",
-                                                                    outline:
-                                                                        "none",
-                                                                    background:
-                                                                        "rgba(94, 195, 235,0.1)",
-                                                                }}
-                                                            >
-                                                                Get a Free Month
-                                                            </Button>
-                                                        </div>
-                                                    }
-                                                    modal
-                                                    onClose={() =>
-                                                        this.showEmailShare(
-                                                            false
-                                                        )
-                                                    }
-                                                    contentStyle={{
-                                                        width: 550,
-                                                        borderRadius: 5,
-                                                        backgroundColor:
-                                                            "#EBEBEB",
-                                                        border: "none",
-                                                        height: 400,
-                                                        padding: "30px 50px",
-                                                        textAlign: "center",
-                                                    }}
-                                                >
-                                                    {!this.state.emailShare ? (
-                                                        <div>
-                                                            <div
-                                                                style={{
-                                                                    fontWeight:
-                                                                        "bold",
-                                                                    fontSize: 22,
-                                                                }}
-                                                            >
-                                                                <strong>
-                                                                    Share
-                                                                    Fractal with
-                                                                    a Friend
-                                                                </strong>
-                                                            </div>
-                                                            <div
-                                                                style={{
-                                                                    fontSize: 14,
-                                                                    color:
-                                                                        "#333333",
-                                                                    marginTop: 20,
-                                                                }}
-                                                            >
-                                                                For every person
-                                                                that types in
-                                                                the following
-                                                                code at
-                                                                checkout, both
-                                                                your accounts
-                                                                will be credited
-                                                                an additional
-                                                                free month.
-                                                            </div>
-                                                            <div
-                                                                style={{
-                                                                    color:
-                                                                        "#111111",
-                                                                    marginTop: 75,
-                                                                    fontSize: 40,
-                                                                }}
-                                                            >
-                                                                {
-                                                                    this.props
-                                                                        .promo_code
-                                                                }
-                                                            </div>
-                                                            <button
-                                                                onClick={() =>
-                                                                    this.showEmailShare(
-                                                                        true
-                                                                    )
-                                                                }
-                                                                style={{
-                                                                    fontWeight:
-                                                                        "bold",
-                                                                    marginTop: 75,
-                                                                    outline:
-                                                                        "none",
-                                                                    width:
-                                                                        "100%",
-                                                                    fontSize: 14,
-                                                                    borderRadius: 3,
-                                                                    float:
-                                                                        "right",
-                                                                    display:
-                                                                        "inline",
-                                                                    padding:
-                                                                        "10px 10px",
-                                                                    color:
-                                                                        "#5ec3eb",
-                                                                    border:
-                                                                        "none",
-                                                                    background:
-                                                                        "rgba(94, 195, 235,0.1)",
-                                                                }}
-                                                            >
-                                                                Start Sharing
-                                                            </button>
-                                                        </div>
-                                                    ) : this.props
-                                                          .friend_email_status === 0 ? (
-                                                        <div className="referral-code">
-                                                            <div
-                                                                style={{
-                                                                    fontWeight:
-                                                                        "bold",
-                                                                    fontSize: 22,
-                                                                }}
-                                                            >
-                                                                <strong>
-                                                                    Send Them A
-                                                                    Message
-                                                                </strong>
-                                                            </div>
-                                                            {this.state
-                                                                .emailBoxWidth >
-                                                            45 ? (
-                                                                this.state
-                                                                    .friendsEmail
-                                                                    .length >
-                                                                    4 &&
-                                                                this.state.friendsEmail.includes(
-                                                                    "@"
-                                                                ) &&
-                                                                this.state.friendsEmail.includes(
-                                                                    "."
-                                                                ) &&
-                                                                !this.state.emails.includes(
-                                                                    this.state
-                                                                        .friendsEmail
-                                                                ) &&
-                                                                this.state
-                                                                    .emails
-                                                                    .length <
-                                                                    50 ? (
-                                                                    <div
-                                                                        ref={
-                                                                            this
-                                                                                .customWidth
-                                                                        }
-                                                                        style={{
-                                                                            textAlign:
-                                                                                "left",
-                                                                            display:
-                                                                                "flex",
-                                                                            marginTop: 20,
-                                                                            height: 89,
-                                                                        }}
-                                                                    >
-                                                                        <input
-                                                                            autoFocus
-                                                                            defaultValue={
-                                                                                this
-                                                                                    .state
-                                                                                    .friendsEmail
-                                                                            }
-                                                                            type="text"
-                                                                            onChange={
-                                                                                this
-                                                                                    .changeFriendsEmail
-                                                                            }
-                                                                            onKeyPress={
-                                                                                this
-                                                                                    .addEmailToListPress
-                                                                            }
-                                                                            style={{
-                                                                                color:
-                                                                                    "#5ac475",
-                                                                                maxWidth:
-                                                                                    "calc(100% - 20px)",
-                                                                                height: 30,
-                                                                                border:
-                                                                                    "none",
-                                                                                background:
-                                                                                    "none",
-                                                                                padding: 0,
-                                                                                borderRadius:
-                                                                                    "4px 0px 0px 4px",
-                                                                                width: `${this.state.emailBoxWidth}px`,
-                                                                            }}
-                                                                        />
-                                                                        <FaCheck
-                                                                            className="pointerOnHover"
-                                                                            onClick={
-                                                                                this
-                                                                                    .addEmailToList
-                                                                            }
-                                                                            style={{
-                                                                                border:
-                                                                                    "none",
-                                                                                padding: 0,
-                                                                                borderLeft:
-                                                                                    "none",
-                                                                                width: 20,
-                                                                                position:
-                                                                                    "relative",
-                                                                                top: 7,
-                                                                                color:
-                                                                                    "#5ac475",
-                                                                            }}
-                                                                        />
-                                                                    </div>
-                                                                ) : (
-                                                                    <div
-                                                                        ref={
-                                                                            this
-                                                                                .customWidth
-                                                                        }
-                                                                        style={{
-                                                                            textAlign:
-                                                                                "left",
-                                                                            display:
-                                                                                "flex",
-                                                                            marginTop: 20,
-                                                                            height: 89,
-                                                                        }}
-                                                                    >
-                                                                        <input
-                                                                            autoFocus
-                                                                            defaultValue={
-                                                                                this
-                                                                                    .state
-                                                                                    .friendsEmail
-                                                                            }
-                                                                            type="text"
-                                                                            onChange={
-                                                                                this
-                                                                                    .changeFriendsEmail
-                                                                            }
-                                                                            style={{
-                                                                                color:
-                                                                                    "#666666",
-                                                                                maxWidth:
-                                                                                    "calc(100% - 20px)",
-                                                                                height: 30,
-                                                                                background:
-                                                                                    "none",
-                                                                                padding: 5,
-                                                                                border:
-                                                                                    "solid 1px #666666",
-                                                                                borderRadius:
-                                                                                    "4px",
-                                                                                width: `${this.state.emailBoxWidth}px`,
-                                                                            }}
-                                                                        />
-                                                                    </div>
-                                                                )
-                                                            ) : (
-                                                                <textarea
-                                                                    onChange={
-                                                                        this
-                                                                            .changeFriendsEmail
-                                                                    }
-                                                                    rows="4"
-                                                                    cols="56"
-                                                                    placeholder="Enter your friends' emails here, and we'll email them your referral code for you, along with a friendly message. When they create a cloud PC with this code, your account will automatically be accredited."
-                                                                    style={{
-                                                                        outline:
-                                                                            "none",
-                                                                        resize:
-                                                                            "none",
-                                                                        background:
-                                                                            "none",
-                                                                        border:
-                                                                            "none",
-                                                                        marginTop: 20,
-                                                                        fontSize: 14,
-                                                                        padding: 0,
-                                                                    }}
-                                                                ></textarea>
-                                                            )}
-                                                            <div
-                                                                style={{
-                                                                    display:
-                                                                        "flex",
-                                                                    flexWrap:
-                                                                        "wrap",
-                                                                    width:
-                                                                        "100%",
-                                                                }}
-                                                            >
-                                                                {this.state
-                                                                    .emails
-                                                                    .length ===
-                                                                0 ? (
-                                                                    <div
-                                                                        style={{
-                                                                            height: 138,
-                                                                        }}
-                                                                    ></div>
-                                                                ) : (
-                                                                    <div></div>
-                                                                )}
-                                                                <div
-                                                                    style={{
-                                                                        height: 138,
-                                                                        overflowY:
-                                                                            "scroll",
-                                                                        display:
-                                                                            "flex",
-                                                                        flexWrap:
-                                                                            "wrap",
-                                                                        alignItems:
-                                                                            "flex-start",
-                                                                        alignContent:
-                                                                            "flex-start",
-                                                                        fontSize: 12,
-                                                                    }}
-                                                                >
-                                                                    {this.state.emails.map(
-                                                                        (
-                                                                            value,
-                                                                            index
-                                                                        ) => {
-                                                                            return (
-                                                                                <div
-                                                                                    style={{
-                                                                                        display:
-                                                                                            "flex",
-                                                                                        maxWidth:
-                                                                                            "100%",
-                                                                                        height: 22,
-                                                                                        marginRight: 5,
-                                                                                        border:
-                                                                                            "solid 1px #333333",
-                                                                                        paddingRight: 5,
-                                                                                        borderRadius: 4,
-                                                                                        marginBottom: 5,
-                                                                                        overflowX:
-                                                                                            "hidden",
-                                                                                    }}
-                                                                                >
-                                                                                    <FaTimes
-                                                                                        className="pointerOnHover"
-                                                                                        onClick={() =>
-                                                                                            this.removeEmail(
-                                                                                                value
-                                                                                            )
-                                                                                        }
-                                                                                        style={{
-                                                                                            width: 22,
-                                                                                            height: 9,
-                                                                                            position:
-                                                                                                "relative",
-                                                                                            top: 5.5,
-                                                                                        }}
-                                                                                    />
-                                                                                    <div>
-                                                                                        {
-                                                                                            value
-                                                                                        }
-                                                                                    </div>
-                                                                                </div>
-                                                                            );
-                                                                        }
-                                                                    )}
-                                                                </div>
-                                                            </div>
-                                                            {this.state.emails
-                                                                .length > 0 ? (
-                                                                !this.state
-                                                                    .sendingEmails ? (
-                                                                    <button
-                                                                        onClick={() =>
-                                                                            this.sendEmails()
-                                                                        }
-                                                                        style={{
-                                                                            fontWeight:
-                                                                                "bold",
-                                                                            marginTop: 25,
-                                                                            outline:
-                                                                                "none",
-                                                                            width:
-                                                                                "100%",
-                                                                            fontSize: 14,
-                                                                            borderRadius: 3,
-                                                                            float:
-                                                                                "right",
-                                                                            display:
-                                                                                "inline",
-                                                                            padding:
-                                                                                "10px 10px",
-                                                                            color:
-                                                                                "#5ec3eb",
-                                                                            border:
-                                                                                "none",
-                                                                            background:
-                                                                                "rgba(94, 195, 235,0.1)",
-                                                                        }}
-                                                                    >
-                                                                        Send
-                                                                        Emails
-                                                                    </button>
-                                                                ) : (
-                                                                    <Button
-                                                                        disabled="true"
-                                                                        style={{
-                                                                            fontWeight:
-                                                                                "bold",
-                                                                            marginTop: 25,
-                                                                            outline:
-                                                                                "none",
-                                                                            width:
-                                                                                "100%",
-                                                                            fontSize: 14,
-                                                                            borderRadius: 5,
-                                                                            float:
-                                                                                "right",
-                                                                            display:
-                                                                                "inline",
-                                                                            padding:
-                                                                                "10px 10px",
-                                                                            color:
-                                                                                "#5ec3eb",
-                                                                            border:
-                                                                                "none",
-                                                                            background:
-                                                                                "rgba(94, 195, 235,0.1)",
-                                                                        }}
-                                                                    >
-                                                                        <FontAwesomeIcon
-                                                                            icon={
-                                                                                faCircleNotch
-                                                                            }
-                                                                            spin
-                                                                            style={{
-                                                                                color:
-                                                                                    "#5ec3eb",
-                                                                                marginRight: 7,
-                                                                            }}
-                                                                        />{" "}
-                                                                        Sending
-                                                                    </Button>
-                                                                )
-                                                            ) : (
-                                                                <Button
-                                                                    disabled="true"
-                                                                    style={{
-                                                                        fontWeight:
-                                                                            "bold",
-                                                                        marginTop: 25,
-                                                                        outline:
-                                                                            "none",
-                                                                        width:
-                                                                            "100%",
-                                                                        fontSize: 14,
-                                                                        borderRadius: 3,
-                                                                        float:
-                                                                            "right",
-                                                                        display:
-                                                                            "inline",
-                                                                        padding:
-                                                                            "10px 10px",
-                                                                        color:
-                                                                            "#5ec3eb",
-                                                                        border:
-                                                                            "none",
-                                                                        background:
-                                                                            "rgba(94, 195, 235,0.1)",
-                                                                    }}
-                                                                >
-                                                                    Send Emails
-                                                                </Button>
-                                                            )}
-                                                        </div>
-                                                    ) : (
-                                                        <div>
-                                                            {this.props
-                                                                .friend_email_status ===
-                                                            200 ? (
-                                                                <div
-                                                                    style={{
-                                                                        marginTop: 100,
-                                                                    }}
-                                                                >
-                                                                    <FaCheck
-                                                                        style={{
-                                                                            color:
-                                                                                "#5ac475",
-                                                                            width: 125,
-                                                                        }}
-                                                                    />
-                                                                    <div
-                                                                        style={{
-                                                                            marginTop: 30,
-                                                                            fontSize: 18,
-                                                                            fontWeight:
-                                                                                "bold",
-                                                                        }}
-                                                                    >
-                                                                        Success!
-                                                                        Emails
-                                                                        sent.
-                                                                    </div>
-                                                                    <div
-                                                                        style={{
-                                                                            marginTop: 10,
-                                                                            fontSize: 14,
-                                                                            color:
-                                                                                "#666666",
-                                                                        }}
-                                                                    >
-                                                                        On
-                                                                        behalf
-                                                                        of
-                                                                        Fractal,
-                                                                        thank
-                                                                        you for
-                                                                        telling
-                                                                        your
-                                                                        friends
-                                                                        about
-                                                                        us!
-                                                                        We've
-                                                                        sent
-                                                                        them a
-                                                                        customized
-                                                                        email on
-                                                                        your
-                                                                        behalf.
-                                                                    </div>
-                                                                </div>
-                                                            ) : (
-                                                                <div
-                                                                    style={{
-                                                                        marginTop: 150,
-                                                                    }}
-                                                                >
-                                                                    <FaTimes
-                                                                        style={{
-                                                                            color:
-                                                                                "#e34d4d",
-                                                                            width: 125,
-                                                                        }}
-                                                                    />
-                                                                    <div
-                                                                        style={{
-                                                                            marginTop: 30,
-                                                                            fontSize: 16,
-                                                                            fontWeight:
-                                                                                "bold",
-                                                                        }}
-                                                                    >
-                                                                        Oops!
-                                                                        Something
-                                                                        went
-                                                                        wrong.
-                                                                    </div>
-                                                                    <div
-                                                                        style={{
-                                                                            marginTop: 10,
-                                                                            fontSize: 14,
-                                                                            color:
-                                                                                "#666666",
-                                                                        }}
-                                                                    >
-                                                                        If this
-                                                                        issue
-                                                                        persists,
-                                                                        please
-                                                                        contact
-                                                                        support@fractalcomputers.com.
-                                                                        In the
-                                                                        meantime,
-                                                                        we'd
-                                                                        really
-                                                                        appreciate
-                                                                        you
-                                                                        referring
-                                                                        Fractal
-                                                                        to your
-                                                                        friends!
-                                                                    </div>
-                                                                </div>
-                                                            )}
-                                                        </div>
-                                                    )}
-                                                </Popup>
+                                                 <ReferralButton/>
                                             ) : (
                                                 <div></div>
                                             )}
@@ -4193,6 +3353,7 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state)
     return {
         loggedIn: state.AuthReducer.logged_in,
         user: state.AuthReducer.username,
@@ -4203,11 +3364,8 @@ function mapStateToProps(state) {
         disk_is_creating: state.DashboardReducer.disk_is_creating,
         id: state.DashboardReducer.id,
         payment: state.DashboardReducer.payment,
-        friend_email_status: state.DashboardReducer.friend_email_status,
-        promoCode: state.DashboardReducer.promo_code,
         credits: state.DashboardReducer.credits,
         email_verified: state.AuthReducer.email_verified,
-        show_survey: state.DashboardReducer.show_survey,
         customer: state.DashboardReducer.customer,
         dashboard_loaded: state.DashboardReducer.dashboard_loaded,
         disk_attach_status_id: state.DashboardReducer.disk_attach_status_id
