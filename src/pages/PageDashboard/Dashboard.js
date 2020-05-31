@@ -3,7 +3,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
-import "static/App.css";
+import "static/Shared.css";
 
 import Header from "components/header.js";
 import {
@@ -66,6 +66,8 @@ import WindowsBin from "bin/Fractal.exe";
 import MacBin from "bin/Fractal.dmg";
 import LinuxBin from "bin/Fractal.AppImage";
 import Mountain from "assets/mountain.jpg";
+
+import OfflineSection from "pages/PageDashboard/sections/OfflineSection"
 
 class Dashboard extends Component {
     constructor(props) {
@@ -368,47 +370,11 @@ class Dashboard extends Component {
 
         if (this.state.waitlist) {
             return (
-                <div
-                    style={{
-                        backgroundColor: "white",
-                        minHeight: "100vh",
-                        overflowX: "hidden !important",
-                        textAlign: "center",
-                    }}
-                >
-                    <Header color="#333333" button="#5ec3eb" />
-                    <div
-                        style={{
-                            paddingTop: 200,
-                            textAlign: "center",
-                            maxWidth: 500,
-                            margin: "auto",
-                            marginBottom: 60,
-                        }}
-                    >
-                        {this.state.month} {this.state.day}, {this.state.year}:
-                        Fractal is currently undergoing a major update and will
-                        be back online within a few days. We apologize for the
-                        inconvenience!
-                    </div>
-                    <HashLink
-                        to="/#top"
-                        style={{ outline: "none", textDecoration: "none" }}
-                    >
-                        <Button
-                            style={{
-                                color: "#5ec3eb",
-                                border: "none",
-                                fontWeight: "bold",
-                                padding: "12px 25px",
-                                outline: "none",
-                                background: "rgba(94, 195, 235,0.1)",
-                            }}
-                        >
-                            Back to Home
-                        </Button>
-                    </HashLink>
-                </div>
+                <OfflineSection
+                    month = {this.state.month}
+                    day = {this.state.day}
+                    year = {this.state.year}
+                />
             );
         } else if (!this.props.dashboard_loaded && this.props.user) {
             return (

@@ -12,7 +12,7 @@ import { faCircleNotch, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 import "react-tabs/style/react-tabs.css";
-import "static/App.css";
+import "static/Shared.css";
 
 class EmailVerification extends Component {
     constructor(props) {

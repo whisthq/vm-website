@@ -11,7 +11,7 @@ import { FaArrowRight } from 'react-icons/fa'
 import Header from 'components/header.js'
 import CheckoutForm from 'components/checkoutform.js'
 import { config } from 'utils/constants.js'
-import 'static/App.css';
+import 'static/Shared.css';
 import StripeBadge from 'assets/powered_by_stripe.svg'
 import PriceBox from './containers/priceBox.js'
 

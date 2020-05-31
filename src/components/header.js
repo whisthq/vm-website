@@ -4,7 +4,7 @@ import Logo from "assets/logo.svg";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { FaBars, FaTimes } from "react-icons/fa";
-import "static/App.css";
+import "static/Shared.css";
 import { HashLink } from "react-router-hash-link";
 import { changeTab } from "store/actions/general/homepage_actions";
 

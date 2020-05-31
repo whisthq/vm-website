@@ -14,7 +14,7 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 import "react-tabs/style/react-tabs.css";
-import "static/App.css";
+import "static/Shared.css";
 
 class SignupBox extends Component {
     constructor(props) {

@@ -3,7 +3,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
-import "static/App.css";
+import "static/Shared.css";
 import Header from "components/header.js";
 import "react-tabs/style/react-tabs.css";
 import { FaCheck, FaExclamationTriangle } from "react-icons/fa";

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "components/header.js";
-import "static/App.css";
+import "static/Shared.css";
 import {
     addStorage,
     addStorageStatus

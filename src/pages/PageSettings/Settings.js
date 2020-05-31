@@ -3,7 +3,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
-import "static/App.css";
+import "static/Shared.css";
 
 import Header from "components/header.js";
 import {

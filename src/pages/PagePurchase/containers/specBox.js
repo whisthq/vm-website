@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 
-import 'static/App.css';
+import 'static/Shared.css';
 
 class SpecBox extends Component {
   constructor(props) {

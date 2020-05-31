@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import 'static/App.css';
+import 'static/Shared.css';
 
 class PriceBox extends Component {
   constructor(props) {

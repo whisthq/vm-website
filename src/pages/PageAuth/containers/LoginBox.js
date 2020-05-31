@@ -12,7 +12,7 @@ import { HashLink } from "react-router-hash-link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
-import "static/App.css";
+import "static/Shared.css";
 
 class LoginBox extends Component {
     constructor(props) {

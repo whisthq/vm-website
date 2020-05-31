@@ -8,25 +8,14 @@ div {
     font-family: "Maven Pro" !important;
 }
 
-.App,
-.About {
-    text-align: center;
-    width: 100%;
+.fractal-container {
+    width: 100vw;
+    margin: 0px;
+    padding-left: 80px;
+    padding-right: 80px;
+    max-width: 2000px;
+    margin: auto;
     overflow-x: hidden;
-}
-
-.LandingButton {
-    background-color: white;
-    border: solid 1px #2f5da3;
-    color: #2f5da3;
-    padding: 10px;
-    min-width: 150px;
-    font-size: 15px;
-    font-weight: bold;
-}
-
-::placeholder {
-    color: white;
 }
 
 .exit-survey ::placeholder {
@@ -167,16 +156,6 @@ input {
 
 .teal-gradient {
     background: linear-gradient(258.54deg, #4b89e5 0%, #2bf7de 100%);
-}
-
-.fractal-container {
-    width: 100vw;
-    margin: 0px;
-    padding-left: 80px;
-    padding-right: 80px;
-    max-width: 2000px;
-    margin: auto;
-    overflow-x: hidden;
 }
 
 @media screen and (max-width: 700px) {

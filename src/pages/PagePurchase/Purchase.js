@@ -10,7 +10,7 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "components/header.js";
 import TypeformButton from "components/typeformbutton.js";
-import "static/App.css";
+import "static/Shared.css";
 import Autocomplete from "./AutoComplete.js";
 import { options } from "./Options.js";
 import {

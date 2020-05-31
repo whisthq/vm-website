@@ -5,7 +5,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Redirect } from "react-router-dom";
 
 import "react-tabs/style/react-tabs.css";
-import "static/App.css";
+import "static/Shared.css";
 import LoginBox from "./containers/LoginBox.js"
 import SignupBox from "./containers/SignupBox.js"
 
