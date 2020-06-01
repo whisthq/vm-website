@@ -22,6 +22,7 @@ class Landing extends Component {
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
+        this.props.dispatch(changeTab("personal"));
     }
 
     componentWillUnmount() {
