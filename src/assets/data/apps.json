@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Google Chrome",
+        "category": "Productivity",
+        "image": "chrome.svg",
+        "link": "https://www.google.com/chrome/"
+    },
+    {
+        "name": "Adobe Acrobat",
+        "category": "Productivity",
+        "image": "acrobat.png",
+        "link": "https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html"
+    },
+    {
+        "name": "Zoom",
+        "category": "Productivity",
+        "image": "zoom.png",
+        "link": "https://www.zoom.us/"
+    },
+    {
+        "name": "Steam",
+        "category": "Gaming",
+        "image": "steam.png",
+        "link": "https://store.steampowered.com/"
+    },
+    {
+        "name": "Discord",
+        "category": "Gaming",
+        "image": "discord.png",
+        "link": "https://discord.com/"
+    },
+    {
+        "name": "Blender",
+        "category": "Creative",
+        "image": "blender.png",
+        "link": "https://www.blender.org/"
+    },
+    {
+        "name": "Git",
+        "category": "Developer",
+        "image": "git.png",
+        "link": "https://git-scm.com/"
+    },
+    {
+        "name": "Atom",
+        "category": "Developer",
+        "image": "atom.png",
+        "link": "https://atom.io/"
+    }
+]
