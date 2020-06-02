@@ -2,7 +2,7 @@
 
 ![Node.js CI](https://github.com/fractalcomputers/website/workflows/Node.js%20CI/badge.svg)
 
-This repository contains the code for the Fractal website where users create and manage their account. It interfaces with the email-webserver, vm-webserver and admin-dashboard.
+This repository contains the code for the Fractal website where users create and manage their account. It interfaces with the webservers and the admin dashboard.
 
 The Netlify staging version of the website is hosted at: https://fractalcomputers.netlify.com/
 
