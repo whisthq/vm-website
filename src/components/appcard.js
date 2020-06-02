@@ -21,12 +21,13 @@ class AppCard extends Component {
         return (
             <Card
                 style={{
-                    height: "16rem",
+                    height: "14rem",
                     maxWidth: "16rem",
-                    backgroundColor: this.state.selected ? "#eee" : "#fff",
-                    boxShadow: this.state.selected
-                        ? "-2px -2px #e8e8e8 inset"
-                        : "",
+                    backgroundColor: this.state.selected
+                        ? "rgba(94, 195, 235, 0.1)"
+                        : "#fff",
+                    borderRadius: 5,
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
                     cursor: "pointer",
                 }}
                 onClick={this.handleOnClick}
@@ -46,11 +47,25 @@ class AppCard extends Component {
                     />
                 </div>
                 <Card.Body style={{ padding: "1rem" }}>
-                    <Card.Title>{this.props.title}</Card.Title>
+                    <div
+                        style={{
+                            color: "#111111",
+                            fontSize: 22,
+                            fontWeight: "bold",
+                        }}
+                    >
+                        {this.props.title}
+                    </div>
+                    <div
+                        className="mt-1"
+                        style={{
+                            fontSize: 12,
+                            color: "#999",
+                        }}
+                    >
+                        {this.props.tag}
+                    </div>
                 </Card.Body>
-                <Card.Footer>
-                    <small className="text-muted">{this.props.tag}</small>
-                </Card.Footer>
             </Card>
         );
     }

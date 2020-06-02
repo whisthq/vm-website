@@ -1,9 +1,5 @@
 import React, { Component } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Tabs from "react-bootstrap/Tabs";
-import Tab from "react-bootstrap/Tab";
+import { Container, Row, Col, Button, Tabs, Tab } from "react-bootstrap";
 import { connect } from "react-redux";
 import "static/Shared.css";
 
@@ -31,6 +27,7 @@ class Apps extends Component {
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.handleTabChange = this.handleTabChange.bind(this);
         this.handleSelectApp = this.handleSelectApp.bind(this);
+        this.installApps = this.installApps.bind(this);
     }
 
     componentDidMount() {
@@ -61,6 +58,11 @@ class Apps extends Component {
             this.setState({ selectedApps: [...this.state.selectedApps, app] });
         }
     };
+
+    installApps() {
+        console.log(this.state.selectedApps);
+        // TODO
+    }
 
     render() {
         if (!this.state.loaded) {
@@ -119,6 +121,29 @@ class Apps extends Component {
                                 </Col>
                             );
                         })}
+                    </Row>
+                    <Row>
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "space-between",
+                                width: 300,
+                                marginTop: 40,
+                            }}
+                        >
+                            <Button
+                                onClick={this.installApps}
+                                style={{
+                                    background: "#111111",
+                                    border: "none",
+                                    padding: "10px 45px",
+                                    display: "inline",
+                                    width: 235,
+                                }}
+                            >
+                                Add Storage
+                            </Button>
+                        </div>
                     </Row>
                 </Container>
             );
