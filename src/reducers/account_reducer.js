@@ -42,7 +42,7 @@ const DEFAULT = {
     disk_creation_message: "",
     current_disk: null,
     change_plan_status: 0,
-    add_storage_status: 0
+    add_storage_status: 0,
 };
 
 export default function (state = DEFAULT, action) {
@@ -134,7 +134,10 @@ export default function (state = DEFAULT, action) {
             return {
                 ...state,
                 signupStatus: action.status,
-                failed_signup_attempts: action.status !== 400 ? state.failed_signup_attempts : state.failed_signup_attempts + 1
+                failed_signup_attempts:
+                    action.status !== 400
+                        ? state.failed_signup_attempts
+                        : state.failed_signup_attempts + 1,
             };
         case AccountAction.STRIPE_FAILURE:
             return {
@@ -236,13 +239,13 @@ export default function (state = DEFAULT, action) {
         case AccountAction.CHANGE_PLAN_STATUS:
             return {
                 ...state,
-                change_plan_status: action.status
-            }
+                change_plan_status: action.status,
+            };
         case AccountAction.ADD_STORAGE_STATUS:
             return {
                 ...state,
-                add_storage_status: action.status
-            }
+                add_storage_status: action.status,
+            };
         default:
             return state;
     }

@@ -468,13 +468,17 @@ class PageHome extends Component {
                                         maxHeight: 260,
                                         border: "solid 10px white",
                                         borderRadius: 10,
-                                        boxShadow: "0px 4px 30px rgba(0, 0, 0, 0.45)",
-                                        background: "#F2DEF8"
+                                        boxShadow:
+                                            "0px 4px 30px rgba(0, 0, 0, 0.45)",
+                                        background: "#F2DEF8",
                                     }}
                                 >
                                     <ImageFadeIn
                                         src={Software}
-                                        style = {{width: "100%", height: "100%"}}
+                                        style={{
+                                            width: "100%",
+                                            height: "100%",
+                                        }}
                                     />
                                 </div>
                                 <div
@@ -513,12 +517,15 @@ class PageHome extends Component {
                                         borderRadius: 10,
                                         boxShadow:
                                             "0px 4px 30px rgba(0, 0, 0, 0.45)",
-                                        background: "#D7EAF5"
+                                        background: "#D7EAF5",
                                     }}
                                 >
                                     <ImageFadeIn
                                         src={Gaming}
-                                        style={{width: "100%", height: "100%"}}
+                                        style={{
+                                            width: "100%",
+                                            height: "100%",
+                                        }}
                                     />
                                 </div>
                                 <div
@@ -557,14 +564,14 @@ class PageHome extends Component {
                                         borderRadius: 10,
                                         boxShadow:
                                             "0px 4px 30px rgba(0, 0, 0, 0.45)",
-                                        background: "#D7F5F5"
+                                        background: "#D7F5F5",
                                     }}
                                 >
                                     <ImageFadeIn
                                         src={Creative}
                                         style={{
                                             height: "100%",
-                                            float: "right"
+                                            float: "right",
                                         }}
                                     />
                                 </div>

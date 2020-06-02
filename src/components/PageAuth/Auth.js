@@ -6,8 +6,8 @@ import { Redirect } from "react-router-dom";
 
 import "react-tabs/style/react-tabs.css";
 import "../../static/App.css";
-import LoginBox from "./containers/LoginBox.js"
-import SignupBox from "./containers/SignupBox.js"
+import LoginBox from "./containers/LoginBox.js";
+import SignupBox from "./containers/SignupBox.js";
 
 class Auth extends Component {
     constructor(props) {
@@ -16,7 +16,7 @@ class Auth extends Component {
             width: 0,
             height: 0,
             modalShow: false,
-            showPopup: false
+            showPopup: false,
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
@@ -41,7 +41,7 @@ class Auth extends Component {
         }
 
         return (
-            <div id = "top">
+            <div id="top">
                 {this.props.loggedIn && this.props.email_verified ? (
                     <Redirect to="/dashboard" />
                 ) : (
@@ -100,10 +100,10 @@ class Auth extends Component {
                                         </Tab>
                                     </TabList>
                                     <TabPanel style={{ padding: "15px 30px" }}>
-                                        <LoginBox/>
+                                        <LoginBox />
                                     </TabPanel>
                                     <TabPanel style={{ padding: "15px 30px" }}>
-                                        <SignupBox/>
+                                        <SignupBox />
                                     </TabPanel>
                                 </Tabs>
                             </div>
@@ -118,7 +118,7 @@ class Auth extends Component {
 function mapStateToProps(state) {
     return {
         loggedIn: state.AccountReducer.loggedIn,
-        email_verified: state.AccountReducer.email_verified
+        email_verified: state.AccountReducer.email_verified,
     };
 }
 

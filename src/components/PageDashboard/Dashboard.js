@@ -86,7 +86,7 @@ class Dashboard extends Component {
             waitlist: false,
             loaded: false,
             clipboardCopied: false,
-            total_storage: "120GB"
+            total_storage: "120GB",
         };
         this.customWidth = React.createRef();
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -115,15 +115,15 @@ class Dashboard extends Component {
             this.props.dispatch(fetchDiskStatus(this.props.status_id));
         }
 
-        if(this.props.disks && Object.keys(this.props.disks).length > 1) {
-            var total_storage = 0
-            this.props.disks.forEach(function(disk) {
-                total_storage = total_storage + Number(disk["disk_size"]) 
+        if (this.props.disks && Object.keys(this.props.disks).length > 1) {
+            var total_storage = 0;
+            this.props.disks.forEach(function (disk) {
+                total_storage = total_storage + Number(disk["disk_size"]);
             });
             this.setState({
-               total_storage: total_storage.toString() + "GB"
+                total_storage: total_storage.toString() + "GB",
             });
-        };
+        }
     }
 
     componentWillUnmount() {
@@ -544,10 +544,13 @@ class Dashboard extends Component {
                                             >
                                                 DASHBOARD
                                             </div>
-                                            <Link to = "/settings" 
-                                                className="sign-out-button" 
-                                                style = {{textDecoration: "none",
-                                                          color: "#B9B9B9"}}
+                                            <Link
+                                                to="/settings"
+                                                className="sign-out-button"
+                                                style={{
+                                                    textDecoration: "none",
+                                                    color: "#B9B9B9",
+                                                }}
                                             >
                                                 SETTINGS
                                             </Link>
@@ -558,8 +561,8 @@ class Dashboard extends Component {
                                                         logout()
                                                     )
                                                 }
-                                                style = {{
-                                                    marginTop: 15
+                                                style={{
+                                                    marginTop: 15,
                                                 }}
                                             >
                                                 SIGN OUT
@@ -1983,7 +1986,11 @@ class Dashboard extends Component {
                                                                             fontSize: 13,
                                                                         }}
                                                                     >
-                                                                        {this.state.total_storage} 
+                                                                        {
+                                                                            this
+                                                                                .state
+                                                                                .total_storage
+                                                                        }
                                                                         &nbsp;Storage
                                                                     </div>
                                                                 </div>
@@ -1991,11 +1998,13 @@ class Dashboard extends Component {
                                                         </Row>
                                                     </Col>
                                                     <Col md={5} xs={12}>
-                                                        <HashLink 
+                                                        <HashLink
                                                             to="/plan/#top"
                                                             style={{
-                                                                textDecoration: "none"
-                                                            }}>
+                                                                textDecoration:
+                                                                    "none",
+                                                            }}
+                                                        >
                                                             <div
                                                                 style={{
                                                                     borderRadius: 5,
@@ -2070,9 +2079,11 @@ class Dashboard extends Component {
                                                                         to the
                                                                         Hourly
                                                                         plan.
-                                                                        You can change
-                                                                        your 
-                                                                        plan here.
+                                                                        You can
+                                                                        change
+                                                                        your
+                                                                        plan
+                                                                        here.
                                                                     </div>
                                                                 ) : this.props
                                                                       .payment
@@ -2101,8 +2112,11 @@ class Dashboard extends Component {
                                                                         to the
                                                                         Monthly
                                                                         plan.
-                                                                        You can change
-                                                                        your plan here.
+                                                                        You can
+                                                                        change
+                                                                        your
+                                                                        plan
+                                                                        here.
                                                                     </div>
                                                                 ) : (
                                                                     <div
@@ -2127,8 +2141,11 @@ class Dashboard extends Component {
                                                                         to the
                                                                         Unlimited
                                                                         plan.
-                                                                        You can change
-                                                                        your plan here.
+                                                                        You can
+                                                                        change
+                                                                        your
+                                                                        plan
+                                                                        here.
                                                                     </div>
                                                                 )}
                                                             </div>
@@ -2416,7 +2433,11 @@ class Dashboard extends Component {
                                                                             fontSize: 13,
                                                                         }}
                                                                     >
-                                                                        {this.state.total_storage}
+                                                                        {
+                                                                            this
+                                                                                .state
+                                                                                .total_storage
+                                                                        }
                                                                         &nbsp;Storage
                                                                     </div>
                                                                 </div>
@@ -2460,7 +2481,7 @@ class Dashboard extends Component {
                                                                             "white",
                                                                         height: 25,
                                                                         marginTop: 15,
-                                                                        fontSize: 20
+                                                                        fontSize: 20,
                                                                     }}
                                                                 />
                                                                 <div
@@ -3203,7 +3224,8 @@ class Dashboard extends Component {
                                                                                             this
                                                                                                 .props
                                                                                                 .is_creating
-                                                                                            ? "true" : "true"
+                                                                                                ? "true"
+                                                                                                : "true"
                                                                                         }
                                                                                         style={{
                                                                                             border:

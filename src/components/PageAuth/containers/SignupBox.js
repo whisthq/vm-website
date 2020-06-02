@@ -7,7 +7,7 @@ import {
     changeTab,
     subscribeNewsletter,
     lookupUser,
-    signupFailure
+    signupFailure,
 } from "../../../actions/index.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
@@ -36,7 +36,7 @@ class SignupBox extends Component {
             subscribed: true,
             name: "",
             feedback: "",
-            step: 1
+            step: 1,
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
@@ -44,10 +44,12 @@ class SignupBox extends Component {
     handleSignup = (evt) => {
         this.setState({ processing: true, failed_signup_attempt: false });
         this.props.dispatch(
-            userSignup(this.state.emailSignup, 
-                this.state.passwordSignup, 
+            userSignup(
+                this.state.emailSignup,
+                this.state.passwordSignup,
                 this.state.name,
-                this.state.feedback)
+                this.state.feedback
+            )
         );
         if (this.state.subscribed) {
             this.props.dispatch(subscribeNewsletter(this.state.emailSignup));
@@ -62,20 +64,25 @@ class SignupBox extends Component {
             this.state.matches &&
             this.state.termsAccepted
         ) {
-            this.setState({processing: true, failed_signup_attempt: false})
-            this.props.dispatch(lookupUser(this.state.emailSignup))
+            this.setState({ processing: true, failed_signup_attempt: false });
+            this.props.dispatch(lookupUser(this.state.emailSignup));
         }
-    }
+    };
 
     toStepOne = () => {
-        this.setState({step: 1, processing: false, failed_signup_attempt: false, termsAccepted: false})
-        this.props.dispatch(signupFailure(0))
-    }
+        this.setState({
+            step: 1,
+            processing: false,
+            failed_signup_attempt: false,
+            termsAccepted: false,
+        });
+        this.props.dispatch(signupFailure(0));
+    };
 
     toStepTwo = () => {
-        this.setState({processing: true, failed_signup_attempt: false})
-        this.props.dispatch(lookupUser(this.state.emailSignup))
-    }
+        this.setState({ processing: true, failed_signup_attempt: false });
+        this.props.dispatch(lookupUser(this.state.emailSignup));
+    };
 
     signupKeyPress = (event) => {
         if (
@@ -87,30 +94,27 @@ class SignupBox extends Component {
         ) {
             this.setState({ processing: true, failed_signup_attempt: false });
             this.props.dispatch(
-                userSignup(this.state.emailSignup, 
-                    this.state.passwordSignup, 
+                userSignup(
+                    this.state.emailSignup,
+                    this.state.passwordSignup,
                     this.state.name,
-                    this.state.feedback)
+                    this.state.feedback
+                )
             );
         }
     };
 
     toStepThreeKeyPress = (evt) => {
-        if (
-            evt.key === "Enter" &&
-            this.state.name.length > 1
-        ) {
-            this.setState({step: 3})
+        if (evt.key === "Enter" && this.state.name.length > 1) {
+            this.setState({ step: 3 });
         }
-    }
+    };
 
     toStepThree = () => {
-        if (
-            this.state.name.length > 1
-        ) {
-            this.setState({step: 3})
-        }  
-    }
+        if (this.state.name.length > 1) {
+            this.setState({ step: 3 });
+        }
+    };
 
     changeEmailSignup = (evt) => {
         this.setState({ emailSignup: evt.target.value }, function () {
@@ -148,12 +152,12 @@ class SignupBox extends Component {
     };
 
     changeName = (evt) => {
-        this.setState({ name: evt.target.value })
+        this.setState({ name: evt.target.value });
     };
 
     changeFeedback = (evt) => {
-        this.setState({feedback: evt.target.value })
-    }
+        this.setState({ feedback: evt.target.value });
+    };
 
     acceptTerms = (event) => {
         const target = event.target;
@@ -177,7 +181,7 @@ class SignupBox extends Component {
         this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
         this.props.dispatch(changeTab("auth"));
-        this.props.dispatch(signupFailure(0))
+        this.props.dispatch(signupFailure(0));
     }
 
     componentDidUpdate(prevProps) {
@@ -189,9 +193,12 @@ class SignupBox extends Component {
             this.setState({ failed_signup_attempt: true, processing: false });
         }
 
-        if(prevProps.signupStatus !== this.props.signupStatus && 
-                this.props.signupStatus === 200 && this.state.processing) {
-            this.setState({step: 2, processing: false})
+        if (
+            prevProps.signupStatus !== this.props.signupStatus &&
+            this.props.signupStatus === 200 &&
+            this.state.processing
+        ) {
+            this.setState({ step: 2, processing: false });
         }
     }
 
@@ -236,24 +243,19 @@ class SignupBox extends Component {
             }
         };
 
-        if(this.state.step === 1) {
+        if (this.state.step === 1) {
             return (
-                <div style = {{maxWidth: 300, margin: "auto"}}>
+                <div style={{ maxWidth: 300, margin: "auto" }}>
                     {signupWarning()}
-                    <InputGroup
-                        className="mb-3"
-                        style={{ marginTop: 20 }}
-                    >
+                    <InputGroup className="mb-3" style={{ marginTop: 20 }}>
                         <FormControl
                             type="email"
                             aria-label="Default"
                             aria-describedby="inputGroup-sizing-default"
                             placeholder="Email Address"
-                            value = {this.state.emailSignup}
-                            onChange={
-                                this.changeEmailSignup
-                            }
-                            onKeyPress= {this.toStepTwoKeyPress}
+                            value={this.state.emailSignup}
+                            onChange={this.changeEmailSignup}
+                            onKeyPress={this.toStepTwoKeyPress}
                             style={{
                                 borderRadius: 5,
                                 maxWidth: 600,
@@ -263,8 +265,7 @@ class SignupBox extends Component {
                             }}
                         />
                         {!this.state.validEmail &&
-                        this.state.emailSignup.length >
-                            1 ? (
+                        this.state.emailSignup.length > 1 ? (
                             <div
                                 style={{
                                     color: "#a62121",
@@ -279,13 +280,11 @@ class SignupBox extends Component {
                                 <FaExclamationTriangle
                                     style={{
                                         marginRight: 5,
-                                        position:
-                                            "relative",
+                                        position: "relative",
                                     }}
                                 />
                             </div>
-                        ) : this.state.emailSignup.length >
-                          1 ? (
+                        ) : this.state.emailSignup.length > 1 ? (
                             <div
                                 style={{
                                     color: "green",
@@ -300,8 +299,7 @@ class SignupBox extends Component {
                                 <FaCheck
                                     style={{
                                         marginRight: 5,
-                                        position:
-                                            "relative",
+                                        position: "relative",
                                         top: 10,
                                         color: "#62CEE6",
                                     }}
@@ -311,19 +309,14 @@ class SignupBox extends Component {
                             <div></div>
                         )}
                     </InputGroup>
-                    <InputGroup
-                        className="mb-3"
-                        style={{ marginTop: 20 }}
-                    >
+                    <InputGroup className="mb-3" style={{ marginTop: 20 }}>
                         <FormControl
                             aria-label="Default"
                             type="password"
                             aria-describedby="inputGroup-sizing-default"
                             placeholder="Password"
                             value={this.state.passwordSignup}
-                            onChange={
-                                this.changePasswordSignup
-                            }
+                            onChange={this.changePasswordSignup}
                             onKeyPress={this.toStepTwoKeyPress}
                             style={{
                                 borderRadius: 5,
@@ -348,13 +341,11 @@ class SignupBox extends Component {
                                 <FaExclamationTriangle
                                     style={{
                                         marginRight: 5,
-                                        position:
-                                            "relative",
+                                        position: "relative",
                                     }}
                                 />
                             </div>
-                        ) : this.state.passwordSignup
-                              .length > 0 ? (
+                        ) : this.state.passwordSignup.length > 0 ? (
                             <div
                                 style={{
                                     color: "green",
@@ -369,8 +360,7 @@ class SignupBox extends Component {
                                 <FaCheck
                                     style={{
                                         marginRight: 5,
-                                        position:
-                                            "relative",
+                                        position: "relative",
                                         top: 10,
                                         color: "#62CEE6",
                                     }}
@@ -380,20 +370,14 @@ class SignupBox extends Component {
                             <div></div>
                         )}
                     </InputGroup>
-                    <InputGroup
-                        className="mb-3"
-                        style={{ marginTop: 20 }}
-                    >
+                    <InputGroup className="mb-3" style={{ marginTop: 20 }}>
                         <FormControl
                             aria-label="Default"
                             type="password"
                             aria-describedby="inputGroup-sizing-default"
                             placeholder="Confirm Password"
                             value={this.state.passwordConfirmSignup}
-                            onChange={
-                                this
-                                    .changePasswordConfirmSignup
-                            }
+                            onChange={this.changePasswordConfirmSignup}
                             onKeyPress={this.toStepTwoKeyPress}
                             style={{
                                 borderRadius: 5,
@@ -404,8 +388,7 @@ class SignupBox extends Component {
                             }}
                         />
                         {!this.state.matches &&
-                        this.state.passwordConfirmSignup
-                            .length > 0 ? (
+                        this.state.passwordConfirmSignup.length > 0 ? (
                             <div
                                 style={{
                                     color: "#a62121",
@@ -420,13 +403,11 @@ class SignupBox extends Component {
                                 <FaExclamationTriangle
                                     style={{
                                         marginRight: 5,
-                                        position:
-                                            "relative",
+                                        position: "relative",
                                     }}
                                 />
                             </div>
-                        ) : this.state.passwordConfirmSignup
-                              .length > 0 ? (
+                        ) : this.state.passwordConfirmSignup.length > 0 ? (
                             <div
                                 style={{
                                     color: "green",
@@ -441,8 +422,7 @@ class SignupBox extends Component {
                                 <FaCheck
                                     style={{
                                         marginRight: 5,
-                                        position:
-                                            "relative",
+                                        position: "relative",
                                         top: 10,
                                         color: "#62CEE6",
                                     }}
@@ -464,8 +444,7 @@ class SignupBox extends Component {
                                     color: "white",
                                     width: "100%",
                                     border: "none",
-                                    backgroundColor:
-                                        "#0B172B",
+                                    backgroundColor: "#0B172B",
                                     boxShadow:
                                         "0px 2px 4px rgba(0, 0, 0, 0.25)",
                                     fontWeight: "bold",
@@ -482,8 +461,7 @@ class SignupBox extends Component {
                                     color: "white",
                                     width: "100%",
                                     border: "none",
-                                    backgroundColor:
-                                        "#0B172B",
+                                    backgroundColor: "#0B172B",
                                     boxShadow:
                                         "0px 2px 4px rgba(0, 0, 0, 0.25)",
                                     fontWeight: "bold",
@@ -502,8 +480,7 @@ class SignupBox extends Component {
                                 width: "100%",
                                 border: "none",
                                 backgroundColor: "#0B172B",
-                                boxShadow:
-                                    "0px 2px 4px rgba(0, 0, 0, 0.25)",
+                                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)",
                                 fontWeight: "bold",
                                 padding: 12,
                             }}
@@ -530,9 +507,7 @@ class SignupBox extends Component {
                             <input
                                 type="checkbox"
                                 onChange={this.acceptTerms}
-                                onKeyPress={
-                                    this.toStepTwoKeyPress
-                                }
+                                onKeyPress={this.toStepTwoKeyPress}
                             />
                             <span className="checkmark"></span>
                         </label>
@@ -578,9 +553,7 @@ class SignupBox extends Component {
                                 defaultChecked
                                 type="checkbox"
                                 onChange={this.subscribe}
-                                onKeyPress={
-                                    this.toStepTwoKeyPress
-                                }
+                                onKeyPress={this.toStepTwoKeyPress}
                             />
                             <span className="checkmark"></span>
                         </label>
@@ -593,44 +566,61 @@ class SignupBox extends Component {
                                 color: "#111111",
                             }}
                         >
-                            Subscribe to the Fractal
-                            newsletter and receive
+                            Subscribe to the Fractal newsletter and receive
                             (infrequent) major updates
                         </div>
                     </div>
                 </div>
             );
         } else if (this.state.step === 2) {
-            return(
-                <div style = {{
-                    maxWidth: 500, 
-                    margin: "10px auto"}}
+            return (
+                <div
+                    style={{
+                        maxWidth: 500,
+                        margin: "10px auto",
+                    }}
                 >
                     <div>
-                        <div style = {{fontSize: 30, textAlign: "center", fontWeight: "bold"}}>
-                            <span style = {{fontSize: 18}}>Welcome!</span><br/>
+                        <div
+                            style={{
+                                fontSize: 30,
+                                textAlign: "center",
+                                fontWeight: "bold",
+                            }}
+                        >
+                            <span style={{ fontSize: 18 }}>Welcome!</span>
+                            <br />
                             How should we greet you?
                         </div>
-                        <div className = "signupBox" style = {{marginTop: 45, textAlign: "center"}}>
-                            <input 
-                                type = "text"
-                                placeholder = "e.g. Michael"
-                                value = {this.state.name}
+                        <div
+                            className="signupBox"
+                            style={{ marginTop: 45, textAlign: "center" }}
+                        >
+                            <input
+                                type="text"
+                                placeholder="e.g. Michael"
+                                value={this.state.name}
                                 style={{
                                     borderRadius: 5,
                                     maxWidth: 400,
                                     backgroundColor: "#F4F4F4",
                                     border: "none",
                                     padding: "15px 25px",
-                                    width: '100%'
+                                    width: "100%",
                                 }}
-                                onChange = {this.changeName}
-                                onKeyPress = {this.toStepThreeKeyPress}
+                                onChange={this.changeName}
+                                onKeyPress={this.toStepThreeKeyPress}
                             />
                         </div>
-                        <div style = {{textAlign: "center", fontWeight: "bold", marginTop: 15}}>
-                            <Button 
-                                style = {{
+                        <div
+                            style={{
+                                textAlign: "center",
+                                fontWeight: "bold",
+                                marginTop: 15,
+                            }}
+                        >
+                            <Button
+                                style={{
                                     padding: "12px 75px",
                                     maxWidth: 400,
                                     fontWeight: "bold",
@@ -638,61 +628,91 @@ class SignupBox extends Component {
                                     background: "#0B172B",
                                     color: "white",
                                     border: "none",
-                                    width: "100%"
+                                    width: "100%",
                                 }}
-                                disabled = {this.state.name.length < 1}
-                                onClick = {this.toStepThree}
+                                disabled={this.state.name.length < 1}
+                                onClick={this.toStepThree}
                             >
                                 CONTINUE
                             </Button>
-                        <div 
-                            style = {{color: "#666666", textAlign: "center", marginTop: 15, fontSize: 14}}
-                            onClick = {this.toStepOne}
-                            className = "pointerOnHover"
-                        >
-                            <FaCaretLeft 
-                                style = {{position: "relative", bottom: 1.5}}
-                            /> Go Back
-                        </div>
+                            <div
+                                style={{
+                                    color: "#666666",
+                                    textAlign: "center",
+                                    marginTop: 15,
+                                    fontSize: 14,
+                                }}
+                                onClick={this.toStepOne}
+                                className="pointerOnHover"
+                            >
+                                <FaCaretLeft
+                                    style={{
+                                        position: "relative",
+                                        bottom: 1.5,
+                                    }}
+                                />{" "}
+                                Go Back
+                            </div>
                         </div>
                     </div>
                 </div>
             );
         } else if (this.state.step === 3) {
-            return(
-                <div style = {{
-                    maxWidth: 500, 
-                    margin: "auto"}}
+            return (
+                <div
+                    style={{
+                        maxWidth: 500,
+                        margin: "auto",
+                    }}
                 >
                     <div>
-                        <div style = {{paddingLeft: 30, paddingRight: 30}}>
+                        <div style={{ paddingLeft: 30, paddingRight: 30 }}>
                             {signupWarning()}
                         </div>
-                        <div style = {{fontSize: 30, textAlign: "center", fontWeight: "bold", marginTop: 10}}>
-                            <span style = {{fontSize: 18}}>Hello, {this.state.name}!</span><br/>
+                        <div
+                            style={{
+                                fontSize: 30,
+                                textAlign: "center",
+                                fontWeight: "bold",
+                                marginTop: 10,
+                            }}
+                        >
+                            <span style={{ fontSize: 18 }}>
+                                Hello, {this.state.name}!
+                            </span>
+                            <br />
                             How did you discover us?
                         </div>
-                        <div className = "signupBox" style = {{marginTop: 45, textAlign: "center"}}>
-                            <input 
-                                type = "text"
-                                onChange = {this.changeFeedback}
-                                value = {this.state.feedback}
-                                onKeyPress = {this.signupKeyPress}
-                                placeholder = "e.g. Google search"
+                        <div
+                            className="signupBox"
+                            style={{ marginTop: 45, textAlign: "center" }}
+                        >
+                            <input
+                                type="text"
+                                onChange={this.changeFeedback}
+                                value={this.state.feedback}
+                                onKeyPress={this.signupKeyPress}
+                                placeholder="e.g. Google search"
                                 style={{
                                     borderRadius: 5,
                                     backgroundColor: "#F4F4F4",
                                     border: "none",
                                     padding: "15px 25px",
                                     maxWidth: 400,
-                                    width: "100%"
+                                    width: "100%",
                                 }}
                             />
                         </div>
-                        <div style = {{textAlign: "center", fontWeight: "bold", marginTop: 15}}>
-                            <Button 
-                                disabled = {this.state.feedback.length < 1}
-                                style = {{
+                        <div
+                            style={{
+                                textAlign: "center",
+                                fontWeight: "bold",
+                                marginTop: 15,
+                            }}
+                        >
+                            <Button
+                                disabled={this.state.feedback.length < 1}
+                                style={{
                                     padding: "12px 60px",
                                     fontWeight: "bold",
                                     fontSize: 16,
@@ -700,21 +720,27 @@ class SignupBox extends Component {
                                     color: "white",
                                     border: "none",
                                     maxWidth: 400,
-                                    width: "100%"
+                                    width: "100%",
                                 }}
-                                onClick = {this.handleSignup}
+                                onClick={this.handleSignup}
                             >
                                 FINISH
                             </Button>
                         </div>
-                        <div 
-                            style = {{color: "#666666", textAlign: "center", marginTop: 15, fontSize: 14}}
-                            onClick = {() => this.setState({step: 2})}
-                            className = "pointerOnHover"
+                        <div
+                            style={{
+                                color: "#666666",
+                                textAlign: "center",
+                                marginTop: 15,
+                                fontSize: 14,
+                            }}
+                            onClick={() => this.setState({ step: 2 })}
+                            className="pointerOnHover"
                         >
-                            <FaCaretLeft 
-                                style = {{position: "relative", bottom: 1.5}}
-                            /> Go Back
+                            <FaCaretLeft
+                                style={{ position: "relative", bottom: 1.5 }}
+                            />{" "}
+                            Go Back
                         </div>
                     </div>
                 </div>
@@ -726,7 +752,7 @@ class SignupBox extends Component {
 function mapStateToProps(state) {
     return {
         failed_signup_attempts: state.AccountReducer.failed_signup_attempts,
-        signupStatus: state.AccountReducer.signupStatus
+        signupStatus: state.AccountReducer.signupStatus,
     };
 }
 

@@ -44,7 +44,7 @@ function* sendSignupInfo(action) {
             username: action.user,
             password: action.password,
             name: action.name,
-            feedback: action.feedback
+            feedback: action.feedback,
         }
     );
 
@@ -329,13 +329,13 @@ function* getDiskStatus(action) {
             (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
             ""
         );
-        if(json) {
-            json = json.json
+        if (json) {
+            json = json.json;
         }
         yield delay(5000);
     }
 
-    console.log(json)
+    console.log(json);
 
     if (json && json.output) {
         yield put(FormAction.vmCreating(true));
@@ -355,7 +355,7 @@ function* attachDisk(disk_name) {
         state.AccountReducer.access_token
     );
 
-    console.log(json)
+    console.log(json);
 
     if (json && json.ID) {
         yield put(FormAction.storeID(json.ID));
@@ -387,8 +387,8 @@ function* fetchDiskStatus(action) {
             state.AccountReducer.access_token
         );
 
-        if(json) {
-            json = json.json
+        if (json) {
+            json = json.json;
         }
 
         if (json && json.output && json.state === "PENDING") {
@@ -437,7 +437,7 @@ function* fetchDisks(action) {
         config.url.PRIMARY_SERVER + "/user/fetchdisks",
         {
             username: state.AccountReducer.user,
-            main: false
+            main: false,
         },
         ""
     );
@@ -616,38 +616,38 @@ function* changePlan(action) {
         config.url.PRIMARY_SERVER + "/stripe/update",
         {
             username: state.AccountReducer.user,
-            plan: action.plan 
+            plan: action.plan,
         },
         state.AccountReducer.access_token
     );
 
-    if(json) {
-        yield put(FormAction.changePlanStatus(json.status))
+    if (json) {
+        yield put(FormAction.changePlanStatus(json.status));
 
-        if(json.status === 200) {
-            history.push("/dashboard")
+        if (json.status === 200) {
+            history.push("/dashboard");
         }
     }
 }
 
 function* addStorage(action) {
-    const state = yield select(); 
+    const state = yield select();
 
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/disk/createEmpty",
         {
             username: state.AccountReducer.user,
-            disk_size: action.storage
+            disk_size: action.storage,
         },
         state.AccountReducer.access_token
-    )
+    );
 
-    console.log(json)
+    console.log(json);
 
     if (json) {
         if (json.ID) {
-            yield call(getStorageStatus, json.ID)
+            yield call(getStorageStatus, json.ID);
         }
     }
 }
@@ -666,19 +666,19 @@ function* getStorageStatus(ID) {
             ""
         );
 
-        if(json) {
-            json = json.json 
+        if (json) {
+            json = json.json;
         }
 
         yield delay(2500);
     }
 
     if (json && json.state) {
-        if(json.state === "SUCCESS") {
-            yield put(FormAction.addStorageStatus(200))
-            history.push("/settings")
+        if (json.state === "SUCCESS") {
+            yield put(FormAction.addStorageStatus(200));
+            history.push("/settings");
         } else {
-            yield put(FormAction.addStorageStatus(400))
+            yield put(FormAction.addStorageStatus(400));
         }
     }
 }
@@ -688,13 +688,13 @@ function* lookupUser(action) {
         apiPost,
         config.url.PRIMARY_SERVER + "/account/lookup",
         {
-            username: action.username 
+            username: action.username,
         },
         ""
-    )
+    );
 
-    if(json) {
-        if(json.exists) {
+    if (json) {
+        if (json.exists) {
             yield put(FormAction.signupFailure(400));
         } else {
             yield put(FormAction.signupFailure(200));
@@ -730,6 +730,6 @@ export default function* rootSaga() {
         takeEvery(FormAction.FETCH_DISK_STATUS, fetchDiskStatus),
         takeEvery(FormAction.CHANGE_PLAN, changePlan),
         takeEvery(FormAction.ADD_STORAGE, addStorage),
-        takeEvery(FormAction.LOOKUP_USER, lookupUser)
+        takeEvery(FormAction.LOOKUP_USER, lookupUser),
     ]);
 }

@@ -8,10 +8,7 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 import Header from "../../shared_components/header.js";
 import "../../static/App.css";
-import {
-    addStorage,
-    addStorageStatus
-} from "../../actions/index.js";
+import { addStorage, addStorageStatus } from "../../actions/index.js";
 import PriceBox from "./containers/priceBox.js";
 
 class Storage extends Component {
@@ -32,12 +29,15 @@ class Storage extends Component {
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
-        this.props.dispatch(addStorageStatus(0))
+        this.props.dispatch(addStorageStatus(0));
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.add_storage_status !== this.props.add_storage_status && this.state.processing) {
-            this.setState({processing: false})
+        if (
+            prevProps.add_storage_status !== this.props.add_storage_status &&
+            this.state.processing
+        ) {
+            this.setState({ processing: false });
         }
     }
 
@@ -50,9 +50,9 @@ class Storage extends Component {
     }
 
     addStorage = () => {
-        this.setState({processing: true})
-        this.props.dispatch(addStorage(this.state.storage))
-    }
+        this.setState({ processing: true });
+        this.props.dispatch(addStorage(this.state.storage));
+    };
 
     render() {
         let modalClose = () => this.setState({ modalShow: false });
@@ -65,7 +65,11 @@ class Storage extends Component {
                 return (
                     <div>
                         <div style={{ paddingBottom: 20 }}>
-                            <div style={{ color: "#111111", fontWeight: "bold" }}>Additional Storage</div>
+                            <div
+                                style={{ color: "#111111", fontWeight: "bold" }}
+                            >
+                                Additional Storage
+                            </div>
                             <div style={{ color: "#B9B9B9", fontSize: 12 }}>
                                 {this.state.storage.toString()}GB
                             </div>
@@ -97,7 +101,7 @@ class Storage extends Component {
                     <div>
                         <span
                             style={{
-                                fontSize: 22
+                                fontSize: 22,
                             }}
                         >
                             Add More Storage to Your Cloud PC
@@ -110,52 +114,42 @@ class Storage extends Component {
                                 maxWidth: 800,
                             }}
                         >
-                            Any additional storage you attach to your cloud PC will be appear
-                            as an additional hard drive. For instance, if you select the 256GB
-                            option, a new, 256GB hard drive will appear on your cloud PC when you
-                            launch it.
+                            Any additional storage you attach to your cloud PC
+                            will be appear as an additional hard drive. For
+                            instance, if you select the 256GB option, a new,
+                            256GB hard drive will appear on your cloud PC when
+                            you launch it.
                         </div>
                         <Row
                             style={{
                                 marginTop: 50,
-                                paddingLeft:
-                                    this.state.width > 700 ? 16 : 10,
+                                paddingLeft: this.state.width > 700 ? 16 : 10,
                             }}
                         >
                             <Col
                                 md={4}
                                 style={{ paddingLeft: 0 }}
-                                className = "pointerOnHover"
-                                onClick={() =>
-                                    this.setState({ storage: 256 })
-                                }
+                                className="pointerOnHover"
+                                onClick={() => this.setState({ storage: 256 })}
                             >
                                 <PriceBox
                                     name="Small Hard Drive"
                                     subText="Automatically added to cloud PC"
                                     price="12"
-                                    details={
-                                        <div>
-                                            256GB extra storage
-                                        </div>
-                                    }
+                                    details={<div>256GB extra storage</div>}
                                     color={
                                         this.state.storage === 256
                                             ? "rgba(94, 195, 235, 0.1)"
                                             : "white"
                                     }
-                                    checked={
-                                        this.state.storage === 256
-                                    }
+                                    checked={this.state.storage === 256}
                                 />
                             </Col>
                             <Col
                                 md={4}
                                 style={{ paddingLeft: 0 }}
-                                className = "pointerOnHover"
-                                onClick={() =>
-                                    this.setState({ storage: 512 })
-                                }
+                                className="pointerOnHover"
+                                onClick={() => this.setState({ storage: 512 })}
                             >
                                 <PriceBox
                                     name="Medium Hard Drive"
@@ -167,9 +161,7 @@ class Storage extends Component {
                                             ? "rgba(94, 195, 235, 0.1)"
                                             : "white"
                                     }
-                                    checked={
-                                        this.state.storage === 512
-                                    }
+                                    checked={this.state.storage === 512}
                                 />
                             </Col>
                         </Row>
@@ -210,11 +202,11 @@ class Storage extends Component {
                                     display: "flex",
                                     justifyContent: "space-between",
                                     width: 300,
-                                    marginTop: 40
+                                    marginTop: 40,
                                 }}
                             >
                                 <Button
-                                    disabled = {this.state.storage === 0}
+                                    disabled={this.state.storage === 0}
                                     onClick={this.addStorage}
                                     style={{
                                         background: "#111111",
@@ -228,22 +220,26 @@ class Storage extends Component {
                                 </Button>
                             </div>
                         )}
-                        {
-                        this.props.add_storage_status !== 0 && this.props.add_storage_status !== 200
-                        ?
-                        <div style = {{marginTop: 10, fontSize: 12, color: "#e34d4d"}}>
-                            An error occured while trying to increase your storage. Please contact support@fractalcomputers.com for assistance.
-                        </div>
-                        :
-                        <div>
-                        </div>
-                        }
+                        {this.props.add_storage_status !== 0 &&
+                        this.props.add_storage_status !== 200 ? (
+                            <div
+                                style={{
+                                    marginTop: 10,
+                                    fontSize: 12,
+                                    color: "#e34d4d",
+                                }}
+                            >
+                                An error occured while trying to increase your
+                                storage. Please contact
+                                support@fractalcomputers.com for assistance.
+                            </div>
+                        ) : (
+                            <div></div>
+                        )}
                         <div
                             style={{
                                 float:
-                                    this.state.width > 700
-                                        ? "none"
-                                        : "right",
+                                    this.state.width > 700 ? "none" : "right",
                                 marginTop: this.state.width > 700 ? 0 : 40,
                                 position:
                                     this.state.width > 700
@@ -266,7 +262,7 @@ class Storage extends Component {
                                     color: "white",
                                     padding: "5px 10px",
                                     borderRight: "solid 0.5px #0b172b",
-                                    opacity: 0.5
+                                    opacity: 0.5,
                                 }}
                             >
                                 <FaAngleUp
@@ -303,7 +299,7 @@ class Storage extends Component {
                     </div>
                 </div>
             );
-        }
+        };
 
         return (
             <div
@@ -312,7 +308,7 @@ class Storage extends Component {
                     paddingBottom: 50,
                     background: "#F6F6F6",
                 }}
-                id = "top"
+                id="top"
             >
                 <div style={{ maxWidth: 1920, margin: "auto" }}>
                     <Header color="#333333" button="#5ec3eb" />
@@ -347,7 +343,9 @@ class Storage extends Component {
 
 function mapStateToProps(state) {
     return {
-        add_storage_status: state.AccountReducer.add_storage_status ? state.AccountReducer.add_storage_status : 0
+        add_storage_status: state.AccountReducer.add_storage_status
+            ? state.AccountReducer.add_storage_status
+            : 0,
     };
 }
 

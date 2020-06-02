@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 
-import {
-    userLogin,
-    changeTab
-} from "../../../actions/index.js";
+import { userLogin, changeTab } from "../../../actions/index.js";
 import { HashLink } from "react-router-hash-link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
@@ -23,7 +20,7 @@ class LoginBox extends Component {
             emailLogin: "",
             passwordLogin: "",
             failed_login_attempt: false,
-            processing: false
+            processing: false,
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
@@ -75,7 +72,6 @@ class LoginBox extends Component {
         }
     };
 
-
     componentDidMount() {
         this.setState({ failures: this.props.failed_login_attempts });
         this.updateWindowDimensions();
@@ -108,7 +104,7 @@ class LoginBox extends Component {
         }
 
         return (
-            <div style = {{maxWidth: 300, margin: "auto"}}>
+            <div style={{ maxWidth: 300, margin: "auto" }}>
                 {this.state.failed_login_attempt ? (
                     <div
                         style={{
@@ -128,10 +124,7 @@ class LoginBox extends Component {
                 ) : (
                     <div></div>
                 )}
-                <InputGroup
-                    className="mb-3"
-                    style={{ marginTop: 20 }}
-                >
+                <InputGroup className="mb-3" style={{ marginTop: 20 }}>
                     <FormControl
                         type="email"
                         aria-label="Default"
@@ -149,18 +142,13 @@ class LoginBox extends Component {
                     />
                     <br />
                 </InputGroup>
-                <InputGroup
-                    className="mb-3"
-                    style={{ marginTop: 20 }}
-                >
+                <InputGroup className="mb-3" style={{ marginTop: 20 }}>
                     <FormControl
                         aria-label="Default"
                         type="password"
                         aria-describedby="inputGroup-sizing-default"
                         placeholder="Password"
-                        onChange={
-                            this.changePasswordLogin
-                        }
+                        onChange={this.changePasswordLogin}
                         onKeyPress={this.loginKeyPress}
                         style={{
                             borderRadius: 5,
@@ -173,11 +161,8 @@ class LoginBox extends Component {
                 </InputGroup>
                 {!this.state.processing ? (
                     this.state.emailLogin.length > 4 &&
-                    this.state.passwordLogin.length >
-                        6 &&
-                    this.state.emailLogin.includes(
-                        "@"
-                    ) ? (
+                    this.state.passwordLogin.length > 6 &&
+                    this.state.emailLogin.includes("@") ? (
                         <Button
                             onClick={this.handleLogin}
                             style={{
@@ -186,8 +171,7 @@ class LoginBox extends Component {
                                 width: "100%",
                                 border: "none",
                                 background: "#0B172B",
-                                boxShadow:
-                                    "0px 2px 4px rgba(0, 0, 0, 0.25)",
+                                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)",
                                 fontWeight: "bold",
                                 padding: 12,
                             }}
@@ -203,8 +187,7 @@ class LoginBox extends Component {
                                 width: "100%",
                                 border: "none",
                                 background: "#0B172B",
-                                boxShadow:
-                                    "0px 2px 4px rgba(0, 0, 0, 0.25)",
+                                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)",
                                 fontWeight: "bold",
                                 padding: 12,
                             }}
@@ -222,8 +205,7 @@ class LoginBox extends Component {
                             width: "100%",
                             border: "none",
                             background: "#0B172B",
-                            boxShadow:
-                                "0px 2px 4px rgba(0, 0, 0, 0.25)",
+                            boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)",
                             fontWeight: "bold",
                             padding: 12,
                         }}
@@ -240,10 +222,7 @@ class LoginBox extends Component {
                         Processing
                     </Button>
                 )}
-                <HashLink
-                    to="/reset"
-                    style={{ textDecoration: "none" }}
-                >
+                <HashLink to="/reset" style={{ textDecoration: "none" }}>
                     <div
                         style={{
                             textAlign: "center",
@@ -263,7 +242,7 @@ class LoginBox extends Component {
 
 function mapStateToProps(state) {
     return {
-        failed_login_attempts: state.AccountReducer.failed_login_attempts
+        failed_login_attempts: state.AccountReducer.failed_login_attempts,
     };
 }
 

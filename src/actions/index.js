@@ -72,7 +72,7 @@ export const FETCH_DISK_STATUS = "FETCH_DISK_STATUS";
 export const CHANGE_STATUS_MESSAGE = "CHANGE_STATUS_MESSAGE";
 export const STORE_CURRENT_DISK = "STORE_CURRENT_DISK";
 export const CHANGE_PLAN = "CHANGE_PLAN";
-export const CHANGE_PLAN_STATUS = "CHANGE_PLAN_STATUS"
+export const CHANGE_PLAN_STATUS = "CHANGE_PLAN_STATUS";
 export const ADD_STORAGE = "ADD_STORAGE";
 export const ADD_STORAGE_STATUS = "ADD_STORAGE_STATUS";
 export const LOOKUP_USER = "LOOKUP_USER";
@@ -482,34 +482,34 @@ export function storeCurrentDisk(current_disk) {
 export function changePlan(plan) {
     return {
         type: CHANGE_PLAN,
-        plan
-    }
+        plan,
+    };
 }
 
 export function changePlanStatus(status) {
     return {
         type: CHANGE_PLAN_STATUS,
-        status
-    }
+        status,
+    };
 }
 
 export function addStorage(storage) {
     return {
         type: ADD_STORAGE,
-        storage
-    }
+        storage,
+    };
 }
 
 export function addStorageStatus(status) {
     return {
         type: ADD_STORAGE_STATUS,
-        status
-    }
+        status,
+    };
 }
 
 export function lookupUser(username) {
     return {
         type: LOOKUP_USER,
-        username
-    }
+        username,
+    };
 }

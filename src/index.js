@@ -29,8 +29,8 @@ import EmailVerification from "./components/PageAuth/EmailVerification";
 import CreditCard from "./components/PagePurchase/CreditCard";
 import About from "./components/PageAbout/About";
 import Plan from "./components/PagePurchase/Plan";
-import Settings from "./components/PageSettings/Settings"
-import Storage from "./components/PagePurchase/Storage"
+import Settings from "./components/PageSettings/Settings";
+import Storage from "./components/PagePurchase/Storage";
 
 const persistConfig = {
     key: "rootKey",
@@ -51,16 +51,11 @@ const persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
 
-
 ReactDOM.render(
     <Router history={history}>
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-                <Route 
-                    exact 
-                    path="/" 
-                    component={NewHome} 
-                />
+                <Route exact path="/" component={NewHome} />
                 <Route exact path="/purchase" component={Purchase} />
                 <Route exact path="/auth" component={Auth} />
                 <Route exact path="/dashboard" component={Dashboard} />
