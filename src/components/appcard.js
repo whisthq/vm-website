@@ -5,12 +5,28 @@ class AppCard extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            selected: false,
+            imageUrl: require("../assets/apps/" + this.props.image),
+        };
+        this.handleOnClick = this.handleOnClick.bind(this);
+    }
+
+    handleOnClick() {
+        this.setState({ selected: !this.state.selected });
+        this.props.handleSelect(this.props.title);
     }
 
     render() {
         return (
-            <Card style={{ height: "16rem", maxWidth: "16rem" }}>
+            <Card
+                style={{
+                    height: "16rem",
+                    maxWidth: "16rem",
+                    backgroundColor: this.state.selected ? "#eee" : "#fff",
+                }}
+                onClick={this.handleOnClick}
+            >
                 <div
                     style={{
                         height: "8rem",
@@ -21,7 +37,7 @@ class AppCard extends Component {
                 >
                     <Card.Img
                         variant="top"
-                        src={this.props.image}
+                        src={this.state.imageUrl}
                         style={{ width: "100%" }}
                     />
                 </div>

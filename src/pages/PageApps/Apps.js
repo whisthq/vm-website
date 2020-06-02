@@ -25,10 +25,12 @@ class Apps extends Component {
             height: 0,
             loaded: true,
             apps: apps,
+            selectedApps: [],
         };
         this.customWidth = React.createRef();
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.handleTabChange = this.handleTabChange.bind(this);
+        this.handleSelectApp = this.handleSelectApp.bind(this);
     }
 
     componentDidMount() {
@@ -49,6 +51,16 @@ class Apps extends Component {
             key === "All" ? apps : apps.filter((app) => app.category === key);
         this.setState({ apps: filteredApps });
     }
+
+    handleSelectApp = (app) => {
+        if (this.state.selectedApps.includes(app)) {
+            this.setState({
+                selectedApps: this.state.selectedApps.filter((a) => a !== app),
+            });
+        } else {
+            this.setState({ selectedApps: [...this.state.selectedApps, app] });
+        }
+    };
 
     render() {
         if (!this.state.loaded) {
@@ -97,13 +109,12 @@ class Apps extends Component {
                     <Row>
                         {this.state.apps.map((app, i) => {
                             return (
-                                <Col md="3" className="mb-3">
+                                <Col md="3" className="mb-3" key={app.name}>
                                     <AppCard
-                                        key={app.name}
                                         title={app.name}
-                                        image={require("../../assets/apps/" +
-                                            app.image)}
+                                        image={app.image}
                                         tag={app.category}
+                                        handleSelect={this.handleSelectApp}
                                     />
                                 </Col>
                             );
