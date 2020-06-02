@@ -24,6 +24,10 @@ class AppCard extends Component {
                     height: "16rem",
                     maxWidth: "16rem",
                     backgroundColor: this.state.selected ? "#eee" : "#fff",
+                    boxShadow: this.state.selected
+                        ? "-2px -2px #e8e8e8 inset"
+                        : "",
+                    cursor: "pointer",
                 }}
                 onClick={this.handleOnClick}
             >

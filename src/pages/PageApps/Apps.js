@@ -96,7 +96,7 @@ class Apps extends Component {
             return (
                 <Container>
                     <Tabs
-                        defaultActiveKey="all"
+                        defaultActiveKey="All"
                         className="mb-3"
                         onSelect={this.handleTabChange}
                     >

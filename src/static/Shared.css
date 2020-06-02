@@ -353,3 +353,7 @@ div .options div:hover {
 .signupBox ::placeholder {
     color: #999999;
 }
+
+.nav-tabs a {
+    color: #5ec3eb;
+}
