@@ -16,7 +16,7 @@ Basic continuous integration is set up for this project. For every push or PR, b
 
 ## Styling
 
-To ensure that code formatting is standardized, and to minimize clutter in the commits, you should set up styling with [Prettier](https://prettier.io/) before making any PRs. You may find a variety of tutorial online for your personal setup. This README covers how to set it up on VSCode and Sublime.
+To ensure that code formatting is standardized, and to minimize clutter in the commits, you should set up styling with [Prettier](https://prettier.io/) before making any PRs. You may find a variety of tutorial online for your personal setup. This README covers how to set it up on VSCode and Sublime. You can always run Prettier directly from a terminal via `npm run format`.
 
 ### Sublime
 

@@ -116,7 +116,8 @@
     "scripts": {
         "start": "set NODE_ENV='development' && node scripts/start.js",
         "build": "set CI='' && set NODE_ENV='production' && node scripts/build.js",
-        "test": "node scripts/test.js"
+        "test": "node scripts/test.js",
+        "format": "prettier --write ."
     },
     "eslintConfig": {
         "extends": "react-app"
