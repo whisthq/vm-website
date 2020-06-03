@@ -1,11 +1,11 @@
-import * as DiskAction from "store/actions/dashboard/disk_actions"
-import * as StripeAction from "store/actions/dashboard/stripe_actions"
-import * as CustomerAction from "store/actions/dashboard/customer_actions"
-import * as PopupAction from "store/actions/dashboard/popup_actions"
-import * as RenderingAction from "store/actions/dashboard/rendering_actions"
+import * as DiskAction from "store/actions/dashboard/disk_actions";
+import * as StripeAction from "store/actions/dashboard/stripe_actions";
+import * as CustomerAction from "store/actions/dashboard/customer_actions";
+import * as PopupAction from "store/actions/dashboard/popup_actions";
+import * as RenderingAction from "store/actions/dashboard/rendering_actions";
+import * as AppsAction from "store/actions/dashboard/apps_actions";
 
-import { DASHBOARD_DEFAULT } from "store/reducers/defaults"
-
+import { DASHBOARD_DEFAULT } from "store/reducers/defaults";
 
 export default function (state = DASHBOARD_DEFAULT, action) {
     switch (action.type) {
@@ -93,8 +93,8 @@ export default function (state = DASHBOARD_DEFAULT, action) {
         case StripeAction.CHANGE_PLAN_STATUS:
             return {
                 ...state,
-                change_plan_status: action.status
-            }
+                change_plan_status: action.status,
+            };
         case StripeAction.CHARGE_STRIPE:
             return {
                 ...state,
