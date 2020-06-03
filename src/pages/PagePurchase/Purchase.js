@@ -1324,7 +1324,9 @@ class Purchase extends Component {
                                     fontSize: 16,
                                 }}
                             >
-                                So your Cloud PC will be ready for you.
+                                So your Cloud PC will be ready for you. (Other
+                                applications are downloadable with a
+                                subscription.)
                             </div>
                             <div
                                 style={{

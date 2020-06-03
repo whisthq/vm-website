@@ -45,7 +45,7 @@ class AppCard extends Component {
                         style={{ width: "100%" }}
                     />
                 </div>
-                <Card.Body style={{ padding: "1rem" }}>
+                <Card.Body style={{ padding: "1rem", paddingTop: 0 }}>
                     <div
                         style={{
                             color: "#111111",
