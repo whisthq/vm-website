@@ -10,8 +10,8 @@ import StripeSaga from "store/sagas/dashboard/stripe_saga";
 import CustomerSaga from "store/sagas/dashboard/customer_saga";
 import DiskSaga from "store/sagas/dashboard/disk_saga";
 import PopupSaga from "store/sagas/dashboard/popup_saga";
+import AppsSaga from "store/sagas/dashboard/apps_saga";
 import StorageSaga from "store/sagas/settings/storage_saga";
-
 
 export default function* rootSaga() {
     yield all([
@@ -23,5 +23,6 @@ export default function* rootSaga() {
         DiskSaga(),
         PopupSaga(),
         StorageSaga(),
+        AppsSaga(),
     ]);
 }

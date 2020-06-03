@@ -8,6 +8,8 @@ import AppCard from "components/appcard.js";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import { installApps } from "store/actions/dashboard/apps_actions";
+
 import { withRouter } from "react-router";
 
 const apps = require("../../assets/data/apps.json");
@@ -56,8 +58,7 @@ class Apps extends Component {
     };
 
     installApps = () => {
-        console.log(this.state.selectedApps);
-        // TODO
+        this.props.dispatch(installApps(this.state.selectedApps));
     };
 
     render() {
@@ -137,7 +138,7 @@ class Apps extends Component {
                                     width: 235,
                                 }}
                             >
-                                Add Storage
+                                Install Apps
                             </Button>
                         </div>
                     </Row>

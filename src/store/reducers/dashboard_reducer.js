@@ -90,6 +90,16 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 ...state,
                 current_disk: action.current_disk,
             };
+        case AppsAction.CHANGE_APP_INSTALL_STATUS_MESSAGE:
+            return {
+                ...state,
+                app_install_message: action.app_install_message,
+            };
+        case AppsAction.APPS_INSTALLING:
+            return {
+                ...state,
+                apps_are_installing: action.apps_are_installing,
+            };
         case StripeAction.CHANGE_PLAN_STATUS:
             return {
                 ...state,

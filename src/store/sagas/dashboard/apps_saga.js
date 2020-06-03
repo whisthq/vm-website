@@ -4,32 +4,61 @@ import { config } from "utils/constants.js";
 import history from "utils/history";
 import { formatDate } from "utils/date";
 
-import * as AppsAction from "store/actions/dashboard/appsactions";
+import * as AppsAction from "store/actions/dashboard/apps_actions";
 
 function* fetchAppInstallStatus(ID) {
+    const state = yield select();
+
     var { json } = yield call(
         apiGet,
         (config.url.PRIMARY_SERVER + "/status/").concat(ID),
-        ""
+        state.AuthReducer.access_token
     );
 
-    while (json.state !== "SUCCESS" && json.state !== "FAILURE") {
+    while (json.state === "PENDING" || json.state === "STARTED") {
         json = yield call(
             apiGet,
             (config.url.PRIMARY_SERVER + "/status/").concat(ID),
-            ""
+            state.AuthReducer.access_token
         );
+
         if (json) {
             json = json.json;
         }
+
+        if (json && json.output && json.state === "PENDING") {
+            var now1 = new Date();
+            var message1 =
+                "(" +
+                formatDate(now1.getHours()) +
+                ":" +
+                formatDate(now1.getMinutes()) +
+                ":" +
+                formatDate(now1.getSeconds()) +
+                ") " +
+                json.output.msg;
+            yield put(AppsAction.changeAppInstallStatusMessage(message1));
+        }
+
         yield delay(5000);
     }
 
-    if (json && json.output) {
-        // TODO
-        // yield put(DiskAction.diskCreating(true));
-        // yield put(DiskAction.storeCurrentDisk(json.output.disk_name));
-        // yield call(attachDisk, json.output.disk_name);
+    if (json && json.state && json.state === "SUCCESS") {
+        yield put(AppsAction.appsInstalling(false));
+    }
+
+    if (json && json.state && json.state === "FAILURE") {
+        var now2 = new Date();
+        var message2 =
+            "(" +
+            formatDate(now2.getHours()) +
+            ":" +
+            formatDate(now2.getMinutes()) +
+            ":" +
+            formatDate(now2.getSeconds()) +
+            ") " +
+            "Unexpectedly lost connection with server. Trying again.";
+        yield put(AppsAction.changeAppInstallStatusMessage(message2));
     }
 }
 
@@ -47,6 +76,7 @@ function* installApps(action) {
 
     if (json) {
         if (json.ID) {
+            yield put(AppsAction.appsInstalling(true));
             yield call(fetchAppInstallStatus, json.ID);
         }
     }

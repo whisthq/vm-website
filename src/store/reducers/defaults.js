@@ -39,6 +39,8 @@ export const DASHBOARD_DEFAULT = {
     dashboard_loaded: false,
     disk_attach_status_id: null,
     disk_creation_message: "",
+    apps_are_installing: false,
+    app_install_message: "",
     current_disk: null,
     change_plan_status: 0,
 };
@@ -48,5 +50,5 @@ export const SETTINGS_DEFAULT = {
 };
 
 export const GENERAL_DEFAULT = {
-    current_page: "personal"
+    current_page: "personal",
 };
