@@ -449,90 +449,14 @@ class Dashboard extends Component {
                                                         to="/purchase"
                                                         className="create-cloud-pc"
                                                     >
-                                                        <div
-                                                            style={{
-                                                                borderRadius: 5,
-                                                                boxShadow:
-                                                                    "0px 4px 15px rgba(0, 0, 0, 0.2)",
-                                                                textAlign:
-                                                                    "center",
-                                                                backgroundImage:
-                                                                    "linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255,255,255,0.9)), url(" +
-                                                                    Mountain +
-                                                                    ")",
-                                                                backgroundSize:
-                                                                    "cover",
-                                                                backgroundRepeat:
-                                                                    "no-repeat",
-                                                                backgroundPosition:
-                                                                    "center",
-                                                                padding:
-                                                                    "30px 50px",
-                                                                minHeight:
-                                                                    this
-                                                                        .state
-                                                                        .width >
-                                                                    700
-                                                                        ? 260
-                                                                        : 340,
-                                                                margin:
-                                                                    "auto",
-                                                                width:
-                                                                    "100%",
-                                                                marginBottom: 20,
-                                                            }}
-                                                        >
-                                                            <FaPlus
-                                                                style={{
-                                                                    height: 25,
-                                                                    marginTop: 25,
-                                                                    color:
-                                                                        "#333333",
-                                                                }}
-                                                            />
-                                                            <div
-                                                                style={{
-                                                                    color:
-                                                                        "#333333",
-                                                                    fontSize: 22,
-                                                                    marginTop: 20,
-                                                                    fontWeight:
-                                                                        "bold",
-                                                                }}
-                                                            >
-                                                                Create
-                                                                My Cloud
-                                                                Computer
-                                                            </div>
-                                                            <div
-                                                                style={{
-                                                                    fontSize: 14,
-                                                                    maxWidth: 450,
-                                                                    margin:
-                                                                        "auto",
-                                                                    marginTop: 10,
-                                                                    color:
-                                                                        "#333333",
-                                                                }}
-                                                            >
-                                                                Transform
-                                                                your
-                                                                local
-                                                                device
-                                                                into a
-                                                                GPU-powered
-                                                                cloud
-                                                                computer.
-                                                                Setup in
-                                                                less
-                                                                than one
-                                                                minute,
-                                                                no
-                                                                credit
-                                                                card
-                                                                required.
-                                                            </div>
-                                                        </div>
+                                                        <ImageBox 
+                                                            text = "Create My Cloud Computer"
+                                                            subtext = "Transform your
+                                                                computer into a
+                                                                GPU-powered cloud
+                                                                computer. Setup in less than a 
+                                                                minute, no payment required."
+                                                        />
                                                     </Link>
                                                 </Col>
                                             </Row>
@@ -550,41 +474,12 @@ class Dashboard extends Component {
                                             <Col md={7} xs={12}>
                                                 <Row>
                                                     <Col sm={6} xs={12}>
-                                                        <div
-                                                            style={{
-                                                                borderRadius: 5,
-                                                                boxShadow:
-                                                                    "0px 4px 15px rgba(0, 0, 0, 0.2)",
-                                                                textAlign:
-                                                                    "left",
-                                                                background:
-                                                                    "white",
-                                                                backgroundSize:
-                                                                    "cover",
-                                                                backgroundPosition:
-                                                                    "center",
-                                                                backgroundAttachment:
-                                                                    "fixed",
-                                                                padding: 30,
-                                                                minHeight: 160,
-                                                                margin:
-                                                                    "auto",
-                                                                width:
-                                                                    "100%",
-                                                                marginBottom: 20,
-                                                            }}
-                                                        >
+                                                        <div className = "hardware-box">
                                                             <img
                                                                 src={
                                                                     CPU
                                                                 }
-                                                                alt=""
-                                                                style={{
-                                                                    textAlign:
-                                                                        "left",
-                                                                    marginTop: 5,
-                                                                    height: 45,
-                                                                }}
+                                                                className = "title"
                                                             />
                                                             <div
                                                                 style={{
