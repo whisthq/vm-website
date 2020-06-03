@@ -69,7 +69,7 @@ function* sendVerificationEmail(action) {
     if (action.username !== "" && action.token !== "") {
         const { json } = yield call(
             apiPost,
-            config.url.MAIL_SERVER + "/verification",
+            config.url.PRIMARY_SERVER + "/mail/verification",
             {
                 username: action.username,
                 token: action.token,
@@ -105,7 +105,7 @@ function* sendSignupEmail(action) {
     if (!state.AccountReducer.email_verified) {
         yield call(
             apiPost,
-            config.url.MAIL_SERVER + "/signup",
+            config.url.PRIMARY_SERVER + "/signup",
             {
                 username: action.user,
                 code: action.code,
@@ -174,7 +174,7 @@ function* insertCustomer(action) {
         yield put(FormAction.vmCreating(true));
         yield call(
             apiPost,
-            config.url.MAIL_SERVER + "/trial/start",
+            config.url.PRIMARY_SERVER + "/trial/start",
             {
                 username: state.AccountReducer.user,
                 location: action.location,
@@ -259,7 +259,7 @@ function* cancelPlan(action) {
 
     yield call(
         apiPost,
-        config.url.MAIL_SERVER + "/cancel",
+        config.url.PRIMARY_SERVER + "/mail/cancel",
         {
             username: state.AccountReducer.user,
             feedback: action.message,
@@ -441,7 +441,7 @@ function* sendForgotPassword(action) {
     yield select();
     const { json } = yield call(
         apiPost,
-        config.url.MAIL_SERVER + "/mail/forgot",
+        config.url.PRIMARY_SERVER + "/mail/forgot",
         {
             username: action.username,
         },
@@ -462,7 +462,7 @@ function* sendValidateToken(action) {
     yield select();
     const { json } = yield call(
         apiPost,
-        config.url.MAIL_SERVER + "/token/validate",
+        config.url.PRIMARY_SERVER + "/token/validate",
         {
             token: action.token,
         },
@@ -486,7 +486,7 @@ function* sendResetPassword(action) {
     console.log(action);
     yield call(
         apiPost,
-        config.url.MAIL_SERVER + "/mail/reset",
+        config.url.PRIMARY_SERVER + "/mail/reset",
         {
             username: action.username,
             password: action.password,
@@ -500,7 +500,7 @@ function* sendFriendsEmail(action) {
     const state = yield select();
     const { json } = yield call(
         apiPost,
-        config.url.MAIL_SERVER + "/referral",
+        config.url.PRIMARY_SERVER + "/mail/referral",
         {
             username: state.AccountReducer.user,
             recipients: action.recipients,
@@ -519,7 +519,7 @@ function* sendFriendsEmail(action) {
 function* subscribeNewsletter(action) {
     yield call(
         apiPost,
-        config.url.MAIL_SERVER + "/newsletter/subscribe",
+        config.url.PRIMARY_SERVER + "/newsletter/subscribe",
         {
             username: action.username,
         },
