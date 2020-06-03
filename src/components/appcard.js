@@ -20,7 +20,7 @@ class AppCard extends Component {
         return (
             <Card
                 style={{
-                    height: "14rem",
+                    height: "10rem",
                     maxWidth: "16rem",
                     backgroundColor: this.state.selected
                         ? "rgba(94, 195, 235, 0.1)"
@@ -33,9 +33,9 @@ class AppCard extends Component {
             >
                 <div
                     style={{
-                        height: "8rem",
-                        width: "8rem",
-                        padding: "1rem",
+                        height: "5rem",
+                        width: "5rem",
+                        padding: "1rem 1rem 0 1rem",
                         margin: "auto",
                     }}
                 >
@@ -49,7 +49,7 @@ class AppCard extends Component {
                     <div
                         style={{
                             color: "#111111",
-                            fontSize: 22,
+                            fontSize: 14,
                             fontWeight: "bold",
                         }}
                     >
@@ -58,7 +58,7 @@ class AppCard extends Component {
                     <div
                         className="mt-1"
                         style={{
-                            fontSize: 12,
+                            fontSize: 11,
                             color: "#999",
                         }}
                     >

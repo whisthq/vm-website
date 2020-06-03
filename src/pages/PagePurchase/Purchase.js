@@ -13,13 +13,13 @@ import TypeformButton from "components/typeformbutton.js";
 import "static/Shared.css";
 import Autocomplete from "./AutoComplete.js";
 import { options } from "./Options.js";
+import Apps from "./Apps.js";
 import {
     storePurchaseLocation,
     insertCustomer,
 } from "store/actions/dashboard/customer_actions";
-import {
-    createDisk
-} from "store/actions/dashboard/disk_actions";
+import { installApps } from "store/actions/dashboard/apps_actions";
+import { createDisk } from "store/actions/dashboard/disk_actions";
 import SpecBox from "./containers/specBox.js";
 import PriceBox from "./containers/priceBox.js";
 
@@ -39,6 +39,7 @@ class Purchase extends Component {
             plan: "",
             country: "",
             processing: false,
+            selectedApps: [],
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
@@ -123,6 +124,16 @@ class Purchase extends Component {
         }
     };
 
+    handleSelectApp = (app) => {
+        if (this.state.selectedApps.includes(app)) {
+            this.setState({
+                selectedApps: this.state.selectedApps.filter((a) => a !== app),
+            });
+        } else {
+            this.setState({ selectedApps: [...this.state.selectedApps, app] });
+        }
+    };
+
     // Determines the vm region based on location given
     findVMLocation = (location) => {
         var eastus = [
@@ -189,6 +200,10 @@ class Purchase extends Component {
                 true
             )
         );
+        // TODO
+        if (this.state.selectedApps > 0) {
+            this.props.dispatch(installApps(this.state.selectedApps));
+        }
     };
 
     // Proceeds to step 1 of the create cloud pc form
@@ -223,8 +238,14 @@ class Purchase extends Component {
         }
     };
 
-    // Creates a trial account
     handleKeyPress4 = (event) => {
+        if (event.key === "Enter") {
+            this.setState({ step: 5 });
+        }
+    };
+
+    // Creates a trial account
+    handleKeyPress5 = (event) => {
         if (event.key === "Enter") {
             this.submitNoPayment();
         }
@@ -268,6 +289,11 @@ class Purchase extends Component {
                                     {this.state.computer}
                                 </div>
                             </div>
+                            <div style={{ paddingBottom: 20 }}>
+                                <div style={{ color: "#B9B9B9" }}>
+                                    Install Apps
+                                </div>
+                            </div>
                         </div>
                     );
                 } else if (this.state.step === 2) {
@@ -300,6 +326,11 @@ class Purchase extends Component {
                                     {this.state.computer}
                                 </div>
                             </div>
+                            <div style={{ paddingBottom: 20 }}>
+                                <div style={{ color: "#B9B9B9" }}>
+                                    Install Apps
+                                </div>
+                            </div>
                         </div>
                     );
                 } else if (this.state.step === 3) {
@@ -330,6 +361,46 @@ class Purchase extends Component {
                                     {this.state.computer}
                                 </div>
                             </div>
+                            <div style={{ paddingBottom: 20 }}>
+                                <div style={{ color: "#B9B9B9" }}>
+                                    Install Apps
+                                </div>
+                            </div>
+                        </div>
+                    );
+                } else if (this.state.step === 4) {
+                    return (
+                        <div>
+                            <div style={{ paddingBottom: 20 }}>
+                                <div style={{ color: "#B9B9B9" }}>Country</div>
+                                <div style={{ color: "#B9B9B9", fontSize: 12 }}>
+                                    {this.state.country}
+                                </div>
+                            </div>
+                            <div style={{ paddingBottom: 20 }}>
+                                <div style={{ color: "#B9B9B9" }}>State</div>
+                                <div style={{ color: "#B9B9B9", fontSize: 12 }}>
+                                    {this.state.location}
+                                </div>
+                            </div>
+                            <div style={{ paddingBottom: 20 }}>
+                                <div
+                                    style={{
+                                        color: "#B9B9B9",
+                                        fontWeight: "bold",
+                                    }}
+                                >
+                                    Cloud PC Type
+                                </div>
+                                <div style={{ color: "#B9B9B9", fontSize: 12 }}>
+                                    {this.state.computer}
+                                </div>
+                            </div>
+                            <div style={{ paddingBottom: 20 }}>
+                                <div style={{ color: "#111111" }}>
+                                    Install Apps
+                                </div>
+                            </div>
                         </div>
                     );
                 } else {
@@ -353,6 +424,11 @@ class Purchase extends Component {
                                 </div>
                                 <div style={{ color: "#B9B9B9", fontSize: 12 }}>
                                     {this.state.computer}
+                                </div>
+                            </div>
+                            <div style={{ paddingBottom: 20 }}>
+                                <div style={{ color: "#B9B9B9" }}>
+                                    Install Apps
                                 </div>
                             </div>
                         </div>
@@ -1190,11 +1266,206 @@ class Purchase extends Component {
                         </div>
                     </div>
                 );
+            } else if (this.state.step === 4) {
+                return (
+                    <div
+                        style={{
+                            paddingTop: 100,
+                            paddingLeft: 0,
+                            width:
+                                this.state.width > 700
+                                    ? "calc(100% - 400px)"
+                                    : "95%",
+                            paddingRight: this.state.width > 700 ? 0 : 40,
+                        }}
+                        onKeyPress={this.handleKeyPress4}
+                    >
+                        <div
+                            className="apps-select"
+                            style={{
+                                padding: "40px 50px",
+                                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
+                                borderRadius: 5,
+                                maxWidth: 1200,
+                                maxHeight: "calc(100vh - 150px)",
+                            }}
+                        >
+                            {this.state.width > 700 ? (
+                                <span
+                                    style={{ position: "relative", bottom: 2 }}
+                                >
+                                    4{" "}
+                                    <FaArrowRight
+                                        style={{
+                                            height: 10,
+                                            position: "relative",
+                                            bottom: 2,
+                                        }}
+                                    />
+                                </span>
+                            ) : (
+                                <div></div>
+                            )}
+                            <span
+                                style={{
+                                    fontSize: 22,
+                                    paddingLeft:
+                                        this.state.width > 700 ? 10 : 0,
+                                }}
+                            >
+                                What apps would you like pre-installed?
+                            </span>
+                            <div
+                                style={{
+                                    marginTop: 5,
+                                    color: "#333333",
+                                    paddingLeft:
+                                        this.state.width > 700 ? 39 : 0,
+                                    fontSize: 16,
+                                }}
+                            >
+                                So your Cloud PC will be ready for you.
+                            </div>
+                            <div
+                                style={{
+                                    marginTop: 30,
+                                    paddingLeft:
+                                        this.state.width > 700 ? 39 : 0,
+                                }}
+                            >
+                                <Apps handleSelectApp={this.handleSelectApp} />
+                            </div>
+                            {this.state.selectedApps.length > 0 ? (
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        width: 310,
+                                        marginTop: 40,
+                                        paddingLeft:
+                                            this.state.width > 700 ? 39 : 0,
+                                    }}
+                                >
+                                    <Button
+                                        onClick={() =>
+                                            this.setState({ step: 5 })
+                                        }
+                                        style={{
+                                            background: "#111111",
+                                            border: "none",
+                                            padding: "10px 45px",
+                                            display: "inline",
+                                        }}
+                                    >
+                                        Install Apps
+                                    </Button>
+                                    {this.state.width > 700 && (
+                                        <div
+                                            style={{
+                                                fontSize: 14,
+                                                color: "#555555",
+                                                position: "relative",
+                                                top: 12,
+                                            }}
+                                        >
+                                            <FaArrowRight
+                                                style={{
+                                                    marginRight: 6,
+                                                    height: 8,
+                                                    width: 15,
+                                                    position: "relative",
+                                                    bottom: 1,
+                                                }}
+                                            />
+                                            Press Enter
+                                        </div>
+                                    )}
+                                </div>
+                            ) : (
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "space-between",
+                                        width: 310,
+                                        marginTop: 40,
+                                        paddingLeft:
+                                            this.state.width > 700 ? 39 : 0,
+                                    }}
+                                >
+                                    <Button
+                                        onClick={() =>
+                                            this.setState({ step: 5 })
+                                        }
+                                        style={{
+                                            background: "#111111",
+                                            border: "none",
+                                            padding: "10px 45px",
+                                            display: "inline",
+                                        }}
+                                    >
+                                        Continue
+                                    </Button>
+                                </div>
+                            )}
+                            <div
+                                style={{
+                                    position: "fixed",
+                                    bottom: 25,
+                                    right: 40,
+                                    boxShadow:
+                                        "0px 4px 20px rgba(0, 0, 0, 0.3)",
+                                }}
+                            >
+                                <div
+                                    onClick={this.goBack}
+                                    style={{
+                                        display: "inline",
+                                        borderRadius: "5px 0px 0px 5px",
+                                        backgroundColor: "#5ec3eb",
+                                        color: "white",
+                                        padding: "5px 10px",
+                                        borderRight: "solid 0.5px #0b172b",
+                                    }}
+                                >
+                                    <FaAngleUp
+                                        className="typeform-up"
+                                        style={{
+                                            height: 20,
+                                            position: "relative",
+                                            bottom: 2,
+                                            color: "#0b172b",
+                                        }}
+                                    />
+                                </div>
+                                <Link to="/dashboard">
+                                    <div
+                                        style={{
+                                            display: "inline",
+                                            borderRadius: "0px 5px 5px 0px",
+                                            backgroundColor: "#5ec3eb",
+                                            color: "white",
+                                            padding: "5px 10px",
+                                        }}
+                                    >
+                                        <FaTimes
+                                            style={{
+                                                height: 15,
+                                                position: "relative",
+                                                bottom: 2,
+                                                color: "#0b172b",
+                                            }}
+                                        />
+                                    </div>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                );
             } else {
                 return (
                     <div
                         tabIndex="0"
-                        onKeyDown={(e) => this.handleKeyPress4(e)}
+                        onKeyDown={(e) => this.handleKeyPress5(e)}
                         style={{
                             outline: "none",
                             paddingTop: 100,
@@ -1212,7 +1483,7 @@ class Purchase extends Component {
                                 <span
                                     style={{ position: "relative", bottom: 2 }}
                                 >
-                                    4{" "}
+                                    5{" "}
                                     <FaArrowRight
                                         style={{
                                             height: 10,

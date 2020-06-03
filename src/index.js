@@ -31,7 +31,6 @@ import About from "pages/PageAbout/About";
 import Plan from "pages/PagePurchase/Plan";
 import Settings from "pages/PageSettings/Settings";
 import Storage from "pages/PagePurchase/Storage";
-import Apps from "pages/PageApps/Apps";
 
 const persistConfig = {
     key: "rootKey",
@@ -75,7 +74,6 @@ ReactDOM.render(
                 <Route exact path="/plan" component={Plan} />
                 <Route exact path="/settings" component={Settings} />
                 <Route exact path="/storage" component={Storage} />
-                <Route exact path="/apps" component={Apps} />
             </PersistGate>
         </Provider>
     </Router>,
