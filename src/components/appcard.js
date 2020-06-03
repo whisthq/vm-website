@@ -9,13 +9,12 @@ class AppCard extends Component {
             selected: false,
             imageUrl: require("../assets/apps/" + this.props.image),
         };
-        this.handleOnClick = this.handleOnClick.bind(this);
     }
 
-    handleOnClick() {
+    handleOnClick = () => {
         this.setState({ selected: !this.state.selected });
         this.props.handleSelect(this.props.title);
-    }
+    };
 
     render() {
         return (

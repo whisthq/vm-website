@@ -24,10 +24,6 @@ class Apps extends Component {
             selectedApps: [],
         };
         this.customWidth = React.createRef();
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-        this.handleTabChange = this.handleTabChange.bind(this);
-        this.handleSelectApp = this.handleSelectApp.bind(this);
-        this.installApps = this.installApps.bind(this);
     }
 
     componentDidMount() {
@@ -39,15 +35,15 @@ class Apps extends Component {
         window.removeEventListener("resize", this.updateWindowDimensions);
     }
 
-    updateWindowDimensions() {
+    updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
-    handleTabChange(key) {
+    handleTabChange = (key) => {
         const filteredApps =
             key === "All" ? apps : apps.filter((app) => app.category === key);
         this.setState({ apps: filteredApps });
-    }
+    };
 
     handleSelectApp = (app) => {
         if (this.state.selectedApps.includes(app)) {
@@ -59,10 +55,10 @@ class Apps extends Component {
         }
     };
 
-    installApps() {
+    installApps = () => {
         console.log(this.state.selectedApps);
         // TODO
-    }
+    };
 
     render() {
         if (!this.state.loaded) {
