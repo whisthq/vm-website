@@ -11,7 +11,7 @@ const production = {
 
 const staging = {
     url: {
-        PRIMARY_SERVER: "https://cube-celery-staging.herokuapp.com",
+        PRIMARY_SERVER: "https://cube-celery-staging3.herokuapp.com",
         MAIL_SERVER: "https://fractal-mail-staging.herokuapp.com",
     },
     stripe: {

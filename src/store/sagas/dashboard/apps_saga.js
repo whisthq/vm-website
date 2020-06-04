@@ -1,10 +1,28 @@
-import { put, takeEvery, all, call, select, delay } from "redux-saga/effects";
+import {
+    put,
+    takeEvery,
+    take,
+    all,
+    call,
+    select,
+    delay,
+} from "redux-saga/effects";
 import { apiPost, apiGet } from "utils/Api.js";
 import { config } from "utils/constants.js";
 import history from "utils/history";
 import { formatDate } from "utils/date";
 
 import * as AppsAction from "store/actions/dashboard/apps_actions";
+
+function* waitForDiskCreation(selector, value) {
+    let stateSlice = yield select(selector);
+    while (stateSlice !== value) {
+        console.log(stateSlice);
+        yield take();
+        stateSlice = yield select(selector);
+    }
+    console.log("disk created!");
+}
 
 function* fetchAppInstallStatus(ID) {
     const state = yield select();
@@ -64,6 +82,10 @@ function* fetchAppInstallStatus(ID) {
 
 function* installApps(action) {
     const state = yield select();
+
+    yield call(waitForDiskCreation, (state) => state.disk_is_creating, false);
+    console.log("Installing apps now");
+
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/vm/installApps",

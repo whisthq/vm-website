@@ -200,7 +200,6 @@ class Purchase extends Component {
                 true
             )
         );
-        // TODO
         if (this.state.selectedApps > 0) {
             this.props.dispatch(installApps(this.state.selectedApps));
         }
@@ -1328,86 +1327,114 @@ class Purchase extends Component {
                                     flex: "0 0 auto",
                                 }}
                             >
-                                So your Cloud PC will be ready for you. (Other
-                                applications are downloadable with a
-                                subscription.)
+                                Your Cloud PC will be ready for you.
                             </div>
                             <Apps
                                 handleSelectApp={this.handleSelectApp}
                                 selectedApps={this.state.selectedApps}
                             />
-                            {this.state.selectedApps.length > 0 ? (
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: 310,
-                                        marginTop: 40,
-                                        paddingLeft:
-                                            this.state.width > 700 ? 39 : 0,
-                                    }}
-                                >
-                                    <Button
-                                        onClick={() =>
-                                            this.setState({ step: 5 })
-                                        }
+                            <div
+                                style={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    width: "100%",
+                                }}
+                            >
+                                {this.state.selectedApps.length > 0 ? (
+                                    <div
                                         style={{
-                                            background: "#111111",
-                                            border: "none",
-                                            padding: "10px 45px",
-                                            display: "inline",
+                                            width: 310,
+                                            marginTop: 40,
+                                            paddingLeft:
+                                                this.state.width > 700 ? 39 : 0,
                                         }}
                                     >
-                                        Install Apps
-                                    </Button>
-                                    {this.state.width > 700 && (
-                                        <div
+                                        <Button
+                                            onClick={() =>
+                                                this.setState({ step: 5 })
+                                            }
                                             style={{
-                                                fontSize: 14,
-                                                color: "#555555",
-                                                position: "relative",
-                                                top: 12,
+                                                background: "#111111",
+                                                border: "none",
+                                                padding: "10px 45px",
+                                                display: "inline",
                                             }}
                                         >
-                                            <FaArrowRight
+                                            Install Apps
+                                        </Button>
+                                        {this.state.width > 700 && (
+                                            <div
                                                 style={{
-                                                    marginRight: 6,
-                                                    height: 8,
-                                                    width: 15,
+                                                    fontSize: 14,
+                                                    color: "#555555",
                                                     position: "relative",
-                                                    bottom: 1,
+                                                    top: 12,
                                                 }}
-                                            />
-                                            Press Enter
-                                        </div>
-                                    )}
-                                </div>
-                            ) : (
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "space-between",
-                                        width: 310,
-                                        marginTop: 40,
-                                        paddingLeft:
-                                            this.state.width > 700 ? 39 : 0,
-                                    }}
-                                >
-                                    <Button
-                                        onClick={() =>
-                                            this.setState({ step: 5 })
-                                        }
+                                            >
+                                                <FaArrowRight
+                                                    style={{
+                                                        marginRight: 6,
+                                                        height: 8,
+                                                        width: 15,
+                                                        position: "relative",
+                                                        bottom: 1,
+                                                    }}
+                                                />
+                                                Press Enter
+                                            </div>
+                                        )}
+                                    </div>
+                                ) : (
+                                    <div
                                         style={{
-                                            background: "#111111",
-                                            border: "none",
-                                            padding: "10px 45px",
-                                            display: "inline",
+                                            display: "flex",
+                                            justifyContent: "space-between",
+                                            width: 310,
+                                            marginTop: 40,
+                                            paddingLeft:
+                                                this.state.width > 700 ? 39 : 0,
                                         }}
                                     >
-                                        Continue
-                                    </Button>
+                                        <Button
+                                            onClick={() =>
+                                                this.setState({ step: 5 })
+                                            }
+                                            style={{
+                                                background: "#111111",
+                                                border: "none",
+                                                padding: "10px 45px",
+                                                display: "inline",
+                                            }}
+                                        >
+                                            Continue
+                                        </Button>
+                                    </div>
+                                )}
+                                <div
+                                    style={{
+                                        color: "#888",
+                                        fontSize: 12,
+                                        flex: 1,
+                                        display: "flex",
+                                        flexWrap: "wrap",
+                                        justifyContent: "flex-end",
+                                    }}
+                                >
+                                    <span
+                                        style={{
+                                            alignSelf: "flex-end",
+                                            flexBasis: "90%",
+                                            textAlign: "right",
+                                        }}
+                                    >
+                                        Other applications are downloadable with
+                                        a subscription. If there's an
+                                        application that you would like us to
+                                        pre-download for you, please contact us
+                                        via email to request it.
+                                    </span>
                                 </div>
-                            )}
+                            </div>
                             <div
                                 style={{
                                     position: "fixed",

@@ -19,10 +19,6 @@ export default class Apps extends Component {
         };
     }
 
-    componentDidMount() {}
-
-    componentWillUnmount() {}
-
     handleTabChange = (key) => {
         const filteredApps =
             key === "All" ? apps : apps.filter((app) => app.category === key);
