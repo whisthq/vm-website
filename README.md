@@ -1,6 +1,8 @@
 # Fractal Website
 
-This repository contains the code for the Fractal website where users create and manage their account. It interfaces with the email-webserver, vm-webserver and admin-dashboard.
+![Node.js CI](https://github.com/fractalcomputers/website/workflows/Node.js%20CI/badge.svg)
+
+This repository contains the code for the Fractal website where users create and manage their account. It interfaces with the webservers and the admin dashboard.
 
 The Netlify staging version of the website is hosted at: https://fractalcomputers.netlify.com/
 
@@ -10,11 +12,11 @@ The admin dashboard is developed using the `npm` package manager. You can start 
 
 If you need to update dependencies, you can run `npm upgrade`, followed by `npm prune` to remove unnecessary dependencies.
 
-Basic continuous integration is set up for this project. For every push or PR, basic NodeJS tests will be compiled and run within GitHub Actions.
+Basic continuous integration is set up for this project. For every push or PR, basic NodeJS tests will be compiled and run within GitHub Actions. This will also auto-format the code via Prettier, see below. You should make sure that every push to master passes the build in GitHub Actions.
 
 ## Styling
 
-To ensure that code formatting is standardized, and to minimize clutter in the commits, you should set up styling with [Prettier](https://prettier.io/) before making any PRs. You may find a variety of tutorial online for your personal setup. This README covers how to set it up on VSCode and Sublime.
+To ensure that code formatting is standardized, and to minimize clutter in the commits, you should set up styling with [Prettier](https://prettier.io/) before making any PRs. You may find a variety of tutorial online for your personal setup. This README covers how to set it up on VSCode and Sublime. You can always run Prettier directly from a terminal via `npm run format`.
 
 ### Sublime
 

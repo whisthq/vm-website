@@ -464,36 +464,39 @@ class PageHome extends Component {
                                     style={{
                                         textAlign: "center",
                                         width: "100%",
+                                        height: "100%",
+                                        maxHeight: 260,
+                                        border: "solid 10px white",
+                                        borderRadius: 10,
+                                        boxShadow:
+                                            "0px 4px 30px rgba(0, 0, 0, 0.45)",
+                                        background: "#F2DEF8",
                                     }}
                                 >
                                     <ImageFadeIn
                                         src={Software}
                                         style={{
+                                            width: "100%",
                                             height: "100%",
-                                            maxHeight: 260,
-                                            border: "solid 10px white",
-                                            borderRadius: 10,
-                                            boxShadow:
-                                                "0px 4px 30px rgba(0, 0, 0, 0.45)",
                                         }}
                                     />
-                                    <div
-                                        style={{
-                                            color: "white",
-                                            background: "rgba(0,0,0,0.9)",
-                                            borderRadius: 15,
-                                            height: 30,
-                                            fontSize: 14,
-                                            padding: "4px",
-                                            textAlign: "center",
-                                            fontWeight: "bold",
-                                            width: 100,
-                                            margin: "auto",
-                                            marginTop: 20,
-                                        }}
-                                    >
-                                        Productivity
-                                    </div>
+                                </div>
+                                <div
+                                    style={{
+                                        color: "white",
+                                        background: "rgba(0,0,0,0.9)",
+                                        borderRadius: 15,
+                                        height: 30,
+                                        fontSize: 14,
+                                        padding: "5px 4px",
+                                        textAlign: "center",
+                                        fontWeight: "bold",
+                                        width: 100,
+                                        margin: "auto",
+                                        marginTop: 25,
+                                    }}
+                                >
+                                    Productivity
                                 </div>
                             </Col>
                             <Col
@@ -508,36 +511,39 @@ class PageHome extends Component {
                                     style={{
                                         textAlign: "center",
                                         width: "100%",
+                                        height: "100%",
+                                        maxHeight: 260,
+                                        border: "solid 10px white",
+                                        borderRadius: 10,
+                                        boxShadow:
+                                            "0px 4px 30px rgba(0, 0, 0, 0.45)",
+                                        background: "#D7EAF5",
                                     }}
                                 >
                                     <ImageFadeIn
                                         src={Gaming}
                                         style={{
+                                            width: "100%",
                                             height: "100%",
-                                            maxHeight: 260,
-                                            border: "solid 10px white",
-                                            borderRadius: 10,
-                                            boxShadow:
-                                                "0px 4px 30px rgba(0, 0, 0, 0.45)",
                                         }}
                                     />
-                                    <div
-                                        style={{
-                                            color: "white",
-                                            background: "rgba(0,0,0,0.9)",
-                                            borderRadius: 15,
-                                            height: 30,
-                                            fontSize: 14,
-                                            padding: "4px",
-                                            textAlign: "center",
-                                            fontWeight: "bold",
-                                            width: 75,
-                                            margin: "auto",
-                                            marginTop: 20,
-                                        }}
-                                    >
-                                        Gaming
-                                    </div>
+                                </div>
+                                <div
+                                    style={{
+                                        color: "white",
+                                        background: "rgba(0,0,0,0.9)",
+                                        borderRadius: 15,
+                                        height: 30,
+                                        fontSize: 14,
+                                        padding: "4px 4px",
+                                        textAlign: "center",
+                                        fontWeight: "bold",
+                                        width: 75,
+                                        margin: "auto",
+                                        marginTop: 25,
+                                    }}
+                                >
+                                    Gaming
                                 </div>
                             </Col>
                             <Col
@@ -550,38 +556,41 @@ class PageHome extends Component {
                             >
                                 <div
                                     style={{
-                                        textAlign: "center",
+                                        textAlign: "right",
                                         width: "100%",
+                                        height: "100%",
+                                        maxHeight: 260,
+                                        border: "solid 10px white",
+                                        borderRadius: 10,
+                                        boxShadow:
+                                            "0px 4px 30px rgba(0, 0, 0, 0.45)",
+                                        background: "#D7F5F5",
                                     }}
                                 >
                                     <ImageFadeIn
                                         src={Creative}
                                         style={{
                                             height: "100%",
-                                            maxHeight: 260,
-                                            border: "solid 10px white",
-                                            borderRadius: 10,
-                                            boxShadow:
-                                                "0px 4px 30px rgba(0, 0, 0, 0.45)",
+                                            float: "right",
                                         }}
                                     />
-                                    <div
-                                        style={{
-                                            color: "white",
-                                            background: "rgba(0,0,0,0.9)",
-                                            borderRadius: 15,
-                                            height: 30,
-                                            fontSize: 14,
-                                            padding: "4px",
-                                            textAlign: "center",
-                                            fontWeight: "bold",
-                                            width: 75,
-                                            margin: "auto",
-                                            marginTop: 20,
-                                        }}
-                                    >
-                                        Graphics
-                                    </div>
+                                </div>
+                                <div
+                                    style={{
+                                        color: "white",
+                                        background: "rgba(0,0,0,0.9)",
+                                        borderRadius: 15,
+                                        height: 30,
+                                        fontSize: 14,
+                                        padding: "4px",
+                                        textAlign: "center",
+                                        fontWeight: "bold",
+                                        width: 75,
+                                        margin: "auto",
+                                        marginTop: 30,
+                                    }}
+                                >
+                                    Graphics
                                 </div>
                             </Col>
                         </Row>

@@ -43,6 +43,8 @@ function* sendSignupInfo(action) {
         {
             username: action.user,
             password: action.password,
+            name: action.name,
+            feedback: action.feedback,
         }
     );
 
@@ -214,8 +216,6 @@ function* sendFinalCharge(action) {
     if (json) {
         if (json.status === 200) {
             history.push("/dashboard");
-            yield put(FormAction.vmCreating(true));
-            yield put(FormAction.triggerSurvey(true));
         } else {
             yield put(FormAction.stripeFailure(json.status));
         }
@@ -329,8 +329,13 @@ function* getDiskStatus(action) {
             (config.url.PRIMARY_SERVER + "/status/").concat(action.id),
             ""
         );
+        if (json) {
+            json = json.json;
+        }
         yield delay(5000);
     }
+
+    console.log(json);
 
     if (json && json.output) {
         yield put(FormAction.vmCreating(true));
@@ -349,6 +354,8 @@ function* attachDisk(disk_name) {
         },
         state.AccountReducer.access_token
     );
+
+    console.log(json);
 
     if (json && json.ID) {
         yield put(FormAction.storeID(json.ID));
@@ -379,6 +386,10 @@ function* fetchDiskStatus(action) {
             (config.url.PRIMARY_SERVER + "/status/").concat(action.status_id),
             state.AccountReducer.access_token
         );
+
+        if (json) {
+            json = json.json;
+        }
 
         if (json && json.output && json.state === "PENDING") {
             var now1 = new Date();
@@ -426,6 +437,7 @@ function* fetchDisks(action) {
         config.url.PRIMARY_SERVER + "/user/fetchdisks",
         {
             username: state.AccountReducer.user,
+            main: false,
         },
         ""
     );
@@ -590,12 +602,102 @@ function* createDisk(action) {
         state.AccountReducer.access_token
     );
 
-    console.log("DISK RESPOSNE");
+    if (json) {
+        if (json.ID) {
+            yield put(FormAction.getDiskStatus(json.ID));
+        }
+    }
+}
+
+function* changePlan(action) {
+    const state = yield select();
+    const { json } = yield call(
+        apiPost,
+        config.url.PRIMARY_SERVER + "/stripe/update",
+        {
+            username: state.AccountReducer.user,
+            plan: action.plan,
+        },
+        state.AccountReducer.access_token
+    );
+
+    if (json) {
+        yield put(FormAction.changePlanStatus(json.status));
+
+        if (json.status === 200) {
+            history.push("/dashboard");
+        }
+    }
+}
+
+function* addStorage(action) {
+    const state = yield select();
+
+    const { json } = yield call(
+        apiPost,
+        config.url.PRIMARY_SERVER + "/disk/createEmpty",
+        {
+            username: state.AccountReducer.user,
+            disk_size: action.storage,
+        },
+        state.AccountReducer.access_token
+    );
+
     console.log(json);
 
     if (json) {
         if (json.ID) {
-            yield put(FormAction.getDiskStatus(json.ID));
+            yield call(getStorageStatus, json.ID);
+        }
+    }
+}
+
+function* getStorageStatus(ID) {
+    var { json } = yield call(
+        apiGet,
+        (config.url.PRIMARY_SERVER + "/status/").concat(ID),
+        ""
+    );
+
+    while (json.state !== "SUCCESS" && json.state !== "FAILURE") {
+        json = yield call(
+            apiGet,
+            (config.url.PRIMARY_SERVER + "/status/").concat(ID),
+            ""
+        );
+
+        if (json) {
+            json = json.json;
+        }
+
+        yield delay(2500);
+    }
+
+    if (json && json.state) {
+        if (json.state === "SUCCESS") {
+            yield put(FormAction.addStorageStatus(200));
+            history.push("/settings");
+        } else {
+            yield put(FormAction.addStorageStatus(400));
+        }
+    }
+}
+
+function* lookupUser(action) {
+    const { json } = yield call(
+        apiPost,
+        config.url.PRIMARY_SERVER + "/account/lookup",
+        {
+            username: action.username,
+        },
+        ""
+    );
+
+    if (json) {
+        if (json.exists) {
+            yield put(FormAction.signupFailure(400));
+        } else {
+            yield put(FormAction.signupFailure(200));
         }
     }
 }
@@ -626,5 +728,8 @@ export default function* rootSaga() {
         takeEvery(FormAction.SUBMIT_PURCHASE_FEEDBACK, submitPurchaseFeedback),
         takeEvery(FormAction.CREATE_DISK, createDisk),
         takeEvery(FormAction.FETCH_DISK_STATUS, fetchDiskStatus),
+        takeEvery(FormAction.CHANGE_PLAN, changePlan),
+        takeEvery(FormAction.ADD_STORAGE, addStorage),
+        takeEvery(FormAction.LOOKUP_USER, lookupUser),
     ]);
 }
