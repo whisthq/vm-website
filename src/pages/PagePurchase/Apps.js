@@ -17,25 +17,13 @@ class Apps extends Component {
         super(props);
 
         this.state = {
-            width: 0,
-            height: 0,
             apps: apps,
         };
-        this.customWidth = React.createRef();
     }
 
-    componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener("resize", this.updateWindowDimensions);
-    }
+    componentDidMount() {}
 
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWindowDimensions);
-    }
-
-    updateWindowDimensions = () => {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
-    };
+    componentWillUnmount() {}
 
     handleTabChange = (key) => {
         const filteredApps =
@@ -45,7 +33,7 @@ class Apps extends Component {
 
     render() {
         return (
-            <Container style={{ overflowY: "scroll" }}>
+            <Container style={{ overflowY: "scroll", height: "100%" }}>
                 <Tabs
                     defaultActiveKey="All"
                     className="mb-3"

@@ -6,22 +6,28 @@
         "link": "https://www.google.com/chrome/"
     },
     {
+        "name": "Firefox",
+        "category": "Productivity",
+        "image": "firefox.png",
+        "link": "https://www.mozilla.org/en-US/firefox/new/"
+    },
+    {
+        "name": "VLC media player",
+        "category": "Productivity",
+        "image": "vlc.png",
+        "link": "https://www.videolan.org/vlc/index.html"
+    },
+    {
         "name": "Adobe Acrobat",
         "category": "Productivity",
         "image": "acrobat.png",
         "link": "https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html"
     },
     {
-        "name": "Zoom",
+        "name": "Dropbox",
         "category": "Productivity",
-        "image": "zoom.png",
-        "link": "https://www.zoom.us/"
-    },
-    {
-        "name": "Skype",
-        "category": "Productivity",
-        "image": "skype.png",
-        "link": "https://www.skype.com/en/"
+        "image": "dropbox.png",
+        "link": "https://www.dropbox.com/"
     },
     {
         "name": "Microsoft Office",
@@ -36,28 +42,46 @@
         "link": "https://www.spotify.com/us/"
     },
     {
+        "name": "Zoom",
+        "category": "Communication",
+        "image": "zoom.png",
+        "link": "https://www.zoom.us/"
+    },
+    {
+        "name": "Skype",
+        "category": "Communication",
+        "image": "skype.png",
+        "link": "https://www.skype.com/en/"
+    },
+    {
+        "name": "WhatsApp",
+        "category": "Communication",
+        "image": "whatsapp.png",
+        "link": "https://www.whatsapp.com/"
+    },
+    {
+        "name": "Telegram",
+        "category": "Communication",
+        "image": "telegram.png",
+        "link": "https://telegram.org/"
+    },
+    {
+        "name": "Discord",
+        "category": "Communication",
+        "image": "discord.png",
+        "link": "https://discord.com/"
+    },
+    {
         "name": "Steam",
         "category": "Gaming",
         "image": "steam.png",
         "link": "https://store.steampowered.com/"
     },
     {
-        "name": "Discord",
-        "category": "Gaming",
-        "image": "discord.png",
-        "link": "https://discord.com/"
-    },
-    {
         "name": "Epic Games",
         "category": "Gaming",
         "image": "epic_games.png",
         "link": "https://www.epicgames.com/store/en-US/"
-    },
-    {
-        "name": "Blizzard",
-        "category": "Gaming",
-        "image": "blizzard.png",
-        "link": "https://www.blizzard.com/en-us/"
     },
     {
         "name": "GeForce Experience",
@@ -78,7 +102,13 @@
         "link": "https://www.blender.org/"
     },
     {
-        "name": "Cinema 4D",
+        "name": "Gimp",
+        "category": "Creative",
+        "image": "gimp.png",
+        "link": "https://www.gimp.org/"
+    },
+    {
+        "name": "Cinema4D",
         "category": "Creative",
         "image": "cinema_4d.png",
         "link": "https://www.maxon.net/en-us/products/cinema-4d/overview/"
@@ -108,13 +138,43 @@
         "link": "https://atom.io/"
     },
     {
+        "name": "Node.js",
+        "category": "Developer",
+        "image": "nodejs.png",
+        "link": "https://nodejs.org/"
+    },
+    {
+        "name": "Android Studio",
+        "category": "Developer",
+        "image": "android_studio.png",
+        "link": "https://developer.android.com/studio"
+    },
+    {
+        "name": "GitHub Desktop",
+        "category": "Developer",
+        "image": "github_desktop.png",
+        "link": "https://desktop.github.com/"
+    },
+    {
+        "name": "Unity",
+        "category": "Developer",
+        "image": "unity.png",
+        "link": "https://unity.com/"
+    },
+    {
+        "name": "Sublime Text 3",
+        "category": "Developer",
+        "image": "sublimetext.png",
+        "link": "https://www.sublimetext.com/"
+    },
+    {
         "name": "OpenCV",
         "category": "Developer",
         "image": "opencv.png",
         "link": "https://opencv.org/"
     },
     {
-        "name": "CUDA",
+        "name": "CUDA Development Toolkit",
         "category": "Developer",
         "image": "cuda.jpeg",
         "link": "https://developer.nvidia.com/cuda-zone"
@@ -156,7 +216,7 @@
         "link": "https://code.visualstudio.com/"
     },
     {
-        "name": "Visual Studio Professional",
+        "name": "Visual Studio Professional 2019",
         "category": "Developer",
         "image": "vs_pro.png",
         "link": "https://visualstudio.microsoft.com/vs/professional/"
