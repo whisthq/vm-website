@@ -8,11 +8,9 @@ import AppCard from "components/appcard.js";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { withRouter } from "react-router";
-
 const apps = require("../../assets/data/apps.json");
 
-class Apps extends Component {
+export default class Apps extends Component {
     constructor(props) {
         super(props);
 
@@ -33,7 +31,7 @@ class Apps extends Component {
 
     render() {
         return (
-            <Container style={{ overflowY: "scroll", height: "100%" }}>
+            <Container style={{ flex: "1 1 auto", overflowY: "auto" }}>
                 <Tabs
                     defaultActiveKey="All"
                     className="mb-3"
@@ -41,6 +39,7 @@ class Apps extends Component {
                 >
                     <Tab eventKey="All" title="All" />
                     <Tab eventKey="Productivity" title="Productivity" />
+                    <Tab eventKey="Communication" title="Communication" />
                     <Tab eventKey="Gaming" title="Gaming" />
                     <Tab eventKey="Creative" title="Creative" />
                     <Tab eventKey="Developer" title="Developer" />
@@ -53,6 +52,9 @@ class Apps extends Component {
                                     title={app.name}
                                     image={app.image}
                                     tag={app.category}
+                                    selected={this.props.selectedApps.includes(
+                                        app.name
+                                    )}
                                     handleSelect={this.props.handleSelectApp}
                                 />
                             </Col>
@@ -63,15 +65,3 @@ class Apps extends Component {
         );
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        loggedIn: state.AuthReducer.logged_in,
-        user: state.AuthReducer.username,
-        id: state.DashboardReducer.id,
-        email_verified: state.AuthReducer.email_verified,
-        customer: state.DashboardReducer.customer,
-    };
-}
-
-export default withRouter(connect(mapStateToProps)(Apps));

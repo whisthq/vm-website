@@ -31,7 +31,7 @@ class Purchase extends Component {
             height: 0,
             modalShow: false,
             continue: false,
-            step: 1.0,
+            step: 4.0,
             exit: false,
             location: "",
             continue2: false,
@@ -1287,7 +1287,9 @@ class Purchase extends Component {
                                 boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
                                 borderRadius: 5,
                                 maxWidth: 1200,
-                                maxHeight: "calc(100vh - 150px)",
+                                height: "calc(100vh - 150px)",
+                                display: "flex",
+                                flexDirection: "column",
                             }}
                         >
                             {this.state.width > 700 ? (
@@ -1306,37 +1308,34 @@ class Purchase extends Component {
                             ) : (
                                 <div></div>
                             )}
-                            <span
+                            <div
                                 style={{
                                     fontSize: 22,
                                     paddingLeft:
-                                        this.state.width > 700 ? 10 : 0,
+                                        this.state.width > 700 ? 39 : 0,
                                 }}
                             >
                                 What apps would you like pre-installed?
-                            </span>
+                            </div>
                             <div
                                 style={{
                                     marginTop: 5,
+                                    marginBottom: 12,
                                     color: "#333333",
                                     paddingLeft:
                                         this.state.width > 700 ? 39 : 0,
                                     fontSize: 16,
+                                    flex: "0 0 auto",
                                 }}
                             >
                                 So your Cloud PC will be ready for you. (Other
                                 applications are downloadable with a
                                 subscription.)
                             </div>
-                            <div
-                                style={{
-                                    marginTop: 30,
-                                    paddingLeft:
-                                        this.state.width > 700 ? 39 : 0,
-                                }}
-                            >
-                                <Apps handleSelectApp={this.handleSelectApp} />
-                            </div>
+                            <Apps
+                                handleSelectApp={this.handleSelectApp}
+                                selectedApps={this.state.selectedApps}
+                            />
                             {this.state.selectedApps.length > 0 ? (
                                 <div
                                     style={{

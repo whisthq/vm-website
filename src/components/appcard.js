@@ -6,13 +6,11 @@ class AppCard extends Component {
         super(props);
 
         this.state = {
-            selected: false,
             imageUrl: require("../assets/apps/" + this.props.image),
         };
     }
 
     handleOnClick = () => {
-        this.setState({ selected: !this.state.selected });
         this.props.handleSelect(this.props.title);
     };
 
@@ -22,7 +20,7 @@ class AppCard extends Component {
                 style={{
                     height: "10rem",
                     maxWidth: "16rem",
-                    backgroundColor: this.state.selected
+                    backgroundColor: this.props.selected
                         ? "rgba(94, 195, 235, 0.1)"
                         : "#fff",
                     borderRadius: 5,
