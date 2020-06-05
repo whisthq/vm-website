@@ -1,15 +1,14 @@
 import React, { Component } from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
-import "static/Shared.css";
+import { withRouter } from "react-router";
+import Popup from "reactjs-popup";
 
-import Header from "components/header.js";
+import "static/PageDashboard.css";
+
 import {
     sendFriendsEmail,
     friendsEmailSent,
-    triggerSurvey,
 } from "store/actions/dashboard/popup_actions"
 import {
     FaTimes,
@@ -19,13 +18,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCircleNotch,
 } from "@fortawesome/free-solid-svg-icons";
-
-import { HashLink } from "react-router-hash-link";
-
-import { withRouter } from "react-router";
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
-import Popup from "reactjs-popup";
 
 
 class ReferralButton extends Component {

@@ -1,7 +1,4 @@
-import { put, takeEvery, all, call, select, delay } from "redux-saga/effects";
-import { apiPost, apiGet } from "utils/Api.js";
-import { config } from "utils/constants.js";
-import history from "utils/history";
+import { all } from "redux-saga/effects";
 
 import LoginSaga from "store/sagas/auth/login_saga";
 import SignupSaga from "store/sagas/auth/signup_saga";

@@ -1,17 +1,12 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
 import ImageFadeIn from "react-image-fade-in";
 
 import "static/Shared.css";
 import "static/PageLanding.css";
 
 import CloudPCBox from "pages/PageLanding/containers/cloudPCBox";
-import PriceBox from "pages/PageLanding/containers/priceBox";
 import SetupBox from "pages/PageLanding/containers/setupBox";
 
 import Software from "assets/software.svg";
@@ -20,10 +15,6 @@ import Creative from "assets/creative.svg";
 import Art from "assets/art.svg";
 import Process from "assets/process.svg";
 import RGBIcon from "assets/rgb-icon.svg";
-import CPU from "assets/cpu.svg";
-import GPU from "assets/gpu.svg";
-import RAM from "assets/ram.svg";
-import SSD from "assets/hard-drive-icon.svg";
 import HardDriveIcon from "assets/hard-drive-icon.svg";
 import FileIcon from "assets/file-icon.svg";
 

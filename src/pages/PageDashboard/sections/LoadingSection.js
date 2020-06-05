@@ -9,10 +9,6 @@ import "static/Shared.css";
 
 
 class LoadingSection extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div

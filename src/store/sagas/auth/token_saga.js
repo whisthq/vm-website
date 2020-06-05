@@ -1,13 +1,8 @@
-import { put, takeEvery, all, call, select, delay } from "redux-saga/effects";
-import { apiPost, apiGet } from "utils/Api.js";
+import { put, takeEvery, all, call, select } from "redux-saga/effects";
+import { apiPost } from "utils/Api.js";
 import { config } from "utils/constants.js";
-import history from "utils/history";
 
-import * as LoginAction from "store/actions/auth/login_actions";
 import * as TokenAction from "store/actions/auth/token_actions";
-import * as SignupAction from "store/actions/auth/signup_actions"
-import * as DiskAction from "store/actions/dashboard/disk_actions"
-import * as CustomerAction from "store/actions/dashboard/customer_actions"
 
 
 function* validateResetToken(action) {

@@ -1,5 +1,5 @@
-import { put, takeEvery, all, call, select, delay } from "redux-saga/effects";
-import { apiPost, apiGet } from "utils/Api.js";
+import { put, takeEvery, all, call, select } from "redux-saga/effects";
+import { apiPost } from "utils/Api.js";
 import { config } from "utils/constants.js";
 
 import * as PopupAction from "store/actions/dashboard/popup_actions"

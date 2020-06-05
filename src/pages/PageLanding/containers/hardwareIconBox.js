@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import ImageFadeIn from "react-image-fade-in";
 
 import "static/Shared.css";

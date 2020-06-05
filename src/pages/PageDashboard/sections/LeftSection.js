@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 

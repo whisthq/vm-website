@@ -1,19 +1,10 @@
 import { put, takeEvery, all, call, select, delay } from "redux-saga/effects";
-import { apiPost, apiGet } from "utils/Api.js";
-import { config } from "utils/constants.js";
-import history from "utils/history";
+
+import { apiPost, apiGet } from "utils/Api";
+import { config } from "utils/constants";
 import { formatDate } from "utils/date";
-
-
-import * as LoginAction from "store/actions/auth/login_actions"
-import * as TokenAction from "store/actions/auth/token_actions"
-import * as SignupAction from "store/actions/auth/signup_actions"
 import * as DiskAction from "store/actions/dashboard/disk_actions"
-import * as StripeAction from "store/actions/dashboard/stripe_actions"
-import * as CustomerAction from "store/actions/dashboard/customer_actions"
-import * as PopupAction from "store/actions/dashboard/popup_actions"
-import * as RenderingAction from "store/actions/dashboard/rendering_actions"
-import * as StorageAction from "store/actions/settings/storage_actions"
+
 
 
 function* fetchDiskCreationStatus(ID) {
@@ -113,7 +104,7 @@ function* fetchDiskAttachStatus(action) {
             formatDate(now2.getSeconds()) +
             ") " +
             "Unexpectedly lost connection with server. Trying again.";
-        yield put(DiskAction.changeDiskStatusMessage(message1));
+        yield put(DiskAction.changeDiskStatusMessage(message));
         yield call(attachDisk, state.DashboardReducer.current_disk);
     }
 }
