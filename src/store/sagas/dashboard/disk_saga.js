@@ -4,17 +4,15 @@ import { config } from "utils/constants.js";
 import history from "utils/history";
 import { formatDate } from "utils/date";
 
-
-import * as LoginAction from "store/actions/auth/login_actions"
-import * as TokenAction from "store/actions/auth/token_actions"
-import * as SignupAction from "store/actions/auth/signup_actions"
-import * as DiskAction from "store/actions/dashboard/disk_actions"
-import * as StripeAction from "store/actions/dashboard/stripe_actions"
-import * as CustomerAction from "store/actions/dashboard/customer_actions"
-import * as PopupAction from "store/actions/dashboard/popup_actions"
-import * as RenderingAction from "store/actions/dashboard/rendering_actions"
-import * as StorageAction from "store/actions/settings/storage_actions"
-
+import * as LoginAction from "store/actions/auth/login_actions";
+import * as TokenAction from "store/actions/auth/token_actions";
+import * as SignupAction from "store/actions/auth/signup_actions";
+import * as DiskAction from "store/actions/dashboard/disk_actions";
+import * as StripeAction from "store/actions/dashboard/stripe_actions";
+import * as CustomerAction from "store/actions/dashboard/customer_actions";
+import * as PopupAction from "store/actions/dashboard/popup_actions";
+import * as RenderingAction from "store/actions/dashboard/rendering_actions";
+import * as StorageAction from "store/actions/settings/storage_actions";
 
 function* fetchDiskCreationStatus(ID) {
     var { json } = yield call(
@@ -29,8 +27,8 @@ function* fetchDiskCreationStatus(ID) {
             (config.url.PRIMARY_SERVER + "/status/").concat(ID),
             ""
         );
-        if(json) {
-            json = json.json
+        if (json) {
+            json = json.json;
         }
         yield delay(5000);
     }
@@ -53,7 +51,7 @@ function* attachDisk(disk_name) {
         state.AuthReducer.access_token
     );
 
-    console.log(json)
+    console.log(json);
 
     if (json && json.ID) {
         yield put(DiskAction.storeDiskAttachID(json.ID));
@@ -65,19 +63,23 @@ function* fetchDiskAttachStatus(action) {
     const state = yield select();
     var { json } = yield call(
         apiGet,
-        (config.url.PRIMARY_SERVER + "/status/").concat(action.disk_attach_status_id),
+        (config.url.PRIMARY_SERVER + "/status/").concat(
+            action.disk_attach_status_id
+        ),
         state.AuthReducer.access_token
     );
 
     while (json.state === "PENDING" || json.state === "STARTED") {
         json = yield call(
             apiGet,
-            (config.url.PRIMARY_SERVER + "/status/").concat(action.disk_attach_status_id),
+            (config.url.PRIMARY_SERVER + "/status/").concat(
+                action.disk_attach_status_id
+            ),
             state.AuthReducer.access_token
         );
 
-        if(json) {
-            json = json.json
+        if (json) {
+            json = json.json;
         }
 
         if (json && json.output && json.state === "PENDING") {
@@ -125,7 +127,7 @@ function* fetchDisks(action) {
         config.url.PRIMARY_SERVER + "/user/fetchdisks",
         {
             username: state.AuthReducer.username,
-            main: false
+            main: false,
         },
         ""
     );
@@ -146,6 +148,7 @@ function* createDisk(action) {
             username: state.AuthReducer.username,
             location: action.location,
             vm_size: action.vm_size,
+            apps: action.apps,
         },
         state.AuthReducer.access_token
     );
@@ -157,7 +160,7 @@ function* createDisk(action) {
     }
 }
 
-export default function*() {
+export default function* () {
     yield all([
         takeEvery(DiskAction.FETCH_DISKS, fetchDisks),
         takeEvery(DiskAction.CREATE_DISK, createDisk),

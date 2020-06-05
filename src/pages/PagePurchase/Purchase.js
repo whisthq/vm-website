@@ -31,7 +31,7 @@ class Purchase extends Component {
             height: 0,
             modalShow: false,
             continue: false,
-            step: 4.0,
+            step: 1.0,
             exit: false,
             location: "",
             continue2: false,
@@ -197,12 +197,10 @@ class Purchase extends Component {
             createDisk(
                 this.findVMLocation(this.state.location),
                 this.encodeComputer(this.state.computer),
+                this.state.selectedApps,
                 true
             )
         );
-        if (this.state.selectedApps > 0) {
-            this.props.dispatch(installApps(this.state.selectedApps));
-        }
     };
 
     // Proceeds to step 1 of the create cloud pc form
@@ -1164,7 +1162,7 @@ class Purchase extends Component {
                                         Continue
                                     </Button>
                                     {this.state.width > 700 ? (
-                                        <div
+                                        <span
                                             style={{
                                                 fontSize: 14,
                                                 color: "#555555",
@@ -1182,7 +1180,7 @@ class Purchase extends Component {
                                                 }}
                                             />
                                             Press Enter
-                                        </div>
+                                        </span>
                                     ) : (
                                         <div></div>
                                     )}
@@ -1269,7 +1267,7 @@ class Purchase extends Component {
                 return (
                     <div
                         style={{
-                            paddingTop: 100,
+                            paddingTop: 70,
                             paddingLeft: 0,
                             width:
                                 this.state.width > 700
@@ -1286,35 +1284,41 @@ class Purchase extends Component {
                                 boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
                                 borderRadius: 5,
                                 maxWidth: 1200,
-                                height: "calc(100vh - 150px)",
+                                height: "calc(100vh - 100px)",
                                 display: "flex",
                                 flexDirection: "column",
                             }}
                         >
-                            {this.state.width > 700 ? (
-                                <span
-                                    style={{ position: "relative", bottom: 2 }}
-                                >
-                                    4{" "}
-                                    <FaArrowRight
+                            <div>
+                                {this.state.width > 700 ? (
+                                    <div
                                         style={{
-                                            height: 10,
                                             position: "relative",
+                                            display: "inline-block",
                                             bottom: 2,
+                                            width: 39,
                                         }}
-                                    />
-                                </span>
-                            ) : (
-                                <div></div>
-                            )}
-                            <div
-                                style={{
-                                    fontSize: 22,
-                                    paddingLeft:
-                                        this.state.width > 700 ? 39 : 0,
-                                }}
-                            >
-                                What apps would you like pre-installed?
+                                    >
+                                        4{" "}
+                                        <FaArrowRight
+                                            style={{
+                                                height: 10,
+                                                position: "relative",
+                                                bottom: 2,
+                                            }}
+                                        />
+                                    </div>
+                                ) : (
+                                    <div></div>
+                                )}
+                                <div
+                                    style={{
+                                        fontSize: 22,
+                                        display: "inline-block",
+                                    }}
+                                >
+                                    What apps would you like pre-installed?
+                                </div>
                             </div>
                             <div
                                 style={{
@@ -1343,10 +1347,8 @@ class Purchase extends Component {
                                 {this.state.selectedApps.length > 0 ? (
                                     <div
                                         style={{
-                                            width: 310,
+                                            width: 350,
                                             marginTop: 40,
-                                            paddingLeft:
-                                                this.state.width > 700 ? 39 : 0,
                                         }}
                                     >
                                         <Button
@@ -1358,17 +1360,19 @@ class Purchase extends Component {
                                                 border: "none",
                                                 padding: "10px 45px",
                                                 display: "inline",
+                                                maxHeight: "44px",
                                             }}
                                         >
                                             Install Apps
                                         </Button>
                                         {this.state.width > 700 && (
-                                            <div
+                                            <span
                                                 style={{
                                                     fontSize: 14,
                                                     color: "#555555",
                                                     position: "relative",
-                                                    top: 12,
+                                                    display: "inline",
+                                                    marginLeft: "16px",
                                                 }}
                                             >
                                                 <FaArrowRight
@@ -1381,7 +1385,7 @@ class Purchase extends Component {
                                                     }}
                                                 />
                                                 Press Enter
-                                            </div>
+                                            </span>
                                         )}
                                     </div>
                                 ) : (
@@ -1389,10 +1393,8 @@ class Purchase extends Component {
                                         style={{
                                             display: "flex",
                                             justifyContent: "space-between",
-                                            width: 310,
+                                            width: 350,
                                             marginTop: 40,
-                                            paddingLeft:
-                                                this.state.width > 700 ? 39 : 0,
                                         }}
                                     >
                                         <Button
@@ -1404,6 +1406,7 @@ class Purchase extends Component {
                                                 border: "none",
                                                 padding: "10px 45px",
                                                 display: "inline",
+                                                maxHeight: "44px",
                                             }}
                                         >
                                             Continue
@@ -1423,7 +1426,6 @@ class Purchase extends Component {
                                     <span
                                         style={{
                                             alignSelf: "flex-end",
-                                            flexBasis: "90%",
                                             textAlign: "right",
                                         }}
                                     >
