@@ -75,6 +75,7 @@ class TopSection extends Component {
                                                than 20 minutes. Once your cloud PC
                                                is ready, you'll be  able to download our
                                                desktop app below to launch your cloud PC."
+                                    creating 
                                 />
                             </Col>
                         </Row>
@@ -107,6 +108,7 @@ class TopSection extends Component {
                                                than 20 minutes. Once your cloud PC
                                                is ready, you'll be  able to download our
                                                desktop app below to launch your cloud PC."
+                                    creating
                                 />
                             </Col>
                             <Col xs={12} md={4}>
