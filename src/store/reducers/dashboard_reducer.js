@@ -133,6 +133,11 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                     {...state.vm_setup_data, "country": action.country} : 
                     {"country": action.country}       
             }
+        case VMSetupAction.RESET_SETUP_DATA:
+            return {
+                ...state,
+                vm_setup_data: DASHBOARD_DEFAULT.vm_setup_data
+            }
         default:
             return state;
     }

@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 import Header from "components/header.js";
 
 import {
-    storePurchaseLocation,
-    storeSetupStep
+    resetSetupData
 } from "store/actions/dashboard/vm_setup_actions";
 
 import LeftSection from "pages/PagePurchase/sections/LeftSection";
@@ -27,8 +26,7 @@ class Purchase extends Component {
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
-        this.props.dispatch(storePurchaseLocation(""));
-        this.props.dispatch(storeSetupStep(1));
+        this.props.dispatch(resetSetupData())
     }
 
     componentWillUnmount() {
@@ -45,24 +43,28 @@ class Purchase extends Component {
                 return (
                     <CountrySection
                         vm_setup_data = {this.props.vm_setup_data}
+                        step = {1}
                     />
                 )
             } else if (this.props.vm_setup_data.step === 2) {
                 return (
                     <StateSection
                         vm_setup_data = {this.props.vm_setup_data}
+                        step = {2}
                     />
                 );
             } else if (this.props.vm_setup_data.step === 2.1) {
                 return (
                     <WaitlistSection
                         vm_setup_data = {this.props.vm_setup_data}
+                        step = {2}
                     />
                 );
             } else if (this.props.vm_setup_data.step === 3) {
                 return (
                     <SpecSection
                         vm_setup_data = {this.props.vm_setup_data}
+                        step = {3}
                     />
                 );
             } else {
@@ -70,6 +72,7 @@ class Purchase extends Component {
                     <PlanSection
                         vm_setup_data = {this.props.vm_setup_data}
                         credits = {this.props.credits}
+                        step = {4}
                     />
                 );
             }

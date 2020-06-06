@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Row, Col, Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { FaAngleUp, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
@@ -10,6 +8,7 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import "static/PagePurchase.css";
 
 import PriceBox from "pages/PagePurchase/containers/priceBox";
+import SurveyButton from "pages/PagePurchase/containers/surveyButton"
 
 import {
     insertCustomer,
@@ -56,11 +55,19 @@ class PlanSection extends Component {
         this.props.dispatch(
             createDisk(
                 this.getVMRegion(this.props.vm_setup_data.location),
-                this.props.vm_setup_data.spec, 
+                this.getAzureSpec(this.props.vm_setup_data.spec), 
                 true
             )
         );
     };
+
+    getAzureSpec = (spec) => {
+        if(spec === "Medium") {
+            return "NV6"
+        } else {
+            return "NV12"
+        }
+    }
 
     getVMRegion = (location) => {
         if (eastus.includes(location)) {
@@ -75,6 +82,9 @@ class PlanSection extends Component {
     render() {
         return (
             <div className = "right-section-wrapper" onKeyPress={this.nextStepKeyPress}>
+                <SurveyButton 
+                    currentStep = {this.props.step}
+                />
                 {this.state.width > 700 ? (
                     <span
                         style={{ position: "relative", bottom: 2 }}
@@ -259,68 +269,6 @@ class PlanSection extends Component {
                         </Button>
                     </div>
                 )}
-                <div
-                    style={{
-                        float:
-                            this.state.width > 700
-                                ? "none"
-                                : "right",
-                        marginTop: this.state.width > 700 ? 0 : 20,
-                        position:
-                            this.state.width > 700
-                                ? "absolute"
-                                : "relative",
-                        bottom: this.state.width > 700 ? 25 : 0,
-                        right: this.state.width > 700 ? 40 : 0,
-                        boxShadow:
-                            this.state.width > 700
-                                ? "0px 4px 20px rgba(0, 0, 0, 0.3)"
-                                : "none",
-                        background: "none",
-                    }}
-                >
-                    <div
-                        onClick={this.goBack}
-                        style={{
-                            display: "inline",
-                            borderRadius: "5px 0px 0px 5px",
-                            backgroundColor: "#5ec3eb",
-                            color: "white",
-                            padding: "5px 10px",
-                            borderRight: "solid 0.5px #0b172b",
-                        }}
-                    >
-                        <FaAngleUp
-                            className="typeform-up"
-                            style={{
-                                height: 20,
-                                position: "relative",
-                                bottom: 2,
-                                color: "#0b172b",
-                            }}
-                        />
-                    </div>
-                    <Link to="/dashboard">
-                        <div
-                            style={{
-                                display: "inline",
-                                borderRadius: "0px 5px 5px 0px",
-                                backgroundColor: "#5ec3eb",
-                                color: "white",
-                                padding: "5px 10px",
-                            }}
-                        >
-                            <FaTimes
-                                style={{
-                                    height: 15,
-                                    position: "relative",
-                                    bottom: 2,
-                                    color: "#0b172b",
-                                }}
-                            />
-                        </div>
-                    </Link>
-                </div>
             </div>
         )
     }

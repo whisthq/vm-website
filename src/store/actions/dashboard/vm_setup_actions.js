@@ -3,7 +3,7 @@ export const STORE_COUNTRY           = "STORE_COUNTRY";
 export const STORE_PURCHASE_LOCATION = "STORE_PURCHASE_LOCATION";
 export const STORE_COMPUTER_SPEC     = "STORE_COMPUTER_SPEC";
 export const STORE_PLAN_TYPE         = "STORE_PLAN_TYPE";
-
+export const RESET_SETUP_DATA        = "RESET_SETUP_DATA";
 
 export function storeSetupStep(step) {
     return {
@@ -37,5 +37,11 @@ export function storePlanType(plan) {
     return {
         type: STORE_PLAN_TYPE,
         plan
+    }
+}
+
+export function resetSetupData() {
+    return {
+        type: RESET_SETUP_DATA
     }
 }

@@ -54,8 +54,8 @@ export class Autocomplete extends Component {
 
     onChange = (e) => {
         const userInput = this.formatUserEntry(e.currentTarget.value);
-
         this.props.dispatch(storePurchaseLocation(userInput));
+        
         if (all_american_states.includes(userInput)) {
             const filteredOptions = [];
             this.setState({

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import { FaArrowRight, FaAngleUp, FaTimes } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 
 import "static/PagePurchase.css";
 
@@ -12,6 +11,7 @@ import {
 } from "store/actions/dashboard/vm_setup_actions"
 
 import TypeformButton from "components/typeformbutton.js";
+import SurveyButton from "pages/PagePurchase/containers/surveyButton"
 
 class CountrySection extends Component {
     constructor(props) {
@@ -63,6 +63,9 @@ class CountrySection extends Component {
     render() {
         return (
             <div className = "right-section-wrapper" onKeyPress={this.nextStepKeyPress}>
+                <SurveyButton 
+                    currentStep = {this.props.step}
+                />
                 <div className = "survey-box">
                 {this.state.width > 700 ? (
                     <span
@@ -153,58 +156,6 @@ class CountrySection extends Component {
                     >
                         Continue
                     </Button>
-                </div>
-                <div
-                    style={{
-                        position: "absolute",
-                        bottom: 25,
-                        right: 40,
-                        boxShadow:
-                            "0px 4px 20px rgba(0, 0, 0, 0.3)",
-                    }}
-                >
-                    <Link to="/dashboard">
-                        <div
-                            className="typeform-up"
-                            style={{
-                                display: "inline",
-                                borderRadius: "5px 0px 0px 5px",
-                                backgroundColor: "#5ec3eb",
-                                color: "white",
-                                padding: "5px 10px",
-                                borderRight: "solid 0.5px #0b172b",
-                            }}
-                        >
-                            <FaAngleUp
-                                style={{
-                                    height: 20,
-                                    position: "relative",
-                                    bottom: 2,
-                                    color: "#0b172b",
-                                }}
-                            />
-                        </div>
-                    </Link>
-                    <Link to="/dashboard">
-                        <div
-                            style={{
-                                display: "inline",
-                                borderRadius: "0px 5px 5px 0px",
-                                backgroundColor: "#5ec3eb",
-                                color: "white",
-                                padding: "5px 10px",
-                            }}
-                        >
-                            <FaTimes
-                                style={{
-                                    height: 15,
-                                    position: "relative",
-                                    bottom: 2,
-                                    color: "#0b172b",
-                                }}
-                            />
-                        </div>
-                    </Link>
                 </div>
             </div>
         </div>
