@@ -7,7 +7,7 @@ import {
 
 import "static/PageDashboard.css";
 
-import Mountain from "assets/mountain.jpg"
+import Mountain from "assets/large_graphics/mountain.jpg"
 
 class ImageBox extends Component {
     render() {

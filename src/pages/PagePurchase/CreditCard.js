@@ -8,12 +8,12 @@ import { Link } from 'react-router-dom'
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import { FaArrowRight } from 'react-icons/fa'
 
-import Header from 'components/header.js'
-import CheckoutForm from 'components/checkoutform.js'
+import Header from 'components/header'
+import CheckoutForm from 'components/checkoutform'
 import { config } from 'utils/constants.js'
 import 'static/Shared.css';
-import StripeBadge from 'assets/powered_by_stripe.svg'
-import PriceBox from './containers/priceBox.js'
+import StripeBadge from 'assets/icons/powered_by_stripe.svg'
+import PriceBox from 'pages/PagePurchase/containers/priceBox'
 
 class CreditCard extends Component {
   constructor(props) {

@@ -15,10 +15,10 @@ import "static/PageDashboard.css";
 import ImageBox from "pages/PageDashboard/containers/imageBox";
 import HardwareBox from "pages/PageDashboard/containers/hardwareBox";
 
-import CPU from "assets/cpu.svg";
-import GPU from "assets/gpu.svg";
-import RAM from "assets/ram.svg";
-import SSD from "assets/hard-drive-icon.svg";
+import CPU from "assets/icons/cpu.svg";
+import GPU from "assets/icons/gpu.svg";
+import RAM from "assets/icons/ram.svg";
+import SSD from "assets/icons/hard-drive-icon.svg";
 
 class TopSection extends Component {
     constructor(props) {

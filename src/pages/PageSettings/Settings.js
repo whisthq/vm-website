@@ -3,6 +3,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
+import { HashLink } from "react-router-hash-link";
+import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
+import Popup from "reactjs-popup";
 import {
     FaPlus,
     FaFighterJet,
@@ -12,11 +17,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faCircleNotch
 } from "@fortawesome/free-solid-svg-icons";
-import { HashLink } from "react-router-hash-link";
-import { withRouter } from "react-router";
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
-import Popup from "reactjs-popup";
 
 import "react-tabs/style/react-tabs.css";
 import "static/Shared.css";
@@ -30,7 +30,7 @@ import {
     fetchDisks
 } from "store/actions/dashboard/disk_actions";
 
-import SSD from "assets/hard-drive-icon.svg";
+import SSD from "assets/icons/hard-drive-icon.svg";
 
 class Settings extends Component {
     constructor(props) {

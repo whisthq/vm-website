@@ -3,15 +3,15 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Popup from "reactjs-popup";
 
-import Brian from "assets/brian.png";
-import BSV from "assets/bsv.png";
-import DC from "assets/dc.jpg";
-import DRF from "assets/drf.jpg";
-import Michael from "assets/michael.jpg";
-import Vijay from "assets/vijay.jpg";
-import Pankaj from "assets/pankaj.jpg";
-import Neo from "assets/neo.png";
-import RDV from "assets/rdv.png";
+import Brian from "assets/investor_photos/brian.png";
+import BSV from "assets/investor_photos/bsv.png";
+import DC from "assets/investor_photos/dc.jpg";
+import DRF from "assets/investor_photos/drf.jpg";
+import Michael from "assets/investor_photos/michael.jpg";
+import Vijay from "assets/investor_photos/vijay.jpg";
+import Pankaj from "assets/investor_photos/pankaj.jpg";
+import Neo from "assets/investor_photos/neo.png";
+import RDV from "assets/investor_photos/rdv.png";
 
 class InvestorBox extends Component {
     constructor(props) {

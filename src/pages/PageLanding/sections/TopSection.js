@@ -8,7 +8,7 @@ import ImageFadeIn from "react-image-fade-in";
 import "static/Shared.css";
 import "static/PageLanding.css";
 
-import Cloud from "assets/cloud-computing.svg";
+import Cloud from "assets/large_graphics/cloud-computing.svg";
 
 
 class TopSection extends Component {

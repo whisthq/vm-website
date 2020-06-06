@@ -6,16 +6,16 @@ import Carousel from "react-bootstrap/Carousel";
 import { Link } from "react-router-dom";
 import ImageFadeIn from "react-image-fade-in";
 
-import Datacenter from "assets/datacenter.svg";
-import Ming from "assets/ming.svg";
-import Phil from "assets/phil.svg";
-import Nick from "assets/nick.svg";
-import Roshan from "assets/roshan.svg";
-import Hamish from "assets/hamish.svg";
-import Matt from "assets/matt.svg";
-import Jonathan from "assets/jonathan.svg";
-import Sean from "assets/sean.svg";
-import Isabelle from "assets/isabelle.svg";
+import Datacenter from "assets/large_graphics/datacenter.svg";
+import Ming from "assets/team_photos/ming.svg";
+import Phil from "assets/team_photos/phil.svg";
+import Nick from "assets/team_photos/nick.svg";
+import Roshan from "assets/team_photos/roshan.svg";
+import Hamish from "assets/team_photos/hamish.svg";
+import Matt from "assets/team_photos/matt.svg";
+import Jonathan from "assets/team_photos/jonathan.svg";
+import Sean from "assets/team_photos/sean.svg";
+import Isabelle from "assets/team_photos/isabelle.svg";
 
 import InvestorBox from "pages/PageAbout/components/InvestorBox";
 import EmployeeBox from "pages/PageAbout/components/employeeBox";

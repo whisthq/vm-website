@@ -9,14 +9,14 @@ import "static/PageLanding.css";
 import CloudPCBox from "pages/PageLanding/containers/cloudPCBox";
 import SetupBox from "pages/PageLanding/containers/setupBox";
 
-import Software from "assets/software.svg";
-import Gaming from "assets/gaming.svg";
-import Creative from "assets/creative.svg";
-import Art from "assets/art.svg";
-import Process from "assets/process.svg";
-import RGBIcon from "assets/rgb-icon.svg";
-import HardDriveIcon from "assets/hard-drive-icon.svg";
-import FileIcon from "assets/file-icon.svg";
+import Software from "assets/large_graphics/software.svg";
+import Gaming from "assets/large_graphics/gaming.svg";
+import Creative from "assets/large_graphics/creative.svg";
+import Art from "assets/icons/art.svg";
+import Process from "assets/icons/process.svg";
+import RGBIcon from "assets/icons/rgb-icon.svg";
+import HardDriveIcon from "assets/icons/hard-drive-icon.svg";
+import FileIcon from "assets/icons/file-icon.svg";
 
 
 class MiddleSection extends Component {

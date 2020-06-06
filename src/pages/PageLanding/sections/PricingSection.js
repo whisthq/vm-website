@@ -10,10 +10,10 @@ import "static/PageLanding.css";
 import PriceBox from "pages/PageLanding/containers/priceBox";
 import HardwareIconBox from "pages/PageLanding/containers/hardwareIconBox";
 
-import CPU from "assets/cpu.svg";
-import GPU from "assets/gpu.svg";
-import RAM from "assets/ram.svg";
-import SSD from "assets/hard-drive-icon.svg";
+import CPU from "assets/icons/cpu.svg";
+import GPU from "assets/icons/gpu.svg";
+import RAM from "assets/icons/ram.svg";
+import SSD from "assets/icons/hard-drive-icon.svg";
 
 
 class PricingSection extends Component {
