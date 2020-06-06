@@ -49,16 +49,9 @@ class BottomSection extends Component {
 
     render() {
         return(
-            <Row style={{ marginTop: 40 }}>
+            <Row style={{ marginTop: 40, paddingBottom: 40 }}>
                 <Col sm={6} xs={12}>
-                    <div
-                        style={{
-                            fontSize: 20,
-                            fontWeight: "bold",
-                            marginBottom: 20,
-                            display: "inline",
-                        }}
-                    >
+                    <div className = "bottom-title">
                         Downloads
                     </div>
                     <div style={{ width: "100%" }}>
@@ -105,15 +98,7 @@ class BottomSection extends Component {
                     }}
                 >
                     <div>
-                        <div
-                            style={{
-                                fontSize: 20,
-                                fontWeight: "bold",
-                                marginBottom: 20,
-                                float: "left",
-                                display: "inline",
-                            }}
-                        >
+                        <div className = "bottom-title">
                             My Info
                         </div>
                         <CancelPopup 
@@ -121,19 +106,17 @@ class BottomSection extends Component {
                             customer = {this.props.customer}
                         />
                     </div>
-                    <br/>
                     <div className = "info-box">
                         <Row
                             style={{
                                 width: "100%",
                                 margin: 0,
-                                marginBottom: 10,
                             }}
                         >
                             <InfoRow 
                                 icon = {<FaUser className = "icon"/>}
                                 name = "Username"
-                                text = {this.props.user}
+                                text = {this.props.username}
                             />
                             <InfoRow 
                                 icon = {<FaFastForward className = "icon"/>}

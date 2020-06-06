@@ -3,6 +3,7 @@ import * as StripeAction from "store/actions/dashboard/stripe_actions"
 import * as CustomerAction from "store/actions/dashboard/customer_actions"
 import * as PopupAction from "store/actions/dashboard/popup_actions"
 import * as RenderingAction from "store/actions/dashboard/rendering_actions"
+import * as VMSetupAction from "store/actions/dashboard/vm_setup_actions"
 
 import { DASHBOARD_DEFAULT } from "store/reducers/defaults"
 
@@ -65,11 +66,6 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 ...state,
                 show_survey: false,
             };
-        case CustomerAction.STORE_PURCHASE_LOCATION:
-            return {
-                ...state,
-                purchase_location: action.location,
-            };
         case RenderingAction.DASHBOARD_LOADED:
             return {
                 ...state,
@@ -102,6 +98,41 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 amount: action.amount,
                 stripe_token: action.token,
             };
+        case VMSetupAction.STORE_COMPUTER_SPEC:
+            return {
+                ...state,
+                vm_setup_data: state.vm_setup_data ? 
+                    {...state.vm_setup_data, "spec": action.spec} : 
+                    {"spec": action.spec}
+            }
+        case VMSetupAction.STORE_PURCHASE_LOCATION:
+            return {
+                ...state,
+                vm_setup_data: state.vm_setup_data ? 
+                    {...state.vm_setup_data, "location": action.location} : 
+                    {"location": action.location}
+            }
+        case VMSetupAction.STORE_PLAN_TYPE:
+            return {
+                ...state,
+                vm_setup_data: state.vm_setup_data ? 
+                    {...state.vm_setup_data, "plan": action.plan} : 
+                    {"plan": action.plan}
+            }
+        case VMSetupAction.STORE_SETUP_STEP:
+            return {
+                ...state,
+                vm_setup_data: state.vm_setup_data ? 
+                    {...state.vm_setup_data, "step": action.step} : 
+                    {"step": action.step}                
+            }
+        case VMSetupAction.STORE_COUNTRY:
+            return {
+                ...state,
+                vm_setup_data: state.vm_setup_data ? 
+                    {...state.vm_setup_data, "country": action.country} : 
+                    {"country": action.country}       
+            }
         default:
             return state;
     }

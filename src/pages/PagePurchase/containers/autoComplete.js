@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { storePurchaseLocation } from "store/actions/dashboard/customer_actions";
+import { storePurchaseLocation } from "store/actions/dashboard/vm_setup_actions";
+
+import { all_american_states } from "pages/PagePurchase/constants/american_states"
 
 export class Autocomplete extends Component {
     static propTypes = {
@@ -51,12 +53,10 @@ export class Autocomplete extends Component {
     };
 
     onChange = (e) => {
-        const { options } = this.props;
         const userInput = this.formatUserEntry(e.currentTarget.value);
-        console.log(userInput);
 
         this.props.dispatch(storePurchaseLocation(userInput));
-        if (options.includes(userInput)) {
+        if (all_american_states.includes(userInput)) {
             const filteredOptions = [];
             this.setState({
                 activeOption: 0,
@@ -65,7 +65,7 @@ export class Autocomplete extends Component {
                 userInput: userInput,
             });
         } else {
-            const filteredOptions = options.filter(
+            const filteredOptions = all_american_states.filter(
                 (optionName) =>
                     optionName.toLowerCase().indexOf(userInput.toLowerCase()) >
                     -1
@@ -80,7 +80,6 @@ export class Autocomplete extends Component {
     };
 
     onClick = (e) => {
-        const { options } = this.props;
         var input = e.currentTarget.innerText;
         input = input.replace("Suggested: ", "");
 
@@ -93,7 +92,7 @@ export class Autocomplete extends Component {
             },
             function () {
                 var userEntry = this.formatUserEntry(input);
-                if (options.includes(userEntry)) {
+                if (all_american_states.includes(userEntry)) {
                     this.props.dispatch(storePurchaseLocation(userEntry));
                 }
             }
@@ -102,7 +101,6 @@ export class Autocomplete extends Component {
 
     onKeyDown = (e) => {
         const { activeOption, filteredOptions } = this.state;
-        const { options } = this.props;
 
         if (e.keyCode === 13) {
             this.setState(
@@ -116,7 +114,7 @@ export class Autocomplete extends Component {
                     if (filteredOptions[activeOption]) {
                         userEntry = this.formatUserEntry(userEntry);
                     }
-                    if (options.includes(userEntry)) {
+                    if (all_american_states.includes(userEntry)) {
                         this.props.dispatch(storePurchaseLocation(userEntry));
                     }
                 }

@@ -209,6 +209,7 @@ class Dashboard extends Component {
                                     trialEnd = {this.state.trialEnd}
                                 />
                                 <BottomSection
+                                    username = {this.props.username}
                                     created = {this.state.created}
                                     billStart = {this.state.billStart}
                                     billEnd = {this.state.billEnd}
@@ -226,7 +227,7 @@ class Dashboard extends Component {
 function mapStateToProps(state) {
     return {
         logged_in: state.AuthReducer.logged_in,
-        user: state.AuthReducer.username,
+        username: state.AuthReducer.username,
         disks:
             typeof state.DashboardReducer.disks === "undefined"
                 ? []

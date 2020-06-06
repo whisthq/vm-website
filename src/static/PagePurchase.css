@@ -1,0 +1,52 @@
+.purchase {
+    min-height: 100vh;
+    padding-bottom: 50px;
+    background: #F6F6F6;
+}
+
+.purchase .purchase-flex {
+    display: flex;
+    overflow-x: hidden;
+    position: relative;
+    bottom: 60px;
+}
+
+.right-section-wrapper {
+    padding-top: 100px;
+    padding-left: 15px;
+    width: calc(100% - 400px);
+    overflow-x: hidden !important;
+    padding-right: 15px;
+}
+
+@media only screen and (max-width: 700px) {
+    .right-section-wrapper {
+        width: 90%;
+        padding-right: 40px;
+    }
+}
+
+.survey-box {
+    padding: 40px 50px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.left-section-wrapper {
+    width: 300px;
+    padding-left: 80px;
+    padding-top: 120px;
+    background-color: none;
+    height: 100%;
+    min-height: 100vh;
+    z-index: 0;
+}
+
+@media only screen and (max-width: 700px) {
+    .left-section-wrapper {
+        width: 0px;
+        padding-left: 40px;
+    }
+}

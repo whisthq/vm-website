@@ -26,7 +26,6 @@ export const DASHBOARD_DEFAULT = {
     payment: {},
     stripe_status: 200,
     failed_payment_attempts: 0,
-    current_page: "personal",
     friend_email_status: 0,
     promo_code: "",
     credits: 0,
@@ -41,6 +40,13 @@ export const DASHBOARD_DEFAULT = {
     disk_creation_message: "",
     current_disk: null,
     change_plan_status: 0,
+    vm_setup_data: {
+        "country": null,
+        "spec": null,
+        "location": null,
+        "plan": null,
+        "step": 1
+    }
 };
 
 export const SETTINGS_DEFAULT = {

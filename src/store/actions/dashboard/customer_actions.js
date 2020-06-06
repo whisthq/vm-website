@@ -8,8 +8,6 @@ export const INSERT_CUSTOMER = "INSERT_CUSTOMER";
 export const CUSTOMER_CREATED = "CUSTOMER_CREATED";
 export const SUBMIT_PURCHASE_FEEDBACK = "SUBMIT_PURCHASE_FEEDBACK";
 export const STORE_CUSTOMER = "STORE_CUSTOMER";
-export const STORE_PURCHASE_LOCATION = "STORE_PURCHASE_LOCATION";
-
 
 
 export function retrieveCustomer() {
@@ -70,12 +68,5 @@ export function storeCustomer(customer) {
     return {
         type: STORE_CUSTOMER,
         customer,
-    };
-}
-
-export function storePurchaseLocation(location) {
-    return {
-        type: STORE_PURCHASE_LOCATION,
-        location,
     };
 }
