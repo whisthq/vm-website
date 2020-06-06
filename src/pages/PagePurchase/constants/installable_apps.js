@@ -1,4 +1,4 @@
-[
+export const apps = [
     {
         "name": "Google Chrome",
         "category": "Productivity",

@@ -45,7 +45,7 @@ export const DASHBOARD_DEFAULT = {
         "spec": null,
         "location": null,
         "plan": null,
-        "step": 1
+        "step": 4
     }
 };
 

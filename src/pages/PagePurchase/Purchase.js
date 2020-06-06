@@ -13,6 +13,7 @@ import StateSection from "pages/PagePurchase/sections/StateSection";
 import WaitlistSection from "pages/PagePurchase/sections/WaitlistSection";
 import SpecSection from "pages/PagePurchase/sections/SpecSection";
 import PlanSection from "pages/PagePurchase/sections/PlanSection";
+import AppSection from "pages/PagePurchase/sections/AppSection";
 
 class Purchase extends Component {
     constructor(props) {
@@ -67,12 +68,19 @@ class Purchase extends Component {
                         step = {3}
                     />
                 );
+            } else if (this.props.vm_setup_data.step === 4) {
+                return (
+                    <AppSection
+                        vm_setup_data = {this.props.vm_setup_data}
+                        step = {4}
+                    />
+                );
             } else {
                 return (
                     <PlanSection
                         vm_setup_data = {this.props.vm_setup_data}
                         credits = {this.props.credits}
-                        step = {4}
+                        step = {5}
                     />
                 );
             }

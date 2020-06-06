@@ -8,18 +8,20 @@ import { Link } from 'react-router-dom'
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import { FaArrowRight } from 'react-icons/fa'
 
+import 'static/Shared.css';
+
 import Header from 'components/header'
 import CheckoutForm from 'components/checkoutform'
-import { config } from 'utils/constants.js'
-import 'static/Shared.css';
-import StripeBadge from 'assets/icons/powered_by_stripe.svg'
 import PriceBox from 'pages/PagePurchase/containers/priceBox'
+
+import { config } from 'utils/constants'
+
+import StripeBadge from 'assets/icons/powered_by_stripe.svg'
 
 class CreditCard extends Component {
   constructor(props) {
     super(props)
-    this.state = { width: 0, height: 0, modalShow: false, continue: false, exit: false, location: '', step: 1, plan: '' }
-    this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
+    this.state = { width: 0, height: 0, continue: false, exit: false, location: '', step: 1, plan: '' }
   }
 
   handleClick1 = () => {
@@ -44,17 +46,12 @@ class CreditCard extends Component {
     window.removeEventListener('resize', this.updateWindowDimensions)
   }
 
-  updateWindowDimensions() {
+  updateWindowDimensions = () => {
     this.setState({ width: window.innerWidth, height: window.innerHeight })
   }
 
 
   render() {
-    let modalClose = () => this.setState({ modalShow: false })
-    if (this.state.width > 700 && this.state.modalShow) {
-      modalClose()
-    }
-
     const fonts = [{ cssSrc: "https://fonts.googleapis.com/css?family=Maven+Pro" }]
     var public_key = config.stripe.PUBLIC_KEY
 
