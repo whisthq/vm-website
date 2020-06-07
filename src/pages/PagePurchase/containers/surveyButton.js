@@ -13,6 +13,27 @@ import history from "utils/history";
 
 
 class SurveyButton extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            width: 0,
+            height: 0,
+        };
+    }
+
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener("resize", this.updateWindowDimensions);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions = () => {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
+
     goBack = () => {
         if(this.props.currentStep > 1) {
             this.props.dispatch(storeSetupStep(this.props.currentStep - 1));
@@ -27,7 +48,7 @@ class SurveyButton extends Component {
 
     render() {
         return(
-            <div style = {{height: 50}}>
+            <div style = {{height: this.state.width > 700 ? 50 : 80}}>
                 <div
                     style={{
                         display: "inline",

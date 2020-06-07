@@ -197,29 +197,6 @@ class SpecSection extends Component {
                         >
                             Continue
                         </Button>
-                        {this.state.width > 700 ? (
-                            <div
-                                style={{
-                                    fontSize: 14,
-                                    color: "#555555",
-                                    position: "relative",
-                                    top: 12,
-                                }}
-                            >
-                                <FaArrowRight
-                                    style={{
-                                        marginRight: 6,
-                                        height: 8,
-                                        width: 15,
-                                        position: "relative",
-                                        bottom: 1,
-                                    }}
-                                />
-                                Press Enter
-                            </div>
-                        ) : (
-                            <div></div>
-                        )}
                     </div>
                 ) : (
                     <div

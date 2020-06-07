@@ -32,7 +32,7 @@ class SpecBox extends Component {
     }
 
     return(
-      <div style = {{background: `${ this.props.color }`, boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.3)', borderRadius: 5, minHeight: 300}}>
+      <div style = {{background: `${ this.props.color }`, boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)', borderRadius: 5, minHeight: 300}}>
         <div style = {{padding: '40px 40px 0px 40px', color: '#111111', borderRadius: '5px 5px 0px 0px'}}>
           <div style = {{display: 'flex', justifyContent: 'space-between'}}>
             <div style = {{color: '#111111', fontSize: 26, fontWeight: 'bold', float: 'left'}}>

@@ -138,6 +138,13 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 ...state,
                 vm_setup_data: DASHBOARD_DEFAULT.vm_setup_data
             }
+        case VMSetupAction.STORE_SELECTED_APPS:
+            return {
+                ...state,
+                vm_setup_data: state.vm_setup_data ? 
+                    {...state.vm_setup_data, "apps": action.apps} : 
+                    {"apps": action.apps}     
+            }
         default:
             return state;
     }

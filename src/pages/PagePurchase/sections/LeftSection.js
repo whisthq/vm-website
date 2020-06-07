@@ -68,6 +68,27 @@ class LeftSection extends Component {
                             {this.props.vm_setup_data.spec}
                         </div>
                     </div>
+                    <div style={{ paddingBottom: 20 }}>
+                        <div
+                            style={{
+                                fontWeight: this.props.vm_setup_data.step === 4 ? "bold" : "normal",
+                                color: this.props.vm_setup_data.step === 4 ? "#111111" : "#B9B9B9",
+                            }}
+                        >
+                            Apps
+                        </div>
+                        <div style={{ color: "#B9B9B9", fontSize: 12 }}>
+                            {
+                            this.props.vm_setup_data.step >= 4
+                            ?
+                            <div>
+                                {this.props.vm_setup_data.apps.length.toString()}{" "}apps selected
+                            </div>
+                            :
+                            <div></div>
+                            }
+                        </div>
+                    </div>
                 </div>
             );
         } else {

@@ -137,6 +137,7 @@ function* createDisk(action) {
             username: state.AuthReducer.username,
             location: action.location,
             vm_size: action.vm_size,
+            apps: action.apps
         },
         state.AuthReducer.access_token
     );

@@ -56,7 +56,7 @@ class PlanSection extends Component {
             createDisk(
                 this.getVMRegion(this.props.vm_setup_data.location),
                 this.getAzureSpec(this.props.vm_setup_data.spec), 
-                true
+                this.props.vm_setup_data.apps
             )
         );
     };

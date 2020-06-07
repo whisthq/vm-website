@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Container, Row, Col, Tabs, Tab, Button } from "react-bootstrap";
+import { Tabs, Tab, Button } from "react-bootstrap";
 import { FaArrowRight } from "react-icons/fa";
 
 import "static/PagePurchase.css";
 
 import { 
-    storeSetupStep 
+    storeSetupStep, 
+    storeSelectedApps 
 } from "store/actions/dashboard/vm_setup_actions";
 
 import AppCard from "pages/PagePurchase/containers/appBox";
@@ -46,6 +47,9 @@ class AppSection extends Component {
 
     nextStep = () => {
         this.props.dispatch(storeSetupStep(5));
+        if(this.state.selectedApps && this.state.selectedApps.length > 0) {
+            this.props.dispatch(storeSelectedApps(this.state.selectedApps));
+        }
     }
 
     handleTabChange = (key) => {
@@ -73,7 +77,7 @@ class AppSection extends Component {
                 <div
                     className="apps-select"
                     style={{
-                        height: "calc(100vh - 275px)",
+                        height: this.state.width > 700 ? "calc(100vh - 300px)" : "50%",
                         minHeight: 600,
                         display: "flex",
                         flexDirection: "column",
@@ -170,7 +174,7 @@ class AppSection extends Component {
                                         marginRight: 20,
                                         marginBottom: 15,
                                         flex: "1 0 auto",
-                                        minWidth: "30%",
+                                        minWidth: this.state.width > 700 ? "30%" : "100%",
                                         maxWidth: 400
                                     }}>
                                         <AppCard
@@ -195,7 +199,6 @@ class AppSection extends Component {
                             width: "100%",
                         }}
                     >
-                        {this.state.selectedApps.length > 0 ? (
                             <div
                                 style={{
                                     width: 350,
@@ -204,9 +207,7 @@ class AppSection extends Component {
                                 }}
                             >
                                 <Button
-                                    onClick={() =>
-                                        this.setState({ step: 5 })
-                                    }
+                                    onClick={this.nextStep}
                                     style={{
                                         background: "#111111",
                                         border: "none",
@@ -223,29 +224,6 @@ class AppSection extends Component {
                                     }
                                 </Button>
                             </div>
-                        ) : (
-                            <div
-                                style={{
-                                    marginTop: 40,
-                                    paddingLeft: this.state.width > 700 ? 39 : 0
-                                }}
-                            >
-                                <Button
-                                    onClick={() =>
-                                        this.setState({ step: 5 })
-                                    }
-                                    style={{
-                                        background: "#111111",
-                                        border: "none",
-                                        padding: "10px 45px",
-                                        display: "inline",
-                                        maxHeight: "44px",
-                                    }}
-                                >
-                                    Continue without pre-installing
-                                </Button>
-                            </div>
-                        )}
                     </div>
             </div>
         )

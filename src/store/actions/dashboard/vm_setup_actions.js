@@ -3,6 +3,7 @@ export const STORE_COUNTRY           = "STORE_COUNTRY";
 export const STORE_PURCHASE_LOCATION = "STORE_PURCHASE_LOCATION";
 export const STORE_COMPUTER_SPEC     = "STORE_COMPUTER_SPEC";
 export const STORE_PLAN_TYPE         = "STORE_PLAN_TYPE";
+export const STORE_SELECTED_APPS     = "STORE_SELECTED_APPS";
 export const RESET_SETUP_DATA        = "RESET_SETUP_DATA";
 
 export function storeSetupStep(step) {
@@ -43,5 +44,12 @@ export function storePlanType(plan) {
 export function resetSetupData() {
     return {
         type: RESET_SETUP_DATA
+    }
+}
+
+export function storeSelectedApps(apps) {
+    return {
+        type: STORE_SELECTED_APPS,
+        apps
     }
 }
