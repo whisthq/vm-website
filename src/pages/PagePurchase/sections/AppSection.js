@@ -127,8 +127,8 @@ class AppSection extends Component {
                             maxWidth: 800
                         }}
                     >
-                        We can pre-install certain apps on your cloud PC, so that you don't have to spend time 
-                        installing them yourself. If the app you want is not listed below, you can always install
+                        We can pre-install certain apps on your cloud PC (as long as it's not behind a 
+                        license, like Adobe). If the app you want is not listed below, you can always install
                         it once your cloud PC is created.
                     </div>
                     <Tabs
@@ -171,11 +171,9 @@ class AppSection extends Component {
                                 }).map((app, i) => {
                                 return (
                                     <div key={app.name} style = {{
-                                        marginRight: 20,
-                                        marginBottom: 15,
                                         flex: "1 0 auto",
-                                        minWidth: this.state.width > 700 ? "30%" : "100%",
-                                        maxWidth: 400
+                                        minWidth: this.state.width > 700 ? "33%" : "100%",
+                                        maxWidth: 400,
                                     }}>
                                         <AppCard
                                             title={app.name}

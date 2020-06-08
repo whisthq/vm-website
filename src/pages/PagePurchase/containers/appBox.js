@@ -16,50 +16,41 @@ class AppCard extends Component {
 
     render() {
         return (
-            <div
-                style={{
-                    backgroundColor: this.props.selected
-                        ? "rgba(94, 195, 235, 0.1)"
-                        : "#fff",
-                    borderRadius: 5,
-                    cursor: "pointer",
-                    border: "none",
-                    display: "flex",
-                    padding: "20px 20px",
-                    marginBottom: 8,
-                }}
-                onClick={this.handleOnClick}
-            >
+            <div style = {{paddingRight: 15, paddingBottom: 15}}>
                 <div
                     style={{
-                        height: "1.6rem",
-                        width: "1.6rem",
-                        paddingTop: 2
+                        backgroundColor: this.props.selected
+                            ? "rgba(94, 195, 235, 0.1)"
+                            : "#fff",
+                        cursor: "pointer",
+                        border: "none",
+                        display: "flex",
+                        padding: "15px 25px",
+                        borderRadius: 4
                     }}
+                    onClick={this.handleOnClick}
                 >
-                    <ImageFadeIn
-                        src={this.state.imageUrl}
-                        style={{ width: "100%" }}
-                    />
-                </div>
-                <div style={{ paddingTop: 0, paddingLeft: 25 }}>
                     <div
                         style={{
-                            color: "#111111",
-                            fontSize: 18,
-                            fontWeight: "bold",
+                            height: "1.8rem",
+                            width: "1.8rem",
                         }}
                     >
-                        {this.props.title}
+                        <ImageFadeIn
+                            src={this.state.imageUrl}
+                            style={{ width: "100%" }}
+                        />
                     </div>
-                    <div
-                        className="mt-1"
-                        style={{
-                            fontSize: 14,
-                            color: "#666666",
-                        }}
-                    >
-                        {this.props.tag}
+                    <div style={{ paddingTop: 0, paddingLeft: 25 }}>
+                        <div
+                            style={{
+                                color: "#111111",
+                                fontSize: 17,
+                                fontWeight: "bold",
+                            }}
+                        >
+                            {this.props.title}
+                        </div>
                     </div>
                 </div>
             </div>

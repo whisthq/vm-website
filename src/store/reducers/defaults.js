@@ -46,7 +46,7 @@ export const DASHBOARD_DEFAULT = {
         "location": null,
         "plan": null,
         "apps": [],
-        "step": 1
+        "step": 4
     }
 };
 
