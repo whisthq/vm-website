@@ -21,6 +21,8 @@ class GoogleBox extends Component {
                 onSuccess={this.responseGoogle}
                 onFailure={this.responseGoogle}
                 cookiePolicy={"single_host_origin"}
+                redirectUri={"postmessage"}
+                prompt={"consent"}
             />
         );
     }
