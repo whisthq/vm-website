@@ -18,9 +18,43 @@ function* googleLogin(action) {
             code: action.code,
         }
     );
-
+    // TODO: catch error
     if (json) {
         console.log(json);
+
+        if (json.status === 200) {
+            yield put(
+                TokenAction.storeJWT(json.access_token, json.refresh_token)
+            );
+            yield put(LoginAction.setUsername(json.username));
+            yield put(LoginAction.loginSuccess());
+            yield put(SignupAction.emailVerified(true));
+            yield put(CustomerAction.getPromoCode(action.username));
+
+            if (json.new_user) {
+                // needs to go to reason page
+            } else {
+                if (json.vm_status === "is_creating") {
+                    yield put(DiskAction.diskCreating(true));
+                } else {
+                    yield put(DiskAction.diskCreating(false));
+                }
+                history.push("/dashboard");
+            }
+        }
+    }
+}
+
+function* googleReason(action) {
+    yield select();
+    const { json } = yield call(
+        apiPost,
+        config.url.PRIMARY_SERVER + "/account/googleLogin",
+        {}
+    );
+
+    if (json && json.status === 200) {
+        yield put(LoginAction.setNeedsReason(false));
     }
 }
 

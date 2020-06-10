@@ -6,9 +6,14 @@ import { GOOGLE_CLIENT_ID } from "utils/constants";
 class GoogleBox extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            code: "",
+            step: 1,
+        };
     }
     responseGoogle = (res) => {
-        console.log(res);
+        this.setState({ code: res.code });
     };
 
     render() {

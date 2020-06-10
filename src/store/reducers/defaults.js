@@ -14,6 +14,7 @@ export const AUTH_DEFAULT = {
     access_token: "",
     refresh_token: "",
     verification_emails_sent: 0,
+    needs_reason: false,
 };
 
 export const DASHBOARD_DEFAULT = {
@@ -41,13 +42,13 @@ export const DASHBOARD_DEFAULT = {
     current_disk: null,
     change_plan_status: 0,
     vm_setup_data: {
-        "country": null,
-        "spec": null,
-        "location": null,
-        "plan": null,
-        "apps": [],
-        "step": 4
-    }
+        country: null,
+        spec: null,
+        location: null,
+        plan: null,
+        apps: [],
+        step: 4,
+    },
 };
 
 export const SETTINGS_DEFAULT = {
@@ -55,5 +56,5 @@ export const SETTINGS_DEFAULT = {
 };
 
 export const GENERAL_DEFAULT = {
-    current_page: "personal"
+    current_page: "personal",
 };
