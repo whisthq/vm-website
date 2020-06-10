@@ -46,15 +46,19 @@ function* googleLogin(action) {
 }
 
 function* googleReason(action) {
-    yield select();
+    const state = yield select();
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/account/googleLogin",
-        {}
+        {
+            reason: action.reason,
+            username: state.AuthReducer.username,
+        }
     );
 
     if (json && json.status === 200) {
         yield put(LoginAction.setNeedsReason(false));
+        history.push("/dashboard");
     }
 }
 
@@ -125,6 +129,7 @@ function* resetPassword(action) {
 export default function* () {
     yield all([
         takeEvery(LoginAction.GOOGLE_LOGIN, googleLogin),
+        takeEvery(LoginAction.GOOGLE_REASON, googleReason),
         takeEvery(LoginAction.USER_LOGIN, userLogin),
         takeEvery(LoginAction.FORGOT_PASSWORD, forgotPassword),
         takeEvery(LoginAction.RESET_PASSWORD, resetPassword),

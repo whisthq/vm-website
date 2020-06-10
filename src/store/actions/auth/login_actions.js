@@ -1,5 +1,6 @@
 export const USER_LOGIN = "USER_LOGIN";
 export const GOOGLE_LOGIN = "GOOGLE_LOGIN";
+export const GOOGLE_REASON = "GOOGLE_REASON";
 export const SET_USERNAME = "SET_USERNAME";
 export const SET_NEEDSREASON = "SET_NEEDSREASON";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -24,6 +25,13 @@ export function googleLogin(code) {
     return {
         type: GOOGLE_LOGIN,
         code,
+    };
+}
+
+export function googleReason(reason) {
+    return {
+        type: GOOGLE_REASON,
+        reason,
     };
 }
 
