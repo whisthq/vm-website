@@ -16,9 +16,9 @@ import { Link } from "react-router-dom";
 import "react-tabs/style/react-tabs.css";
 import "static/Shared.css";
 
-const passwordValidationRegex = new RegExp(
-    "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
-);
+const passwordValidationRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+
+const emailValidationRegex = /^(.+)@(.+)\.([a-zA-Z]{2,15})$/;
 
 class SignupBox extends Component {
     constructor(props) {
@@ -123,7 +123,7 @@ class SignupBox extends Component {
 
     changeEmailSignup = (evt) => {
         this.setState({ emailSignup: evt.target.value }, function () {
-            if (this.state.emailSignup.includes("@")) {
+            if (emailValidationRegex.test(this.state.emailSignup)) {
                 this.setState({ validEmail: true });
             } else {
                 this.setState({ validEmail: false });
