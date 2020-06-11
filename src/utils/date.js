@@ -33,7 +33,7 @@ export function unixToDate(unix) {
         .toLocaleString("en-US")
         .split(",")[0];
     var dateArr = humanDateFormat.split("/");
-    const month = this.monthConvert(dateArr[0] - 1);
+    const month = monthConvert(dateArr[0] - 1);
     var finalDate =
         month + " " + dateArr[1].toString() + ", " + dateArr[2].toString();
     return finalDate;
