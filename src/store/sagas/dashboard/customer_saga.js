@@ -3,14 +3,13 @@ import { apiPost } from "utils/Api.js";
 import { config } from "utils/constants.js";
 import history from "utils/history";
 
-import * as LoginAction from "store/actions/auth/login_actions"
-import * as SignupAction from "store/actions/auth/signup_actions"
-import * as DiskAction from "store/actions/dashboard/disk_actions"
-import * as StripeAction from "store/actions/dashboard/stripe_actions"
-import * as CustomerAction from "store/actions/dashboard/customer_actions"
-import * as PopupAction from "store/actions/dashboard/popup_actions"
-import * as RenderingAction from "store/actions/dashboard/rendering_actions"
-
+import * as LoginAction from "store/actions/auth/login_actions";
+import * as SignupAction from "store/actions/auth/signup_actions";
+import * as DiskAction from "store/actions/dashboard/disk_actions";
+import * as StripeAction from "store/actions/dashboard/stripe_actions";
+import * as CustomerAction from "store/actions/dashboard/customer_actions";
+import * as PopupAction from "store/actions/dashboard/popup_actions";
+import * as RenderingAction from "store/actions/dashboard/rendering_actions";
 
 function* getPromoCode(action) {
     yield select();
@@ -63,7 +62,7 @@ function* insertCustomer(action) {
 
 function* retrieveCustomer(action) {
     const state = yield select();
-    console.log(state);
+
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/stripe/retrieve",
@@ -99,11 +98,14 @@ function* submitPurchaseFeedback(action) {
     );
 }
 
-export default function*() {
+export default function* () {
     yield all([
         takeEvery(CustomerAction.RETRIEVE_CUSTOMER, retrieveCustomer),
         takeEvery(CustomerAction.GET_PROMO_CODE, getPromoCode),
         takeEvery(CustomerAction.INSERT_CUSTOMER, insertCustomer),
-        takeEvery(CustomerAction.SUBMIT_PURCHASE_FEEDBACK, submitPurchaseFeedback),
+        takeEvery(
+            CustomerAction.SUBMIT_PURCHASE_FEEDBACK,
+            submitPurchaseFeedback
+        ),
     ]);
 }

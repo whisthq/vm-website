@@ -43,7 +43,9 @@ class Auth extends Component {
 
         return (
             <div id="top">
-                {this.props.loggedIn && this.props.email_verified ? (
+                {this.props.loggedIn &&
+                this.props.email_verified &&
+                !this.props.needs_reason ? (
                     <Redirect to="/dashboard" />
                 ) : (
                     <div
@@ -72,43 +74,51 @@ class Auth extends Component {
                                     margin: "auto",
                                 }}
                             >
-                                <Tabs>
-                                    <TabList
-                                        style={{
-                                            textAlign: "center",
-                                            border: "none",
-                                            fontWeight: "bold",
-                                            fontSize: 16,
-                                        }}
-                                    >
-                                        <Tab
-                                            onClick={() =>
-                                                this.setState({
-                                                    failed_signup_attempt: false,
-                                                })
-                                            }
+                                {this.props.needs_reason ? (
+                                    <div></div>
+                                ) : (
+                                    <Tabs>
+                                        <TabList
+                                            style={{
+                                                textAlign: "center",
+                                                border: "none",
+                                                fontWeight: "bold",
+                                                fontSize: 16,
+                                            }}
                                         >
-                                            LOG IN
-                                        </Tab>
-                                        <Tab
-                                            onClick={() =>
-                                                this.setState({
-                                                    failed_login_attempt: false,
-                                                })
-                                            }
+                                            <Tab
+                                                onClick={() =>
+                                                    this.setState({
+                                                        failed_signup_attempt: false,
+                                                    })
+                                                }
+                                            >
+                                                LOG IN
+                                            </Tab>
+                                            <Tab
+                                                onClick={() =>
+                                                    this.setState({
+                                                        failed_login_attempt: false,
+                                                    })
+                                                }
+                                            >
+                                                SIGN UP
+                                            </Tab>
+                                        </TabList>
+                                        <TabPanel
+                                            style={{ padding: "15px 30px" }}
                                         >
-                                            SIGN UP
-                                        </Tab>
-                                    </TabList>
-                                    <TabPanel style={{ padding: "15px 30px" }}>
-                                        <LoginBox />
-                                        <GoogleBox from="Login" />
-                                    </TabPanel>
-                                    <TabPanel style={{ padding: "15px 30px" }}>
-                                        <SignupBox />
-                                        <GoogleBox from="Signup" />
-                                    </TabPanel>
-                                </Tabs>
+                                            <LoginBox />
+                                            <GoogleBox from="Login" />
+                                        </TabPanel>
+                                        <TabPanel
+                                            style={{ padding: "15px 30px" }}
+                                        >
+                                            <SignupBox />
+                                            <GoogleBox from="Signup" />
+                                        </TabPanel>
+                                    </Tabs>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -122,6 +132,7 @@ function mapStateToProps(state) {
     return {
         loggedIn: state.AuthReducer.logged_in,
         email_verified: state.AuthReducer.email_verified,
+        needs_reason: state.AuthReducer.needs_reason,
     };
 }
 

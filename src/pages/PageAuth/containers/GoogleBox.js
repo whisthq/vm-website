@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { GoogleLogin } from "react-google-login";
+import { connect } from "react-redux";
+
+import { googleLogin } from "store/actions/auth/login_actions";
 
 import { GOOGLE_CLIENT_ID } from "utils/constants";
 
@@ -8,19 +11,18 @@ class GoogleBox extends Component {
         super(props);
 
         this.state = {
-            code: "",
             step: 1,
         };
     }
     responseGoogle = (res) => {
-        this.setState({ code: res.code });
+        this.props.dispatch(googleLogin(res.code));
     };
 
     render() {
         return (
             <GoogleLogin
                 clientId={GOOGLE_CLIENT_ID}
-                buttonText={this.props.from}
+                buttonText={this.props.from + " with Google"}
                 responseType={"code"}
                 accessType={"offline"}
                 onSuccess={this.responseGoogle}
@@ -33,4 +35,4 @@ class GoogleBox extends Component {
     }
 }
 
-export default GoogleBox;
+export default connect()(GoogleBox);
