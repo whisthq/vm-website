@@ -16,29 +16,32 @@ function* googleLogin(action) {
         config.url.PRIMARY_SERVER + "/account/googleLogin",
         {
             code: action.code,
-        },
-        ""
+        }
     );
-    // TODO: catch error
     if (json) {
         console.log(json);
-        yield put(LoginAction.setUseGoogle(true));
-        yield put(TokenAction.storeJWT(json.access_token, json.refresh_token));
-        yield put(LoginAction.setUsername(json.username));
-        yield put(SignupAction.emailVerified(true));
-        yield put(CustomerAction.getPromoCode(json.username));
+        if (json.status === 200) {
+            yield put(LoginAction.setUseGoogle(true));
+            yield put(
+                TokenAction.storeJWT(json.access_token, json.refresh_token)
+            );
+            yield put(LoginAction.setUsername(json.username));
+            yield put(SignupAction.emailVerified(true));
+            yield put(CustomerAction.getPromoCode(json.username));
 
-        if (json.new_user) {
-            yield put(LoginAction.setNeedsReason(true));
-            console.log("NEW USER");
-        } else {
-            if (json.vm_status === "is_creating") {
-                yield put(DiskAction.diskCreating(true));
+            if (json.new_user) {
+                yield put(LoginAction.setNeedsReason(true));
             } else {
-                yield put(DiskAction.diskCreating(false));
+                if (json.vm_status === "is_creating") {
+                    yield put(DiskAction.diskCreating(true));
+                } else {
+                    yield put(DiskAction.diskCreating(false));
+                }
+                yield put(LoginAction.loginSuccess());
+                history.push("/dashboard");
             }
-            yield put(LoginAction.loginSuccess());
-            history.push("/dashboard");
+        } else {
+            yield put(SignupAction.signupFailure(json.status));
         }
     }
 }
@@ -53,7 +56,6 @@ function* googleReason(action) {
             username: state.AuthReducer.username,
         }
     );
-    console.log(json);
 
     if (json && json.status === 200) {
         yield put(LoginAction.loginSuccess());

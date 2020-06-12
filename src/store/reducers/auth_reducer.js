@@ -54,7 +54,7 @@ export default function (state = AUTH_DEFAULT, action) {
                 ...state,
                 signup_status: action.status,
                 failed_signup_attempts:
-                    action.status !== 400
+                    action.status !== 400 && action.status !== 403
                         ? state.failed_signup_attempts
                         : state.failed_signup_attempts + 1,
             };
