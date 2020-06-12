@@ -62,7 +62,13 @@ class DownloadBox extends Component {
                 return (
                     <Popup
                         trigger={
-                            <button className = "cancel-button">
+                            <button 
+                                className = "cancel-button"
+                                style = {{
+                                    border: "none",
+                                    outline: "none"
+                                }}
+                            >
                                 Cancel Plan
                             </button>
                         }

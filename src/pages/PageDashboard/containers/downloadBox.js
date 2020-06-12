@@ -70,7 +70,7 @@ class DownloadBox extends Component {
                     this.props.disk_is_creating ? (
                         <Popup
                             trigger={
-                                <Button className = "download-button">
+                                <Button className = "download-button" disabled = {this.props.comingSoon}>
                                     Download
                                 </Button>
                             }
