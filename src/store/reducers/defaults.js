@@ -15,6 +15,7 @@ export const AUTH_DEFAULT = {
     refresh_token: "",
     verification_emails_sent: 0,
     needs_reason: false,
+    use_google: false,
 };
 
 export const DASHBOARD_DEFAULT = {

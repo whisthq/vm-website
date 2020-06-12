@@ -94,6 +94,11 @@ export default function (state = AUTH_DEFAULT, action) {
                 ...state,
                 needs_reason: action.needs_reason,
             };
+        case LoginAction.SET_USEGOOGLE:
+            return {
+                ...state,
+                use_google: action.use_google,
+            };
         case LoginAction.LOGOUT:
             return AUTH_DEFAULT;
         default:

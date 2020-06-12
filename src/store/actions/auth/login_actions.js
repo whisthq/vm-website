@@ -2,6 +2,7 @@ export const USER_LOGIN = "USER_LOGIN";
 export const GOOGLE_LOGIN = "GOOGLE_LOGIN";
 export const GOOGLE_REASON = "GOOGLE_REASON";
 export const SET_USERNAME = "SET_USERNAME";
+export const SET_USEGOOGLE = "SET_USEGOOGLE";
 export const SET_NEEDSREASON = "SET_NEEDSREASON";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
@@ -46,6 +47,13 @@ export function setNeedsReason(needs_reason) {
     return {
         type: SET_NEEDSREASON,
         needs_reason,
+    };
+}
+
+export function setUseGoogle(use_google) {
+    return {
+        type: SET_USEGOOGLE,
+        use_google,
     };
 }
 

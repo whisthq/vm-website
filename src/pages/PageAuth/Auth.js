@@ -43,9 +43,7 @@ class Auth extends Component {
 
         return (
             <div id="top">
-                {this.props.loggedIn &&
-                this.props.email_verified &&
-                !this.props.needs_reason ? (
+                {this.props.loggedIn && this.props.email_verified ? (
                     <Redirect to="/dashboard" />
                 ) : (
                     <div
@@ -74,9 +72,7 @@ class Auth extends Component {
                                     margin: "auto",
                                 }}
                             >
-                                {this.props.needs_reason ? (
-                                    <div></div>
-                                ) : (
+                                {!this.props.use_google && (
                                     <Tabs>
                                         <TabList
                                             style={{
@@ -109,16 +105,15 @@ class Auth extends Component {
                                             style={{ padding: "15px 30px" }}
                                         >
                                             <LoginBox />
-                                            <GoogleBox from="Login" />
                                         </TabPanel>
                                         <TabPanel
                                             style={{ padding: "15px 30px" }}
                                         >
                                             <SignupBox />
-                                            <GoogleBox from="Signup" />
                                         </TabPanel>
                                     </Tabs>
                                 )}
+                                <GoogleBox />
                             </div>
                         </div>
                     </div>
@@ -132,7 +127,7 @@ function mapStateToProps(state) {
     return {
         loggedIn: state.AuthReducer.logged_in,
         email_verified: state.AuthReducer.email_verified,
-        needs_reason: state.AuthReducer.needs_reason,
+        use_google: state.AuthReducer.use_google,
     };
 }
 
