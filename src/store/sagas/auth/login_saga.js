@@ -42,6 +42,7 @@ function* googleLogin(action) {
             }
         } else {
             yield put(SignupAction.signupFailure(json.status));
+            yield put(LoginAction.loginFailure(json.status));
         }
     }
 }
@@ -89,7 +90,7 @@ function* userLogin(action) {
                 yield put(DiskAction.diskCreating(false));
             }
         } else {
-            yield put(LoginAction.loginFailure());
+            yield put(LoginAction.loginFailure(400));
         }
     }
 }

@@ -106,9 +106,12 @@ class LoginBox extends Component {
             modalClose();
         }
 
-        return (
-            <div style={{ maxWidth: 300, margin: "auto" }}>
-                {this.state.failed_login_attempt ? (
+        const loginWarning = () => {
+            if (
+                this.props.login_status === 400 &&
+                this.state.failed_login_attempt
+            ) {
+                return (
                     <div
                         style={{
                             textAlign: "center",
@@ -124,9 +127,36 @@ class LoginBox extends Component {
                     >
                         Invalid credentials
                     </div>
-                ) : (
-                    <div></div>
-                )}
+                );
+            } else if (
+                this.props.login_status === 403 &&
+                this.state.failed_login_attempt
+            ) {
+                return (
+                    <div
+                        style={{
+                            textAlign: "center",
+                            fontSize: 14,
+                            color: "#f9000b",
+                            background: "#fdf0f1",
+                            width: "100%",
+                            padding: 10,
+                            borderRadius: 5,
+                            fontWeight: "bold",
+                            marginTop: 10,
+                        }}
+                    >
+                        Email already taken for non-Google account
+                    </div>
+                );
+            } else {
+                return <div></div>;
+            }
+        };
+
+        return (
+            <div style={{ maxWidth: 300, margin: "auto" }}>
+                {loginWarning()}
                 <InputGroup className="mb-3" style={{ marginTop: 20 }}>
                     <FormControl
                         type="email"
@@ -246,6 +276,7 @@ class LoginBox extends Component {
 function mapStateToProps(state) {
     return {
         failed_login_attempts: state.AuthReducer.failed_login_attempts,
+        login_status: state.AuthReducer.login_status,
     };
 }
 

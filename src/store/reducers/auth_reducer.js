@@ -15,13 +15,11 @@ export default function (state = AUTH_DEFAULT, action) {
             return {
                 ...state,
                 username: action.username,
-                password: action.password,
             };
         case SignupAction.USER_SIGNUP:
             return {
                 ...state,
                 username: action.username,
-                password: action.password,
             };
         case LoginAction.LOGIN_SUCCESS:
             return {
@@ -31,7 +29,11 @@ export default function (state = AUTH_DEFAULT, action) {
         case LoginAction.LOGIN_FAILURE:
             return {
                 ...state,
-                failed_login_attempts: state.failed_login_attempts + 1,
+                login_status: action.status,
+                failed_login_attempts:
+                    action.status !== 400 && action.status !== 403
+                        ? state.failed_login_attempts
+                        : state.failed_login_attempts + 1,
             };
         case SignupAction.SIGNUP_SUCCESS:
             return {

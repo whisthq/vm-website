@@ -13,18 +13,7 @@ class GoogleBox extends Component {
 
         this.state = {
             feedback: "",
-            failed_signup_attempt: false,
         };
-    }
-
-    componentDidUpdate(prevProps) {
-        if (
-            prevProps.failed_signup_attempts !==
-                this.props.failed_signup_attempts &&
-            !this.state.failed_signup_attempt
-        ) {
-            this.setState({ failed_signup_attempt: true });
-        }
     }
 
     changeFeedback = (evt) => {
@@ -43,44 +32,13 @@ class GoogleBox extends Component {
 
     responseGoogle = (res) => {
         console.log(res);
-        this.setState({ failed_signup_attempt: false });
         this.props.dispatch(googleLogin(res.code));
     };
 
     render() {
-        const signupWarning = () => {
-            if (
-                this.props.signup_status === 403 &&
-                this.state.failed_signup_attempt
-            ) {
-                return (
-                    <div
-                        style={{
-                            textAlign: "center",
-                            fontSize: 14,
-                            color: "#f9000b",
-                            background: "#fdf0f1",
-                            width: "100%",
-                            padding: 10,
-                            borderRadius: 5,
-                            fontWeight: "bold",
-                            marginTop: 10,
-                        }}
-                    >
-                        Email already taken for non-Google account
-                    </div>
-                );
-            } else {
-                return <div></div>;
-            }
-        };
-
         return (
-            <div>
-                <div style={{ paddingLeft: 30, paddingRight: 30 }}>
-                    {signupWarning()}
-                </div>
-                {this.props.use_google && this.props.needs_reason && (
+            <div style={{ maxWidth: 300, margin: "auto" }}>
+                {this.props.use_google && this.props.needs_reason ? (
                     <div
                         style={{
                             maxWidth: 500,
@@ -142,18 +100,28 @@ class GoogleBox extends Component {
                             </Button>
                         </div>
                     </div>
+                ) : (
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            width: "100%",
+                        }}
+                    >
+                        <GoogleLogin
+                            clientId={GOOGLE_CLIENT_ID}
+                            buttonText={"Login with Google"}
+                            responseType={"code"}
+                            accessType={"offline"}
+                            onSuccess={this.responseGoogle}
+                            onFailure={this.responseGoogle}
+                            cookiePolicy={"single_host_origin"}
+                            redirectUri={"postmessage"}
+                            prompt={"consent"}
+                            style={{ width: "100%" }}
+                        />
+                    </div>
                 )}
-                <GoogleLogin
-                    clientId={GOOGLE_CLIENT_ID}
-                    buttonText={"Login with Google"}
-                    responseType={"code"}
-                    accessType={"offline"}
-                    onSuccess={this.responseGoogle}
-                    onFailure={this.responseGoogle}
-                    cookiePolicy={"single_host_origin"}
-                    redirectUri={"postmessage"}
-                    prompt={"consent"}
-                />
             </div>
         );
     }

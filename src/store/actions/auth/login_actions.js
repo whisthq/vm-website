@@ -63,9 +63,10 @@ export function loginSuccess() {
     };
 }
 
-export function loginFailure() {
+export function loginFailure(status) {
     return {
         type: LOGIN_FAILURE,
+        status,
     };
 }
 

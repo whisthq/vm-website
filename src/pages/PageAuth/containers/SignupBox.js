@@ -247,6 +247,27 @@ class SignupBox extends Component {
                         Email already taken
                     </div>
                 );
+            } else if (
+                this.props.signup_status === 403 &&
+                this.state.failed_signup_attempt
+            ) {
+                return (
+                    <div
+                        style={{
+                            textAlign: "center",
+                            fontSize: 14,
+                            color: "#f9000b",
+                            background: "#fdf0f1",
+                            width: "100%",
+                            padding: 10,
+                            borderRadius: 5,
+                            fontWeight: "bold",
+                            marginTop: 10,
+                        }}
+                    >
+                        Email already taken for non-Google account
+                    </div>
+                );
             } else {
                 return <div></div>;
             }

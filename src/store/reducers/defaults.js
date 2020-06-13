@@ -1,7 +1,7 @@
 export const AUTH_DEFAULT = {
     username: "",
-    password: "",
     logged_in: false,
+    login_status: 200,
     failed_login_attempts: 0,
     forgot_password: 0,
     forgot_email: "",
