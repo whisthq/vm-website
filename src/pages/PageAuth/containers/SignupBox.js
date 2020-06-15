@@ -71,6 +71,11 @@ class SignupBox extends Component {
         ) {
             this.setState({ processing: true, failed_signup_attempt: false });
             this.props.dispatch(checkUserExists(this.state.emailSignup));
+            this.setState({
+                emailSignup: "",
+                passwordSignup: "",
+                passwordConfirmSignup: "",
+            });
         }
     };
 
@@ -82,11 +87,21 @@ class SignupBox extends Component {
             termsAccepted: false,
         });
         this.props.dispatch(signupFailure(0));
+        this.setState({
+            emailSignup: "",
+            passwordSignup: "",
+            passwordConfirmSignup: "",
+        });
     };
 
     toStepTwo = () => {
         this.setState({ processing: true, failed_signup_attempt: false });
         this.props.dispatch(checkUserExists(this.state.emailSignup));
+        this.setState({
+            emailSignup: "",
+            passwordSignup: "",
+            passwordConfirmSignup: "",
+        });
     };
 
     signupKeyPress = (event) => {
@@ -202,9 +217,6 @@ class SignupBox extends Component {
             this.setState({
                 failed_signup_attempt: true,
                 processing: false,
-                emailSignup: "",
-                passwordSignup: "",
-                passwordConfirmSignup: "",
             });
         }
 

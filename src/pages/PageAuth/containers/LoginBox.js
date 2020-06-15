@@ -33,6 +33,7 @@ class LoginBox extends Component {
         this.props.dispatch(
             userLogin(this.state.emailLogin, this.state.passwordLogin, false)
         );
+        this.setState({ emailLogin: "", passwordLogin: "" });
     };
 
     changeEmailLogin = (evt) => {
@@ -61,6 +62,7 @@ class LoginBox extends Component {
 
     changePasswordLogin = (evt) => {
         if (evt.key === "Enter") {
+            this.setState({ processing: true, failed_login_attempt: false });
             this.props.dispatch(
                 userLogin(
                     this.state.emailLogin,
@@ -68,6 +70,7 @@ class LoginBox extends Component {
                     false
                 )
             );
+            this.setState({ emailLogin: "", passwordLogin: "" });
         } else {
             this.setState({
                 passwordLogin: evt.target.value,
@@ -91,8 +94,6 @@ class LoginBox extends Component {
             this.setState({
                 failed_login_attempt: true,
                 processing: false,
-                emailLogin: "",
-                passwordLogin: "",
             });
         }
     }
@@ -167,6 +168,7 @@ class LoginBox extends Component {
                         placeholder="Email Address"
                         onChange={this.changeEmailLogin}
                         onKeyPress={this.loginKeyPress}
+                        value={this.state.emailLogin}
                         style={{
                             borderRadius: 5,
                             maxWidth: 600,
@@ -185,6 +187,7 @@ class LoginBox extends Component {
                         placeholder="Password"
                         onChange={this.changePasswordLogin}
                         onKeyPress={this.loginKeyPress}
+                        value={this.state.passwordLogin}
                         style={{
                             borderRadius: 5,
                             maxWidth: 600,
