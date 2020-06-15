@@ -3,13 +3,11 @@ import { apiPost } from "utils/Api.js";
 import { config } from "utils/constants.js";
 import history from "utils/history";
 
-
 import * as LoginAction from "store/actions/auth/login_actions";
 import * as TokenAction from "store/actions/auth/token_actions";
-import * as SignupAction from "store/actions/auth/signup_actions"
-import * as DiskAction from "store/actions/dashboard/disk_actions"
-import * as CustomerAction from "store/actions/dashboard/customer_actions"
-
+import * as SignupAction from "store/actions/auth/signup_actions";
+import * as DiskAction from "store/actions/dashboard/disk_actions";
+import * as CustomerAction from "store/actions/dashboard/customer_actions";
 
 function* userLogin(action) {
     yield select();
@@ -31,11 +29,6 @@ function* userLogin(action) {
             yield put(TokenAction.storeVerificationToken(json.token));
             yield put(SignupAction.checkVerifiedEmail(action.username));
             yield put(CustomerAction.getPromoCode(action.username));
-            if (json.vm_status === "is_creating") {
-                yield put(DiskAction.diskCreating(true));
-            } else {
-                yield put(DiskAction.diskCreating(false));
-            }
         } else {
             yield put(LoginAction.loginFailure());
         }
@@ -61,7 +54,6 @@ function* forgotPassword(action) {
     }
 }
 
-
 function* resetPassword(action) {
     yield select();
     yield call(
@@ -76,7 +68,7 @@ function* resetPassword(action) {
     history.push("/auth");
 }
 
-export default function*() {
+export default function* () {
     yield all([
         takeEvery(LoginAction.USER_LOGIN, userLogin),
         takeEvery(LoginAction.FORGOT_PASSWORD, forgotPassword),
