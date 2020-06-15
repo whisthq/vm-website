@@ -41,6 +41,7 @@ function* googleLogin(action) {
                 history.push("/dashboard");
             }
         } else {
+            yield put(LoginAction.setError(json.error));
             yield put(SignupAction.signupFailure(json.status));
             yield put(LoginAction.loginFailure(json.status));
         }
@@ -76,6 +77,7 @@ function* userLogin(action) {
     );
 
     if (json) {
+        console.log(json);
         if (json.verified) {
             yield put(
                 TokenAction.storeJWT(json.access_token, json.refresh_token)
@@ -90,6 +92,7 @@ function* userLogin(action) {
                 yield put(DiskAction.diskCreating(false));
             }
         } else {
+            yield put(LoginAction.setError(json.error));
             yield put(LoginAction.loginFailure(400));
         }
     }

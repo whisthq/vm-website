@@ -199,7 +199,13 @@ class SignupBox extends Component {
                 this.props.failed_signup_attempts &&
             !this.state.failed_signup_attempt
         ) {
-            this.setState({ failed_signup_attempt: true, processing: false });
+            this.setState({
+                failed_signup_attempt: true,
+                processing: false,
+                emailSignup: "",
+                passwordSignup: "",
+                passwordConfirmSignup: "",
+            });
         }
 
         if (
@@ -226,8 +232,26 @@ class SignupBox extends Component {
         }
 
         const signupWarning = () => {
-            if (
-                this.props.signup_status === 400 &&
+            if (this.props.error && this.state.failed_signup_attempt) {
+                return (
+                    <div
+                        style={{
+                            textAlign: "center",
+                            fontSize: 14,
+                            color: "#f9000b",
+                            background: "#fdf0f1",
+                            width: "100%",
+                            padding: 10,
+                            borderRadius: 5,
+                            fontWeight: "bold",
+                            marginTop: 10,
+                        }}
+                    >
+                        {this.props.error}
+                    </div>
+                );
+            } else if (
+                this.props.signup_status !== 200 &&
                 this.state.failed_signup_attempt
             ) {
                 return (
@@ -245,27 +269,6 @@ class SignupBox extends Component {
                         }}
                     >
                         Email already taken
-                    </div>
-                );
-            } else if (
-                this.props.signup_status === 403 &&
-                this.state.failed_signup_attempt
-            ) {
-                return (
-                    <div
-                        style={{
-                            textAlign: "center",
-                            fontSize: 14,
-                            color: "#f9000b",
-                            background: "#fdf0f1",
-                            width: "100%",
-                            padding: 10,
-                            borderRadius: 5,
-                            fontWeight: "bold",
-                            marginTop: 10,
-                        }}
-                    >
-                        Email already taken for non-Google account
                     </div>
                 );
             } else {
@@ -800,6 +803,7 @@ function mapStateToProps(state) {
     return {
         failed_signup_attempts: state.AuthReducer.failed_signup_attempts,
         signup_status: state.AuthReducer.signup_status,
+        error: state.AuthReducer.error,
     };
 }
 

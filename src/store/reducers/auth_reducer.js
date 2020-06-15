@@ -101,6 +101,11 @@ export default function (state = AUTH_DEFAULT, action) {
                 ...state,
                 use_google: action.use_google,
             };
+        case LoginAction.SET_ERROR:
+            return {
+                ...state,
+                error: action.error,
+            };
         case LoginAction.LOGOUT:
             return AUTH_DEFAULT;
         default:

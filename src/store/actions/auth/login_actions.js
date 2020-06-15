@@ -4,6 +4,7 @@ export const GOOGLE_REASON = "GOOGLE_REASON";
 export const SET_USERNAME = "SET_USERNAME";
 export const SET_USEGOOGLE = "SET_USEGOOGLE";
 export const SET_NEEDSREASON = "SET_NEEDSREASON";
+export const SET_ERROR = "SET_ERROR";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const FORGOT_PASSWORD = "FORGOT_PASSWORD";
@@ -54,6 +55,13 @@ export function setUseGoogle(use_google) {
     return {
         type: SET_USEGOOGLE,
         use_google,
+    };
+}
+
+export function setError(error) {
+    return {
+        type: SET_ERROR,
+        error,
     };
 }
 
