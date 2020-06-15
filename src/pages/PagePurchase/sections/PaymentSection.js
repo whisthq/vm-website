@@ -8,10 +8,7 @@ import { Elements, StripeProvider } from "react-stripe-elements";
 import { FaArrowRight } from "react-icons/fa";
 
 import { createDisk } from "store/actions/dashboard/disk_actions";
-import {
-    insertCustomer,
-    retrieveCustomer,
-} from "store/actions/dashboard/customer_actions";
+import { insertCustomer } from "store/actions/dashboard/customer_actions";
 
 import { config } from "utils/constants";
 
