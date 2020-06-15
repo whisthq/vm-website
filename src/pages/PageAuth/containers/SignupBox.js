@@ -35,7 +35,6 @@ class SignupBox extends Component {
             tooShort: false,
             validPasswordformat: false,
             failed_login_attempt: false,
-            processing: false,
             failed_signup_attempt: false,
             termsAccepted: false,
             subscribed: true,
@@ -47,7 +46,8 @@ class SignupBox extends Component {
     }
 
     handleSignup = (evt) => {
-        this.setState({ processing: true, failed_signup_attempt: false });
+        this.props.setProcessing(true);
+        this.setState({ failed_signup_attempt: false });
         this.props.dispatch(
             userSignup(
                 this.state.emailSignup,
@@ -69,7 +69,8 @@ class SignupBox extends Component {
             this.state.matches &&
             this.state.termsAccepted
         ) {
-            this.setState({ processing: true, failed_signup_attempt: false });
+            this.props.setProcessing(true);
+            this.setState({ failed_signup_attempt: false });
             this.props.dispatch(checkUserExists(this.state.emailSignup));
             this.setState({
                 emailSignup: "",
@@ -80,9 +81,9 @@ class SignupBox extends Component {
     };
 
     toStepOne = () => {
+        this.props.setProcessing(false);
         this.setState({
             step: 1,
-            processing: false,
             failed_signup_attempt: false,
             termsAccepted: false,
         });
@@ -95,7 +96,8 @@ class SignupBox extends Component {
     };
 
     toStepTwo = () => {
-        this.setState({ processing: true, failed_signup_attempt: false });
+        this.props.setProcessing(true);
+        this.setState({ failed_signup_attempt: false });
         this.props.dispatch(checkUserExists(this.state.emailSignup));
         this.setState({
             emailSignup: "",
@@ -112,7 +114,8 @@ class SignupBox extends Component {
             this.state.matches &&
             this.state.termsAccepted
         ) {
-            this.setState({ processing: true, failed_signup_attempt: false });
+            this.props.setProcessing(true);
+            this.setState({ failed_signup_attempt: false });
             this.props.dispatch(
                 userSignup(
                     this.state.emailSignup,
@@ -214,18 +217,19 @@ class SignupBox extends Component {
                 this.props.failed_signup_attempts &&
             !this.state.failed_signup_attempt
         ) {
+            this.props.setProcessing(false);
             this.setState({
                 failed_signup_attempt: true,
-                processing: false,
             });
         }
 
         if (
             prevProps.signup_status !== this.props.signup_status &&
             this.props.signup_status === 200 &&
-            this.state.processing
+            this.props.processing
         ) {
-            this.setState({ step: 2, processing: false });
+            this.props.setProcessing(false);
+            this.setState({ step: 2 });
         }
     }
 
@@ -494,7 +498,7 @@ class SignupBox extends Component {
                                 letters, numbers, and special characters.
                             </div>
                         )}
-                    {!this.state.processing ? (
+                    {!this.props.processing ? (
                         this.state.validEmail &&
                         !this.state.tooShort &&
                         this.state.matches &&

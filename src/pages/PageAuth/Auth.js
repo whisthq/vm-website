@@ -18,6 +18,7 @@ class Auth extends Component {
             height: 0,
             modalShow: false,
             showPopup: false,
+            processing: false,
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
@@ -34,6 +35,10 @@ class Auth extends Component {
     updateWindowDimensions() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
+
+    setProcessing = (p) => {
+        this.setState({ processing: p });
+    };
 
     render() {
         let modalClose = () => this.setState({ modalShow: false });
@@ -104,16 +109,33 @@ class Auth extends Component {
                                         <TabPanel
                                             style={{ padding: "15px 30px" }}
                                         >
-                                            <LoginBox />
+                                            <LoginBox
+                                                processing={
+                                                    this.state.processing
+                                                }
+                                                setProcessing={
+                                                    this.setProcessing
+                                                }
+                                            />
                                         </TabPanel>
                                         <TabPanel
                                             style={{ padding: "15px 30px" }}
                                         >
-                                            <SignupBox />
+                                            <SignupBox
+                                                processing={
+                                                    this.state.processing
+                                                }
+                                                setProcessing={
+                                                    this.setProcessing
+                                                }
+                                            />
                                         </TabPanel>
                                     </Tabs>
                                 )}
-                                <GoogleBox />
+                                <GoogleBox
+                                    processing={this.state.processing}
+                                    setProcessing={this.setProcessing}
+                                />
                             </div>
                         </div>
                     </div>

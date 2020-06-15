@@ -23,13 +23,13 @@ class LoginBox extends Component {
             emailLogin: "",
             passwordLogin: "",
             failed_login_attempt: false,
-            processing: false,
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
     handleLogin = (evt) => {
-        this.setState({ processing: true, failed_login_attempt: false });
+        this.props.setProcessing(true);
+        this.setState({ failed_login_attempt: false });
         this.props.dispatch(
             userLogin(this.state.emailLogin, this.state.passwordLogin, false)
         );
@@ -49,7 +49,8 @@ class LoginBox extends Component {
             this.state.passwordLogin.length > 6 &&
             this.state.emailLogin.includes("@")
         ) {
-            this.setState({ processing: true, failed_login_attempt: false });
+            this.props.setProcessing(true);
+            this.setState({ failed_login_attempt: false });
             this.props.dispatch(
                 userLogin(
                     this.state.emailLogin,
@@ -62,7 +63,8 @@ class LoginBox extends Component {
 
     changePasswordLogin = (evt) => {
         if (evt.key === "Enter") {
-            this.setState({ processing: true, failed_login_attempt: false });
+            this.props.setProcessing(true);
+            this.setState({ failed_login_attempt: false });
             this.props.dispatch(
                 userLogin(
                     this.state.emailLogin,
@@ -91,9 +93,9 @@ class LoginBox extends Component {
                 this.props.failed_login_attempts &&
             !this.state.failed_login_attempt
         ) {
+            this.props.setProcessing(false);
             this.setState({
                 failed_login_attempt: true,
-                processing: false,
             });
         }
     }
@@ -197,7 +199,7 @@ class LoginBox extends Component {
                         }}
                     />
                 </InputGroup>
-                {!this.state.processing ? (
+                {!this.props.processing ? (
                     this.state.emailLogin.length > 4 &&
                     this.state.passwordLogin.length > 6 &&
                     this.state.emailLogin.includes("@") ? (

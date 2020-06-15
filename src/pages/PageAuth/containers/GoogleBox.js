@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { InputGroup, FormControl, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { GoogleLogin } from "react-google-login";
 import { connect } from "react-redux";
 
@@ -31,8 +31,9 @@ class GoogleBox extends Component {
     };
 
     responseGoogle = (res) => {
-        console.log(res);
+        this.props.setProcessing(true);
         this.props.dispatch(googleLogin(res.code));
+        //this.props.setProcessing(false);
     };
 
     render() {
@@ -110,7 +111,7 @@ class GoogleBox extends Component {
                     >
                         <GoogleLogin
                             clientId={GOOGLE_CLIENT_ID}
-                            buttonText={"Login with Google"}
+                            buttonText={"Sign in with Google"}
                             responseType={"code"}
                             accessType={"offline"}
                             onSuccess={this.responseGoogle}
