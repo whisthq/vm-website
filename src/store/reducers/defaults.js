@@ -41,13 +41,14 @@ export const DASHBOARD_DEFAULT = {
     current_disk: null,
     change_plan_status: 0,
     vm_setup_data: {
-        "country": null,
-        "spec": null,
-        "location": null,
-        "plan": null,
-        "apps": [],
-        "step": 1
-    }
+        country: null,
+        spec: null,
+        location: null,
+        plan: null,
+        apps: [],
+        step: 1,
+    },
+    require_payment_oncreate: true,
 };
 
 export const SETTINGS_DEFAULT = {
@@ -55,5 +56,5 @@ export const SETTINGS_DEFAULT = {
 };
 
 export const GENERAL_DEFAULT = {
-    current_page: "personal"
+    current_page: "personal",
 };

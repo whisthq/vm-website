@@ -5,10 +5,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { HashLink } from "react-router-hash-link";
-import {
-    faCreditCard,
-    faTag,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCreditCard, faTag } from "@fortawesome/free-solid-svg-icons";
 
 import "static/PageDashboard.css";
 
@@ -24,38 +21,30 @@ class TopSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            width: 0,
-            height: 0,
-            total_storage: "120GB"
+            total_storage: "120GB",
         };
     }
 
-    componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener("resize", this.updateWindowDimensions);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWindowDimensions);
-    }
-
-    updateWindowDimensions = () => {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
-
     render() {
-        if(this.props.disks === undefined || this.props.disks.length === 0 || this.props.disk_is_creating) {
-            if(this.props.disk_is_creating) {
-                if(this.props.customer && this.props.customer.paid) {
-                    return(
+        if (
+            this.props.disks === undefined ||
+            this.props.disks.length === 0 ||
+            this.props.disk_is_creating
+        ) {
+            if (this.props.disk_is_creating) {
+                if (
+                    (this.props.customer && this.props.customer.paid) ||
+                    this.props.require_payment_oncreate
+                ) {
+                    return (
                         <Row
                             style={{
                                 marginTop: 30,
                             }}
                         >
                             <Col xs={12}>
-                                <div className = "disk-status-box">
-                                    <div className = "disk-status-box">
+                                <div className="disk-status-box">
+                                    <div className="disk-status-box">
                                         <span
                                             style={{
                                                 fontWeight: "bold",
@@ -63,26 +52,24 @@ class TopSection extends Component {
                                         >
                                             Current Status:{" "}
                                         </span>
-                                        { this.props.disk_creation_message }
+                                        {this.props.disk_creation_message}
                                     </div>
-                                    {
-                                        this.props.disk_creation_message
-                                    }
+                                    {this.props.disk_creation_message}
                                 </div>
-                                <ImageBox 
-                                    text = "Your Cloud PC Is Creating"
-                                    subtext = "This should take no more
+                                <ImageBox
+                                    text="Your Cloud PC Is Creating"
+                                    subtext="This should take no more
                                                than 20 minutes. Once your cloud PC
                                                is ready, you'll be  able to download our
                                                desktop app below to launch your cloud PC."
-                                    creating 
+                                    creating
                                 />
                             </Col>
                         </Row>
-                    )
+                    );
                 } else {
-                    return(
-                        <Row style={{marginTop: 30}}>
+                    return (
+                        <Row style={{ marginTop: 30 }}>
                             <Col
                                 xs={12}
                                 style={{
@@ -90,7 +77,7 @@ class TopSection extends Component {
                                     paddingRight: 15,
                                 }}
                             >
-                                <div className = "disk-status-box">
+                                <div className="disk-status-box">
                                     <span
                                         style={{
                                             fontWeight: "bold",
@@ -98,13 +85,13 @@ class TopSection extends Component {
                                     >
                                         Current Status:{" "}
                                     </span>
-                                    { this.props.disk_creation_message }
+                                    {this.props.disk_creation_message}
                                 </div>
                             </Col>
                             <Col xs={12} md={8}>
-                                <ImageBox 
-                                    text = "Your Cloud PC Is Creating"
-                                    subtext = "This should take no more
+                                <ImageBox
+                                    text="Your Cloud PC Is Creating"
+                                    subtext="This should take no more
                                                than 20 minutes. Once your cloud PC
                                                is ready, you'll be  able to download our
                                                desktop app below to launch your cloud PC."
@@ -115,24 +102,19 @@ class TopSection extends Component {
                                 <Link
                                     to="/card"
                                     style={{
-                                        textDecoration:
-                                            "none",
+                                        textDecoration: "none",
                                     }}
                                     className="pointerOnHover"
                                 >
-                                    <div className = "payment-box">
+                                    <div className="payment-box">
                                         <FontAwesomeIcon
-                                            icon={
-                                                faCreditCard
-                                            }
-                                            className = "icon"
+                                            icon={faCreditCard}
+                                            className="icon"
                                         />
-                                        <div className = "title">
-                                            Add Payment
-                                        </div>
-                                        <div className = "subtext">
-                                            Your cloud PC is free until {" "}
-                                            { this.props.trialEnd }.
+                                        <div className="title">Add Payment</div>
+                                        <div className="subtext">
+                                            Your cloud PC is free until{" "}
+                                            {this.props.trialEnd}.
                                         </div>
                                     </div>
                                 </Link>
@@ -141,7 +123,7 @@ class TopSection extends Component {
                     );
                 }
             } else {
-                return(
+                return (
                     <Row
                         style={{
                             marginTop: 30,
@@ -155,9 +137,9 @@ class TopSection extends Component {
                                 to="/purchase"
                                 className="create-cloud-pc"
                             >
-                                <ImageBox 
-                                    text = "Create My Cloud Computer"
-                                    subtext = "Transform your
+                                <ImageBox
+                                    text="Create My Cloud Computer"
+                                    subtext="Transform your
                                         computer into a GPU-powered cloud
                                         computer. Setup in less than a 
                                         minute, no payment required."
@@ -165,62 +147,72 @@ class TopSection extends Component {
                             </Link>
                         </Col>
                     </Row>
-                )
+                );
             }
-        } else if (this.props.customer && this.props.customer.paid && this.props.payment && 
-            Object.keys(this.props.payment).length > 0 && this.props.payment.plan &&
-            this.props.payment.plan.nickname) {
-            return(
+        } else if (
+            this.props.customer &&
+            this.props.customer.paid &&
+            this.props.payment &&
+            Object.keys(this.props.payment).length > 0 &&
+            this.props.payment.plan &&
+            this.props.payment.plan.nickname
+        ) {
+            return (
                 <div>
                     <Row style={{ marginTop: 30 }}>
                         <Col md={7} xs={12}>
                             <Row>
                                 <Col sm={6} xs={12}>
                                     <HardwareBox
-                                        icon = {CPU}
-                                        title = "CPU"
-                                        text = "6 Core Intel Xeon E5"
+                                        icon={CPU}
+                                        title="CPU"
+                                        text="6 Core Intel Xeon E5"
                                     />
                                 </Col>
                                 <Col sm={6} xs={12}>
                                     <HardwareBox
-                                        icon = {GPU}
-                                        title = "GPU"
-                                        text = "NVIDIA Tesla M60"
+                                        icon={GPU}
+                                        title="GPU"
+                                        text="NVIDIA Tesla M60"
                                     />
                                 </Col>
                                 <Col sm={6} xs={12}>
                                     <HardwareBox
-                                        icon = {RAM}
-                                        title = "RAM"
-                                        text = "56GB DDR4"
+                                        icon={RAM}
+                                        title="RAM"
+                                        text="56GB DDR4"
                                     />
                                 </Col>
                                 <Col sm={6} xs={12}>
                                     <HardwareBox
-                                        icon = {SSD}
-                                        title = "SSD"
-                                        text = {<span>{this.props.total_storage}&nbsp;Storage</span>}
+                                        icon={SSD}
+                                        title="SSD"
+                                        text={
+                                            <span>
+                                                {this.props.total_storage}
+                                                &nbsp;Storage
+                                            </span>
+                                        }
                                     />
                                 </Col>
                             </Row>
                         </Col>
                         <Col md={5} xs={12}>
-                            <HashLink 
+                            <HashLink
                                 to="/plan/#top"
                                 style={{
-                                    textDecoration: "none"
-                                }}>
-                                <div className = "payment-box">
+                                    textDecoration: "none",
+                                }}
+                            >
+                                <div className="payment-box">
                                     <FontAwesomeIcon
                                         icon={faTag}
-                                        className = "icon"
+                                        className="icon"
                                     />
-                                    <div className = "title">
-                                        Change Plan
-                                    </div>
-                                    <div className = "text">
-                                        You are subscribed to the {this.props.payment.nickname} 
+                                    <div className="title">Change Plan</div>
+                                    <div className="text">
+                                        You are subscribed to the{" "}
+                                        {this.props.payment.nickname}
                                         plan. You can change your plan here.
                                     </div>
                                 </div>
@@ -230,9 +222,10 @@ class TopSection extends Component {
                 </div>
             );
         } else {
-            return(
+            return (
                 <Row style={{ marginTop: 30 }}>
-                    {this.props.disk_creation_message !== "Create Cloud PC command sent to server." ? (
+                    {this.props.disk_creation_message !==
+                    "Create Cloud PC command sent to server." ? (
                         <Col
                             xs={12}
                             style={{
@@ -240,10 +233,10 @@ class TopSection extends Component {
                                 paddingRight: 15,
                             }}
                         >
-                            <div className = "disk-status-box">
-                                Success! Your cloud PC is
-                                ready to use. Simply download
-                                the appropriate desktop application below.
+                            <div className="disk-status-box">
+                                Success! Your cloud PC is ready to use. Simply
+                                download the appropriate desktop application
+                                below.
                             </div>
                         </Col>
                     ) : (
@@ -253,30 +246,35 @@ class TopSection extends Component {
                         <Row>
                             <Col sm={6} xs={12}>
                                 <HardwareBox
-                                    icon = {CPU}
-                                    title = "CPU"
-                                    text = "6 Core Intel Xeon E5"
+                                    icon={CPU}
+                                    title="CPU"
+                                    text="6 Core Intel Xeon E5"
                                 />
                             </Col>
                             <Col sm={6} xs={12}>
                                 <HardwareBox
-                                    icon = {GPU}
-                                    title = "GPU"
-                                    text = "NVIDIA Tesla M60"
+                                    icon={GPU}
+                                    title="GPU"
+                                    text="NVIDIA Tesla M60"
                                 />
                             </Col>
                             <Col sm={6} xs={12}>
                                 <HardwareBox
-                                    icon = {RAM}
-                                    title = "RAM"
-                                    text = "56GB DDR4"
+                                    icon={RAM}
+                                    title="RAM"
+                                    text="56GB DDR4"
                                 />
                             </Col>
                             <Col sm={6} xs={12}>
                                 <HardwareBox
-                                    icon = {SSD}
-                                    title = "SSD"
-                                    text = {<span>{this.props.total_storage}&nbsp;Storage</span>}
+                                    icon={SSD}
+                                    title="SSD"
+                                    text={
+                                        <span>
+                                            {this.props.total_storage}
+                                            &nbsp;Storage
+                                        </span>
+                                    }
                                 />
                             </Col>
                         </Row>
@@ -285,34 +283,30 @@ class TopSection extends Component {
                         <Link
                             to="/card"
                             style={{
-                                textDecoration:
-                                    "none",
+                                textDecoration: "none",
                             }}
                             className="pointerOnHover"
                         >
-                            <div className = "payment-box">
+                            <div className="payment-box">
                                 <FontAwesomeIcon
                                     icon={faCreditCard}
-                                    className = "icon"
+                                    className="icon"
                                 />
-                                <div className = "title">
-                                    Add Payment
-                                </div>
-                                <div className = "text">
-                                    Your cloud PC is completely free to use until {" "}
-                                    { this.props.trialEnd }.
+                                <div className="title">Add Payment</div>
+                                <div className="text">
+                                    Your cloud PC is completely free to use
+                                    until {this.props.trialEnd}.
                                 </div>
                             </div>
                         </Link>
                     </Col>
                 </Row>
-            )
+            );
         }
     }
 }
 
 function mapStateToProps(state) {
-    console.log(state)
     return {
         disks:
             typeof state.DashboardReducer.disks === "undefined"
@@ -324,6 +318,10 @@ function mapStateToProps(state) {
         disk_creation_message: state.DashboardReducer.disk_creation_message
             ? state.DashboardReducer.disk_creation_message
             : "Create Cloud PC command sent to server.",
+        require_payment_oncreate: state.DashboardReducer
+            .require_payment_oncreate
+            ? state.DashboardReducer.require_payment_oncreate
+            : true,
     };
 }
 
