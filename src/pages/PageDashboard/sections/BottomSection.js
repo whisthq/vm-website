@@ -84,7 +84,7 @@ class BottomSection extends Component {
                                 <DownloadBox
                                     icon = {<FaAndroid className = "icon"/>}
                                     text = "Android"
-                                    comingSoon
+                                    comingSoon = {true}
                                 />
                             </Row>
                         </div>

@@ -148,8 +148,10 @@ class Dashboard extends Component {
         if (
             this.state.trialEnd === "" &&
             this.props.customer &&
+            this.props.customer.trial_end &&
             Object.keys(this.props.customer).length > 0
         ) {
+            console.log(this.props.customer);
             this.setState({
                 trialEnd: unixToDate(this.props.customer.trial_end),
             });

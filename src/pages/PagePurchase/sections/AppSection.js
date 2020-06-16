@@ -22,7 +22,8 @@ class AppSection extends Component {
             width: 0,
             height: 0,
             apps: apps,
-            selectedApps: []
+            selectedApps: [],
+            totalStorage: 0
         };
     }
 
@@ -58,13 +59,18 @@ class AppSection extends Component {
         this.setState({ apps: filteredApps });
     };
 
-    handleSelectApp = (app) => {
-        if (this.state.selectedApps.includes(app)) {
+    handleSelectApp = (app_name, app_size) => {
+        if (this.state.selectedApps.includes(app_name)) {
             this.setState({
-                selectedApps: this.state.selectedApps.filter((a) => a !== app),
+                selectedApps: this.state.selectedApps.filter((a) => a !== app_name),
+                totalStorage: this.state.totalStorage - app_size 
             });
         } else {
-            this.setState({ selectedApps: [...this.state.selectedApps, app] });
+            if (this.state.totalStorage + app_size < 75000) {
+                this.setState({ 
+                    selectedApps: [...this.state.selectedApps, app_name],
+                    totalStorage: this.state.totalStorage + app_size });
+            }
         }
     };
 
@@ -182,7 +188,7 @@ class AppSection extends Component {
                                             selected={this.state.selectedApps.includes(
                                                 app.name
                                             )}
-                                            handleSelect={this.handleSelectApp}
+                                            handleSelect={() => this.handleSelectApp(app.name, app.size)}
                                         />
                                     </div>
                                 );
@@ -199,9 +205,11 @@ class AppSection extends Component {
                     >
                             <div
                                 style={{
-                                    width: 350,
                                     marginTop: 40,
-                                    paddingLeft: this.state.width > 700 ? 39 : 0
+                                    paddingLeft: this.state.width > 700 ? 39 : 0,
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    width: "100%"
                                 }}
                             >
                                 <Button
@@ -210,7 +218,7 @@ class AppSection extends Component {
                                         background: "#111111",
                                         border: "none",
                                         padding: "10px 45px",
-                                        display: "inline",
+                                        display: "inline-block",
                                         maxHeight: "44px",
                                     }}
                                 >
@@ -221,6 +229,14 @@ class AppSection extends Component {
                                         <span>apps</span>
                                     }
                                 </Button>
+                                <span style = {{
+                                    color: "#555555",
+                                    fontSize: 14,
+                                    fontWeight: "bold",
+                                    paddingRight: 40
+                                }}>
+                                    {(this.state.totalStorage/1000).toFixed(2).toString()} GB / 75 GB
+                                </span>
                             </div>
                     </div>
             </div>

@@ -2,9 +2,9 @@
 // http://facebook.github.io/jest/docs/en/webpack.html
 
 export function process() {
-  return 'module.exports = {};';
+    return "module.exports = {};";
 }
 export function getCacheKey() {
-  // The output is always the same.
-  return 'cssTransform';
+    // The output is always the same.
+    return "cssTransform";
 }

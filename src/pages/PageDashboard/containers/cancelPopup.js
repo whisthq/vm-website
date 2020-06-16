@@ -62,7 +62,13 @@ class DownloadBox extends Component {
                 return (
                     <Popup
                         trigger={
-                            <button className = "cancel-button">
+                            <button 
+                                className = "cancel-button"
+                                style = {{
+                                    border: "none",
+                                    outline: "none"
+                                }}
+                            >
                                 Cancel Plan
                             </button>
                         }
@@ -149,8 +155,7 @@ class DownloadBox extends Component {
                                                 ? "52"
                                                 : "30"
                                         }
-                                        placeholder="Please give us some feedback on why you're cancelling, so we can 
-                                            improve Fractal. Be brutally honest!"
+                                        placeholder="Please give us some feedback on why you're cancelling, so we can improve Fractal. Be brutally honest!"
                                         style={{
                                             outline:
                                                 "none",

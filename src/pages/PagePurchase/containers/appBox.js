@@ -20,8 +20,8 @@ class AppCard extends Component {
                 <div
                     style={{
                         backgroundColor: this.props.selected
-                            ? "rgba(94, 195, 235, 0.1)"
-                            : "#fff",
+                            ? "rgba(94, 195, 235, 0.2)"
+                            : "rgba(136, 132, 216, 0.08)",
                         cursor: "pointer",
                         border: "none",
                         display: "flex",
@@ -32,8 +32,8 @@ class AppCard extends Component {
                 >
                     <div
                         style={{
-                            height: "1.8rem",
-                            width: "1.8rem",
+                            height: "1.6rem",
+                            width: "1.6rem",
                         }}
                     >
                         <ImageFadeIn
@@ -45,8 +45,9 @@ class AppCard extends Component {
                         <div
                             style={{
                                 color: "#111111",
-                                fontSize: 17,
+                                fontSize: 15,
                                 fontWeight: "bold",
+                                paddingTop: 3
                             }}
                         >
                             {this.props.title}
