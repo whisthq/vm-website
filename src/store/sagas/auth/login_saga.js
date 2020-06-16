@@ -39,7 +39,7 @@ function* forgotPassword(action) {
     yield select();
     const { json } = yield call(
         apiPost,
-        config.url.MAIL_SERVER + "/mail/forgot",
+        config.url.PRIMARY_SERVER + "/mail/forgot",
         {
             username: action.username,
         },
@@ -58,7 +58,7 @@ function* resetPassword(action) {
     yield select();
     yield call(
         apiPost,
-        config.url.MAIL_SERVER + "/mail/reset",
+        config.url.PRIMARY_SERVER + "/mail/reset",
         {
             username: action.username,
             password: action.password,

@@ -3,10 +3,9 @@ import { apiPost } from "utils/Api.js";
 import { config } from "utils/constants.js";
 import history from "utils/history";
 
-import * as DiskAction from "store/actions/dashboard/disk_actions"
-import * as StripeAction from "store/actions/dashboard/stripe_actions"
-import * as CustomerAction from "store/actions/dashboard/customer_actions"
-
+import * as DiskAction from "store/actions/dashboard/disk_actions";
+import * as StripeAction from "store/actions/dashboard/stripe_actions";
+import * as CustomerAction from "store/actions/dashboard/customer_actions";
 
 function* chargeStripe(action) {
     const state = yield select();
@@ -86,7 +85,7 @@ function* cancelPlan(action) {
 
     yield call(
         apiPost,
-        config.url.MAIL_SERVER + "/cancel",
+        config.url.PRIMARY_SERVER + "/mail/cancel",
         {
             username: state.AuthReducer.username,
             feedback: action.message,
@@ -129,22 +128,21 @@ function* changePlan(action) {
         config.url.PRIMARY_SERVER + "/stripe/update",
         {
             username: state.AuthReducer.username,
-            plan: action.plan 
+            plan: action.plan,
         },
         state.AuthReducer.access_token
     );
 
-    if(json) {
-        yield put(StripeAction.changePlanStatus(json.status))
+    if (json) {
+        yield put(StripeAction.changePlanStatus(json.status));
 
-        if(json.status === 200) {
-            history.push("/dashboard")
+        if (json.status === 200) {
+            history.push("/dashboard");
         }
     }
 }
 
-
-export default function*() {
+export default function* () {
     yield all([
         takeEvery(StripeAction.CHARGE_STRIPE, chargeStripe),
         takeEvery(StripeAction.CANCEL_PLAN, cancelPlan),
