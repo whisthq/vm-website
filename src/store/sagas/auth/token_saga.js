@@ -4,12 +4,11 @@ import { config } from "utils/constants.js";
 
 import * as TokenAction from "store/actions/auth/token_actions";
 
-
 function* validateResetToken(action) {
     yield select();
     const { json } = yield call(
         apiPost,
-        config.url.MAIL_SERVER + "/token/validate",
+        config.url.PRIMARY_SERVER + "/token/validate",
         {
             token: action.token,
         },
@@ -28,8 +27,7 @@ function* validateResetToken(action) {
     }
 }
 
-
-export default function*() {
+export default function* () {
     yield all([
         takeEvery(TokenAction.VALIDATE_RESET_TOKEN, validateResetToken),
     ]);

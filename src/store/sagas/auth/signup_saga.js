@@ -64,7 +64,7 @@ function* sendSignupEmail(action) {
     if (!state.AuthReducer.email_verified) {
         yield call(
             apiPost,
-            config.url.MAIL_SERVER + "/signup",
+            config.url.PRIMARY_SERVER + "/signup",
             {
                 username: action.user,
                 code: action.code,
@@ -77,7 +77,7 @@ function* sendSignupEmail(action) {
 function* subscribeNewsletter(action) {
     yield call(
         apiPost,
-        config.url.MAIL_SERVER + "/newsletter/subscribe",
+        config.url.PRIMARY_SERVER + "/newsletter/subscribe",
         {
             username: action.username,
         },
@@ -108,7 +108,7 @@ function* sendVerificationEmail(action) {
     if (action.username !== "" && action.token !== "") {
         const { json } = yield call(
             apiPost,
-            config.url.MAIL_SERVER + "/verification",
+            config.url.PRIMARY_SERVER + "/verification",
             {
                 username: action.username,
                 token: action.token,
