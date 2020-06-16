@@ -17,6 +17,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import history from "utils/history";
 import "static/Shared.css";
 
+<<<<<<< .merge_file_a08396
 import Purchase from "pages/PagePurchase/Purchase";
 import Auth from "pages/PageAuth/Auth";
 import Landing from "pages/PageLanding/Landing";
@@ -31,6 +32,22 @@ import About from "pages/PageAbout/About";
 import Plan from "pages/PagePurchase/Plan";
 import Settings from "pages/PageSettings/Settings"
 import Storage from "pages/PagePurchase/Storage"
+=======
+import Purchase from "./components/PagePurchase/Purchase";
+import Auth from "./components/PageAuth/Auth";
+import NewHome from "./components/PageHomeNew/NewHome";
+import Dashboard from "./components/PageDashboard/Dashboard";
+import Reset from "./components/PageReset/Reset";
+import Privacy from "./components/PageLegal/Privacy";
+import Cookie from "./components/PageLegal/CookiePolicy";
+import TermsOfService from "./components/PageLegal/TermsOfService";
+import EmailVerification from "./components/PageAuth/EmailVerification";
+import CreditCard from "./components/PagePurchase/CreditCard";
+import About from "./components/PageAbout/About";
+import Plan from "./components/PagePurchase/Plan";
+import Settings from "./components/PageSettings/Settings";
+import Storage from "./components/PagePurchase/Storage";
+>>>>>>> .merge_file_a13480
 
 const persistConfig = {
     key: "rootKey",
@@ -51,16 +68,19 @@ const persistor = persistStore(store);
 
 sagaMiddleware.run(rootSaga);
 
-
 ReactDOM.render(
     <Router history={history}>
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
+<<<<<<< .merge_file_a08396
                 <Route 
                     exact 
                     path="/" 
                     component={Landing} 
                 />
+=======
+                <Route exact path="/" component={NewHome} />
+>>>>>>> .merge_file_a13480
                 <Route exact path="/purchase" component={Purchase} />
                 <Route exact path="/auth" component={Auth} />
                 <Route exact path="/dashboard" component={Dashboard} />

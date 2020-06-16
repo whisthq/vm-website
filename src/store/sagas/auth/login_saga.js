@@ -11,41 +11,47 @@ import * as CustomerAction from "store/actions/dashboard/customer_actions";
 
 function* googleLogin(action) {
     yield select();
-    console.log(action);
-    const { json } = yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/account/googleLogin",
-        {
-            code: action.code,
-        }
-    );
-    if (json) {
-        console.log(json);
-        if (json.status === 200) {
-            yield put(LoginAction.setUseGoogle(true));
-            yield put(
-                TokenAction.storeJWT(json.access_token, json.refresh_token)
-            );
-            yield put(LoginAction.setUsername(json.username));
-            yield put(SignupAction.emailVerified(true));
-            yield put(CustomerAction.getPromoCode(json.username));
 
-            if (json.new_user) {
-                yield put(LoginAction.setNeedsReason(true));
-            } else {
-                if (json.vm_status === "is_creating") {
-                    yield put(DiskAction.diskCreating(true));
-                } else {
-                    yield put(DiskAction.diskCreating(false));
-                }
-                yield put(LoginAction.loginSuccess());
-                history.push("/dashboard");
+    console.log(action);
+
+    if (action.code) {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/account/googleLogin",
+            {
+                code: action.code,
             }
-        } else {
-            yield put(LoginAction.setError(json.error));
-            yield put(SignupAction.signupFailure(json.status));
-            yield put(LoginAction.loginFailure(json.status));
+        );
+        if (json) {
+            if (json.status === 200) {
+                yield put(LoginAction.setUseGoogle(true));
+                yield put(
+                    TokenAction.storeJWT(json.access_token, json.refresh_token)
+                );
+                yield put(LoginAction.setUsername(json.username));
+                yield put(SignupAction.emailVerified(true));
+                yield put(CustomerAction.getPromoCode(json.username));
+
+                if (json.new_user) {
+                    yield put(LoginAction.setNeedsReason(true));
+                } else {
+                    if (json.vm_status === "is_creating") {
+                        yield put(DiskAction.diskCreating(true));
+                    } else {
+                        yield put(DiskAction.diskCreating(false));
+                    }
+                    yield put(LoginAction.loginSuccess());
+                    history.push("/dashboard");
+                }
+            } else {
+                yield put(LoginAction.setError(json.error));
+                yield put(SignupAction.signupFailure(json.status));
+                yield put(LoginAction.loginFailure(json.status));
+            }
         }
+    } else {
+        yield put(LoginAction.loginFailure(400));
+        yield put(SignupAction.signupFailure(400));
     }
 }
 
