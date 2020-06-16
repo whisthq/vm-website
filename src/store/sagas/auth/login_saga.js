@@ -11,6 +11,7 @@ import * as CustomerAction from "store/actions/dashboard/customer_actions";
 
 function* googleLogin(action) {
     yield select();
+    console.log(action);
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/account/googleLogin",
