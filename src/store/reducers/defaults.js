@@ -49,7 +49,7 @@ export const DASHBOARD_DEFAULT = {
         location: null,
         plan: null,
         apps: [],
-        step: 4,
+        step: 1,
     },
 };
 

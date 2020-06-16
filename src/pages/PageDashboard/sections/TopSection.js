@@ -127,7 +127,7 @@ class TopSection extends Component {
                                             }
                                             className = "icon"
                                         />
-                                        <div className = "text">
+                                        <div className = "title">
                                             Add Payment
                                         </div>
                                         <div className = "subtext">
@@ -299,7 +299,7 @@ class TopSection extends Component {
                                     Add Payment
                                 </div>
                                 <div className = "text">
-                                    Your cloud PC is completely free to use until{" "}
+                                    Your cloud PC is completely free to use until {" "}
                                     { this.props.trialEnd }.
                                 </div>
                             </div>
@@ -312,6 +312,7 @@ class TopSection extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state)
     return {
         disks:
             typeof state.DashboardReducer.disks === "undefined"

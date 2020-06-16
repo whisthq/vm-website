@@ -86,11 +86,6 @@ function* userLogin(action) {
             yield put(TokenAction.storeVerificationToken(json.token));
             yield put(SignupAction.checkVerifiedEmail(action.username));
             yield put(CustomerAction.getPromoCode(action.username));
-            if (json.vm_status === "is_creating") {
-                yield put(DiskAction.diskCreating(true));
-            } else {
-                yield put(DiskAction.diskCreating(false));
-            }
         } else {
             yield put(LoginAction.setError(json.error));
             yield put(LoginAction.loginFailure(400));
