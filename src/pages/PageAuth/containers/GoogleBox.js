@@ -30,10 +30,15 @@ class GoogleBox extends Component {
         this.props.dispatch(googleReason(this.state.feedback));
     };
 
-    responseGoogle = (res) => {
+    handleSuccess = (res) => {
+        console.log(res);
         this.props.setProcessing(true);
         this.props.dispatch(googleLogin(res.code));
         //this.props.setProcessing(false);
+    };
+
+    handleFailure = (res) => {
+        console.log(res);
     };
 
     render() {
@@ -114,8 +119,8 @@ class GoogleBox extends Component {
                             buttonText={"Sign in with Google"}
                             responseType={"code"}
                             accessType={"offline"}
-                            onSuccess={this.responseGoogle}
-                            onFailure={this.responseGoogle}
+                            onSuccess={this.handleSuccess}
+                            onFailure={this.handleFailure}
                             cookiePolicy={"single_host_origin"}
                             redirectUri={"postmessage"}
                             prompt={"consent"}
