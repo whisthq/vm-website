@@ -14,9 +14,12 @@ export const AUTH_DEFAULT = {
     access_token: "",
     refresh_token: "",
     verification_emails_sent: 0,
-    needs_reason: false,
-    use_google: false,
-    auth_error: "",
+    google_auth: {
+        needs_reason: false,
+        use_google: false,
+        auth_error: "",
+        show_google_button: true,
+    },
 };
 
 export const DASHBOARD_DEFAULT = {

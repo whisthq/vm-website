@@ -9,6 +9,7 @@ import {
     subscribeNewsletter,
     checkUserExists,
 } from "store/actions/auth/signup_actions";
+import { showGoogleButton } from "store/actions/auth/login_actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -16,7 +17,7 @@ import { Link } from "react-router-dom";
 import "react-tabs/style/react-tabs.css";
 import "static/Shared.css";
 
-const passwordValidationRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+const passwordValidationRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])/;
 
 const emailValidationRegex = /^(.+)@(.+)\.([a-zA-Z]{2,15})$/;
 
@@ -88,6 +89,7 @@ class SignupBox extends Component {
             termsAccepted: false,
         });
         this.props.dispatch(signupFailure(0));
+        this.props.dispatch(showGoogleButton(true));
         this.setState({
             emailSignup: "",
             passwordSignup: "",
@@ -156,12 +158,19 @@ class SignupBox extends Component {
                 this.state.passwordSignup.length > 0
             ) {
                 this.setState({ tooShort: true });
-            } else if (
-                !passwordValidationRegex.test(this.state.passwordSignup)
-            ) {
+            } else {
+                this.setState({ tooShort: false });
+            }
+
+            console.log(this.state.passwordSignup);
+            console.log(
+                passwordValidationRegex.test(this.state.passwordSignup)
+            );
+
+            if (!passwordValidationRegex.test(this.state.passwordSignup)) {
                 this.setState({ validPasswordFormat: false });
             } else {
-                this.setState({ tooShort: false, validPasswordFormat: true });
+                this.setState({ validPasswordFormat: true });
             }
         });
     };
@@ -209,6 +218,7 @@ class SignupBox extends Component {
         window.addEventListener("resize", this.updateWindowDimensions);
         this.props.dispatch(changeTab("auth"));
         this.props.dispatch(signupFailure(0));
+        this.props.dispatch(showGoogleButton(true));
     }
 
     componentDidUpdate(prevProps) {
@@ -229,6 +239,7 @@ class SignupBox extends Component {
             this.props.processing
         ) {
             this.props.setProcessing(false);
+            this.props.dispatch(showGoogleButton(false));
             this.setState({ step: 2 });
         }
     }
@@ -257,10 +268,10 @@ class SignupBox extends Component {
                             color: "#f9000b",
                             background: "#fdf0f1",
                             width: "100%",
-                            padding: 10,
+                            padding: 15,
                             borderRadius: 5,
                             fontWeight: "bold",
-                            marginTop: 10,
+                            marginTop: 20,
                         }}
                     >
                         {this.props.error}
@@ -278,19 +289,64 @@ class SignupBox extends Component {
                             color: "#f9000b",
                             background: "#fdf0f1",
                             width: "100%",
-                            padding: 10,
+                            padding: 15,
                             borderRadius: 5,
                             fontWeight: "bold",
-                            marginTop: 10,
+                            marginTop: 20,
                         }}
                     >
                         Email already taken
                     </div>
                 );
+            } else if (
+                this.state.passwordSignup.length > 0 &&
+                !this.state.validPasswordFormat
+            ) {
+                return (
+                    <div
+                        style={{
+                            textAlign: "center",
+                            fontSize: 14,
+                            color: "#f9000b",
+                            background: "#fdf0f1",
+                            width: "100%",
+                            padding: "15px 20px",
+                            borderRadius: 5,
+                            marginTop: 20,
+                        }}
+                    >
+                        Password requires one uppercase and lowercase letter and
+                        special character
+                    </div>
+                );
             } else {
-                return <div></div>;
+                if (
+                    this.state.passwordSignup.length < 7 &&
+                    this.state.passwordSignup.length > 3
+                ) {
+                    return (
+                        <div
+                            style={{
+                                textAlign: "center",
+                                fontSize: 14,
+                                color: "#f9000b",
+                                background: "#fdf0f1",
+                                width: "100%",
+                                padding: 15,
+                                borderRadius: 5,
+                                marginTop: 20,
+                            }}
+                        >
+                            Password too short
+                        </div>
+                    );
+                }
             }
         };
+
+        if (this.props.needs_reason) {
+            return <div></div>;
+        }
 
         if (this.state.step === 1) {
             return (
@@ -483,21 +539,6 @@ class SignupBox extends Component {
                             <div></div>
                         )}
                     </InputGroup>
-                    {this.state.passwordSignup.length > 0 &&
-                        !this.state.validPasswordFormat && (
-                            <div
-                                style={{
-                                    fontSize: 12,
-                                    position: "relative",
-                                    bottom: 4,
-                                    color: "#495057",
-                                    padding: "0.5em 0",
-                                }}
-                            >
-                                Passwords should contain uppercase and lowercase
-                                letters, numbers, and special characters.
-                            </div>
-                        )}
                     {!this.props.processing ? (
                         this.state.validEmail &&
                         !this.state.tooShort &&
@@ -511,8 +552,6 @@ class SignupBox extends Component {
                                     width: "100%",
                                     border: "none",
                                     backgroundColor: "#0B172B",
-                                    boxShadow:
-                                        "0px 2px 4px rgba(0, 0, 0, 0.25)",
                                     fontWeight: "bold",
                                     padding: 12,
                                 }}
@@ -528,8 +567,6 @@ class SignupBox extends Component {
                                     width: "100%",
                                     border: "none",
                                     backgroundColor: "#0B172B",
-                                    boxShadow:
-                                        "0px 2px 4px rgba(0, 0, 0, 0.25)",
                                     fontWeight: "bold",
                                     padding: 12,
                                 }}
@@ -546,7 +583,6 @@ class SignupBox extends Component {
                                 width: "100%",
                                 border: "none",
                                 backgroundColor: "#0B172B",
-                                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)",
                                 fontWeight: "bold",
                                 padding: 12,
                             }}
@@ -820,6 +856,9 @@ function mapStateToProps(state) {
         failed_signup_attempts: state.AuthReducer.failed_signup_attempts,
         signup_status: state.AuthReducer.signup_status,
         error: state.AuthReducer.error,
+        needs_reason: state.AuthReducer.needs_reason
+            ? state.AuthReducer.google_auth.needs_reason
+            : false,
     };
 }
 

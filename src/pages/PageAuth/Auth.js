@@ -3,9 +3,11 @@ import { connect } from "react-redux";
 import Header from "components/header.js";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Redirect } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 import "react-tabs/style/react-tabs.css";
 import "static/Shared.css";
+
 import LoginBox from "./containers/LoginBox.js";
 import SignupBox from "./containers/SignupBox.js";
 import GoogleBox from "./containers/GoogleBox.js";
@@ -77,39 +79,73 @@ class Auth extends Component {
                                     margin: "auto",
                                 }}
                             >
-                                {!this.props.use_google && (
-                                    <Tabs>
-                                        <TabList
+                                <Tabs>
+                                    <TabList
+                                        style={{
+                                            textAlign: "center",
+                                            border: "none",
+                                            fontWeight: "bold",
+                                            fontSize: 16,
+                                        }}
+                                    >
+                                        <Tab
+                                            onClick={() =>
+                                                this.setState({
+                                                    failed_signup_attempt: false,
+                                                })
+                                            }
+                                        >
+                                            LOG IN
+                                        </Tab>
+                                        <Tab
+                                            onClick={() =>
+                                                this.setState({
+                                                    failed_login_attempt: false,
+                                                })
+                                            }
+                                        >
+                                            SIGN UP
+                                        </Tab>
+                                    </TabList>
+                                    <TabPanel style={{ padding: "15px 30px" }}>
+                                        {!this.props.google_auth
+                                            .needs_reason && (
+                                            <GoogleBox
+                                                processing={
+                                                    this.state.processing
+                                                }
+                                                setProcessing={
+                                                    this.setProcessing
+                                                }
+                                            />
+                                        )}
+                                        <LoginBox
+                                            processing={this.state.processing}
+                                            setProcessing={this.setProcessing}
+                                        />
+                                        <HashLink
+                                            to="/reset"
                                             style={{
-                                                textAlign: "center",
-                                                border: "none",
-                                                fontWeight: "bold",
-                                                fontSize: 16,
+                                                textDecoration: "none",
                                             }}
                                         >
-                                            <Tab
-                                                onClick={() =>
-                                                    this.setState({
-                                                        failed_signup_attempt: false,
-                                                    })
-                                                }
+                                            <div
+                                                style={{
+                                                    textAlign: "center",
+                                                    marginTop: 25,
+                                                    color: "#333333",
+                                                    textDecoration: "none",
+                                                    fontSize: 13,
+                                                }}
                                             >
-                                                LOG IN
-                                            </Tab>
-                                            <Tab
-                                                onClick={() =>
-                                                    this.setState({
-                                                        failed_login_attempt: false,
-                                                    })
-                                                }
-                                            >
-                                                SIGN UP
-                                            </Tab>
-                                        </TabList>
-                                        <TabPanel
-                                            style={{ padding: "15px 30px" }}
-                                        >
-                                            <LoginBox
+                                                Forgot Password?
+                                            </div>
+                                        </HashLink>
+                                    </TabPanel>
+                                    <TabPanel style={{ padding: "15px 30px" }}>
+                                        {this.props.google_auth
+                                            .show_google_button && (
+                                            <GoogleBox
                                                 processing={
                                                     this.state.processing
                                                 }
@@ -117,25 +153,13 @@ class Auth extends Component {
                                                     this.setProcessing
                                                 }
                                             />
-                                        </TabPanel>
-                                        <TabPanel
-                                            style={{ padding: "15px 30px" }}
-                                        >
-                                            <SignupBox
-                                                processing={
-                                                    this.state.processing
-                                                }
-                                                setProcessing={
-                                                    this.setProcessing
-                                                }
-                                            />
-                                        </TabPanel>
-                                    </Tabs>
-                                )}
-                                <GoogleBox
-                                    processing={this.state.processing}
-                                    setProcessing={this.setProcessing}
-                                />
+                                        )}
+                                        <SignupBox
+                                            processing={this.state.processing}
+                                            setProcessing={this.setProcessing}
+                                        />
+                                    </TabPanel>
+                                </Tabs>
                             </div>
                         </div>
                     </div>
@@ -149,7 +173,7 @@ function mapStateToProps(state) {
     return {
         loggedIn: state.AuthReducer.logged_in,
         email_verified: state.AuthReducer.email_verified,
-        use_google: state.AuthReducer.use_google,
+        google_auth: state.AuthReducer.google_auth,
     };
 }
 

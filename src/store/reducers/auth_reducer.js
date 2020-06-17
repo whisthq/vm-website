@@ -94,12 +94,26 @@ export default function (state = AUTH_DEFAULT, action) {
         case LoginAction.SET_NEEDSREASON:
             return {
                 ...state,
-                needs_reason: action.needs_reason,
+                google_auth: state.google_auth
+                    ? {
+                          ...state.google_auth,
+                          needs_reason: action.needs_reason,
+                      }
+                    : { needs_reason: action.needs_reason },
             };
         case LoginAction.SET_USEGOOGLE:
             return {
                 ...state,
-                use_google: action.use_google,
+                google_auth: state.google_auth
+                    ? { ...state.google_auth, use_google: action.use_google }
+                    : { use_google: action.use_google },
+            };
+        case LoginAction.SHOW_GOOGLE_BUTTON:
+            return {
+                ...state,
+                google_auth: state.google_auth
+                    ? { ...state.google_auth, show_google_button: action.show }
+                    : { show_google_button: action.show },
             };
         case LoginAction.SET_ERROR:
             return {

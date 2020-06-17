@@ -4,6 +4,7 @@ export const GOOGLE_REASON = "GOOGLE_REASON";
 export const SET_USERNAME = "SET_USERNAME";
 export const SET_USEGOOGLE = "SET_USEGOOGLE";
 export const SET_NEEDSREASON = "SET_NEEDSREASON";
+export const SHOW_GOOGLE_BUTTON = "SHOW_GOOGLE_BUTTON";
 export const SET_ERROR = "SET_ERROR";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
@@ -34,6 +35,13 @@ export function googleReason(reason) {
     return {
         type: GOOGLE_REASON,
         reason,
+    };
+}
+
+export function showGoogleButton(show) {
+    return {
+        type: SHOW_GOOGLE_BUTTON,
+        show,
     };
 }
 

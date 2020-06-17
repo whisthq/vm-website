@@ -5,8 +5,6 @@ import { connect } from "react-redux";
 import { userLogin } from "store/actions/auth/login_actions";
 
 import { changeTab } from "store/actions/general/homepage_actions";
-
-import { HashLink } from "react-router-hash-link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
@@ -124,10 +122,10 @@ class LoginBox extends Component {
                             color: "#f9000b",
                             background: "#fdf0f1",
                             width: "100%",
-                            padding: 10,
+                            padding: 15,
                             borderRadius: 5,
                             fontWeight: "bold",
-                            marginTop: 10,
+                            marginTop: 20,
                         }}
                     >
                         {this.props.error}
@@ -145,7 +143,7 @@ class LoginBox extends Component {
                             color: "#f9000b",
                             background: "#fdf0f1",
                             width: "100%",
-                            padding: 10,
+                            padding: 15,
                             borderRadius: 5,
                             fontWeight: "bold",
                             marginTop: 10,
@@ -211,7 +209,6 @@ class LoginBox extends Component {
                                 width: "100%",
                                 border: "none",
                                 background: "#0B172B",
-                                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)",
                                 fontWeight: "bold",
                                 padding: 12,
                             }}
@@ -227,7 +224,6 @@ class LoginBox extends Component {
                                 width: "100%",
                                 border: "none",
                                 background: "#0B172B",
-                                boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)",
                                 fontWeight: "bold",
                                 padding: 12,
                             }}
@@ -245,7 +241,6 @@ class LoginBox extends Component {
                             width: "100%",
                             border: "none",
                             background: "#0B172B",
-                            boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.25)",
                             fontWeight: "bold",
                             padding: 12,
                         }}
@@ -262,19 +257,6 @@ class LoginBox extends Component {
                         Processing
                     </Button>
                 )}
-                <HashLink to="/reset" style={{ textDecoration: "none" }}>
-                    <div
-                        style={{
-                            textAlign: "center",
-                            marginTop: 25,
-                            color: "#333333",
-                            textDecoration: "none",
-                            fontSize: 13,
-                        }}
-                    >
-                        Forgot Password?
-                    </div>
-                </HashLink>
             </div>
         );
     }
@@ -285,6 +267,9 @@ function mapStateToProps(state) {
         failed_login_attempts: state.AuthReducer.failed_login_attempts,
         login_status: state.AuthReducer.login_status,
         error: state.AuthReducer.error,
+        needs_reason: state.AuthReducer.needs_reason
+            ? state.AuthReducer.google_auth.needs_reason
+            : false,
     };
 }
 

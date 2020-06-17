@@ -64,27 +64,29 @@ class LeftSection extends Component {
                             SETTINGS
                         </Link>
                         {this.props.use_google ? (
-                            <GoogleLogout
-                                clientId={GOOGLE_CLIENT_ID}
-                                buttonText={"Logout"}
-                                onLogoutSuccess={() =>
-                                    this.props.dispatch(logout())
-                                }
-                                onFailure={() =>
-                                    console.error("Google logout failure")
-                                }
-                                render={(renderProps) => (
-                                    <div
-                                        className="sign-out-button"
-                                        onClick={renderProps.onClick}
-                                        style={{
-                                            marginTop: 15,
-                                        }}
-                                    >
-                                        SIGN OUT
-                                    </div>
-                                )}
-                            />
+                            <div>
+                                <GoogleLogout
+                                    clientId={GOOGLE_CLIENT_ID}
+                                    buttonText={"Logout"}
+                                    onLogoutSuccess={() =>
+                                        this.props.dispatch(logout())
+                                    }
+                                    onFailure={() =>
+                                        console.error("Google logout failure")
+                                    }
+                                    render={(renderProps) => (
+                                        <div
+                                            className="sign-out-button"
+                                            onClick={renderProps.onClick}
+                                            style={{
+                                                marginTop: 15,
+                                            }}
+                                        >
+                                            SIGN OUT
+                                        </div>
+                                    )}
+                                />
+                            </div>
                         ) : (
                             <div
                                 className="sign-out-button"
@@ -107,7 +109,9 @@ class LeftSection extends Component {
 
 function mapStateToProps(state) {
     return {
-        use_google: state.AuthReducer.use_google,
+        use_google: state.AuthReducer.google_auth.use_google
+            ? state.AuthReducer.google_auth.use_google
+            : false,
     };
 }
 
