@@ -3,39 +3,20 @@ import { connect } from "react-redux";
 
 import Header from "components/header.js";
 
-import {
-    resetSetupData
-} from "store/actions/dashboard/vm_setup_actions";
+import { resetSetupData } from "store/actions/dashboard/vm_setup_actions";
 
 import LeftSection from "pages/PagePurchase/sections/LeftSection";
 import CountrySection from "pages/PagePurchase/sections/CountrySection";
 import StateSection from "pages/PagePurchase/sections/StateSection";
 import WaitlistSection from "pages/PagePurchase/sections/WaitlistSection";
 import SpecSection from "pages/PagePurchase/sections/SpecSection";
-import PlanSection from "pages/PagePurchase/sections/PlanSection";
 import AppSection from "pages/PagePurchase/sections/AppSection";
+import PlanSection from "pages/PagePurchase/sections/PlanSection";
+import PaymentSection from "pages/PagePurchase/sections/PaymentSection";
 
 class Purchase extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            width: 0,
-            height: 0
-        };
-    }
-
     componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener("resize", this.updateWindowDimensions);
-        this.props.dispatch(resetSetupData())
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWindowDimensions);
-    }
-
-    updateWindowDimensions = () => {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
+        this.props.dispatch(resetSetupData());
     }
 
     render() {
@@ -43,56 +24,67 @@ class Purchase extends Component {
             if (this.props.vm_setup_data.step === 1) {
                 return (
                     <CountrySection
-                        vm_setup_data = {this.props.vm_setup_data}
-                        step = {1}
+                        vm_setup_data={this.props.vm_setup_data}
+                        step={1}
                     />
-                )
+                );
             } else if (this.props.vm_setup_data.step === 2) {
                 return (
                     <StateSection
-                        vm_setup_data = {this.props.vm_setup_data}
-                        step = {2}
+                        vm_setup_data={this.props.vm_setup_data}
+                        step={2}
                     />
                 );
             } else if (this.props.vm_setup_data.step === 2.1) {
                 return (
                     <WaitlistSection
-                        vm_setup_data = {this.props.vm_setup_data}
-                        step = {2}
+                        vm_setup_data={this.props.vm_setup_data}
+                        step={2}
                     />
                 );
             } else if (this.props.vm_setup_data.step === 3) {
                 return (
                     <SpecSection
-                        vm_setup_data = {this.props.vm_setup_data}
-                        step = {3}
+                        vm_setup_data={this.props.vm_setup_data}
+                        step={3}
                     />
                 );
             } else if (this.props.vm_setup_data.step === 4) {
                 return (
                     <AppSection
-                        vm_setup_data = {this.props.vm_setup_data}
-                        step = {4}
+                        vm_setup_data={this.props.vm_setup_data}
+                        step={4}
+                    />
+                );
+            } else if (this.props.vm_setup_data.step === 5) {
+                return (
+                    <PlanSection
+                        vm_setup_data={this.props.vm_setup_data}
+                        credits={this.props.credits}
+                        enableCreditCard={this.props.require_payment_oncreate}
+                        step={5}
                     />
                 );
             } else {
                 return (
-                    <PlanSection
-                        vm_setup_data = {this.props.vm_setup_data}
-                        credits = {this.props.credits}
-                        step = {5}
+                    <PaymentSection
+                        vm_setup_data={this.props.vm_setup_data}
+                        step={6}
                     />
                 );
             }
         };
 
         return (
-            <div className = "purchase">
+            <div className="purchase">
                 <div style={{ maxWidth: 1920, margin: "auto" }}>
                     <Header color="#333333" button="#5ec3eb" />
-                    <div className = "purchase-flex">
+                    <div className="purchase-flex">
                         <LeftSection
-                            vm_setup_data = {this.props.vm_setup_data}
+                            vm_setup_data={this.props.vm_setup_data}
+                            enableCreditCard={
+                                this.props.require_payment_oncreate
+                            }
                         />
                         {RenderSurvey()}
                     </div>
@@ -105,7 +97,11 @@ class Purchase extends Component {
 function mapStateToProps(state) {
     return {
         credits: state.DashboardReducer.credits,
-        vm_setup_data: state.DashboardReducer.vm_setup_data
+        vm_setup_data: state.DashboardReducer.vm_setup_data,
+        require_payment_oncreate: state.DashboardReducer
+            .require_payment_oncreate
+            ? state.DashboardReducer.require_payment_oncreate
+            : true,
     };
 }
 
