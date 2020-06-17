@@ -44,6 +44,7 @@ function* insertCustomer(action) {
     // Start trial
     if (json) {
         yield put(CustomerAction.customerCreated(json.status));
+        yield put(CustomerAction.retrieveCustomer());
         history.push("/dashboard");
         yield put(PopupAction.triggerSurvey(true));
         yield put(DiskAction.diskCreating(true));
