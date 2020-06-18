@@ -1,0 +1,311 @@
+.dashboard-container {
+	background-color: #F6F6F6;
+	min-height: 100vh;
+	overflow-x: hidden !important;
+	justify-content: center;
+}
+
+.dashboard-flex {
+    display: flex;
+    overflow-x: hidden;
+    position: relative;
+    bottom: 60px;
+}
+
+.credits-box {
+    width: 100%;
+    padding: 15px 25px;
+    background: rgba(195, 245, 179, 0.2);
+    color: #2f960e;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    font-size: 14px;
+}
+
+.right-section {
+	padding: 40px 25px 0px 50px;
+	width: calc(100% - 400px);
+}
+
+.right-section .date {
+    display: block;
+    float: none;
+}
+
+.right-section .title {
+	font-size: 42px;
+	font-weight: bold;
+}
+
+@media only screen and (max-width: 700px) {
+	.right-section {
+		padding-left: 40px;
+		padding-right: 40px;
+		width: 100%;	
+	}
+
+	.right-section .date {
+		margin-top: 50px;
+	}
+
+	.right-section .title {
+		font-size: 35px;
+	}
+}
+
+.disk-status-box {
+    background: rgba(195, 245, 179, 0.2);
+    font-size: 14px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 20px;
+    color: #2f960e;
+    padding: 13px 28px;
+    border-radius: 10px;
+}
+
+.image-box {
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 50px;
+    min-height: 260px;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.image-box .icon {
+	color: #333333;
+	margin-top: 25;
+	height: 25;
+}
+
+.image-box .text {
+    color: #333333;
+    font-size: 26px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.image-box .subtext {
+    font-size: 16px;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 15px;
+    color: #111111;
+}
+
+@media only screen and (max-width: 700px) {
+    .image-box .subtext {
+        font-size: 24px;
+    }
+
+    .image-box .subtext {
+        font-size: 14px;
+    }
+}
+
+
+.payment-box {
+    background: #0B172B;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 30px 50px;
+    min-height: 270px;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.payment-box .icon {
+	color: white;
+	margin-top: 15;
+	height: 25;
+}
+
+.payment-box .text {
+	color: white;
+	font-size: 22px;
+	margin-top: 20px;
+	font-weight: bold;
+}
+
+.payment-box .subtext {
+	font-size: 15px;
+	max-width: 400px;
+	margin: auto;
+	margin-top: 15px;
+    color: #D6D6D6;
+    line-height: 1.6;
+}
+
+.hardware-box {
+    border-radius: 5px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    background: white;
+    padding: 30px;
+    min-height: 160px;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.hardware-box .title {
+    text-align: left;
+    margin-top: 5px;
+    height: 45px;
+}
+
+.payment-box {
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    padding: 30px 50px;
+    height: 250px;
+    margin: auto;
+    width: 100%;
+    margin-bottom: 20px;
+    background: #0B172B;
+}
+
+.payment-box .title {
+    color: white;
+    font-size: 24px;
+    margin-top: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.payment-box .icon {
+    color: white;
+    font-size: 22px;
+    margin-top: 15px;
+}
+
+.payment-box .text {
+    font-size: 15px;    
+    max-width: 400px;
+    margin: auto;
+    margin-top: 15px;
+    color: #D6D6D6;
+    font-weight: normal;
+}
+
+@media only screen and (max-width: 700px) {
+    .payment-box .title {
+        font-size: 20px;
+    }
+
+    .payment-box .text {
+        font-size: 13px;
+    }
+}
+
+.download-box {
+    font-size: 14px;
+    background: #0B172B;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+    padding: 40px 15px;
+    margin-top: 40px;
+    min-height: 245px;
+}
+
+.download-button {
+    background: rgba(94, 195, 235, 0.1) !important;
+    border: solid 0.5px rgb(94, 195, 235) !important;
+    font-size: 12px !important;
+    border-radius: 2px !important;
+    color: rgb(94, 195, 235) !important;
+    font-weight: bold !important;
+    width: 90px !important;
+    padding: 5px 5px !important;
+}
+
+.download-box .icon {   
+    font-size: 16px;
+    position: relative;
+    bottom: 1px;
+    padding-right: 5px;
+    color: white;
+}
+
+.cancel-button {
+    outline: none !important;
+    font-size: 12px;
+    border-radius: 2px;
+    float: right;
+    display: inline;
+    padding: 6px 12px;
+    border: none !important;
+    color: #e34d4d;
+    background-color: rgba(227, 77, 77, 0.05);
+    font-weight: bold;
+}
+
+.cancel-confirm-button {
+    font-weight: bold;
+    margin-top: 30px;
+    outline: none;
+    width: 100%;
+    font-size: 12px;
+    border-radius: 3px;
+    float: right;
+    display: inline;
+    padding: 10px;
+    border: none;
+    color: #E34D4D;
+    background-color: rgba(227, 77, 77, 0.05);
+    outline: none !important;
+}
+
+.info-box {
+    display: block;
+    font-size: 14px;
+    background: white;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
+    margin-top: 40px;
+    padding: 40px 15px;
+    min-height: 245px;
+}
+
+.info-box .icon {
+    position: relative;
+    font-size: 12px;
+    bottom: 1px;
+    padding-right: 5px;
+    color: #DDDDDD;
+}
+
+.gray-line {
+    float: right;
+    display: inline;
+    margin-left: 0px;
+    background: #EBEBEB;
+    width: 100px;
+    height: 6px;
+    border-radius: 3px;
+    position: relative;
+    top: 8px;
+}
+
+@media only screen and (max-width: 700px) {
+    .gray-line {
+        float: none;
+        display: block;
+    }
+}
+
+.bottom-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: inline;
+}
