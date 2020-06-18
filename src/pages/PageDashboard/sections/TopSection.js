@@ -21,9 +21,24 @@ class TopSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            width: 0,
+            height: 0,
             total_storage: "120GB",
         };
     }
+
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener("resize", this.updateWindowDimensions);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions = () => {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    };
 
     render() {
         if (
@@ -32,10 +47,7 @@ class TopSection extends Component {
             this.props.disk_is_creating
         ) {
             if (this.props.disk_is_creating) {
-                if (
-                    (this.props.customer && this.props.customer.paid) ||
-                    this.props.require_payment_oncreate
-                ) {
+                if (this.props.customer && this.props.customer.paid) {
                     return (
                         <Row
                             style={{
@@ -212,8 +224,8 @@ class TopSection extends Component {
                                     <div className="title">Change Plan</div>
                                     <div className="text">
                                         You are subscribed to the{" "}
-                                        {this.props.payment.plan.nickname} plan.
-                                        You can change your plan here.
+                                        {this.props.payment.nickname}
+                                        plan. You can change your plan here.
                                     </div>
                                 </div>
                             </HashLink>
@@ -318,10 +330,6 @@ function mapStateToProps(state) {
         disk_creation_message: state.DashboardReducer.disk_creation_message
             ? state.DashboardReducer.disk_creation_message
             : "Create Cloud PC command sent to server.",
-        require_payment_oncreate: state.DashboardReducer
-            .require_payment_oncreate
-            ? state.DashboardReducer.require_payment_oncreate
-            : true,
     };
 }
 

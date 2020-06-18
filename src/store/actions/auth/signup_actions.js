@@ -1,13 +1,13 @@
-export const USER_SIGNUP              = "USER_SIGNUP";
-export const SIGNUP_SUCCESS           = "SIGNUP_SUCCESS";
-export const SIGNUP_FAILURE           = "SIGNUP_FAILURE";
-export const SEND_SIGNUP_EMAIL        = "SEND_SIGNUP_EMAIL";
-export const VALIDATE_SIGNUP_TOKEN    = "VALIDATE_SIGNUP_TOKEN";
-export const SUBSCRIBE_NEWSLETTER     = "SUBSCRIBE_NEWSLETTER";
-export const CHECK_USER_EXISTS        = "CHECK_USER_EXISTS";
-export const CHECK_VERIFIED_EMAIL     = "CHECK_VERIFIED_EMAIL";
-export const EMAIL_VERIFIED           = "EMAIL_VERIFIED";
-export const SEND_VERIFICATION_EMAIL  = "SEND_VERIFICATION_EMAIL";
+export const USER_SIGNUP = "USER_SIGNUP";
+export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
+export const SEND_SIGNUP_EMAIL = "SEND_SIGNUP_EMAIL";
+export const VALIDATE_SIGNUP_TOKEN = "VALIDATE_SIGNUP_TOKEN";
+export const SUBSCRIBE_NEWSLETTER = "SUBSCRIBE_NEWSLETTER";
+export const CHECK_USER_EXISTS = "CHECK_USER_EXISTS";
+export const CHECK_VERIFIED_EMAIL = "CHECK_VERIFIED_EMAIL";
+export const EMAIL_VERIFIED = "EMAIL_VERIFIED";
+export const SEND_VERIFICATION_EMAIL = "SEND_VERIFICATION_EMAIL";
 export const STORE_VERIFICATION_TOKEN = "STORE_VERIFICATION_TOKEN";
 export const INCREMENT_VERIFICATION_EMAILS_SENT =
     "INCREMENT_VERIFICATION_EMAILS_SENT";
@@ -60,10 +60,9 @@ export function subscribeNewsletter(username) {
 export function checkUserExists(username) {
     return {
         type: CHECK_USER_EXISTS,
-        username
-    }
+        username,
+    };
 }
-
 
 export function checkVerifiedEmail(username) {
     return {

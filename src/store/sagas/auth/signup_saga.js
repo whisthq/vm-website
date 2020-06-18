@@ -5,10 +5,8 @@ import history from "utils/history";
 
 import * as LoginAction from "store/actions/auth/login_actions";
 import * as TokenAction from "store/actions/auth/token_actions";
-import * as SignupAction from "store/actions/auth/signup_actions"
-import * as CustomerAction from "store/actions/dashboard/customer_actions"
-
-
+import * as SignupAction from "store/actions/auth/signup_actions";
+import * as CustomerAction from "store/actions/dashboard/customer_actions";
 
 function* userSignup(action) {
     yield select();
@@ -19,7 +17,7 @@ function* userSignup(action) {
             username: action.user,
             password: action.password,
             name: action.name,
-            feedback: action.feedback
+            feedback: action.feedback,
         }
     );
 
@@ -37,6 +35,7 @@ function* userSignup(action) {
             );
         } else {
             yield put(SignupAction.signupFailure(json.status));
+            yield put(LoginAction.loginFailure(json.status));
         }
     }
 }
@@ -65,7 +64,7 @@ function* sendSignupEmail(action) {
     if (!state.AuthReducer.email_verified) {
         yield call(
             apiPost,
-            config.url.MAIL_SERVER + "/signup",
+            config.url.PRIMARY_SERVER + "/signup",
             {
                 username: action.user,
                 code: action.code,
@@ -78,14 +77,13 @@ function* sendSignupEmail(action) {
 function* subscribeNewsletter(action) {
     yield call(
         apiPost,
-        config.url.MAIL_SERVER + "/newsletter/subscribe",
+        config.url.PRIMARY_SERVER + "/newsletter/subscribe",
         {
             username: action.username,
         },
         ""
     );
 }
-
 
 function* validateSignupToken(action) {
     const state = yield select();
@@ -110,7 +108,7 @@ function* sendVerificationEmail(action) {
     if (action.username !== "" && action.token !== "") {
         const { json } = yield call(
             apiPost,
-            config.url.MAIL_SERVER + "/verification",
+            config.url.PRIMARY_SERVER + "/verification",
             {
                 username: action.username,
                 token: action.token,
@@ -128,13 +126,13 @@ function* checkUserExists(action) {
         apiPost,
         config.url.PRIMARY_SERVER + "/account/lookup",
         {
-            username: action.username 
+            username: action.username,
         },
         ""
-    )
+    );
 
-    if(json) {
-        if(json.exists) {
+    if (json) {
+        if (json.exists) {
             yield put(SignupAction.signupFailure(400));
         } else {
             yield put(SignupAction.signupFailure(200));
@@ -142,7 +140,7 @@ function* checkUserExists(action) {
     }
 }
 
-export default function*() {
+export default function* () {
     yield all([
         takeEvery(SignupAction.USER_SIGNUP, userSignup),
         takeEvery(SignupAction.CHECK_VERIFIED_EMAIL, checkVerifiedEmail),

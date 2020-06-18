@@ -3,11 +3,14 @@ import { connect } from "react-redux";
 import Header from "components/header.js";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Redirect } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 
 import "react-tabs/style/react-tabs.css";
 import "static/Shared.css";
-import LoginBox from "./containers/LoginBox.js"
-import SignupBox from "./containers/SignupBox.js"
+
+import LoginBox from "./containers/LoginBox.js";
+import SignupBox from "./containers/SignupBox.js";
+import GoogleBox from "./containers/GoogleBox.js";
 
 class Auth extends Component {
     constructor(props) {
@@ -16,7 +19,8 @@ class Auth extends Component {
             width: 0,
             height: 0,
             modalShow: false,
-            showPopup: false
+            showPopup: false,
+            processing: false,
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
@@ -34,6 +38,10 @@ class Auth extends Component {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
+    setProcessing = (p) => {
+        this.setState({ processing: p });
+    };
+
     render() {
         let modalClose = () => this.setState({ modalShow: false });
         if (this.state.width > 700 && this.state.modalShow) {
@@ -41,7 +49,7 @@ class Auth extends Component {
         }
 
         return (
-            <div id = "top">
+            <div id="top">
                 {this.props.loggedIn && this.props.email_verified ? (
                     <Redirect to="/dashboard" />
                 ) : (
@@ -100,10 +108,58 @@ class Auth extends Component {
                                         </Tab>
                                     </TabList>
                                     <TabPanel style={{ padding: "15px 30px" }}>
-                                        <LoginBox/>
+                                        {this.props.google_auth &&
+                                            !this.props.google_auth
+                                                .needs_reason && (
+                                                <GoogleBox
+                                                    processing={
+                                                        this.state.processing
+                                                    }
+                                                    setProcessing={
+                                                        this.setProcessing
+                                                    }
+                                                />
+                                            )}
+                                        <LoginBox
+                                            processing={this.state.processing}
+                                            setProcessing={this.setProcessing}
+                                        />
+                                        <HashLink
+                                            to="/reset"
+                                            style={{
+                                                textDecoration: "none",
+                                            }}
+                                        >
+                                            <div
+                                                style={{
+                                                    textAlign: "center",
+                                                    marginTop: 25,
+                                                    color: "#333333",
+                                                    textDecoration: "none",
+                                                    fontSize: 13,
+                                                }}
+                                            >
+                                                Forgot Password?
+                                            </div>
+                                        </HashLink>
                                     </TabPanel>
                                     <TabPanel style={{ padding: "15px 30px" }}>
-                                        <SignupBox/>
+                                        {this.props.google_auth &&
+                                            this.props.google_auth
+                                                .show_google_button && (
+                                                <GoogleBox
+                                                    processing={
+                                                        this.state.processing
+                                                    }
+                                                    setProcessing={
+                                                        this.setProcessing
+                                                    }
+                                                />
+                                            )}
+                                        <SignupBox
+                                            processing={this.state.processing}
+                                            setProcessing={this.setProcessing}
+                                        />
                                     </TabPanel>
                                 </Tabs>
                             </div>
@@ -118,7 +174,8 @@ class Auth extends Component {
 function mapStateToProps(state) {
     return {
         loggedIn: state.AuthReducer.logged_in,
-        email_verified: state.AuthReducer.email_verified
+        email_verified: state.AuthReducer.email_verified,
+        google_auth: state.AuthReducer.google_auth,
     };
 }
 

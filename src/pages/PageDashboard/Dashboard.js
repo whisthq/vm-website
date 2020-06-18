@@ -4,32 +4,28 @@ import { withRouter } from "react-router";
 import { Redirect } from "react-router-dom";
 
 import "react-tabs/style/react-tabs.css";
-import "static/PageDashboard.css"
+import "static/PageDashboard.css";
 
 import Header from "components/header.js";
 
-import {
-    retrieveCustomer,
-} from "store/actions/dashboard/customer_actions"
-import {
-    dashboardLoaded,
-} from "store/actions/dashboard/rendering_actions"
+import { retrieveCustomer } from "store/actions/dashboard/customer_actions";
+import { dashboardLoaded } from "store/actions/dashboard/rendering_actions";
 import {
     fetchDisks,
     fetchDiskAttachStatus,
-} from "store/actions/dashboard/disk_actions"
+} from "store/actions/dashboard/disk_actions";
 
-import ReferralButton from "pages/PageDashboard/containers/referralButton"
-import FeedbackBox from "pages/PageDashboard/containers/feedbackBox"
-import CreditsBox from "pages/PageDashboard/containers/creditsBox"
+import ReferralButton from "pages/PageDashboard/containers/referralButton";
+import FeedbackBox from "pages/PageDashboard/containers/feedbackBox";
+import CreditsBox from "pages/PageDashboard/containers/creditsBox";
 
-import OfflineSection from "pages/PageDashboard/sections/OfflineSection"
-import LoadingSection from "pages/PageDashboard/sections/LoadingSection"
-import LeftSection from "pages/PageDashboard/sections/LeftSection"
-import TopSection from "pages/PageDashboard/sections/TopSection"
-import BottomSection from "pages/PageDashboard/sections/BottomSection"
+import OfflineSection from "pages/PageDashboard/sections/OfflineSection";
+import LoadingSection from "pages/PageDashboard/sections/LoadingSection";
+import LeftSection from "pages/PageDashboard/sections/LeftSection";
+import TopSection from "pages/PageDashboard/sections/TopSection";
+import BottomSection from "pages/PageDashboard/sections/BottomSection";
 
-import { monthConvert, unixToDate } from "utils/date"
+import { monthConvert, unixToDate } from "utils/date";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -47,7 +43,7 @@ class Dashboard extends Component {
             cancelling: false,
             waitlist: false,
             loaded: false,
-            total_storage: "120GB"
+            total_storage: "120GB",
         };
         this.customWidth = React.createRef();
     }
@@ -72,18 +68,20 @@ class Dashboard extends Component {
         );
 
         if (this.props.disk_attach_status_id && this.props.disk_is_creating) {
-            this.props.dispatch(fetchDiskAttachStatus(this.props.disk_attach_status_id));
+            this.props.dispatch(
+                fetchDiskAttachStatus(this.props.disk_attach_status_id)
+            );
         }
 
-        if(this.props.disks && Object.keys(this.props.disks).length > 1) {
-            var total_storage = 0
-            this.props.disks.forEach(function(disk) {
-                total_storage = total_storage + Number(disk["disk_size"]) 
+        if (this.props.disks && Object.keys(this.props.disks).length > 1) {
+            var total_storage = 0;
+            this.props.disks.forEach(function (disk) {
+                total_storage = total_storage + Number(disk["disk_size"]);
             });
             this.setState({
-               total_storage: total_storage.toString() + "GB"
+                total_storage: total_storage.toString() + "GB",
             });
-        };
+        }
     }
 
     componentWillUnmount() {
@@ -112,9 +110,7 @@ class Dashboard extends Component {
                 this.props.payment.current_period_end
             ) {
                 this.setState({
-                    billEnd: unixToDate(
-                        this.props.payment.current_period_end
-                    ),
+                    billEnd: unixToDate(this.props.payment.current_period_end),
                 });
             }
             if (
@@ -168,54 +164,47 @@ class Dashboard extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     render() {
         if (this.state.waitlist) {
             return (
                 <OfflineSection
-                    month = {this.state.month}
-                    day = {this.state.day}
-                    year = {this.state.year}
+                    month={this.state.month}
+                    day={this.state.day}
+                    year={this.state.year}
                 />
             );
         } else if (!this.props.dashboard_loaded && this.props.user) {
-            return (
-                <LoadingSection/>
-            );
+            return <LoadingSection />;
         } else if (!this.props.logged_in || !this.props.email_verified) {
-            return (
-                <Redirect to="/auth" />
-            );
+            return <Redirect to="/auth" />;
         } else {
             return (
-                <div className = "dashboard-container">
+                <div className="dashboard-container">
                     <div style={{ maxWidth: 1920, margin: "auto" }}>
                         <Header color="#111111" button="#5ec3eb" />
-                        <FeedbackBox/>
-                        <div className = "dashboard-flex">
-                            <LeftSection/>
-                            <div className = "right-section">
-                                <CreditsBox/>
-                                <div className = "date">
-                                    {this.state.month}{" "}
-                                    {this.state.day},{" "}
+                        <FeedbackBox />
+                        <div className="dashboard-flex">
+                            <LeftSection />
+                            <div className="right-section">
+                                <CreditsBox />
+                                <div className="date">
+                                    {this.state.month} {this.state.day},{" "}
                                     {this.state.year}
                                 </div>
-                                <ReferralButton/>
-                                <div className = "title">
-                                    MY CLOUD PC
-                                </div>
+                                <ReferralButton />
+                                <div className="title">MY CLOUD PC</div>
                                 <TopSection
-                                    total_storage = {this.state.total_storage}
-                                    trialEnd = {this.state.trialEnd}
+                                    total_storage={this.state.total_storage}
+                                    trialEnd={this.state.trialEnd}
                                 />
                                 <BottomSection
-                                    username = {this.props.username}
-                                    created = {this.state.created}
-                                    billStart = {this.state.billStart}
-                                    billEnd = {this.state.billEnd}
-                                    trialEnd = {this.state.trialEnd}
+                                    username={this.props.username}
+                                    created={this.state.created}
+                                    billStart={this.state.billStart}
+                                    billEnd={this.state.billEnd}
+                                    trialEnd={this.state.trialEnd}
                                 />
                             </div>
                         </div>
@@ -227,6 +216,7 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state);
     return {
         logged_in: state.AuthReducer.logged_in,
         username: state.AuthReducer.username,
@@ -246,6 +236,7 @@ function mapStateToProps(state) {
         disk_creation_message: state.DashboardReducer.disk_creation_message
             ? state.DashboardReducer.disk_creation_message
             : "Create Cloud PC command sent to server.",
+        access_token: state.AuthReducer.access_token,
     };
 }
 

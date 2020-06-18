@@ -1,7 +1,7 @@
 export const AUTH_DEFAULT = {
     username: "",
-    password: "",
     logged_in: false,
+    login_status: 200,
     failed_login_attempts: 0,
     forgot_password: 0,
     forgot_email: "",
@@ -14,6 +14,12 @@ export const AUTH_DEFAULT = {
     access_token: "",
     refresh_token: "",
     verification_emails_sent: 0,
+    google_auth: {
+        needs_reason: false,
+        use_google: false,
+        auth_error: "",
+        show_google_button: true,
+    },
 };
 
 export const DASHBOARD_DEFAULT = {
@@ -48,7 +54,6 @@ export const DASHBOARD_DEFAULT = {
         apps: [],
         step: 1,
     },
-    require_payment_oncreate: true,
 };
 
 export const SETTINGS_DEFAULT = {

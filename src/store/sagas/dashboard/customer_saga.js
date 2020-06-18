@@ -44,13 +44,13 @@ function* insertCustomer(action) {
     // Start trial
     if (json) {
         yield put(CustomerAction.customerCreated(json.status));
-        yield put(CustomerAction.retrieveCustomer());
         history.push("/dashboard");
         yield put(PopupAction.triggerSurvey(true));
         yield put(DiskAction.diskCreating(true));
+
         yield call(
             apiPost,
-            config.url.MAIL_SERVER + "/trial/start",
+            config.url.PRIMARY_SERVER + "/trial/start",
             {
                 username: state.AuthReducer.username,
                 location: action.location,
@@ -63,7 +63,7 @@ function* insertCustomer(action) {
 
 function* retrieveCustomer(action) {
     const state = yield select();
-    console.log(state);
+
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/stripe/retrieve",

@@ -48,7 +48,6 @@ class CheckoutForm extends Component {
                         this.props.plan.toLowerCase()
                     )
                 );
-                this.props.callback();
             } else {
                 this.setState({
                     processing: false,
@@ -403,17 +402,12 @@ function mapStateToProps(state) {
     return {
         stripe_status: state.DashboardReducer.stripe_status,
         failed_payment_attempts: state.DashboardReducer.failed_payment_attempts,
-        failed_referral_attempts:
-            state.DashboardReducer.failed_referral_attempts,
+        failed_referral_attempts: state.DashboardReducer.failed_referral_attempts,
         credits: state.DashboardReducer.credits,
         customer_status: state.DashboardReducer.customer_status,
         customer: state.DashboardReducer.customer,
         payment: state.DashboardReducer.payment,
     };
 }
-
-CheckoutForm.defaultProps = {
-    callback: () => {},
-};
 
 export default connect(mapStateToProps)(injectStripe(CheckoutForm));
