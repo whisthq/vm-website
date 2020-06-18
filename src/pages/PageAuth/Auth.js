@@ -108,17 +108,18 @@ class Auth extends Component {
                                         </Tab>
                                     </TabList>
                                     <TabPanel style={{ padding: "15px 30px" }}>
-                                        {!this.props.google_auth
-                                            .needs_reason && (
-                                            <GoogleBox
-                                                processing={
-                                                    this.state.processing
-                                                }
-                                                setProcessing={
-                                                    this.setProcessing
-                                                }
-                                            />
-                                        )}
+                                        {this.props.google_auth &&
+                                            !this.props.google_auth
+                                                .needs_reason && (
+                                                <GoogleBox
+                                                    processing={
+                                                        this.state.processing
+                                                    }
+                                                    setProcessing={
+                                                        this.setProcessing
+                                                    }
+                                                />
+                                            )}
                                         <LoginBox
                                             processing={this.state.processing}
                                             setProcessing={this.setProcessing}
@@ -143,17 +144,18 @@ class Auth extends Component {
                                         </HashLink>
                                     </TabPanel>
                                     <TabPanel style={{ padding: "15px 30px" }}>
-                                        {this.props.google_auth
-                                            .show_google_button && (
-                                            <GoogleBox
-                                                processing={
-                                                    this.state.processing
-                                                }
-                                                setProcessing={
-                                                    this.setProcessing
-                                                }
-                                            />
-                                        )}
+                                        {this.props.google_auth &&
+                                            this.props.google_auth
+                                                .show_google_button && (
+                                                <GoogleBox
+                                                    processing={
+                                                        this.state.processing
+                                                    }
+                                                    setProcessing={
+                                                        this.setProcessing
+                                                    }
+                                                />
+                                            )}
                                         <SignupBox
                                             processing={this.state.processing}
                                             setProcessing={this.setProcessing}
