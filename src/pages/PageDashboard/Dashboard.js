@@ -216,6 +216,7 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state);
     return {
         logged_in: state.AuthReducer.logged_in,
         username: state.AuthReducer.username,
