@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faCircleNotch,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import Header from "components/header.js";
 
 import "static/Shared.css";
-
 
 class LoadingSection extends Component {
     render() {

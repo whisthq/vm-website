@@ -6,24 +6,18 @@ import ImageFadeIn from "react-image-fade-in";
 class EmployeeBox extends Component {
     render() {
         return (
-            <Col
-                md={4}
-                style={{ marginBottom: 20 }}
-            >
+            <Col md={4} style={{ marginBottom: 20 }}>
                 <Popup
                     modal
                     trigger={
                         <div
                             className="expandOnHover"
                             style={{
-                                background:
-                                    "white",
+                                background: "white",
                                 borderRadius: 10,
-                                boxShadow:
-                                    "0px 4px 20px rgba(0, 0, 0, 0.2)",
+                                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
                                 padding: 30,
-                                textAlign:
-                                    "center",
+                                textAlign: "center",
                             }}
                         >
                             <ImageFadeIn
@@ -38,8 +32,7 @@ class EmployeeBox extends Component {
                     contentStyle={{
                         width: 500,
                         borderRadius: 5,
-                        backgroundColor:
-                            "#EBEBEB",
+                        backgroundColor: "#EBEBEB",
                         border: "none",
                         minHeight: 325,
                         padding: "30px 50px",
@@ -66,8 +59,7 @@ class EmployeeBox extends Component {
                                 <div
                                     style={{
                                         fontSize: 30,
-                                        fontWeight:
-                                            "bold",
+                                        fontWeight: "bold",
                                     }}
                                 >
                                     {this.props.name}
@@ -75,8 +67,7 @@ class EmployeeBox extends Component {
                                 <div
                                     style={{
                                         marginTop: 20,
-                                        color:
-                                            "#555555",
+                                        color: "#555555",
                                     }}
                                 >
                                     {this.props.text}

@@ -16,7 +16,7 @@ class AppCard extends Component {
 
     render() {
         return (
-            <div style = {{paddingRight: 15, paddingBottom: 15}}>
+            <div style={{ paddingRight: 15, paddingBottom: 15 }}>
                 <div
                     style={{
                         backgroundColor: this.props.selected
@@ -26,7 +26,7 @@ class AppCard extends Component {
                         border: "none",
                         display: "flex",
                         padding: "15px 25px",
-                        borderRadius: 4
+                        borderRadius: 4,
                     }}
                     onClick={this.handleOnClick}
                 >
@@ -47,7 +47,7 @@ class AppCard extends Component {
                                 color: "#111111",
                                 fontSize: 15,
                                 fontWeight: "bold",
-                                paddingTop: 3
+                                paddingTop: 3,
                             }}
                         >
                             {this.props.title}

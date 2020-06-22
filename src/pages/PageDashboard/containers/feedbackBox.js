@@ -4,13 +4,8 @@ import Popup from "reactjs-popup";
 
 import "static/PageDashboard.css";
 
-import {
-    triggerSurvey,
-} from "store/actions/dashboard/popup_actions"
-import {
-    submitPurchaseFeedback
-} from "store/actions/dashboard/customer_actions"
-
+import { triggerSurvey } from "store/actions/dashboard/popup_actions";
+import { submitPurchaseFeedback } from "store/actions/dashboard/customer_actions";
 
 class FeedbackBox extends Component {
     constructor(props) {
@@ -18,7 +13,7 @@ class FeedbackBox extends Component {
         this.state = {
             width: 0,
             height: 0,
-            purchaseFeedback: ""
+            purchaseFeedback: "",
         };
     }
 
@@ -33,7 +28,7 @@ class FeedbackBox extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     changePurchaseFeedback = (evt) => {
         this.setState({ purchaseFeedback: evt.target.value });
@@ -49,8 +44,7 @@ class FeedbackBox extends Component {
     render() {
         return (
             <div>
-                {this.props.show_survey &&
-                this.state.width > 700 ? (
+                {this.props.show_survey && this.state.width > 700 ? (
                     <Popup
                         open={true}
                         contentStyle={{
@@ -73,14 +67,11 @@ class FeedbackBox extends Component {
                                 }}
                             >
                                 <strong>
-                                    Thank You For Creating a
-                                    Cloud PC!
+                                    Thank You For Creating a Cloud PC!
                                 </strong>
                             </div>
                             <textarea
-                                onChange={
-                                    this.changePurchaseFeedback
-                                }
+                                onChange={this.changePurchaseFeedback}
                                 rows="4"
                                 cols="52"
                                 placeholder="We hope you love it. Please take a minute to tell us what you plan on using Fractal for (i.e. creative work, gaming, etc)."
@@ -95,9 +86,7 @@ class FeedbackBox extends Component {
                                 }}
                             ></textarea>
                             <button
-                                onClick={
-                                    this.submitPurchaseFeedback
-                                }
+                                onClick={this.submitPurchaseFeedback}
                                 style={{
                                     border: "none",
                                     fontWeight: "bold",
@@ -108,8 +97,7 @@ class FeedbackBox extends Component {
                                     borderRadius: 5,
                                     padding: "10px 10px",
                                     color: "#5ec3eb",
-                                    background:
-                                        "rgba(94, 195, 235,0.1)",
+                                    background: "rgba(94, 195, 235,0.1)",
                                 }}
                             >
                                 SUBMIT FEEDBACK

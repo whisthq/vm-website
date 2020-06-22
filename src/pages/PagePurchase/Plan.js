@@ -9,8 +9,8 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import Header from "components/header.js";
 import "static/Shared.css";
 import {
-    changePlan, 
-    changePlanStatus
+    changePlan,
+    changePlanStatus,
 } from "store/actions/dashboard/stripe_actions";
 import PriceBox from "./containers/priceBox.js";
 
@@ -33,22 +33,29 @@ class Plan extends Component {
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
-        if (this.props.payment && Object.keys(this.props.payment).length > 0 && this.props.payment.plan) {
-            const nickname = this.props.payment.plan.nickname
-            if(nickname === 'Fractal Hourly') {
-                this.setState({old_plan: "Hourly", plan: "Hourly"})
-            } else if(nickname === "Fractal Monthly") {
-                this.setState({old_plan: "Monthly", plan: "Monthly"})
+        if (
+            this.props.payment &&
+            Object.keys(this.props.payment).length > 0 &&
+            this.props.payment.plan
+        ) {
+            const nickname = this.props.payment.plan.nickname;
+            if (nickname === "Fractal Hourly") {
+                this.setState({ old_plan: "Hourly", plan: "Hourly" });
+            } else if (nickname === "Fractal Monthly") {
+                this.setState({ old_plan: "Monthly", plan: "Monthly" });
             } else if (nickname === "Fractal Unlimited") {
-                this.setState({old_plan: "Unlimited", plan: "Unlimited"})
+                this.setState({ old_plan: "Unlimited", plan: "Unlimited" });
             }
         }
-        this.props.dispatch(changePlanStatus(0))
+        this.props.dispatch(changePlanStatus(0));
     }
 
     componentDidUpdate(prevProps) {
-        if(prevProps.change_plan_status !== this.props.change_plan_status && this.state.processing) {
-            this.setState({processing: false})
+        if (
+            prevProps.change_plan_status !== this.props.change_plan_status &&
+            this.state.processing
+        ) {
+            this.setState({ processing: false });
         }
     }
 
@@ -61,10 +68,10 @@ class Plan extends Component {
     }
 
     changePlan = () => {
-        this.setState({processing: true})
-        this.props.dispatch(changePlanStatus(0))
-        this.props.dispatch(changePlan(this.state.plan))
-    }
+        this.setState({ processing: true });
+        this.props.dispatch(changePlanStatus(0));
+        this.props.dispatch(changePlan(this.state.plan));
+    };
 
     render() {
         let modalClose = () => this.setState({ modalShow: false });
@@ -77,7 +84,11 @@ class Plan extends Component {
                 return (
                     <div>
                         <div style={{ paddingBottom: 20 }}>
-                            <div style={{ color: "#111111", fontWeight: "bold" }}>Plan</div>
+                            <div
+                                style={{ color: "#111111", fontWeight: "bold" }}
+                            >
+                                Plan
+                            </div>
                             <div style={{ color: "#B9B9B9", fontSize: 12 }}>
                                 {this.state.plan}
                             </div>
@@ -109,7 +120,7 @@ class Plan extends Component {
                     <div>
                         <span
                             style={{
-                                fontSize: 22
+                                fontSize: 22,
                             }}
                         >
                             Change Your Plan
@@ -122,189 +133,176 @@ class Plan extends Component {
                                 maxWidth: 850,
                             }}
                         >
-                            You are currently subscribed to the {this.state.old_plan} plan. 
-                            You can select a new plan below, which will take effect immediately.
+                            You are currently subscribed to the{" "}
+                            {this.state.old_plan} plan. You can select a new
+                            plan below, which will take effect immediately.
                         </div>
-                        {
-                        this.state.old_plan === "Hourly"
-                        ?
-                        <Row
-                            style={{
-                                marginTop: 50,
-                                paddingLeft:
-                                    this.state.width > 700 ? 16 : 10,
-                            }}
-                        >
-                            <Col
-                                md={4}
-                                style={{ paddingLeft: 0 }}
-                                className = "pointerOnHover"
-                                onClick={() =>
-                                    this.setState({ plan: "Monthly" })
-                                }
+                        {this.state.old_plan === "Hourly" ? (
+                            <Row
+                                style={{
+                                    marginTop: 50,
+                                    paddingLeft:
+                                        this.state.width > 700 ? 16 : 10,
+                                }}
                             >
-                                <PriceBox
-                                    name="Monthly"
-                                    price="39"
-                                    details={
-                                        <div>
-                                            6 hr / day
-                                            <br />
-                                            +$0.50 per extra hr
-                                        </div>
+                                <Col
+                                    md={4}
+                                    style={{ paddingLeft: 0 }}
+                                    className="pointerOnHover"
+                                    onClick={() =>
+                                        this.setState({ plan: "Monthly" })
                                     }
-                                    color={
-                                        this.state.plan === "Monthly"
-                                            ? "rgba(94, 195, 235, 0.1)"
-                                            : "white"
+                                >
+                                    <PriceBox
+                                        name="Monthly"
+                                        price="39"
+                                        details={
+                                            <div>
+                                                6 hr / day
+                                                <br />
+                                                +$0.50 per extra hr
+                                            </div>
+                                        }
+                                        color={
+                                            this.state.plan === "Monthly"
+                                                ? "rgba(94, 195, 235, 0.1)"
+                                                : "white"
+                                        }
+                                        checked={this.state.plan === "Monthly"}
+                                    />
+                                </Col>
+                                <Col
+                                    md={4}
+                                    style={{ paddingLeft: 0 }}
+                                    className="pointerOnHover"
+                                    onClick={() =>
+                                        this.setState({ plan: "Unlimited" })
                                     }
-                                    checked={
-                                        this.state.plan === "Monthly"
-                                    }
-                                />
-                            </Col>
-                            <Col
-                                md={4}
-                                style={{ paddingLeft: 0 }}
-                                className = "pointerOnHover"
-                                onClick={() =>
-                                    this.setState({ plan: "Unlimited" })
-                                }
+                                >
+                                    <PriceBox
+                                        name="Unlimited"
+                                        price="99"
+                                        details="Unlimited daily usage"
+                                        color={
+                                            this.state.plan === "Unlimited"
+                                                ? "rgba(94, 195, 235, 0.1)"
+                                                : "white"
+                                        }
+                                        checked={
+                                            this.state.plan === "Unlimited"
+                                        }
+                                    />
+                                </Col>
+                            </Row>
+                        ) : this.state.old_plan === "Monthly" ? (
+                            <Row
+                                style={{
+                                    marginTop: 50,
+                                    paddingLeft:
+                                        this.state.width > 700 ? 16 : 10,
+                                }}
                             >
-                                <PriceBox
-                                    name="Unlimited"
-                                    price="99"
-                                    details="Unlimited daily usage"
-                                    color={
-                                        this.state.plan === "Unlimited"
-                                            ? "rgba(94, 195, 235, 0.1)"
-                                            : "white"
+                                <Col
+                                    md={4}
+                                    style={{ paddingLeft: 0 }}
+                                    className="pointerOnHover"
+                                    onClick={() =>
+                                        this.setState({ plan: "Hourly" })
                                     }
-                                    checked={
-                                        this.state.plan === "Unlimited"
+                                >
+                                    <PriceBox
+                                        name="Hourly"
+                                        subText="Takes effect immediately"
+                                        price="5"
+                                        details="+$0.70 / hr of usage"
+                                        color={
+                                            this.state.plan === "Hourly"
+                                                ? "rgba(94, 195, 235, 0.1)"
+                                                : "white"
+                                        }
+                                        checked={this.state.plan === "Hourly"}
+                                    />
+                                </Col>
+                                <Col
+                                    md={4}
+                                    style={{ paddingLeft: 0 }}
+                                    className="pointerOnHover"
+                                    onClick={() =>
+                                        this.setState({ plan: "Unlimited" })
                                     }
-                                />
-                            </Col>
-                        </Row>
-                        :
-                        (
-                        this.state.old_plan === "Monthly"
-                        ?
-                        <Row
-                            style={{
-                                marginTop: 50,
-                                paddingLeft:
-                                    this.state.width > 700 ? 16 : 10,
-                            }}
-                        >
-                            <Col
-                                md={4}
-                                style={{ paddingLeft: 0 }}
-                                className = "pointerOnHover"
-                                onClick={() =>
-                                    this.setState({ plan: "Hourly" })
-                                }
+                                >
+                                    <PriceBox
+                                        name="Unlimited"
+                                        subText="Takes effect immediately"
+                                        price="99"
+                                        details="Unlimited daily usage"
+                                        color={
+                                            this.state.plan === "Unlimited"
+                                                ? "rgba(94, 195, 235, 0.1)"
+                                                : "white"
+                                        }
+                                        checked={
+                                            this.state.plan === "Unlimited"
+                                        }
+                                    />
+                                </Col>
+                            </Row>
+                        ) : (
+                            <Row
+                                style={{
+                                    marginTop: 50,
+                                    paddingLeft:
+                                        this.state.width > 700 ? 16 : 10,
+                                }}
                             >
-                                <PriceBox
-                                    name="Hourly"
-                                    subText="Takes effect immediately"
-                                    price="5"
-                                    details="+$0.70 / hr of usage"
-                                    color={
-                                        this.state.plan === "Hourly"
-                                            ? "rgba(94, 195, 235, 0.1)"
-                                            : "white"
+                                <Col
+                                    md={4}
+                                    style={{ paddingLeft: 0 }}
+                                    className="pointerOnHover"
+                                    onClick={() =>
+                                        this.setState({ plan: "Hourly" })
                                     }
-                                    checked={
-                                        this.state.plan === "Hourly"
+                                >
+                                    <PriceBox
+                                        name="Hourly"
+                                        price="5"
+                                        details="+$0.70 / hr of usage"
+                                        color={
+                                            this.state.plan === "Hourly"
+                                                ? "rgba(94, 195, 235, 0.1)"
+                                                : "white"
+                                        }
+                                        checked={this.state.plan === "Hourly"}
+                                    />
+                                </Col>
+                                <Col
+                                    md={4}
+                                    style={{ paddingLeft: 0 }}
+                                    className="pointerOnHover"
+                                    onClick={() =>
+                                        this.setState({ plan: "Monthly" })
                                     }
-                                />
-                            </Col>
-                            <Col
-                                md={4}
-                                style={{ paddingLeft: 0 }}
-                                className = "pointerOnHover"
-                                onClick={() =>
-                                    this.setState({ plan: "Unlimited" })
-                                }
-                            >
-                                <PriceBox
-                                    name="Unlimited"
-                                    subText="Takes effect immediately"
-                                    price="99"
-                                    details="Unlimited daily usage"
-                                    color={
-                                        this.state.plan === "Unlimited"
-                                            ? "rgba(94, 195, 235, 0.1)"
-                                            : "white"
-                                    }
-                                    checked={
-                                        this.state.plan === "Unlimited"
-                                    }
-                                />
-                            </Col>
-                        </Row>
-                        :
-                        <Row
-                            style={{
-                                marginTop: 50,
-                                paddingLeft:
-                                    this.state.width > 700 ? 16 : 10,
-                            }}
-                        >
-                            <Col
-                                md={4}
-                                style={{ paddingLeft: 0 }}
-                                className = "pointerOnHover"
-                                onClick={() =>
-                                    this.setState({ plan: "Hourly" })
-                                }
-                            >
-                                <PriceBox
-                                    name="Hourly"
-                                    price="5"
-                                    details="+$0.70 / hr of usage"
-                                    color={
-                                        this.state.plan === "Hourly"
-                                            ? "rgba(94, 195, 235, 0.1)"
-                                            : "white"
-                                    }
-                                    checked={
-                                        this.state.plan === "Hourly"
-                                    }
-                                />
-                            </Col>
-                            <Col
-                                md={4}
-                                style={{ paddingLeft: 0 }}
-                                className = "pointerOnHover"
-                                onClick={() =>
-                                    this.setState({ plan: "Monthly" })
-                                }
-                            >
-                                <PriceBox
-                                    name="Monthly"
-                                    price="39"
-                                    details={
-                                        <div>
-                                            6 hr / day
-                                            <br />
-                                            +$0.50 per extra hr
-                                        </div>
-                                    }
-                                    color={
-                                        this.state.plan === "Monthly"
-                                            ? "rgba(94, 195, 235, 0.1)"
-                                            : "white"
-                                    }
-                                    checked={
-                                        this.state.plan === "Monthly"
-                                    }
-                                />
-                            </Col>
-                        </Row>
-                        )
-                        }
+                                >
+                                    <PriceBox
+                                        name="Monthly"
+                                        price="39"
+                                        details={
+                                            <div>
+                                                6 hr / day
+                                                <br />
+                                                +$0.50 per extra hr
+                                            </div>
+                                        }
+                                        color={
+                                            this.state.plan === "Monthly"
+                                                ? "rgba(94, 195, 235, 0.1)"
+                                                : "white"
+                                        }
+                                        checked={this.state.plan === "Monthly"}
+                                    />
+                                </Col>
+                            </Row>
+                        )}
                         {this.state.processing ? (
                             <div
                                 style={{
@@ -342,11 +340,13 @@ class Plan extends Component {
                                     display: "flex",
                                     justifyContent: "space-between",
                                     width: 300,
-                                    marginTop: 40
+                                    marginTop: 40,
                                 }}
                             >
                                 <Button
-                                    disabled = {this.state.plan === this.state.old_plan}
+                                    disabled={
+                                        this.state.plan === this.state.old_plan
+                                    }
                                     onClick={this.changePlan}
                                     style={{
                                         background: "#111111",
@@ -360,22 +360,26 @@ class Plan extends Component {
                                 </Button>
                             </div>
                         )}
-                        {
-                        this.props.change_plan_status !== 0 && this.props.change_plan_status !== 200
-                        ?
-                        <div style = {{marginTop: 10, fontSize: 12, color: "#e34d4d"}}>
-                            An error occured while trying to change your plan. Please contact support@fractalcomputers.com for assistance.
-                        </div>
-                        :
-                        <div>
-                        </div>
-                        }
+                        {this.props.change_plan_status !== 0 &&
+                        this.props.change_plan_status !== 200 ? (
+                            <div
+                                style={{
+                                    marginTop: 10,
+                                    fontSize: 12,
+                                    color: "#e34d4d",
+                                }}
+                            >
+                                An error occured while trying to change your
+                                plan. Please contact
+                                support@fractalcomputers.com for assistance.
+                            </div>
+                        ) : (
+                            <div></div>
+                        )}
                         <div
                             style={{
                                 float:
-                                    this.state.width > 700
-                                        ? "none"
-                                        : "right",
+                                    this.state.width > 700 ? "none" : "right",
                                 marginTop: this.state.width > 700 ? 0 : 40,
                                 position:
                                     this.state.width > 700
@@ -398,7 +402,7 @@ class Plan extends Component {
                                     color: "white",
                                     padding: "5px 10px",
                                     borderRight: "solid 0.5px #0b172b",
-                                    opacity: 0.5
+                                    opacity: 0.5,
                                 }}
                             >
                                 <FaAngleUp
@@ -435,7 +439,7 @@ class Plan extends Component {
                     </div>
                 </div>
             );
-        }
+        };
 
         return (
             <div
@@ -444,7 +448,7 @@ class Plan extends Component {
                     paddingBottom: 50,
                     background: "#F6F6F6",
                 }}
-                id = "top"
+                id="top"
             >
                 <div style={{ maxWidth: 1920, margin: "auto" }}>
                     <Header color="#333333" button="#5ec3eb" />
@@ -480,7 +484,9 @@ class Plan extends Component {
 function mapStateToProps(state) {
     return {
         payment: state.DashboardReducer.payment,
-        change_plan_status: state.DashboardReducer.change_plan_status ? state.DashboardReducer.change_plan_status : 0
+        change_plan_status: state.DashboardReducer.change_plan_status
+            ? state.DashboardReducer.change_plan_status
+            : 0,
     };
 }
 

@@ -9,7 +9,6 @@ export const CUSTOMER_CREATED = "CUSTOMER_CREATED";
 export const SUBMIT_PURCHASE_FEEDBACK = "SUBMIT_PURCHASE_FEEDBACK";
 export const STORE_CUSTOMER = "STORE_CUSTOMER";
 
-
 export function retrieveCustomer() {
     return {
         type: RETRIEVE_CUSTOMER,

@@ -8,17 +8,16 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 import "static/PagePurchase.css";
 
 import PriceBox from "pages/PagePurchase/containers/priceBox";
-import SurveyButton from "pages/PagePurchase/containers/surveyButton"
+import SurveyButton from "pages/PagePurchase/containers/surveyButton";
+
+import { insertCustomer } from "store/actions/dashboard/customer_actions";
+import { createDisk } from "store/actions/dashboard/disk_actions";
 
 import {
-    insertCustomer,
-} from "store/actions/dashboard/customer_actions";
-import {
-    createDisk
-} from "store/actions/dashboard/disk_actions";
-
-import { eastus, northcentralus, southcentralus } from "pages/PagePurchase/constants/american_states"
-
+    eastus,
+    northcentralus,
+    southcentralus,
+} from "pages/PagePurchase/constants/american_states";
 
 class PlanSection extends Component {
     constructor(props) {
@@ -26,7 +25,7 @@ class PlanSection extends Component {
         this.state = {
             width: 0,
             height: 0,
-            spec: ""
+            spec: "",
         };
     }
 
@@ -41,13 +40,13 @@ class PlanSection extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     nextStepKeyPress = (event) => {
         if (event.key === "Enter") {
-            this.nextStep()
+            this.nextStep();
         }
-    }
+    };
 
     nextStep = () => {
         this.setState({ processing: true });
@@ -55,19 +54,19 @@ class PlanSection extends Component {
         this.props.dispatch(
             createDisk(
                 this.getVMRegion(this.props.vm_setup_data.location),
-                this.getAzureSpec(this.props.vm_setup_data.spec), 
+                this.getAzureSpec(this.props.vm_setup_data.spec),
                 this.props.vm_setup_data.apps
             )
         );
     };
 
     getAzureSpec = (spec) => {
-        if(spec === "Medium") {
-            return "NV6"
+        if (spec === "Medium") {
+            return "NV6";
         } else {
-            return "NV12"
+            return "NV12";
         }
-    }
+    };
 
     getVMRegion = (location) => {
         if (eastus.includes(location)) {
@@ -81,14 +80,13 @@ class PlanSection extends Component {
 
     render() {
         return (
-            <div className = "right-section-wrapper" onKeyPress={this.nextStepKeyPress}>
-                <SurveyButton 
-                    currentStep = {this.props.step}
-                />
+            <div
+                className="right-section-wrapper"
+                onKeyPress={this.nextStepKeyPress}
+            >
+                <SurveyButton currentStep={this.props.step} />
                 {this.state.width > 700 ? (
-                    <span
-                        style={{ position: "relative", bottom: 2 }}
-                    >
+                    <span style={{ position: "relative", bottom: 2 }}>
                         4{" "}
                         <FaArrowRight
                             style={{
@@ -105,8 +103,7 @@ class PlanSection extends Component {
                     <span
                         style={{
                             fontSize: 22,
-                            paddingLeft:
-                                this.state.width > 700 ? 10 : 0,
+                            paddingLeft: this.state.width > 700 ? 10 : 0,
                         }}
                     >
                         Your First Week Is On Us!
@@ -115,8 +112,7 @@ class PlanSection extends Component {
                     <span
                         style={{
                             fontSize: 22,
-                            paddingLeft:
-                                this.state.width > 700 ? 10 : 0,
+                            paddingLeft: this.state.width > 700 ? 10 : 0,
                         }}
                     >
                         Your First Month Is On Us!
@@ -125,43 +121,36 @@ class PlanSection extends Component {
                     <span
                         style={{
                             fontSize: 22,
-                            paddingLeft:
-                                this.state.width > 700 ? 10 : 0,
+                            paddingLeft: this.state.width > 700 ? 10 : 0,
                         }}
                     >
-                        Your First {this.props.credits} Months Is On
-                        Us!
+                        Your First {this.props.credits} Months Is On Us!
                     </span>
                 )}
                 <div
                     style={{
                         marginTop: 5,
                         color: "#333333",
-                        paddingLeft:
-                            this.state.width > 700 ? 39 : 0,
+                        paddingLeft: this.state.width > 700 ? 39 : 0,
                         fontSize: 16,
                         maxWidth: 650,
                     }}
                 >
-                    After your free trial, you'll have the
-                    opportunity to select one of these plans,
-                    depending on your computing needs. We hope that
-                    your free trial will help you figure out which
+                    After your free trial, you'll have the opportunity to select
+                    one of these plans, depending on your computing needs. We
+                    hope that your free trial will help you figure out which
                     plan works best for you!
                 </div>
                 <Row
                     style={{
                         marginTop: 50,
-                        paddingLeft:
-                            this.state.width > 700 ? 55 : 16,
+                        paddingLeft: this.state.width > 700 ? 55 : 16,
                     }}
                 >
                     <Col
                         md={4}
                         style={{ paddingLeft: 0 }}
-                        onClick={() =>
-                            this.setState({ plan: "Hourly" })
-                        }
+                        onClick={() => this.setState({ plan: "Hourly" })}
                     >
                         <PriceBox
                             color="white"
@@ -175,9 +164,7 @@ class PlanSection extends Component {
                     <Col
                         md={4}
                         style={{ paddingLeft: 0 }}
-                        onClick={() =>
-                            this.setState({ plan: "Monthly" })
-                        }
+                        onClick={() => this.setState({ plan: "Monthly" })}
                     >
                         <PriceBox
                             color="white"
@@ -197,9 +184,7 @@ class PlanSection extends Component {
                     <Col
                         md={4}
                         style={{ paddingLeft: 0 }}
-                        onClick={() =>
-                            this.setState({ plan: "Unlimited" })
-                        }
+                        onClick={() => this.setState({ plan: "Unlimited" })}
                     >
                         <PriceBox
                             color="white"
@@ -218,8 +203,7 @@ class PlanSection extends Component {
                             justifyContent: "space-between",
                             width: 355,
                             marginTop: 40,
-                            paddingLeft:
-                                this.state.width > 700 ? 39 : 0,
+                            paddingLeft: this.state.width > 700 ? 39 : 0,
                         }}
                     >
                         <Button
@@ -251,8 +235,7 @@ class PlanSection extends Component {
                             justifyContent: "space-between",
                             width: 300,
                             marginTop: 40,
-                            paddingLeft:
-                                this.state.width > 700 ? 39 : 0,
+                            paddingLeft: this.state.width > 700 ? 39 : 0,
                         }}
                     >
                         <Button
@@ -270,9 +253,8 @@ class PlanSection extends Component {
                     </div>
                 )}
             </div>
-        )
+        );
     }
 }
-
 
 export default connect()(PlanSection);

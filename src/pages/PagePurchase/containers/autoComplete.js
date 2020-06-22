@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import { storePurchaseLocation } from "store/actions/dashboard/vm_setup_actions";
 
-import { all_american_states } from "pages/PagePurchase/constants/american_states"
+import { all_american_states } from "pages/PagePurchase/constants/american_states";
 
 export class Autocomplete extends Component {
     static propTypes = {
@@ -55,7 +55,7 @@ export class Autocomplete extends Component {
     onChange = (e) => {
         const userInput = this.formatUserEntry(e.currentTarget.value);
         this.props.dispatch(storePurchaseLocation(userInput));
-        
+
         if (all_american_states.includes(userInput)) {
             const filteredOptions = [];
             this.setState({

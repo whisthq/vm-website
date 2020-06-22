@@ -1,18 +1,18 @@
-export const CREATE_DISK                = "CREATE_DISK";
-export const FETCH_DISKS                = "FETCH_DISKS";
-export const STORE_DISKS                = "STORE_DISKS";
-export const DISK_CREATING              = "DISK_CREATING";
-export const FETCH_DISK_ATTACH_STATUS   = "FETCH_DISK_ATTACH_STATUS";
-export const STORE_CURRENT_DISK         = "STORE_CURRENT_DISK";
+export const CREATE_DISK = "CREATE_DISK";
+export const FETCH_DISKS = "FETCH_DISKS";
+export const STORE_DISKS = "STORE_DISKS";
+export const DISK_CREATING = "DISK_CREATING";
+export const FETCH_DISK_ATTACH_STATUS = "FETCH_DISK_ATTACH_STATUS";
+export const STORE_CURRENT_DISK = "STORE_CURRENT_DISK";
 export const CHANGE_DISK_STATUS_MESSAGE = "CHANGE_DISK_STATUS_MESSAGE";
-export const STORE_DISK_ATTACH_ID       = "STORE_DISK_ATTACH_ID";
+export const STORE_DISK_ATTACH_ID = "STORE_DISK_ATTACH_ID";
 
 export function createDisk(location, vm_size, apps) {
     return {
         type: CREATE_DISK,
         location,
         vm_size,
-        apps
+        apps,
     };
 }
 

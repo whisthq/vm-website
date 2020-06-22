@@ -20,10 +20,9 @@ import WindowsBin from "bin/Fractal.exe";
 import MacBin from "bin/Fractal.dmg";
 import LinuxBin from "bin/Fractal.AppImage";
 
-import DownloadBox from "pages/PageDashboard/containers/downloadBox"
-import CancelPopup from "pages/PageDashboard/containers/cancelPopup"
-import InfoRow from "pages/PageDashboard/containers/infoRow"
-
+import DownloadBox from "pages/PageDashboard/containers/downloadBox";
+import CancelPopup from "pages/PageDashboard/containers/cancelPopup";
+import InfoRow from "pages/PageDashboard/containers/infoRow";
 
 class BottomSection extends Component {
     constructor(props) {
@@ -45,17 +44,15 @@ class BottomSection extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     render() {
-        return(
+        return (
             <Row style={{ marginTop: 40, paddingBottom: 40 }}>
                 <Col sm={6} xs={12}>
-                    <div className = "bottom-title">
-                        Downloads
-                    </div>
+                    <div className="bottom-title">Downloads</div>
                     <div style={{ width: "100%" }}>
-                        <div className = "download-box">
+                        <div className="download-box">
                             <Row
                                 style={{
                                     width: "100%",
@@ -63,28 +60,28 @@ class BottomSection extends Component {
                                 }}
                             >
                                 <DownloadBox
-                                    icon = {<FaWindows className = "icon"/>}
-                                    text = "Windows 64-Bit"
-                                    executable = {WindowsBin}
-                                    executableName = "Fractal.exe"
+                                    icon={<FaWindows className="icon" />}
+                                    text="Windows 64-Bit"
+                                    executable={WindowsBin}
+                                    executableName="Fractal.exe"
                                 />
                                 <DownloadBox
-                                    icon = {<FaApple className = "icon"/>}
-                                    text = "macOS 10.13+"
-                                    executable = {MacBin}
-                                    executableName = "Fractal.dmg"
+                                    icon={<FaApple className="icon" />}
+                                    text="macOS 10.13+"
+                                    executable={MacBin}
+                                    executableName="Fractal.dmg"
                                 />
                                 <DownloadBox
-                                    icon = {<FaUbuntu className = "icon"/>}
-                                    text = "Linux Ubuntu"
-                                    executable = {LinuxBin}
-                                    executableName = "Fractal.AppImage"
+                                    icon={<FaUbuntu className="icon" />}
+                                    text="Linux Ubuntu"
+                                    executable={LinuxBin}
+                                    executableName="Fractal.AppImage"
                                     linux
                                 />
                                 <DownloadBox
-                                    icon = {<FaAndroid className = "icon"/>}
-                                    text = "Android"
-                                    comingSoon = {true}
+                                    icon={<FaAndroid className="icon" />}
+                                    text="Android"
+                                    comingSoon={true}
                                 />
                             </Row>
                         </div>
@@ -94,53 +91,54 @@ class BottomSection extends Component {
                     sm={6}
                     xs={12}
                     style={{
-                        marginTop: this.state.width > 700 ? 0 : 70
+                        marginTop: this.state.width > 700 ? 0 : 70,
                     }}
                 >
                     <div>
-                        <div className = "bottom-title">
-                            My Info
-                        </div>
-                        <CancelPopup 
-                            created = {this.props.created}
-                            customer = {this.props.customer}
+                        <div className="bottom-title">My Info</div>
+                        <CancelPopup
+                            created={this.props.created}
+                            customer={this.props.customer}
                         />
                     </div>
-                    <div className = "info-box">
+                    <div className="info-box">
                         <Row
                             style={{
                                 width: "100%",
                                 margin: 0,
                             }}
                         >
-                            <InfoRow 
-                                icon = {<FaUser className = "icon"/>}
-                                name = "Username"
-                                text = {this.props.username}
+                            <InfoRow
+                                icon={<FaUser className="icon" />}
+                                name="Username"
+                                text={this.props.username}
                             />
-                            <InfoRow 
-                                icon = {<FaFastForward className = "icon"/>}
-                                name = "Current Period Start"
-                                text = {this.props.billStart}
+                            <InfoRow
+                                icon={<FaFastForward className="icon" />}
+                                name="Current Period Start"
+                                text={this.props.billStart}
                             />
-                            <InfoRow 
-                                icon = {<FaPause className = "icon"/>}
-                                name = "Current Period End"
-                                text = {this.props.billEnd}
+                            <InfoRow
+                                icon={<FaPause className="icon" />}
+                                name="Current Period End"
+                                text={this.props.billEnd}
                             />
-                            <InfoRow 
-                                icon = {<FaPlay className = "icon"/>}
-                                name = "Current Plan"
-                                text = {this.props.payment && 
-                                    Object.keys(this.props.payment).length > 0 &&
-                                    this.props.payment.plan ? 
-                                        this.props.payment.plan.nickname :
-                                        null}
+                            <InfoRow
+                                icon={<FaPlay className="icon" />}
+                                name="Current Plan"
+                                text={
+                                    this.props.payment &&
+                                    Object.keys(this.props.payment).length >
+                                        0 &&
+                                    this.props.payment.plan
+                                        ? this.props.payment.plan.nickname
+                                        : null
+                                }
                             />
-                            <InfoRow 
-                                icon = {<FaTag className = "icon"/>}
-                                name = "Free Trial Ends"
-                                text = {this.props.trialEnd}
+                            <InfoRow
+                                icon={<FaTag className="icon" />}
+                                name="Free Trial Ends"
+                                text={this.props.trialEnd}
                             />
                         </Row>
                     </div>

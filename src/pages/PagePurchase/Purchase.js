@@ -3,9 +3,7 @@ import { connect } from "react-redux";
 
 import Header from "components/header.js";
 
-import {
-    resetSetupData
-} from "store/actions/dashboard/vm_setup_actions";
+import { resetSetupData } from "store/actions/dashboard/vm_setup_actions";
 
 import LeftSection from "pages/PagePurchase/sections/LeftSection";
 import CountrySection from "pages/PagePurchase/sections/CountrySection";
@@ -20,14 +18,14 @@ class Purchase extends Component {
         super(props);
         this.state = {
             width: 0,
-            height: 0
+            height: 0,
         };
     }
 
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
-        this.props.dispatch(resetSetupData())
+        this.props.dispatch(resetSetupData());
     }
 
     componentWillUnmount() {
@@ -36,64 +34,62 @@ class Purchase extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     render() {
         const RenderSurvey = () => {
             if (this.props.vm_setup_data.step === 1) {
                 return (
                     <CountrySection
-                        vm_setup_data = {this.props.vm_setup_data}
-                        step = {1}
+                        vm_setup_data={this.props.vm_setup_data}
+                        step={1}
                     />
-                )
+                );
             } else if (this.props.vm_setup_data.step === 2) {
                 return (
                     <StateSection
-                        vm_setup_data = {this.props.vm_setup_data}
-                        step = {2}
+                        vm_setup_data={this.props.vm_setup_data}
+                        step={2}
                     />
                 );
             } else if (this.props.vm_setup_data.step === 2.1) {
                 return (
                     <WaitlistSection
-                        vm_setup_data = {this.props.vm_setup_data}
-                        step = {2}
+                        vm_setup_data={this.props.vm_setup_data}
+                        step={2}
                     />
                 );
             } else if (this.props.vm_setup_data.step === 3) {
                 return (
                     <SpecSection
-                        vm_setup_data = {this.props.vm_setup_data}
-                        step = {3}
+                        vm_setup_data={this.props.vm_setup_data}
+                        step={3}
                     />
                 );
             } else if (this.props.vm_setup_data.step === 4) {
                 return (
                     <AppSection
-                        vm_setup_data = {this.props.vm_setup_data}
-                        step = {4}
+                        vm_setup_data={this.props.vm_setup_data}
+                        step={4}
                     />
                 );
             } else {
                 return (
                     <PlanSection
-                        vm_setup_data = {this.props.vm_setup_data}
-                        credits = {this.props.credits}
-                        step = {5}
+                        vm_setup_data={this.props.vm_setup_data}
+                        credits={this.props.credits}
+                        step={5}
                     />
                 );
             }
         };
 
         return (
-            <div className = "purchase">
+            <div className="purchase">
                 <div style={{ maxWidth: 1920, margin: "auto" }}>
                     <Header color="#333333" button="#5ec3eb" />
-                    <div className = "purchase-flex">
-                        <LeftSection
-                            vm_setup_data = {this.props.vm_setup_data}
-                        />
+                    <div className="purchase-flex">
+                        <LeftSection vm_setup_data={this.props.vm_setup_data} />
                         {RenderSurvey()}
                     </div>
                 </div>
@@ -105,7 +101,7 @@ class Purchase extends Component {
 function mapStateToProps(state) {
     return {
         credits: state.DashboardReducer.credits,
-        vm_setup_data: state.DashboardReducer.vm_setup_data
+        vm_setup_data: state.DashboardReducer.vm_setup_data,
     };
 }
 

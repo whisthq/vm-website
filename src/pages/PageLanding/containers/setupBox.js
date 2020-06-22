@@ -9,7 +9,7 @@ class SetupBox extends Component {
         super(props);
         this.state = {
             width: 0,
-            height: 0
+            height: 0,
         };
     }
 
@@ -24,7 +24,7 @@ class SetupBox extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     render() {
         return (
@@ -32,10 +32,9 @@ class SetupBox extends Component {
                 <div
                     style={{
                         backgroundColor: "white",
-                        boxShadow:
-                            "0px 4px 20px rgba(0, 0, 0, 0.2)",
+                        boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
                         borderRadius: 5,
-                        width: this.state.width > 700 ? "95%": "100%",
+                        width: this.state.width > 700 ? "95%" : "100%",
                         maxWidth: 750,
                     }}
                 >
@@ -46,7 +45,10 @@ class SetupBox extends Component {
                             backgroundColor: "#1F2635",
                             borderRadius: "5px 5px 0px 0px",
                             color: "white",
-                            padding: this.state.width > 700 ? "13px 40px" : "13px 30px",
+                            padding:
+                                this.state.width > 700
+                                    ? "13px 40px"
+                                    : "13px 30px",
                             fontWeight: "bold",
                         }}
                     >
@@ -60,32 +62,30 @@ class SetupBox extends Component {
                             fontSize: 16,
                         }}
                     >
-                    <div
-                        style={{
-                            padding: "8px 20px",
-                            marginTop: 10,
-                            display: "flex",
-                        }}
-                    >
                         <div
                             style={{
-                                width: "70%",
-                                height: 10,
-                                backgroundColor:
-                                    "#e3e3e3",
-                                borderRadius: 5,
+                                padding: "8px 20px",
+                                marginTop: 10,
+                                display: "flex",
                             }}
-                        ></div>
-                        <div
-                            style={{
-                                width: "25%",
-                                height: 10,
-                                backgroundColor:
-                                    "rgba(94, 195, 235, 0.2)",
-                                borderRadius: 5,
-                                marginLeft: "5%",
-                            }}
-                        ></div>
+                        >
+                            <div
+                                style={{
+                                    width: "70%",
+                                    height: 10,
+                                    backgroundColor: "#e3e3e3",
+                                    borderRadius: 5,
+                                }}
+                            ></div>
+                            <div
+                                style={{
+                                    width: "25%",
+                                    height: 10,
+                                    backgroundColor: "rgba(94, 195, 235, 0.2)",
+                                    borderRadius: 5,
+                                    marginLeft: "5%",
+                                }}
+                            ></div>
                         </div>
                         <div
                             style={{
@@ -97,8 +97,7 @@ class SetupBox extends Component {
                                 style={{
                                     width: "100%",
                                     height: 10,
-                                    backgroundColor:
-                                        "#e3e3e3",
+                                    backgroundColor: "#e3e3e3",
                                     borderRadius: 5,
                                 }}
                             ></div>
@@ -113,8 +112,7 @@ class SetupBox extends Component {
                                 style={{
                                     width: "25%",
                                     height: 10,
-                                    backgroundColor:
-                                        "rgba(94, 195, 235, 0.2)",
+                                    backgroundColor: "rgba(94, 195, 235, 0.2)",
                                     borderRadius: 5,
                                     marginRight: "5%",
                                 }}
@@ -123,15 +121,12 @@ class SetupBox extends Component {
                                 style={{
                                     width: "70%",
                                     height: 10,
-                                    backgroundColor:
-                                        "#e3e3e3",
+                                    backgroundColor: "#e3e3e3",
                                     borderRadius: 5,
                                 }}
                             ></div>
                         </div>
-                        <div
-                            style={{ padding: "8px 20px" }}
-                        >
+                        <div style={{ padding: "8px 20px" }}>
                             <Link to="/dashboard">
                                 <Button
                                     style={{
@@ -139,14 +134,14 @@ class SetupBox extends Component {
                                         width: "100%",
                                         margin: "auto",
                                         color: "#0980b0",
-                                        background:
-                                            "rgba(94, 195, 235, 0.2)",
+                                        background: "rgba(94, 195, 235, 0.2)",
                                         border: "none",
                                         fontWeight: "bold",
                                         textAlign: "center",
                                         borderRadius: 5,
                                         marginTop: 20,
-                                        fontSize: this.state.width > 700 ? 16 : 14,
+                                        fontSize:
+                                            this.state.width > 700 ? 16 : 14,
                                     }}
                                 >
                                     + NEW CLOUD PC

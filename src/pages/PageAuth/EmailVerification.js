@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import Header from "components/header.js";
-import { 
+import {
     validateSignupToken,
-    sendVerificationEmail } 
-from "store/actions/auth/signup_actions"
+    sendVerificationEmail,
+} from "store/actions/auth/signup_actions";
 import { Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch, faCheck } from "@fortawesome/free-solid-svg-icons";
