@@ -1,8 +1,7 @@
-export const TOKEN_STATUS             = "TOKEN_STATUS";
-export const VALIDATE_RESET_TOKEN     = "VALIDATE_RESET_TOKEN";
+export const TOKEN_STATUS = "TOKEN_STATUS";
+export const VALIDATE_RESET_TOKEN = "VALIDATE_RESET_TOKEN";
 export const STORE_VERIFICATION_TOKEN = "STORE_VERIFICATION_TOKEN";
-export const STORE_JWT                = "STORE_JWT";
-
+export const STORE_JWT = "STORE_JWT";
 
 export function tokenStatus(tokenStatus) {
     return {

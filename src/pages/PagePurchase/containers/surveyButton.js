@@ -1,16 +1,13 @@
-import React, { Component } from 'react'
-import { connect } from "react-redux"
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import { FaAngleLeft, FaTimes } from "react-icons/fa";
 
-import 'static/PagePurchase.css';
-import 'static/Shared.css'
+import "static/PagePurchase.css";
+import "static/Shared.css";
 
-import {
-    storeSetupStep
-} from "store/actions/dashboard/vm_setup_actions"
+import { storeSetupStep } from "store/actions/dashboard/vm_setup_actions";
 
 import history from "utils/history";
-
 
 class SurveyButton extends Component {
     constructor(props) {
@@ -32,23 +29,23 @@ class SurveyButton extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     goBack = () => {
-        if(this.props.currentStep > 1) {
+        if (this.props.currentStep > 1) {
             this.props.dispatch(storeSetupStep(this.props.currentStep - 1));
         } else {
             history.push("/dashboard");
         }
-    }
+    };
 
     exitSurvey = () => {
         history.push("/dashboard");
-    }
+    };
 
     render() {
-        return(
-            <div style = {{height: this.state.width > 700 ? 50 : 80}}>
+        return (
+            <div style={{ height: this.state.width > 700 ? 50 : 80 }}>
                 <div
                     style={{
                         display: "inline",
@@ -58,8 +55,8 @@ class SurveyButton extends Component {
                         marginLeft: 5,
                         borderRadius: 2,
                     }}
-                    onClick = {this.exitSurvey}
-                    className = "pointerOnHover"
+                    onClick={this.exitSurvey}
+                    className="pointerOnHover"
                 >
                     <FaTimes
                         style={{
@@ -76,10 +73,10 @@ class SurveyButton extends Component {
                         float: "right",
                         background: "rgba(94, 195, 235, 0.2)",
                         padding: "2px 8px",
-                        borderRadius: 2
+                        borderRadius: 2,
                     }}
-                    onClick = {this.goBack}
-                    className = "pointerOnHover"
+                    onClick={this.goBack}
+                    className="pointerOnHover"
                 >
                     <FaAngleLeft
                         style={{
@@ -91,7 +88,7 @@ class SurveyButton extends Component {
                     />
                 </div>
             </div>
-        )
+        );
     }
 }
 

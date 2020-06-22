@@ -5,8 +5,7 @@ import { HashLink } from "react-router-hash-link";
 
 import "static/PagePurchase.css";
 
-import SurveyButton from "pages/PagePurchase/containers/surveyButton"
-
+import SurveyButton from "pages/PagePurchase/containers/surveyButton";
 
 class WaitlistSection extends Component {
     constructor(props) {
@@ -28,30 +27,27 @@ class WaitlistSection extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     render() {
         return (
-            <div className = "right-section-wrapper" onKeyPress={this.nextStepKeyPress}>
-                <SurveyButton 
-                    currentStep = {this.props.step}
-                />
-                <div className = "survey-box">
+            <div
+                className="right-section-wrapper"
+                onKeyPress={this.nextStepKeyPress}
+            >
+                <SurveyButton currentStep={this.props.step} />
+                <div className="survey-box">
                     <div style={{ fontSize: 26, marginBottom: 20 }}>
                         We'll be available in your area soon
                     </div>
                     <div>
-                        Currently, Fractal is only available in the
-                        Eastern and Midwestern United States due to the
-                        locations of our servers. We are quickly
-                        expanding to West Coast and beyond; if you'd
-                        like to be notified when Fractal is available in
-                        your location, please join our wait list!
+                        Currently, Fractal is only available in the Eastern and
+                        Midwestern United States due to the locations of our
+                        servers. We are quickly expanding to West Coast and
+                        beyond; if you'd like to be notified when Fractal is
+                        available in your location, please join our wait list!
                     </div>
-                    <HashLink
-                        to="/#beta"
-                        style={{ textDecoration: "none" }}
-                    >
+                    <HashLink to="/#beta" style={{ textDecoration: "none" }}>
                         <Button
                             style={{
                                 display: "inline",
@@ -63,8 +59,7 @@ class WaitlistSection extends Component {
                                 background: "#111111",
                                 border: "none",
                                 color: "white",
-                                boxShadow:
-                                    "0px 4px 20px rgba(0, 0, 0, 0.1)",
+                                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
                             }}
                         >
                             Join Wait List
@@ -83,9 +78,8 @@ class WaitlistSection extends Component {
                     }}
                 ></div>
             </div>
-        )
+        );
     }
 }
-
 
 export default connect()(WaitlistSection);

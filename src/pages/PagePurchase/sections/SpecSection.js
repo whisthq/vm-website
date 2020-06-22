@@ -6,13 +6,12 @@ import { FaArrowRight } from "react-icons/fa";
 import "static/PagePurchase.css";
 
 import SpecBox from "pages/PagePurchase/containers/specBox";
-import { 
+import {
     storeSetupStep,
-    storeComputerSpec 
+    storeComputerSpec,
 } from "store/actions/dashboard/vm_setup_actions";
 
-import SurveyButton from "pages/PagePurchase/containers/surveyButton"
-
+import SurveyButton from "pages/PagePurchase/containers/surveyButton";
 
 class SpecSection extends Component {
     constructor(props) {
@@ -20,7 +19,7 @@ class SpecSection extends Component {
         this.state = {
             width: 0,
             height: 0,
-            spec: ""
+            spec: "",
         };
     }
 
@@ -35,33 +34,32 @@ class SpecSection extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     nextStepKeyPress = (event) => {
         if (event.key === "Enter") {
-            this.nextStep()
+            this.nextStep();
         }
-    }
+    };
 
     nextStep = () => {
-        if(this.state.spec !== "") {
-            if(this.state.spec === "Medium") {
+        if (this.state.spec !== "") {
+            if (this.state.spec === "Medium") {
                 this.props.dispatch(storeComputerSpec("Medium"));
                 this.props.dispatch(storeSetupStep(4));
             }
         }
-    }
+    };
 
     render() {
         return (
-            <div className = "right-section-wrapper" onKeyPress={this.nextStepKeyPress}>
-                <SurveyButton 
-                    currentStep = {this.props.step}
-                />
+            <div
+                className="right-section-wrapper"
+                onKeyPress={this.nextStepKeyPress}
+            >
+                <SurveyButton currentStep={this.props.step} />
                 {this.state.width > 700 ? (
-                    <span
-                        style={{ position: "relative", bottom: 2 }}
-                    >
+                    <span style={{ position: "relative", bottom: 2 }}>
                         3{" "}
                         <FaArrowRight
                             style={{
@@ -77,8 +75,7 @@ class SpecSection extends Component {
                 <span
                     style={{
                         fontSize: 22,
-                        paddingLeft:
-                            this.state.width > 700 ? 10 : 0,
+                        paddingLeft: this.state.width > 700 ? 10 : 0,
                     }}
                 >
                     Choose Your Cloud Computer
@@ -87,20 +84,18 @@ class SpecSection extends Component {
                     style={{
                         marginTop: 5,
                         color: "#333333",
-                        paddingLeft:
-                            this.state.width > 700 ? 39 : 0,
+                        paddingLeft: this.state.width > 700 ? 39 : 0,
                         fontSize: 16,
                         maxWidth: 650,
                     }}
                 >
-                    Select the specs that best suit your needs. You
-                    can always upgrade or downgrade later.
+                    Select the specs that best suit your needs. You can always
+                    upgrade or downgrade later.
                 </div>
                 <Row
                     style={{
                         marginTop: 50,
-                        paddingLeft:
-                            this.state.width > 700 ? 39 : 0,
+                        paddingLeft: this.state.width > 700 ? 39 : 0,
                         maxWidth: 800,
                     }}
                 >
@@ -108,14 +103,10 @@ class SpecSection extends Component {
                         md={6}
                         className="pointerOnHover"
                         style={{
-                            marginBottom:
-                                this.state.width > 700 ? 0 : 20,
-                            paddingRight:
-                                this.state.width > 700 ? 0 : 40,
+                            marginBottom: this.state.width > 700 ? 0 : 20,
+                            paddingRight: this.state.width > 700 ? 0 : 40,
                         }}
-                        onClick={() =>
-                            this.setState({ spec: "Medium" })
-                        }
+                        onClick={() => this.setState({ spec: "Medium" })}
                     >
                         <SpecBox
                             name="Medium"
@@ -129,18 +120,14 @@ class SpecSection extends Component {
                                     ? "rgba(94, 195, 235, 0.1)"
                                     : "white"
                             }
-                            checked={
-                                this.state.spec === "Medium"
-                            }
+                            checked={this.state.spec === "Medium"}
                         />
                     </Col>
                     <Col
                         md={6}
                         style={{
-                            marginBottom:
-                                this.state.width > 700 ? 0 : 20,
-                            paddingRight:
-                                this.state.width > 700 ? 0 : 40,
+                            marginBottom: this.state.width > 700 ? 0 : 20,
+                            paddingRight: this.state.width > 700 ? 0 : 40,
                         }}
                     >
                         <SpecBox
@@ -169,9 +156,7 @@ class SpecSection extends Component {
                                     ? "rgba(94, 195, 235, 0.1)"
                                     : "white"
                             }
-                            checked={
-                                this.state.spec === "Heavy"
-                            }
+                            checked={this.state.spec === "Heavy"}
                         />
                     </Col>
                 </Row>
@@ -182,8 +167,7 @@ class SpecSection extends Component {
                             justifyContent: "space-between",
                             width: 310,
                             marginTop: 40,
-                            paddingLeft:
-                                this.state.width > 700 ? 39 : 0,
+                            paddingLeft: this.state.width > 700 ? 39 : 0,
                         }}
                     >
                         <Button
@@ -205,8 +189,7 @@ class SpecSection extends Component {
                             justifyContent: "space-between",
                             width: 375,
                             marginTop: 40,
-                            paddingLeft:
-                                this.state.width > 700 ? 39 : 0,
+                            paddingLeft: this.state.width > 700 ? 39 : 0,
                         }}
                     >
                         <Button
@@ -223,9 +206,8 @@ class SpecSection extends Component {
                     </div>
                 )}
             </div>
-        )
+        );
     }
 }
-
 
 export default connect()(SpecSection);

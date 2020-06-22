@@ -4,13 +4,12 @@ import ImageFadeIn from "react-image-fade-in";
 import "static/Shared.css";
 import "static/PageLanding.css";
 
-
 class HardwareIconBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
             width: 0,
-            height: 0
+            height: 0,
         };
     }
 
@@ -25,16 +24,14 @@ class HardwareIconBox extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     render() {
         return (
             <div>
-                {
-                    this.state.width > 700
-                    ?
+                {this.state.width > 700 ? (
                     <div>
-                       <ImageFadeIn
+                        <ImageFadeIn
                             src={this.props.icon}
                             style={{
                                 display: "inline",
@@ -67,13 +64,13 @@ class HardwareIconBox extends Component {
                             </div>
                         </div>
                     </div>
-                    :
+                ) : (
                     <div
                         style={{
                             fontWeight: "bold",
                             fontSize: 18,
                             textAlign: "left",
-                            marginBottom: 10
+                            marginBottom: 10,
                         }}
                     >
                         <ImageFadeIn
@@ -95,11 +92,10 @@ class HardwareIconBox extends Component {
                             {this.props.short_description}
                         </div>
                     </div>
-                }
+                )}
             </div>
         );
     }
 }
-
 
 export default HardwareIconBox;

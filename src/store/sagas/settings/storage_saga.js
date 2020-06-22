@@ -3,25 +3,24 @@ import { apiPost, apiGet } from "utils/Api.js";
 import { config } from "utils/constants.js";
 import history from "utils/history";
 
-import * as StorageAction from "store/actions/settings/storage_actions"
-
+import * as StorageAction from "store/actions/settings/storage_actions";
 
 function* addStorage(action) {
-    const state = yield select(); 
+    const state = yield select();
 
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/disk/createEmpty",
         {
             username: state.AuthReducer.username,
-            disk_size: action.storage
+            disk_size: action.storage,
         },
         state.AuthReducer.access_token
-    )
+    );
 
     if (json) {
         if (json.ID) {
-            yield call(getStorageStatus, json.ID)
+            yield call(getStorageStatus, json.ID);
         }
     }
 }
@@ -40,25 +39,23 @@ function* getStorageStatus(ID) {
             ""
         );
 
-        if(json) {
-            json = json.json 
+        if (json) {
+            json = json.json;
         }
 
         yield delay(2500);
     }
 
     if (json && json.state) {
-        if(json.state === "SUCCESS") {
-            yield put(StorageAction.addStorageStatus(200))
-            history.push("/settings")
+        if (json.state === "SUCCESS") {
+            yield put(StorageAction.addStorageStatus(200));
+            history.push("/settings");
         } else {
-            yield put(StorageAction.addStorageStatus(400))
+            yield put(StorageAction.addStorageStatus(400));
         }
     }
 }
 
-export default function*() {
-    yield all([
-        takeEvery(StorageAction.ADD_STORAGE, addStorage),
-    ]);
+export default function* () {
+    yield all([takeEvery(StorageAction.ADD_STORAGE, addStorage)]);
 }

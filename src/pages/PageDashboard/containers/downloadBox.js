@@ -6,8 +6,7 @@ import Popup from "reactjs-popup";
 
 import "static/PageDashboard.css";
 
-import LinuxPopup from "pages/PageDashboard/containers/linuxPopup"
-
+import LinuxPopup from "pages/PageDashboard/containers/linuxPopup";
 
 class DownloadBox extends Component {
     constructor(props) {
@@ -29,11 +28,11 @@ class DownloadBox extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     render() {
         return (
-           <Col
+            <Col
                 xs={12}
                 style={{
                     padding: "0px 20px",
@@ -42,27 +41,19 @@ class DownloadBox extends Component {
             >
                 <div
                     style={{
-                        float:
-                            "left",
-                        color:
-                            "white",
-                        display:
-                            "inline",
+                        float: "left",
+                        color: "white",
+                        display: "inline",
                         fontSize: 13,
                     }}
                 >
-                    {this.props.icon}
-                    {" "}
-                    {this.props.text}
+                    {this.props.icon} {this.props.text}
                 </div>
                 <div
                     style={{
-                        float:
-                            "right",
-                        display:
-                            "inline",
-                        color:
-                            "white",
+                        float: "right",
+                        display: "inline",
+                        color: "white",
                     }}
                 >
                     {this.props.disks === undefined ||
@@ -70,14 +61,16 @@ class DownloadBox extends Component {
                     this.props.disk_is_creating ? (
                         <Popup
                             trigger={
-                                <Button className = "download-button" disabled = {this.props.comingSoon}>
+                                <Button
+                                    className="download-button"
+                                    disabled={this.props.comingSoon}
+                                >
                                     Download
                                 </Button>
                             }
                             modal
                             contentStyle={{
-                                color:
-                                    "#111111",
+                                color: "#111111",
                                 width: this.state.width > 500 ? 500 : "95%",
                                 borderRadius: 5,
                                 backgroundColor: "white",
@@ -93,27 +86,28 @@ class DownloadBox extends Component {
                                     textAlign: "left",
                                 }}
                             >
-                                Once your cloud PC is finished creating,
-                                you will be able to download our desktop applications
-                                to access your cloud PC.
+                                Once your cloud PC is finished creating, you
+                                will be able to download our desktop
+                                applications to access your cloud PC.
                             </div>
                         </Popup>
+                    ) : this.props.linux ? (
+                        <LinuxPopup
+                            executable={this.props.executable}
+                            executableName={this.props.executableName}
+                        />
                     ) : (
-                    this.props.linux 
-                    ?
-                    <LinuxPopup
-                        executable = {this.props.executable}
-                        executableName = {this.props.executableName}
-                    />
-                    :
-                    <a
-                        href={this.props.executable}
-                        download={this.props.executableName}
-                    >
-                        <Button className = "download-button" disabled = {this.props.comingSoon}>
-                            Download
-                        </Button>
-                    </a>
+                        <a
+                            href={this.props.executable}
+                            download={this.props.executableName}
+                        >
+                            <Button
+                                className="download-button"
+                                disabled={this.props.comingSoon}
+                            >
+                                Download
+                            </Button>
+                        </a>
                     )}
                 </div>
             </Col>

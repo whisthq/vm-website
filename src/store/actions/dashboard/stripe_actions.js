@@ -4,9 +4,8 @@ export const STRIPE_FAILURE = "STRIPE_FAILURE";
 export const SEND_FINAL_CHARGE = "SEND_FINAL_CHARGE";
 export const APPLY_DISCOUNT = "APPLY_DISCOUNT";
 export const CHANGE_PLAN = "CHANGE_PLAN";
-export const CHANGE_PLAN_STATUS = "CHANGE_PLAN_STATUS"
-export const CANCEL_PLAN = "CANCEL_PLAN"
-
+export const CHANGE_PLAN_STATUS = "CHANGE_PLAN_STATUS";
+export const CANCEL_PLAN = "CANCEL_PLAN";
 
 export function chargeStripe(token, amount, code, plan) {
     return {
@@ -59,13 +58,13 @@ export function applyDiscount(code) {
 export function changePlan(plan) {
     return {
         type: CHANGE_PLAN,
-        plan
-    }
+        plan,
+    };
 }
 
 export function changePlanStatus(status) {
     return {
         type: CHANGE_PLAN_STATUS,
-        status
-    }
+        status,
+    };
 }

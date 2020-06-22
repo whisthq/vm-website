@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import { HashLink } from "react-router-hash-link";
 
-import Header from "components/header"
-
+import Header from "components/header";
 
 class OfflineSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
             width: 0,
-            height: 0
+            height: 0,
         };
     }
 
@@ -25,8 +24,7 @@ class OfflineSection extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
-
+    };
 
     render() {
         return (
@@ -49,8 +47,8 @@ class OfflineSection extends Component {
                     }}
                 >
                     {this.props.month} {this.props.day}, {this.props.year}:
-                    Fractal is currently undergoing a major update and will
-                    be back online within a few days. We apologize for the
+                    Fractal is currently undergoing a major update and will be
+                    back online within a few days. We apologize for the
                     inconvenience!
                 </div>
                 <HashLink
@@ -74,6 +72,5 @@ class OfflineSection extends Component {
         );
     }
 }
-
 
 export default OfflineSection;

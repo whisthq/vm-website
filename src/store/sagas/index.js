@@ -9,7 +9,6 @@ import DiskSaga from "store/sagas/dashboard/disk_saga";
 import PopupSaga from "store/sagas/dashboard/popup_saga";
 import StorageSaga from "store/sagas/settings/storage_saga";
 
-
 export default function* rootSaga() {
     yield all([
         LoginSaga(),

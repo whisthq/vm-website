@@ -5,21 +5,19 @@ import "static/PageDashboard.css";
 class HardwareBox extends Component {
     render() {
         return (
-            <div className = "hardware-box">
+            <div className="hardware-box">
                 <img
                     src={this.props.icon}
                     alt=""
                     style={{
-                        textAlign:
-                            "left",
+                        textAlign: "left",
                         marginTop: 5,
                         height: 45,
                     }}
                 />
                 <div
                     style={{
-                        fontWeight:
-                            "bold",
+                        fontWeight: "bold",
                         fontSize: 18,
                         marginTop: 20,
                     }}
@@ -28,8 +26,7 @@ class HardwareBox extends Component {
                 </div>
                 <div
                     style={{
-                        color:
-                            "#555555",
+                        color: "#555555",
                         fontSize: 13,
                     }}
                 >
@@ -39,6 +36,5 @@ class HardwareBox extends Component {
         );
     }
 }
-
 
 export default HardwareBox;
