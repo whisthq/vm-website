@@ -112,31 +112,65 @@ class GoogleBox extends Component {
                         </div>
                     </div>
                 ) : (
-                    <div
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            width: "100%",
-                            margin: "auto",
-                            marginTop: 20,
-                            maxWidth: 300,
-                            borderRadius: 4,
-                            background: "rgba(76, 139, 245, 0.1)",
-                        }}
-                        className="google-button-wrapper"
-                    >
-                        <GoogleLogin
-                            clientId={GOOGLE_CLIENT_ID}
-                            buttonText={"Sign in with Google"}
-                            responseType={"code"}
-                            accessType={"offline"}
-                            onSuccess={this.responseGoogleSuccess}
-                            onFailure={this.responseGoogleFailure}
-                            cookiePolicy={"single_host_origin"}
-                            redirectUri={"postmessage"}
-                            prompt={"consent"}
-                            style={{ width: "100%", fontWeight: "bold" }}
-                        />
+                    <div>
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                                width: "100%",
+                                margin: "auto",
+                                marginTop: 20,
+                                maxWidth: 300,
+                                borderRadius: 4,
+                                background: "rgba(76, 139, 245, 0.1)",
+                            }}
+                            className="google-button-wrapper"
+                        >
+                            <GoogleLogin
+                                clientId={GOOGLE_CLIENT_ID}
+                                buttonText={"Sign in with Google"}
+                                responseType={"code"}
+                                accessType={"offline"}
+                                onSuccess={this.responseGoogleSuccess}
+                                onFailure={this.responseGoogleFailure}
+                                cookiePolicy={"single_host_origin"}
+                                redirectUri={"postmessage"}
+                                prompt={"consent"}
+                                style={{ width: "100%", fontWeight: "bold" }}
+                            />
+                        </div>
+                        <div
+                            style={{
+                                textAlign: "center",
+                                margin: "auto",
+                                marginTop: 20,
+                                color: "#999999",
+                                display: "flex",
+                                justifyContent: "space-between",
+                                maxWidth: 300,
+                                fontSize: 14,
+                            }}
+                        >
+                            <div
+                                style={{
+                                    height: 1,
+                                    width: 125,
+                                    background: "#D9D9D9",
+                                    position: "relative",
+                                    top: 10,
+                                }}
+                            ></div>
+                            <div>OR</div>
+                            <div
+                                style={{
+                                    height: 1,
+                                    width: 125,
+                                    background: "#D9D9D9",
+                                    position: "relative",
+                                    top: 10,
+                                }}
+                            ></div>
+                        </div>
                     </div>
                 )}
             </div>

@@ -162,11 +162,6 @@ class SignupBox extends Component {
                 this.setState({ tooShort: false });
             }
 
-            console.log(this.state.passwordSignup);
-            console.log(
-                passwordValidationRegex.test(this.state.passwordSignup)
-            );
-
             if (!passwordValidationRegex.test(this.state.passwordSignup)) {
                 this.setState({ validPasswordFormat: false });
             } else {

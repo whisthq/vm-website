@@ -135,7 +135,8 @@ class AppSection extends Component {
                     >
                         We can pre-install certain apps on your cloud PC (as long as it's not behind a 
                         license, like Adobe). If the app you want is not listed below, you can always install
-                        it once your cloud PC is created.
+                        it once your cloud PC is created. Please note that installing many apps can significantly
+                        increase the amount of time it takes to set up your cloud PC.
                     </div>
                     <Tabs
                         defaultActiveKey="All"

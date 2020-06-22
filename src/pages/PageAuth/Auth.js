@@ -109,8 +109,8 @@ class Auth extends Component {
                                     </TabList>
                                     <TabPanel style={{ padding: "15px 30px" }}>
                                         {this.props.google_auth &&
-                                            !this.props.google_auth
-                                                .needs_reason && (
+                                            this.props.google_auth
+                                                .show_google_button && (
                                                 <GoogleBox
                                                     processing={
                                                         this.state.processing
@@ -175,7 +175,14 @@ function mapStateToProps(state) {
     return {
         loggedIn: state.AuthReducer.logged_in,
         email_verified: state.AuthReducer.email_verified,
-        google_auth: state.AuthReducer.google_auth,
+        google_auth: state.AuthReducer.google_auth
+            ? state.AuthReducer.google_auth
+            : {
+                  needs_reason: false,
+                  use_google: false,
+                  auth_error: "",
+                  show_google_button: true,
+              },
     };
 }
 
