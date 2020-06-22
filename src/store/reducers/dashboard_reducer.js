@@ -41,6 +41,11 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 ...state,
                 promo_code: action.code,
             };
+        case CustomerAction.PROMO_CODE_FAILURE:
+            return {
+                ...state,
+                failed_referral_attempts: state.failed_referral_attempts + 1,
+            };
         case CustomerAction.STORE_CREDITS:
             return {
                 ...state,

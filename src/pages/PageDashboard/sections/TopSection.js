@@ -224,8 +224,8 @@ class TopSection extends Component {
                                     <div className="title">Change Plan</div>
                                     <div className="text">
                                         You are subscribed to the{" "}
-                                        {this.props.payment.nickname}
-                                        plan. You can change your plan here.
+                                        {this.props.payment.plan.nickname} plan.
+                                        You can change your plan here.
                                     </div>
                                 </div>
                             </HashLink>
