@@ -12,7 +12,6 @@ import {
 
 import "static/Footer.css";
 
-
 class Footer extends Component {
     constructor(props) {
         super(props);
@@ -36,7 +35,7 @@ class Footer extends Component {
     render() {
         return (
             <div>
-                <div className = "footer">
+                <div className="footer">
                     <div className="fractal-container">
                         <Row
                             style={{
@@ -45,13 +44,10 @@ class Footer extends Component {
                             }}
                         >
                             <Col xs={12} style={{ maxWidth: 350 }}>
-                                <div className = "title">
-                                    Fractal
-                                </div>
-                                <div className = "text">
-                                    Fractal brings the power of a
-                                    workstation to any
-                                    Internet-connected device.
+                                <div className="title">Fractal</div>
+                                <div className="text">
+                                    Fractal brings the power of a workstation to
+                                    any Internet-connected device.
                                 </div>
                                 <div
                                     style={{
@@ -68,8 +64,8 @@ class Footer extends Component {
                                             textDecoration: "none",
                                         }}
                                     >
-                                        <div className = "icon-box">
-                                            <FaTwitter className = "icon"/>
+                                        <div className="icon-box">
+                                            <FaTwitter className="icon" />
                                         </div>
                                     </a>
                                     <a
@@ -80,8 +76,8 @@ class Footer extends Component {
                                             textDecoration: "none",
                                         }}
                                     >
-                                        <div className = "icon-box">
-                                            <FaMediumM className = "icon"/>
+                                        <div className="icon-box">
+                                            <FaMediumM className="icon" />
                                         </div>
                                     </a>
                                     <a
@@ -92,8 +88,8 @@ class Footer extends Component {
                                             textDecoration: "none",
                                         }}
                                     >
-                                        <div className = "icon-box">
-                                            <FaLinkedinIn className = "icon"/>
+                                        <div className="icon-box">
+                                            <FaLinkedinIn className="icon" />
                                         </div>
                                     </a>
                                     <a
@@ -104,8 +100,8 @@ class Footer extends Component {
                                             textDecoration: "none",
                                         }}
                                     >
-                                        <div className = "icon-box">
-                                            <FaInstagram className = "icon"/>
+                                        <div className="icon-box">
+                                            <FaInstagram className="icon" />
                                         </div>
                                     </a>
                                     <a
@@ -116,8 +112,8 @@ class Footer extends Component {
                                             textDecoration: "none",
                                         }}
                                     >
-                                        <div className = "icon-box">
-                                            <FaFacebook className = "icon"/>
+                                        <div className="icon-box">
+                                            <FaFacebook className="icon" />
                                         </div>
                                     </a>
                                 </div>
@@ -125,53 +121,46 @@ class Footer extends Component {
                         </Row>
                         <Row
                             style={{
-                                float: this.state.width > 700 ? "right" : "none",
+                                float:
+                                    this.state.width > 700 ? "right" : "none",
                                 width: this.state.width > 700 ? 350 : "100%",
                                 paddingRight: this.state.width > 700 ? 0 : 15,
                                 textAlign: "left",
-                                paddingTop: this.state.width > 700 ? 0 : 40
+                                paddingTop: this.state.width > 700 ? 0 : 40,
                             }}
                         >
                             <Col xs={4} style={{ paddingTop: 12 }}>
-                                <div className = "section-name">
-                                    HOME
-                                </div>
+                                <div className="section-name">HOME</div>
                                 <HashLink
                                     to="/#top"
                                     style={{ textDecoration: "none" }}
                                 >
-                                    <div className = "page-link">
-                                        Product
-                                    </div>
+                                    <div className="page-link">Product</div>
                                 </HashLink>
-                                <div style = {{border: "none"}}>
+                                <div style={{ border: "none" }}>
                                     <a
                                         href="mailto: hello@fractalcomputers.com"
-                                        className = "page-link"
+                                        className="page-link"
                                     >
                                         Contact Us
                                     </a>
                                 </div>
                             </Col>
                             <Col xs={4} style={{ paddingTop: 12 }}>
-                                <div className = "section-name">
-                                    COMPANY
-                                </div>
+                                <div className="section-name">COMPANY</div>
                                 <HashLink
                                     to="/about#top"
                                     style={{ textDecoration: "none" }}
                                 >
                                     <div style={{ fontSize: 13 }}>
-                                        <div className = "page-link">
-                                            About
-                                        </div>
+                                        <div className="page-link">About</div>
                                     </div>
                                 </HashLink>
                                 <div style={{ fontSize: 13 }}>
                                     <div>
                                         <a
                                             href="mailto: careers@fractalcomputers.com"
-                                            className = "page-link"
+                                            className="page-link"
                                         >
                                             Careers
                                         </a>
@@ -179,13 +168,11 @@ class Footer extends Component {
                                 </div>
                             </Col>
                             <Col xs={4} style={{ paddingTop: 12 }}>
-                                <div className = "section-name">
-                                    CONTACT
-                                </div>
+                                <div className="section-name">CONTACT</div>
                                 <div>
                                     <a
                                         href="mailto: sales@fractalcomputers.com"
-                                        className = "page-link"
+                                        className="page-link"
                                     >
                                         Sales
                                     </a>
@@ -193,7 +180,7 @@ class Footer extends Component {
                                 <div>
                                     <a
                                         href="mailto: support@fractalcomputers.com"
-                                        className = "page-link"
+                                        className="page-link"
                                     >
                                         Support
                                     </a>
@@ -201,7 +188,7 @@ class Footer extends Component {
                                 <div>
                                     <a
                                         href="mailto: careers@fractalcomputers.com"
-                                        className = "page-link"
+                                        className="page-link"
                                     >
                                         Careers
                                     </a>
@@ -234,40 +221,38 @@ class Footer extends Component {
                                     color: "#555555",
                                     overflow: "hidden",
                                     float: "left",
-                                    fontSize: this.state.width > 700 ? 14 : 12
+                                    fontSize: this.state.width > 700 ? 14 : 12,
                                 }}
                             >
                                 Copyright &copy; Fractal Computers, Inc. All
                                 Rights Reserved.
                             </span>
-                            {
-                            this.state.width > 700
-                            ?
-                            <span
-                                style={{
-                                    margin: 0,
-                                    color: "#555555",
-                                    overflow: "hidden",
-                                    float: "right",
-                                }}
-                            >
-                                <HashLink
-                                    to="/termsofservice#top"
-                                    style={{ color: "#555555" }}
+                            {this.state.width > 700 ? (
+                                <span
+                                    style={{
+                                        margin: 0,
+                                        color: "#555555",
+                                        overflow: "hidden",
+                                        float: "right",
+                                    }}
                                 >
-                                    Terms of Service
-                                </HashLink>{" "}
-                                &{" "}
-                                <HashLink
-                                    to="/privacy#top"
-                                    style={{ color: "#555555" }}
-                                >
-                                    Privacy Policy
-                                </HashLink>
-                            </span>
-                            :
-                            <div></div>
-                            }
+                                    <HashLink
+                                        to="/termsofservice#top"
+                                        style={{ color: "#555555" }}
+                                    >
+                                        Terms of Service
+                                    </HashLink>{" "}
+                                    &{" "}
+                                    <HashLink
+                                        to="/privacy#top"
+                                        style={{ color: "#555555" }}
+                                    >
+                                        Privacy Policy
+                                    </HashLink>
+                                </span>
+                            ) : (
+                                <div></div>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,6 @@ import Col from "react-bootstrap/Col";
 
 import "static/PageDashboard.css";
 
-
 class InfoRow extends Component {
     constructor(props) {
         super(props);
@@ -24,7 +23,7 @@ class InfoRow extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     render() {
         return (
@@ -43,26 +42,23 @@ class InfoRow extends Component {
                         color: "#555555",
                     }}
                 >
-                    {this.props.icon}
-                    {" "}
-                    {this.props.name}
+                    {this.props.icon} {this.props.name}
                 </div>
-                {
-                this.props.text
-                ?
-                <div
-                    style={{
-                        float: this.state.width > 700 ? "right" : "none",
-                        display: this.state.width > 700 ? "inline" : "block",
-                        paddingLeft: this.state.width > 700 ? 0 : 17,
-                        color: "#555555",
-                    }}
-                >
-                    {this.props.text}
-                </div>
-                :
-                <div className = "gray-line"></div>
-                }
+                {this.props.text ? (
+                    <div
+                        style={{
+                            float: this.state.width > 700 ? "right" : "none",
+                            display:
+                                this.state.width > 700 ? "inline" : "block",
+                            paddingLeft: this.state.width > 700 ? 0 : 17,
+                            color: "#555555",
+                        }}
+                    >
+                        {this.props.text}
+                    </div>
+                ) : (
+                    <div className="gray-line"></div>
+                )}
             </Col>
         );
     }

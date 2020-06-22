@@ -6,14 +6,13 @@ import { FaClone } from "react-icons/fa";
 
 import "static/PageDashboard.css";
 
-
 class DownloadBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
             width: 0,
             height: 0,
-            clipboardCopied: false
+            clipboardCopied: false,
         };
     }
 
@@ -28,7 +27,7 @@ class DownloadBox extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     copyToClipboard = (e) => {
         this.setState({ clipboardCopied: true });
@@ -41,17 +40,18 @@ class DownloadBox extends Component {
         return (
             <Popup
                 trigger={
-                    <button 
-                        className = "download-button"  
-                        onClick={() => this.setState({clipboardCopied: false})}
+                    <button
+                        className="download-button"
+                        onClick={() =>
+                            this.setState({ clipboardCopied: false })
+                        }
                     >
                         Download
                     </button>
                 }
                 modal
                 contentStyle={{
-                    color:
-                        "#111111",
+                    color: "#111111",
                     width: this.state.width > 500 ? 500 : "95%",
                     borderRadius: 5,
                     backgroundColor: "white",
@@ -64,33 +64,28 @@ class DownloadBox extends Component {
                 <div
                     style={{
                         fontSize: 16,
-                        textAlign:
-                            "left",
+                        textAlign: "left",
                     }}
                 >
                     <div>
                         Our Linux application relies on a few system libraries.
-                        Before downloading our application, please run the following
-                        command from your terminal.
+                        Before downloading our application, please run the
+                        following command from your terminal.
                     </div>
                     <div
                         style={{
                             padding: 20,
-                            background:
-                                "#0B172B",
+                            background: "#0B172B",
                             borderRadius: 4,
-                            textAlign:
-                                "left",
+                            textAlign: "left",
                             fontSize: 12,
                             marginTop: 25,
-                            color:
-                                "white",
+                            color: "white",
                         }}
                     >
                         <div
                             style={{
-                                display:
-                                    "flex",
+                                display: "flex",
                             }}
                         >
                             <div
@@ -99,35 +94,22 @@ class DownloadBox extends Component {
                                     marginRight: 25,
                                 }}
                             >
-                                sudo
-                                apt-get
-                                install
-                                libavcodec-dev
-                                libavdevice-dev
-                                libx11-dev
-                                libxtst-dev
-                                xclip
-                                x11-xserver-utils
-                                -y
+                                sudo apt-get install libavcodec-dev
+                                libavdevice-dev libx11-dev libxtst-dev xclip
+                                x11-xserver-utils -y
                             </div>
                             <div
                                 style={{
                                     width: 50,
                                     fontSize: 18,
-                                    textAlign:
-                                        "right",
+                                    textAlign: "right",
                                 }}
                             >
                                 <FaClone
                                     className="pointerOnHover"
-                                    onClick={
-                                        this
-                                            .copyToClipboard
-                                    }
+                                    onClick={this.copyToClipboard}
                                     style={{
-                                        color: this
-                                            .state
-                                            .clipboardCopied
+                                        color: this.state.clipboardCopied
                                             ? "#5ec3eb"
                                             : "white",
                                     }}
@@ -136,38 +118,25 @@ class DownloadBox extends Component {
                         </div>
                     </div>
                     <a
-                        href={ this.props.executable }
-                        download={ this.props.executableName }
+                        href={this.props.executable}
+                        download={this.props.executableName}
                     >
                         <Button
                             disabled={
-                                this
-                                    .props
-                                    .disks ===
-                                    undefined ||
-                                this
-                                    .props
-                                    .disks
-                                    .length ===
-                                    0 ||
-                                this
-                                    .props
-                                    .disk_is_creating
-                                ? "true" : "true"
+                                this.props.disks === undefined ||
+                                this.props.disks.length === 0 ||
+                                this.props.disk_is_creating
+                                    ? "true"
+                                    : "true"
                             }
                             style={{
-                                border:
-                                    "none",
-                                fontWeight:
-                                    "bold",
+                                border: "none",
+                                fontWeight: "bold",
                                 padding: 10,
                                 marginTop: 20,
-                                width:
-                                    "100%",
-                                background:
-                                    "rgba(94, 195, 235,0.1)",
-                                color:
-                                    "#5ec3eb",
+                                width: "100%",
+                                background: "rgba(94, 195, 235,0.1)",
+                                color: "#5ec3eb",
                             }}
                         >
                             Download

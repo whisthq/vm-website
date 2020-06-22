@@ -1,6 +1,6 @@
 .purchase {
     min-height: 100vh;
-    background: #F6F6F6;
+    background: #f6f6f6;
 }
 
 .purchase .purchase-flex {
@@ -69,12 +69,12 @@
     padding-right: 25px;
     background-color: rgba(94, 195, 235, 0.05) !important;
     margin-right: 15px !important;
-    margin-bottom: 15px !important
+    margin-bottom: 15px !important;
 }
 
 .apps-select nav .active {
     font-weight: bold !important;
-    box-shadow: 0px 4px 5px rgba(0,0,0,0.05);
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.05);
     background-color: rgba(94, 195, 235, 0.2) !important;
     color: #1ba8e0 !important;
 }

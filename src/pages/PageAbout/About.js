@@ -22,7 +22,6 @@ import EmployeeBox from "pages/PageAbout/components/employeeBox";
 import Header from "components/header";
 import Footer from "components/footer";
 
-
 class About extends Component {
     constructor(props) {
         super(props);
@@ -237,10 +236,10 @@ class About extends Component {
                                 <Carousel controls={false}>
                                     <Carousel.Item style={{ padding: 20 }}>
                                         <Row>
-                                            <EmployeeBox 
-                                                image = {Ming}
-                                                name = "Ming Ying"
-                                                text = "Ming
+                                            <EmployeeBox
+                                                image={Ming}
+                                                name="Ming Ying"
+                                                text="Ming
                                                         was a software
                                                         engineer at Fidelity
                                                         and quant researcher
@@ -264,10 +263,10 @@ class About extends Component {
                                                         He studied Statistics and Computer
                                                         Science at Harvard."
                                             />
-                                            <EmployeeBox 
-                                                image = {Phil}
-                                                name = "Phil Noel"
-                                                text = "Prior to
+                                            <EmployeeBox
+                                                image={Phil}
+                                                name="Phil Noel"
+                                                text="Prior to
                                                         Phil was a
                                                         product
                                                         manager at
@@ -291,10 +290,10 @@ class About extends Component {
                                                         Science and
                                                         Neuroscience."
                                             />
-                                            <EmployeeBox 
-                                                image = {Nick}
-                                                name = "Nick Pipitone"
-                                                text = "Nick has an
+                                            <EmployeeBox
+                                                image={Nick}
+                                                name="Nick Pipitone"
+                                                text="Nick has an
                                                         affinity for
                                                         graphics
                                                         shaders,
@@ -319,10 +318,10 @@ class About extends Component {
                                     </Carousel.Item>
                                     <Carousel.Item style={{ padding: 20 }}>
                                         <Row>
-                                            <EmployeeBox 
-                                                image = {Roshan}
-                                                name = "Roshan Padaki"
-                                                text = "Prior to
+                                            <EmployeeBox
+                                                image={Roshan}
+                                                name="Roshan Padaki"
+                                                text="Prior to
                                                         Fractal,
                                                         Roshan
                                                         researched
@@ -346,10 +345,10 @@ class About extends Component {
                                                         mathematics
                                                         at Harvard."
                                             />
-                                            <EmployeeBox 
-                                                image = {Hamish}
-                                                name = "Hamish Nicholson"
-                                                text = "Hamish has worked
+                                            <EmployeeBox
+                                                image={Hamish}
+                                                name="Hamish Nicholson"
+                                                text="Hamish has worked
                                                         as a data
                                                         scientist at
                                                         NASA's Jet
@@ -380,10 +379,10 @@ class About extends Component {
                                                         at Harvard
                                                         University."
                                             />
-                                            <EmployeeBox 
-                                                image = {Matt}
-                                                name = "Mathieu Lochet"
-                                                text = "Mathieu
+                                            <EmployeeBox
+                                                image={Matt}
+                                                name="Mathieu Lochet"
+                                                text="Mathieu
                                                         studied
                                                         Computer
                                                         Science and
@@ -405,10 +404,10 @@ class About extends Component {
                                     </Carousel.Item>
                                     <Carousel.Item style={{ padding: 20 }}>
                                         <Row>
-                                            <EmployeeBox 
-                                                image = {Jonathan}
-                                                name = "Jonathan Xu"
-                                                text = "Jonathan is
+                                            <EmployeeBox
+                                                image={Jonathan}
+                                                name="Jonathan Xu"
+                                                text="Jonathan is
                                                         an avid
                                                         hackathon-goer,
                                                         and loves to
@@ -431,19 +430,19 @@ class About extends Component {
                                                         University
                                                         of Waterloo."
                                             />
-                                            <EmployeeBox 
-                                                image = {Isabelle}
-                                                name = "Isabelle Zheng"
-                                                text = "Isabelle studies Computer Science at Harvard 
+                                            <EmployeeBox
+                                                image={Isabelle}
+                                                name="Isabelle Zheng"
+                                                text="Isabelle studies Computer Science at Harvard 
                                                         University. Prior to working with Fractal, she did 
                                                         mobile and full-stack development with Facebook and 
                                                         other startups. On campus, she works to connect student 
                                                         founders with potential investors."
                                             />
-                                            <EmployeeBox 
-                                                image = {Sean}
-                                                name = "Sean Hackett"
-                                                text = "Sean has milled around quantum physics labs, 
+                                            <EmployeeBox
+                                                image={Sean}
+                                                name="Sean Hackett"
+                                                text="Sean has milled around quantum physics labs, 
                                                         hackathons, and nonprofits. He studied 
                                                         tiny trampolines that transmute quantum 
                                                         information and built robots that make 

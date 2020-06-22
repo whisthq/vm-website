@@ -24,17 +24,15 @@ export function monthConvert(month) {
     ];
     var selectedMonthName = months[month];
     return selectedMonthName;
-};
+}
 
 export function unixToDate(unix) {
     const milliseconds = unix * 1000;
     const dateObject = new Date(milliseconds);
-    const humanDateFormat = dateObject
-        .toLocaleString("en-US")
-        .split(",")[0];
+    const humanDateFormat = dateObject.toLocaleString("en-US").split(",")[0];
     var dateArr = humanDateFormat.split("/");
     const month = monthConvert(dateArr[0] - 1);
     var finalDate =
         month + " " + dateArr[1].toString() + ", " + dateArr[2].toString();
     return finalDate;
-};
+}

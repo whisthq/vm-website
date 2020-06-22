@@ -3,13 +3,12 @@ import React, { Component } from "react";
 import "static/Shared.css";
 import "static/PageLanding.css";
 
-
 class PriceBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
             width: 0,
-            height: 0
+            height: 0,
         };
     }
 
@@ -24,7 +23,7 @@ class PriceBox extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     render() {
         return (
@@ -32,8 +31,7 @@ class PriceBox extends Component {
                 <div
                     style={{
                         borderRadius: 5,
-                        boxShadow:
-                            "0px 4px 20px rgba(0, 0, 0, 0.2)",
+                        boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
                         textAlign: "left",
                         background: "white",
                         padding: 30,
@@ -42,9 +40,7 @@ class PriceBox extends Component {
                         marginBottom: 20,
                     }}
                 >
-                    <div style={{ fontWeight: "bold" }}>
-                        {this.props.title}
-                    </div>
+                    <div style={{ fontWeight: "bold" }}>{this.props.title}</div>
                     <div
                         style={{
                             marginTop: 5,
@@ -68,7 +64,7 @@ class PriceBox extends Component {
                                 display: "inline",
                                 float: "left",
                                 position: "relative",
-                                fontSize: this.state.width > 700 ? 70: 50,
+                                fontSize: this.state.width > 700 ? 70 : 50,
                                 fontWeight: "bold",
                             }}
                         >
@@ -92,7 +88,7 @@ class PriceBox extends Component {
                             display: "block",
                             position: "relative",
                             bottom: 5,
-                            fontSize: this.state.width> 700 ? 16 : 14
+                            fontSize: this.state.width > 700 ? 16 : 14,
                         }}
                     >
                         {this.props.description}
@@ -102,6 +98,5 @@ class PriceBox extends Component {
         );
     }
 }
-
 
 export default PriceBox;

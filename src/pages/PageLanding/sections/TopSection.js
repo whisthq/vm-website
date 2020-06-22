@@ -10,13 +10,12 @@ import "static/PageLanding.css";
 
 import Cloud from "assets/large_graphics/cloud-computing.svg";
 
-
 class TopSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
             width: 0,
-            height: 0
+            height: 0,
         };
     }
 
@@ -31,8 +30,7 @@ class TopSection extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
-
+    };
 
     render() {
         return (
@@ -52,10 +50,14 @@ class TopSection extends Component {
                                 }}
                             >
                                 <div
-                                    className = "title-text"
-                                    style = {{
-                                        fontSize: this.state.width > 700 ? "calc(28px + 2.0vw)" : 35,
-                                        lineHeight: this.state.width > 700 ? 1.3 : 1.4
+                                    className="title-text"
+                                    style={{
+                                        fontSize:
+                                            this.state.width > 700
+                                                ? "calc(28px + 2.0vw)"
+                                                : 35,
+                                        lineHeight:
+                                            this.state.width > 700 ? 1.3 : 1.4,
                                     }}
                                 >
                                     Transform your laptop into a{" "}
@@ -63,16 +65,13 @@ class TopSection extends Component {
                                         supercomputer
                                     </span>
                                 </div>
-                                <p
-                                    className = "title-subtext"
-                                >
-                                    Fractal brings the power of a
-                                    workstation to any Internet-connected
-                                    device.
+                                <p className="title-subtext">
+                                    Fractal brings the power of a workstation to
+                                    any Internet-connected device.
                                 </p>
                                 <Link to="/dashboard">
                                     <Button
-                                        className = "black-button"
+                                        className="black-button"
                                         style={{
                                             display: "inline",
                                             float: "left",
@@ -101,10 +100,14 @@ class TopSection extends Component {
                                 <ImageFadeIn
                                     src={Cloud}
                                     style={{
-                                        width: this.state.width > 700 ? "90%" : "100%",
-                                        paddingTop: this.state.width > 700 ? 25 : 0,
+                                        width:
+                                            this.state.width > 700
+                                                ? "90%"
+                                                : "100%",
+                                        paddingTop:
+                                            this.state.width > 700 ? 25 : 0,
                                         position: "relative",
-                                        maxWidth: 1200
+                                        maxWidth: 1200,
                                     }}
                                 />
                             </Col>

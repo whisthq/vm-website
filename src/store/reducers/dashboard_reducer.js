@@ -1,12 +1,11 @@
-import * as DiskAction from "store/actions/dashboard/disk_actions"
-import * as StripeAction from "store/actions/dashboard/stripe_actions"
-import * as CustomerAction from "store/actions/dashboard/customer_actions"
-import * as PopupAction from "store/actions/dashboard/popup_actions"
-import * as RenderingAction from "store/actions/dashboard/rendering_actions"
-import * as VMSetupAction from "store/actions/dashboard/vm_setup_actions"
+import * as DiskAction from "store/actions/dashboard/disk_actions";
+import * as StripeAction from "store/actions/dashboard/stripe_actions";
+import * as CustomerAction from "store/actions/dashboard/customer_actions";
+import * as PopupAction from "store/actions/dashboard/popup_actions";
+import * as RenderingAction from "store/actions/dashboard/rendering_actions";
+import * as VMSetupAction from "store/actions/dashboard/vm_setup_actions";
 
-import { DASHBOARD_DEFAULT } from "store/reducers/defaults"
-
+import { DASHBOARD_DEFAULT } from "store/reducers/defaults";
 
 export default function (state = DASHBOARD_DEFAULT, action) {
     switch (action.type) {
@@ -89,8 +88,8 @@ export default function (state = DASHBOARD_DEFAULT, action) {
         case StripeAction.CHANGE_PLAN_STATUS:
             return {
                 ...state,
-                change_plan_status: action.status
-            }
+                change_plan_status: action.status,
+            };
         case StripeAction.CHARGE_STRIPE:
             return {
                 ...state,
@@ -101,50 +100,50 @@ export default function (state = DASHBOARD_DEFAULT, action) {
         case VMSetupAction.STORE_COMPUTER_SPEC:
             return {
                 ...state,
-                vm_setup_data: state.vm_setup_data ? 
-                    {...state.vm_setup_data, "spec": action.spec} : 
-                    {"spec": action.spec}
-            }
+                vm_setup_data: state.vm_setup_data
+                    ? { ...state.vm_setup_data, spec: action.spec }
+                    : { spec: action.spec },
+            };
         case VMSetupAction.STORE_PURCHASE_LOCATION:
             return {
                 ...state,
-                vm_setup_data: state.vm_setup_data ? 
-                    {...state.vm_setup_data, "location": action.location} : 
-                    {"location": action.location}
-            }
+                vm_setup_data: state.vm_setup_data
+                    ? { ...state.vm_setup_data, location: action.location }
+                    : { location: action.location },
+            };
         case VMSetupAction.STORE_PLAN_TYPE:
             return {
                 ...state,
-                vm_setup_data: state.vm_setup_data ? 
-                    {...state.vm_setup_data, "plan": action.plan} : 
-                    {"plan": action.plan}
-            }
+                vm_setup_data: state.vm_setup_data
+                    ? { ...state.vm_setup_data, plan: action.plan }
+                    : { plan: action.plan },
+            };
         case VMSetupAction.STORE_SETUP_STEP:
             return {
                 ...state,
-                vm_setup_data: state.vm_setup_data ? 
-                    {...state.vm_setup_data, "step": action.step} : 
-                    {"step": action.step}                
-            }
+                vm_setup_data: state.vm_setup_data
+                    ? { ...state.vm_setup_data, step: action.step }
+                    : { step: action.step },
+            };
         case VMSetupAction.STORE_COUNTRY:
             return {
                 ...state,
-                vm_setup_data: state.vm_setup_data ? 
-                    {...state.vm_setup_data, "country": action.country} : 
-                    {"country": action.country}       
-            }
+                vm_setup_data: state.vm_setup_data
+                    ? { ...state.vm_setup_data, country: action.country }
+                    : { country: action.country },
+            };
         case VMSetupAction.RESET_SETUP_DATA:
             return {
                 ...state,
-                vm_setup_data: DASHBOARD_DEFAULT.vm_setup_data
-            }
+                vm_setup_data: DASHBOARD_DEFAULT.vm_setup_data,
+            };
         case VMSetupAction.STORE_SELECTED_APPS:
             return {
                 ...state,
-                vm_setup_data: state.vm_setup_data ? 
-                    {...state.vm_setup_data, "apps": action.apps} : 
-                    {"apps": action.apps}     
-            }
+                vm_setup_data: state.vm_setup_data
+                    ? { ...state.vm_setup_data, apps: action.apps }
+                    : { apps: action.apps },
+            };
         default:
             return state;
     }

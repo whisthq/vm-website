@@ -8,27 +8,17 @@ import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import Popup from "reactjs-popup";
-import {
-    FaPlus,
-    FaFighterJet,
-    FaSpaceShuttle
-} from "react-icons/fa";
+import { FaPlus, FaFighterJet, FaSpaceShuttle } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faCircleNotch
-} from "@fortawesome/free-solid-svg-icons";
+import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 import "react-tabs/style/react-tabs.css";
 import "static/Shared.css";
 
 import Header from "components/header.js";
 
-import {
-    logout 
-} from "store/actions/auth/login_actions"
-import {
-    fetchDisks
-} from "store/actions/dashboard/disk_actions";
+import { logout } from "store/actions/auth/login_actions";
+import { fetchDisks } from "store/actions/dashboard/disk_actions";
 
 import SSD from "assets/icons/hard-drive-icon.svg";
 
@@ -43,7 +33,7 @@ class Settings extends Component {
             day: 0,
             month: 0,
             year: 0,
-            loaded: true
+            loaded: true,
         };
         this.customWidth = React.createRef();
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -71,13 +61,11 @@ class Settings extends Component {
         window.removeEventListener("resize", this.updateWindowDimensions);
     }
 
-    componentDidUpdate(prevProps) {
-    }
+    componentDidUpdate(prevProps) {}
 
     updateWindowDimensions() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
-
 
     monthConvert = (month) => {
         var months = [
@@ -296,21 +284,25 @@ class Settings extends Component {
                                                 position: "sticky",
                                             }}
                                         >
-                                            <Link to = "/dashboard"
+                                            <Link
+                                                to="/dashboard"
                                                 style={{
                                                     marginBottom: 20,
                                                     color: "#B9B9B9",
                                                     textDecoration: "none",
-                                                    display: "block"
+                                                    display: "block",
                                                 }}
                                             >
                                                 DASHBOARD
                                             </Link>
-                                            <Link to = "/settings" 
-                                                className="sign-out-button" 
-                                                style = {{textDecoration: "none",
-                                                          color: "#111111",
-                                                          fontWeight: "bold"}}
+                                            <Link
+                                                to="/settings"
+                                                className="sign-out-button"
+                                                style={{
+                                                    textDecoration: "none",
+                                                    color: "#111111",
+                                                    fontWeight: "bold",
+                                                }}
                                             >
                                                 SETTINGS
                                             </Link>
@@ -321,8 +313,8 @@ class Settings extends Component {
                                                         logout()
                                                     )
                                                 }
-                                                style = {{
-                                                    marginTop: 15
+                                                style={{
+                                                    marginTop: 15,
                                                 }}
                                             >
                                                 SIGN OUT
@@ -380,134 +372,214 @@ class Settings extends Component {
                                         >
                                             SETTINGS
                                         </div>
-                                        {
-                                        this.props.disks && this.props.disks.length > 0
-                                        ?
-                                        <Row style={{ marginTop: 5 }}>
-                                            <Col xs={12}>
-                                                <Row style = {{width: "100%"}}>
-                                                    {this.props.disks.map((value, index) => {
-                                                        return(
-                                                            <Col sm = {6} md = {4} xl = {3}
-                                                                style = {{paddingRight: this.state.width > 700 ? 20 : 0}}
-                                                            >
-                                                                <div style={{
-                                                                    fontSize: 14,
-                                                                    background:
-                                                                        "rgba(94, 195, 235, 0.06)",
-                                                                    boxShadow:
-                                                                        "0px 4px 15px rgba(0, 0, 0, 0.2)",
-                                                                    borderRadius: 7,
-                                                                    padding:
-                                                                        "40px 35px",
-                                                                    marginTop: 35,
-                                                                    minHeight: 210
-                                                                }}>
-                                                                    <img
-                                                                        src={
-                                                                            SSD
-                                                                        }
-                                                                        alt=""
+                                        {this.props.disks &&
+                                        this.props.disks.length > 0 ? (
+                                            <Row style={{ marginTop: 5 }}>
+                                                <Col xs={12}>
+                                                    <Row
+                                                        style={{
+                                                            width: "100%",
+                                                        }}
+                                                    >
+                                                        {this.props.disks.map(
+                                                            (value, index) => {
+                                                                return (
+                                                                    <Col
+                                                                        sm={6}
+                                                                        md={4}
+                                                                        xl={3}
                                                                         style={{
-                                                                            textAlign:
-                                                                                "left",
-                                                                            marginTop: 5,
-                                                                            height: 45,
+                                                                            paddingRight:
+                                                                                this
+                                                                                    .state
+                                                                                    .width >
+                                                                                700
+                                                                                    ? 20
+                                                                                    : 0,
+                                                                        }}
+                                                                    >
+                                                                        <div
+                                                                            style={{
+                                                                                fontSize: 14,
+                                                                                background:
+                                                                                    "rgba(94, 195, 235, 0.06)",
+                                                                                boxShadow:
+                                                                                    "0px 4px 15px rgba(0, 0, 0, 0.2)",
+                                                                                borderRadius: 7,
+                                                                                padding:
+                                                                                    "40px 35px",
+                                                                                marginTop: 35,
+                                                                                minHeight: 210,
+                                                                            }}
+                                                                        >
+                                                                            <img
+                                                                                src={
+                                                                                    SSD
+                                                                                }
+                                                                                alt=""
+                                                                                style={{
+                                                                                    textAlign:
+                                                                                        "left",
+                                                                                    marginTop: 5,
+                                                                                    height: 45,
+                                                                                }}
+                                                                            />
+                                                                            <div
+                                                                                style={{
+                                                                                    fontWeight:
+                                                                                        "bold",
+                                                                                    fontSize: 18,
+                                                                                    marginTop: 25,
+                                                                                }}
+                                                                            >
+                                                                                Storage
+                                                                                Disk{" "}
+                                                                                {index.toString()}
+                                                                            </div>
+                                                                            <div
+                                                                                style={{
+                                                                                    marginTop: 3,
+                                                                                }}
+                                                                            >
+                                                                                {value[
+                                                                                    "disk_size"
+                                                                                ].toString() +
+                                                                                    "GB"}
+                                                                            </div>
+                                                                        </div>
+                                                                    </Col>
+                                                                );
+                                                            }
+                                                        )}
+                                                        <Col
+                                                            sm={6}
+                                                            md={4}
+                                                            xl={3}
+                                                            className="pointerOnHover"
+                                                            style={{
+                                                                paddingRight:
+                                                                    this.state
+                                                                        .width >
+                                                                    700
+                                                                        ? 20
+                                                                        : 0,
+                                                            }}
+                                                        >
+                                                            <Link
+                                                                to="/storage"
+                                                                style={{
+                                                                    textDecoration:
+                                                                        "none",
+                                                                }}
+                                                            >
+                                                                <div
+                                                                    style={{
+                                                                        fontSize: 14,
+                                                                        background:
+                                                                            "#0B172B",
+                                                                        boxShadow:
+                                                                            "0px 4px 15px rgba(0, 0, 0, 0.2)",
+                                                                        borderRadius: 7,
+                                                                        padding:
+                                                                            "40px 35px",
+                                                                        marginTop: 35,
+                                                                        minHeight: 210,
+                                                                        textAlign:
+                                                                            "center",
+                                                                        color:
+                                                                            "white",
+                                                                    }}
+                                                                >
+                                                                    <FaPlus
+                                                                        style={{
+                                                                            fontSize: 25,
+                                                                            marginTop: 20,
                                                                         }}
                                                                     />
-                                                                    <div style = {{fontWeight: 'bold', fontSize: 18, marginTop: 25}}>
-                                                                        Storage Disk {index.toString()}
-                                                                    </div>
-                                                                    <div style = {{marginTop: 3}}>
-                                                                        {value["disk_size"].toString() + "GB"}
+                                                                    <div
+                                                                        style={{
+                                                                            marginTop: 32,
+                                                                            fontSize: 16,
+                                                                        }}
+                                                                    >
+                                                                        Add More
+                                                                        Storage
                                                                     </div>
                                                                 </div>
-                                                            </Col>
-                                                        );
-                                                    })}
-                                                    <Col sm = {6} md = {4} xl = {3}
-                                                        className = "pointerOnHover"
-                                                        style = {{paddingRight: this.state.width > 700 ? 20 : 0}}
+                                                            </Link>
+                                                        </Col>
+                                                    </Row>
+                                                </Col>
+                                            </Row>
+                                        ) : (
+                                            <Row style={{ marginTop: 5 }}>
+                                                <Col xs={12}>
+                                                    <Row
+                                                        style={{
+                                                            width: "100%",
+                                                        }}
                                                     >
-                                                        <Link to = "/storage"
-                                                            style = {{
-                                                                textDecoration: "none"
-                                                            }}>
-                                                            <div style={{
-                                                                fontSize: 14,
-                                                                background:
-                                                                    "#0B172B",
-                                                                boxShadow:
-                                                                    "0px 4px 15px rgba(0, 0, 0, 0.2)",
-                                                                borderRadius: 7,
-                                                                padding:
-                                                                    "40px 35px",
-                                                                marginTop: 35,
-                                                                minHeight: 210,
-                                                                textAlign: "center",
-                                                                color: "white"
-                                                            }}>
-                                                                <FaPlus style = {{
-                                                                    fontSize: 25, 
-                                                                    marginTop: 20
-                                                                }}
-                                                                />
-                                                                <div style = {{
-                                                                    marginTop: 32,
-                                                                    fontSize: 16
-                                                                }}>
-                                                                    Add More Storage
-                                                                </div>
-                                                            </div>
-                                                        </Link>
-                                                    </Col>
-                                                </Row>
-                                            </Col>
-                                        </Row>
-                                        :
-                                        <Row style={{ marginTop: 5}}>
-                                            <Col xs={12}>
-                                                <Row style = {{width: "100%"}}>
-
-                                                    <Col sm = {6} md = {4} xl = {3}
-                                                        className = "pointerOnHover"
-                                                        style = {{paddingRight: this.state.width > 700 ? 20 : 0}}
-                                                    >
-                                                        <Link
+                                                        <Col
+                                                            sm={6}
+                                                            md={4}
+                                                            xl={3}
+                                                            className="pointerOnHover"
                                                             style={{
-                                                                textDecoration:
-                                                                    "none",
+                                                                paddingRight:
+                                                                    this.state
+                                                                        .width >
+                                                                    700
+                                                                        ? 20
+                                                                        : 0,
                                                             }}
-                                                            to="/purchase"
                                                         >
-                                                            <div style={{
-                                                                fontSize: 14,
-                                                                background:
-                                                                    "#0B172B",
-                                                                boxShadow:
-                                                                    "0px 4px 15px rgba(0, 0, 0, 0.2)",
-                                                                borderRadius: 7,
-                                                                padding:
-                                                                    "40px 35px",
-                                                                marginTop: 35,
-                                                                minHeight: 210,
-                                                                textAlign: "center",
-                                                                color: "white"
-                                                            }}>
-                                                                <FaPlus style = {{fontSize: 25, marginTop: 20}}/>
-                                                                <div style = {{
-                                                                    marginTop: 32,
-                                                                    fontSize: 16
-                                                                }}>
-                                                                    Create Cloud PC
+                                                            <Link
+                                                                style={{
+                                                                    textDecoration:
+                                                                        "none",
+                                                                }}
+                                                                to="/purchase"
+                                                            >
+                                                                <div
+                                                                    style={{
+                                                                        fontSize: 14,
+                                                                        background:
+                                                                            "#0B172B",
+                                                                        boxShadow:
+                                                                            "0px 4px 15px rgba(0, 0, 0, 0.2)",
+                                                                        borderRadius: 7,
+                                                                        padding:
+                                                                            "40px 35px",
+                                                                        marginTop: 35,
+                                                                        minHeight: 210,
+                                                                        textAlign:
+                                                                            "center",
+                                                                        color:
+                                                                            "white",
+                                                                    }}
+                                                                >
+                                                                    <FaPlus
+                                                                        style={{
+                                                                            fontSize: 25,
+                                                                            marginTop: 20,
+                                                                        }}
+                                                                    />
+                                                                    <div
+                                                                        style={{
+                                                                            marginTop: 32,
+                                                                            fontSize: 16,
+                                                                        }}
+                                                                    >
+                                                                        Create
+                                                                        Cloud PC
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </Link>
-                                                    </Col>
-                                                </Row>
-                                            </Col>
-                                        </Row>
-                                        }
+                                                            </Link>
+                                                        </Col>
+                                                    </Row>
+                                                </Col>
+                                            </Row>
+                                        )}
                                         <Row style={{ marginTop: 60 }}>
                                             <Col sm={6} xs={12}>
                                                 <div
@@ -540,13 +612,14 @@ class Settings extends Component {
                                                             marginTop: 35,
                                                             minHeight: 245,
                                                             marginBottom: 40,
-                                                            border: "solid 10px white"
+                                                            border:
+                                                                "solid 10px white",
                                                         }}
                                                     >
                                                         <Row
                                                             style={{
                                                                 width: "100%",
-                                                                margin: 0
+                                                                margin: 0,
                                                             }}
                                                         >
                                                             <Col
@@ -555,22 +628,31 @@ class Settings extends Component {
                                                                     padding:
                                                                         "0px 20px",
                                                                     marginBottom: 15,
-                                                                    textAlign: "center"
+                                                                    textAlign:
+                                                                        "center",
                                                                 }}
-                                                            >    
-                                                                <FaFighterJet style = {{
-                                                                    color: "#444444",
-                                                                    fontSize: 40,
-                                                                    marginTop: 10
-                                                                }}/>
-                                                                <div style = {{
-                                                                    color: "#111111", 
-                                                                    fontSize: 16, 
-                                                                    margin: "auto",
-                                                                    marginTop: 30,
-                                                                    maxWidth: 250
-                                                                }}>
-                                                                    More account configurability
+                                                            >
+                                                                <FaFighterJet
+                                                                    style={{
+                                                                        color:
+                                                                            "#444444",
+                                                                        fontSize: 40,
+                                                                        marginTop: 10,
+                                                                    }}
+                                                                />
+                                                                <div
+                                                                    style={{
+                                                                        color:
+                                                                            "#111111",
+                                                                        fontSize: 16,
+                                                                        margin:
+                                                                            "auto",
+                                                                        marginTop: 30,
+                                                                        maxWidth: 250,
+                                                                    }}
+                                                                >
+                                                                    More account
+                                                                    configurability
                                                                     coming soon
                                                                 </div>
                                                             </Col>
@@ -608,7 +690,8 @@ class Settings extends Component {
                                                                 "40px 15px",
                                                             marginTop: 35,
                                                             minHeight: 245,
-                                                            border: "solid 10px white"
+                                                            border:
+                                                                "solid 10px white",
                                                         }}
                                                     >
                                                         <Row
@@ -623,22 +706,33 @@ class Settings extends Component {
                                                                     padding:
                                                                         "0px 20px",
                                                                     marginBottom: 15,
-                                                                    textAlign: "center"
+                                                                    textAlign:
+                                                                        "center",
                                                                 }}
-                                                            >    
-                                                                <FaSpaceShuttle style = {{
-                                                                    color: "#444444",
-                                                                    fontSize: 40,
-                                                                    marginTop: 10
-                                                                }}/>
-                                                                <div style = {{
-                                                                    color: "#111111", 
-                                                                    fontSize: 16, 
-                                                                    margin: "auto",
-                                                                    marginTop: 30,
-                                                                    maxWidth: 250
-                                                                }}>
-                                                                    CPU, GPU, and RAM upgradeability coming soon
+                                                            >
+                                                                <FaSpaceShuttle
+                                                                    style={{
+                                                                        color:
+                                                                            "#444444",
+                                                                        fontSize: 40,
+                                                                        marginTop: 10,
+                                                                    }}
+                                                                />
+                                                                <div
+                                                                    style={{
+                                                                        color:
+                                                                            "#111111",
+                                                                        fontSize: 16,
+                                                                        margin:
+                                                                            "auto",
+                                                                        marginTop: 30,
+                                                                        maxWidth: 250,
+                                                                    }}
+                                                                >
+                                                                    CPU, GPU,
+                                                                    and RAM
+                                                                    upgradeability
+                                                                    coming soon
                                                                 </div>
                                                             </Col>
                                                         </Row>
@@ -667,7 +761,7 @@ function mapStateToProps(state) {
                 : state.DashboardReducer.disks,
         id: state.DashboardReducer.id,
         email_verified: state.AuthReducer.email_verified,
-        customer: state.DashboardReducer.customer
+        customer: state.DashboardReducer.customer,
     };
 }
 

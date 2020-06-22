@@ -15,7 +15,7 @@ class Landing extends Component {
         super(props);
         this.state = {
             width: 0,
-            height: 0
+            height: 0,
         };
     }
 
@@ -31,24 +31,27 @@ class Landing extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
     render() {
         return (
-            <div style={{ backgroundColor: "white", overflowX: "hidden" }} id="top">
+            <div
+                style={{ backgroundColor: "white", overflowX: "hidden" }}
+                id="top"
+            >
                 <div style={{ maxWidth: 1920, margin: "auto" }}>
                     <Header color="#111111" button="#5ec3eb" homepage />
                 </div>
                 <div style={{ maxWidth: 1920, margin: "auto" }}>
-                    <TopSection/>
+                    <TopSection />
                 </div>
                 <div>
-                    <MiddleSection/>
+                    <MiddleSection />
                 </div>
                 <div>
-                    <PricingSection/>
+                    <PricingSection />
                 </div>
-                <BottomSection/>
+                <BottomSection />
                 <div style={{ textAlign: "left" }}>
                     <Footer />
                 </div>

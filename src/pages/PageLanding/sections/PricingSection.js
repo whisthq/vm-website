@@ -15,13 +15,12 @@ import GPU from "assets/icons/gpu.svg";
 import RAM from "assets/icons/ram.svg";
 import SSD from "assets/icons/hard-drive-icon.svg";
 
-
 class PricingSection extends Component {
     constructor(props) {
         super(props);
         this.state = {
             width: 0,
-            height: 0
+            height: 0,
         };
     }
 
@@ -36,9 +35,8 @@ class PricingSection extends Component {
 
     updateWindowDimensions = () => {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
+    };
 
-    
     render() {
         return (
             <div
@@ -56,7 +54,12 @@ class PricingSection extends Component {
                         textAlign: "center",
                     }}
                 >
-                    <div style={{ textAlign: this.state.width > 700 ? "center" : "left" }}>
+                    <div
+                        style={{
+                            textAlign:
+                                this.state.width > 700 ? "center" : "left",
+                        }}
+                    >
                         <div
                             style={{
                                 fontSize: this.state.width > 700 ? 30 : 25,
@@ -77,11 +80,14 @@ class PricingSection extends Component {
                         >
                             No credit card required.
                         </div>
-                        <Link to="/dashboard" style = {{textDecoration: "none"}}>
+                        <Link
+                            to="/dashboard"
+                            style={{ textDecoration: "none" }}
+                        >
                             <Button
-                                className = "black-button"
+                                className="black-button"
                                 style={{
-                                    marginTop: 50
+                                    marginTop: 50,
                                 }}
                             >
                                 GET STARTED{" "}
@@ -100,72 +106,77 @@ class PricingSection extends Component {
                     <Row style={{ margin: "auto", marginTop: 75 }}>
                         <Col
                             md={4}
-                            style={{ 
-                                paddingLeft: 0, 
-                                paddingRight: this.state.width > 700 ? 20 : 0 }}
+                            style={{
+                                paddingLeft: 0,
+                                paddingRight: this.state.width > 700 ? 20 : 0,
+                            }}
                         >
-                            <PriceBox 
-                                title = "Hourly"
-                                price = "5"
-                                description = "+$0.70 per hour usage"
+                            <PriceBox
+                                title="Hourly"
+                                price="5"
+                                description="+$0.70 per hour usage"
                             />
                         </Col>
                         <Col
                             md={4}
-                            style={{ 
-                                paddingLeft: this.state.width > 700 ? 10 : 0, 
-                                paddingRight: this.state.width > 700 ? 10 : 0 }}
+                            style={{
+                                paddingLeft: this.state.width > 700 ? 10 : 0,
+                                paddingRight: this.state.width > 700 ? 10 : 0,
+                            }}
                         >
-                            <PriceBox 
-                                title = "Monthly"
-                                price = "39"
-                                description = "6 hr/day + $0.50 per extra hr"
+                            <PriceBox
+                                title="Monthly"
+                                price="39"
+                                description="6 hr/day + $0.50 per extra hr"
                             />
                         </Col>
                         <Col
                             md={4}
-                            style={{ 
-                                paddingLeft: this.state.width > 700 ? 20 : 0, 
-                                paddingRight: 0 }}
+                            style={{
+                                paddingLeft: this.state.width > 700 ? 20 : 0,
+                                paddingRight: 0,
+                            }}
                         >
-                            <PriceBox 
-                                title = "Unlimited"
-                                price = "99"
-                                description = "Unlimited monthly usage"
+                            <PriceBox
+                                title="Unlimited"
+                                price="99"
+                                description="Unlimited monthly usage"
                             />
                         </Col>
                     </Row>
-                    <Row style={{ marginTop: this.state.width > 700 ? 50 : 30 }}>
+                    <Row
+                        style={{ marginTop: this.state.width > 700 ? 50 : 30 }}
+                    >
                         <Col xs={6} md={3}>
-                            <HardwareIconBox 
-                                icon = {CPU}
-                                title = "CPU"
-                                full_description = "Intel Xeon E5-2690"
-                                short_description = "Six Core Xeon"
+                            <HardwareIconBox
+                                icon={CPU}
+                                title="CPU"
+                                full_description="Intel Xeon E5-2690"
+                                short_description="Six Core Xeon"
                             />
                         </Col>
                         <Col xs={6} md={3}>
-                            <HardwareIconBox 
-                                icon = {GPU}
-                                title = "GPU"
-                                full_description = "NVIDIA Tesla M60"
-                                short_description = "Tesla M60"
+                            <HardwareIconBox
+                                icon={GPU}
+                                title="GPU"
+                                full_description="NVIDIA Tesla M60"
+                                short_description="Tesla M60"
                             />
                         </Col>
                         <Col xs={6} md={3}>
-                            <HardwareIconBox 
-                                icon = {RAM}
-                                title = "RAM"
-                                full_description = "56GB RAM"
-                                short_description = "56GB RAM"
+                            <HardwareIconBox
+                                icon={RAM}
+                                title="RAM"
+                                full_description="56GB RAM"
+                                short_description="56GB RAM"
                             />
                         </Col>
                         <Col xs={6} md={3}>
-                            <HardwareIconBox 
-                                icon = {SSD}
-                                title = "SSD"
-                                full_description = "120GB SSD"
-                                short_description = "120GB SSD"
+                            <HardwareIconBox
+                                icon={SSD}
+                                title="SSD"
+                                full_description="120GB SSD"
+                                short_description="120GB SSD"
                             />
                         </Col>
                     </Row>
