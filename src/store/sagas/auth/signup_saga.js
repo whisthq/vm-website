@@ -108,7 +108,7 @@ function* sendVerificationEmail(action) {
     if (action.username !== "" && action.token !== "") {
         const { json } = yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/verification",
+            config.url.PRIMARY_SERVER + "/mail/verification",
             {
                 username: action.username,
                 token: action.token,

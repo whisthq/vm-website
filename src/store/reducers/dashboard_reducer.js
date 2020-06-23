@@ -150,6 +150,13 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                     ? { ...state.vm_setup_data, apps: action.apps }
                     : { apps: action.apps },
             };
+        case CustomerAction.STORE_USER_REPORT:
+            return {
+                ...state,
+                user_statistics: state.user_statistics
+                    ? { ...state.user_statistics, user_report: action.report }
+                    : { user_report: action.report },
+            };
         case LoginAction.LOGOUT:
             return DASHBOARD_DEFAULT;
         default:

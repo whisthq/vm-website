@@ -46,6 +46,9 @@ export const DASHBOARD_DEFAULT = {
     disk_creation_message: "",
     current_disk: null,
     change_plan_status: 0,
+    user_statistics: {
+        user_report: [],
+    },
     vm_setup_data: {
         country: null,
         spec: null,
