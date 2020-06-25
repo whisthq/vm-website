@@ -28,9 +28,8 @@ function* userSignup(action) {
             );
             yield put(LoginAction.loginSuccess());
             yield put(TokenAction.storeVerificationToken(json.token));
-            action.token = json.token;
             yield call(checkVerifiedEmail, action);
-            yield put(CustomerAction.getPromoCode(action));
+            yield put(CustomerAction.getPromoCode(action.user, json.token));
             yield put(
                 SignupAction.sendVerificationEmail(action.user, json.token)
             );
