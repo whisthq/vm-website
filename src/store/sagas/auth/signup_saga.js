@@ -47,7 +47,7 @@ function* checkVerifiedEmail(action) {
         apiPost,
         config.url.PRIMARY_SERVER + "/account/checkVerified",
         {
-            username: action.username,
+            username: action.user,
         },
         ""
     );
