@@ -61,6 +61,8 @@ function* checkVerifiedEmail(action) {
 
 function* sendSignupEmail(action) {
     const state = yield select();
+    console.log("SENDING SIGNUP EMAIL");
+    console.log(action);
     if (!state.AuthReducer.email_verified) {
         yield call(
             apiPost,

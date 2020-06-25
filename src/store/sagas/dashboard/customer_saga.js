@@ -23,9 +23,7 @@ function* getPromoCode(action) {
     );
 
     if (json && json.status === 200) {
-        yield put(
-            SignupAction.sendSignupEmail(action.user, json.code, action.token)
-        );
+        yield put(SignupAction.sendSignupEmail(action.user, json.code));
         yield put(CustomerAction.storePromoCode(json.code));
     }
 }
