@@ -35,11 +35,12 @@ export function signupFailure(status) {
     };
 }
 
-export function sendSignupEmail(user, code) {
+export function sendSignupEmail(user, code, token) {
     return {
         type: SEND_SIGNUP_EMAIL,
         user,
         code,
+        token,
     };
 }
 

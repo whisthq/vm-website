@@ -28,8 +28,9 @@ function* userSignup(action) {
             );
             yield put(LoginAction.loginSuccess());
             yield put(TokenAction.storeVerificationToken(json.token));
+            action.token = json.token;
             yield call(checkVerifiedEmail, action);
-            yield put(CustomerAction.getPromoCode(action.user));
+            yield put(CustomerAction.getPromoCode(action));
             yield put(
                 SignupAction.sendVerificationEmail(action.user, json.token)
             );
@@ -68,6 +69,7 @@ function* sendSignupEmail(action) {
             {
                 username: action.user,
                 code: action.code,
+                token: action.token,
             },
             ""
         );

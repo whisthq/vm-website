@@ -136,9 +136,6 @@ function* fetchDisks(action) {
 }
 
 function* createDisk(action) {
-    console.log("create disk command sent");
-    console.log(action);
-
     const state = yield select();
     const { json } = yield call(
         apiPost,
