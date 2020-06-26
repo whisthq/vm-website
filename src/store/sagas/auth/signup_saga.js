@@ -28,7 +28,7 @@ function* userSignup(action) {
             );
             yield put(LoginAction.loginSuccess());
             yield put(TokenAction.storeVerificationToken(json.token));
-            yield call(checkVerifiedEmail, action);
+            yield put(SignupAction.checkVerifiedEmail(action.user));
             yield put(CustomerAction.getPromoCode(action.user, json.token));
             yield put(
                 SignupAction.sendVerificationEmail(action.user, json.token)
@@ -41,6 +41,7 @@ function* userSignup(action) {
 }
 
 function* checkVerifiedEmail(action) {
+    console.log(action);
     yield select();
     const { json } = yield call(
         apiPost,
