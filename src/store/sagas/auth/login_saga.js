@@ -12,8 +12,6 @@ import * as CustomerAction from "store/actions/dashboard/customer_actions";
 function* googleLogin(action) {
     yield select();
 
-    console.log(action);
-
     if (action.code) {
         const { json } = yield call(
             apiPost,
