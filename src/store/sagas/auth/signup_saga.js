@@ -30,8 +30,8 @@ function* userSignup(action) {
             );
             yield put(LoginAction.loginSuccess());
             yield put(TokenAction.storeVerificationToken(json.token));
-            yield put(SignupAction.checkVerifiedEmail(action.user));
-            yield put(CustomerAction.getPromoCode(action.user, json.token));
+            yield call(checkVerifiedEmail, action);
+            yield put(CustomerAction.getPromoCode(action.user));
             yield put(
                 SignupAction.sendVerificationEmail(action.user, json.token)
             );
@@ -63,8 +63,6 @@ function* checkVerifiedEmail(action) {
 
 function* sendSignupEmail(action) {
     const state = yield select();
-    console.log("SENDING SIGNUP EMAIL");
-    console.log(action);
     if (!state.AuthReducer.email_verified) {
         yield call(
             apiPost,
@@ -72,7 +70,6 @@ function* sendSignupEmail(action) {
             {
                 username: action.user,
                 code: action.code,
-                token: action.token,
             },
             ""
         );

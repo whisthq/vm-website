@@ -82,6 +82,7 @@ function* userLogin(action) {
     );
 
     if (json) {
+        console.log(json);
         if (json.verified) {
             yield put(
                 TokenAction.storeJWT(json.access_token, json.refresh_token)
