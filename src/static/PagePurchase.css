@@ -1,0 +1,80 @@
+.purchase {
+    min-height: 100vh;
+    background: #f6f6f6;
+}
+
+.purchase .purchase-flex {
+    display: flex;
+    overflow-x: hidden;
+    position: relative;
+    bottom: 60px;
+}
+
+.right-section-wrapper {
+    padding-top: 50px;
+    padding-left: 15px;
+    width: calc(100% - 400px);
+    overflow-x: hidden !important;
+    padding-right: 15px;
+}
+
+@media only screen and (max-width: 700px) {
+    .right-section-wrapper {
+        width: 90%;
+        padding-right: 40px;
+    }
+}
+
+.survey-box {
+    padding: 40px 50px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.left-section-wrapper {
+    width: 300px;
+    padding-left: 80px;
+    padding-top: 120px;
+    background-color: none;
+    height: 100%;
+    min-height: 100vh;
+    z-index: 0;
+}
+
+@media only screen and (max-width: 700px) {
+    .left-section-wrapper {
+        width: 0px;
+        padding-left: 40px;
+    }
+}
+
+.apps-select ::-webkit-scrollbar {
+    width: 0px;
+}
+
+/* Track */
+.apps-select ::-webkit-scrollbar-track {
+    background: none;
+}
+
+.apps-select ::-webkit-scrollbar-thumb {
+    background: rgba(94, 195, 235, 0.2);
+}
+
+.apps-select nav > .nav-item {
+    color: #333333 !important;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: rgba(94, 195, 235, 0.05) !important;
+    margin-right: 15px !important;
+    margin-bottom: 15px !important;
+}
+
+.apps-select nav .active {
+    font-weight: bold !important;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.05);
+    background-color: rgba(94, 195, 235, 0.2) !important;
+    color: #1ba8e0 !important;
+}
