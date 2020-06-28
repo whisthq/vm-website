@@ -104,6 +104,8 @@ function* validateSignupToken(action) {
 }
 
 function* sendVerificationEmail(action) {
+    console.log("VERIFICATION EMAIL");
+    console.log(action);
     yield select();
     if (action.username !== "" && action.token !== "") {
         const { json } = yield call(
