@@ -4,7 +4,7 @@
 
 This repository contains the code for the Fractal website where users create and manage their account. It interfaces with the webservers and the admin dashboard.
 
-The Netlify staging version of the website is hosted at: https://fractalcomputers.netlify.com/
+The Netlify staging version of the website is hosted [here](https://fractalcomputers.netlify.com/).
 
 ## Development
 
