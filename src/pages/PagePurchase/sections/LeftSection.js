@@ -111,6 +111,43 @@ class LeftSection extends Component {
                             )}
                         </div>
                     </div>
+                    <div style={{ paddingBottom: 20 }}>
+                        <div
+                            style={{
+                                fontWeight:
+                                    this.props.vm_setup_data.step === 5
+                                        ? "bold"
+                                        : "normal",
+                                color:
+                                    this.props.vm_setup_data.step === 5
+                                        ? "#111111"
+                                        : "#B9B9B9",
+                            }}
+                        >
+                            Plan
+                        </div>
+                        <div style={{ color: "#B9B9B9", fontSize: 12 }}>
+                            {this.props.vm_setup_data.plan}
+                        </div>
+                    </div>
+                    {this.props.enableCreditCard && (
+                        <div style={{ paddingBottom: 20 }}>
+                            <div
+                                style={{
+                                    fontWeight:
+                                        this.props.vm_setup_data.step === 6
+                                            ? "bold"
+                                            : "normal",
+                                    color:
+                                        this.props.vm_setup_data.step === 6
+                                            ? "#111111"
+                                            : "#B9B9B9",
+                                }}
+                            >
+                                Payment
+                            </div>
+                        </div>
+                    )}
                 </div>
             );
         } else {

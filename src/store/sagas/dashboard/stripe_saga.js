@@ -33,6 +33,7 @@ function* chargeStripe(action) {
                 )
             );
             yield put(StripeAction.applyDiscount(action.code));
+            yield put(DiskAction.diskCreating(true));
         }
     } else {
         yield put(
@@ -43,6 +44,7 @@ function* chargeStripe(action) {
                 action.plan
             )
         );
+        yield put(DiskAction.diskCreating(true));
     }
 }
 

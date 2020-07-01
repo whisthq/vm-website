@@ -48,6 +48,7 @@ class CheckoutForm extends Component {
                         this.props.plan.toLowerCase()
                     )
                 );
+                this.props.callback();
             } else {
                 this.setState({
                     processing: false,
@@ -410,5 +411,9 @@ function mapStateToProps(state) {
         payment: state.DashboardReducer.payment,
     };
 }
+
+CheckoutForm.defaultProps = {
+    callback: () => {},
+};
 
 export default connect(mapStateToProps)(injectStripe(CheckoutForm));

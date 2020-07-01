@@ -44,6 +44,7 @@ function* insertCustomer(action) {
     // Start trial
     if (json) {
         yield put(CustomerAction.customerCreated(json.status));
+        yield put(CustomerAction.retrieveCustomer());
         history.push("/dashboard");
         yield put(PopupAction.triggerSurvey(true));
         yield put(DiskAction.diskCreating(true));
@@ -72,6 +73,9 @@ function* retrieveCustomer(action) {
         },
         state.AuthReducer.access_token
     );
+
+    console.log("RETRIEVING CUSTOMER");
+    console.log(json);
 
     if (json) {
         if (json.status === 200) {
@@ -109,6 +113,7 @@ function* fetchUserReport(action) {
             {
                 username: state.AuthReducer.username,
                 start_date: action.start_date,
+                timescale: "month",
             },
             state.AuthReducer.access_token
         );
