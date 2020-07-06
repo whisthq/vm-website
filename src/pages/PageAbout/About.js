@@ -19,8 +19,11 @@ import Isabelle from "assets/team_photos/isabelle.svg";
 
 import InvestorBox from "pages/PageAbout/components/InvestorBox";
 import EmployeeBox from "pages/PageAbout/components/employeeBox";
+import JobBox from "pages/PageAbout/components/jobBox";
 import Header from "components/header";
 import Footer from "components/footer";
+
+import { jobData } from "utils/jobs.js";
 
 class About extends Component {
     constructor(props) {
@@ -47,6 +50,9 @@ class About extends Component {
             modalClose();
         }
         window.addEventListener("resize", this.updateWindowDimensions);
+
+        console.log(jobData);
+        let jobCards = jobData.map((job) => <JobBox job={job} />);
 
         return (
             <div style={{ overflowX: "hidden" }} id="top" className="App">
@@ -203,17 +209,11 @@ class About extends Component {
                         style={{ paddingBottom: 50 }}
                     >
                         <Row>
-                            <Col md={12} style={{ textAlign: "center" }}>
-                                <div
-                                    style={{
-                                        fontSize: 40,
-                                        marginTop: 10,
-                                        lineHeight: 1.4,
-                                        fontWeight: "bold",
-                                    }}
-                                >
-                                    Our Stories
-                                </div>
+                            <Col
+                                md={12}
+                                style={{ textAlign: "center", marginTop: 10 }}
+                            >
+                                <div className="titleFont">Our Stories</div>
                                 <div
                                     style={{
                                         color: "#555555",
@@ -485,16 +485,7 @@ class About extends Component {
                                 >
                                     Support
                                 </div>
-                                <div
-                                    style={{
-                                        fontSize: 40,
-                                        marginTop: 10,
-                                        lineHeight: 1.4,
-                                        fontWeight: "bold",
-                                    }}
-                                >
-                                    Our Investors
-                                </div>
+                                <div className="titleFont">Our Investors</div>
                                 <div
                                     style={{
                                         color: "#555555",
@@ -532,8 +523,33 @@ class About extends Component {
                                 </Col>
                             )}
                         </Row>
+                        <div
+                            className="text-center"
+                            style={{
+                                marginTop: 120,
+                            }}
+                        >
+                            <div className="titleFont">Open positions</div>
+                            <div
+                                style={{
+                                    color: "#555555",
+                                    lineHeight: 1.7,
+                                    maxWidth: 600,
+                                    margin: "auto",
+                                    marginTop: 20,
+                                    marginBottom: 60,
+                                    fontSize: 18,
+                                }}
+                            >
+                                Help us redefine what people can do with
+                                everyday hardware. Reach out if you skillset
+                                matches any of these positions!
+                            </div>
+                        </div>
+                        <Row>{jobCards}</Row>
                     </div>
                 </div>
+
                 <div
                     style={{
                         background:

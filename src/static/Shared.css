@@ -353,3 +353,9 @@ div .options div:hover {
 .signupBox ::placeholder {
     color: #999999;
 }
+
+.titleFont {
+    font-size: 40px;
+    line-height: 1.4;
+    font-weight: "bold";
+}
