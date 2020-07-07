@@ -51,8 +51,22 @@ class About extends Component {
         }
         window.addEventListener("resize", this.updateWindowDimensions);
 
-        console.log(jobData);
-        let jobCards = jobData.map((job) => <JobBox job={job} />);
+        let jobCards = null;
+        if (jobData.length) {
+            jobCards = (
+                <Row>
+                    {jobData.map((job) => (
+                        <JobBox job={job} />
+                    ))}
+                </Row>
+            );
+        } else {
+            jobCards = (
+                <p className="text-center">
+                    We don't have any openings at the moment. Check back soon!
+                </p>
+            );
+        }
 
         return (
             <div style={{ overflowX: "hidden" }} id="top" className="App">
@@ -546,7 +560,7 @@ class About extends Component {
                                 matches any of these positions!
                             </div>
                         </div>
-                        <Row>{jobCards}</Row>
+                        {jobCards}
                     </div>
                 </div>
 
