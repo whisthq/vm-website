@@ -17,7 +17,7 @@ function JobBox(props) {
 
     return (
         <Col md={4} style={{ marginBottom: 20 }}>
-            <Link to={jobUrl}>
+            <Link to={jobUrl} style={{ textDecoration: "none" }}>
                 <div
                     className="expandOnHover"
                     style={{
@@ -34,8 +34,8 @@ function JobBox(props) {
                             marginBottom: 25,
                         }}
                     />
-                    <h4>{props.job.role}</h4>
-                    <div style={{ color: "#4B89E5" }}>Read more</div>
+                    <h4 style={{ color: "black" }}>{props.job.role}</h4>
+                    <div>Read more</div>
                 </div>
             </Link>
         </Col>
