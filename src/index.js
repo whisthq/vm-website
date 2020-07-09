@@ -31,7 +31,7 @@ import About from "pages/PageAbout/About";
 import Plan from "pages/PagePurchase/Plan";
 import Settings from "pages/PageSettings/Settings";
 import Storage from "pages/PagePurchase/Storage";
-import Careers from "pages/PageCareers";
+import Careers from "pages/PageCareers/Careers";
 
 const persistConfig = {
     key: "rootKey",

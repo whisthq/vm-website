@@ -1,9 +1,10 @@
 import React from "react";
 import Col from "react-bootstrap/Col";
 import ImageFadeIn from "react-image-fade-in";
-import engineering from "assets/icons/engineering.svg";
-import sales from "assets/icons/sales.svg";
-import { Link } from "react-router-dom";
+import engineering from "assets/icons/cloud-computing.svg";
+import sales from "assets/icons/newtons-cradle.svg";
+import systems from "assets/icons/gyroscope.svg";
+import { HashLink } from "react-router-hash-link";
 
 function JobBox(props) {
     let iconImg = null;
@@ -11,33 +12,52 @@ function JobBox(props) {
         iconImg = engineering;
     } else if (props.job.department === "sales") {
         iconImg = sales;
+    } else if (props.job.department === "systems") {
+        iconImg = systems;
     }
 
-    let jobUrl = "/careers/" + props.job.role.split(" ").join("-");
+    let jobUrl = "/careers?" + props.job.role.split(" ").join("-") + "#top";
 
     return (
         <Col md={4} style={{ marginBottom: 20 }}>
-            <Link to={jobUrl} style={{ textDecoration: "none" }}>
+            <HashLink to={jobUrl} style={{ textDecoration: "none" }}>
                 <div
                     className="expandOnHover"
                     style={{
                         background: "white",
-                        borderRadius: 10,
-                        boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
+                        borderRadius: 8,
+                        boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.15)",
                         padding: 30,
                     }}
                 >
                     <ImageFadeIn
                         src={iconImg}
                         style={{
-                            width: 40,
-                            marginBottom: 25,
+                            width: 50,
+                            marginBottom: 30,
                         }}
                     />
-                    <h4 style={{ color: "black" }}>{props.job.role}</h4>
-                    <div>Read more</div>
+                    <div
+                        style={{
+                            color: "#111111",
+                            fontSize: 20,
+                            fontWeight: "bold",
+                        }}
+                    >
+                        {props.job.role}
+                    </div>
+                    <div
+                        style={{
+                            color: "#333333",
+                            marginTop: 10,
+                            fontSize:
+                                props.width > 700 ? "calc(13px + 0.2vw)" : 14,
+                        }}
+                    >
+                        {props.job.summary}
+                    </div>
                 </div>
-            </Link>
+            </HashLink>
         </Col>
     );
 }
