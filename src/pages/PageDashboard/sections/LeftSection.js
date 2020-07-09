@@ -35,7 +35,7 @@ class LeftSection extends Component {
     render() {
         return (
             <div>
-                {this.state.width > 700 ? (
+                {this.state.width > 900 ? (
                     <div
                         style={{
                             width: 300,
