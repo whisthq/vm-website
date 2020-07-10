@@ -22,7 +22,7 @@ function* userSignup(action) {
     );
 
     if (json) {
-        if (response.status_code === 200) {
+        if (response.status === 200) {
             yield put(
                 TokenAction.storeJWT(json.access_token, json.refresh_token)
             );
@@ -50,7 +50,8 @@ function* checkVerifiedEmail(action) {
                 action.username,
             state.AuthReducer.access_token
         );
-        if (json && response.status_code === 200 && json.verified) {
+        console.log(json);
+        if (json && response.status === 200 && json.verified) {
             yield put(SignupAction.emailVerified(true));
             history.push("/dashboard");
         } else {
@@ -181,7 +182,7 @@ function* checkUserExists(action) {
         },
         ""
     );
-
+    console.log(json);
     if (json) {
         if (json.exists) {
             yield put(SignupAction.signupFailure(400));

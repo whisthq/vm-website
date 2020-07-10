@@ -1,5 +1,5 @@
 import { put, takeEvery, all, call, select } from "redux-saga/effects";
-import { apiPost } from "utils/Api.js";
+import { apiGet, apiPost } from "utils/Api.js";
 import { config } from "utils/constants.js";
 import history from "utils/history";
 
@@ -12,19 +12,31 @@ import * as PopupAction from "store/actions/dashboard/popup_actions";
 import * as RenderingAction from "store/actions/dashboard/rendering_actions";
 
 function* getPromoCode(action) {
-    yield select();
-    const { json } = yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/account/fetchCode",
-        {
-            username: action.user,
-        },
-        ""
-    );
+    const state = yield select();
+    if (config.new_server) {
+        const { json } = yield call(
+            apiGet,
+            config.url.PRIMARY_SERVER + "/account/code?username=" + action.user,
+            state.AuthReducer.access_token
+        );
 
-    if (json && json.status === 200) {
-        yield put(SignupAction.sendSignupEmail(action.user, json.code));
-        yield put(CustomerAction.storePromoCode(json.code));
+        if (json && json.status === 200) {
+            yield put(CustomerAction.storePromoCode(json.code));
+        }
+    } else {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/account/fetchCode",
+            {
+                username: action.user,
+            },
+            ""
+        );
+
+        if (json && json.status === 200) {
+            yield put(SignupAction.sendSignupEmail(action.user, json.code));
+            yield put(CustomerAction.storePromoCode(json.code));
+        }
     }
 }
 

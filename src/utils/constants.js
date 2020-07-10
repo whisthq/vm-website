@@ -19,6 +19,16 @@ const staging = {
     new_server: false,
 };
 
+const staging4 = {
+    url: {
+        PRIMARY_SERVER: "https://main-webserver-staging4.herokuapp.com",
+    },
+    stripe: {
+        PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
+    },
+    new_server: true,
+};
+
 const development = {
     url: {
         PRIMARY_SERVER: "http://127.0.0.1:5000",
@@ -30,7 +40,7 @@ const development = {
 };
 
 export const config =
-    process.env.NODE_ENV === "development" ? development : staging;
+    process.env.NODE_ENV === "development" ? staging4 : staging;
 
 export const GOOGLE_CLIENT_ID =
     "581514545734-7k820154jdfp0ov2ifk4ju3vodg0oec2.apps.googleusercontent.com";
