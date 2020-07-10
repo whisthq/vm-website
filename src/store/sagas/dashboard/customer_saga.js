@@ -99,6 +99,38 @@ function* submitPurchaseFeedback(action) {
     );
 }
 
+function* fetchUserReport(action) {
+    console.log("FETCHING USER REPORT");
+    const state = yield select();
+    if (action.start_date > 0) {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/report/userReport",
+            {
+                username: state.AuthReducer.username,
+                start_date: action.start_date,
+            },
+            state.AuthReducer.access_token
+        );
+
+        yield put(CustomerAction.storeUserReport(json));
+    } else {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/report/userReport",
+            {
+                username: state.AuthReducer.username,
+                timescale: "month",
+            },
+            state.AuthReducer.access_token
+        );
+
+        console.log(json);
+
+        yield put(CustomerAction.storeUserReport(json));
+    }
+}
+
 export default function* () {
     yield all([
         takeEvery(CustomerAction.RETRIEVE_CUSTOMER, retrieveCustomer),
@@ -108,5 +140,6 @@ export default function* () {
             CustomerAction.SUBMIT_PURCHASE_FEEDBACK,
             submitPurchaseFeedback
         ),
+        takeEvery(CustomerAction.FETCH_USER_REPORT, fetchUserReport),
     ]);
 }

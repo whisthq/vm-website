@@ -39,7 +39,6 @@ class GoogleBox extends Component {
     };
 
     responseGoogleFailure = (res) => {
-        console.log(res);
         this.props.setProcessing(false);
     };
 

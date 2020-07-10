@@ -31,7 +31,10 @@ class EmailVerification extends Component {
     sendVerificationEmail = () => {
         this.setState({ isSending: true, sent: false });
         this.props.dispatch(
-            sendVerificationEmail(this.props.user, this.props.verificationToken)
+            sendVerificationEmail(
+                this.props.username,
+                this.props.verificationToken
+            )
         );
     };
 
@@ -71,8 +74,8 @@ class EmailVerification extends Component {
         if (
             !this.props.verificationToken ||
             this.props.verificationToken === "" ||
-            !this.props.user ||
-            this.props.user === ""
+            !this.props.username ||
+            this.props.username === ""
         ) {
             return (
                 <div>
@@ -271,13 +274,13 @@ class EmailVerification extends Component {
                                 </div>
                                 <div style={{ marginBottom: 50 }}>
                                     An email has been sent to{" "}
-                                    <strong>{this.props.user}</strong>. Please
-                                    find the email in your inbox and select the
-                                    "Verify Email" button at the bottom of the
-                                    email. If you do not see the email, make
-                                    sure that your email address is spelled
-                                    correctly, and check your Spam/All Mail
-                                    folder.
+                                    <strong>{this.props.username}</strong>.
+                                    Please find the email in your inbox and
+                                    select the "Verify Email" button at the
+                                    bottom of the email. If you do not see the
+                                    email, make sure that your email address is
+                                    spelled correctly, and check your Spam/All
+                                    Mail folder.
                                 </div>
                                 <div>
                                     {!this.state.isSending ? (
@@ -361,7 +364,7 @@ function mapStateToProps(state) {
     console.log(state);
     return {
         email_verified: state.AuthReducer.email_verified,
-        user: state.AuthReducer.username,
+        username: state.AuthReducer.username,
         verificationToken: state.AuthReducer.verification_token,
         verification_emails_sent: state.AuthReducer.verification_emails_sent,
     };

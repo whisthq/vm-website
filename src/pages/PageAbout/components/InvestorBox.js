@@ -40,8 +40,16 @@ class InvestorBox extends Component {
         window.addEventListener("resize", this.updateWindowDimensions);
 
         return (
-            <Row>
-                <Col xs={6} md={4} style={{ marginTop: 20 }}>
+            <Row
+                style={{
+                    boxShadow: "0px 4px 25px rgba(0, 0, 0, 0.30)",
+                    margin: 20,
+                    padding: 20,
+                    border: "solid 10px #0b172b",
+                    borderRadius: 10,
+                }}
+            >
+                <Col xs={6} md={4} style={{ margin: 0, padding: 0 }}>
                     <a
                         href="https://techcrunch.com/2018/08/21/ali-partovi-neo/"
                         target="_blank"
@@ -51,8 +59,6 @@ class InvestorBox extends Component {
                         <div
                             style={{
                                 background: "white",
-                                borderRadius: 10,
-                                boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.20)",
                                 padding: 30,
                                 textAlign: "center",
                                 height: 125,
@@ -70,62 +76,34 @@ class InvestorBox extends Component {
                         </div>
                     </a>
                 </Col>
-                {this.state.width > 700 ? (
-                    <Col xs={6} md={4} style={{ marginTop: 20 }}>
-                        <a
-                            href="https://www.basisset.ventures/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ textDecoration: "none", outline: "none" }}
+                <Col xs={6} md={4} style={{ margin: 0, padding: 0 }}>
+                    <a
+                        href="https://www.basisset.ventures/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ textDecoration: "none", outline: "none" }}
+                    >
+                        <div
+                            style={{
+                                background: "white",
+                                padding:
+                                    this.state.width > 700 ? 30 : "30px 20px",
+                                textAlign: "center",
+                                height: 125,
+                            }}
                         >
-                            <div
+                            <img
+                                src={BSV}
+                                alt=""
                                 style={{
-                                    background: "white",
-                                    borderRadius: 10,
-                                    boxShadow:
-                                        "0px 4px 15px rgba(0, 0, 0, 0.20)",
-                                    padding: 30,
-                                    textAlign: "center",
-                                    height: 125,
+                                    width: this.state.width > 700 ? 115 : 100,
+                                    height: this.state.width > 700 ? 75 : 70,
                                 }}
-                            >
-                                <img
-                                    src={BSV}
-                                    alt=""
-                                    style={{ width: 115, height: 75 }}
-                                />
-                            </div>
-                        </a>
-                    </Col>
-                ) : (
-                    <Col xs={6} md={4} style={{ marginTop: 20 }}>
-                        <a
-                            href="https://www.basisset.ventures/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={{ textDecoration: "none", outline: "none" }}
-                        >
-                            <div
-                                style={{
-                                    background: "white",
-                                    borderRadius: 10,
-                                    boxShadow:
-                                        "0px 4px 15px rgba(0, 0, 0, 0.20)",
-                                    padding: "30px 20px",
-                                    textAlign: "center",
-                                    height: 125,
-                                }}
-                            >
-                                <img
-                                    src={BSV}
-                                    alt=""
-                                    style={{ width: 100, height: 70 }}
-                                />
-                            </div>
-                        </a>
-                    </Col>
-                )}
-                <Col xs={6} md={4} style={{ marginTop: 20 }}>
+                            />
+                        </div>
+                    </a>
+                </Col>
+                <Col xs={6} md={4} style={{ margin: 0, padding: 0 }}>
                     <a
                         href="https://www.dormroomfund.com/"
                         target="_blank"
@@ -135,8 +113,6 @@ class InvestorBox extends Component {
                         <div
                             style={{
                                 background: "white",
-                                borderRadius: 10,
-                                boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.20)",
                                 padding: 30,
                                 textAlign: "center",
                                 height: 125,
@@ -150,7 +126,7 @@ class InvestorBox extends Component {
                         </div>
                     </a>
                 </Col>
-                <Col xs={6} md={4} style={{ marginTop: 20 }}>
+                <Col xs={6} md={4} style={{ margin: 0, padding: 0 }}>
                     <a
                         href="https://www.roughdraft.vc/"
                         target="_blank"
@@ -160,8 +136,6 @@ class InvestorBox extends Component {
                         <div
                             style={{
                                 background: "white",
-                                borderRadius: 10,
-                                boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.20)",
                                 padding: 30,
                                 textAlign: "center",
                                 height: 125,
@@ -175,17 +149,15 @@ class InvestorBox extends Component {
                         </div>
                     </a>
                 </Col>
-                <Col xs={6} md={4} style={{ marginTop: 20 }}>
+                <Col xs={6} md={4} style={{ margin: 0, padding: 0 }}>
                     <Popup
                         modal
                         trigger={
                             <div
                                 className="pointerOnHover"
                                 style={{
-                                    background: "rgba(215, 245, 245, 0.4)",
-                                    borderRadius: 10,
-                                    boxShadow:
-                                        "0px 4px 15px rgba(0, 0, 0, 0.20)",
+                                    background: "white",
+                                    borderRadius: 0,
                                     padding: 30,
                                     textAlign: "center",
                                     height: 125,
@@ -197,8 +169,8 @@ class InvestorBox extends Component {
                                     style={{
                                         maxWidth: 70,
                                         maxHeight: 70,
-                                        borderRadius: 35,
-                                        filter: "grayscale(100%)",
+                                        borderRadius: 5,
+                                        filter: "grayscale(90%)",
                                     }}
                                 />
                             </div>
@@ -234,7 +206,8 @@ class InvestorBox extends Component {
                                     </div>
                                     <div
                                         style={{
-                                            marginTop: 20,
+                                            margin: 0,
+                                            padding: 0,
                                             color: "#555555",
                                             maxHeight: 200,
                                             overflowY: "scroll",
@@ -289,17 +262,15 @@ class InvestorBox extends Component {
                         </div>
                     </Popup>
                 </Col>
-                <Col xs={6} md={4} style={{ marginTop: 20 }}>
+                <Col xs={6} md={4} style={{ margin: 0, padding: 0 }}>
                     <Popup
                         modal
                         trigger={
                             <div
                                 className="pointerOnHover"
                                 style={{
-                                    background: "rgba(215, 245, 245, 0.4)",
-                                    borderRadius: 10,
-                                    boxShadow:
-                                        "0px 4px 15px rgba(0, 0, 0, 0.20)",
+                                    background: "white",
+                                    borderRadius: 0,
                                     padding: 30,
                                     textAlign: "center",
                                     height: 125,
@@ -311,8 +282,8 @@ class InvestorBox extends Component {
                                     style={{
                                         maxWidth: 70,
                                         maxHeight: 70,
-                                        borderRadius: 35,
-                                        filter: "grayscale(100%)",
+                                        borderRadius: 5,
+                                        filter: "grayscale(90%)",
                                     }}
                                 />
                             </div>
@@ -348,7 +319,8 @@ class InvestorBox extends Component {
                                     </div>
                                     <div
                                         style={{
-                                            marginTop: 20,
+                                            margin: 0,
+                                            padding: 0,
                                             color: "#555555",
                                             overflowY: "scroll",
                                         }}
@@ -366,12 +338,12 @@ class InvestorBox extends Component {
                         </div>
                     </Popup>
                 </Col>
-                <Col xs={6} md={4} style={{ marginTop: 20 }}>
+                <Col xs={6} md={4} style={{ margin: 0, padding: 0 }}>
                     <div
                         style={{
-                            background: "rgba(215, 245, 245, 0.4)",
-                            borderRadius: 10,
-                            boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.20)",
+                            background: "white",
+                            borderRadius: 0,
+
                             padding: 30,
                             textAlign: "center",
                             height: 125,
@@ -383,23 +355,21 @@ class InvestorBox extends Component {
                             style={{
                                 maxWidth: 70,
                                 maxHeight: 70,
-                                borderRadius: 35,
-                                filter: "grayscale(100%)",
+                                borderRadius: 5,
+                                filter: "grayscale(90%)",
                             }}
                         />
                     </div>
                 </Col>
-                <Col xs={6} md={4} style={{ marginTop: 20 }}>
+                <Col xs={6} md={4} style={{ margin: 0, padding: 0 }}>
                     <Popup
                         modal
                         trigger={
                             <div
                                 className="pointerOnHover"
                                 style={{
-                                    background: "rgba(215, 245, 245, 0.4)",
-                                    borderRadius: 10,
-                                    boxShadow:
-                                        "0px 4px 15px rgba(0, 0, 0, 0.20)",
+                                    background: "white",
+                                    borderRadius: 0,
                                     padding: 30,
                                     textAlign: "center",
                                     height: 125,
@@ -411,8 +381,8 @@ class InvestorBox extends Component {
                                     style={{
                                         maxWidth: 70,
                                         maxHeight: 70,
-                                        borderRadius: 35,
-                                        filter: "grayscale(100%)",
+                                        borderRadius: 5,
+                                        filter: "grayscale(90%)",
                                     }}
                                 />
                             </div>
@@ -448,7 +418,8 @@ class InvestorBox extends Component {
                                     </div>
                                     <div
                                         style={{
-                                            marginTop: 20,
+                                            margin: 0,
+                                            padding: 0,
                                             color: "#555555",
                                             overflowY: "scroll",
                                         }}
@@ -466,12 +437,12 @@ class InvestorBox extends Component {
                         </div>
                     </Popup>
                 </Col>
-                <Col xs={6} md={4} style={{ marginTop: 20 }}>
+                <Col xs={6} md={4} style={{ margin: 0, padding: 0 }}>
                     <div
                         style={{
-                            background: "rgba(215, 245, 245, 0.4)",
-                            borderRadius: 10,
-                            boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.20)",
+                            background: "white",
+                            borderRadius: 0,
+
                             padding: 30,
                             textAlign: "center",
                             height: 125,
@@ -483,8 +454,8 @@ class InvestorBox extends Component {
                             style={{
                                 maxWidth: 70,
                                 maxHeight: 70,
-                                borderRadius: 35,
-                                filter: "grayscale(100%)",
+                                borderRadius: 5,
+                                filter: "grayscale(90%)",
                             }}
                         />
                     </div>

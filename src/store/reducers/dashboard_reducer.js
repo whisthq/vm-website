@@ -41,6 +41,11 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 ...state,
                 promo_code: action.code,
             };
+        case CustomerAction.PROMO_CODE_FAILURE:
+            return {
+                ...state,
+                failed_referral_attempts: state.failed_referral_attempts + 1,
+            };
         case CustomerAction.STORE_CREDITS:
             return {
                 ...state,
@@ -144,6 +149,13 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 vm_setup_data: state.vm_setup_data
                     ? { ...state.vm_setup_data, apps: action.apps }
                     : { apps: action.apps },
+            };
+        case CustomerAction.STORE_USER_REPORT:
+            return {
+                ...state,
+                user_statistics: state.user_statistics
+                    ? { ...state.user_statistics, user_report: action.report }
+                    : { user_report: action.report },
             };
         case LoginAction.LOGOUT:
             return DASHBOARD_DEFAULT;
