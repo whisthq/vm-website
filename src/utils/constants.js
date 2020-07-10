@@ -6,6 +6,7 @@ const production = {
     stripe: {
         PUBLIC_KEY: "pk_live_XLjiiZB93KN0EjY8hwCxvKmB00whKEIj3U",
     },
+    new_server: false,
 };
 
 const staging = {
@@ -15,6 +16,7 @@ const staging = {
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
     },
+    new_server: false,
 };
 
 const development = {
@@ -24,10 +26,11 @@ const development = {
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
     },
+    new_server: true,
 };
 
 export const config =
-    process.env.NODE_ENV === "development" ? staging : staging;
+    process.env.NODE_ENV === "development" ? development : staging;
 
 export const GOOGLE_CLIENT_ID =
     "581514545734-7k820154jdfp0ov2ifk4ju3vodg0oec2.apps.googleusercontent.com";

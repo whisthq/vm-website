@@ -1,5 +1,5 @@
 import { put, takeEvery, all, call, select } from "redux-saga/effects";
-import { apiPost } from "utils/Api.js";
+import { apiGet, apiPost } from "utils/Api.js";
 import { config } from "utils/constants.js";
 import history from "utils/history";
 
@@ -10,7 +10,7 @@ import * as CustomerAction from "store/actions/dashboard/customer_actions";
 
 function* userSignup(action) {
     yield select();
-    const { json } = yield call(
+    const { json, response } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/account/register",
         {
@@ -22,7 +22,7 @@ function* userSignup(action) {
     );
 
     if (json) {
-        if (json.status === 200) {
+        if (response.status_code === 200) {
             yield put(
                 TokenAction.storeJWT(json.access_token, json.refresh_token)
             );
@@ -41,36 +41,55 @@ function* userSignup(action) {
 }
 
 function* checkVerifiedEmail(action) {
-    yield select();
-    const { json } = yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/account/checkVerified",
-        {
-            username: action.username,
-        },
-        ""
-    );
-    if (json && json.status === 200 && json.verified) {
-        yield put(SignupAction.emailVerified(true));
-        history.push("/dashboard");
+    const state = yield select();
+    if (config.new_server) {
+        const { json, response } = yield call(
+            apiGet,
+            config.url.PRIMARY_SERVER +
+                "/account/verified?username=" +
+                action.username,
+            state.AuthReducer.access_token
+        );
+        if (json && response.status_code === 200 && json.verified) {
+            yield put(SignupAction.emailVerified(true));
+            history.push("/dashboard");
+        } else {
+            yield put(SignupAction.emailVerified(false));
+            history.push("/verify");
+        }
     } else {
-        yield put(SignupAction.emailVerified(false));
-        history.push("/verify");
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/account/checkVerified",
+            {
+                username: action.username,
+            },
+            ""
+        );
+        if (json && json.status === 200 && json.verified) {
+            yield put(SignupAction.emailVerified(true));
+            history.push("/dashboard");
+        } else {
+            yield put(SignupAction.emailVerified(false));
+            history.push("/verify");
+        }
     }
 }
 
 function* sendSignupEmail(action) {
-    const state = yield select();
-    if (!state.AuthReducer.email_verified) {
-        yield call(
-            apiPost,
-            config.url.PRIMARY_SERVER + "/signup",
-            {
-                username: action.user,
-                code: action.code,
-            },
-            ""
-        );
+    if (!config.new_server) {
+        const state = yield select();
+        if (!state.AuthReducer.email_verified) {
+            yield call(
+                apiPost,
+                config.url.PRIMARY_SERVER + "/signup",
+                {
+                    username: action.user,
+                    code: action.code,
+                },
+                ""
+            );
+        }
     }
 }
 
@@ -87,36 +106,68 @@ function* subscribeNewsletter(action) {
 
 function* validateSignupToken(action) {
     const state = yield select();
-    const { json } = yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/account/verifyUser",
-        {
-            username: state.AuthReducer.username,
-            token: action.token,
-        },
-        state.AuthReducer.access_token
-    );
-    if (json && json.status === 200 && json.verified) {
-        yield put(SignupAction.emailVerified(true));
+    if (config.new_server) {
+        const { json, response } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/account/verify",
+            {
+                username: state.AuthReducer.username,
+                token: action.token,
+            },
+            state.AuthReducer.access_token
+        );
+        if (json && response.status === 200 && json.verified) {
+            yield put(SignupAction.emailVerified(true));
+        } else {
+            yield put(SignupAction.emailVerified(false));
+        }
     } else {
-        yield put(SignupAction.emailVerified(false));
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/account/verifyUser",
+            {
+                username: state.AuthReducer.username,
+                token: action.token,
+            },
+            state.AuthReducer.access_token
+        );
+        if (json && json.status === 200 && json.verified) {
+            yield put(SignupAction.emailVerified(true));
+        } else {
+            yield put(SignupAction.emailVerified(false));
+        }
     }
 }
 
 function* sendVerificationEmail(action) {
     yield select();
     if (action.username !== "" && action.token !== "") {
-        const { json } = yield call(
-            apiPost,
-            config.url.PRIMARY_SERVER + "/verification",
-            {
-                username: action.username,
-                token: action.token,
-            },
-            ""
-        );
-        if (json && json.status === 200) {
-            yield put(SignupAction.incrementVerificationEmailsSent());
+        if (config.new_server) {
+            const { json, response } = yield call(
+                apiPost,
+                config.url.PRIMARY_SERVER + "/mail/verification",
+                {
+                    username: action.username,
+                    token: action.token,
+                },
+                ""
+            );
+            if (json && response.status === 200) {
+                yield put(SignupAction.incrementVerificationEmailsSent());
+            }
+        } else {
+            const { json } = yield call(
+                apiPost,
+                config.url.PRIMARY_SERVER + "/verification",
+                {
+                    username: action.username,
+                    token: action.token,
+                },
+                ""
+            );
+            if (json && json.status === 200) {
+                yield put(SignupAction.incrementVerificationEmailsSent());
+            }
         }
     }
 }
