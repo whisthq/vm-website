@@ -21,6 +21,7 @@ function* chargeStripe(action) {
             state.AuthReducer.access_token
         );
         if (!(json && json.status === 200 && json.verified)) {
+            console.log("promo code failure");
             yield put(CustomerAction.promoCodeFailure());
         } else {
             yield put(
@@ -32,6 +33,7 @@ function* chargeStripe(action) {
                 )
             );
             yield put(StripeAction.applyDiscount(action.code));
+            yield put(DiskAction.diskCreating(true));
         }
     } else {
         yield put(
@@ -42,6 +44,7 @@ function* chargeStripe(action) {
                 action.plan
             )
         );
+        yield put(DiskAction.diskCreating(true));
     }
 }
 

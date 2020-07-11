@@ -21,6 +21,7 @@ class Auth extends Component {
             modalShow: false,
             showPopup: false,
             processing: false,
+            google_button_active: true,
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
@@ -110,7 +111,8 @@ class Auth extends Component {
                                     <TabPanel style={{ padding: "15px 30px" }}>
                                         {this.props.google_auth &&
                                             this.props.google_auth
-                                                .show_google_button && (
+                                                .show_google_button &&
+                                            this.state.google_button_active && (
                                                 <GoogleBox
                                                     processing={
                                                         this.state.processing
@@ -146,7 +148,8 @@ class Auth extends Component {
                                     <TabPanel style={{ padding: "15px 30px" }}>
                                         {this.props.google_auth &&
                                             this.props.google_auth
-                                                .show_google_button && (
+                                                .show_google_button &&
+                                            this.state.google_button_active && (
                                                 <GoogleBox
                                                     processing={
                                                         this.state.processing

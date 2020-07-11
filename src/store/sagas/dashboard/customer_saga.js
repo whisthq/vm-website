@@ -56,6 +56,7 @@ function* insertCustomer(action) {
     // Start trial
     if (json) {
         yield put(CustomerAction.customerCreated(json.status));
+        yield put(CustomerAction.retrieveCustomer());
         history.push("/dashboard");
         yield put(PopupAction.triggerSurvey(true));
         yield put(DiskAction.diskCreating(true));
@@ -85,6 +86,9 @@ function* retrieveCustomer(action) {
         state.AuthReducer.access_token
     );
 
+    console.log("RETRIEVING CUSTOMER");
+    console.log(json);
+
     if (json) {
         if (json.status === 200) {
             yield put(StripeAction.storePayment(json.subscription));
@@ -111,6 +115,39 @@ function* submitPurchaseFeedback(action) {
     );
 }
 
+function* fetchUserReport(action) {
+    console.log("FETCHING USER REPORT");
+    const state = yield select();
+    if (action.start_date > 0) {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/report/userReport",
+            {
+                username: state.AuthReducer.username,
+                start_date: action.start_date,
+                timescale: "month",
+            },
+            state.AuthReducer.access_token
+        );
+
+        yield put(CustomerAction.storeUserReport(json));
+    } else {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/report/userReport",
+            {
+                username: state.AuthReducer.username,
+                timescale: "month",
+            },
+            state.AuthReducer.access_token
+        );
+
+        console.log(json);
+
+        yield put(CustomerAction.storeUserReport(json));
+    }
+}
+
 export default function* () {
     yield all([
         takeEvery(CustomerAction.RETRIEVE_CUSTOMER, retrieveCustomer),
@@ -120,5 +157,6 @@ export default function* () {
             CustomerAction.SUBMIT_PURCHASE_FEEDBACK,
             submitPurchaseFeedback
         ),
+        takeEvery(CustomerAction.FETCH_USER_REPORT, fetchUserReport),
     ]);
 }

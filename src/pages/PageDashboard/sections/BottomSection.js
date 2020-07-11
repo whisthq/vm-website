@@ -115,8 +115,8 @@ class BottomSection extends Component {
                             />
                             <InfoRow
                                 icon={<FaFastForward className="icon" />}
-                                name="Current Period Start"
-                                text={this.props.billStart}
+                                name="Hours Used This Cycle"
+                                text={this.props.hoursUsed}
                             />
                             <InfoRow
                                 icon={<FaPause className="icon" />}

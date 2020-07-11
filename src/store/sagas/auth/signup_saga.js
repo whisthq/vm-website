@@ -14,7 +14,7 @@ function* userSignup(action) {
         apiPost,
         config.url.PRIMARY_SERVER + "/account/register",
         {
-            username: action.user,
+            username: action.username,
             password: action.password,
             name: action.name,
             feedback: action.feedback,
@@ -28,10 +28,10 @@ function* userSignup(action) {
             );
             yield put(LoginAction.loginSuccess());
             yield put(TokenAction.storeVerificationToken(json.token));
-            yield call(checkVerifiedEmail, action);
-            yield put(CustomerAction.getPromoCode(action.user));
+            yield put(SignupAction.checkVerifiedEmail(action.username));
+            yield put(CustomerAction.getPromoCode(action.username));
             yield put(
-                SignupAction.sendVerificationEmail(action.user, json.token)
+                SignupAction.sendVerificationEmail(action.username, json.token)
             );
         } else {
             yield put(SignupAction.signupFailure(json.status));
@@ -123,9 +123,18 @@ function* validateSignupToken(action) {
             yield put(SignupAction.emailVerified(false));
         }
     } else {
+        yield put(SignupAction.emailVerified(false));
+    }
+}
+
+function* sendVerificationEmail(action) {
+    console.log("VERIFICATION EMAIL");
+    console.log(action);
+    yield select();
+    if (action.username !== "" && action.token !== "") {
         const { json } = yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/account/verifyUser",
+            config.url.PRIMARY_SERVER + "/mail/verification",
             {
                 username: state.AuthReducer.username,
                 token: action.token,

@@ -8,6 +8,8 @@ export const INSERT_CUSTOMER = "INSERT_CUSTOMER";
 export const CUSTOMER_CREATED = "CUSTOMER_CREATED";
 export const SUBMIT_PURCHASE_FEEDBACK = "SUBMIT_PURCHASE_FEEDBACK";
 export const STORE_CUSTOMER = "STORE_CUSTOMER";
+export const FETCH_USER_REPORT = "FETCH_USER_REPORT";
+export const STORE_USER_REPORT = "STORE_USER_REPORT";
 
 export function retrieveCustomer() {
     return {
@@ -67,5 +69,19 @@ export function storeCustomer(customer) {
     return {
         type: STORE_CUSTOMER,
         customer,
+    };
+}
+
+export function fetchUserReport(start_date) {
+    return {
+        type: FETCH_USER_REPORT,
+        start_date,
+    };
+}
+
+export function storeUserReport(report) {
+    return {
+        type: STORE_USER_REPORT,
+        report,
     };
 }

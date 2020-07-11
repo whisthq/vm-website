@@ -12,8 +12,6 @@ import * as CustomerAction from "store/actions/dashboard/customer_actions";
 function* googleLogin(action) {
     yield select();
 
-    console.log(action);
-
     if (action.code) {
         const { json } = yield call(
             apiPost,
@@ -83,9 +81,8 @@ function* userLogin(action) {
         }
     );
 
-    if (json && response.status === 200) {
+    if (json) {
         if (json.verified) {
-            console.log(json);
             yield put(
                 TokenAction.storeJWT(json.access_token, json.refresh_token)
             );

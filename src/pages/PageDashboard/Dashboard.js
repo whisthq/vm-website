@@ -8,7 +8,10 @@ import "static/PageDashboard.css";
 
 import Header from "components/header.js";
 
-import { retrieveCustomer } from "store/actions/dashboard/customer_actions";
+import {
+    retrieveCustomer,
+    fetchUserReport,
+} from "store/actions/dashboard/customer_actions";
 import { dashboardLoaded } from "store/actions/dashboard/rendering_actions";
 import {
     fetchDisks,
@@ -44,6 +47,7 @@ class Dashboard extends Component {
             waitlist: false,
             loaded: false,
             total_storage: "120GB",
+            hoursUsed: "",
         };
         this.customWidth = React.createRef();
     }
@@ -104,6 +108,9 @@ class Dashboard extends Component {
                         this.props.payment.current_period_start
                     ),
                 });
+                this.props.dispatch(
+                    fetchUserReport(this.props.payment.current_period_start)
+                );
             }
             if (
                 this.state.billEnd === "" &&
@@ -147,7 +154,9 @@ class Dashboard extends Component {
             this.props.customer.trial_end &&
             Object.keys(this.props.customer).length > 0
         ) {
-            console.log(this.props.customer);
+            if (this.state.billStart === "") {
+                this.props.dispatch(fetchUserReport(0));
+            }
             this.setState({
                 trialEnd: unixToDate(this.props.customer.trial_end),
             });
@@ -159,6 +168,23 @@ class Dashboard extends Component {
             this.state.cancelling
         ) {
             this.setState({ cancelling: false });
+        }
+
+        if (
+            this.props.user_statistics &&
+            this.props.user_statistics.user_report &&
+            this.props.user_statistics.user_report.length > 0 &&
+            this.state.hoursUsed === ""
+        ) {
+            var minutesUsed = this.props.user_statistics.user_report.reduce(
+                function (total, currentValue) {
+                    return total + currentValue.minutes;
+                },
+                0
+            );
+
+            var hoursUsed = (minutesUsed / 60).toFixed(1);
+            this.setState({ hoursUsed: hoursUsed.toString() + " hours" });
         }
     }
 
@@ -202,7 +228,7 @@ class Dashboard extends Component {
                                 <BottomSection
                                     username={this.props.username}
                                     created={this.state.created}
-                                    billStart={this.state.billStart}
+                                    hoursUsed={this.state.hoursUsed}
                                     billEnd={this.state.billEnd}
                                     trialEnd={this.state.trialEnd}
                                 />
@@ -237,6 +263,9 @@ function mapStateToProps(state) {
             ? state.DashboardReducer.disk_creation_message
             : "Create Cloud PC command sent to server.",
         access_token: state.AuthReducer.access_token,
+        user_statistics: state.DashboardReducer.user_statistics
+            ? state.DashboardReducer.user_statistics
+            : [],
     };
 }
 

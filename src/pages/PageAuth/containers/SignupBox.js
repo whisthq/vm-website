@@ -101,11 +101,6 @@ class SignupBox extends Component {
         this.props.setProcessing(true);
         this.setState({ failed_signup_attempt: false });
         this.props.dispatch(checkUserExists(this.state.emailSignup));
-        this.setState({
-            emailSignup: "",
-            passwordSignup: "",
-            passwordConfirmSignup: "",
-        });
     };
 
     signupKeyPress = (event) => {

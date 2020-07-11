@@ -12,10 +12,10 @@ export const STORE_VERIFICATION_TOKEN = "STORE_VERIFICATION_TOKEN";
 export const INCREMENT_VERIFICATION_EMAILS_SENT =
     "INCREMENT_VERIFICATION_EMAILS_SENT";
 
-export function userSignup(user, password, name, feedback) {
+export function userSignup(username, password, name, feedback) {
     return {
         type: USER_SIGNUP,
-        user,
+        username,
         password,
         name,
         feedback,
