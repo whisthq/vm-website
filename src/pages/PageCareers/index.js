@@ -122,14 +122,14 @@ function Careers() {
                     How to apply
                 </div>
                 <div>
-                    Shoot an email to{" "}
+                    Please send your resume and anything else you'd like to
+                    share to{" "}
                     <a href="mailto:careers@fractalcomputers.com">
                         careers@fractalcomputers.com
                     </a>{" "}
-                    regarding the position you are interested in. Please include
-                    the position you are interested in, your resume, and
-                    anything else you'd like to share! Our team will get back to
-                    you as soon as we can. Thanks for your interest!
+                    along with your associated university and class year (if
+                    applicable). We will get back to
+                    you as soon as we can. Thanks for your interest!
                 </div>
                 <a
                     className="black-button-small mt-3 mb-5"
@@ -149,12 +149,20 @@ function Careers() {
                     About us
                 </div>
                 <div>
-                    At Fractal, we envision laptops that render 4K video at
-                    lightning speeds. Chromebooks and Macs that easily run
-                    Windows or Linux. PCs whose hardware can be upgraded at the
-                    click of a button. We believe that a single cloud PC should
-                    handle all your computing needs.
+                    Fractal is building the future of personal computing. At
+                    Fractal, we dream of a world where people are not restricted
+                    by their hardware or operating system; a world where they
+                    can play video games on a Chromebook or code on an iPad.{" "}
                 </div>
+                <div>
+                    We're a team of 9 working diligently to realize this vision.
+                    We're committed to fostering an inclusive and fun work
+                    environment, and maintain a flat company structure. We're
+                    looking for candidates who aren't afraid of technical
+                    challenges and will come in and help us all be better and
+                    learn from each other.
+                </div>
+                <div>Also, we work in a dog-friendly office!</div>
                 <br />
                 <div className="italicFont">
                     Fractal Computers is an equal opportunity employer. We aim
