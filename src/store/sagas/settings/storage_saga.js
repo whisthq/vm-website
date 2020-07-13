@@ -14,7 +14,7 @@ function* addStorage(action) {
         {
             username: state.AuthReducer.username,
             disk_size: action.storage,
-            resource_group: config.azure.RESOURCE_GROUP
+            resource_group: config.azure.RESOURCE_GROUP,
         },
         state.AuthReducer.access_token
     );

@@ -100,7 +100,7 @@ function* cancelPlan(action) {
         config.url.PRIMARY_SERVER + "/disk/delete",
         {
             username: state.AuthReducer.username,
-            resource_group: config.azure.RESOURCE_GROUP
+            resource_group: config.azure.RESOURCE_GROUP,
         },
         state.AuthReducer.access_token
     );

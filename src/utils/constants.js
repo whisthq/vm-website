@@ -7,8 +7,8 @@ const production = {
         PUBLIC_KEY: "pk_live_XLjiiZB93KN0EjY8hwCxvKmB00whKEIj3U",
     },
     azure: {
-        RESOURCE_GROUP: "Fractal"
-    }
+        RESOURCE_GROUP: "Fractal",
+    },
 };
 
 const staging = {
@@ -19,8 +19,8 @@ const staging = {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
     },
     azure: {
-        RESOURCE_GROUP: "FractalStaging"
-    }
+        RESOURCE_GROUP: "FractalStaging",
+    },
 };
 
 const development = {
@@ -31,8 +31,8 @@ const development = {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
     },
     azure: {
-        RESOURCE_GROUP: "FractalStaging"
-    }
+        RESOURCE_GROUP: "FractalStaging",
+    },
 };
 
 export const config =

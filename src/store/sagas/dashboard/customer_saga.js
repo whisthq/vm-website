@@ -16,7 +16,7 @@ function* getPromoCode(action) {
     const { json } = yield call(
         apiGet,
         format(
-            config.url.PRIMARY_SERVER + '/account/code?username={0}',
+            config.url.PRIMARY_SERVER + "/account/code?username={0}",
             action.username
         ),
         state.AccountReducer.access_token
@@ -97,7 +97,7 @@ function* submitPurchaseFeedback(action) {
         {
             username: state.AuthReducer.username,
             feedback: action.feedback,
-            type: "Purchase Feedback"
+            type: "Purchase Feedback",
         },
         state.AuthReducer.access_token
     );

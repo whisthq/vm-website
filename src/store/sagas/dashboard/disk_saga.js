@@ -119,9 +119,9 @@ function* fetchDisks(action) {
     const { json } = yield call(
         apiPost,
         format(
-            config.url.PRIMARY_SERVER + '/account/disks?username={0}&main={1}',
+            config.url.PRIMARY_SERVER + "/account/disks?username={0}&main={1}",
             action.username,
-            'false'
+            "false"
         ),
         state.AccountReducer.access_token
     );
@@ -143,7 +143,7 @@ function* createDisk(action) {
             location: action.location,
             vm_size: action.vm_size,
             apps: action.apps,
-            resource_group: config.azure.RESOURCE_GROUP
+            resource_group: config.azure.RESOURCE_GROUP,
         },
         state.AuthReducer.access_token
     );
