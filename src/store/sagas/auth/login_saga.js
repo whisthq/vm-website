@@ -15,7 +15,7 @@ function* googleLogin(action) {
     if (action.code) {
         const { json } = yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/account/googleLogin",
+            config.url.PRIMARY_SERVER + "/google/login",
             {
                 code: action.code,
             }
@@ -57,7 +57,7 @@ function* googleReason(action) {
     const state = yield select();
     const { json } = yield call(
         apiPost,
-        config.url.PRIMARY_SERVER + "/account/googleReason",
+        config.url.PRIMARY_SERVER + "/google/reason",
         {
             reason: action.reason,
             username: state.AuthReducer.username,

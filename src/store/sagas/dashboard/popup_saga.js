@@ -8,13 +8,13 @@ function* sendFriendsEmail(action) {
     const state = yield select();
     const { json } = yield call(
         apiPost,
-        config.url.PRIMARY_SERVER + "/referral",
+        config.url.PRIMARY_SERVER + "/mail/referral",
         {
             username: state.AuthReducer.username,
             recipients: action.recipients,
             code: action.code,
         },
-        ""
+        state.AccountReducer.access_token
     );
     if (json) {
         yield put(PopupAction.friendsEmailSent(json.status));

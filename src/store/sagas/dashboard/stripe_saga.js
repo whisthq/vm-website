@@ -13,7 +13,7 @@ function* chargeStripe(action) {
     if (action.code !== "") {
         const { json } = yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/referral/validate",
+            config.url.PRIMARY_SERVER + "/stripe/referral",
             {
                 code: action.code,
                 username: state.AuthReducer.username,
@@ -21,7 +21,6 @@ function* chargeStripe(action) {
             state.AuthReducer.access_token
         );
         if (!(json && json.status === 200 && json.verified)) {
-            console.log("promo code failure");
             yield put(CustomerAction.promoCodeFailure());
         } else {
             yield put(
@@ -67,7 +66,7 @@ function* sendFinalCharge(action) {
         config.url.PRIMARY_SERVER + "/stripe/charge",
         {
             token: action.token,
-            email: state.AuthReducer.username,
+            username: state.AuthReducer.username,
             plan: action.plan,
             code: action.code,
         },
@@ -101,6 +100,7 @@ function* cancelPlan(action) {
         config.url.PRIMARY_SERVER + "/disk/delete",
         {
             username: state.AuthReducer.username,
+            resource_group: config.azure.RESOURCE_GROUP
         },
         state.AuthReducer.access_token
     );
@@ -109,7 +109,7 @@ function* cancelPlan(action) {
         apiPost,
         config.url.PRIMARY_SERVER + "/stripe/cancel",
         {
-            email: state.AuthReducer.username,
+            username: state.AuthReducer.username,
         },
         state.AuthReducer.access_token
     );

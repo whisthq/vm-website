@@ -10,10 +10,11 @@ function* addStorage(action) {
 
     const { json } = yield call(
         apiPost,
-        config.url.PRIMARY_SERVER + "/disk/createEmpty",
+        config.url.PRIMARY_SERVER + "/disk/create",
         {
             username: state.AuthReducer.username,
             disk_size: action.storage,
+            resource_group: config.azure.RESOURCE_GROUP
         },
         state.AuthReducer.access_token
     );

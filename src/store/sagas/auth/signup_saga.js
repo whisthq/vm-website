@@ -24,15 +24,15 @@ function* userSignup(action) {
     if (json) {
         if (json.status === 200) {
             yield put(
+                SignupAction.sendVerificationEmail(action.username, json.token)
+            );
+            yield put(
                 TokenAction.storeJWT(json.access_token, json.refresh_token)
             );
             yield put(LoginAction.loginSuccess());
             yield put(TokenAction.storeVerificationToken(json.token));
             yield put(SignupAction.checkVerifiedEmail(action.username));
             yield put(CustomerAction.getPromoCode(action.username));
-            yield put(
-                SignupAction.sendVerificationEmail(action.username, json.token)
-            );
         } else {
             yield put(SignupAction.signupFailure(json.status));
             yield put(LoginAction.loginFailure(json.status));
@@ -44,7 +44,7 @@ function* checkVerifiedEmail(action) {
     yield select();
     const { json } = yield call(
         apiPost,
-        config.url.PRIMARY_SERVER + "/account/checkVerified",
+        config.url.PRIMARY_SERVER + "/account/verified",
         {
             username: action.username,
         },
@@ -56,21 +56,6 @@ function* checkVerifiedEmail(action) {
     } else {
         yield put(SignupAction.emailVerified(false));
         history.push("/verify");
-    }
-}
-
-function* sendSignupEmail(action) {
-    const state = yield select();
-    if (!state.AuthReducer.email_verified) {
-        yield call(
-            apiPost,
-            config.url.PRIMARY_SERVER + "/signup",
-            {
-                username: action.user,
-                code: action.code,
-            },
-            ""
-        );
     }
 }
 
@@ -89,7 +74,7 @@ function* validateSignupToken(action) {
     const state = yield select();
     const { json } = yield call(
         apiPost,
-        config.url.PRIMARY_SERVER + "/account/verifyUser",
+        config.url.PRIMARY_SERVER + "/account/verify",
         {
             username: state.AuthReducer.username,
             token: action.token,
@@ -104,8 +89,6 @@ function* validateSignupToken(action) {
 }
 
 function* sendVerificationEmail(action) {
-    console.log("VERIFICATION EMAIL");
-    console.log(action);
     yield select();
     if (action.username !== "" && action.token !== "") {
         const { json } = yield call(
@@ -146,7 +129,6 @@ export default function* () {
     yield all([
         takeEvery(SignupAction.USER_SIGNUP, userSignup),
         takeEvery(SignupAction.CHECK_VERIFIED_EMAIL, checkVerifiedEmail),
-        takeEvery(SignupAction.SEND_SIGNUP_EMAIL, sendSignupEmail),
         takeEvery(SignupAction.SUBSCRIBE_NEWSLETTER, subscribeNewsletter),
         takeEvery(SignupAction.VALIDATE_SIGNUP_TOKEN, validateSignupToken),
         takeEvery(SignupAction.SEND_VERIFICATION_EMAIL, sendVerificationEmail),

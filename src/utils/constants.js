@@ -6,6 +6,9 @@ const production = {
     stripe: {
         PUBLIC_KEY: "pk_live_XLjiiZB93KN0EjY8hwCxvKmB00whKEIj3U",
     },
+    azure: {
+        RESOURCE_GROUP: "Fractal"
+    }
 };
 
 const staging = {
@@ -15,19 +18,25 @@ const staging = {
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
     },
+    azure: {
+        RESOURCE_GROUP: "FractalStaging"
+    }
 };
 
 const development = {
     url: {
-        PRIMARY_SERVER: "http://127.0.0.1:5000",
+        PRIMARY_SERVER: "localhost:7730",
     },
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
     },
+    azure: {
+        RESOURCE_GROUP: "FractalStaging"
+    }
 };
 
 export const config =
-    process.env.NODE_ENV === "development" ? staging : staging;
+    process.env.NODE_ENV === "development" ? development : staging;
 
 export const GOOGLE_CLIENT_ID =
     "581514545734-7k820154jdfp0ov2ifk4ju3vodg0oec2.apps.googleusercontent.com";
