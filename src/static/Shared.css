@@ -362,11 +362,14 @@ div .options div:hover {
 
 .subHeadingFont {
     font-size: 18px;
+    color: "#111111" !important;
 }
 
 .subHeadingBoldFont {
     font-size: 18px;
     font-weight: bold;
+    color: "#111111" !important;
+    margin-bottom: 5px;
 }
 
 .headingFont {
@@ -381,14 +384,6 @@ div .options div:hover {
 .noBulletUl {
     list-style: none;
     padding-left: 0px;
-}
-
-.customBullet {
-    padding-left: 28px;
-    background-repeat: no-repeat;
-    background-position: 0 7px;
-    background-size: 18px;
-    background-image: url(../assets/icons/check.svg);
 }
 
 .black-button {

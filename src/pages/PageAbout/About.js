@@ -23,7 +23,7 @@ import JobBox from "pages/PageAbout/components/jobBox";
 import Header from "components/header";
 import Footer from "components/footer";
 
-import { jobData } from "utils/jobs.js";
+import { jobData } from "pages/PageAbout/constants/jobs";
 
 class About extends Component {
     constructor(props) {
@@ -56,7 +56,7 @@ class About extends Component {
             jobCards = (
                 <Row>
                     {jobData.map((job) => (
-                        <JobBox job={job} />
+                        <JobBox job={job} width={this.state.width} />
                     ))}
                 </Row>
             );
@@ -543,7 +543,7 @@ class About extends Component {
                                 marginTop: 120,
                             }}
                         >
-                            <div className="titleFont">Open positions</div>
+                            <div className="titleFont">Open Positions</div>
                             <div
                                 style={{
                                     color: "#555555",
@@ -555,9 +555,9 @@ class About extends Component {
                                     fontSize: 18,
                                 }}
                             >
-                                Help us redefine what people can do with
-                                everyday hardware. Reach out if you skillset
-                                matches any of these positions!
+                                Join us in our mission to redefine personal
+                                computing. If your skillset matches our open
+                                positions, we'd love to hear from you.
                             </div>
                         </div>
                         {jobCards}
