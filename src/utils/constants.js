@@ -17,6 +17,15 @@ const staging = {
     },
 };
 
+const staging2 = {
+    url: {
+        PRIMARY_SERVER: "https://cube-celery-staging2.herokuapp.com",
+    },
+    stripe: {
+        PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
+    },
+};
+
 const development = {
     url: {
         PRIMARY_SERVER: "http://127.0.0.1:5000",
@@ -26,6 +35,7 @@ const development = {
     },
 };
 
+// TODO: Change config to development/production after changes in staging are deployed to the other vm webservers
 export const config =
     process.env.NODE_ENV === "development" ? staging : staging;
 

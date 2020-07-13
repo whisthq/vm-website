@@ -19,8 +19,11 @@ import Isabelle from "assets/team_photos/isabelle.svg";
 
 import InvestorBox from "pages/PageAbout/components/InvestorBox";
 import EmployeeBox from "pages/PageAbout/components/employeeBox";
+import JobBox from "pages/PageAbout/components/jobBox";
 import Header from "components/header";
 import Footer from "components/footer";
+
+import { jobData } from "pages/PageAbout/constants/jobs";
 
 class About extends Component {
     constructor(props) {
@@ -47,6 +50,23 @@ class About extends Component {
             modalClose();
         }
         window.addEventListener("resize", this.updateWindowDimensions);
+
+        let jobCards = null;
+        if (jobData.length) {
+            jobCards = (
+                <Row>
+                    {jobData.map((job) => (
+                        <JobBox job={job} width={this.state.width} />
+                    ))}
+                </Row>
+            );
+        } else {
+            jobCards = (
+                <p className="text-center">
+                    We don't have any openings at the moment. Check back soon!
+                </p>
+            );
+        }
 
         return (
             <div style={{ overflowX: "hidden" }} id="top" className="App">
@@ -203,17 +223,11 @@ class About extends Component {
                         style={{ paddingBottom: 50 }}
                     >
                         <Row>
-                            <Col md={12} style={{ textAlign: "center" }}>
-                                <div
-                                    style={{
-                                        fontSize: 40,
-                                        marginTop: 10,
-                                        lineHeight: 1.4,
-                                        fontWeight: "bold",
-                                    }}
-                                >
-                                    Our Stories
-                                </div>
+                            <Col
+                                md={12}
+                                style={{ textAlign: "center", marginTop: 10 }}
+                            >
+                                <div className="titleFont">Our Stories</div>
                                 <div
                                     style={{
                                         color: "#555555",
@@ -485,16 +499,7 @@ class About extends Component {
                                 >
                                     Support
                                 </div>
-                                <div
-                                    style={{
-                                        fontSize: 40,
-                                        marginTop: 10,
-                                        lineHeight: 1.4,
-                                        fontWeight: "bold",
-                                    }}
-                                >
-                                    Our Investors
-                                </div>
+                                <div className="titleFont">Our Investors</div>
                                 <div
                                     style={{
                                         color: "#555555",
@@ -532,8 +537,33 @@ class About extends Component {
                                 </Col>
                             )}
                         </Row>
+                        <div
+                            className="text-center"
+                            style={{
+                                marginTop: 120,
+                            }}
+                        >
+                            <div className="titleFont">Open Positions</div>
+                            <div
+                                style={{
+                                    color: "#555555",
+                                    lineHeight: 1.7,
+                                    maxWidth: 600,
+                                    margin: "auto",
+                                    marginTop: 20,
+                                    marginBottom: 60,
+                                    fontSize: 18,
+                                }}
+                            >
+                                Join us in our mission to redefine personal
+                                computing. If your skillset matches our open
+                                positions, we'd love to hear from you.
+                            </div>
+                        </div>
+                        {jobCards}
                     </div>
                 </div>
+
                 <div
                     style={{
                         background:
