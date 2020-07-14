@@ -9,7 +9,7 @@ export const teamData = [
         image: "phil",
         name: "Philippe Noël",
         text:
-            "Prior to Phil was a product manager at Microsoft Azure, machine learning researcher at Premier Tech, and speaker at TedX Harvard and TedX Quebec. Phil graduated from Harvard University, where he studied Computer Science and Neuroscience.",
+            "Prior to Fractal, Phil was a product manager at Microsoft Azure, machine learning researcher at Premier Tech, and speaker at TEDxHarvard and TEDxQuébec. Phil graduated from Harvard University, where he studied Computer Science and Neuroscience.",
     },
     {
         image: "nick",
