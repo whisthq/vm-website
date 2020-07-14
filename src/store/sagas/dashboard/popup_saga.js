@@ -14,7 +14,7 @@ function* sendFriendsEmail(action) {
             recipients: action.recipients,
             code: action.code,
         },
-        state.AccountReducer.access_token
+        state.AuthReducer.access_token
     );
     if (json) {
         yield put(PopupAction.friendsEmailSent(json.status));
