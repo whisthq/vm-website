@@ -7,13 +7,13 @@ export const teamData = [
     },
     {
         image: "phil",
-        name: "Phil Noel",
+        name: "Philippe Noël",
         text:
             "Prior to Phil was a product manager at Microsoft Azure, machine learning researcher at Premier Tech, and speaker at TedX Harvard and TedX Quebec. Phil graduated from Harvard University, where he studied Computer Science and Neuroscience.",
     },
     {
         image: "nick",
-        name: "Nick Pipitone",
+        name: "Nicholas Pipitone",
         text:
             "Nick has an affinity for graphics shaders, circuits, and cryptocurrencies, with particular experience in cybersecurity and penetration testing. He studied Information Systems at Carnegie Mellon.",
     },
