@@ -1,5 +1,5 @@
 import { put, takeEvery, all, call, select } from "redux-saga/effects";
-import { apiPost } from "utils/Api.js";
+import { apiPost, apiGet, format } from "utils/Api.js";
 import { config } from "utils/constants.js";
 import history from "utils/history";
 
@@ -9,7 +9,6 @@ import * as SignupAction from "store/actions/auth/signup_actions";
 import * as CustomerAction from "store/actions/dashboard/customer_actions";
 
 function* userSignup(action) {
-    yield select();
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/account/register",
@@ -41,13 +40,13 @@ function* userSignup(action) {
 }
 
 function* checkVerifiedEmail(action) {
-    yield select();
+    const state = yield select();
     const { json } = yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/account/verified",
-        {
-            username: action.username,
-        },
+        apiGet,
+        format(
+            config.url.PRIMARY_SERVER + "/account/verified?username={0}",
+            action.username
+        ),
         ""
     );
     if (json && json.status === 200 && json.verified) {

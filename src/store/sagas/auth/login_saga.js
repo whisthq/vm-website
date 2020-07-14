@@ -22,6 +22,7 @@ function* googleLogin(action) {
         );
         if (json) {
             if (json.status === 200) {
+                console.log(json);
                 yield put(LoginAction.setUseGoogle(true));
                 yield put(
                     TokenAction.storeJWT(json.access_token, json.refresh_token)
@@ -98,14 +99,14 @@ function* userLogin(action) {
 }
 
 function* forgotPassword(action) {
-    yield select();
+    const state = yield select();
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/mail/forgot",
         {
             username: action.username,
         },
-        ""
+        state.AccountReducer.access_token
     );
     if (json) {
         if (json.verified) {

@@ -25,7 +25,7 @@ const staging = {
 
 const development = {
     url: {
-        PRIMARY_SERVER: "localhost:7730",
+        PRIMARY_SERVER: "http://localhost:7730",
     },
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",

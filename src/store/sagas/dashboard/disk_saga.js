@@ -36,9 +36,10 @@ function* attachDisk(disk_name) {
     const state = yield select();
     const { json } = yield call(
         apiPost,
-        config.url.PRIMARY_SERVER + "/disk/attach",
+        config.url.PRIMARY_SERVER + "/azure_disk/attach",
         {
             disk_name: disk_name,
+            resource_group: config.azure.RESOURCE_GROUP,
         },
         state.AuthReducer.access_token
     );
@@ -116,6 +117,7 @@ function* fetchDiskAttachStatus(action) {
 
 function* fetchDisks(action) {
     const state = yield select();
+    console.log(state);
     const { json } = yield call(
         apiPost,
         format(
@@ -137,12 +139,13 @@ function* createDisk(action) {
     const state = yield select();
     const { json } = yield call(
         apiPost,
-        config.url.PRIMARY_SERVER + "/disk/clone",
+        config.url.PRIMARY_SERVER + "/azure_disk/clone",
         {
             username: state.AuthReducer.username,
             location: action.location,
             vm_size: action.vm_size,
             apps: action.apps,
+            operating_system: "Windows",
             resource_group: config.azure.RESOURCE_GROUP,
         },
         state.AuthReducer.access_token

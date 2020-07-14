@@ -12,14 +12,13 @@ import * as PopupAction from "store/actions/dashboard/popup_actions";
 import * as RenderingAction from "store/actions/dashboard/rendering_actions";
 
 function* getPromoCode(action) {
-    yield select();
     const { json } = yield call(
         apiGet,
         format(
             config.url.PRIMARY_SERVER + "/account/code?username={0}",
             action.username
         ),
-        state.AccountReducer.access_token
+        ""
     );
 
     if (json && json.status === 200) {
