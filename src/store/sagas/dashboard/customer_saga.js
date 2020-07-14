@@ -12,19 +12,34 @@ import * as PopupAction from "store/actions/dashboard/popup_actions";
 import * as RenderingAction from "store/actions/dashboard/rendering_actions";
 
 function* getPromoCode(action) {
-    yield select();
-    const { json } = yield call(
-        apiGet,
-        format(
-            config.url.PRIMARY_SERVER + "/account/code?username={0}",
-            action.username
-        ),
-        state.AccountReducer.access_token
-    );
+    const state = yield select();
+    if (config.new_server) {
+        const { json } = yield call(
+            apiGet,
+            format(
+                config.url.PRIMARY_SERVER + "/account/code?username={0}",
+                action.username
+            ),
+            state.AuthReducer.access_token
+        );
 
-    if (json && json.status === 200) {
-        yield put(SignupAction.sendSignupEmail(action.username, json.code));
-        yield put(CustomerAction.storePromoCode(json.code));
+        if (json && json.status === 200) {
+            yield put(CustomerAction.storePromoCode(json.code));
+        }
+    } else {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/account/fetchCode",
+            {
+                username: action.user,
+            },
+            ""
+        );
+
+        if (json && json.status === 200) {
+            yield put(SignupAction.sendSignupEmail(action.user, json.code));
+            yield put(CustomerAction.storePromoCode(json.code));
+        }
     }
 }
 

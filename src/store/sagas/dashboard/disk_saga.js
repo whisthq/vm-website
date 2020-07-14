@@ -116,20 +116,39 @@ function* fetchDiskAttachStatus(action) {
 
 function* fetchDisks(action) {
     const state = yield select();
-    const { json } = yield call(
-        apiPost,
-        format(
-            config.url.PRIMARY_SERVER + "/account/disks?username={0}&main={1}",
-            action.username,
-            "false"
-        ),
-        state.AccountReducer.access_token
-    );
+    if (config.new_server) {
+        const { json, response } = yield call(
+            apiGet,
+            format(
+                config.url.PRIMARY_SERVER +
+                    "/account/disks?username={0}&main={1}",
+                action.username,
+                "false"
+            ),
+            state.AuthReducer.access_token
+        );
 
-    if (json.disks) {
-        yield put(DiskAction.storeDisks(json.disks));
+        if (response.status === 200 && json.disks) {
+            yield put(DiskAction.storeDisks(json.disks));
+        } else {
+            yield put(DiskAction.storeDisks([]));
+        }
     } else {
-        yield put(DiskAction.storeDisks([]));
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/user/fetchdisks",
+            {
+                username: state.AuthReducer.username,
+                main: false,
+            },
+            ""
+        );
+
+        if (json.disks) {
+            yield put(DiskAction.storeDisks(json.disks));
+        } else {
+            yield put(DiskAction.storeDisks([]));
+        }
     }
 }
 

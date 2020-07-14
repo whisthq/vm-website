@@ -72,7 +72,7 @@ function* googleReason(action) {
 
 function* userLogin(action) {
     yield select();
-    const { json } = yield call(
+    const { json, response } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/account/login",
         {
@@ -81,8 +81,9 @@ function* userLogin(action) {
         }
     );
 
-    if (json) {
+    if (json && response.status === 200) {
         if (json.verified) {
+            console.log(json);
             yield put(
                 TokenAction.storeJWT(json.access_token, json.refresh_token)
             );
@@ -118,16 +119,29 @@ function* forgotPassword(action) {
 
 function* resetPassword(action) {
     yield select();
-    yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/mail/reset",
-        {
-            username: action.username,
-            password: action.password,
-        },
-        ""
-    );
-    history.push("/auth");
+    if (config.new_server) {
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/account/resetPassword",
+            {
+                username: action.username,
+                password: action.password,
+            },
+            ""
+        );
+        history.push("/auth");
+    } else {
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/mail/reset",
+            {
+                username: action.username,
+                password: action.password,
+            },
+            ""
+        );
+        history.push("/auth");
+    }
 }
 
 export default function* () {
