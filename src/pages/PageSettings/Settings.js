@@ -453,7 +453,7 @@ class Settings extends Component {
                                                         )}
                                                         <Col
                                                             sm={6}
-                                                            md={4}
+                                                            lg={4}
                                                             xl={3}
                                                             className="pointerOnHover"
                                                             style={{
@@ -521,7 +521,7 @@ class Settings extends Component {
                                                     >
                                                         <Col
                                                             sm={6}
-                                                            md={4}
+                                                            lg={4}
                                                             xl={3}
                                                             className="pointerOnHover"
                                                             style={{
