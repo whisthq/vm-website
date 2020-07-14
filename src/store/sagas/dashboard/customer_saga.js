@@ -82,25 +82,48 @@ function* insertCustomer(action) {
 function* retrieveCustomer(action) {
     const state = yield select();
 
-    const { json } = yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/stripe/retrieve",
-        {
-            username: state.AuthReducer.username,
-        },
-        state.AuthReducer.access_token
-    );
+    if (config.new_server) {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/stripe/retrieve",
+            {
+                username: state.AuthReducer.username,
+            },
+            state.AuthReducer.access_token
+        );
 
-    if (json) {
-        if (json.status === 200) {
-            yield put(StripeAction.storePayment(json.subscription));
-        } else {
-            yield put(StripeAction.storePayment({}));
+        if (json) {
+            if (json.status === 200) {
+                yield put(StripeAction.storePayment(json.subscription));
+            } else {
+                yield put(StripeAction.storePayment({}));
+            }
+            yield put(LoginAction.storeAccountLocked(json.account_locked));
+            yield put(CustomerAction.storeCustomer(json.customer));
+            yield put(CustomerAction.storeCredits(json.creditsOutstanding));
+            yield put(RenderingAction.dashboardLoaded(true));
         }
-        yield put(LoginAction.storeAccountLocked(json.account_locked));
-        yield put(CustomerAction.storeCustomer(json.customer));
-        yield put(CustomerAction.storeCredits(json.creditsOutstanding));
-        yield put(RenderingAction.dashboardLoaded(true));
+    } else {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/stripe/retrieve",
+            {
+                username: state.AuthReducer.username,
+            },
+            state.AuthReducer.access_token
+        );
+
+        if (json) {
+            if (json.status === 200) {
+                yield put(StripeAction.storePayment(json.subscription));
+            } else {
+                yield put(StripeAction.storePayment({}));
+            }
+            yield put(LoginAction.storeAccountLocked(json.account_locked));
+            yield put(CustomerAction.storeCustomer(json.customer));
+            yield put(CustomerAction.storeCredits(json.creditsOutstanding));
+            yield put(RenderingAction.dashboardLoaded(true));
+        }
     }
 }
 

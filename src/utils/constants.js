@@ -27,7 +27,7 @@ const staging = {
 
 const staging4 = {
     url: {
-        PRIMARY_SERVER: "https://main-webserver-staging4.herokuapp.com",
+        PRIMARY_SERVER: "https://cube-celery-staging4.herokuapp.com",
     },
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
@@ -40,7 +40,7 @@ const staging4 = {
 
 const development = {
     url: {
-        PRIMARY_SERVER: "localhost:7730",
+        PRIMARY_SERVER: "http://localhost:5000",
     },
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
@@ -48,6 +48,7 @@ const development = {
     azure: {
         RESOURCE_GROUP: "FractalStaging",
     },
+    new_server: true,
 };
 
 export const config =

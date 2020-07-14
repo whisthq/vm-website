@@ -1,5 +1,5 @@
 import { put, takeEvery, all, call, select } from "redux-saga/effects";
-import { apiGet, apiPost } from "utils/Api.js";
+import { apiGet, apiPost, format } from "utils/Api.js";
 import { config } from "utils/constants.js";
 import history from "utils/history";
 
@@ -45,9 +45,10 @@ function* checkVerifiedEmail(action) {
     if (config.new_server) {
         const { json, response } = yield call(
             apiGet,
-            config.url.PRIMARY_SERVER +
-                "/account/verified?username=" +
-                action.username,
+            format(
+                config.url.PRIMARY_SERVER + "/account/verified?username={0}",
+                action.username
+            ),
             state.AuthReducer.access_token
         );
         console.log(json);

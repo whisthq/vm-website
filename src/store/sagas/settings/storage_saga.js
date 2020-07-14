@@ -7,21 +7,40 @@ import * as StorageAction from "store/actions/settings/storage_actions";
 
 function* addStorage(action) {
     const state = yield select();
+    if (config.new_server) {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/azure_disk/create",
+            {
+                username: state.AuthReducer.username,
+                disk_size: action.storage,
+                resource_group: config.azure.RESOURCE_GROUP,
+                location: state.DashboardReducer.disks[0].location,
+            },
+            state.AuthReducer.access_token
+        );
 
-    const { json } = yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/disk/create",
-        {
-            username: state.AuthReducer.username,
-            disk_size: action.storage,
-            resource_group: config.azure.RESOURCE_GROUP,
-        },
-        state.AuthReducer.access_token
-    );
+        if (json) {
+            if (json.ID) {
+                yield call(getStorageStatus, json.ID);
+            }
+        }
+    } else {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/disk/create",
+            {
+                username: state.AuthReducer.username,
+                disk_size: action.storage,
+                resource_group: config.azure.RESOURCE_GROUP,
+            },
+            state.AuthReducer.access_token
+        );
 
-    if (json) {
-        if (json.ID) {
-            yield call(getStorageStatus, json.ID);
+        if (json) {
+            if (json.ID) {
+                yield call(getStorageStatus, json.ID);
+            }
         }
     }
 }

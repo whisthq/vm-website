@@ -95,15 +95,27 @@ function* cancelPlan(action) {
         ""
     );
 
-    yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/disk/delete",
-        {
-            username: state.AuthReducer.username,
-            resource_group: config.azure.RESOURCE_GROUP,
-        },
-        state.AuthReducer.access_token
-    );
+    if (config.new_server) {
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/azure_disk/delete",
+            {
+                username: state.AuthReducer.username,
+                resource_group: config.azure.RESOURCE_GROUP,
+            },
+            state.AuthReducer.access_token
+        );
+    } else {
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/disk/delete",
+            {
+                username: state.AuthReducer.username,
+                resource_group: config.azure.RESOURCE_GROUP,
+            },
+            state.AuthReducer.access_token
+        );
+    }
 
     const { json } = yield call(
         apiPost,
