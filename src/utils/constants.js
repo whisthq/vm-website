@@ -40,7 +40,7 @@ const staging4 = {
 
 const development = {
     url: {
-        PRIMARY_SERVER: "http://localhost:5000",
+        PRIMARY_SERVER: "http://localhost:7730",
     },
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
@@ -52,7 +52,7 @@ const development = {
 };
 
 export const config =
-    process.env.NODE_ENV === "development" ? staging4 : staging;
+    process.env.NODE_ENV === "development" ? development : staging;
 
 export const GOOGLE_CLIENT_ID =
     "581514545734-7k820154jdfp0ov2ifk4ju3vodg0oec2.apps.googleusercontent.com";
