@@ -47,7 +47,7 @@ function* insertCustomer(action) {
         apiPost,
         config.url.PRIMARY_SERVER + "/stripe/insert",
         {
-            email: state.AuthReducer.username,
+            username: state.AuthReducer.username,
             location: action.location,
         },
         state.AuthReducer.access_token
@@ -81,13 +81,10 @@ function* retrieveCustomer(action) {
         apiPost,
         config.url.PRIMARY_SERVER + "/stripe/retrieve",
         {
-            email: state.AuthReducer.username,
+            username: state.AuthReducer.username,
         },
         state.AuthReducer.access_token
     );
-
-    console.log("RETRIEVING CUSTOMER");
-    console.log(json);
 
     if (json) {
         if (json.status === 200) {

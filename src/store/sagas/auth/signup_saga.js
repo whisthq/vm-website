@@ -128,28 +128,6 @@ function* validateSignupToken(action) {
 }
 
 function* sendVerificationEmail(action) {
-    console.log("VERIFICATION EMAIL");
-    console.log(action);
-    yield select();
-    if (action.username !== "" && action.token !== "") {
-        const { json } = yield call(
-            apiPost,
-            config.url.PRIMARY_SERVER + "/mail/verification",
-            {
-                username: state.AuthReducer.username,
-                token: action.token,
-            },
-            state.AuthReducer.access_token
-        );
-        if (json && json.status === 200 && json.verified) {
-            yield put(SignupAction.emailVerified(true));
-        } else {
-            yield put(SignupAction.emailVerified(false));
-        }
-    }
-}
-
-function* sendVerificationEmail(action) {
     yield select();
     if (action.username !== "" && action.token !== "") {
         if (config.new_server) {
