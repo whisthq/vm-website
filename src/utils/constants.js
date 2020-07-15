@@ -16,26 +16,7 @@ const staging = {
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
     },
-    new_server: false,
-};
-
-const staging4 = {
-    url: {
-        PRIMARY_SERVER: "https://main-webserver-staging4.herokuapp.com",
-    },
-    stripe: {
-        PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
-    },
     new_server: true,
-};
-
-const staging2 = {
-    url: {
-        PRIMARY_SERVER: "https://cube-celery-staging2.herokuapp.com",
-    },
-    stripe: {
-        PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
-    },
 };
 
 const development = {
@@ -50,7 +31,7 @@ const development = {
 
 // TODO: Change config to development/production after changes in staging are deployed to the other vm webservers
 export const config =
-    process.env.NODE_ENV === "development" ? staging4 : staging;
+    process.env.NODE_ENV === "development" ? staging : staging;
 
 export const GOOGLE_CLIENT_ID =
     "581514545734-7k820154jdfp0ov2ifk4ju3vodg0oec2.apps.googleusercontent.com";
