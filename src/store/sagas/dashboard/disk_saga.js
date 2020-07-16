@@ -153,7 +153,7 @@ function* fetchDisks(action) {
             apiGet,
             format(
                 config.url.PRIMARY_SERVER +
-                "/account/disks?username={0}&main={1}",
+                    "/account/disks?username={0}&main={1}",
                 state.AuthReducer.username,
                 "false"
             ),
