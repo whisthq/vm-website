@@ -60,7 +60,7 @@ function* insertCustomer(action) {
     if (json) {
         yield put(CustomerAction.customerCreated(json.status));
         yield put(CustomerAction.retrieveCustomer());
-      
+
         history.push("/dashboard");
 
         yield put(PopupAction.triggerSurvey(true));
