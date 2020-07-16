@@ -73,7 +73,7 @@ function* googleReason(action) {
 
 function* userLogin(action) {
     yield select();
-    const { json, response } = yield call(
+    const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/account/login",
         {
