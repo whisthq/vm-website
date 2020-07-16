@@ -21,6 +21,7 @@ function* chargeStripe(action) {
             state.AuthReducer.access_token
         );
         if (!(json && json.status === 200 && json.verified)) {
+            console.log("promo code failure");
             yield put(CustomerAction.promoCodeFailure());
         } else {
             yield put(

@@ -82,9 +82,8 @@ function* userLogin(action) {
         }
     );
 
-    if (json && response.status === 200) {
+    if (json) {
         if (json.verified) {
-            console.log(json);
             yield put(
                 TokenAction.storeJWT(json.access_token, json.refresh_token)
             );
