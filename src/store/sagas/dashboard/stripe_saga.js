@@ -13,7 +13,7 @@ function* chargeStripe(action) {
     if (action.code !== "") {
         const { json } = yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/referral/validate",
+            config.url.PRIMARY_SERVER + "/stripe/referral",
             {
                 code: action.code,
                 username: state.AuthReducer.username,
@@ -67,7 +67,7 @@ function* sendFinalCharge(action) {
         config.url.PRIMARY_SERVER + "/stripe/charge",
         {
             token: action.token,
-            email: state.AuthReducer.username,
+            username: state.AuthReducer.username,
             plan: action.plan,
             code: action.code,
         },
@@ -96,20 +96,33 @@ function* cancelPlan(action) {
         ""
     );
 
-    yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/disk/delete",
-        {
-            username: state.AuthReducer.username,
-        },
-        state.AuthReducer.access_token
-    );
+    if (config.new_server) {
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/azure_disk/delete",
+            {
+                username: state.AuthReducer.username,
+                resource_group: config.azure.RESOURCE_GROUP,
+            },
+            state.AuthReducer.access_token
+        );
+    } else {
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/disk/delete",
+            {
+                username: state.AuthReducer.username,
+                resource_group: config.azure.RESOURCE_GROUP,
+            },
+            state.AuthReducer.access_token
+        );
+    }
 
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/stripe/cancel",
         {
-            email: state.AuthReducer.username,
+            username: state.AuthReducer.username,
         },
         state.AuthReducer.access_token
     );

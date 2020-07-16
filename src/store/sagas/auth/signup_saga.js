@@ -1,5 +1,5 @@
 import { put, takeEvery, all, call, select } from "redux-saga/effects";
-import { apiGet, apiPost } from "utils/Api.js";
+import { apiGet, apiPost, format } from "utils/Api.js";
 import { config } from "utils/constants.js";
 import history from "utils/history";
 
@@ -24,6 +24,9 @@ function* userSignup(action) {
     if (json) {
         if (response.status === 200) {
             yield put(
+                SignupAction.sendVerificationEmail(action.username, json.token)
+            );
+            yield put(
                 TokenAction.storeJWT(json.access_token, json.refresh_token)
             );
             yield put(LoginAction.loginSuccess());
@@ -45,9 +48,10 @@ function* checkVerifiedEmail(action) {
     if (config.new_server) {
         const { json, response } = yield call(
             apiGet,
-            config.url.PRIMARY_SERVER +
-                "/account/verified?username=" +
-                action.username,
+            format(
+                config.url.PRIMARY_SERVER + "/account/verified?username={0}",
+                action.username
+            ),
             state.AuthReducer.access_token
         );
         console.log(json);
@@ -183,7 +187,6 @@ export default function* () {
     yield all([
         takeEvery(SignupAction.USER_SIGNUP, userSignup),
         takeEvery(SignupAction.CHECK_VERIFIED_EMAIL, checkVerifiedEmail),
-        takeEvery(SignupAction.SEND_SIGNUP_EMAIL, sendSignupEmail),
         takeEvery(SignupAction.SUBSCRIBE_NEWSLETTER, subscribeNewsletter),
         takeEvery(SignupAction.VALIDATE_SIGNUP_TOKEN, validateSignupToken),
         takeEvery(SignupAction.SEND_VERIFICATION_EMAIL, sendVerificationEmail),

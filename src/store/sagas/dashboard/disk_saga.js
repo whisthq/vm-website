@@ -1,12 +1,11 @@
 import { put, takeEvery, all, call, select, delay } from "redux-saga/effects";
 
-import { apiPost, apiGet } from "utils/Api";
+import { apiPost, apiGet, format } from "utils/Api";
 import { config } from "utils/constants";
 import { formatDate } from "utils/date";
 import * as DiskAction from "store/actions/dashboard/disk_actions";
 
 function* fetchDiskCreationStatus(ID) {
-    console.log("fetching disk creation status");
     var { json } = yield call(
         apiGet,
         (config.url.PRIMARY_SERVER + "/status/").concat(ID),
@@ -34,22 +33,40 @@ function* fetchDiskCreationStatus(ID) {
 }
 
 function* attachDisk(disk_name) {
-    console.log("attaching disk");
     const state = yield select();
-    const { json } = yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/disk/attach",
-        {
-            disk_name: disk_name,
-        },
-        state.AuthReducer.access_token
-    );
+    if (config.new_server) {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/azure_disk/attach",
+            {
+                disk_name: disk_name,
+                resource_group: config.azure.RESOURCE_GROUP,
+            },
+            state.AuthReducer.access_token
+        );
 
-    console.log(json);
+        console.log(json);
 
-    if (json && json.ID) {
-        yield put(DiskAction.storeDiskAttachID(json.ID));
-        yield put(DiskAction.fetchDiskAttachStatus(json.ID));
+        if (json && json.ID) {
+            yield put(DiskAction.storeDiskAttachID(json.ID));
+            yield put(DiskAction.fetchDiskAttachStatus(json.ID));
+        }
+    } else {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/disk/attach",
+            {
+                disk_name: disk_name,
+            },
+            state.AuthReducer.access_token
+        );
+
+        console.log(json);
+
+        if (json && json.ID) {
+            yield put(DiskAction.storeDiskAttachID(json.ID));
+            yield put(DiskAction.fetchDiskAttachStatus(json.ID));
+        }
     }
 }
 
@@ -80,15 +97,27 @@ function* fetchDiskAttachStatus(action) {
 
         if (json && json.output && json.state === "PENDING") {
             var now1 = new Date();
-            var message1 =
-                "(" +
-                formatDate(now1.getHours()) +
-                ":" +
-                formatDate(now1.getMinutes()) +
-                ":" +
-                formatDate(now1.getSeconds()) +
-                ") " +
-                json.output.msg;
+            if (config.new_server) {
+                var message1 =
+                    "(" +
+                    formatDate(now1.getHours()) +
+                    ":" +
+                    formatDate(now1.getMinutes()) +
+                    ":" +
+                    formatDate(now1.getSeconds()) +
+                    ") " +
+                    json.output;
+            } else {
+                var message1 =
+                    "(" +
+                    formatDate(now1.getHours()) +
+                    ":" +
+                    formatDate(now1.getMinutes()) +
+                    ":" +
+                    formatDate(now1.getSeconds()) +
+                    ") " +
+                    json.output.msg;
+            }
             yield put(DiskAction.changeDiskStatusMessage(message1));
         }
 
@@ -121,11 +150,12 @@ function* fetchDisks(action) {
     if (config.new_server) {
         const { json, response } = yield call(
             apiGet,
-            config.url.PRIMARY_SERVER +
-                "/account/disks?username=" +
-                state.AuthReducer.username +
-                "&main=" +
-                false,
+            format(
+                config.url.PRIMARY_SERVER +
+                    "/account/disks?username={0}&main={1}",
+                state.AuthReducer.username,
+                "false"
+            ),
             state.AuthReducer.access_token
         );
 
@@ -154,27 +184,45 @@ function* fetchDisks(action) {
 }
 
 function* createDisk(action) {
-    console.log("create disk command sent");
-    console.log(action);
-
     const state = yield select();
-    const { json } = yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/disk/createFromImage",
-        {
-            username: state.AuthReducer.username,
-            location: action.location,
-            vm_size: action.vm_size,
-            apps: action.apps,
-        },
-        state.AuthReducer.access_token
-    );
+    if (config.new_server) {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/azure_disk/clone",
+            {
+                username: state.AuthReducer.username,
+                location: action.location,
+                vm_size: action.vm_size,
+                apps: action.apps,
+                resource_group: config.azure.RESOURCE_GROUP,
+                operating_system: "Windows",
+            },
+            state.AuthReducer.access_token
+        );
 
-    console.log(json);
+        if (json) {
+            if (json.ID) {
+                yield call(fetchDiskCreationStatus, json.ID);
+            }
+        }
+    } else {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/disk/clone",
+            {
+                username: state.AuthReducer.username,
+                location: action.location,
+                vm_size: action.vm_size,
+                apps: action.apps,
+                resource_group: config.azure.RESOURCE_GROUP,
+            },
+            state.AuthReducer.access_token
+        );
 
-    if (json) {
-        if (json.ID) {
-            yield call(fetchDiskCreationStatus, json.ID);
+        if (json) {
+            if (json.ID) {
+                yield call(fetchDiskCreationStatus, json.ID);
+            }
         }
     }
 }

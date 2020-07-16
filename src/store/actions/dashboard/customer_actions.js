@@ -24,10 +24,10 @@ export function storePromoCode(code) {
     };
 }
 
-export function getPromoCode(user) {
+export function getPromoCode(username) {
     return {
         type: GET_PROMO_CODE,
-        user,
+        username,
     };
 }
 
