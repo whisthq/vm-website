@@ -20,20 +20,7 @@ const staging = {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
     },
     azure: {
-        RESOURCE_GROUP: "FractalStaging",
-    },
-    new_server: false,
-};
-
-const staging4 = {
-    url: {
-        PRIMARY_SERVER: "https://cube-celery-staging4.herokuapp.com",
-    },
-    stripe: {
-        PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
-    },
-    azure: {
-        RESOURCE_GROUP: "FractalStaging",
+        RESOURCE_GROUP: "Fractal",
     },
     new_server: true,
 };
@@ -64,6 +51,7 @@ const local = {
     new_server: true,
 };
 
+// TODO: Change config to development/production after changes in staging are deployed to the other vm webservers
 export const config = process.env.NODE_ENV === "development" ? local : staging;
 
 export const GOOGLE_CLIENT_ID =

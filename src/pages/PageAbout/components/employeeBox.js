@@ -21,7 +21,9 @@ class EmployeeBox extends Component {
                             }}
                         >
                             <ImageFadeIn
-                                src={this.props.image}
+                                src={require("../../../assets/team_photos/" +
+                                    this.props.image +
+                                    ".svg")}
                                 style={{
                                     maxWidth: 130,
                                     maxHeight: 130,
@@ -45,7 +47,9 @@ class EmployeeBox extends Component {
                             }}
                         >
                             <ImageFadeIn
-                                src={this.props.image}
+                                src={require("../../../assets/team_photos/" +
+                                    this.props.image +
+                                    ".svg")}
                                 style={{
                                     maxWidth: 75,
                                     maxHeight: 75,

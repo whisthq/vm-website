@@ -7,20 +7,15 @@ import { Link } from "react-router-dom";
 import ImageFadeIn from "react-image-fade-in";
 
 import Datacenter from "assets/large_graphics/datacenter.svg";
-import Ming from "assets/team_photos/ming.svg";
-import Phil from "assets/team_photos/phil.svg";
-import Nick from "assets/team_photos/nick.svg";
-import Roshan from "assets/team_photos/roshan.svg";
-import Hamish from "assets/team_photos/hamish.svg";
-import Matt from "assets/team_photos/matt.svg";
-import Jonathan from "assets/team_photos/jonathan.svg";
-import Sean from "assets/team_photos/sean.svg";
-import Isabelle from "assets/team_photos/isabelle.svg";
 
 import InvestorBox from "pages/PageAbout/components/InvestorBox";
 import EmployeeBox from "pages/PageAbout/components/employeeBox";
+import JobBox from "pages/PageAbout/components/jobBox";
 import Header from "components/header";
 import Footer from "components/footer";
+
+import { jobData } from "pages/PageAbout/constants/jobs";
+import { teamData } from "pages/PageAbout/constants/team";
 
 class About extends Component {
     constructor(props) {
@@ -47,6 +42,45 @@ class About extends Component {
             modalClose();
         }
         window.addEventListener("resize", this.updateWindowDimensions);
+
+        let jobCards = null;
+        if (jobData.length) {
+            jobCards = (
+                <Row>
+                    {jobData.map((job) => (
+                        <JobBox job={job} width={this.state.width} />
+                    ))}
+                </Row>
+            );
+        } else {
+            jobCards = (
+                <p className="text-center">
+                    We don't have any openings at the moment. Check back soon!
+                </p>
+            );
+        }
+
+        let teamCards = [];
+        let shuffledTeamData = teamData
+            .map((a) => ({ sort: Math.random(), value: a }))
+            .sort((a, b) => a.sort - b.sort)
+            .map((a) => a.value);
+        for (var i = 0; i < shuffledTeamData.length; i += 3) {
+            let teamGroup = shuffledTeamData.slice(i, i + 3);
+            teamCards.push(
+                <Carousel.Item style={{ padding: 20 }}>
+                    <Row>
+                        {teamGroup.map((person) => (
+                            <EmployeeBox
+                                image={person.image}
+                                name={person.name}
+                                text={person.text}
+                            />
+                        ))}
+                    </Row>
+                </Carousel.Item>
+            );
+        }
 
         return (
             <div style={{ overflowX: "hidden" }} id="top" className="App">
@@ -203,17 +237,11 @@ class About extends Component {
                         style={{ paddingBottom: 50 }}
                     >
                         <Row>
-                            <Col md={12} style={{ textAlign: "center" }}>
-                                <div
-                                    style={{
-                                        fontSize: 40,
-                                        marginTop: 10,
-                                        lineHeight: 1.4,
-                                        fontWeight: "bold",
-                                    }}
-                                >
-                                    Our Stories
-                                </div>
+                            <Col
+                                md={12}
+                                style={{ textAlign: "center", marginTop: 10 }}
+                            >
+                                <div className="titleFont">Our Stories</div>
                                 <div
                                     style={{
                                         color: "#555555",
@@ -234,227 +262,7 @@ class About extends Component {
                                 style={{ marginTop: 50, textAlign: "left" }}
                             >
                                 <Carousel controls={false}>
-                                    <Carousel.Item style={{ padding: 20 }}>
-                                        <Row>
-                                            <EmployeeBox
-                                                image={Ming}
-                                                name="Ming Ying"
-                                                text="Ming
-                                                        was a software
-                                                        engineer at Fidelity
-                                                        and quant researcher
-                                                        at AQR Capital
-                                                        Management.
-                                                        His previous
-                                                        research
-                                                        interests
-                                                        include
-                                                        linear
-                                                        optimization
-                                                        algorithms
-                                                        in the
-                                                        context of
-                                                        daily
-                                                        fantasy
-                                                        baseball
-                                                        betting and
-                                                        Bayesian
-                                                        modelling.
-                                                        He studied Statistics and Computer
-                                                        Science at Harvard."
-                                            />
-                                            <EmployeeBox
-                                                image={Phil}
-                                                name="Phil Noel"
-                                                text="Prior to
-                                                        Phil was a
-                                                        product
-                                                        manager at
-                                                        Microsoft
-                                                        Azure,
-                                                        machine
-                                                        learning
-                                                        researcher
-                                                        at Premier
-                                                        Tech, and
-                                                        speaker at
-                                                        TedX Harvard
-                                                        and TedX
-                                                        Quebec. Phil
-                                                        graduated
-                                                        from Harvard
-                                                        University,
-                                                        where he
-                                                        studied
-                                                        Computer
-                                                        Science and
-                                                        Neuroscience."
-                                            />
-                                            <EmployeeBox
-                                                image={Nick}
-                                                name="Nick Pipitone"
-                                                text="Nick has an
-                                                        affinity for
-                                                        graphics
-                                                        shaders,
-                                                        circuits,
-                                                        and
-                                                        cryptocurrencies,
-                                                        with
-                                                        particular
-                                                        experience
-                                                        in
-                                                        cybersecurity
-                                                        and
-                                                        penetration
-                                                        testing. He
-                                                        studied
-                                                        Information
-                                                        Systems at
-                                                        Carnegie
-                                                        Mellon."
-                                            />
-                                        </Row>
-                                    </Carousel.Item>
-                                    <Carousel.Item style={{ padding: 20 }}>
-                                        <Row>
-                                            <EmployeeBox
-                                                image={Roshan}
-                                                name="Roshan Padaki"
-                                                text="Prior to
-                                                        Fractal,
-                                                        Roshan
-                                                        researched
-                                                        performance
-                                                        lower bounds
-                                                        for matching
-                                                        algorithms
-                                                        in dynamic
-                                                        matching
-                                                        markets and
-                                                        developed
-                                                        methods for
-                                                        reducing
-                                                        dimensionality
-                                                        and sampling
-                                                        parameters
-                                                        in Bayesian
-                                                        deep
-                                                        learning. He
-                                                        studied
-                                                        mathematics
-                                                        at Harvard."
-                                            />
-                                            <EmployeeBox
-                                                image={Hamish}
-                                                name="Hamish Nicholson"
-                                                text="Hamish has worked
-                                                        as a data
-                                                        scientist at
-                                                        NASA's Jet
-                                                        Propulsion
-                                                        Laboratory,
-                                                        as a deep
-                                                        learning
-                                                        researcher
-                                                        at
-                                                        Perceptive
-                                                        Automata,
-                                                        and as a
-                                                        research
-                                                        partner at
-                                                        the
-                                                        Radcliffe
-                                                        Institute,
-                                                        where he
-                                                        studied the
-                                                        formation of
-                                                        molecular
-                                                        clouds in
-                                                        young stars.
-                                                        He studied
-                                                        Computer
-                                                        Science and
-                                                        Statistics
-                                                        at Harvard
-                                                        University."
-                                            />
-                                            <EmployeeBox
-                                                image={Matt}
-                                                name="Mathieu Lochet"
-                                                text="Mathieu
-                                                        studied
-                                                        Computer
-                                                        Science and
-                                                        engineering
-                                                        at INSA in
-                                                        France. He
-                                                        has worked
-                                                        in software
-                                                        architecture,
-                                                        framework
-                                                        design,
-                                                        optimization
-                                                        and game
-                                                        engines for
-                                                        the last 10
-                                                        years."
-                                            />
-                                        </Row>
-                                    </Carousel.Item>
-                                    <Carousel.Item style={{ padding: 20 }}>
-                                        <Row>
-                                            <EmployeeBox
-                                                image={Jonathan}
-                                                name="Jonathan Xu"
-                                                text="Jonathan is
-                                                        an avid
-                                                        hackathon-goer,
-                                                        and loves to
-                                                        build
-                                                        creative
-                                                        projects
-                                                        from the
-                                                        ground up.
-                                                        Prior to
-                                                        Fractal, he
-                                                        did full
-                                                        stack
-                                                        development
-                                                        for
-                                                        startups. He
-                                                        is studying
-                                                        software
-                                                        engineering
-                                                        at the
-                                                        University
-                                                        of Waterloo."
-                                            />
-                                            <EmployeeBox
-                                                image={Isabelle}
-                                                name="Isabelle Zheng"
-                                                text="Isabelle studies Computer Science at Harvard 
-                                                        University. Prior to working with Fractal, she did 
-                                                        mobile and full-stack development with Facebook and 
-                                                        other startups. On campus, she works to connect student 
-                                                        founders with potential investors."
-                                            />
-                                            <EmployeeBox
-                                                image={Sean}
-                                                name="Sean Hackett"
-                                                text="Sean has milled around quantum physics labs, 
-                                                        hackathons, and nonprofits. He studied 
-                                                        tiny trampolines that transmute quantum 
-                                                        information and built robots that make 
-                                                        sense of the 'hmms' and 'uh huhs' of 
-                                                        everyday conversation. Sean studied 
-                                                        Computer Science and Physics at 
-                                                        Yale, and will enroll 
-                                                        in the University of Southern California 
-                                                        for a Ph.D in Computer Science."
-                                            />
-                                        </Row>
-                                    </Carousel.Item>
+                                    {teamCards}
                                 </Carousel>
                             </Col>
                         </Row>
@@ -485,16 +293,7 @@ class About extends Component {
                                 >
                                     Support
                                 </div>
-                                <div
-                                    style={{
-                                        fontSize: 40,
-                                        marginTop: 10,
-                                        lineHeight: 1.4,
-                                        fontWeight: "bold",
-                                    }}
-                                >
-                                    Our Investors
-                                </div>
+                                <div className="titleFont">Our Investors</div>
                                 <div
                                     style={{
                                         color: "#555555",
@@ -532,8 +331,33 @@ class About extends Component {
                                 </Col>
                             )}
                         </Row>
+                        <div
+                            className="text-center"
+                            style={{
+                                marginTop: 120,
+                            }}
+                        >
+                            <div className="titleFont">Open Positions</div>
+                            <div
+                                style={{
+                                    color: "#555555",
+                                    lineHeight: 1.7,
+                                    maxWidth: 600,
+                                    margin: "auto",
+                                    marginTop: 20,
+                                    marginBottom: 60,
+                                    fontSize: 18,
+                                }}
+                            >
+                                Join us in our mission to redefine personal
+                                computing. If your skillset matches our open
+                                positions, we'd love to hear from you.
+                            </div>
+                        </div>
+                        {jobCards}
                     </div>
                 </div>
+
                 <div
                     style={{
                         background:
