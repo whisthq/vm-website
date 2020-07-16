@@ -20,6 +20,16 @@ function* addStorage(action) {
             state.AuthReducer.access_token
         );
 
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/stripe/addProduct",
+            {
+                username: state.AuthReducer.username,
+                product: action.storage.toString() + "disk",
+            },
+            state.AuthReducer.access_token
+        );
+
         if (json) {
             if (json.ID) {
                 yield call(getStorageStatus, json.ID);
