@@ -28,7 +28,7 @@ function* addStorage(action) {
     } else {
         const { json } = yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/disk/create",
+            config.url.PRIMARY_SERVER + "/azure_disk/create",
             {
                 username: state.AuthReducer.username,
                 disk_size: action.storage,
