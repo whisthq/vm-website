@@ -17,6 +17,8 @@ import GPU from "assets/icons/gpu.svg";
 import RAM from "assets/icons/ram.svg";
 import SSD from "assets/icons/hard-drive-icon.svg";
 
+import { config } from "utils/constants.js";
+
 class TopSection extends Component {
     constructor(props) {
         super(props);
@@ -141,23 +143,39 @@ class TopSection extends Component {
                             marginTop: 30,
                         }}
                     >
-                        <Col xs={12}>
-                            <Link
-                                style={{
-                                    textDecoration: "none",
-                                }}
-                                to="/purchase"
-                                className="create-cloud-pc"
-                            >
-                                <ImageBox
-                                    text="Create My Cloud Computer"
-                                    subtext="Transform your
-                                        computer into a GPU-powered cloud
-                                        computer. Setup in less than a 
-                                        minute, no payment required."
-                                />
-                            </Link>
-                        </Col>
+                        {config.settings.WAITLIST ? (
+                            <Col xs={12}>
+                                <div
+                                    style={{
+                                        textDecoration: "none",
+                                    }}
+                                    className="create-cloud-pc"
+                                >
+                                    <ImageBox
+                                        text="Create My Cloud Computer"
+                                        subtext="Status: All servers are currently at full capacity. Creating a cloud PC will be possible once more servers are available."
+                                    />
+                                </div>
+                            </Col>
+                        ) : (
+                            <Col xs={12}>
+                                <Link
+                                    style={{
+                                        textDecoration: "none",
+                                    }}
+                                    to="/purchase"
+                                    className="create-cloud-pc"
+                                >
+                                    <ImageBox
+                                        text="Create My Cloud Computer"
+                                        subtext="Transform your
+                                            computer into a GPU-powered cloud
+                                            computer. Setup in less than a 
+                                            minute, no payment required."
+                                    />
+                                </Link>
+                            </Col>
+                        )}
                     </Row>
                 );
             }

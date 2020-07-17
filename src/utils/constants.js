@@ -6,6 +6,9 @@ const production = {
     stripe: {
         PUBLIC_KEY: "pk_live_XLjiiZB93KN0EjY8hwCxvKmB00whKEIj3U",
     },
+    settings: {
+        WAITLIST: true,
+    },
 };
 
 const staging = {
@@ -15,6 +18,9 @@ const staging = {
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
     },
+    settings: {
+        WAITLIST: true,
+    },
 };
 
 const development = {
@@ -23,6 +29,9 @@ const development = {
     },
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
+    },
+    settings: {
+        WAITLIST: true,
     },
 };
 
