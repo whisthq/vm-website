@@ -387,7 +387,7 @@ class Settings extends Component {
                                                                     <Col
                                                                         sm={6}
                                                                         lg={4}
-                                                                        xl={3}
+                                                                        xl={4}
                                                                         style={{
                                                                             paddingRight:
                                                                                 this
@@ -453,8 +453,8 @@ class Settings extends Component {
                                                         )}
                                                         <Col
                                                             sm={6}
-                                                            lg={4}
-                                                            xl={3}
+                                                            md={4}
+                                                            xl={4}
                                                             className="pointerOnHover"
                                                             style={{
                                                                 paddingRight:
@@ -521,8 +521,8 @@ class Settings extends Component {
                                                     >
                                                         <Col
                                                             sm={6}
-                                                            lg={4}
-                                                            xl={3}
+                                                            md={4}
+                                                            xl={4}
                                                             className="pointerOnHover"
                                                             style={{
                                                                 paddingRight:

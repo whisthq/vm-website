@@ -81,22 +81,22 @@ function* checkVerifiedEmail(action) {
     }
 }
 
-function* sendSignupEmail(action) {
-    if (!config.new_server) {
-        const state = yield select();
-        if (!state.AuthReducer.email_verified) {
-            yield call(
-                apiPost,
-                config.url.PRIMARY_SERVER + "/signup",
-                {
-                    username: action.user,
-                    code: action.code,
-                },
-                ""
-            );
-        }
-    }
-}
+// function* sendSignupEmail(action) {
+//     if (!config.new_server) {
+//         const state = yield select();
+//         if (!state.AuthReducer.email_verified) {
+//             yield call(
+//                 apiPost,
+//                 config.url.PRIMARY_SERVER + "signup",
+//                 {
+//                     username: action.user,
+//                     code: action.code,
+//                 },
+//                 ""
+//             );
+//         }
+//     }
+// }
 
 function* subscribeNewsletter(action) {
     yield call(
