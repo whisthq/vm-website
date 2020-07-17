@@ -1,4 +1,5 @@
 export const STORE_SETUP_STEP = "STORE_SETUP_STEP";
+export const STORE_OPERATING_SYSTEM = "STORE_OPERATING_SYSTEM";
 export const STORE_COUNTRY = "STORE_COUNTRY";
 export const STORE_PURCHASE_LOCATION = "STORE_PURCHASE_LOCATION";
 export const STORE_COMPUTER_SPEC = "STORE_COMPUTER_SPEC";
@@ -10,6 +11,13 @@ export function storeSetupStep(step) {
     return {
         type: STORE_SETUP_STEP,
         step,
+    };
+}
+
+export function storeOperatingSystem(operating_system) {
+    return {
+        type: STORE_OPERATING_SYSTEM,
+        operating_system,
     };
 }
 

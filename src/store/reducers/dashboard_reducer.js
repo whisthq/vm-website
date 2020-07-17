@@ -103,6 +103,16 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 amount: action.amount,
                 stripe_token: action.token,
             };
+        case VMSetupAction.STORE_OPERATING_SYSTEM:
+            return {
+                ...state,
+                vm_setup_data: state.vm_setup_data
+                    ? {
+                          ...state.vm_setup_data,
+                          operating_system: action.operating_system,
+                      }
+                    : { operating_system: action.operating_system },
+            };
         case VMSetupAction.STORE_COMPUTER_SPEC:
             return {
                 ...state,

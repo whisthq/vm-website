@@ -56,6 +56,7 @@ export const DASHBOARD_DEFAULT = {
         plan: null,
         apps: [],
         step: 1,
+        operating_system: null,
     },
     require_payment_oncreate: true,
 };

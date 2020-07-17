@@ -195,7 +195,7 @@ function* createDisk(action) {
                 vm_size: action.vm_size,
                 apps: action.apps,
                 resource_group: config.azure.RESOURCE_GROUP,
-                operating_system: "Windows",
+                operating_system: action.operating_system,
             },
             state.AuthReducer.access_token
         );

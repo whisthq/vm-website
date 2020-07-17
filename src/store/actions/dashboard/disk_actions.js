@@ -7,12 +7,13 @@ export const STORE_CURRENT_DISK = "STORE_CURRENT_DISK";
 export const CHANGE_DISK_STATUS_MESSAGE = "CHANGE_DISK_STATUS_MESSAGE";
 export const STORE_DISK_ATTACH_ID = "STORE_DISK_ATTACH_ID";
 
-export function createDisk(location, vm_size, apps) {
+export function createDisk(location, vm_size, apps, operating_system) {
     return {
         type: CREATE_DISK,
         location,
         vm_size,
         apps,
+        operating_system,
     };
 }
 

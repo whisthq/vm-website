@@ -26,7 +26,7 @@ import OfflineSection from "pages/PageDashboard/sections/OfflineSection";
 import LoadingSection from "pages/PageDashboard/sections/LoadingSection";
 import LeftSection from "pages/PageDashboard/sections/LeftSection";
 import TopSection from "pages/PageDashboard/sections/NewTopSection";
-import BottomSection from "pages/PageDashboard/sections/BottomSection";
+import BottomSection from "pages/PageDashboard/sections/NewBottomSection";
 
 import { monthConvert, unixToDate } from "utils/date";
 

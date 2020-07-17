@@ -149,7 +149,7 @@ class TopSection extends Component {
                                         textDecoration: "none",
                                     }}
                                     to={{
-                                        pathnam: "/purchase",
+                                        pathname: "/purchase",
                                         state: { operatingSystem: os },
                                     }}
                                     className="create-cloud-pc"

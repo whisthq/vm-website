@@ -3,7 +3,10 @@ import { connect } from "react-redux";
 
 import Header from "components/header.js";
 
-import { resetSetupData } from "store/actions/dashboard/vm_setup_actions";
+import {
+    resetSetupData,
+    storeOperatingSystem,
+} from "store/actions/dashboard/vm_setup_actions";
 
 import LeftSection from "pages/PagePurchase/sections/LeftSection";
 import CountrySection from "pages/PagePurchase/sections/CountrySection";
@@ -27,6 +30,12 @@ class Purchase extends Component {
         this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
         this.props.dispatch(resetSetupData());
+
+        const operatingSystem =
+            "operatingSystem" in this.props.location.state
+                ? this.props.location.state.operatingSystem
+                : "Windows";
+        this.props.dispatch(storeOperatingSystem(operatingSystem));
     }
 
     componentWillUnmount() {
