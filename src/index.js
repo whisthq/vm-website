@@ -16,11 +16,13 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import history from "utils/history";
 import "static/Shared.css";
+import { config } from "utils/constants";
 
 import Purchase from "pages/PagePurchase/Purchase";
 import Auth from "pages/PageAuth/Auth";
 import Landing from "pages/PageLanding/Landing";
 import Dashboard from "pages/PageDashboard/Dashboard";
+import NewDashboard from "pages/PageDashboard/NewDashboard";
 import Reset from "pages/PageReset/Reset";
 import Privacy from "pages/PageLegal/Privacy";
 import Cookie from "pages/PageLegal/CookiePolicy";
@@ -58,7 +60,12 @@ ReactDOM.render(
                 <Route exact path="/" component={Landing} />
                 <Route exact path="/purchase" component={Purchase} />
                 <Route exact path="/auth" component={Auth} />
-                <Route exact path="/dashboard" component={Dashboard} />
+
+                {config.features.linux ? (
+                    <Route exact path="/dashboard" component={NewDashboard} />
+                ) : (
+                    <Route exact path="/dashboard" component={Dashboard} />
+                )}
                 <Route exact path="/home" component={Landing} />
                 <Route exact path="/reset" component={Reset} />
                 <Route exact path="/privacy" component={Privacy} />

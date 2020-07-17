@@ -153,7 +153,7 @@ class TopSection extends Component {
                                     text="Create My Cloud Computer"
                                     subtext="Transform your
                                         computer into a GPU-powered cloud
-                                        computer. Setup in less than a 
+                                        computer. Setup in less than a
                                         minute, no payment required."
                                 />
                             </Link>

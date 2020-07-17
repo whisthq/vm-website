@@ -10,6 +10,9 @@ const production = {
         RESOURCE_GROUP: "Fractal",
     },
     new_server: false,
+    features: {
+        linux: false,
+    },
 };
 
 const staging = {
@@ -23,6 +26,9 @@ const staging = {
         RESOURCE_GROUP: "FractalStaging",
     },
     new_server: false,
+    features: {
+        linux: false,
+    },
 };
 
 const staging4 = {
@@ -36,6 +42,9 @@ const staging4 = {
         RESOURCE_GROUP: "FractalStaging",
     },
     new_server: true,
+    features: {
+        linux: true,
+    },
 };
 
 const development = {
@@ -49,6 +58,9 @@ const development = {
         RESOURCE_GROUP: "FractalStaging",
     },
     new_server: true,
+    features: {
+        linux: true,
+    },
 };
 
 export const config =
