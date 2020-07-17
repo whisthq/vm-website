@@ -19,6 +19,9 @@ const staging = {
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
     },
+    azure: {
+        RESOURCE_GROUP: "FractalStaging",
+    },
     new_server: true,
 };
 
