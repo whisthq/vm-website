@@ -209,10 +209,14 @@ class Dashboard extends Component {
             return (
                 <div className="dashboard-container">
                     <div style={{ maxWidth: 1920, margin: "auto" }}>
-                        <Header color="#111111" button="#5ec3eb" />
+                        <Header
+                            color="#111111"
+                            button="#5ec3eb"
+                            dashboard={this.state.width <= 900}
+                        />
                         <FeedbackBox />
                         <div className="dashboard-flex">
-                            <LeftSection />
+                            {this.state.width > 900 && <LeftSection />}
                             <div className="right-section">
                                 <CreditsBox />
                                 <div className="date">
