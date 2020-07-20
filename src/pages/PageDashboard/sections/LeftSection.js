@@ -37,7 +37,7 @@ class LeftSection extends Component {
                     DASHBOARD
                 </Link>
                 <Link
-                    to="/settings"
+                    to="/dashboard/settings"
                     className="sign-out-button"
                     style={{ textDecoration: "none", color: "#B9B9B9" }}
                 >

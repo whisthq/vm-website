@@ -29,7 +29,6 @@ import EmailVerification from "pages/PageAuth/EmailVerification";
 import CreditCard from "pages/PagePurchase/CreditCard";
 import About from "pages/PageAbout/About";
 import Plan from "pages/PagePurchase/Plan";
-import Settings from "pages/PageSettings/Settings";
 import Storage from "pages/PagePurchase/Storage";
 
 const persistConfig = {
@@ -58,7 +57,7 @@ ReactDOM.render(
                 <Route exact path="/" component={Landing} />
                 <Route exact path="/purchase" component={Purchase} />
                 <Route exact path="/auth" component={Auth} />
-                <Route exact path="/dashboard" component={Dashboard} />
+                <Route path="/dashboard" component={Dashboard} />
                 <Route exact path="/home" component={Landing} />
                 <Route exact path="/reset" component={Reset} />
                 <Route exact path="/privacy" component={Privacy} />
@@ -72,7 +71,6 @@ ReactDOM.render(
                 <Route exact path="/card" component={CreditCard} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/plan" component={Plan} />
-                <Route exact path="/settings" component={Settings} />
                 <Route exact path="/storage" component={Storage} />
             </PersistGate>
         </Provider>
