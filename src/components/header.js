@@ -37,7 +37,7 @@ class Header extends Component {
     }
 
     render() {
-        if (this.state.width > 700) {
+        if (this.state.width > 900) {
             return (
                 <div
                     style={{

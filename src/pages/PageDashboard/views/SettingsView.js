@@ -106,17 +106,13 @@ class SettingsView extends Component {
                         style={{
                             paddingTop: 40,
                             paddingBottom: 50,
-                            width:
-                                this.state.width > 900
-                                    ? "calc(100% - 400px)"
-                                    : "100%",
                         }}
                     >
                         <div
                             style={{
                                 fontSize: this.state.width > 900 ? 42 : 35,
                                 fontWeight: "bold",
-                                paddingTop: 12,
+                                paddingTop: 20,
                             }}
                         >
                             SETTINGS
@@ -247,65 +243,43 @@ class SettingsView extends Component {
                                 </Col>
                             </Row>
                         ) : (
-                            <Row style={{ marginTop: 5 }}>
-                                <Col xs={12}>
-                                    <Row
+                            <Link
+                                style={{
+                                    textDecoration: "none",
+                                    marginTop: 10,
+                                }}
+                                to="/purchase"
+                            >
+                                <div
+                                    style={{
+                                        fontSize: 14,
+                                        background: "#0B172B",
+                                        boxShadow:
+                                            "0px 4px 15px rgba(0, 0, 0, 0.2)",
+                                        borderRadius: 7,
+                                        padding: "40px 35px",
+                                        marginTop: 35,
+                                        minHeight: 210,
+                                        textAlign: "center",
+                                        color: "white",
+                                    }}
+                                >
+                                    <FaPlus
                                         style={{
-                                            width: "100%",
+                                            fontSize: 25,
+                                            marginTop: 20,
+                                        }}
+                                    />
+                                    <div
+                                        style={{
+                                            marginTop: 32,
+                                            fontSize: 16,
                                         }}
                                     >
-                                        <Col
-                                            sm={6}
-                                            md={4}
-                                            xl={3}
-                                            className="pointerOnHover"
-                                            style={{
-                                                paddingRight:
-                                                    this.state.width > 900
-                                                        ? 20
-                                                        : 0,
-                                            }}
-                                        >
-                                            <Link
-                                                style={{
-                                                    textDecoration: "none",
-                                                }}
-                                                to="/purchase"
-                                            >
-                                                <div
-                                                    style={{
-                                                        fontSize: 14,
-                                                        background: "#0B172B",
-                                                        boxShadow:
-                                                            "0px 4px 15px rgba(0, 0, 0, 0.2)",
-                                                        borderRadius: 7,
-                                                        padding: "40px 35px",
-                                                        marginTop: 35,
-                                                        minHeight: 210,
-                                                        textAlign: "center",
-                                                        color: "white",
-                                                    }}
-                                                >
-                                                    <FaPlus
-                                                        style={{
-                                                            fontSize: 25,
-                                                            marginTop: 20,
-                                                        }}
-                                                    />
-                                                    <div
-                                                        style={{
-                                                            marginTop: 32,
-                                                            fontSize: 16,
-                                                        }}
-                                                    >
-                                                        Create Cloud PC
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                        </Col>
-                                    </Row>
-                                </Col>
-                            </Row>
+                                        Create Cloud PC
+                                    </div>
+                                </div>
+                            </Link>
                         )}
                         <Row style={{ marginTop: 60 }}>
                             <Col sm={6} xs={12}>
