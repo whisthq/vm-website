@@ -100,7 +100,19 @@ class TopSection extends Component {
                                 </div>
                             </Col>
                             <Col xs={12} md={12}>
-                                <PaymentBox trialEnd={this.props.trialEnd} />
+                                <Link
+                                    to="/card"
+                                    style={{
+                                        textDecoration: "none",
+                                    }}
+                                    className="pointerOnHover"
+                                >
+                                    <PaymentBox
+                                        icon={"Credit Card"}
+                                        title={"Add Payment"}
+                                        subtext={`Your cloud PC is free until ${this.props.trialEnd}.`}
+                                    />
+                                </Link>
                             </Col>
                             {this.state.operating_systems.map((os) => (
                                 //TODO FIX THIS
@@ -174,18 +186,12 @@ class TopSection extends Component {
                                     textDecoration: "none",
                                 }}
                             >
-                                <div className="payment-box">
-                                    <FontAwesomeIcon
-                                        icon={faTag}
-                                        className="icon"
-                                    />
-                                    <div className="title">Change Plan</div>
-                                    <div className="text">
-                                        You are subscribed to the{" "}
-                                        {this.props.payment.plan.nickname} plan.
-                                        You can change your plan here.
-                                    </div>
-                                </div>
+                                <PaymentBox
+                                    icon={"Tag"}
+                                    title={"Change Plan"}
+                                    subtext={`You are subscribed to the{" "}
+                              ${this.props.payment.plan.nickname} plan. You can change your plan here.`}
+                                />
                             </HashLink>
                         </Col>
                     </Row>
@@ -213,7 +219,19 @@ class TopSection extends Component {
                         <div></div>
                     )}
                     <Col xs={12} md={12}>
-                        <PaymentBox trialEnd={this.props.trialEnd} />
+                        <Link
+                            to="/card"
+                            style={{
+                                textDecoration: "none",
+                            }}
+                            className="pointerOnHover"
+                        >
+                            <PaymentBox
+                                icon={"Credit Card"}
+                                title={"Add Payment"}
+                                subtext={`Your cloud PC is free until ${this.props.trialEnd}.`}
+                            />
+                        </Link>
                     </Col>
                     <Col xs={12} md={6}>
                         <ImageBox
