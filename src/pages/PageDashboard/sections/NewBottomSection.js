@@ -14,13 +14,13 @@ import {
     FaTag,
 } from "react-icons/fa";
 
-import "static/NewPageDashboard.css";
+import "static/PageDashboard.css";
 
 import WindowsBin from "bin/Fractal.exe";
 import MacBin from "bin/Fractal.dmg";
 import LinuxBin from "bin/Fractal.AppImage";
 
-import DownloadBox from "pages/PageDashboard/containers/newDownloadBox";
+import DownloadBox from "pages/PageDashboard/containers/downloadBox";
 import CancelPopup from "pages/PageDashboard/containers/cancelPopup";
 import InfoRow from "pages/PageDashboard/containers/infoRow";
 

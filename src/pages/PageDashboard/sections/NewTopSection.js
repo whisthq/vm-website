@@ -7,9 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { HashLink } from "react-router-hash-link";
 import { faCreditCard, faTag } from "@fortawesome/free-solid-svg-icons";
 
-import "static/NewPageDashboard.css";
+import "static/PageDashboard.css";
 
-import ImageBox from "pages/PageDashboard/containers/newImageBox";
+import ImageBox from "pages/PageDashboard/containers/imageBox";
 import HardwareBox from "pages/PageDashboard/containers/hardwareBox";
 import PaymentBox from "pages/PageDashboard/containers/paymentBox";
 

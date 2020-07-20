@@ -42,7 +42,7 @@ class DownloadBox extends Component {
                 <div
                     style={{
                         float: "left",
-                        color: "white",
+                        color: "#555555",
                         display: "inline",
                         fontSize: 13,
                     }}
@@ -53,7 +53,7 @@ class DownloadBox extends Component {
                     style={{
                         float: "right",
                         display: "inline",
-                        color: "white",
+                        color: "#555555",
                     }}
                 >
                     {this.props.disks === undefined ||

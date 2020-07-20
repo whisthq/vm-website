@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import "static/NewPageDashboard.css";
+import "static/PageDashboard.css";
 
 class PaymentBox extends Component {
     render() {
@@ -16,7 +16,13 @@ class PaymentBox extends Component {
                 }}
                 className="pointerOnHover"
             >
-                <Row className="payment-box">
+                <Row
+                    className="payment-box"
+                    style={{
+                        marginLeft: 0,
+                        marginRight: 0,
+                    }}
+                >
                     <Col md={1}>
                         <FontAwesomeIcon icon={faCreditCard} className="icon" />
                     </Col>

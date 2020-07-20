@@ -64,6 +64,14 @@
     border-radius: 10px;
 }
 
+.create-text {
+    padding: 24px;
+    border-radius: 10px;
+    background-color: #eee;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
+
 .image-box {
     border-radius: 10px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
@@ -79,15 +87,15 @@
 }
 
 .image-box .icon {
-    color: #333333;
-    margin-top: 25;
-    height: 25;
+    color: #fff;
+    margin-top: 20px;
+    height: 25px;
 }
 
 .image-box .text {
-    color: #333333;
+    color: #fff;
     font-size: 26px;
-    margin-top: 20px;
+    margin-top: 30px;
     font-weight: bold;
 }
 
@@ -96,7 +104,7 @@
     max-width: 500px;
     margin: auto;
     margin-top: 15px;
-    color: #111111;
+    color: #fff;
 }
 
 @media only screen and (max-width: 700px) {
@@ -109,45 +117,10 @@
     }
 }
 
-.payment-box {
-    background: #0b172b;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    padding: 30px 50px;
-    min-height: 270px;
-    margin: auto;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.payment-box .icon {
-    color: white;
-    margin-top: 15;
-    height: 25;
-}
-
-.payment-box .text {
-    color: white;
-    font-size: 22px;
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-.payment-box .subtext {
-    font-size: 15px;
-    max-width: 400px;
-    margin: auto;
-    margin-top: 15px;
-    color: #d6d6d6;
-    line-height: 1.6;
-}
-
 .hardware-box {
     border-radius: 5px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     text-align: left;
-    background: white;
     padding: 30px;
     min-height: 160px;
     margin: auto;
@@ -163,11 +136,9 @@
 
 .payment-box {
     border-radius: 5px;
-    text-align: center;
+    text-align: left;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    padding: 30px 50px;
-    height: 250px;
-    margin: auto;
+    padding: 30px 40px;
     width: 100%;
     margin-bottom: 20px;
     background: #0b172b;
@@ -176,24 +147,23 @@
 .payment-box .title {
     color: white;
     font-size: 24px;
-    margin-top: 20px;
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
 .payment-box .icon {
     color: white;
     font-size: 22px;
-    margin-top: 15px;
+    margin-top: 8px;
 }
 
-.payment-box .text {
+.payment-box .subtext {
     font-size: 15px;
     max-width: 400px;
     margin: auto;
-    margin-top: 15px;
+    margin-left: 0;
     color: #d6d6d6;
     font-weight: normal;
+    border-left: #fff solid 2px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -208,7 +178,7 @@
 
 .download-box {
     font-size: 14px;
-    background: #0b172b;
+    background: #fff;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     border-radius: 7px;
     padding: 40px 15px;
@@ -218,7 +188,6 @@
 
 .download-button {
     background: rgba(94, 195, 235, 0.1) !important;
-    border: solid 0.5px rgb(94, 195, 235) !important;
     font-size: 12px !important;
     border-radius: 2px !important;
     color: rgb(94, 195, 235) !important;
@@ -232,7 +201,7 @@
     position: relative;
     bottom: 1px;
     padding-right: 5px;
-    color: white;
+    color: #ddd;
 }
 
 .cancel-button {
