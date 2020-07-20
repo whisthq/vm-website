@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FaWindows, FaUbuntu } from "react-icons/fa";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
@@ -13,7 +14,7 @@ import HardwareBox from "pages/PageDashboard/containers/hardwareBox";
 import CPU from "assets/icons/cpu.svg";
 import GPU from "assets/icons/gpu.svg";
 import RAM from "assets/icons/ram.svg";
-import SSD from "assets/icons/hard-drive-icon.svg";
+import SSD from "assets/icons/ssd.svg";
 
 class ImageBox extends Component {
     constructor(props) {
@@ -24,6 +25,23 @@ class ImageBox extends Component {
         };
     }
     render() {
+        const title =
+            this.props.stage === "created" ? (
+                <div className="title">
+                    {this.props.operatingSystem === "Windows" ? (
+                        <>
+                            <FaWindows />
+                            <span style={{ marginLeft: "0.6em" }}>Windows</span>
+                        </>
+                    ) : (
+                        <>
+                            <FaUbuntu />
+                            <span style={{ marginLeft: "0.6em" }}>Linux</span>
+                        </>
+                    )}
+                </div>
+            ) : null;
+
         let content;
 
         if (this.props.stage === "notCreated") {
@@ -46,24 +64,24 @@ class ImageBox extends Component {
         } else if (this.props.stage === "created") {
             content = (
                 <Row>
-                    <Col sm={6} xs={12}>
+                    <Col lg={6} md={12}>
                         <HardwareBox
                             icon={CPU}
                             title="CPU"
                             text="6 Core Intel Xeon E5"
                         />
                     </Col>
-                    <Col sm={6} xs={12}>
+                    <Col lg={6} md={12}>
                         <HardwareBox
                             icon={GPU}
                             title="GPU"
                             text="NVIDIA Tesla M60"
                         />
                     </Col>
-                    <Col sm={6} xs={12}>
+                    <Col lg={6} md={12}>
                         <HardwareBox icon={RAM} title="RAM" text="56GB DDR4" />
                     </Col>
-                    <Col sm={6} xs={12}>
+                    <Col lg={6} md={12}>
                         <HardwareBox
                             icon={SSD}
                             title="SSD"
@@ -86,13 +104,17 @@ class ImageBox extends Component {
                     backgroundImage: `url(${this.state.background})`,
                 }}
             >
-                <div className="icon">
-                    {this.props.stage === "creating" ? (
+                {this.props.stage === "creating" && (
+                    <div className="icon">
                         <FontAwesomeIcon icon={faCircleNotch} spin />
-                    ) : (
-                        <FontAwesomeIcon icon={faPlus} className="icon" />
-                    )}
-                </div>
+                    </div>
+                )}
+                {this.props.stage === "notCreated" && (
+                    <div className="icon">
+                        <FontAwesomeIcon icon={faPlus} />
+                    </div>
+                )}
+                {title}
                 {content}
             </div>
         );

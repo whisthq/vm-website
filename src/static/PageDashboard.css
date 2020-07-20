@@ -92,6 +92,12 @@
     height: 25px;
 }
 
+.image-box .title {
+    color: #fff;
+    text-align: left;
+    margin-bottom: 1em;
+}
+
 .image-box .text {
     color: #fff;
     font-size: 26px;
@@ -118,20 +124,32 @@
 }
 
 .hardware-box {
-    border-radius: 5px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
     text-align: left;
-    padding: 30px;
-    min-height: 160px;
     margin: auto;
     width: 100%;
     margin-bottom: 20px;
+    display: flex;
+    color: #fff;
+}
+
+.hardware-box .icon {
+    text-align: left;
+    margin-top: 10px;
+    height: 60px;
 }
 
 .hardware-box .title {
     text-align: left;
-    margin-top: 5px;
-    height: 45px;
+    margin-top: 8px;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.hardware-box .subtext {
+    margin-top: 0;
+    text-align: left;
+    font-size: 16px;
 }
 
 .payment-box {
@@ -188,6 +206,7 @@
 
 .download-button {
     background: rgba(94, 195, 235, 0.1) !important;
+    border: solid 0.5px rgb(94, 195, 235) !important;
     font-size: 12px !important;
     border-radius: 2px !important;
     color: rgb(94, 195, 235) !important;

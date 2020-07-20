@@ -1,13 +1,1 @@
-<svg width="106" height="57" viewBox="0 0 106 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect x="1" y="1" width="104" height="55" stroke="black" stroke-width="2"/>
-<circle cx="30" cy="28" r="19" stroke="black" stroke-width="2"/>
-<line x1="30" y1="48.0128" x2="30" y2="9" stroke="black" stroke-width="2"/>
-<line x1="16.4999" y1="41.5924" x2="44.0862" y2="14.0062" stroke="black" stroke-width="2"/>
-<line x1="16.7071" y1="14.2929" x2="44.2933" y2="41.8791" stroke="black" stroke-width="2"/>
-<line x1="10" y1="28" x2="49.0128" y2="28" stroke="black" stroke-width="2"/>
-<circle cx="76" cy="28" r="19" stroke="black" stroke-width="2"/>
-<line x1="76" y1="48.0128" x2="76" y2="9" stroke="black" stroke-width="2"/>
-<line x1="62.4999" y1="41.5924" x2="90.0862" y2="14.0062" stroke="black" stroke-width="2"/>
-<line x1="62.7071" y1="14.2929" x2="90.2933" y2="41.8791" stroke="black" stroke-width="2"/>
-<line x1="56" y1="28" x2="95.0128" y2="28" stroke="black" stroke-width="2"/>
-</svg>
+<svg id="gpu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500"><defs><style>.cls-1{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:15px;}</style></defs><polygon class="cls-1" points="53.5 86.5 446.5 86.5 446.5 369.5 403 413 53.5 413.5 53.5 86.5"/><path class="cls-1" d="M212.48,200.05,247,165.49a89.94,89.94,0,0,0-63.79-26.42V188A41.19,41.19,0,0,1,212.48,200.05Z"/><path class="cls-1" d="M183.25,188V139.07a89.94,89.94,0,0,0-63.79,26.42L154,200.05A41.19,41.19,0,0,1,183.25,188Z"/><path class="cls-1" d="M154,200.05l-34.56-34.56A89.93,89.93,0,0,0,93,229.28h48.88A41.22,41.22,0,0,1,154,200.05Z"/><path class="cls-1" d="M224.59,229.28h48.88A89.93,89.93,0,0,0,247,165.49l-34.56,34.56A41.22,41.22,0,0,1,224.59,229.28Z"/><path class="cls-1" d="M224.59,229.28a41.2,41.2,0,0,1-12.11,29.23L247,293.08a89.93,89.93,0,0,0,26.43-63.8Z"/><path class="cls-1" d="M183.25,270.62V319.5A89.94,89.94,0,0,0,247,293.08l-34.56-34.57A41.2,41.2,0,0,1,183.25,270.62Z"/><path class="cls-1" d="M141.91,229.28H93a89.93,89.93,0,0,0,26.43,63.8L154,258.51A41.2,41.2,0,0,1,141.91,229.28Z"/><path class="cls-1" d="M154,258.51l-34.56,34.57a89.94,89.94,0,0,0,63.79,26.42V270.62A41.2,41.2,0,0,1,154,258.51Z"/><path class="cls-1" d="M154,200.05a41.22,41.22,0,0,0-12.11,29.23"/><line class="cls-1" x1="313.97" y1="293" x2="406.57" y2="293"/><line class="cls-1" x1="314.36" y1="229" x2="406.97" y2="229"/><line class="cls-1" x1="314.36" y1="165" x2="406.97" y2="165"/><line class="cls-1" x1="314.36" y1="197" x2="406.97" y2="197"/><line class="cls-1" x1="314.36" y1="261" x2="406.97" y2="261"/><polyline class="cls-1" points="359.3 413.07 359.5 358 103.5 358 103.5 413.5"/></svg>

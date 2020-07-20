@@ -233,7 +233,7 @@ class TopSection extends Component {
                             />
                         </Link>
                     </Col>
-                    <Col xs={12} md={6}>
+                    <Col md={12} lg={6}>
                         <ImageBox
                             stage={"created"}
                             total_storage={this.props.total_storage}
