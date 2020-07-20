@@ -26,7 +26,10 @@ export const DASHBOARD_DEFAULT = {
     amount: 25,
     stripe_token: "",
     vm_created: false,
-    disk_is_creating: false,
+    disk_is_creating: {
+        Linux: false,
+        Windows: false,
+    },
     disks: [],
     has_vm: false,
     payment: {},

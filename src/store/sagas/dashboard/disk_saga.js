@@ -5,7 +5,7 @@ import { config } from "utils/constants";
 import { formatDate } from "utils/date";
 import * as DiskAction from "store/actions/dashboard/disk_actions";
 
-function* fetchDiskCreationStatus(ID) {
+function* fetchDiskCreationStatus(ID, operating_system) {
     var { json } = yield call(
         apiGet,
         (config.url.PRIMARY_SERVER + "/status/").concat(ID),
@@ -26,7 +26,7 @@ function* fetchDiskCreationStatus(ID) {
     }
 
     if (json && json.output) {
-        yield put(DiskAction.diskCreating(true));
+        yield put(DiskAction.diskCreating(true, operating_system));
         yield put(DiskAction.storeCurrentDisk(json.output.disk_name));
         yield call(attachDisk, json.output.disk_name);
     }
@@ -202,7 +202,11 @@ function* createDisk(action) {
 
         if (json) {
             if (json.ID) {
-                yield call(fetchDiskCreationStatus, json.ID);
+                yield call(
+                    fetchDiskCreationStatus,
+                    json.ID,
+                    action.operating_system
+                );
             }
         }
     } else {
@@ -215,13 +219,18 @@ function* createDisk(action) {
                 vm_size: action.vm_size,
                 apps: action.apps,
                 resource_group: config.azure.RESOURCE_GROUP,
+                operating_system: action.operating_system,
             },
             state.AuthReducer.access_token
         );
 
         if (json) {
             if (json.ID) {
-                yield call(fetchDiskCreationStatus, json.ID);
+                yield call(
+                    fetchDiskCreationStatus,
+                    json.ID,
+                    action.operating_system
+                );
             }
         }
     }

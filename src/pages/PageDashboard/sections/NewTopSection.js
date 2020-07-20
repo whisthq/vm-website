@@ -11,6 +11,7 @@ import "static/NewPageDashboard.css";
 
 import ImageBox from "pages/PageDashboard/containers/newImageBox";
 import HardwareBox from "pages/PageDashboard/containers/hardwareBox";
+import PaymentBox from "pages/PageDashboard/containers/paymentBox";
 
 import CPU from "assets/icons/cpu.svg";
 import GPU from "assets/icons/gpu.svg";
@@ -45,9 +46,13 @@ class TopSection extends Component {
         if (
             this.props.disks === undefined ||
             this.props.disks.length === 0 ||
-            this.props.disk_is_creating
+            this.props.disk_is_creating.Linux ||
+            this.props.disk_is_creating.Windows
         ) {
-            if (this.props.disk_is_creating) {
+            if (
+                this.props.disk_is_creating.Linux ||
+                this.props.disk_is_creating.Windows
+            ) {
                 if (
                     (this.props.customer && this.props.customer.paid) ||
                     this.props.require_payment_oncreate
@@ -94,37 +99,18 @@ class TopSection extends Component {
                                     {this.props.disk_creation_message}
                                 </div>
                             </Col>
-                            <Col xs={12} md={8}>
-                                <ImageBox
-                                    text="Your Cloud PC Is Creating"
-                                    subtext="This should take no more
-                                               than 20 minutes. Once your cloud PC
-                                               is ready, you'll be  able to download our
-                                               desktop app below to launch your cloud PC."
-                                    creating
-                                />
+                            <Col xs={12} md={12}>
+                                <PaymentBox trialEnd={this.props.trialEnd} />
                             </Col>
-                            <Col xs={12} md={4}>
-                                <Link
-                                    to="/card"
-                                    style={{
-                                        textDecoration: "none",
-                                    }}
-                                    className="pointerOnHover"
-                                >
-                                    <div className="payment-box">
-                                        <FontAwesomeIcon
-                                            icon={faCreditCard}
-                                            className="icon"
-                                        />
-                                        <div className="title">Add Payment</div>
-                                        <div className="subtext">
-                                            Your cloud PC is free until{" "}
-                                            {this.props.trialEnd}.
-                                        </div>
-                                    </div>
-                                </Link>
-                            </Col>
+                            {this.state.operating_systems.map((os) => (
+                                //TODO FIX THIS
+                                <Col xs={6} md={6}>
+                                    <ImageBox
+                                        stage="creating"
+                                        operatingSystem={os}
+                                    />
+                                </Col>
+                            ))}
                         </Row>
                     );
                 }
@@ -175,42 +161,11 @@ class TopSection extends Component {
             return (
                 <div>
                     <Row style={{ marginTop: 30 }}>
-                        <Col md={7} xs={12}>
-                            <Row>
-                                <Col sm={6} xs={12}>
-                                    <HardwareBox
-                                        icon={CPU}
-                                        title="CPU"
-                                        text="6 Core Intel Xeon E5"
-                                    />
-                                </Col>
-                                <Col sm={6} xs={12}>
-                                    <HardwareBox
-                                        icon={GPU}
-                                        title="GPU"
-                                        text="NVIDIA Tesla M60"
-                                    />
-                                </Col>
-                                <Col sm={6} xs={12}>
-                                    <HardwareBox
-                                        icon={RAM}
-                                        title="RAM"
-                                        text="56GB DDR4"
-                                    />
-                                </Col>
-                                <Col sm={6} xs={12}>
-                                    <HardwareBox
-                                        icon={SSD}
-                                        title="SSD"
-                                        text={
-                                            <span>
-                                                {this.props.total_storage}
-                                                &nbsp;Storage
-                                            </span>
-                                        }
-                                    />
-                                </Col>
-                            </Row>
+                        <Col md={6} xs={12}>
+                            <ImageBox
+                                stage={"created"}
+                                total_storage={this.props.total_storage}
+                            />
                         </Col>
                         <Col md={5} xs={12}>
                             <HashLink
@@ -257,63 +212,14 @@ class TopSection extends Component {
                     ) : (
                         <div></div>
                     )}
-                    <Col xs={12} md={7}>
-                        <Row>
-                            <Col sm={6} xs={12}>
-                                <HardwareBox
-                                    icon={CPU}
-                                    title="CPU"
-                                    text="6 Core Intel Xeon E5"
-                                />
-                            </Col>
-                            <Col sm={6} xs={12}>
-                                <HardwareBox
-                                    icon={GPU}
-                                    title="GPU"
-                                    text="NVIDIA Tesla M60"
-                                />
-                            </Col>
-                            <Col sm={6} xs={12}>
-                                <HardwareBox
-                                    icon={RAM}
-                                    title="RAM"
-                                    text="56GB DDR4"
-                                />
-                            </Col>
-                            <Col sm={6} xs={12}>
-                                <HardwareBox
-                                    icon={SSD}
-                                    title="SSD"
-                                    text={
-                                        <span>
-                                            {this.props.total_storage}
-                                            &nbsp;Storage
-                                        </span>
-                                    }
-                                />
-                            </Col>
-                        </Row>
+                    <Col xs={12} md={12}>
+                        <PaymentBox trialEnd={this.props.trialEnd} />
                     </Col>
-                    <Col xs={12} md={5}>
-                        <Link
-                            to="/card"
-                            style={{
-                                textDecoration: "none",
-                            }}
-                            className="pointerOnHover"
-                        >
-                            <div className="payment-box">
-                                <FontAwesomeIcon
-                                    icon={faCreditCard}
-                                    className="icon"
-                                />
-                                <div className="title">Add Payment</div>
-                                <div className="text">
-                                    Your cloud PC is completely free to use
-                                    until {this.props.trialEnd}.
-                                </div>
-                            </div>
-                        </Link>
+                    <Col xs={12} md={6}>
+                        <ImageBox
+                            stage={"created"}
+                            total_storage={this.props.total_storage}
+                        />
                     </Col>
                 </Row>
             );

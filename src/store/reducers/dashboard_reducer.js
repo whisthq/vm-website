@@ -18,7 +18,10 @@ export default function (state = DASHBOARD_DEFAULT, action) {
         case DiskAction.DISK_CREATING:
             return {
                 ...state,
-                disk_is_creating: action.disk_is_creating,
+                disk_is_creating: {
+                    ...state.disk_is_creating,
+                    [action.operating_system]: action.disk_is_creating,
+                },
             };
         case StripeAction.STORE_PAYMENT:
             return {

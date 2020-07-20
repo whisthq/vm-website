@@ -31,9 +31,10 @@ export function storeDisks(disks) {
     };
 }
 
-export function diskCreating(disk_is_creating) {
+export function diskCreating(operating_system, disk_is_creating) {
     return {
         type: DISK_CREATING,
+        operating_system,
         disk_is_creating,
     };
 }
