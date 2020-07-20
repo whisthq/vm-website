@@ -4,7 +4,7 @@ import { withRouter } from "react-router";
 import { Redirect } from "react-router-dom";
 
 import "react-tabs/style/react-tabs.css";
-import "static/PageDashboard.css";
+import "static/NewPageDashboard.css";
 
 import Header from "components/header.js";
 

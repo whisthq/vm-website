@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreditCard } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
@@ -14,13 +16,17 @@ class PaymentBox extends Component {
                 }}
                 className="pointerOnHover"
             >
-                <div className="payment-box">
-                    <FontAwesomeIcon icon={faCreditCard} className="icon" />
-                    <div className="title">Add Payment</div>
-                    <div className="subtext">
+                <Row className="payment-box">
+                    <Col md={1}>
+                        <FontAwesomeIcon icon={faCreditCard} className="icon" />
+                    </Col>
+                    <Col md={3} className="title">
+                        Add Payment
+                    </Col>
+                    <Col md={8} className="subtext">
                         Your cloud PC is free until {this.props.trialEnd}.
-                    </div>
-                </div>
+                    </Col>
+                </Row>
             </Link>
         );
     }

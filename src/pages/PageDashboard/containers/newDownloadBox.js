@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { connect } from "react-redux";
 import Popup from "reactjs-popup";
 
-import "static/PageDashboard.css";
+import "static/NewPageDashboard.css";
 
 import LinuxPopup from "pages/PageDashboard/containers/linuxPopup";
 
