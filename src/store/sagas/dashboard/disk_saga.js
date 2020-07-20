@@ -26,7 +26,7 @@ function* fetchDiskCreationStatus(ID, operating_system) {
     }
 
     if (json && json.output) {
-        yield put(DiskAction.diskCreating(true, operating_system));
+        yield put(DiskAction.diskCreating(operating_system, true));
         yield put(DiskAction.storeCurrentDisk(json.output.disk_name));
         yield call(attachDisk, json.output.disk_name);
     }

@@ -46,7 +46,6 @@ class NewDashboard extends Component {
             cancelling: false,
             waitlist: false,
             loaded: false,
-            total_storage: "120GB",
             hoursUsed: "",
         };
         this.customWidth = React.createRef();
@@ -75,16 +74,6 @@ class NewDashboard extends Component {
             this.props.dispatch(
                 fetchDiskAttachStatus(this.props.disk_attach_status_id)
             );
-        }
-
-        if (this.props.disks && Object.keys(this.props.disks).length > 1) {
-            var total_storage = 0;
-            this.props.disks.forEach(function (disk) {
-                total_storage = total_storage + Number(disk["disk_size"]);
-            });
-            this.setState({
-                total_storage: total_storage.toString() + "GB",
-            });
         }
     }
 
@@ -227,10 +216,7 @@ class NewDashboard extends Component {
                                         ? "CREATE MY CLOUD PC"
                                         : "MY CLOUD PC"}
                                 </div>
-                                <TopSection
-                                    total_storage={this.state.total_storage}
-                                    trialEnd={this.state.trialEnd}
-                                />
+                                <TopSection trialEnd={this.state.trialEnd} />
                                 <BottomSection
                                     username={this.props.username}
                                     created={this.state.created}
