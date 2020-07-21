@@ -53,7 +53,9 @@ class ImageBox extends Component {
         } else if (this.props.stage === "creating") {
             content = (
                 <>
-                    <div className="text">Your Cloud PC Is Creating</div>
+                    <div className="text">
+                        Your {this.props.operatingSystem} Cloud PC Is Creating
+                    </div>
                     <div className="subtext">
                         This should take no more than 20 minutes. Once your
                         cloud PC is ready, you'll be able to download our

@@ -27,12 +27,14 @@ function* fetchDiskCreationStatus(ID, operating_system) {
 
     if (json && json.output) {
         yield put(DiskAction.diskCreating(operating_system, true));
-        yield put(DiskAction.storeCurrentDisk(json.output.disk_name));
-        yield call(attachDisk, json.output.disk_name);
+        yield put(
+            DiskAction.storeCurrentDisk(operating_system, json.output.disk_name)
+        );
+        yield call(attachDisk, json.output.disk_name, operating_system);
     }
 }
 
-function* attachDisk(disk_name) {
+function* attachDisk(disk_name, operating_system) {
     const state = yield select();
     if (config.new_server) {
         const { json } = yield call(
@@ -49,7 +51,9 @@ function* attachDisk(disk_name) {
 
         if (json && json.ID) {
             yield put(DiskAction.storeDiskAttachID(json.ID));
-            yield put(DiskAction.fetchDiskAttachStatus(json.ID));
+            yield put(
+                DiskAction.fetchDiskAttachStatus(json.ID, operating_system)
+            );
         }
     } else {
         const { json } = yield call(
@@ -125,7 +129,7 @@ function* fetchDiskAttachStatus(action) {
     }
 
     if (json && json.state && json.state === "SUCCESS") {
-        yield put(DiskAction.diskCreating(false));
+        yield put(DiskAction.diskCreating(action.operating_system, false));
         yield put(DiskAction.fetchDisks(state.DashboardReducer.user));
     }
 

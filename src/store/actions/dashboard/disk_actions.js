@@ -39,16 +39,18 @@ export function diskCreating(operating_system, disk_is_creating) {
     };
 }
 
-export function fetchDiskAttachStatus(disk_attach_status_id) {
+export function fetchDiskAttachStatus(disk_attach_status_id, operating_system) {
     return {
         type: FETCH_DISK_ATTACH_STATUS,
         disk_attach_status_id,
+        operating_system,
     };
 }
 
-export function storeCurrentDisk(current_disk) {
+export function storeCurrentDisk(operating_system, current_disk) {
     return {
         type: STORE_CURRENT_DISK,
+        operating_system,
         current_disk,
     };
 }

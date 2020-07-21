@@ -47,7 +47,10 @@ export const DASHBOARD_DEFAULT = {
     dashboard_loaded: false,
     disk_attach_status_id: null,
     disk_creation_message: "",
-    current_disk: null,
+    current_disk: {
+        Linux: null,
+        Windows: null,
+    },
     change_plan_status: 0,
     user_statistics: {
         user_report: [],

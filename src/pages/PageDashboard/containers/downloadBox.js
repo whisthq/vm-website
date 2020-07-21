@@ -58,7 +58,8 @@ class DownloadBox extends Component {
                 >
                     {this.props.disks === undefined ||
                     this.props.disks.length === 0 ||
-                    this.props.disk_is_creating ? (
+                    this.props.disk_is_creating.Linux ||
+                    this.props.disk_is_creating.Windows ? (
                         <Popup
                             trigger={
                                 <Button

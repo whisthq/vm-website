@@ -92,7 +92,10 @@ export default function (state = DASHBOARD_DEFAULT, action) {
         case DiskAction.STORE_CURRENT_DISK:
             return {
                 ...state,
-                current_disk: action.current_disk,
+                current_disk: {
+                    ...state.current_disk,
+                    [action.operating_system]: action.current_disk,
+                },
             };
         case StripeAction.CHANGE_PLAN_STATUS:
             return {

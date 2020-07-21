@@ -30,11 +30,20 @@ class TopSection extends Component {
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
+
+        if (this.props.disk_is_creating.Linux) {
+            this.setState({ linux_stage: "creating" });
+        } else if (this.props.disk_is_creating.Windows) {
+            this.setState({ windows_stage: "creating" });
+        }
     }
 
     componentDidUpdate(oldProps) {
         const newProps = this.props;
-        if (newProps.disks !== oldProps.disks) {
+        if (
+            newProps.disks !== oldProps.disks ||
+            newProps.disk_is_creating !== oldProps.disk_is_creating
+        ) {
             const windows_disk = newProps.disks.find(
                 (d) => d.os === "Windows" && d.main
             );
@@ -54,6 +63,8 @@ class TopSection extends Component {
                     windows_disk,
                     windows_storage,
                 });
+            } else if (newProps.disk_is_creating.Windows) {
+                this.setState({ windows_stage: "creating" });
             } else {
                 this.setState({
                     windows_stage: "notCreated",
@@ -79,16 +90,10 @@ class TopSection extends Component {
                     linux_disk,
                     linux_storage,
                 });
+            } else if (newProps.disk_is_creating.Linux) {
+                this.setState({ linux_stage: "creating" });
             } else {
                 this.setState({ linux_stage: "notCreated", linux_disk: null });
-            }
-        }
-
-        if (newProps.disk_is_creating !== oldProps.disk_is_creating) {
-            if (newProps.disk_is_creating.Linux) {
-                this.setState({ linux_stage: "creating" });
-            } else if (newProps.disk_is_creating.Windows) {
-                this.setState({ windows_stage: "creating" });
             }
         }
 
@@ -193,7 +198,7 @@ class TopSection extends Component {
                             <PaymentBox
                                 icon={"Tag"}
                                 title={"Change Plan"}
-                                subtext={`You are subscribed to the{" "}
+                                subtext={`You are subscribed to the 
         ${this.props.payment.plan.nickname} plan. You can change your plan here.`}
                             />
                         </HashLink>
