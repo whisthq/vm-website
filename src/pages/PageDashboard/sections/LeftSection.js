@@ -11,8 +11,6 @@ import { logout } from "store/actions/auth/login_actions";
 
 class LeftSection extends Component {
     render() {
-        console.log(this.props.location.pathname);
-
         return (
             <div
                 style={{

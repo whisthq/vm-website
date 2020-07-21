@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "static/Shared.css";
 import { HashLink } from "react-router-hash-link";
-import { changeTab } from "store/actions/general/homepage_actions";
 
 import { GoogleLogout } from "react-google-login";
 import { GOOGLE_CLIENT_ID } from "utils/constants";
@@ -23,10 +22,6 @@ class Header extends Component {
     openMenu = (open) => {
         this.setState({ menu: open });
         console.log(open);
-    };
-
-    switchTab = (tab) => {
-        this.props.dispatch(changeTab(tab));
     };
 
     componentDidMount() {
@@ -89,16 +84,15 @@ class Header extends Component {
                     {this.props.homepage && (
                         <div style={{ width: "60%", textAlign: "right" }}>
                             <HashLink
-                                onClick={() => this.switchTab("personal")}
                                 className="headerlink"
                                 to="/"
                                 style={{
                                     color:
-                                        this.props.current_page === "personal"
+                                        this.props.location.pathname === "/"
                                             ? `${this.props.button}`
                                             : `${this.props.color}`,
                                     fontWeight:
-                                        this.props.current_page === "personal"
+                                        this.props.location.pathname === "/"
                                             ? "bold"
                                             : "normal",
                                     textDecoration: "none",
@@ -112,16 +106,17 @@ class Header extends Component {
                                 </span>
                             </HashLink>
                             <HashLink
-                                onClick={() => this.switchTab("about")}
                                 className="headerlink"
                                 to="/about"
                                 style={{
                                     color:
-                                        this.props.current_page === "about"
+                                        this.props.location.pathname ===
+                                        "/about"
                                             ? `${this.props.button}`
                                             : `${this.props.color}`,
                                     fontWeight:
-                                        this.props.current_page === "about"
+                                        this.props.location.pathname ===
+                                        "/about"
                                             ? "bold"
                                             : "normal",
                                     textDecoration: "none",
@@ -238,24 +233,19 @@ class Header extends Component {
                             </div>
                             {this.props.homepage && (
                                 <div style={{ padding: 35, marginTop: 50 }}>
-                                    <div
-                                        onClick={() =>
-                                            this.switchTab("personal")
-                                        }
-                                        style={{ marginBottom: 10 }}
-                                    >
+                                    <div style={{ marginBottom: 10 }}>
                                         <HashLink
                                             className="headerlink"
                                             to="/"
                                             style={{
                                                 color:
-                                                    this.props.current_page ===
-                                                    "personal"
+                                                    this.props.location
+                                                        .pathname === "/"
                                                         ? `${this.props.button}`
                                                         : `${this.props.color}`,
                                                 fontWeight:
-                                                    this.props.current_page ===
-                                                    "personal"
+                                                    this.props.location
+                                                        .pathname === "/"
                                                         ? "bold"
                                                         : "normal",
                                             }}
@@ -263,22 +253,19 @@ class Header extends Component {
                                             Product
                                         </HashLink>
                                     </div>
-                                    <div
-                                        onClick={() => this.switchTab("about")}
-                                        style={{ marginBottom: 10 }}
-                                    >
+                                    <div style={{ marginBottom: 10 }}>
                                         <HashLink
                                             className="headerlink"
                                             to="/about"
                                             style={{
                                                 color:
-                                                    this.props.current_page ===
-                                                    "about"
+                                                    this.props.location
+                                                        .pathname === "/about"
                                                         ? `${this.props.button}`
                                                         : `${this.props.color}`,
                                                 fontWeight:
-                                                    this.props.current_page ===
-                                                    "about"
+                                                    this.props.location
+                                                        .pathname === "/about"
                                                         ? "bold"
                                                         : "normal",
                                             }}
@@ -407,7 +394,6 @@ class Header extends Component {
 
 function mapStateToProps(state) {
     return {
-        current_page: state.GeneralReducer.current_page,
         use_google: state.AuthReducer.google_auth.use_google
             ? state.AuthReducer.google_auth.use_google
             : false,
