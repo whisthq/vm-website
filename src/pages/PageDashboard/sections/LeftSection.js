@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import "static/Shared.css";
 
 import { GoogleLogout } from "react-google-login";
-
 import { GOOGLE_CLIENT_ID } from "utils/constants";
 
 import { logout } from "store/actions/auth/login_actions";
 
 class LeftSection extends Component {
     render() {
+        console.log(this.props.location.pathname);
+
         return (
             <div
                 style={{
@@ -28,9 +29,15 @@ class LeftSection extends Component {
                     to="/dashboard"
                     style={{
                         marginBottom: 20,
-                        color: "#111111",
+                        color:
+                            this.props.location.pathname === "/dashboard"
+                                ? "#111111"
+                                : "#B9B9B9",
                         textDecoration: "none",
-                        fontWeight: "bold",
+                        fontWeight:
+                            this.props.location.pathname === "/dashboard"
+                                ? "bold"
+                                : "normal",
                         display: "block",
                     }}
                 >
@@ -39,7 +46,19 @@ class LeftSection extends Component {
                 <Link
                     to="/dashboard/settings"
                     className="sign-out-button"
-                    style={{ textDecoration: "none", color: "#B9B9B9" }}
+                    style={{
+                        textDecoration: "none",
+                        fontWeight:
+                            this.props.location.pathname ===
+                            "/dashboard/settings"
+                                ? "bold"
+                                : "normal",
+                        color:
+                            this.props.location.pathname ===
+                            "/dashboard/settings"
+                                ? "#111111"
+                                : "#B9B9B9",
+                    }}
                 >
                     SETTINGS
                 </Link>
@@ -85,11 +104,10 @@ class LeftSection extends Component {
 
 function mapStateToProps(state) {
     return {
-        current_page: state.GeneralReducer.current_page,
         use_google: state.AuthReducer.google_auth.use_google
             ? state.AuthReducer.google_auth.use_google
             : false,
     };
 }
 
-export default connect(mapStateToProps)(LeftSection);
+export default withRouter(connect(mapStateToProps)(LeftSection));

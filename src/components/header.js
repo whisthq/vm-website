@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import Logo from "assets/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { FaBars, FaTimes } from "react-icons/fa";
 import "static/Shared.css";
 import { HashLink } from "react-router-hash-link";
 import { changeTab } from "store/actions/general/homepage_actions";
+
+import { GoogleLogout } from "react-google-login";
+import { GOOGLE_CLIENT_ID } from "utils/constants";
+
+import { logout } from "store/actions/auth/login_actions";
 
 class Header extends Component {
     constructor(props) {
@@ -17,6 +22,7 @@ class Header extends Component {
 
     openMenu = (open) => {
         this.setState({ menu: open });
+        console.log(open);
     };
 
     switchTab = (tab) => {
@@ -283,7 +289,9 @@ class Header extends Component {
                                     <div style={{ marginBottom: 10 }}>
                                         <a
                                             href="mailto: hello@fractalcomputers.com"
-                                            style={{ color: "#333333" }}
+                                            style={{
+                                                color: `${this.props.color}`,
+                                            }}
                                         >
                                             Contact Us
                                         </a>
@@ -292,14 +300,103 @@ class Header extends Component {
                                         <Link
                                             className="headerlink"
                                             to="/auth"
-                                            style={{ color: "#333333" }}
+                                            style={{
+                                                color: `${this.props.color}`,
+                                            }}
                                         >
                                             My Account
                                         </Link>
                                     </div>
                                 </div>
                             )}
-                            {this.props.dashboard && <div>Dashboard menu</div>}
+                            {this.props.dashboard && (
+                                <div style={{ padding: 35, marginTop: 50 }}>
+                                    <Link
+                                        to="/dashboard"
+                                        style={{
+                                            marginBottom: 10,
+                                            color:
+                                                this.props.location.pathname ===
+                                                "/dashboard"
+                                                    ? `${this.props.button}`
+                                                    : `${this.props.color}`,
+                                            textDecoration: "none",
+                                            fontWeight:
+                                                this.props.location.pathname ===
+                                                "/dashboard"
+                                                    ? "bold"
+                                                    : "normal",
+                                            display: "block",
+                                        }}
+                                    >
+                                        DASHBOARD
+                                    </Link>
+                                    <Link
+                                        to="/dashboard/settings"
+                                        className="sign-out-button"
+                                        style={{
+                                            textDecoration: "none",
+                                            fontWeight:
+                                                this.props.location.pathname ===
+                                                "/dashboard/settings"
+                                                    ? "bold"
+                                                    : "normal",
+                                            color:
+                                                this.props.location.pathname ===
+                                                "/dashboard/settings"
+                                                    ? `${this.props.button}`
+                                                    : `${this.props.color}`,
+                                        }}
+                                    >
+                                        SETTINGS
+                                    </Link>
+                                    {this.props.use_google ? (
+                                        <div>
+                                            <GoogleLogout
+                                                clientId={GOOGLE_CLIENT_ID}
+                                                buttonText={"Logout"}
+                                                onLogoutSuccess={() =>
+                                                    this.props.dispatch(
+                                                        logout()
+                                                    )
+                                                }
+                                                onFailure={() =>
+                                                    console.error(
+                                                        "Google logout failure"
+                                                    )
+                                                }
+                                                render={(renderProps) => (
+                                                    <div
+                                                        className="sign-out-button"
+                                                        onClick={
+                                                            renderProps.onClick
+                                                        }
+                                                        style={{
+                                                            marginTop: 10,
+                                                            color: `${this.props.color}`,
+                                                        }}
+                                                    >
+                                                        SIGN OUT
+                                                    </div>
+                                                )}
+                                            />
+                                        </div>
+                                    ) : (
+                                        <div
+                                            className="sign-out-button"
+                                            onClick={() =>
+                                                this.props.dispatch(logout())
+                                            }
+                                            style={{
+                                                marginTop: 10,
+                                                color: `${this.props.color}`,
+                                            }}
+                                        >
+                                            SIGN OUT
+                                        </div>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
@@ -317,4 +414,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));

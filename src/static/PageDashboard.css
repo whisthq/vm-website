@@ -8,8 +8,6 @@
 .dashboard-flex {
     display: flex;
     overflow-x: hidden;
-    position: relative;
-    bottom: 60px;
 }
 
 .credits-box {
