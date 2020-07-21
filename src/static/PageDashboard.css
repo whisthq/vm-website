@@ -87,13 +87,14 @@
 .image-box .icon {
     color: #fff;
     margin-top: 20px;
-    height: 25px;
+    height: 30px;
 }
 
 .image-box .title {
     color: #fff;
     text-align: left;
     margin-bottom: 0.5em;
+    font-size: 36px;
 }
 
 .image-box .text {
@@ -137,16 +138,16 @@
 
 .hardware-box .title {
     text-align: left;
-    margin-top: 8px;
+    margin-top: 12px;
     margin-bottom: 0;
     font-weight: bold;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .hardware-box .subtext {
     margin-top: 0;
     text-align: left;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .payment-box {

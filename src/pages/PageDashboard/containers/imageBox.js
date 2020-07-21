@@ -114,7 +114,7 @@ class ImageBox extends Component {
                     </div>
                 )}
                 {this.props.stage === "notCreated" && (
-                    <div className="icon" style={{ marginTop: "5em" }}>
+                    <div className="icon" style={{ marginTop: "4em" }}>
                         <FontAwesomeIcon icon={faPlus} />
                     </div>
                 )}
