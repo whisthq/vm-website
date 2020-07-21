@@ -21,8 +21,6 @@ class SettingsView extends Component {
         this.state = {
             width: 0,
             height: 0,
-            modalShow: false,
-            showPopup: false,
             loaded: true,
         };
         this.customWidth = React.createRef();
@@ -45,25 +43,7 @@ class SettingsView extends Component {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
-    unixToDate = (unix) => {
-        const milliseconds = unix * 1000;
-        const dateObject = new Date(milliseconds);
-        const humanDateFormat = dateObject
-            .toLocaleString("en-US")
-            .split(",")[0];
-        var dateArr = humanDateFormat.split("/");
-        const month = this.monthConvert(dateArr[0] - 1);
-        var finalDate =
-            month + " " + dateArr[1].toString() + ", " + dateArr[2].toString();
-        return finalDate;
-    };
-
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-        if (this.state.width > 700 && this.state.modalShow) {
-            modalClose();
-        }
-
         if (!this.state.loaded) {
             return (
                 <div

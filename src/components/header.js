@@ -21,7 +21,6 @@ class Header extends Component {
 
     openMenu = (open) => {
         this.setState({ menu: open });
-        console.log(open);
     };
 
     componentDidMount() {

@@ -22,7 +22,7 @@ import LoadingSection from "pages/PageDashboard/sections/LoadingSection";
 import TopSection from "pages/PageDashboard/sections/TopSection";
 import BottomSection from "pages/PageDashboard/sections/BottomSection";
 
-import { unixToDate } from "utils/date";
+import moment from "moment";
 
 class MainView extends Component {
     constructor(props) {
@@ -66,7 +66,9 @@ class MainView extends Component {
         if (this.props.payment && Object.keys(this.props.payment).length > 0) {
             if (this.state.created === "" && this.props.payment.created) {
                 this.setState({
-                    created: unixToDate(this.props.payment.created),
+                    created: moment
+                        .unix(this.props.payment.created)
+                        .format("MMMM Do, YYYY"),
                 });
             }
             if (
@@ -74,9 +76,9 @@ class MainView extends Component {
                 this.props.payment.current_period_start
             ) {
                 this.setState({
-                    billStart: unixToDate(
-                        this.props.payment.current_period_start
-                    ),
+                    billStart: moment
+                        .unix(this.props.payment.current_period_start)
+                        .format("MMMM Do, YYYY"),
                 });
                 this.props.dispatch(
                     fetchUserReport(this.props.payment.current_period_start)
@@ -87,7 +89,9 @@ class MainView extends Component {
                 this.props.payment.current_period_end
             ) {
                 this.setState({
-                    billEnd: unixToDate(this.props.payment.current_period_end),
+                    billEnd: moment
+                        .unix(this.props.payment.current_period_end)
+                        .format("MMMM Do, YYYY"),
                 });
             }
             if (
@@ -96,7 +100,9 @@ class MainView extends Component {
                 this.props.payment.trial_end > 0
             ) {
                 this.setState({
-                    trialEnd: unixToDate(this.props.payment.trial_end),
+                    trialEnd: moment
+                        .unix(this.props.payment.trial_end)
+                        .format("MMMM Do, YYYY"),
                 });
             }
         } else {
@@ -128,7 +134,9 @@ class MainView extends Component {
                 this.props.dispatch(fetchUserReport(0));
             }
             this.setState({
-                trialEnd: unixToDate(this.props.customer.trial_end),
+                trialEnd: moment
+                    .unix(this.props.customer.trial_end)
+                    .format("MMMM Do, YYYY"),
             });
         }
 

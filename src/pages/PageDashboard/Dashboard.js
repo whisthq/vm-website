@@ -11,7 +11,7 @@ import FeedbackBox from "pages/PageDashboard/containers/feedbackBox";
 import MainView from "pages/PageDashboard/views/MainView";
 import SettingsView from "pages/PageDashboard/views/SettingsView";
 
-import { monthConvert } from "utils/date";
+import moment from "moment";
 
 import "static/PageDashboard.css";
 
@@ -21,27 +21,13 @@ class Dashboard extends Component {
         this.state = {
             width: 0,
             height: 0,
-            day: 0,
-            month: 0,
-            year: 0,
         };
     }
 
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
-
-        var today = new Date();
-        this.setState(
-            {
-                day: today.getDate(),
-                month: monthConvert(today.getMonth()),
-                year: today.getFullYear(),
-            },
-            function () {
-                this.setState({ loaded: true });
-            }
-        );
+        this.setState({ loaded: true });
     }
 
     updateWindowDimensions = () => {
@@ -53,13 +39,7 @@ class Dashboard extends Component {
 
     render() {
         if (this.state.waitlist) {
-            return (
-                <OfflineSection
-                    month={this.state.month}
-                    day={this.state.day}
-                    year={this.state.year}
-                />
-            );
+            return <OfflineSection />;
         } else if (!this.props.logged_in || !this.props.email_verified) {
             return <Redirect to="/auth" />;
         } else {
@@ -77,8 +57,7 @@ class Dashboard extends Component {
                             {this.state.width > 900 && <LeftSection />}
                             <div className="right-section">
                                 <div className="date">
-                                    {this.state.month} {this.state.day},{" "}
-                                    {this.state.year}
+                                    {moment().format("MMMM Do, YYYY")}
                                 </div>
                                 <Router history={history}>
                                     <Route
