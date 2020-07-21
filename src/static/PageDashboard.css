@@ -113,13 +113,12 @@
     color: #fff;
 }
 
-@media only screen and (max-width: 700px) {
-    .image-box .subtext {
-        font-size: 24px;
+@media only screen and (max-width: 1000px) {
+    .image-box {
+        padding: 30px;
     }
-
-    .image-box .subtext {
-        font-size: 14px;
+    .image-box .text {
+        margin-top: 20px;
     }
 }
 
@@ -184,13 +183,15 @@
     border-left: #fff solid 2px;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 1000px) {
     .payment-box .title {
         font-size: 20px;
     }
 
-    .payment-box .text {
+    .payment-box .subtext {
         font-size: 13px;
+        border-left: none;
+        margin-top: 1em;
     }
 }
 

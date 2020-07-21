@@ -3,7 +3,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreditCard, faTag } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 import "static/PageDashboard.css";
 
 class PaymentBox extends Component {
@@ -16,7 +15,7 @@ class PaymentBox extends Component {
                     marginRight: 0,
                 }}
             >
-                <Col md={1}>
+                <Col lg={1}>
                     <FontAwesomeIcon
                         icon={
                             this.props.icon === "Credit Card"
@@ -26,10 +25,10 @@ class PaymentBox extends Component {
                         className="icon"
                     />
                 </Col>
-                <Col md={3} className="title">
+                <Col lg={3} className="title">
                     {this.props.title}
                 </Col>
-                <Col md={8} className="subtext">
+                <Col lg={8} className="subtext">
                     {this.props.subtext}
                 </Col>
             </Row>
