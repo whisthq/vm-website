@@ -32,7 +32,6 @@ function* chargeStripe(action) {
                 )
             );
             yield put(StripeAction.applyDiscount(action.code));
-            yield put(DiskAction.diskCreating(true));
         }
     } else {
         yield put(
@@ -43,7 +42,6 @@ function* chargeStripe(action) {
                 action.plan
             )
         );
-        yield put(DiskAction.diskCreating(true));
     }
 }
 
@@ -130,7 +128,8 @@ function* cancelPlan(action) {
         if (json.status === 200) {
             yield put(StripeAction.storePayment({}));
             yield put(CustomerAction.storeCustomer({}));
-            yield put(DiskAction.diskCreating(false));
+            yield put(DiskAction.diskCreating("Windows", false));
+            yield put(DiskAction.diskCreating("Linux", false));
             yield put(DiskAction.storeDisks([]));
         }
     }

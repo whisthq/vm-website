@@ -186,7 +186,11 @@ class TopSection extends Component {
             this.state.windows_stage !== "notCreated" ||
             this.state.linux_stage !== "notCreated"
         ) {
-            if (this.state.paid) {
+            if (
+                this.state.paid &&
+                this.props.payment &&
+                this.props.payment.plan
+            ) {
                 paymentBox = (
                     <Col xs={12} md={12}>
                         <HashLink
@@ -198,7 +202,7 @@ class TopSection extends Component {
                             <PaymentBox
                                 icon={"Tag"}
                                 title={"Change Plan"}
-                                subtext={`You are subscribed to the 
+                                subtext={`You are subscribed to the
         ${this.props.payment.plan.nickname} plan. You can change your plan here.`}
                             />
                         </HashLink>

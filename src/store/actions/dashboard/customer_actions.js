@@ -44,10 +44,11 @@ export function promoCodeFailure() {
     };
 }
 
-export function insertCustomer(location) {
+export function insertCustomer(location, operating_system) {
     return {
         type: INSERT_CUSTOMER,
         location,
+        operating_system,
     };
 }
 

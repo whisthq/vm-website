@@ -64,7 +64,7 @@ function* insertCustomer(action) {
         history.push("/dashboard");
 
         yield put(PopupAction.triggerSurvey(true));
-        yield put(DiskAction.diskCreating(true));
+        yield put(DiskAction.diskCreating(action.operating_system, true));
 
         yield call(
             apiPost,

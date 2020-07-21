@@ -22,7 +22,6 @@ function* googleLogin(action) {
         );
         if (json) {
             if (json.status === 200) {
-                console.log(json);
                 yield put(LoginAction.setUseGoogle(true));
                 yield put(
                     TokenAction.storeJWT(json.access_token, json.refresh_token)
@@ -34,11 +33,6 @@ function* googleLogin(action) {
                 if (json.new_user) {
                     yield put(LoginAction.setNeedsReason(true));
                 } else {
-                    if (json.vm_status === "is_creating") {
-                        yield put(DiskAction.diskCreating(true));
-                    } else {
-                        yield put(DiskAction.diskCreating(false));
-                    }
                     yield put(LoginAction.loginSuccess());
                     history.push("/dashboard");
                 }
@@ -107,7 +101,7 @@ function* forgotPassword(action) {
         {
             username: action.username,
         },
-        state.AccountReducer.access_token
+        ""
     );
     if (json) {
         if (json.verified) {

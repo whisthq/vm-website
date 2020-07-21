@@ -59,7 +59,12 @@ class PlanSection extends Component {
 
     createVm = () => {
         this.setState({ processing: true });
-        this.props.dispatch(insertCustomer(this.props.vm_setup_data.location));
+        this.props.dispatch(
+            insertCustomer(
+                this.props.vm_setup_data.location,
+                this.props.vm_setup_data.operating_system
+            )
+        );
         this.props.dispatch(
             createDisk(
                 this.getVMRegion(this.props.vm_setup_data.location),

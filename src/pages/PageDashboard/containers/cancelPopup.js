@@ -41,7 +41,8 @@ class CancelPopup extends Component {
 
     cancelPlan = () => {
         this.setState({ cancelling: true });
-        this.props.dispatch(diskCreating(false));
+        this.props.dispatch(diskCreating("Windows", false));
+        this.props.dispatch(diskCreating("Linux", false));
         this.props.dispatch(cancelPlan(this.state.exitFeedback));
     };
 
