@@ -15,6 +15,90 @@ import SSD from "assets/icons/hard-drive-icon.svg";
 
 class DisksSection extends Component {
     render() {
+        const windowsBox = (
+            <Link
+                style={{
+                    textDecoration: "none",
+                    marginTop: 10,
+                }}
+                to={{
+                    pathname: "/purchase",
+                    state: { operatingSystem: "Windows" },
+                }}
+            >
+                <div
+                    style={{
+                        fontSize: 14,
+                        background: "#0B172B",
+                        boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
+                        borderRadius: 7,
+                        padding: "40px 35px",
+                        marginTop: 35,
+                        minHeight: 210,
+                        textAlign: "center",
+                        color: "white",
+                    }}
+                >
+                    <FaPlus
+                        style={{
+                            fontSize: 25,
+                            marginTop: 20,
+                        }}
+                    />
+                    <div
+                        style={{
+                            marginTop: 32,
+                            fontSize: 16,
+                        }}
+                    >
+                        Create Windows Cloud PC
+                    </div>
+                </div>
+            </Link>
+        );
+
+        const linuxBox = (
+            <Link
+                style={{
+                    textDecoration: "none",
+                    marginTop: 10,
+                }}
+                to={{
+                    pathname: "/purchase",
+                    state: { operatingSystem: "Linux" },
+                }}
+            >
+                <div
+                    style={{
+                        fontSize: 14,
+                        background: "#0B172B",
+                        boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
+                        borderRadius: 7,
+                        padding: "40px 35px",
+                        marginTop: 35,
+                        minHeight: 210,
+                        textAlign: "center",
+                        color: "white",
+                    }}
+                >
+                    <FaPlus
+                        style={{
+                            fontSize: 25,
+                            marginTop: 20,
+                        }}
+                    />
+                    <div
+                        style={{
+                            marginTop: 32,
+                            fontSize: 16,
+                        }}
+                    >
+                        Create Linux Cloud PC
+                    </div>
+                </div>
+            </Link>
+        );
+
         if (this.props.disks && this.props.disks.length > 0) {
             return (
                 <Row style={{ marginTop: 5 }}>
@@ -131,42 +215,14 @@ class DisksSection extends Component {
             );
         } else {
             return (
-                <Link
-                    style={{
-                        textDecoration: "none",
-                        marginTop: 10,
-                    }}
-                    to="/purchase"
-                >
-                    <div
-                        style={{
-                            fontSize: 14,
-                            background: "#0B172B",
-                            boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
-                            borderRadius: 7,
-                            padding: "40px 35px",
-                            marginTop: 35,
-                            minHeight: 210,
-                            textAlign: "center",
-                            color: "white",
-                        }}
-                    >
-                        <FaPlus
-                            style={{
-                                fontSize: 25,
-                                marginTop: 20,
-                            }}
-                        />
-                        <div
-                            style={{
-                                marginTop: 32,
-                                fontSize: 16,
-                            }}
-                        >
-                            Create Cloud PC
-                        </div>
-                    </div>
-                </Link>
+                <Row>
+                    <Col lg={6} md={12}>
+                        {windowsBox}
+                    </Col>
+                    <Col lg={6} md={12}>
+                        {linuxBox}
+                    </Col>
+                </Row>
             );
         }
     }
