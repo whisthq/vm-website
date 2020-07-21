@@ -1,106 +1,101 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import "static/Shared.css";
 
 import { GoogleLogout } from "react-google-login";
-
 import { GOOGLE_CLIENT_ID } from "utils/constants";
 
 import { logout } from "store/actions/auth/login_actions";
 
 class LeftSection extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            width: 0,
-            height: 0,
-        };
-    }
-
-    componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener("resize", this.updateWindowDimensions);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWindowDimensions);
-    }
-
-    updateWindowDimensions = () => {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
-    };
-
     render() {
         return (
-            <div>
-                {this.state.width > 700 ? (
-                    <div
-                        style={{
-                            width: 300,
-                            paddingLeft: 80,
-                            paddingTop: 120,
-                            backgroundColor: "none",
-                            flex: "0 1 auto",
-                            zIndex: 0,
-                            position: "sticky",
-                        }}
-                    >
-                        <div
-                            style={{
-                                marginBottom: 20,
-                                fontWeight: "bold",
-                                color: "#111111",
-                            }}
-                        >
-                            DASHBOARD
-                        </div>
-                        <Link
-                            to="/settings"
-                            className="sign-out-button"
-                            style={{ textDecoration: "none", color: "#B9B9B9" }}
-                        >
-                            SETTINGS
-                        </Link>
-                        {this.props.use_google ? (
-                            <div>
-                                <GoogleLogout
-                                    clientId={GOOGLE_CLIENT_ID}
-                                    buttonText={"Logout"}
-                                    onLogoutSuccess={() =>
-                                        this.props.dispatch(logout())
-                                    }
-                                    onFailure={() =>
-                                        console.error("Google logout failure")
-                                    }
-                                    render={(renderProps) => (
-                                        <div
-                                            className="sign-out-button"
-                                            onClick={renderProps.onClick}
-                                            style={{
-                                                marginTop: 15,
-                                            }}
-                                        >
-                                            SIGN OUT
-                                        </div>
-                                    )}
-                                />
-                            </div>
-                        ) : (
-                            <div
-                                className="sign-out-button"
-                                onClick={() => this.props.dispatch(logout())}
-                                style={{
-                                    marginTop: 15,
-                                }}
-                            >
-                                SIGN OUT
-                            </div>
-                        )}
+            <div
+                style={{
+                    width: 300,
+                    paddingLeft: 80,
+                    paddingTop: 120,
+                    backgroundColor: "none",
+                    flex: "0 1 auto",
+                    zIndex: 0,
+                    position: "sticky",
+                }}
+            >
+                <Link
+                    to="/dashboard"
+                    style={{
+                        marginBottom: 20,
+                        color:
+                            this.props.location.pathname === "/dashboard"
+                                ? "#111111"
+                                : "#B9B9B9",
+                        textDecoration: "none",
+                        fontWeight:
+                            this.props.location.pathname === "/dashboard"
+                                ? "bold"
+                                : "normal",
+                        display: "block",
+                    }}
+                >
+                    DASHBOARD
+                </Link>
+                <Link
+                    to="/dashboard/settings"
+                    className="sign-out-button"
+                    style={{
+                        marginBottom: 20,
+                        display: "block",
+                        textDecoration: "none",
+                        fontWeight:
+                            this.props.location.pathname ===
+                            "/dashboard/settings"
+                                ? "bold"
+                                : "normal",
+                        color:
+                            this.props.location.pathname ===
+                            "/dashboard/settings"
+                                ? "#111111"
+                                : "#B9B9B9",
+                    }}
+                >
+                    SETTINGS
+                </Link>
+                {this.props.use_google ? (
+                    <div>
+                        <GoogleLogout
+                            clientId={GOOGLE_CLIENT_ID}
+                            buttonText={"Logout"}
+                            onLogoutSuccess={() =>
+                                this.props.dispatch(logout())
+                            }
+                            onFailure={() =>
+                                console.error("Google logout failure")
+                            }
+                            render={(renderProps) => (
+                                <div
+                                    className="sign-out-button"
+                                    onClick={renderProps.onClick}
+                                    style={{
+                                        marginTop: 15,
+                                    }}
+                                >
+                                    SIGN OUT
+                                </div>
+                            )}
+                        />
                     </div>
                 ) : (
-                    <div></div>
+                    <div
+                        className="sign-out-button"
+                        onClick={() => this.props.dispatch(logout())}
+                        style={{
+                            marginTop: 15,
+                        }}
+                    >
+                        SIGN OUT
+                    </div>
                 )}
             </div>
         );
@@ -115,4 +110,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(LeftSection);
+export default withRouter(connect(mapStateToProps)(LeftSection));

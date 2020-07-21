@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { Redirect } from "react-router-dom";
 
 import "react-tabs/style/react-tabs.css";
 import "static/PageDashboard.css";
-
-import Header from "components/header.js";
 
 import {
     retrieveCustomer,
@@ -19,26 +16,18 @@ import {
 } from "store/actions/dashboard/disk_actions";
 
 import ReferralButton from "pages/PageDashboard/containers/referralButton";
-import FeedbackBox from "pages/PageDashboard/containers/feedbackBox";
 import CreditsBox from "pages/PageDashboard/containers/creditsBox";
 
-import OfflineSection from "pages/PageDashboard/sections/OfflineSection";
 import LoadingSection from "pages/PageDashboard/sections/LoadingSection";
-import LeftSection from "pages/PageDashboard/sections/LeftSection";
-import TopSection from "pages/PageDashboard/sections/NewTopSection";
-import BottomSection from "pages/PageDashboard/sections/NewBottomSection";
+import TopSection from "pages/PageDashboard/sections/TopSection";
+import BottomSection from "pages/PageDashboard/sections/BottomSection";
 
-import { monthConvert, unixToDate } from "utils/date";
+import moment from "moment";
 
-class NewDashboard extends Component {
+class MainView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            width: 0,
-            height: 0,
-            day: 0,
-            month: 0,
-            year: 0,
             created: "",
             billStart: "",
             billEnd: "",
@@ -46,46 +35,40 @@ class NewDashboard extends Component {
             cancelling: false,
             waitlist: false,
             loaded: false,
+            total_storage: "120GB",
             hoursUsed: "",
         };
-        this.customWidth = React.createRef();
     }
 
     componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener("resize", this.updateWindowDimensions);
         this.props.dispatch(dashboardLoaded(false));
         this.props.dispatch(fetchDisks(this.props.user));
         this.props.dispatch(retrieveCustomer());
-
-        var today = new Date();
-        this.setState(
-            {
-                day: today.getDate(),
-                month: monthConvert(today.getMonth()),
-                year: today.getFullYear(),
-            },
-            function () {
-                this.setState({ loaded: true });
-            }
-        );
 
         if (this.props.disk_attach_status_id && this.props.disk_is_creating) {
             this.props.dispatch(
                 fetchDiskAttachStatus(this.props.disk_attach_status_id)
             );
         }
-    }
 
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWindowDimensions);
+        if (this.props.disks && Object.keys(this.props.disks).length > 1) {
+            var total_storage = 0;
+            this.props.disks.forEach(function (disk) {
+                total_storage = total_storage + Number(disk["disk_size"]);
+            });
+            this.setState({
+                total_storage: total_storage.toString() + "GB",
+            });
+        }
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.payment && Object.keys(this.props.payment).length > 0) {
             if (this.state.created === "" && this.props.payment.created) {
                 this.setState({
-                    created: unixToDate(this.props.payment.created),
+                    created: moment
+                        .unix(this.props.payment.created)
+                        .format("MMMM Do, YYYY"),
                 });
             }
             if (
@@ -93,9 +76,9 @@ class NewDashboard extends Component {
                 this.props.payment.current_period_start
             ) {
                 this.setState({
-                    billStart: unixToDate(
-                        this.props.payment.current_period_start
-                    ),
+                    billStart: moment
+                        .unix(this.props.payment.current_period_start)
+                        .format("MMMM Do, YYYY"),
                 });
                 this.props.dispatch(
                     fetchUserReport(this.props.payment.current_period_start)
@@ -106,7 +89,9 @@ class NewDashboard extends Component {
                 this.props.payment.current_period_end
             ) {
                 this.setState({
-                    billEnd: unixToDate(this.props.payment.current_period_end),
+                    billEnd: moment
+                        .unix(this.props.payment.current_period_end)
+                        .format("MMMM Do, YYYY"),
                 });
             }
             if (
@@ -115,7 +100,9 @@ class NewDashboard extends Component {
                 this.props.payment.trial_end > 0
             ) {
                 this.setState({
-                    trialEnd: unixToDate(this.props.payment.trial_end),
+                    trialEnd: moment
+                        .unix(this.props.payment.trial_end)
+                        .format("MMMM Do, YYYY"),
                 });
             }
         } else {
@@ -147,7 +134,9 @@ class NewDashboard extends Component {
                 this.props.dispatch(fetchUserReport(0));
             }
             this.setState({
-                trialEnd: unixToDate(this.props.customer.trial_end),
+                trialEnd: moment
+                    .unix(this.props.customer.trial_end)
+                    .format("MMMM Do, YYYY"),
             });
         }
 
@@ -177,56 +166,30 @@ class NewDashboard extends Component {
         }
     }
 
-    updateWindowDimensions = () => {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
-    };
-
     render() {
-        if (this.state.waitlist) {
-            return (
-                <OfflineSection
-                    month={this.state.month}
-                    day={this.state.day}
-                    year={this.state.year}
-                />
-            );
-        } else if (!this.props.dashboard_loaded && this.props.user) {
+        if (!this.props.dashboard_loaded && this.props.user) {
             return <LoadingSection />;
-        } else if (!this.props.logged_in || !this.props.email_verified) {
-            return <Redirect to="/auth" />;
         } else {
             return (
-                <div className="dashboard-container">
-                    <div style={{ maxWidth: 1920, margin: "auto" }}>
-                        <Header color="#111111" button="#5ec3eb" />
-                        <FeedbackBox />
-                        <div className="dashboard-flex">
-                            <LeftSection />
-                            <div className="right-section">
-                                <CreditsBox />
-                                <div className="date">
-                                    {this.state.month} {this.state.day},{" "}
-                                    {this.state.year}
-                                </div>
-                                <ReferralButton />
-                                <div className="title">
-                                    {this.props.disks === undefined ||
-                                    this.props.disks.length === 0 ||
-                                    this.props.disk_is_creating
-                                        ? "CREATE MY CLOUD PC"
-                                        : "MY CLOUD PC"}
-                                </div>
-                                <TopSection trialEnd={this.state.trialEnd} />
-                                <BottomSection
-                                    username={this.props.username}
-                                    created={this.state.created}
-                                    hoursUsed={this.state.hoursUsed}
-                                    billEnd={this.state.billEnd}
-                                    trialEnd={this.state.trialEnd}
-                                />
-                            </div>
-                        </div>
+                <div>
+                    <CreditsBox />
+
+                    <ReferralButton />
+                    <div className="title">
+                        {this.props.disks === undefined ||
+                        this.props.disks.length === 0 ||
+                        this.props.disk_is_creating
+                            ? "CREATE MY CLOUD PC"
+                            : "MY CLOUD PC"}
                     </div>
+                    <TopSection trialEnd={this.state.trialEnd} />
+                    <BottomSection
+                        username={this.props.username}
+                        created={this.state.created}
+                        hoursUsed={this.state.hoursUsed}
+                        billEnd={this.state.billEnd}
+                        trialEnd={this.state.trialEnd}
+                    />
                 </div>
             );
         }
@@ -234,9 +197,7 @@ class NewDashboard extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
-        logged_in: state.AuthReducer.logged_in,
         username: state.AuthReducer.username,
         disks:
             typeof state.DashboardReducer.disks === "undefined"
@@ -245,7 +206,6 @@ function mapStateToProps(state) {
         disk_is_creating: state.DashboardReducer.disk_is_creating,
         id: state.DashboardReducer.id,
         payment: state.DashboardReducer.payment,
-        email_verified: state.AuthReducer.email_verified,
         customer: state.DashboardReducer.customer,
         dashboard_loaded: state.DashboardReducer.dashboard_loaded,
         disk_attach_status_id: state.DashboardReducer.disk_attach_status_id
@@ -261,4 +221,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default withRouter(connect(mapStateToProps)(NewDashboard));
+export default withRouter(connect(mapStateToProps)(MainView));

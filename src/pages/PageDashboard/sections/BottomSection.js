@@ -49,7 +49,7 @@ class BottomSection extends Component {
     render() {
         return (
             <Row style={{ marginTop: 40, paddingBottom: 40 }}>
-                <Col sm={6} xs={12}>
+                <Col lg={6} md={12}>
                     <div className="bottom-title">Downloads</div>
                     <div style={{ width: "100%" }}>
                         <div className="download-box">
@@ -88,10 +88,10 @@ class BottomSection extends Component {
                     </div>
                 </Col>
                 <Col
-                    sm={6}
-                    xs={12}
+                    lg={6}
+                    md={12}
                     style={{
-                        marginTop: this.state.width > 700 ? 0 : 70,
+                        marginTop: this.state.width > 992 ? 0 : 70,
                     }}
                 >
                     <div>
