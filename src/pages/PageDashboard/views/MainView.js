@@ -19,8 +19,8 @@ import ReferralButton from "pages/PageDashboard/containers/referralButton";
 import CreditsBox from "pages/PageDashboard/containers/creditsBox";
 
 import LoadingSection from "pages/PageDashboard/sections/LoadingSection";
-import TopSection from "pages/PageDashboard/sections/TopSection";
-import BottomSection from "pages/PageDashboard/sections/BottomSection";
+import TopSection from "pages/PageDashboard/sections/main/TopSection";
+import BottomSection from "pages/PageDashboard/sections/main/BottomSection";
 
 import moment from "moment";
 
