@@ -23,6 +23,7 @@ class Purchase extends Component {
         this.state = {
             width: 0,
             height: 0,
+            operatingSystem: "Windows",
         };
     }
 
@@ -31,11 +32,17 @@ class Purchase extends Component {
         window.addEventListener("resize", this.updateWindowDimensions);
         this.props.dispatch(resetSetupData());
 
-        const operatingSystem =
+        let operatingSystem = "Windows";
+
+        if (
+            this.props.location &&
+            typeof this.props.location.state !== "undefined" &&
             "operatingSystem" in this.props.location.state
-                ? this.props.location.state.operatingSystem
-                : "Windows";
+        ) {
+            operatingSystem = this.props.location.state.operatingSystem;
+        }
         this.props.dispatch(storeOperatingSystem(operatingSystem));
+        this.setState({ operatingSystem });
     }
 
     componentWillUnmount() {
@@ -113,7 +120,9 @@ class Purchase extends Component {
                                 this.props.require_payment_oncreate
                             }
                         />
-                        {RenderSurvey()}
+                        <div className="right-section-wrapper">
+                            {RenderSurvey()}
+                        </div>
                     </div>
                 </div>
             </div>

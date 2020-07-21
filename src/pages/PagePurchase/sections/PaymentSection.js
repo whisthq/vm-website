@@ -83,8 +83,7 @@ class PaymentSection extends Component {
 
         return (
             <div
-                className="right-section-wrapper"
-                // onKeyPress={this.nextStepKeyPress}
+            // onKeyPress={this.nextStepKeyPress}
             >
                 <SurveyButton currentStep={this.props.step} />
                 <div

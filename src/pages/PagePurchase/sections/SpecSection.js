@@ -53,10 +53,7 @@ class SpecSection extends Component {
 
     render() {
         return (
-            <div
-                className="right-section-wrapper"
-                onKeyPress={this.nextStepKeyPress}
-            >
+            <div onKeyPress={this.nextStepKeyPress}>
                 <SurveyButton currentStep={this.props.step} />
                 {this.state.width > 700 ? (
                     <span style={{ position: "relative", bottom: 2 }}>

@@ -31,10 +31,7 @@ class WaitlistSection extends Component {
 
     render() {
         return (
-            <div
-                className="right-section-wrapper"
-                onKeyPress={this.nextStepKeyPress}
-            >
+            <div onKeyPress={this.nextStepKeyPress}>
                 <SurveyButton currentStep={this.props.step} />
                 <div className="survey-box">
                     <div style={{ fontSize: 26, marginBottom: 20 }}>

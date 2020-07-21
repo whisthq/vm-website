@@ -31,6 +31,19 @@ class LeftSection extends Component {
                     <div style={{ paddingBottom: 20 }}>
                         <div
                             style={{
+                                fontWeight: "bold",
+                                color: "#B9B9B9",
+                            }}
+                        >
+                            Operating Sytem
+                        </div>
+                        <div style={{ color: "#B9B9B9", fontSize: 12 }}>
+                            {this.props.vm_setup_data.operating_system}
+                        </div>
+                    </div>
+                    <div style={{ paddingBottom: 20 }}>
+                        <div
+                            style={{
                                 fontWeight:
                                     this.props.vm_setup_data.step === 1
                                         ? "bold"

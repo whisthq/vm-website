@@ -281,10 +281,7 @@ class PlanSection extends Component {
         );
 
         return (
-            <div
-                className="right-section-wrapper"
-                onKeyPress={this.nextStepKeyPress}
-            >
+            <div onKeyPress={this.nextStepKeyPress}>
                 <SurveyButton currentStep={this.props.step} />
 
                 {this.props.enableCreditCard ? (
