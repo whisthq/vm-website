@@ -47,7 +47,9 @@ class ImageBox extends Component {
         if (this.props.stage === "notCreated") {
             content = (
                 <>
-                    <div className="text">{this.props.operatingSystem}</div>
+                    <div className="text" style={{ fontSize: "24pt" }}>
+                        {this.props.operatingSystem}
+                    </div>
                 </>
             );
         } else if (this.props.stage === "creating") {
@@ -112,7 +114,7 @@ class ImageBox extends Component {
                     </div>
                 )}
                 {this.props.stage === "notCreated" && (
-                    <div className="icon">
+                    <div className="icon" style={{ marginTop: "5em" }}>
                         <FontAwesomeIcon icon={faPlus} />
                     </div>
                 )}

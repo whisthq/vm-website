@@ -8,13 +8,16 @@ import { FaPlus } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
+import DiskBox from "pages/PageDashboard/containers/diskBox";
+
 import "react-tabs/style/react-tabs.css";
 import "static/Shared.css";
-
-import SSD from "assets/icons/hard-drive-icon.svg";
+import "static/PageSettings.css";
 
 class DisksSection extends Component {
     render() {
+        const windowsDisks = this.props.disks.filter((d) => d.os === "Windows");
+
         const windowsBox = (
             <Link
                 style={{
@@ -26,36 +29,14 @@ class DisksSection extends Component {
                     state: { operatingSystem: "Windows" },
                 }}
             >
-                <div
-                    style={{
-                        fontSize: 14,
-                        background: "#0B172B",
-                        boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
-                        borderRadius: 7,
-                        padding: "40px 35px",
-                        marginTop: 35,
-                        minHeight: 210,
-                        textAlign: "center",
-                        color: "white",
-                    }}
-                >
-                    <FaPlus
-                        style={{
-                            fontSize: 25,
-                            marginTop: 20,
-                        }}
-                    />
-                    <div
-                        style={{
-                            marginTop: 32,
-                            fontSize: 16,
-                        }}
-                    >
-                        Create Windows Cloud PC
-                    </div>
+                <div className="createBox">
+                    <FaPlus className="icon" />
+                    <div className="title">Create Windows Cloud PC</div>
                 </div>
             </Link>
         );
+
+        const linuxDisks = this.props.disks.filter((d) => d.os === "Linux");
 
         const linuxBox = (
             <Link
@@ -68,108 +49,37 @@ class DisksSection extends Component {
                     state: { operatingSystem: "Linux" },
                 }}
             >
-                <div
-                    style={{
-                        fontSize: 14,
-                        background: "#0B172B",
-                        boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
-                        borderRadius: 7,
-                        padding: "40px 35px",
-                        marginTop: 35,
-                        minHeight: 210,
-                        textAlign: "center",
-                        color: "white",
-                    }}
-                >
-                    <FaPlus
-                        style={{
-                            fontSize: 25,
-                            marginTop: 20,
-                        }}
-                    />
-                    <div
-                        style={{
-                            marginTop: 32,
-                            fontSize: 16,
-                        }}
-                    >
-                        Create Linux Cloud PC
-                    </div>
+                <div className="createBox">
+                    <FaPlus className="icon" />
+                    <div className="title">Create Linux Cloud PC</div>
                 </div>
             </Link>
         );
 
         if (this.props.disks && this.props.disks.length > 0) {
             return (
-                <Row style={{ marginTop: 5 }}>
+                <Row style={{ marginTop: 5 }} className="disks">
                     <Col xs={12}>
                         <Row
                             style={{
                                 width: "100%",
                             }}
                         >
-                            {this.props.disks.map((value, index) => {
-                                return (
-                                    <Col
-                                        sm={6}
-                                        lg={4}
-                                        xl={3}
-                                        style={{
-                                            paddingRight:
-                                                this.state.width > 900 ? 20 : 0,
-                                        }}
-                                    >
-                                        <div
-                                            style={{
-                                                fontSize: 14,
-                                                background:
-                                                    "rgba(94, 195, 235, 0.06)",
-                                                boxShadow:
-                                                    "0px 4px 15px rgba(0, 0, 0, 0.2)",
-                                                borderRadius: 7,
-                                                padding: "40px 35px",
-                                                marginTop: 35,
-                                                minHeight: 210,
-                                            }}
-                                        >
-                                            <img
-                                                src={SSD}
-                                                alt=""
-                                                style={{
-                                                    textAlign: "left",
-                                                    marginTop: 5,
-                                                    height: 45,
-                                                }}
-                                            />
-                                            <div
-                                                style={{
-                                                    fontWeight: "bold",
-                                                    fontSize: 18,
-                                                    marginTop: 25,
-                                                }}
-                                            >
-                                                Storage Disk {index.toString()}
-                                            </div>
-                                            <div
-                                                style={{
-                                                    marginTop: 3,
-                                                }}
-                                            >
-                                                {value["disk_size"].toString() +
-                                                    "GB"}
-                                            </div>
-                                        </div>
-                                    </Col>
-                                );
-                            })}
+                            {this.props.disks.map((value, index) => (
+                                <DiskBox
+                                    index={index}
+                                    value={value}
+                                    width={this.props.width}
+                                />
+                            ))}
                             <Col
                                 sm={6}
-                                md={4}
+                                lg={4}
                                 xl={3}
                                 className="pointerOnHover"
                                 style={{
                                     paddingRight:
-                                        this.state.width > 900 ? 20 : 0,
+                                        this.props.width > 900 ? 20 : 0,
                                 }}
                             >
                                 <Link
@@ -215,11 +125,11 @@ class DisksSection extends Component {
             );
         } else {
             return (
-                <Row>
-                    <Col lg={6} md={12}>
+                <Row className="disks">
+                    <Col md={6} sm={12}>
                         {windowsBox}
                     </Col>
-                    <Col lg={6} md={12}>
+                    <Col md={6} sm={12}>
                         {linuxBox}
                     </Col>
                 </Row>

@@ -3,10 +3,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { Link } from "react-router-dom";
-import { FaSpaceShuttle } from "react-icons/fa";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 import LoadingSection from "pages/PageDashboard/sections/LoadingSection";
 import DisksSection from "pages/PageDashboard/sections/settings/DisksSection";
@@ -15,10 +11,9 @@ import HardwareSection from "pages/PageDashboard/sections/settings/HardwareSecti
 
 import "react-tabs/style/react-tabs.css";
 import "static/Shared.css";
+import "static/PageSettings.css";
 
 import { fetchDisks } from "store/actions/dashboard/disk_actions";
-
-import SSD from "assets/icons/hard-drive-icon.svg";
 
 class SettingsView extends Component {
     constructor(props) {
@@ -53,18 +48,12 @@ class SettingsView extends Component {
             return <LoadingSection />;
         } else {
             return (
-                <div
-                    style={{
-                        display: "flex",
-                        overflowX: "hidden",
-                        position: "relative",
-                        bottom: 60,
-                    }}
-                >
+                <div className="settingsContainer">
                     <div
                         style={{
                             paddingTop: 40,
                             paddingBottom: 50,
+                            width: "100%",
                         }}
                     >
                         <div
@@ -76,9 +65,9 @@ class SettingsView extends Component {
                         >
                             SETTINGS
                         </div>
-                        <DisksSection />
+                        <DisksSection width={this.state.width} />
                         <Row style={{ marginTop: 60 }}>
-                            <Col sm={6} xs={12}>
+                            <Col md={6} sm={12}>
                                 <div
                                     style={{
                                         fontSize: 20,
@@ -91,7 +80,7 @@ class SettingsView extends Component {
                                 </div>
                                 <AccountSection />
                             </Col>
-                            <Col sm={6} xs={12}>
+                            <Col md={6} sm={12}>
                                 <div
                                     style={{
                                         fontSize: 20,
@@ -102,9 +91,7 @@ class SettingsView extends Component {
                                 >
                                     Cloud PC Hardware
                                 </div>
-                                <div style={{ width: "100%" }}>
-                                    <HardwareSection />
-                                </div>
+                                <HardwareSection />
                             </Col>
                         </Row>
                     </div>
