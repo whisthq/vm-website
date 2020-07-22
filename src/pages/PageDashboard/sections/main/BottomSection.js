@@ -50,7 +50,7 @@ class BottomSection extends Component {
         return (
             <Row style={{ marginTop: 40, paddingBottom: 40 }}>
                 <Col lg={6} md={12}>
-                    <div className="bottom-title">Downloads</div>
+                    <div className="bottom-title">Download Fractal Client</div>
                     <div style={{ width: "100%" }}>
                         <div className="download-box">
                             <Row
