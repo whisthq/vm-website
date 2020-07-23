@@ -18,7 +18,7 @@ export const AUTH_DEFAULT = {
         needs_reason: false,
         use_google: false,
         auth_error: "",
-        show_google_button: true,
+        show_google_button: false,
     },
 };
 
