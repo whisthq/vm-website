@@ -353,3 +353,66 @@ div .options div:hover {
 .signupBox ::placeholder {
     color: #999999;
 }
+
+.titleFont {
+    font-size: 40px;
+    line-height: 1.4;
+    font-weight: bold;
+}
+
+.subHeadingFont {
+    font-size: 18px;
+    color: "#111111" !important;
+}
+
+.subHeadingBoldFont {
+    font-size: 18px;
+    font-weight: bold;
+    color: "#111111" !important;
+    margin-bottom: 5px;
+}
+
+.headingFont {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.italicFont {
+    font-style: italic;
+}
+
+.noBulletUl {
+    list-style: none;
+    padding-left: 0px;
+}
+
+.black-button {
+    font-size: calc(12px + 0.4vw) !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1) !important;
+    display: inline !important;
+    background-color: #111111 !important;
+    padding: 15px 30px !important;
+    font-weight: bold !important;
+    border-radius: 5px !important;
+    border: none !important;
+    text-decoration: none !important;
+}
+
+.black-button-small {
+    font-size: 16px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    background-color: #111111;
+    padding: 5px 20px;
+    font-weight: bold;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition-duration: 0.5s;
+}
+.black-button-small:hover {
+    text-decoration: none;
+    color: white;
+    transform: translate(0, -3px);
+}

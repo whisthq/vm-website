@@ -10,8 +10,9 @@ import CountrySection from "pages/PagePurchase/sections/CountrySection";
 import StateSection from "pages/PagePurchase/sections/StateSection";
 import WaitlistSection from "pages/PagePurchase/sections/WaitlistSection";
 import SpecSection from "pages/PagePurchase/sections/SpecSection";
-import PlanSection from "pages/PagePurchase/sections/PlanSection";
 import AppSection from "pages/PagePurchase/sections/AppSection";
+import PlanSection from "pages/PagePurchase/sections/PlanSection";
+import PaymentSection from "pages/PagePurchase/sections/PaymentSection";
 
 class Purchase extends Component {
     constructor(props) {
@@ -73,12 +74,20 @@ class Purchase extends Component {
                         step={4}
                     />
                 );
-            } else {
+            } else if (this.props.vm_setup_data.step === 5) {
                 return (
                     <PlanSection
                         vm_setup_data={this.props.vm_setup_data}
                         credits={this.props.credits}
+                        enableCreditCard={this.props.require_payment_oncreate}
                         step={5}
+                    />
+                );
+            } else {
+                return (
+                    <PaymentSection
+                        vm_setup_data={this.props.vm_setup_data}
+                        step={6}
                     />
                 );
             }
@@ -89,7 +98,12 @@ class Purchase extends Component {
                 <div style={{ maxWidth: 1920, margin: "auto" }}>
                     <Header color="#333333" button="#5ec3eb" />
                     <div className="purchase-flex">
-                        <LeftSection vm_setup_data={this.props.vm_setup_data} />
+                        <LeftSection
+                            vm_setup_data={this.props.vm_setup_data}
+                            enableCreditCard={
+                                this.props.require_payment_oncreate
+                            }
+                        />
                         {RenderSurvey()}
                     </div>
                 </div>
@@ -102,6 +116,10 @@ function mapStateToProps(state) {
     return {
         credits: state.DashboardReducer.credits,
         vm_setup_data: state.DashboardReducer.vm_setup_data,
+        require_payment_oncreate: state.DashboardReducer
+            .require_payment_oncreate
+            ? state.DashboardReducer.require_payment_oncreate
+            : true,
     };
 }
 

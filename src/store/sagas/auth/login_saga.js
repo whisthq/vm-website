@@ -15,13 +15,14 @@ function* googleLogin(action) {
     if (action.code) {
         const { json } = yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/account/googleLogin",
+            config.url.PRIMARY_SERVER + "/google/login",
             {
                 code: action.code,
             }
         );
         if (json) {
             if (json.status === 200) {
+                console.log(json);
                 yield put(LoginAction.setUseGoogle(true));
                 yield put(
                     TokenAction.storeJWT(json.access_token, json.refresh_token)
@@ -57,7 +58,7 @@ function* googleReason(action) {
     const state = yield select();
     const { json } = yield call(
         apiPost,
-        config.url.PRIMARY_SERVER + "/account/googleReason",
+        config.url.PRIMARY_SERVER + "/google/reason",
         {
             reason: action.reason,
             username: state.AuthReducer.username,
@@ -98,14 +99,14 @@ function* userLogin(action) {
 }
 
 function* forgotPassword(action) {
-    yield select();
+    const state = yield select();
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/mail/forgot",
         {
             username: action.username,
         },
-        ""
+        state.AccountReducer.access_token
     );
     if (json) {
         if (json.verified) {
@@ -118,16 +119,29 @@ function* forgotPassword(action) {
 
 function* resetPassword(action) {
     yield select();
-    yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/mail/reset",
-        {
-            username: action.username,
-            password: action.password,
-        },
-        ""
-    );
-    history.push("/auth");
+    if (config.new_server) {
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/account/resetPassword",
+            {
+                username: action.username,
+                password: action.password,
+            },
+            ""
+        );
+        history.push("/auth");
+    } else {
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/mail/reset",
+            {
+                username: action.username,
+                password: action.password,
+            },
+            ""
+        );
+        history.push("/auth");
+    }
 }
 
 export default function* () {

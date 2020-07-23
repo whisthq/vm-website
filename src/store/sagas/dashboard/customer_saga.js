@@ -1,5 +1,5 @@
 import { put, takeEvery, all, call, select } from "redux-saga/effects";
-import { apiPost } from "utils/Api.js";
+import { apiPost, apiGet, format } from "utils/Api.js";
 import { config } from "utils/constants.js";
 import history from "utils/history";
 
@@ -12,19 +12,34 @@ import * as PopupAction from "store/actions/dashboard/popup_actions";
 import * as RenderingAction from "store/actions/dashboard/rendering_actions";
 
 function* getPromoCode(action) {
-    yield select();
-    const { json } = yield call(
-        apiPost,
-        config.url.PRIMARY_SERVER + "/account/fetchCode",
-        {
-            username: action.user,
-        },
-        ""
-    );
+    const state = yield select();
+    if (config.new_server) {
+        const { json } = yield call(
+            apiGet,
+            format(
+                config.url.PRIMARY_SERVER + "/account/code?username={0}",
+                action.username
+            ),
+            state.AuthReducer.access_token
+        );
 
-    if (json && json.status === 200) {
-        yield put(SignupAction.sendSignupEmail(action.user, json.code));
-        yield put(CustomerAction.storePromoCode(json.code));
+        if (json && json.status === 200) {
+            yield put(CustomerAction.storePromoCode(json.code));
+        }
+    } else {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/account/fetchCode",
+            {
+                username: action.user,
+            },
+            ""
+        );
+
+        if (json && json.status === 200) {
+            yield put(SignupAction.sendSignupEmail(action.user, json.code));
+            yield put(CustomerAction.storePromoCode(json.code));
+        }
     }
 }
 
@@ -35,7 +50,7 @@ function* insertCustomer(action) {
         apiPost,
         config.url.PRIMARY_SERVER + "/stripe/insert",
         {
-            email: state.AuthReducer.username,
+            username: state.AuthReducer.username,
             location: action.location,
         },
         state.AuthReducer.access_token
@@ -44,13 +59,16 @@ function* insertCustomer(action) {
     // Start trial
     if (json) {
         yield put(CustomerAction.customerCreated(json.status));
+        yield put(CustomerAction.retrieveCustomer());
+
         history.push("/dashboard");
+
         yield put(PopupAction.triggerSurvey(true));
         yield put(DiskAction.diskCreating(true));
 
         yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/trial/start",
+            config.url.PRIMARY_SERVER + "/trialStart",
             {
                 username: state.AuthReducer.username,
                 location: action.location,
@@ -68,7 +86,7 @@ function* retrieveCustomer(action) {
         apiPost,
         config.url.PRIMARY_SERVER + "/stripe/retrieve",
         {
-            email: state.AuthReducer.username,
+            username: state.AuthReducer.username,
         },
         state.AuthReducer.access_token
     );
@@ -83,6 +101,27 @@ function* retrieveCustomer(action) {
         yield put(CustomerAction.storeCustomer(json.customer));
         yield put(CustomerAction.storeCredits(json.creditsOutstanding));
         yield put(RenderingAction.dashboardLoaded(true));
+    } else {
+        const { json } = yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/stripe/retrieve",
+            {
+                username: state.AuthReducer.username,
+            },
+            state.AuthReducer.access_token
+        );
+
+        if (json) {
+            if (json.status === 200) {
+                yield put(StripeAction.storePayment(json.subscription));
+            } else {
+                yield put(StripeAction.storePayment({}));
+            }
+            yield put(LoginAction.storeAccountLocked(json.account_locked));
+            yield put(CustomerAction.storeCustomer(json.customer));
+            yield put(CustomerAction.storeCredits(json.creditsOutstanding));
+            yield put(RenderingAction.dashboardLoaded(true));
+        }
     }
 }
 
@@ -90,17 +129,17 @@ function* submitPurchaseFeedback(action) {
     const state = yield select();
     yield call(
         apiPost,
-        config.url.PRIMARY_SERVER + "/account/feedback",
+        config.url.PRIMARY_SERVER + "/mail/feedback",
         {
             username: state.AuthReducer.username,
             feedback: action.feedback,
+            type: "Purchase Feedback",
         },
         state.AuthReducer.access_token
     );
 }
 
 function* fetchUserReport(action) {
-    console.log("FETCHING USER REPORT");
     const state = yield select();
     if (action.start_date > 0) {
         const { json } = yield call(
@@ -109,6 +148,7 @@ function* fetchUserReport(action) {
             {
                 username: state.AuthReducer.username,
                 start_date: action.start_date,
+                timescale: "month",
             },
             state.AuthReducer.access_token
         );

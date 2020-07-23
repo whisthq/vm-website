@@ -18,7 +18,7 @@ export const AUTH_DEFAULT = {
         needs_reason: false,
         use_google: false,
         auth_error: "",
-        show_google_button: true,
+        show_google_button: false,
     },
 };
 
@@ -57,6 +57,7 @@ export const DASHBOARD_DEFAULT = {
         apps: [],
         step: 1,
     },
+    require_payment_oncreate: true,
 };
 
 export const SETTINGS_DEFAULT = {
