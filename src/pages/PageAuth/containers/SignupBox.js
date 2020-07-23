@@ -305,8 +305,8 @@ class SignupBox extends Component {
                             marginTop: 20,
                         }}
                     >
-                        Password requires one uppercase and lowercase letter and
-                        special character
+                        Password requires one uppercase, lowercase letter,
+                        special character, and one number
                     </div>
                 );
             } else {
