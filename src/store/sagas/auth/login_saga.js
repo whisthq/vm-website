@@ -29,7 +29,7 @@ function* googleLogin(action) {
                 );
                 yield put(LoginAction.setUsername(json.username));
                 yield put(SignupAction.emailVerified(true));
-                yield put(CustomerAction.getPromoCode(json.username));
+                yield put(CustomerAction.fetchUser(json.username));
 
                 if (json.new_user) {
                     yield put(LoginAction.setNeedsReason(true));
@@ -90,7 +90,7 @@ function* userLogin(action) {
             yield put(LoginAction.loginSuccess());
             yield put(TokenAction.storeVerificationToken(json.token));
             yield put(SignupAction.checkVerifiedEmail(action.username));
-            yield put(CustomerAction.getPromoCode(action.username));
+            yield put(CustomerAction.fetchUser(action.username));
         } else {
             yield put(LoginAction.setError(json.error));
             yield put(LoginAction.loginFailure(400));

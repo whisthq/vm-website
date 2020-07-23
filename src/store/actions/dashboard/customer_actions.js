@@ -1,6 +1,6 @@
 export const RETRIEVE_CUSTOMER = "RETRIEVE_CUSTOMER";
-export const GET_PROMO_CODE = "GET_PROMO_CODE";
-export const STORE_PROMO_CODE = "STORE_PROMO_CODE";
+export const FETCH_USER = "FETCH_USER";
+export const STORE_USER = "STORE_USER";
 export const STORE_CREDITS = "STORE_CREDITS";
 export const VALIDATE_PROMO_CODE = "VALIDATE_PROMO_CODE";
 export const PROMO_CODE_FAILURE = "PROMO_CODE_FAILURE";
@@ -17,16 +17,16 @@ export function retrieveCustomer() {
     };
 }
 
-export function storePromoCode(code) {
+export function storeUser(user) {
     return {
-        type: STORE_PROMO_CODE,
-        code,
+        type: STORE_USER,
+        user,
     };
 }
 
-export function getPromoCode(username) {
+export function fetchUser(username) {
     return {
-        type: GET_PROMO_CODE,
+        type: FETCH_USER,
         username,
     };
 }

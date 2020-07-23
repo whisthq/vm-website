@@ -40,7 +40,7 @@ const development = {
 
 const local = {
     url: {
-        PRIMARY_SERVER: "http://localhost:5000",
+        PRIMARY_SERVER: "http://localhost:7730",
     },
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
@@ -49,15 +49,6 @@ const local = {
         RESOURCE_GROUP: "Fractal",
     },
     new_server: true,
-};
-
-const local = {
-    url: {
-        PRIMARY_SERVER: "http://127.0.0.1:7730",
-    },
-    stripe: {
-        PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
-    },
 };
 
 // TODO: Change config to development/production after changes in staging are deployed to the other vm webservers

@@ -12,6 +12,7 @@ import "react-tabs/style/react-tabs.css";
 import "static/Shared.css";
 
 import { fetchDisks } from "store/actions/dashboard/disk_actions";
+import { retrieveCustomer } from "store/actions/dashboard/customer_actions";
 
 import SSD from "assets/icons/hard-drive-icon.svg";
 
@@ -31,13 +32,12 @@ class SettingsView extends Component {
         this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
         this.props.dispatch(fetchDisks(this.props.user));
+        this.props.dispatch(retrieveCustomer());
     }
 
     componentWillUnmount() {
         window.removeEventListener("resize", this.updateWindowDimensions);
     }
-
-    componentDidUpdate(prevProps) {}
 
     updateWindowDimensions() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -266,21 +266,44 @@ class SettingsView extends Component {
                             style={{
                                 fontSize: 20,
                                 fontWeight: "bold",
-                                marginBottom: 20,
                                 marginTop: 60,
-                                display: "inline",
                             }}
                         >
                             Account
                         </div>
                         <div
                             style={{
+                                marginTop: 20,
                                 backgroundColor: "white",
                                 borderRadius: 10,
-                                padding: 20,
+                                padding: "40px 35px",
                             }}
                         >
-                            asdfasfd
+                            <Row>
+                                <Col sm={6}>
+                                    <div
+                                        style={{
+                                            fontSize: 16,
+                                            color: "#5EC4EB",
+                                            paddingBottom: 10,
+                                        }}
+                                    >
+                                        Name
+                                    </div>
+                                </Col>
+                                <Col sm={6}>
+                                    <div
+                                        style={{
+                                            fontSize: 16,
+                                            color: "#5EC4EB",
+                                            paddingBottom: 10,
+                                        }}
+                                    >
+                                        Email
+                                    </div>
+                                </Col>
+                            </Row>
+                            Delete Account
                         </div>
 
                         <Row style={{ marginTop: 60 }}>

@@ -11,35 +11,19 @@ import * as CustomerAction from "store/actions/dashboard/customer_actions";
 import * as PopupAction from "store/actions/dashboard/popup_actions";
 import * as RenderingAction from "store/actions/dashboard/rendering_actions";
 
-function* getPromoCode(action) {
+function* fetchUser(action) {
     const state = yield select();
-    if (config.new_server) {
-        const { json } = yield call(
-            apiGet,
-            format(
-                config.url.PRIMARY_SERVER + "/account/code?username={0}",
-                action.username
-            ),
-            state.AuthReducer.access_token
-        );
+    const { json } = yield call(
+        apiGet,
+        format(
+            config.url.PRIMARY_SERVER + "/account/fetch?username={0}",
+            action.username
+        ),
+        state.AuthReducer.access_token
+    );
 
-        if (json && json.status === 200) {
-            yield put(CustomerAction.storePromoCode(json.code));
-        }
-    } else {
-        const { json } = yield call(
-            apiPost,
-            config.url.PRIMARY_SERVER + "/account/fetchCode",
-            {
-                username: action.user,
-            },
-            ""
-        );
-
-        if (json && json.status === 200) {
-            yield put(SignupAction.sendSignupEmail(action.user, json.code));
-            yield put(CustomerAction.storePromoCode(json.code));
-        }
+    if (json && json.status === 200) {
+        yield put(CustomerAction.storeUser(json));
     }
 }
 
@@ -72,7 +56,7 @@ function* insertCustomer(action) {
             {
                 username: state.AuthReducer.username,
                 location: action.location,
-                code: state.DashboardReducer.promo_code,
+                code: state.DashboardReducer.user.code,
             },
             ""
         );
@@ -174,7 +158,7 @@ function* fetchUserReport(action) {
 export default function* () {
     yield all([
         takeEvery(CustomerAction.RETRIEVE_CUSTOMER, retrieveCustomer),
-        takeEvery(CustomerAction.GET_PROMO_CODE, getPromoCode),
+        takeEvery(CustomerAction.FETCH_USER, fetchUser),
         takeEvery(CustomerAction.INSERT_CUSTOMER, insertCustomer),
         takeEvery(
             CustomerAction.SUBMIT_PURCHASE_FEEDBACK,

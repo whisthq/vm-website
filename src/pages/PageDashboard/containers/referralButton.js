@@ -111,7 +111,7 @@ class ReferralButton extends Component {
     sendEmails = () => {
         this.setState({ sendingEmails: true });
         this.props.dispatch(
-            sendFriendsEmail(this.state.emails, this.props.promo_code)
+            sendFriendsEmail(this.state.emails, this.props.user.code)
         );
     };
 
@@ -185,7 +185,9 @@ class ReferralButton extends Component {
                                         fontSize: 40,
                                     }}
                                 >
-                                    {this.props.promo_code}
+                                    {this.props.user
+                                        ? this.props.user.code
+                                        : ""}
                                 </div>
                                 <button
                                     onClick={() => this.showEmailShare(true)}
@@ -547,7 +549,7 @@ class ReferralButton extends Component {
 
 function mapStateToProps(state) {
     return {
-        promo_code: state.DashboardReducer.promo_code,
+        user: state.DashboardReducer.user,
         friend_email_status: state.DashboardReducer.friend_email_status,
     };
 }

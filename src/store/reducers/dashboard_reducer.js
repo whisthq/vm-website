@@ -36,10 +36,12 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 ...state,
                 friend_email_status: action.status,
             };
-        case CustomerAction.STORE_PROMO_CODE:
+        case CustomerAction.STORE_USER:
+            console.log("storing user");
+            console.log(action.user);
             return {
                 ...state,
-                promo_code: action.code,
+                user: action.user,
             };
         case CustomerAction.PROMO_CODE_FAILURE:
             return {
