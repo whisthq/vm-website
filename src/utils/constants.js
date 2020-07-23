@@ -9,7 +9,7 @@ const production = {
     azure: {
         RESOURCE_GROUP: "Fractal",
     },
-    new_server: false,
+    new_server: true,
 };
 
 const staging = {
