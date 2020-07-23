@@ -37,8 +37,6 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 friend_email_status: action.status,
             };
         case CustomerAction.STORE_USER:
-            console.log("storing user");
-            console.log(action.user);
             return {
                 ...state,
                 user: action.user,

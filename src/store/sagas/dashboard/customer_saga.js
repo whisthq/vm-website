@@ -23,7 +23,7 @@ function* fetchUser(action) {
     );
 
     if (json && json.status === 200) {
-        yield put(CustomerAction.storeUser(json));
+        yield put(CustomerAction.storeUser(json.user));
     }
 }
 
