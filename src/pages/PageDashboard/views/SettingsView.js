@@ -261,6 +261,28 @@ class SettingsView extends Component {
                                 </div>
                             </Link>
                         )}
+
+                        <div
+                            style={{
+                                fontSize: 20,
+                                fontWeight: "bold",
+                                marginBottom: 20,
+                                marginTop: 60,
+                                display: "inline",
+                            }}
+                        >
+                            Account
+                        </div>
+                        <div
+                            style={{
+                                backgroundColor: "white",
+                                borderRadius: 10,
+                                padding: 20,
+                            }}
+                        >
+                            asdfasfd
+                        </div>
+
                         <Row style={{ marginTop: 60 }}>
                             <Col sm={6} xs={12}>
                                 <div
@@ -271,7 +293,7 @@ class SettingsView extends Component {
                                         display: "inline",
                                     }}
                                 >
-                                    Account
+                                    Advanced settings
                                 </div>
                                 <div style={{ width: "100%" }}>
                                     <div

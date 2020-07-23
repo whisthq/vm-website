@@ -26,8 +26,17 @@ const development = {
     },
 };
 
+const local = {
+    url: {
+        PRIMARY_SERVER: "http://127.0.0.1:7730",
+    },
+    stripe: {
+        PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
+    },
+};
+
 export const config =
-    process.env.NODE_ENV === "development" ? production : production;
+    process.env.NODE_ENV === "development" ? local : production;
 
 export const GOOGLE_CLIENT_ID =
     "581514545734-7k820154jdfp0ov2ifk4ju3vodg0oec2.apps.googleusercontent.com";
