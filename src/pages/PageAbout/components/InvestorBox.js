@@ -33,10 +33,6 @@ class InvestorBox extends Component {
     }
 
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-        if (this.state.width > 700 && this.state.modalShow) {
-            modalClose();
-        }
         window.addEventListener("resize", this.updateWindowDimensions);
 
         return (

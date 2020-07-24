@@ -20,7 +20,6 @@ class Storage extends Component {
         this.state = {
             width: 0,
             height: 0,
-            modalShow: false,
             continue: false,
             exit: false,
             storage: 0,
@@ -58,11 +57,6 @@ class Storage extends Component {
     };
 
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-        if (this.state.width > 700 && this.state.modalShow) {
-            modalClose();
-        }
-
         const renderLeftMenu = () => {
             if (this.state.width > 700) {
                 return (

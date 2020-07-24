@@ -24,10 +24,6 @@ class SignupBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            width: 0,
-            height: 0,
-            modalShow: false,
-            showPopup: false,
             emailSignup: "",
             passwordSignup: "",
             passwordConfirmSignup: "",
@@ -203,8 +199,6 @@ class SignupBox extends Component {
     };
 
     componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener("resize", this.updateWindowDimensions);
         this.props.dispatch(signupFailure(0));
         this.props.dispatch(showGoogleButton(true));
     }
@@ -232,20 +226,7 @@ class SignupBox extends Component {
         }
     }
 
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWindowDimensions);
-    }
-
-    updateWindowDimensions() {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
-
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-        if (this.state.width > 700 && this.state.modalShow) {
-            modalClose();
-        }
-
         const signupWarning = () => {
             if (this.props.error && this.state.failed_signup_attempt) {
                 return (

@@ -23,10 +23,6 @@ class Reset extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            width: 0,
-            height: 0,
-            modalShow: false,
-            showPopup: false,
             email: "",
             validEmail: false,
             forgot_password: 0,
@@ -34,7 +30,6 @@ class Reset extends Component {
             passwordConfirmSignup: "",
             tooShort: false,
         };
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
     handleKeyPress = (evt) => {
@@ -107,19 +102,9 @@ class Reset extends Component {
     };
 
     componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener("resize", this.updateWindowDimensions);
         var token_tmp = this.props.location.search;
         var token = token_tmp.substring(1, token_tmp.length);
         this.props.dispatch(validateResetToken(token));
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWindowDimensions);
-    }
-
-    updateWindowDimensions() {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
     componentDidUpdate(prevProps) {
@@ -132,10 +117,6 @@ class Reset extends Component {
     }
 
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-        if (this.state.width > 700 && this.state.modalShow) {
-            modalClose();
-        }
         if (this.props.token_status === "verified") {
             return (
                 <div style={{ minHeight: "100vh" }}>

@@ -20,7 +20,6 @@ class Plan extends Component {
         this.state = {
             width: 0,
             height: 0,
-            modalShow: false,
             continue: false,
             exit: false,
             plan: "",
@@ -74,11 +73,6 @@ class Plan extends Component {
     };
 
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-        if (this.state.width > 700 && this.state.modalShow) {
-            modalClose();
-        }
-
         const renderLeftMenu = () => {
             if (this.state.width > 700) {
                 return (

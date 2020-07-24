@@ -13,15 +13,10 @@ class LoginBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            width: 0,
-            height: 0,
-            modalShow: false,
-            showPopup: false,
             emailLogin: "",
             passwordLogin: "",
             failed_login_attempt: false,
         };
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
     handleLogin = (evt) => {
@@ -79,8 +74,6 @@ class LoginBox extends Component {
 
     componentDidMount() {
         this.setState({ failures: this.props.failed_login_attempts });
-        this.updateWindowDimensions();
-        window.addEventListener("resize", this.updateWindowDimensions);
     }
 
     componentDidUpdate(prevProps) {
@@ -96,20 +89,7 @@ class LoginBox extends Component {
         }
     }
 
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWindowDimensions);
-    }
-
-    updateWindowDimensions() {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
-
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-        if (this.state.width > 700 && this.state.modalShow) {
-            modalClose();
-        }
-
         const loginWarning = () => {
             if (this.props.error && this.state.failed_login_attempt) {
                 return (

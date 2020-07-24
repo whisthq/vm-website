@@ -24,10 +24,6 @@ class Privacy extends Component {
     }
 
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-        if (this.state.width > 700 && this.state.modalShow) {
-            modalClose();
-        }
         return (
             <div style={{ overflowX: "hidden" }} id="top">
                 <Header color="#333333" button="#5ec3eb" homepage />
