@@ -20,6 +20,9 @@ import { fetchDisks } from "store/actions/dashboard/disk_actions";
 import { retrieveCustomer } from "store/actions/dashboard/customer_actions";
 
 import SSD from "assets/icons/hard-drive-icon.svg";
+import Visa from "assets/icons/payment-icons/visa.svg";
+import Mastercard from "assets/icons/payment-icons/mastercard.svg";
+import DefaultCard from "assets/icons/payment-icons/default.svg";
 
 class SettingsView extends Component {
     constructor(props) {
@@ -49,6 +52,42 @@ class SettingsView extends Component {
     }
 
     render() {
+        let cardIcon;
+        let cardEntries = this.props.cards.map((card) => {
+            switch (card.brand) {
+                case "Visa":
+                    cardIcon = Visa;
+                    break;
+                case "Mastercard":
+                    cardIcon = Mastercard;
+                    break;
+                default:
+                    cardIcon = DefaultCard;
+            }
+            return (
+                <div className="d-flex">
+                    <img
+                        src={cardIcon}
+                        alt="Card icon"
+                        style={{ height: 20, marginRight: 10 }}
+                    />
+                    <div>**** **** **** {card.last4}</div>
+                </div>
+            );
+        });
+        if (!cardEntries.length) {
+            cardEntries = (
+                <div
+                    style={{
+                        color: "#B9B9B9",
+                        marginBottom: 30,
+                    }}
+                >
+                    Use a paid plan to set your credit card
+                </div>
+            );
+        }
+
         if (!this.state.loaded) {
             return (
                 <div
@@ -359,14 +398,7 @@ class SettingsView extends Component {
                                     >
                                         Credit Card
                                     </div>
-                                    <div
-                                        style={{
-                                            color: "#B9B9B9",
-                                            marginBottom: 30,
-                                        }}
-                                    >
-                                        Use a paid plan to set your credit card
-                                    </div>
+                                    {cardEntries}
                                 </Col>
                             </Row>
                             <div>Delete Account</div>
@@ -525,6 +557,7 @@ function mapStateToProps(state) {
                 : state.DashboardReducer.disks,
         id: state.DashboardReducer.id,
         customer: state.DashboardReducer.customer,
+        cards: state.DashboardReducer.cards,
     };
 }
 

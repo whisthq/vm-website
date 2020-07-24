@@ -84,6 +84,7 @@ function* retrieveCustomer(action) {
         yield put(LoginAction.storeAccountLocked(json.account_locked));
         yield put(CustomerAction.storeCustomer(json.customer));
         yield put(CustomerAction.storeCredits(json.creditsOutstanding));
+        yield put(CustomerAction.storeCards(json.cards));
         yield put(RenderingAction.dashboardLoaded(true));
     } else {
         const { json } = yield call(

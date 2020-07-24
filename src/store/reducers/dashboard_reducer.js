@@ -51,6 +51,11 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 ...state,
                 credits: action.credits,
             };
+        case CustomerAction.STORE_CARDS:
+            return {
+                ...state,
+                cards: action.cards,
+            };
         case CustomerAction.CUSTOMER_CREATED:
             return {
                 ...state,

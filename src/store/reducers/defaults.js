@@ -35,6 +35,7 @@ export const DASHBOARD_DEFAULT = {
     friend_email_status: 0,
     user: {},
     credits: 0,
+    cards: [],
     failed_referral_attempts: 0,
     verification_emails_sent: 0,
     customer_status: 0,

@@ -2,6 +2,7 @@ export const RETRIEVE_CUSTOMER = "RETRIEVE_CUSTOMER";
 export const FETCH_USER = "FETCH_USER";
 export const STORE_USER = "STORE_USER";
 export const STORE_CREDITS = "STORE_CREDITS";
+export const STORE_CARDS = "STORE_CARDS";
 export const VALIDATE_PROMO_CODE = "VALIDATE_PROMO_CODE";
 export const PROMO_CODE_FAILURE = "PROMO_CODE_FAILURE";
 export const INSERT_CUSTOMER = "INSERT_CUSTOMER";
@@ -35,6 +36,13 @@ export function storeCredits(credits) {
     return {
         type: STORE_CREDITS,
         credits,
+    };
+}
+
+export function storeCards(cards) {
+    return {
+        type: STORE_CARDS,
+        cards,
     };
 }
 
