@@ -1,28 +1,21 @@
 import React, { Component } from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import AccountSettings from "pages/PageDashboard/containers/accountSettings";
+
+import { Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import {
-    FaPlus,
-    FaFighterJet,
-    FaSpaceShuttle,
-    FaPencilAlt,
-} from "react-icons/fa";
+import { FaPlus, FaFighterJet, FaSpaceShuttle } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 import "react-tabs/style/react-tabs.css";
 import "static/Shared.css";
 
+import SSD from "assets/icons/hard-drive-icon.svg";
+
 import { fetchDisks } from "store/actions/dashboard/disk_actions";
 import { retrieveCustomer } from "store/actions/dashboard/customer_actions";
-
-import SSD from "assets/icons/hard-drive-icon.svg";
-import Visa from "assets/icons/payment-icons/visa.svg";
-import Mastercard from "assets/icons/payment-icons/mastercard.svg";
-import DefaultCard from "assets/icons/payment-icons/default.svg";
 
 class SettingsView extends Component {
     constructor(props) {
@@ -52,42 +45,6 @@ class SettingsView extends Component {
     }
 
     render() {
-        let cardIcon;
-        let cardEntries = this.props.cards.map((card) => {
-            switch (card.brand) {
-                case "Visa":
-                    cardIcon = Visa;
-                    break;
-                case "Mastercard":
-                    cardIcon = Mastercard;
-                    break;
-                default:
-                    cardIcon = DefaultCard;
-            }
-            return (
-                <div className="d-flex">
-                    <img
-                        src={cardIcon}
-                        alt="Card icon"
-                        style={{ height: 20, marginRight: 10 }}
-                    />
-                    <div>**** **** **** {card.last4}</div>
-                </div>
-            );
-        });
-        if (!cardEntries.length) {
-            cardEntries = (
-                <div
-                    style={{
-                        color: "#B9B9B9",
-                        marginBottom: 30,
-                    }}
-                >
-                    Use a paid plan to set your credit card
-                </div>
-            );
-        }
-
         if (!this.state.loaded) {
             return (
                 <div
@@ -306,103 +263,7 @@ class SettingsView extends Component {
                             </Link>
                         )}
 
-                        <div
-                            style={{
-                                fontSize: 20,
-                                fontWeight: "bold",
-                                marginTop: 60,
-                            }}
-                        >
-                            Account
-                        </div>
-                        <div
-                            style={{
-                                marginTop: 20,
-                                backgroundColor: "white",
-                                borderRadius: 10,
-                                padding: "40px 35px",
-                            }}
-                        >
-                            <Row>
-                                <Col sm={6}>
-                                    <div
-                                        style={{
-                                            color: "#5EC4EB",
-                                            paddingBottom: 5,
-                                            fontWeight: 600,
-                                        }}
-                                    >
-                                        Name
-                                    </div>
-                                    <div
-                                        className="d-flex align-items-center"
-                                        style={{ marginBottom: 30 }}
-                                    >
-                                        <div
-                                            style={{
-                                                color: this.props.user.name
-                                                    ? "black"
-                                                    : "#B9B9B9",
-                                            }}
-                                        >
-                                            {this.props.user.name
-                                                ? this.props.user.name
-                                                : "What is your name?"}
-                                        </div>
-                                        <FaPencilAlt
-                                            style={{
-                                                color: "#B9B9B9",
-                                                marginLeft: 10,
-                                            }}
-                                        />
-                                    </div>
-                                    {!this.props.user.google_login && (
-                                        <div>
-                                            <div
-                                                style={{
-                                                    fontWeight: 600,
-                                                    color: "#5EC4EB",
-                                                    paddingBottom: 5,
-                                                }}
-                                            >
-                                                Email
-                                            </div>
-                                            <div
-                                                className="d-flex align-items-center"
-                                                style={{ marginBottom: 30 }}
-                                            >
-                                                <div
-                                                    style={{
-                                                        color: "black",
-                                                    }}
-                                                >
-                                                    {this.props.user.username}
-                                                </div>
-                                                <FaPencilAlt
-                                                    style={{
-                                                        color: "#B9B9B9",
-                                                        marginLeft: 10,
-                                                    }}
-                                                />
-                                            </div>
-                                        </div>
-                                    )}
-                                </Col>
-                                <Col sm={6}>
-                                    <div
-                                        style={{
-                                            fontWeight: 600,
-                                            color: "#5EC4EB",
-                                            paddingBottom: 5,
-                                        }}
-                                    >
-                                        Credit Card
-                                    </div>
-                                    {cardEntries}
-                                </Col>
-                            </Row>
-                            <div>Delete Account</div>
-                        </div>
+                        <AccountSettings />
 
                         <Row style={{ marginTop: 60 }}>
                             <Col sm={6} xs={12}>
@@ -557,7 +418,6 @@ function mapStateToProps(state) {
                 : state.DashboardReducer.disks,
         id: state.DashboardReducer.id,
         customer: state.DashboardReducer.customer,
-        cards: state.DashboardReducer.cards,
     };
 }
 

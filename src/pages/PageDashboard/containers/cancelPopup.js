@@ -10,7 +10,7 @@ import "static/PageDashboard.css";
 import { cancelPlan } from "store/actions/dashboard/stripe_actions";
 import { diskCreating } from "store/actions/dashboard/disk_actions";
 
-class DownloadBox extends Component {
+class CancelPopup extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -141,7 +141,7 @@ class DownloadBox extends Component {
                                             fontSize: 14,
                                             padding: 0,
                                         }}
-                                    ></textarea>
+                                    />
                                     <Button
                                         onClick={this.cancelPlan}
                                         style={{
@@ -200,4 +200,4 @@ class DownloadBox extends Component {
     }
 }
 
-export default connect()(DownloadBox);
+export default connect()(CancelPopup);
