@@ -4,7 +4,12 @@ import Col from "react-bootstrap/Col";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import { FaPlus, FaFighterJet, FaSpaceShuttle } from "react-icons/fa";
+import {
+    FaPlus,
+    FaFighterJet,
+    FaSpaceShuttle,
+    FaPencilAlt,
+} from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
@@ -31,7 +36,7 @@ class SettingsView extends Component {
     componentDidMount() {
         this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
-        this.props.dispatch(fetchDisks(this.props.user));
+        this.props.dispatch(fetchDisks(this.props.user.username));
         this.props.dispatch(retrieveCustomer());
     }
 
@@ -283,27 +288,88 @@ class SettingsView extends Component {
                                 <Col sm={6}>
                                     <div
                                         style={{
-                                            fontSize: 16,
                                             color: "#5EC4EB",
-                                            paddingBottom: 10,
+                                            paddingBottom: 5,
+                                            fontWeight: 600,
                                         }}
                                     >
                                         Name
                                     </div>
+                                    <div
+                                        className="d-flex align-items-center"
+                                        style={{ marginBottom: 30 }}
+                                    >
+                                        <div
+                                            style={{
+                                                color: this.props.user.name
+                                                    ? "black"
+                                                    : "#B9B9B9",
+                                            }}
+                                        >
+                                            {this.props.user.name
+                                                ? this.props.user.name
+                                                : "What is your name?"}
+                                        </div>
+                                        <FaPencilAlt
+                                            style={{
+                                                color: "#B9B9B9",
+                                                marginLeft: 10,
+                                            }}
+                                        />
+                                    </div>
+                                    {!this.props.user.google_login && (
+                                        <div>
+                                            <div
+                                                style={{
+                                                    fontWeight: 600,
+                                                    color: "#5EC4EB",
+                                                    paddingBottom: 5,
+                                                }}
+                                            >
+                                                Email
+                                            </div>
+                                            <div
+                                                className="d-flex align-items-center"
+                                                style={{ marginBottom: 30 }}
+                                            >
+                                                <div
+                                                    style={{
+                                                        color: "black",
+                                                    }}
+                                                >
+                                                    {this.props.user.username}
+                                                </div>
+                                                <FaPencilAlt
+                                                    style={{
+                                                        color: "#B9B9B9",
+                                                        marginLeft: 10,
+                                                    }}
+                                                />
+                                            </div>
+                                        </div>
+                                    )}
                                 </Col>
                                 <Col sm={6}>
                                     <div
                                         style={{
-                                            fontSize: 16,
+                                            fontWeight: 600,
                                             color: "#5EC4EB",
-                                            paddingBottom: 10,
+                                            paddingBottom: 5,
                                         }}
                                     >
-                                        Email
+                                        Credit Card
+                                    </div>
+                                    <div
+                                        style={{
+                                            color: "#B9B9B9",
+                                            marginBottom: 30,
+                                        }}
+                                    >
+                                        Use a paid plan to set your credit card
                                     </div>
                                 </Col>
                             </Row>
-                            Delete Account
+                            <div>Delete Account</div>
                         </div>
 
                         <Row style={{ marginTop: 60 }}>
@@ -452,7 +518,7 @@ class SettingsView extends Component {
 
 function mapStateToProps(state) {
     return {
-        user: state.AuthReducer.username,
+        user: state.DashboardReducer.user,
         disks:
             typeof state.DashboardReducer.disks === "undefined"
                 ? []
