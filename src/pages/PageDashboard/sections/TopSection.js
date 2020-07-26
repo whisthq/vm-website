@@ -47,7 +47,10 @@ class TopSection extends Component {
             this.props.disk_is_creating
         ) {
             if (this.props.disk_is_creating) {
-                if (this.props.customer && this.props.customer.paid) {
+                if (
+                    (this.props.customer && this.props.customer.paid) ||
+                    this.props.require_payment_oncreate
+                ) {
                     return (
                         <Row
                             style={{
@@ -56,16 +59,13 @@ class TopSection extends Component {
                         >
                             <Col xs={12}>
                                 <div className="disk-status-box">
-                                    <div className="disk-status-box">
-                                        <span
-                                            style={{
-                                                fontWeight: "bold",
-                                            }}
-                                        >
-                                            Current Status:{" "}
-                                        </span>
-                                        {this.props.disk_creation_message}
-                                    </div>
+                                    <span
+                                        style={{
+                                            fontWeight: "bold",
+                                        }}
+                                    >
+                                        Current Status:{" "}
+                                    </span>
                                     {this.props.disk_creation_message}
                                 </div>
                                 <ImageBox
@@ -319,6 +319,7 @@ class TopSection extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state);
     return {
         disks:
             typeof state.DashboardReducer.disks === "undefined"
@@ -330,6 +331,10 @@ function mapStateToProps(state) {
         disk_creation_message: state.DashboardReducer.disk_creation_message
             ? state.DashboardReducer.disk_creation_message
             : "Create Cloud PC command sent to server.",
+        require_payment_oncreate: state.DashboardReducer
+            .require_payment_oncreate
+            ? state.DashboardReducer.require_payment_oncreate
+            : true,
     };
 }
 

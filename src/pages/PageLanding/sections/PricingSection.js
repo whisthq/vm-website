@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -67,19 +68,31 @@ class PricingSection extends Component {
                                 color: "#111111",
                             }}
                         >
-                            Try Fractal free for seven days.
-                            <br />
-                            Start your trial now, pick a plan later.
+                            {!this.props.require_payment_oncreate ? (
+                                <div>
+                                    Try Fractal free for seven days.
+                                    <br />
+                                    Start your trial now, pick a plan later.
+                                </div>
+                            ) : (
+                                <div>
+                                    Try Fractal free for seven days.
+                                    <br />
+                                    Start your trial now.
+                                </div>
+                            )}
                         </div>
-                        <div
-                            style={{
-                                marginTop: 20,
-                                color: "#333333",
-                                fontSize: "calc(12px + 0.4vw)",
-                            }}
-                        >
-                            No credit card required.
-                        </div>
+                        {!this.props.require_payment_oncreate && (
+                            <div
+                                style={{
+                                    marginTop: 20,
+                                    color: "#333333",
+                                    fontSize: "calc(12px + 0.4vw)",
+                                }}
+                            >
+                                No credit card required.
+                            </div>
+                        )}
                         <Link
                             to="/dashboard"
                             style={{ textDecoration: "none" }}
@@ -186,4 +199,13 @@ class PricingSection extends Component {
     }
 }
 
-export default PricingSection;
+function mapStateToProps(state) {
+    return {
+        require_payment_oncreate: state.DashboardReducer
+            .require_payment_oncreate
+            ? state.DashboardReducer.require_payment_oncreate
+            : true,
+    };
+}
+
+export default connect(mapStateToProps)(PricingSection);

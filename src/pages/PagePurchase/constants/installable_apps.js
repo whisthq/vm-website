@@ -14,6 +14,20 @@ export const apps = [
         size: 66.1,
     },
     {
+        name: "Brave Browser",
+        category: "Productivity",
+        image: "brave.png",
+        link: "https://brave.com/",
+        size: 440,
+    },
+    {
+        name: "Tor Browser",
+        category: "Productivity",
+        image: "tor.png",
+        link: "https://www.torproject.org/download/",
+        size: 63.91,
+    },
+    {
         name: "VLC media player",
         category: "Productivity",
         image: "vlc.png",
@@ -243,6 +257,13 @@ export const apps = [
         image: "cmake.png",
         link: "https://cmake.org/",
         size: 90,
+    },
+    {
+        name: "Postman",
+        category: "Developer",
+        image: "postman.png",
+        link: "https://www.postman.com/",
+        size: 86.72,
     },
     {
         name: "Visual Studio Code",

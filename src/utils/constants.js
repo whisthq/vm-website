@@ -1,11 +1,15 @@
 /* eslint-disable no-unused-vars */
 const production = {
     url: {
-        PRIMARY_SERVER: "https://cube-celery-vm.herokuapp.com",
+        PRIMARY_SERVER: "https://main-webserver.fractalcomputers.com",
     },
     stripe: {
         PUBLIC_KEY: "pk_live_XLjiiZB93KN0EjY8hwCxvKmB00whKEIj3U",
     },
+    azure: {
+        RESOURCE_GROUP: "Fractal",
+    },
+    new_server: true,
 };
 
 const staging = {
@@ -15,17 +19,39 @@ const staging = {
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
     },
+    azure: {
+        RESOURCE_GROUP: "Fractal",
+    },
+    new_server: true,
 };
 
 const development = {
     url: {
-        PRIMARY_SERVER: "http://127.0.0.1:5000",
+        PRIMARY_SERVER: "http://localhost:7730",
     },
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
     },
+    azure: {
+        RESOURCE_GROUP: "FractalStaging",
+    },
+    new_server: true,
 };
 
+const local = {
+    url: {
+        PRIMARY_SERVER: "http://localhost:5000",
+    },
+    stripe: {
+        PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
+    },
+    azure: {
+        RESOURCE_GROUP: "Fractal",
+    },
+    new_server: true,
+};
+
+// TODO: Change config to development/production after changes in staging are deployed to the other vm webservers
 export const config =
     process.env.NODE_ENV === "development" ? production : production;
 

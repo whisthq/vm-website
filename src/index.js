@@ -30,6 +30,7 @@ import CreditCard from "pages/PagePurchase/CreditCard";
 import About from "pages/PageAbout/About";
 import Plan from "pages/PagePurchase/Plan";
 import Storage from "pages/PagePurchase/Storage";
+import Careers from "pages/PageCareers/Careers";
 
 const persistConfig = {
     key: "rootKey",
@@ -70,6 +71,7 @@ ReactDOM.render(
                 <Route exact path="/verify" component={EmailVerification} />
                 <Route exact path="/card" component={CreditCard} />
                 <Route exact path="/about" component={About} />
+                <Route path="/careers" component={Careers} />
                 <Route exact path="/plan" component={Plan} />
                 <Route exact path="/storage" component={Storage} />
             </PersistGate>
