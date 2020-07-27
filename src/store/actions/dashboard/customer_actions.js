@@ -11,6 +11,10 @@ export const SUBMIT_PURCHASE_FEEDBACK = "SUBMIT_PURCHASE_FEEDBACK";
 export const STORE_CUSTOMER = "STORE_CUSTOMER";
 export const FETCH_USER_REPORT = "FETCH_USER_REPORT";
 export const STORE_USER_REPORT = "STORE_USER_REPORT";
+export const UPDATE_EMAIL = "UPDATE_EMAIL";
+export const UPDATE_NAME = "UPDATE_NAME";
+export const UPDATE_PASSWORD = "UPDATE_PASSWORD";
+export const DELETE_USER = "DELETE_USER";
 
 export function retrieveCustomer() {
     return {
@@ -43,6 +47,27 @@ export function storeCards(cards) {
     return {
         type: STORE_CARDS,
         cards,
+    };
+}
+
+export function updateEmail(email) {
+    return {
+        type: UPDATE_EMAIL,
+        email,
+    };
+}
+
+export function updateName(name) {
+    return {
+        type: UPDATE_NAME,
+        name,
+    };
+}
+
+export function updatePassword(password) {
+    return {
+        type: UPDATE_PASSWORD,
+        password,
     };
 }
 
@@ -91,5 +116,11 @@ export function storeUserReport(report) {
     return {
         type: STORE_USER_REPORT,
         report,
+    };
+}
+
+export function deleteUser() {
+    return {
+        type: DELETE_USER,
     };
 }

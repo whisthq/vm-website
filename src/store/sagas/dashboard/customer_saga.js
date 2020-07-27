@@ -110,6 +110,60 @@ function* retrieveCustomer(action) {
     }
 }
 
+function* updateEmail(action) {
+    const state = yield select();
+    const { response } = yield call(
+        apiPost,
+        config.url.PRIMARY_SERVER + "/account/update",
+        {
+            username: state.AuthReducer.username,
+            email: action.email,
+        },
+        state.AuthReducer.access_token
+    );
+    if (response.ok) {
+        const { json } = yield call(
+            apiGet,
+            format(
+                config.url.PRIMARY_SERVER + "/account/fetch?username={0}",
+                state.AuthReducer.username
+            ),
+            state.AuthReducer.access_token
+        );
+
+        if (json && json.status === 200) {
+            yield put(CustomerAction.storeUser(json.user));
+        }
+    }
+}
+
+function* updateName(action) {
+    const state = yield select();
+    const { response } = yield call(
+        apiPost,
+        config.url.PRIMARY_SERVER + "/account/update",
+        {
+            username: state.AuthReducer.username,
+            name: action.name,
+        },
+        state.AuthReducer.access_token
+    );
+    if (response.ok) {
+        const { json } = yield call(
+            apiGet,
+            format(
+                config.url.PRIMARY_SERVER + "/account/fetch?username={0}",
+                state.AuthReducer.username
+            ),
+            state.AuthReducer.access_token
+        );
+
+        if (json && json.status === 200) {
+            yield put(CustomerAction.storeUser(json.user));
+        }
+    }
+}
+
 function* submitPurchaseFeedback(action) {
     const state = yield select();
     yield call(
@@ -149,10 +203,38 @@ function* fetchUserReport(action) {
             },
             state.AuthReducer.access_token
         );
-
-        console.log(json);
-
         yield put(CustomerAction.storeUserReport(json));
+    }
+}
+
+function* deleteAccount() {
+    const state = yield select();
+    const { response } = yield call(
+        apiPost,
+        config.url.PRIMARY_SERVER + "/account/delete",
+        {
+            username: state.AuthReducer.username,
+        },
+        state.AuthReducer.access_token
+    );
+    if (response.ok) {
+        yield put(LoginAction.logout());
+        history.push("/auth");
+    }
+}
+
+function* updatePassword(action) {
+    const state = yield select();
+    if (config.new_server) {
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/account/resetPassword",
+            {
+                username: state.AuthReducer.username,
+                password: action.password,
+            },
+            ""
+        );
     }
 }
 
@@ -166,5 +248,9 @@ export default function* () {
             submitPurchaseFeedback
         ),
         takeEvery(CustomerAction.FETCH_USER_REPORT, fetchUserReport),
+        takeEvery(CustomerAction.UPDATE_EMAIL, updateEmail),
+        takeEvery(CustomerAction.UPDATE_NAME, updateName),
+        takeEvery(CustomerAction.UPDATE_PASSWORD, updatePassword),
+        takeEvery(CustomerAction.DELETE_USER, deleteAccount),
     ]);
 }
