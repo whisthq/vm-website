@@ -38,7 +38,6 @@ class SignupBox extends Component {
             feedback: "",
             step: 1,
         };
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
     handleSignup = (evt) => {

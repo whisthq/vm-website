@@ -6,6 +6,8 @@ export const APPLY_DISCOUNT = "APPLY_DISCOUNT";
 export const CHANGE_PLAN = "CHANGE_PLAN";
 export const CHANGE_PLAN_STATUS = "CHANGE_PLAN_STATUS";
 export const CANCEL_PLAN = "CANCEL_PLAN";
+export const ADD_CARD = "ADD_CARD";
+export const DELETE_CARD = "DELETE_CARD";
 
 export function chargeStripe(token, amount, code, plan) {
     return {
@@ -45,6 +47,20 @@ export function sendFinalCharge(token, amount, code, plan) {
         amount,
         code,
         plan,
+    };
+}
+
+export function addCard(sourceId) {
+    return {
+        type: ADD_CARD,
+        sourceId,
+    };
+}
+
+export function deleteCard(cardId) {
+    return {
+        type: DELETE_CARD,
+        cardId,
     };
 }
 

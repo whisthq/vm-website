@@ -3,7 +3,9 @@ import Popup from "reactjs-popup";
 import { Button, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 
-import { FaPencilAlt } from "react-icons/fa";
+import { FaPencilAlt, FaPlusCircle, FaTrash } from "react-icons/fa";
+
+import { CardElement, injectStripe } from "react-stripe-elements";
 
 import Visa from "assets/icons/payment-icons/visa.svg";
 import Mastercard from "assets/icons/payment-icons/mastercard.svg";
@@ -16,6 +18,8 @@ import {
     updatePassword,
 } from "store/actions/dashboard/customer_actions";
 
+import { addCard, deleteCard } from "store/actions/dashboard/stripe_actions";
+
 class AccountSettings extends Component {
     constructor(props) {
         super(props);
@@ -24,6 +28,7 @@ class AccountSettings extends Component {
             newName: "",
             newPass: "",
             confirmPassword: "",
+            errorMessage: "",
         };
     }
 
@@ -32,7 +37,6 @@ class AccountSettings extends Component {
     };
 
     changeEmail = () => {
-        console.log("Change email");
         this.props.dispatch(updateEmail(this.state.newEmail));
         this.setState({ newEmail: "" });
     };
@@ -46,10 +50,32 @@ class AccountSettings extends Component {
         this.setState({ newName: "" });
     };
 
-    changeCreditCard = () => {
-        console.log("Change credit card");
-    };
+    // TODO: https://github.com/stripe/react-stripe-elements#element-components
 
+    async changeCreditCard(evt, close) {
+        evt.preventDefault();
+        let { source } = await this.props.stripe.createSource({
+            type: "card",
+        });
+        if (source) {
+            if (source.id) {
+                this.props.dispatch(addCard(source.id));
+                close();
+                this.setState({ errorMessage: "" });
+            } else {
+                this.setState({
+                    processing: false,
+                    errorMessage:
+                        "Your card info was declined. Please try again.",
+                });
+            }
+        } else {
+            this.setState({
+                processing: false,
+                errorMessage: "Your card info was declined. Please try again.",
+            });
+        }
+    }
     editPassword = (e) => {
         this.setState({ newPass: e.target.value });
     };
@@ -68,8 +94,23 @@ class AccountSettings extends Component {
     };
 
     render() {
+        let cardElementStyle = {
+            base: {
+                color: "#333333",
+                fontFamily: "Maven Pro",
+                fontSmoothing: "antialiased",
+                fontSize: "14px",
+                "::placeholder": {
+                    color: "#777777",
+                },
+            },
+            invalid: {
+                color: "#fa755a",
+                iconColor: "#fa755a",
+            },
+        };
         let cardIcon;
-        let cardEntries = this.props.cards.map((card) => {
+        let cardEntries = this.props.cards.map((card, index) => {
             switch (card.brand) {
                 case "Visa":
                     cardIcon = Visa;
@@ -81,20 +122,23 @@ class AccountSettings extends Component {
                     cardIcon = DefaultCard;
             }
             return (
-                <div className="d-flex">
+                <div className="d-flex" key={index} style={{ maxWidth: 220 }}>
                     <img
                         src={cardIcon}
                         alt="Card icon"
                         style={{ height: 20, marginRight: 10 }}
                     />
                     <div>**** **** **** {card.last4}</div>
-                    <FaPencilAlt
-                        style={{
-                            color: "#B9B9B9",
-                            marginLeft: 10,
-                            cursor: "pointer",
-                        }}
-                    />
+                    {this.props.cards.length > 1 && (
+                        <FaTrash
+                            style={{
+                                color: "#B9B9B9",
+                                marginLeft: "auto",
+                                cursor: "pointer",
+                            }}
+                            onclick={this.props.dispatch(deleteCard(card.id))}
+                        />
+                    )}
                 </div>
             );
         });
@@ -106,7 +150,7 @@ class AccountSettings extends Component {
                         marginBottom: 30,
                     }}
                 >
-                    Use a paid plan to set your credit card
+                    You have no saved cards
                 </div>
             );
         }
@@ -333,6 +377,70 @@ class AccountSettings extends Component {
                                     </div>
                                 </div>
                             )}
+                            <Popup
+                                modal
+                                trigger={
+                                    <Button
+                                        style={{
+                                            fontWeight: "bold",
+                                            outline: "none",
+                                            borderRadius: 3,
+                                            padding: "10px 20px",
+                                            border: "none",
+                                            color: "#E24D4D",
+                                            backgroundColor: "#FFCFCF",
+                                        }}
+                                    >
+                                        Delete Account
+                                    </Button>
+                                }
+                                contentStyle={{
+                                    width: 500,
+                                    borderRadius: 5,
+                                    backgroundColor: "#EBEBEB",
+                                    border: "none",
+                                    padding: "30px 50px",
+                                }}
+                            >
+                                {(close) => (
+                                    <div>
+                                        <div
+                                            style={{
+                                                fontWeight: "bold",
+                                                fontSize: 20,
+                                            }}
+                                        >
+                                            Delete your account
+                                        </div>
+                                        <div>
+                                            Your account, including all of your
+                                            virtual computers will be
+                                            irreversibly deleted. Are you sure
+                                            you want to continue?
+                                        </div>
+                                        <Button
+                                            onClick={() => {
+                                                this.deleteAccount();
+                                                close();
+                                            }}
+                                            style={{
+                                                fontWeight: "bold",
+                                                marginTop: 20,
+                                                outline: "none",
+                                                width: "100%",
+                                                borderRadius: 3,
+                                                float: "right",
+                                                padding: "10px 10px",
+                                                border: "none",
+                                                color: "#E24D4D",
+                                                backgroundColor: "#FFCFCF",
+                                            }}
+                                        >
+                                            I am sure. Delete my account.
+                                        </Button>
+                                    </div>
+                                )}
+                            </Popup>
                         </Col>
                         <Col sm={6}>
                             <div style={{ marginBottom: 30 }}>
@@ -346,6 +454,75 @@ class AccountSettings extends Component {
                                     Credit Card
                                 </div>
                                 {cardEntries}
+                                <Popup
+                                    modal
+                                    trigger={
+                                        <FaPlusCircle
+                                            style={{
+                                                color: "#B9B9B9",
+                                                marginLeft: 10,
+                                                cursor: "pointer",
+                                            }}
+                                        />
+                                    }
+                                    contentStyle={{
+                                        width: 500,
+                                        borderRadius: 5,
+                                        backgroundColor: "#EBEBEB",
+                                        border: "none",
+                                        padding: "50px 30px",
+                                    }}
+                                >
+                                    {(close) => (
+                                        <div>
+                                            <div
+                                                style={{
+                                                    fontWeight: "bold",
+                                                    fontSize: 20,
+                                                    marginBottom: 30,
+                                                }}
+                                            >
+                                                Add a credit card
+                                            </div>
+
+                                            <CardElement
+                                                className="MyCardElement"
+                                                style={cardElementStyle}
+                                            />
+
+                                            <Button
+                                                onClick={(evt) => {
+                                                    this.changeCreditCard(
+                                                        evt,
+                                                        close
+                                                    );
+                                                }}
+                                                style={{
+                                                    fontWeight: "bold",
+                                                    marginTop: 30,
+                                                    outline: "none",
+                                                    width: "100%",
+                                                    borderRadius: 3,
+                                                    float: "right",
+                                                    padding: "10px 10px",
+                                                    border: "none",
+                                                    color: "white",
+                                                    backgroundColor: "#0B172B",
+                                                }}
+                                            >
+                                                Submit
+                                            </Button>
+                                            <div
+                                                style={{
+                                                    color: "red",
+                                                    fontSize: 14,
+                                                }}
+                                            >
+                                                {this.state.errorMessage}
+                                            </div>
+                                        </div>
+                                    )}
+                                </Popup>
                             </div>
                             {!this.props.user.google_login && (
                                 <Popup
@@ -538,69 +715,6 @@ class AccountSettings extends Component {
                             )}
                         </Col>
                     </Row>
-                    <Popup
-                        modal
-                        trigger={
-                            <Button
-                                style={{
-                                    fontWeight: "bold",
-                                    outline: "none",
-                                    borderRadius: 3,
-                                    padding: "10px 20px",
-                                    border: "none",
-                                    color: "#E24D4D",
-                                    backgroundColor: "#FFCFCF",
-                                }}
-                            >
-                                Delete Account
-                            </Button>
-                        }
-                        contentStyle={{
-                            width: 500,
-                            borderRadius: 5,
-                            backgroundColor: "#EBEBEB",
-                            border: "none",
-                            padding: "30px 50px",
-                        }}
-                    >
-                        {(close) => (
-                            <div>
-                                <div
-                                    style={{
-                                        fontWeight: "bold",
-                                        fontSize: 20,
-                                    }}
-                                >
-                                    Delete your account
-                                </div>
-                                <div>
-                                    Your account, including all of your virtual
-                                    computers will be irreversibly deleted. Are
-                                    you sure you want to continue?
-                                </div>
-                                <Button
-                                    onClick={() => {
-                                        this.deleteAccount();
-                                        close();
-                                    }}
-                                    style={{
-                                        fontWeight: "bold",
-                                        marginTop: 20,
-                                        outline: "none",
-                                        width: "100%",
-                                        borderRadius: 3,
-                                        float: "right",
-                                        padding: "10px 10px",
-                                        border: "none",
-                                        color: "#E24D4D",
-                                        backgroundColor: "#FFCFCF",
-                                    }}
-                                >
-                                    I am sure. Delete my account.
-                                </Button>
-                            </div>
-                        )}
-                    </Popup>
                 </div>
             </div>
         );
@@ -615,4 +729,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(AccountSettings);
+export default connect(mapStateToProps)(injectStripe(AccountSettings));

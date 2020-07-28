@@ -158,6 +158,34 @@ function* changePlan(action) {
     }
 }
 
+function* addCard(action) {
+    const state = yield select();
+    yield call(
+        apiPost,
+        config.url.PRIMARY_SERVER + "/stripe/addCard",
+        {
+            custId: state.DashboardReducer.customer.id,
+            sourceId: action.sourceId,
+        },
+        state.AuthReducer.access_token
+    );
+    yield put(CustomerAction.retrieveCustomer());
+}
+
+function* deleteCard(action) {
+    const state = yield select();
+    yield call(
+        apiPost,
+        config.url.PRIMARY_SERVER + "/stripe/deleteCard",
+        {
+            custId: state.DashboardReducer.customer.id,
+            cardId: action.cardId,
+        },
+        state.AuthReducer.access_token
+    );
+    yield put(CustomerAction.retrieveCustomer());
+}
+
 export default function* () {
     yield all([
         takeEvery(StripeAction.CHARGE_STRIPE, chargeStripe),
@@ -165,5 +193,7 @@ export default function* () {
         takeEvery(StripeAction.SEND_FINAL_CHARGE, sendFinalCharge),
         takeEvery(StripeAction.APPLY_DISCOUNT, applyDiscount),
         takeEvery(StripeAction.CHANGE_PLAN, changePlan),
+        takeEvery(StripeAction.ADD_CARD, addCard),
+        takeEvery(StripeAction.DELETE_CARD, deleteCard),
     ]);
 }
