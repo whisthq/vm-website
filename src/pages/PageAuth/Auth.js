@@ -21,7 +21,7 @@ class Auth extends Component {
             modalShow: false,
             showPopup: false,
             processing: false,
-            google_button_active: true,
+            google_button_active: false,
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }

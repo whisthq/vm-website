@@ -68,7 +68,7 @@ function* insertCustomer(action) {
 
         yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/trialStart",
+            config.url.PRIMARY_SERVER + "/mail/trialStart",
             {
                 username: state.AuthReducer.username,
                 location: action.location,
@@ -164,8 +164,6 @@ function* fetchUserReport(action) {
             },
             state.AuthReducer.access_token
         );
-
-        console.log(json);
 
         yield put(CustomerAction.storeUserReport(json));
     }
