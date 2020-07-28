@@ -268,7 +268,7 @@ class SettingsView extends Component {
                                     display: "inline",
                                 }}
                             >
-                                Advanced settings
+                                Advanced Settings
                             </div>
                             <div style={{ width: "100%" }}>
                                 <div

@@ -111,7 +111,11 @@ class AccountSettings extends Component {
         };
         let cardIcon;
         let cardEntries = this.props.cards.map((card, index) => {
-            switch (card.brand) {
+            let realCard = card;
+            if (card.object === "source") {
+                realCard = card.card;
+            }
+            switch (realCard.brand) {
                 case "Visa":
                     cardIcon = Visa;
                     break;
@@ -128,16 +132,21 @@ class AccountSettings extends Component {
                         alt="Card icon"
                         style={{ height: 20, marginRight: 10 }}
                     />
-                    <div>**** **** **** {card.last4}</div>
+                    <div>**** **** **** {realCard.last4}</div>
                     {this.props.cards.length > 1 && (
-                        <FaTrash
-                            style={{
-                                color: "#B9B9B9",
-                                marginLeft: "auto",
-                                cursor: "pointer",
-                            }}
-                            onclick={this.props.dispatch(deleteCard(card.id))}
-                        />
+                        <div
+                            onClick={() =>
+                                this.props.dispatch(deleteCard(card.id))
+                            }
+                        >
+                            <FaTrash
+                                style={{
+                                    color: "#B9B9B9",
+                                    marginLeft: "auto",
+                                    cursor: "pointer",
+                                }}
+                            />
+                        </div>
                     )}
                 </div>
             );
@@ -451,7 +460,7 @@ class AccountSettings extends Component {
                                         paddingBottom: 5,
                                     }}
                                 >
-                                    Credit Card
+                                    Credit Cards
                                 </div>
                                 {cardEntries}
                                 <Popup
