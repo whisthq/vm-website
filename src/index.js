@@ -9,7 +9,7 @@ import ReduxPromise from "redux-promise";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import rootSaga from "store/sagas";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Router } from "react-router";
 import { PersistGate } from "redux-persist/integration/react";
 import ReactDOM from "react-dom";
@@ -31,6 +31,7 @@ import About from "pages/PageAbout/About";
 import Plan from "pages/PagePurchase/Plan";
 import Storage from "pages/PagePurchase/Storage";
 import Careers from "pages/PageCareers/Careers";
+import NotFound from "pages/Page404/NotFound";
 
 const persistConfig = {
     key: "rootKey",
@@ -55,25 +56,28 @@ ReactDOM.render(
     <Router history={history}>
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
-                <Route exact path="/" component={Landing} />
-                <Route exact path="/purchase" component={Purchase} />
-                <Route exact path="/auth" component={Auth} />
-                <Route path="/dashboard" component={Dashboard} />
-                <Route exact path="/home" component={Landing} />
-                <Route exact path="/reset" component={Reset} />
-                <Route exact path="/privacy" component={Privacy} />
-                <Route
-                    exact
-                    path="/termsofservice"
-                    component={TermsOfService}
-                />
-                <Route exact path="/cookie" component={Cookie} />
-                <Route exact path="/verify" component={EmailVerification} />
-                <Route exact path="/card" component={CreditCard} />
-                <Route exact path="/about" component={About} />
-                <Route path="/careers" component={Careers} />
-                <Route exact path="/plan" component={Plan} />
-                <Route exact path="/storage" component={Storage} />
+                <Switch>
+                    <Route exact path="/" component={Landing} />
+                    <Route exact path="/purchase" component={Purchase} />
+                    <Route exact path="/auth" component={Auth} />
+                    <Route path="/dashboard" component={Dashboard} />
+                    <Route exact path="/home" component={Landing} />
+                    <Route exact path="/reset" component={Reset} />
+                    <Route exact path="/privacy" component={Privacy} />
+                    <Route
+                        exact
+                        path="/termsofservice"
+                        component={TermsOfService}
+                    />
+                    <Route exact path="/cookie" component={Cookie} />
+                    <Route exact path="/verify" component={EmailVerification} />
+                    <Route exact path="/card" component={CreditCard} />
+                    <Route exact path="/about" component={About} />
+                    <Route path="/careers" component={Careers} />
+                    <Route exact path="/plan" component={Plan} />
+                    <Route exact path="/storage" component={Storage} />
+                    <Route component={NotFound} />
+                </Switch>
             </PersistGate>
         </Provider>
     </Router>,
