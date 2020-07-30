@@ -159,7 +159,10 @@ class AccountSettings extends Component {
                         marginBottom: 30,
                     }}
                 >
-                    You have no saved cards
+                    You have no saved cards.{" "}
+                    {this.props.customer.id === null && (
+                        <span>Use a paid plan to add cards.</span>
+                    )}
                 </div>
             );
         }
@@ -285,7 +288,7 @@ class AccountSettings extends Component {
                                     )}
                                 </Popup>
                             </div>
-                            {!this.props.user.google_login && (
+                            {/* {!this.props.user.google_login && (
                                 <div>
                                     <div
                                         style={{
@@ -385,7 +388,7 @@ class AccountSettings extends Component {
                                         </Popup>
                                     </div>
                                 </div>
-                            )}
+                            )} */}
                             <Popup
                                 modal
                                 trigger={
@@ -463,75 +466,78 @@ class AccountSettings extends Component {
                                     Credit Cards
                                 </div>
                                 {cardEntries}
-                                <Popup
-                                    modal
-                                    trigger={
-                                        <FaPlusCircle
-                                            style={{
-                                                color: "#B9B9B9",
-                                                marginLeft: 10,
-                                                cursor: "pointer",
-                                            }}
-                                        />
-                                    }
-                                    contentStyle={{
-                                        width: 500,
-                                        borderRadius: 5,
-                                        backgroundColor: "#EBEBEB",
-                                        border: "none",
-                                        padding: "50px 30px",
-                                    }}
-                                >
-                                    {(close) => (
-                                        <div>
-                                            <div
+                                {this.props.customer.id !== null && (
+                                    <Popup
+                                        modal
+                                        trigger={
+                                            <FaPlusCircle
                                                 style={{
-                                                    fontWeight: "bold",
-                                                    fontSize: 20,
-                                                    marginBottom: 30,
+                                                    color: "#B9B9B9",
+                                                    marginLeft: 10,
+                                                    cursor: "pointer",
                                                 }}
-                                            >
-                                                Add a credit card
-                                            </div>
-
-                                            <CardElement
-                                                className="MyCardElement"
-                                                style={cardElementStyle}
                                             />
+                                        }
+                                        contentStyle={{
+                                            width: 500,
+                                            borderRadius: 5,
+                                            backgroundColor: "#EBEBEB",
+                                            border: "none",
+                                            padding: "50px 30px",
+                                        }}
+                                    >
+                                        {(close) => (
+                                            <div>
+                                                <div
+                                                    style={{
+                                                        fontWeight: "bold",
+                                                        fontSize: 20,
+                                                        marginBottom: 30,
+                                                    }}
+                                                >
+                                                    Add a credit card
+                                                </div>
 
-                                            <Button
-                                                onClick={(evt) => {
-                                                    this.changeCreditCard(
-                                                        evt,
-                                                        close
-                                                    );
-                                                }}
-                                                style={{
-                                                    fontWeight: "bold",
-                                                    marginTop: 30,
-                                                    outline: "none",
-                                                    width: "100%",
-                                                    borderRadius: 3,
-                                                    float: "right",
-                                                    padding: "10px 10px",
-                                                    border: "none",
-                                                    color: "white",
-                                                    backgroundColor: "#0B172B",
-                                                }}
-                                            >
-                                                Submit
-                                            </Button>
-                                            <div
-                                                style={{
-                                                    color: "red",
-                                                    fontSize: 14,
-                                                }}
-                                            >
-                                                {this.state.errorMessage}
+                                                <CardElement
+                                                    className="MyCardElement"
+                                                    style={cardElementStyle}
+                                                />
+
+                                                <Button
+                                                    onClick={(evt) => {
+                                                        this.changeCreditCard(
+                                                            evt,
+                                                            close
+                                                        );
+                                                    }}
+                                                    style={{
+                                                        fontWeight: "bold",
+                                                        marginTop: 30,
+                                                        outline: "none",
+                                                        width: "100%",
+                                                        borderRadius: 3,
+                                                        float: "right",
+                                                        padding: "10px 10px",
+                                                        border: "none",
+                                                        color: "white",
+                                                        backgroundColor:
+                                                            "#0B172B",
+                                                    }}
+                                                >
+                                                    Submit
+                                                </Button>
+                                                <div
+                                                    style={{
+                                                        color: "red",
+                                                        fontSize: 14,
+                                                    }}
+                                                >
+                                                    {this.state.errorMessage}
+                                                </div>
                                             </div>
-                                        </div>
-                                    )}
-                                </Popup>
+                                        )}
+                                    </Popup>
+                                )}
                             </div>
                             {!this.props.user.google_login && (
                                 <Popup
