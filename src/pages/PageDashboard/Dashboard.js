@@ -53,7 +53,13 @@ class Dashboard extends Component {
                         />
                         <FeedbackBox />
 
-                        <div className="dashboard-flex">
+                        <div
+                            className="dashboard-flex"
+                            style={{
+                                position: "relative",
+                                bottom: 65,
+                            }}
+                        >
                             {this.state.width > 900 && <LeftSection />}
                             <div className="right-section">
                                 <div className="date">

@@ -93,7 +93,6 @@ class SettingsView extends Component {
             return (
                 <div
                     style={{
-                        paddingTop: 40,
                         paddingBottom: 50,
                     }}
                 >
@@ -101,7 +100,6 @@ class SettingsView extends Component {
                         style={{
                             fontSize: this.state.width > 900 ? 42 : 35,
                             fontWeight: "bold",
-                            paddingTop: 20,
                         }}
                     >
                         SETTINGS
