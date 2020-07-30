@@ -15,6 +15,9 @@ export const UPDATE_EMAIL = "UPDATE_EMAIL";
 export const UPDATE_NAME = "UPDATE_NAME";
 export const UPDATE_PASSWORD = "UPDATE_PASSWORD";
 export const DELETE_USER = "DELETE_USER";
+export const FETCH_NEWSLETTER = "FETCH_NEWSLETTER";
+export const STORE_NEWSLETTER = "STORE_NEWSLETTER";
+export const CHANGE_NEWSLETTER = "CHANGE_NEWSLETTER";
 
 export function retrieveCustomer() {
     return {
@@ -33,6 +36,26 @@ export function fetchUser(username) {
     return {
         type: FETCH_USER,
         username,
+    };
+}
+
+export function fetchNewsletter() {
+    return {
+        type: FETCH_NEWSLETTER,
+    };
+}
+
+export function changeNewsletter(preference) {
+    return {
+        type: CHANGE_NEWSLETTER,
+        preference,
+    };
+}
+
+export function storeNewsletter(preference) {
+    return {
+        type: STORE_NEWSLETTER,
+        preference,
     };
 }
 

@@ -238,6 +238,46 @@ function* updatePassword(action) {
     }
 }
 
+function* fetchNewsletter() {
+    const state = yield select();
+    const { json, response } = yield call(
+        apiGet,
+        format(
+            config.url.PRIMARY_SERVER + "/newsletter/user?username={0}",
+            state.AuthReducer.username
+        ),
+        ""
+    );
+
+    if (response.ok) {
+        yield put(CustomerAction.storeNewsletter(json.subscribed));
+    }
+}
+
+function* changeNewsletter(action) {
+    const state = yield select();
+    if (action.preference === true) {
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/newsletter/subscribe",
+            {
+                username: state.AuthReducer.username,
+            },
+            ""
+        );
+    } else {
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/newsletter/unsubscribe",
+            {
+                username: state.AuthReducer.username,
+            },
+            ""
+        );
+    }
+    yield put(CustomerAction.fetchNewsletter());
+}
+
 export default function* () {
     yield all([
         takeEvery(CustomerAction.RETRIEVE_CUSTOMER, retrieveCustomer),
@@ -252,5 +292,7 @@ export default function* () {
         takeEvery(CustomerAction.UPDATE_NAME, updateName),
         takeEvery(CustomerAction.UPDATE_PASSWORD, updatePassword),
         takeEvery(CustomerAction.DELETE_USER, deleteAccount),
+        takeEvery(CustomerAction.FETCH_NEWSLETTER, fetchNewsletter),
+        takeEvery(CustomerAction.CHANGE_NEWSLETTER, changeNewsletter),
     ]);
 }

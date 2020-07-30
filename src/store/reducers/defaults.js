@@ -59,6 +59,7 @@ export const DASHBOARD_DEFAULT = {
         step: 1,
     },
     require_payment_oncreate: true,
+    newsletterPreference: false,
 };
 
 export const SETTINGS_DEFAULT = {

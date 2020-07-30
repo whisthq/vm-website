@@ -6,7 +6,7 @@ import { Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import { FaPlus, FaFighterJet, FaSpaceShuttle } from "react-icons/fa";
+import { FaPlus, FaSpaceShuttle } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
@@ -16,7 +16,11 @@ import "static/Shared.css";
 import SSD from "assets/icons/hard-drive-icon.svg";
 
 import { fetchDisks } from "store/actions/dashboard/disk_actions";
-import { retrieveCustomer } from "store/actions/dashboard/customer_actions";
+import {
+    retrieveCustomer,
+    fetchNewsletter,
+    changeNewsletter,
+} from "store/actions/dashboard/customer_actions";
 
 import { Elements, StripeProvider } from "react-stripe-elements";
 
@@ -37,6 +41,7 @@ class SettingsView extends Component {
         window.addEventListener("resize", this.updateWindowDimensions);
         this.props.dispatch(fetchDisks(this.props.user.username));
         this.props.dispatch(retrieveCustomer());
+        this.props.dispatch(fetchNewsletter());
     }
 
     componentWillUnmount() {
@@ -46,6 +51,10 @@ class SettingsView extends Component {
     updateWindowDimensions() {
         this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
+
+    toggleMail = (e) => {
+        this.props.dispatch(changeNewsletter(e.target.checked));
+    };
 
     render() {
         const fonts = [
@@ -270,60 +279,37 @@ class SettingsView extends Component {
                             >
                                 Advanced Settings
                             </div>
-                            <div style={{ width: "100%" }}>
-                                <div
-                                    style={{
-                                        fontSize: 14,
-                                        background:
-                                            "linear-gradient(130.61deg, #F2DEF8 2.24%, #D7F5F5 100%)",
-                                        backgroundSize: "cover",
-                                        backgroundPosition: "center",
-                                        backgroundAttachment: "fixed",
-                                        boxShadow:
-                                            "0px 4px 15px rgba(0, 0, 0, 0.2)",
-                                        borderRadius: 7,
-                                        padding: "40px 15px",
-                                        marginTop: 35,
-                                        minHeight: 245,
-                                        marginBottom: 40,
-                                        border: "solid 10px white",
-                                    }}
-                                >
-                                    <Row
+                            <div
+                                style={{
+                                    background: "white",
+                                    boxShadow:
+                                        "0px 4px 15px rgba(0, 0, 0, 0.2)",
+                                    borderRadius: 7,
+                                    padding: "40px 15px",
+                                    marginTop: 35,
+                                    marginBottom: 40,
+                                    border: "solid 10px white",
+                                }}
+                            >
+                                <div className="d-flex align-items-center">
+                                    <input
+                                        type="checkbox"
+                                        onChange={this.toggleMail}
+                                        checked={
+                                            this.props.newsletterPreference
+                                        }
+                                        className="pointerOnHover"
+                                    />
+                                    <div
                                         style={{
-                                            width: "100%",
-                                            margin: 0,
+                                            fontSize: 16,
+                                            color: "#111111",
+                                            marginLeft: 20,
                                         }}
                                     >
-                                        <Col
-                                            xs={12}
-                                            style={{
-                                                padding: "0px 20px",
-                                                marginBottom: 15,
-                                                textAlign: "center",
-                                            }}
-                                        >
-                                            <FaFighterJet
-                                                style={{
-                                                    color: "#444444",
-                                                    fontSize: 40,
-                                                    marginTop: 10,
-                                                }}
-                                            />
-                                            <div
-                                                style={{
-                                                    color: "#111111",
-                                                    fontSize: 16,
-                                                    margin: "auto",
-                                                    marginTop: 30,
-                                                    maxWidth: 250,
-                                                }}
-                                            >
-                                                More account configurability
-                                                coming soon
-                                            </div>
-                                        </Col>
-                                    </Row>
+                                        Subscribe me to the Fractal newsletter
+                                        and receive (infrequent) major updates
+                                    </div>
                                 </div>
                             </div>
                         </Col>
@@ -410,6 +396,7 @@ function mapStateToProps(state) {
                 : state.DashboardReducer.disks,
         id: state.DashboardReducer.id,
         customer: state.DashboardReducer.customer,
+        newsletterPreference: state.DashboardReducer.newsletterPreference,
     };
 }
 

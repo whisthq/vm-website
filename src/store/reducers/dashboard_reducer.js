@@ -56,6 +56,11 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 ...state,
                 cards: action.cards,
             };
+        case CustomerAction.STORE_NEWSLETTER:
+            return {
+                ...state,
+                newsletterPreference: action.preference,
+            };
         case CustomerAction.CUSTOMER_CREATED:
             return {
                 ...state,
