@@ -29,6 +29,7 @@ import EmailVerification from "pages/PageAuth/EmailVerification";
 import CreditCard from "pages/PagePurchase/CreditCard";
 import About from "pages/PageAbout/About";
 import Plan from "pages/PagePurchase/Plan";
+import Settings from "pages/PageSettings/Settings";
 import Storage from "pages/PagePurchase/Storage";
 import Careers from "pages/PageCareers/Careers";
 
@@ -58,7 +59,7 @@ ReactDOM.render(
                 <Route exact path="/" component={Landing} />
                 <Route exact path="/purchase" component={Purchase} />
                 <Route exact path="/auth" component={Auth} />
-                <Route path="/dashboard" component={Dashboard} />
+                <Route exact path="/dashboard" component={Dashboard} />
                 <Route exact path="/home" component={Landing} />
                 <Route exact path="/reset" component={Reset} />
                 <Route exact path="/privacy" component={Privacy} />
@@ -73,6 +74,7 @@ ReactDOM.render(
                 <Route exact path="/about" component={About} />
                 <Route path="/careers" component={Careers} />
                 <Route exact path="/plan" component={Plan} />
+                <Route exact path="/settings" component={Settings} />
                 <Route exact path="/storage" component={Storage} />
             </PersistGate>
         </Provider>
