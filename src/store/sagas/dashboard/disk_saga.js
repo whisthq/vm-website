@@ -35,6 +35,8 @@ function* fetchDiskCreationStatus(ID) {
 function* attachDisk(disk_name) {
     const state = yield select();
     if (config.new_server) {
+        console.log(state.AuthReducer.access_token);
+
         const { json } = yield call(
             apiPost,
             config.url.PRIMARY_SERVER + "/azure_disk/attach",
@@ -44,8 +46,6 @@ function* attachDisk(disk_name) {
             },
             state.AuthReducer.access_token
         );
-
-        console.log(json);
 
         if (json && json.ID) {
             yield put(DiskAction.storeDiskAttachID(json.ID));

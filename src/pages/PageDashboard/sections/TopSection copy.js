@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { HashLink } from "react-router-hash-link";
 import { faCreditCard, faTag } from "@fortawesome/free-solid-svg-icons";
-import moment from "moment";
 
 import "static/PageDashboard.css";
 
@@ -27,119 +26,126 @@ class TopSection extends Component {
     }
 
     render() {
-        let expired = moment
-            .utc(this.props.trialEnd, "MMMM Do, YYYY", false)
-            .isBefore(moment.utc());
-
-        if (this.props.disk_is_creating) {
-            let noPayBox =
-                (this.props.customer && this.props.customer.paid) ||
-                this.props.require_payment_oncreate;
-            return (
-                <Row
-                    style={{
-                        marginTop: 30,
-                    }}
-                >
-                    <Col
-                        xs={12}
-                        md={noPayBox ? 12 : 8}
-                        style={{
-                            paddingLeft: noPayBox ? 15 : 0,
-                            paddingRight: noPayBox ? 15 : 0,
-                        }}
-                    >
-                        <div className="disk-status-box">
-                            <span
-                                style={{
-                                    fontWeight: "bold",
-                                }}
-                            >
-                                Current Status:{" "}
-                            </span>
-                            {this.props.disk_creation_message}
-                        </div>
-                        <ImageBox
-                            text="Your Cloud PC Is Creating"
-                            subtext="This should take no more
+        if (
+            this.props.disks === undefined ||
+            this.props.disks.length === 0 ||
+            this.props.disk_is_creating
+        ) {
+            if (this.props.disk_is_creating) {
+                if (
+                    (this.props.customer && this.props.customer.paid) ||
+                    this.props.require_payment_oncreate
+                ) {
+                    return (
+                        <Row
+                            style={{
+                                marginTop: 30,
+                            }}
+                        >
+                            <Col xs={12}>
+                                <div className="disk-status-box">
+                                    <span
+                                        style={{
+                                            fontWeight: "bold",
+                                        }}
+                                    >
+                                        Current Status:{" "}
+                                    </span>
+                                    {this.props.disk_creation_message}
+                                </div>
+                                <ImageBox
+                                    text="Your Cloud PC Is Creating"
+                                    subtext="This should take no more
                                                than 20 minutes. Once your cloud PC
                                                is ready, you'll be  able to download our
                                                desktop app below to launch your cloud PC."
-                            creating
-                        />
-                    </Col>
-                    {!noPayBox && (
-                        <Col xs={12} md={4}>
-                            <Link
-                                to="/card"
+                                    creating
+                                />
+                            </Col>
+                        </Row>
+                    );
+                } else {
+                    return (
+                        <Row style={{ marginTop: 30 }}>
+                            <Col
+                                xs={12}
                                 style={{
-                                    textDecoration: "none",
+                                    paddingLeft: 15,
+                                    paddingRight: 15,
                                 }}
-                                className="pointerOnHover"
                             >
-                                <div className="payment-box">
-                                    <FontAwesomeIcon
-                                        icon={faCreditCard}
-                                        className="icon"
-                                    />
-                                    <div className="title">Add Payment</div>
-                                    {expired ? (
-                                        <div className="subtext">
-                                            Your free trial expired on{" "}
-                                            {this.props.trialEnd}. We will keep
-                                            your data for 7 days, until{" "}
-                                            {moment(
-                                                this.props.trialEnd,
-                                                "MMMM Do, YYYY",
-                                                false
-                                            )
-                                                .add(7, "days")
-                                                .format("MMMM Do, YYYY")}
-                                            . If you do not sign up for a paid
-                                            plan before then, your cloud PC data
-                                            will be deleted.
-                                        </div>
-                                    ) : (
+                                <div className="disk-status-box">
+                                    <span
+                                        style={{
+                                            fontWeight: "bold",
+                                        }}
+                                    >
+                                        Current Status:{" "}
+                                    </span>
+                                    {this.props.disk_creation_message}
+                                </div>
+                            </Col>
+                            <Col xs={12} md={8}>
+                                <ImageBox
+                                    text="Your Cloud PC Is Creating"
+                                    subtext="This should take no more
+                                               than 20 minutes. Once your cloud PC
+                                               is ready, you'll be  able to download our
+                                               desktop app below to launch your cloud PC."
+                                    creating
+                                />
+                            </Col>
+                            <Col xs={12} md={4}>
+                                <Link
+                                    to="/card"
+                                    style={{
+                                        textDecoration: "none",
+                                    }}
+                                    className="pointerOnHover"
+                                >
+                                    <div className="payment-box">
+                                        <FontAwesomeIcon
+                                            icon={faCreditCard}
+                                            className="icon"
+                                        />
+                                        <div className="title">Add Payment</div>
                                         <div className="subtext">
                                             Your cloud PC is free until{" "}
                                             {this.props.trialEnd}.
                                         </div>
-                                    )}
-                                </div>
-                            </Link>
-                        </Col>
-                    )}
-                </Row>
-            );
-        } else if (
-            this.props.disks === undefined ||
-            this.props.disks.length === 0
-        ) {
-            return (
-                <Row
-                    style={{
-                        marginTop: 30,
-                    }}
-                >
-                    <Col xs={12}>
-                        <Link
-                            style={{
-                                textDecoration: "none",
-                            }}
-                            to="/purchase"
-                            className="create-cloud-pc"
-                        >
-                            <ImageBox
-                                text="Create My Cloud Computer"
-                                subtext="Transform your
+                                    </div>
+                                </Link>
+                            </Col>
+                        </Row>
+                    );
+                }
+            } else {
+                return (
+                    <Row
+                        style={{
+                            marginTop: 30,
+                        }}
+                    >
+                        <Col xs={12}>
+                            <Link
+                                style={{
+                                    textDecoration: "none",
+                                }}
+                                to="/purchase"
+                                className="create-cloud-pc"
+                            >
+                                <ImageBox
+                                    text="Create My Cloud Computer"
+                                    subtext="Transform your
                                         computer into a GPU-powered cloud
                                         computer. Setup in less than a 
                                         minute, no payment required."
-                            />
-                        </Link>
-                    </Col>
-                </Row>
-            );
+                                />
+                            </Link>
+                        </Col>
+                    </Row>
+                );
+            }
         } else if (
             this.props.customer &&
             this.props.customer.paid &&
@@ -284,28 +290,10 @@ class TopSection extends Component {
                                     className="icon"
                                 />
                                 <div className="title">Add Payment</div>
-                                {expired ? (
-                                    <div className="text">
-                                        Your free trial expired on{" "}
-                                        {this.props.trialEnd}. We will keep your
-                                        data for 7 days, until{" "}
-                                        {moment(
-                                            this.props.trialEnd,
-                                            "MMMM Do, YYYY",
-                                            false
-                                        )
-                                            .add(7, "days")
-                                            .format("MMMM Do, YYYY")}
-                                        . If you do not sign up for a paid plan
-                                        before then, your cloud PC data will be
-                                        deleted.
-                                    </div>
-                                ) : (
-                                    <div className="text">
-                                        Your cloud PC is free until{" "}
-                                        {this.props.trialEnd}.
-                                    </div>
-                                )}
+                                <div className="text">
+                                    Your cloud PC is completely free to use
+                                    until {this.props.trialEnd}.
+                                </div>
                             </div>
                         </Link>
                     </Col>
