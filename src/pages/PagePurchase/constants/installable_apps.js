@@ -5,6 +5,8 @@ export const apps = [
         image: "chrome.svg",
         link: "https://www.google.com/chrome/",
         size: 30.3,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Firefox",
@@ -12,6 +14,8 @@ export const apps = [
         image: "firefox.png",
         link: "https://www.mozilla.org/en-US/firefox/new/",
         size: 66.1,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Brave Browser",
@@ -19,6 +23,8 @@ export const apps = [
         image: "brave.png",
         link: "https://brave.com/",
         size: 440,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Tor Browser",
@@ -26,6 +32,8 @@ export const apps = [
         image: "tor.png",
         link: "https://www.torproject.org/download/",
         size: 63.91,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "VLC media player",
@@ -33,6 +41,8 @@ export const apps = [
         image: "vlc.png",
         link: "https://www.videolan.org/vlc/index.html",
         size: 40.08,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Adobe Acrobat",
@@ -40,6 +50,8 @@ export const apps = [
         image: "acrobat.png",
         link: "https://acrobat.adobe.com/us/en/acrobat/pdf-reader.html",
         size: 170,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Dropbox",
@@ -47,6 +59,8 @@ export const apps = [
         image: "dropbox.png",
         link: "https://www.dropbox.com/",
         size: 511,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Microsoft Office",
@@ -54,6 +68,8 @@ export const apps = [
         image: "office.png",
         link: "https://www.office.com/",
         size: 4000,
+        Windows: true,
+        Linux: false,
     },
     {
         name: "Spotify",
@@ -61,6 +77,8 @@ export const apps = [
         image: "spotify.png",
         link: "https://www.spotify.com/us/",
         size: 188,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Zoom",
@@ -68,6 +86,8 @@ export const apps = [
         image: "zoom.png",
         link: "https://www.zoom.us/",
         size: 58,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Skype",
@@ -75,6 +95,8 @@ export const apps = [
         image: "skype.png",
         link: "https://www.skype.com/en/",
         size: 220,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "WhatsApp",
@@ -82,6 +104,8 @@ export const apps = [
         image: "whatsapp.png",
         link: "https://www.whatsapp.com/",
         size: 37,
+        Windows: true,
+        Linux: false,
     },
     {
         name: "Telegram",
@@ -89,6 +113,8 @@ export const apps = [
         image: "telegram.png",
         link: "https://telegram.org/",
         size: 71,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Discord",
@@ -96,6 +122,8 @@ export const apps = [
         image: "discord.png",
         link: "https://discord.com/",
         size: 160,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Steam",
@@ -103,6 +131,8 @@ export const apps = [
         image: "steam.png",
         link: "https://store.steampowered.com/",
         size: 1100,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Epic Games",
@@ -110,6 +140,8 @@ export const apps = [
         image: "epic_games.png",
         link: "https://www.epicgames.com/store/en-US/",
         size: 1000,
+        Windows: true,
+        Linux: false,
     },
     {
         name: "GeForce Experience",
@@ -117,6 +149,8 @@ export const apps = [
         image: "geforce.png",
         link: "https://www.nvidia.com/en-us/geforce/geforce-experience/",
         size: 117,
+        Windows: true,
+        Linux: false,
     },
     {
         name: "GOG",
@@ -124,6 +158,8 @@ export const apps = [
         image: "gog.png",
         link: "https://www.gog.com/",
         size: 213,
+        Windows: true,
+        Linux: false,
     },
     {
         name: "Blender",
@@ -131,6 +167,8 @@ export const apps = [
         image: "blender.png",
         link: "https://www.blender.org/",
         size: 200,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Gimp",
@@ -138,6 +176,8 @@ export const apps = [
         image: "gimp.png",
         link: "https://www.gimp.org/",
         size: 85.4,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Cinema4D",
@@ -145,6 +185,8 @@ export const apps = [
         image: "cinema_4d.png",
         link: "https://www.maxon.net/en-us/products/cinema-4d/overview/",
         size: 850,
+        Windows: true,
+        Linux: false,
     },
     {
         name: "Lightworks",
@@ -152,6 +194,8 @@ export const apps = [
         image: "lightworks.png",
         link: "https://www.lwks.com/",
         size: 310,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Autodesk Fusion 360",
@@ -159,6 +203,8 @@ export const apps = [
         image: "fusion.png",
         link: "https://www.autodesk.com/products/fusion-360/overview",
         size: 3100,
+        Windows: true,
+        Linux: false,
     },
     {
         name: "Git",
@@ -166,6 +212,8 @@ export const apps = [
         image: "git.png",
         link: "https://git-scm.com/",
         size: 572,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Atom",
@@ -173,6 +221,8 @@ export const apps = [
         image: "atom.png",
         link: "https://atom.io/",
         size: 180,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Node.js",
@@ -180,6 +230,8 @@ export const apps = [
         image: "nodejs.png",
         link: "https://nodejs.org/",
         size: 50,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Android Studio",
@@ -187,6 +239,8 @@ export const apps = [
         image: "android_studio.png",
         link: "https://developer.android.com/studio",
         size: 1000,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "GitHub Desktop",
@@ -194,6 +248,8 @@ export const apps = [
         image: "github_desktop.png",
         link: "https://desktop.github.com/",
         size: 90,
+        Windows: true,
+        Linux: false,
     },
     {
         name: "Unity",
@@ -201,6 +257,8 @@ export const apps = [
         image: "unity.png",
         link: "https://unity.com/",
         size: 10000,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Sublime Text 3",
@@ -208,6 +266,8 @@ export const apps = [
         image: "sublimetext.png",
         link: "https://www.sublimetext.com/",
         size: 35,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "OpenCV",
@@ -215,6 +275,8 @@ export const apps = [
         image: "opencv.png",
         link: "https://opencv.org/",
         size: 593,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "CUDA Development Toolkit",
@@ -222,6 +284,8 @@ export const apps = [
         image: "cuda.jpeg",
         link: "https://developer.nvidia.com/cuda-zone",
         size: 60,
+        Windows: true,
+        Linux: false,
     },
     {
         name: "LLVM",
@@ -229,6 +293,8 @@ export const apps = [
         image: "llvm.png",
         link: "https://llvm.org/",
         size: 500,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Anaconda",
@@ -236,6 +302,8 @@ export const apps = [
         image: "anaconda.png",
         link: "https://www.anaconda.com/",
         size: 5000,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Docker",
@@ -243,6 +311,8 @@ export const apps = [
         image: "docker.png",
         link: "https://www.docker.com/",
         size: 2500,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "cURL",
@@ -250,6 +320,8 @@ export const apps = [
         image: "curl.png",
         link: "https://curl.haxx.se/",
         size: 4,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "CMake",
@@ -257,6 +329,8 @@ export const apps = [
         image: "cmake.png",
         link: "https://cmake.org/",
         size: 90,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Postman",
@@ -264,6 +338,8 @@ export const apps = [
         image: "postman.png",
         link: "https://www.postman.com/",
         size: 86.72,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Visual Studio Code",
@@ -271,13 +347,17 @@ export const apps = [
         image: "vscode.png",
         link: "https://code.visualstudio.com/",
         size: 500,
+        Windows: true,
+        Linux: true,
     },
     {
-        name: "Visual Studio 2019",
+        name: "Visual Studio Professional 2019",
         category: "Developer",
         image: "vs_pro.png",
         link: "https://visualstudio.microsoft.com/vs/professional/",
         size: 3500,
+        Windows: true,
+        Linux: false,
     },
     {
         name: "Visual C++ Redistribuable",
@@ -286,6 +366,8 @@ export const apps = [
         link:
             "https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads",
         size: 50,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Cppcheck",
@@ -293,6 +375,8 @@ export const apps = [
         image: "cppcheck.png",
         link: "http://cppcheck.sourceforge.net/",
         size: 10,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "7-Zip",
@@ -300,6 +384,8 @@ export const apps = [
         image: "7zip.png",
         link: "https://www.7-zip.org/",
         size: 10,
+        Windows: true,
+        Linux: true,
     },
     {
         name: "Windows Subsystem for Linux",
@@ -307,5 +393,7 @@ export const apps = [
         image: "wsl.png",
         link: "https://docs.microsoft.com/en-us/windows/wsl/install-win10",
         size: 2000,
+        Windows: true,
+        Linux: true,
     },
 ];

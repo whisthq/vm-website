@@ -87,6 +87,7 @@ class Purchase extends Component {
                 return (
                     <AppSection
                         vm_setup_data={this.props.vm_setup_data}
+                        operatingSystem={this.state.operatingSystem}
                         step={4}
                     />
                 );

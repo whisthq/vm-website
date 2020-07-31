@@ -18,10 +18,13 @@ class AppSection extends Component {
     constructor(props) {
         super(props);
 
+        const allApps = apps.filter((a) => a[this.props.operatingSystem]);
+
         this.state = {
             width: 0,
             height: 0,
-            apps: apps,
+            allApps: allApps,
+            apps: allApps,
             selectedApps: [],
             totalStorage: 0,
         };
@@ -55,7 +58,9 @@ class AppSection extends Component {
 
     handleTabChange = (key) => {
         const filteredApps =
-            key === "All" ? apps : apps.filter((app) => app.category === key);
+            key === "All"
+                ? this.state.allApps
+                : this.state.allApps.filter((app) => app.category === key);
         this.setState({ apps: filteredApps });
     };
 
