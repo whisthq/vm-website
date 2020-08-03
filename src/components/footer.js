@@ -137,14 +137,12 @@ class Footer extends Component {
                                 >
                                     <div className="page-link">Product</div>
                                 </HashLink>
-                                <div style={{ border: "none" }}>
-                                    <a
-                                        href="mailto: hello@fractalcomputers.com"
-                                        className="page-link"
-                                    >
-                                        Contact Us
-                                    </a>
-                                </div>
+                                <HashLink
+                                    to="/changelog"
+                                    style={{ textDecoration: "none" }}
+                                >
+                                    <div className="page-link">Changelog</div>
+                                </HashLink>
                             </Col>
                             <Col xs={4} style={{ paddingTop: 12 }}>
                                 <div className="section-name">COMPANY</div>
@@ -169,6 +167,14 @@ class Footer extends Component {
                             </Col>
                             <Col xs={4} style={{ paddingTop: 12 }}>
                                 <div className="section-name">CONTACT</div>
+                                <div style={{ border: "none" }}>
+                                    <a
+                                        href="mailto: hello@fractalcomputers.com"
+                                        className="page-link"
+                                    >
+                                        General
+                                    </a>
+                                </div>
                                 <div>
                                     <a
                                         href="mailto: sales@fractalcomputers.com"
