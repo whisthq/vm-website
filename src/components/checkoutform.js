@@ -18,6 +18,7 @@ class CheckoutForm extends Component {
             failed_referral_attempt: false,
             creditCard: true,
             trial_end: "",
+            successful_payment_attempt: false,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -48,7 +49,6 @@ class CheckoutForm extends Component {
                         this.props.plan.toLowerCase()
                     )
                 );
-                this.props.callback();
             } else {
                 this.setState({
                     processing: false,
@@ -110,6 +110,23 @@ class CheckoutForm extends Component {
                 processing: false,
             });
         }
+
+        if (
+            prevProps.successful_payment_attempts !==
+                this.props.successful_payment_attempts &&
+            !this.state.successful_payment_attempt
+        ) {
+            this.setState(
+                {
+                    successful_payment_attempt: true,
+                },
+                function () {
+                    console.log("SUCCESSFUL PAYMENT ATTEMPT");
+                    this.props.callback();
+                }
+            );
+        }
+
         if (
             prevProps.failed_referral_attempts !==
                 this.props.failed_referral_attempts &&
@@ -400,6 +417,7 @@ class CheckoutForm extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state);
     return {
         stripe_status: state.DashboardReducer.stripe_status,
         failed_payment_attempts: state.DashboardReducer.failed_payment_attempts,
@@ -409,6 +427,8 @@ function mapStateToProps(state) {
         customer_status: state.DashboardReducer.customer_status,
         customer: state.DashboardReducer.customer,
         payment: state.DashboardReducer.payment,
+        successful_payment_attempts:
+            state.DashboardReducer.successful_payment_attempts,
     };
 }
 

@@ -72,7 +72,7 @@ class TopSection extends Component {
                                     text="Your Cloud PC Is Creating"
                                     subtext="This should take no more
                                                than 20 minutes. Once your cloud PC
-                                               is ready, you'll be  able to download our
+                                               is ready, you'll be able to download our
                                                desktop app below to launch your cloud PC."
                                     creating
                                 />
@@ -105,7 +105,7 @@ class TopSection extends Component {
                                     text="Your Cloud PC Is Creating"
                                     subtext="This should take no more
                                                than 20 minutes. Once your cloud PC
-                                               is ready, you'll be  able to download our
+                                               is ready, you'll be able to download our
                                                desktop app below to launch your cloud PC."
                                     creating
                                 />
@@ -319,7 +319,6 @@ class TopSection extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         disks:
             typeof state.DashboardReducer.disks === "undefined"

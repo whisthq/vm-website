@@ -1,6 +1,6 @@
 export const CHARGE_STRIPE = "CHARGE_STRIPE";
 export const STORE_PAYMENT = "STORE_PAYMENT";
-export const STRIPE_FAILURE = "STRIPE_FAILURE";
+export const STRIPE_STATUS = "STRIPE_STATUS";
 export const SEND_FINAL_CHARGE = "SEND_FINAL_CHARGE";
 export const APPLY_DISCOUNT = "APPLY_DISCOUNT";
 export const CHANGE_PLAN = "CHANGE_PLAN";
@@ -31,9 +31,9 @@ export function cancelPlan(message) {
     };
 }
 
-export function stripeFailure(status) {
+export function stripeStatus(status) {
     return {
-        type: STRIPE_FAILURE,
+        type: STRIPE_STATUS,
         status,
     };
 }
