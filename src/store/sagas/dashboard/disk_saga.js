@@ -203,6 +203,7 @@ function* createDisk(action) {
 
         if (json) {
             if (json.ID) {
+                yield put(DiskAction.diskCreating(true));
                 yield call(fetchDiskCreationStatus, json.ID);
             }
         }
