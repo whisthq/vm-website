@@ -4,9 +4,28 @@ import { HashLink } from "react-router-hash-link";
 
 import Header from "components/header";
 
-import moment from "moment";
-
 class OfflineSection extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            width: 0,
+            height: 0,
+        };
+    }
+
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener("resize", this.updateWindowDimensions);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.updateWindowDimensions);
+    }
+
+    updateWindowDimensions = () => {
+        this.setState({ width: window.innerWidth, height: window.innerHeight });
+    };
+
     render() {
         return (
             <div
@@ -27,9 +46,10 @@ class OfflineSection extends Component {
                         marginBottom: 60,
                     }}
                 >
-                    {moment().format("MMMM Do, YYYY")}: Fractal is currently
-                    undergoing a major update and will be back online within a
-                    few days. We apologize for the inconvenience!
+                    {this.props.month} {this.props.day}, {this.props.year}:
+                    Fractal is currently undergoing a major update and will be
+                    back online within a few days. We apologize for the
+                    inconvenience!
                 </div>
                 <HashLink
                     to="/#top"
