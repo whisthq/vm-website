@@ -17,7 +17,7 @@ class Auth extends Component {
         super(props);
         this.state = {
             processing: false,
-            google_button_active: true,
+            google_button_active: false,
         };
     }
 

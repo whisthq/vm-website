@@ -99,14 +99,13 @@ function* userLogin(action) {
 }
 
 function* forgotPassword(action) {
-    const state = yield select();
     const { json } = yield call(
         apiPost,
         config.url.PRIMARY_SERVER + "/mail/forgot",
         {
             username: action.username,
         },
-        state.AccountReducer.access_token
+        ""
     );
     if (json) {
         if (json.verified) {

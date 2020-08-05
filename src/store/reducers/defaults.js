@@ -32,6 +32,7 @@ export const DASHBOARD_DEFAULT = {
     payment: {},
     stripe_status: 200,
     failed_payment_attempts: 0,
+    successful_payment_attempts: 0,
     friend_email_status: 0,
     user: {},
     credits: 0,

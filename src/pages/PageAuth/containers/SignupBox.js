@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { InputGroup, FormControl, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { FaCheck, FaExclamationTriangle, FaCaretLeft } from "react-icons/fa";
+import { changeTab } from "store/actions/general/homepage_actions";
 import {
     userSignup,
     signupFailure,
@@ -198,6 +199,7 @@ class SignupBox extends Component {
     };
 
     componentDidMount() {
+        this.props.dispatch(changeTab("auth"));
         this.props.dispatch(signupFailure(0));
         this.props.dispatch(showGoogleButton(true));
     }

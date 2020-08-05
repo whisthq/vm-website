@@ -7,8 +7,6 @@ import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 import { chargeStripe } from "store/actions/dashboard/stripe_actions";
 
-import moment from "moment";
-
 class CheckoutForm extends Component {
     constructor(props) {
         super(props);
@@ -20,6 +18,7 @@ class CheckoutForm extends Component {
             failed_referral_attempt: false,
             creditCard: true,
             trial_end: "",
+            successful_payment_attempt: false,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -50,7 +49,6 @@ class CheckoutForm extends Component {
                         this.props.plan.toLowerCase()
                     )
                 );
-                this.props.callback();
             } else {
                 this.setState({
                     processing: false,
@@ -70,6 +68,36 @@ class CheckoutForm extends Component {
         this.setState({ code: evt.target.value });
     };
 
+    monthConvert = (month) => {
+        var months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+        ];
+        var selectedMonthName = months[month];
+        return selectedMonthName;
+    };
+
+    unixToDate = (unix) => {
+        const milliseconds = unix * 1000;
+        const dateObject = new Date(milliseconds);
+        const humanDateFormat = dateObject.toLocaleString().split(",")[0];
+        var dateArr = humanDateFormat.split("/");
+        const month = this.monthConvert(dateArr[0] - 1);
+        var finalDate =
+            month + " " + dateArr[1].toString() + ", " + dateArr[2].toString();
+        return finalDate;
+    };
+
     componentDidUpdate(prevProps) {
         if (
             prevProps.failed_payment_attempts !==
@@ -82,6 +110,22 @@ class CheckoutForm extends Component {
                 processing: false,
             });
         }
+
+        if (
+            prevProps.successful_payment_attempts !==
+                this.props.successful_payment_attempts &&
+            !this.state.successful_payment_attempt
+        ) {
+            this.setState(
+                {
+                    successful_payment_attempt: true,
+                },
+                function () {
+                    this.props.callback();
+                }
+            );
+        }
+
         if (
             prevProps.failed_referral_attempts !==
                 this.props.failed_referral_attempts &&
@@ -96,15 +140,14 @@ class CheckoutForm extends Component {
         }
 
         if (this.props.payment && Object.keys(this.props.payment).length > 0) {
+            console.log(this.props.payment.trial_end);
             if (
                 this.state.trialEnd === "" &&
                 this.props.payment.trial_end &&
                 this.props.payment.trial_end > 0
             ) {
                 this.setState({
-                    trialEnd: moment
-                        .unix(this.props.payment.trial_end)
-                        .format("MMMM Do, YYYY"),
+                    trialEnd: this.unixToDate(this.props.payment.trial_end),
                 });
             }
         } else {
@@ -123,9 +166,7 @@ class CheckoutForm extends Component {
             Object.keys(this.props.customer).length > 0
         ) {
             this.setState({
-                trialEnd: moment
-                    .unix(this.props.customer.trial_end)
-                    .format("MMMM Do, YYYY"),
+                trialEnd: this.unixToDate(this.props.customer.trial_end),
             });
         }
     }
@@ -136,9 +177,7 @@ class CheckoutForm extends Component {
             Object.keys(this.props.customer).length > 0
         ) {
             this.setState({
-                trialEnd: moment
-                    .unix(this.props.customer.trial_end)
-                    .format("MMMM Do, YYYY"),
+                trialEnd: this.unixToDate(this.props.customer.trial_end),
             });
         }
     }
@@ -378,6 +417,7 @@ class CheckoutForm extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state);
     return {
         stripe_status: state.DashboardReducer.stripe_status,
         failed_payment_attempts: state.DashboardReducer.failed_payment_attempts,
@@ -387,6 +427,8 @@ function mapStateToProps(state) {
         customer_status: state.DashboardReducer.customer_status,
         customer: state.DashboardReducer.customer,
         payment: state.DashboardReducer.payment,
+        successful_payment_attempts:
+            state.DashboardReducer.successful_payment_attempts,
     };
 }
 

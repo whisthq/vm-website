@@ -25,11 +25,18 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 ...state,
                 payment: action.payload,
             };
-        case StripeAction.STRIPE_FAILURE:
+        case StripeAction.STRIPE_STATUS:
             return {
                 ...state,
                 stripe_status: action.status,
-                failed_payment_attempts: state.failed_payment_attempts + 1,
+                failed_payment_attempts:
+                    action.status !== 200
+                        ? state.failed_payment_attempts + 1
+                        : state.failed_payment_attempts,
+                successful_payment_attempts:
+                    action.status === 200
+                        ? state.successful_payment_attempts + 1
+                        : state.successful_payment_attempts,
             };
         case PopupAction.FRIENDS_EMAIL_SENT:
             return {

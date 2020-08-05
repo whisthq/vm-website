@@ -33,7 +33,6 @@ function* chargeStripe(action) {
                 )
             );
             yield put(StripeAction.applyDiscount(action.code));
-            yield put(DiskAction.diskCreating(true));
         }
     } else {
         yield put(
@@ -44,7 +43,6 @@ function* chargeStripe(action) {
                 action.plan
             )
         );
-        yield put(DiskAction.diskCreating(true));
     }
 }
 
@@ -76,9 +74,10 @@ function* sendFinalCharge(action) {
 
     if (json) {
         if (json.status === 200) {
+            yield put(StripeAction.stripeStatus(json.status));
             history.push("/dashboard");
         } else {
-            yield put(StripeAction.stripeFailure(json.status));
+            yield put(StripeAction.stripeStatus(json.status));
         }
     }
 }
