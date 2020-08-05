@@ -9,6 +9,8 @@ import { chargeStripe } from "store/actions/dashboard/stripe_actions";
 import { getZipState } from "utils/zipcode";
 import { TAX_RATES } from "utils/taxes";
 
+import moment from "moment";
+
 class CheckoutForm extends Component {
     constructor(props) {
         super(props);
@@ -73,36 +75,6 @@ class CheckoutForm extends Component {
         this.setState({ code: evt.target.value });
     };
 
-    monthConvert = (month) => {
-        var months = [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December",
-        ];
-        var selectedMonthName = months[month];
-        return selectedMonthName;
-    };
-
-    unixToDate = (unix) => {
-        const milliseconds = unix * 1000;
-        const dateObject = new Date(milliseconds);
-        const humanDateFormat = dateObject.toLocaleString().split(",")[0];
-        var dateArr = humanDateFormat.split("/");
-        const month = this.monthConvert(dateArr[0] - 1);
-        var finalDate =
-            month + " " + dateArr[1].toString() + ", " + dateArr[2].toString();
-        return finalDate;
-    };
-
     componentDidUpdate(prevProps) {
         if (
             prevProps.failed_payment_attempts !==
@@ -135,7 +107,9 @@ class CheckoutForm extends Component {
                 this.props.payment.trial_end > 0
             ) {
                 this.setState({
-                    trialEnd: this.unixToDate(this.props.payment.trial_end),
+                    trialEnd: moment
+                        .unix(this.props.payment.trial_end)
+                        .format("MMMM Do, YYYY"),
                 });
             }
         } else {
@@ -154,7 +128,9 @@ class CheckoutForm extends Component {
             Object.keys(this.props.customer).length > 0
         ) {
             this.setState({
-                trialEnd: this.unixToDate(this.props.customer.trial_end),
+                trialEnd: moment
+                    .unix(this.props.customer.trial_end)
+                    .format("MMMM Do, YYYY"),
             });
         }
     }
@@ -165,7 +141,9 @@ class CheckoutForm extends Component {
             Object.keys(this.props.customer).length > 0
         ) {
             this.setState({
-                trialEnd: this.unixToDate(this.props.customer.trial_end),
+                trialEnd: moment
+                    .unix(this.props.customer.trial_end)
+                    .format("MMMM Do, YYYY"),
             });
         }
 

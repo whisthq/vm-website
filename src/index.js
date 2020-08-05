@@ -29,7 +29,6 @@ import EmailVerification from "pages/PageAuth/EmailVerification";
 import CreditCard from "pages/PagePurchase/CreditCard";
 import About from "pages/PageAbout/About";
 import Plan from "pages/PagePurchase/Plan";
-import Settings from "pages/PageSettings/Settings";
 import Storage from "pages/PagePurchase/Storage";
 import Careers from "pages/PageCareers/Careers";
 import NotFound from "pages/Page404/NotFound";
@@ -78,7 +77,6 @@ ReactDOM.render(
                     <Route path="/careers" component={Careers} />
                     <Route exact path="/changelog" component={Changelog} />
                     <Route exact path="/plan" component={Plan} />
-                    <Route exact path="/settings" component={Settings} />
                     <Route exact path="/storage" component={Storage} />
                     <Route component={NotFound} />
                 </Switch>
