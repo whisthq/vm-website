@@ -3,7 +3,6 @@ import Header from "components/header";
 import Footer from "components/footer";
 import { Container } from "react-bootstrap";
 
-import Logo from "assets/logo_grey.svg";
 import Software from "assets/large_graphics/software_nobg.svg";
 
 class NotFound extends Component {
@@ -16,9 +15,6 @@ class NotFound extends Component {
                         style={{
                             height: "60vh",
                             marginTop: 50,
-                            backgroundImage: `url(${Logo})`,
-                            backgroundPosition: "center center",
-                            backgroundRepeat: "no-repeat",
                             display: "inline-block",
                             paddingTop: "15vh",
                         }}

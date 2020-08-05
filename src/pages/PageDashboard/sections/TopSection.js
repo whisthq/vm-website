@@ -27,53 +27,30 @@ class TopSection extends Component {
     }
 
     render() {
-        if (
-            this.props.disks === undefined ||
-            this.props.disks.length === 0 ||
-            this.props.disk_is_creating
-        ) {
-            if (this.props.disk_is_creating) {
-                if (
-                    (this.props.customer && this.props.customer.paid) ||
-                    this.props.require_payment_oncreate
-                ) {
-                    return (
-                        <Row
-                            style={{
-                                marginTop: 30,
-                            }}
-                        >
-                            <Col xs={12}>
-                                <div className="disk-status-box">
-                                    <span
-                                        style={{
-                                            fontWeight: "bold",
-                                        }}
-                                    >
-                                        Current Status:{" "}
-                                    </span>
-                                    {this.props.disk_creation_message}
-                                </div>
-                                <ImageBox
-                                    text="Your Cloud PC Is Creating"
-                                    subtext="This should take no more
-                                               than 20 minutes. Once your cloud PC
-                                               is ready, you'll be able to download our
-                                               desktop app below to launch your cloud PC."
-                                    creating
-                                />
-                            </Col>
-                        </Row>
-                    );
-                } else {
-                    return (
-                        <Row style={{ marginTop: 30 }}>
-                            <Col
-                                xs={12}
-                                style={{
-                                    fontWeight: "bold",
-                                }}
-                            >
+        let expired = moment
+            .utc(this.props.trialEnd, "MMMM Do, YYYY", false)
+            .isBefore(moment.utc());
+
+        if (this.props.disk_is_creating) {
+            let noPayBox =
+                (this.props.customer && this.props.customer.paid) ||
+                this.props.require_payment_oncreate;
+            return (
+                <Row
+                    style={{
+                        marginTop: 30,
+                    }}
+                >
+                    <Col
+                        xs={12}
+                        md={noPayBox ? 12 : 8}
+                        style={{
+                            paddingLeft: noPayBox ? 15 : 0,
+                            paddingRight: noPayBox ? 15 : 0,
+                        }}
+                    >
+                        <div className="disk-status-box">
+                            <span style={{ fontWeight: "bold" }}>
                                 Current Status:{" "}
                             </span>
                             {this.props.disk_creation_message}
@@ -82,7 +59,7 @@ class TopSection extends Component {
                             text="Your Cloud PC Is Creating"
                             subtext="This should take no more
                                                than 20 minutes. Once your cloud PC
-                                               is ready, you'll be able to download our
+                                               is ready, you'll be  able to download our
                                                desktop app below to launch your cloud PC."
                             creating
                         />
@@ -327,7 +304,7 @@ class TopSection extends Component {
                                 )}
                             </div>
                         </Link>
-                    </Col>
+                    </Col>{" "}
                 </Row>
             );
         }
