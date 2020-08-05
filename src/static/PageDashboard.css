@@ -9,7 +9,15 @@
     display: flex;
     overflow-x: hidden;
     position: relative;
-    top: -60px;
+    bottom: 80px;
+}
+
+@media only screen and (max-width: 900px) {
+    .dashboard-flex {
+        display: flex;
+        overflow-x: hidden;
+        position: static;
+    }
 }
 
 .credits-box {
@@ -23,7 +31,7 @@
 }
 
 .right-section {
-    padding: 40px 25px 0px 50px;
+    padding: 60px 25px 0px 50px;
     width: calc(100% - 400px);
 }
 
@@ -42,10 +50,6 @@
         padding-left: 40px;
         padding-right: 40px;
         width: 100%;
-    }
-
-    .right-section .date {
-        margin-top: 50px;
     }
 
     .right-section .title {
