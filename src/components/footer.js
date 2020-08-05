@@ -36,6 +36,15 @@ class Footer extends Component {
         return (
             <div>
                 <div className="footer">
+                    <div
+                        style={{
+                            width: "100%",
+                            marginTop: 0,
+                            marginBottom: 20,
+                            background: "#EBEBEB",
+                            height: 1,
+                        }}
+                    ></div>
                     <div className="fractal-container">
                         <Row
                             style={{
@@ -123,38 +132,34 @@ class Footer extends Component {
                             style={{
                                 float:
                                     this.state.width > 700 ? "right" : "none",
-                                width: this.state.width > 700 ? 350 : "100%",
+                                width: this.state.width > 700 ? 650 : "100%",
                                 paddingRight: this.state.width > 700 ? 0 : 15,
                                 textAlign: "left",
                                 paddingTop: this.state.width > 700 ? 0 : 40,
                             }}
                         >
-                            <Col xs={4} style={{ paddingTop: 12 }}>
-                                <div className="section-name">HOME</div>
+                            <Col xs={3} style={{ paddingTop: 15 }}>
+                                <div className="section-name">PRODUCT</div>
                                 <HashLink
                                     to="/#top"
                                     style={{ textDecoration: "none" }}
                                 >
-                                    <div className="page-link">Product</div>
+                                    <div className="page-link">Cloud PC</div>
                                 </HashLink>
-                                <div style={{ border: "none" }}>
-                                    <a
-                                        href="mailto: hello@fractalcomputers.com"
-                                        className="page-link"
-                                    >
-                                        Contact Us
-                                    </a>
-                                </div>
+                                <HashLink
+                                    to="/changelog#top"
+                                    style={{ textDecoration: "none" }}
+                                >
+                                    <div className="page-link">Changelog</div>
+                                </HashLink>
                             </Col>
-                            <Col xs={4} style={{ paddingTop: 12 }}>
+                            <Col xs={3} style={{ paddingTop: 15 }}>
                                 <div className="section-name">COMPANY</div>
                                 <HashLink
                                     to="/about#top"
                                     style={{ textDecoration: "none" }}
                                 >
-                                    <div style={{ fontSize: 13 }}>
-                                        <div className="page-link">About</div>
-                                    </div>
+                                    <div className="page-link">About</div>
                                 </HashLink>
                                 <div style={{ fontSize: 13 }}>
                                     <div>
@@ -167,7 +172,30 @@ class Footer extends Component {
                                     </div>
                                 </div>
                             </Col>
-                            <Col xs={4} style={{ paddingTop: 12 }}>
+                            <Col xs={3} style={{ paddingTop: 15 }}>
+                                <div className="section-name">RESOURCES</div>
+                                <div style={{ fontSize: 13 }}>
+                                    <div>
+                                        <a
+                                            href="https://medium.com/@fractalcomputers"
+                                            className="page-link"
+                                        >
+                                            Blog
+                                        </a>
+                                    </div>
+                                </div>
+                                <div style={{ fontSize: 13 }}>
+                                    <div>
+                                        <a
+                                            href="https://medium.com/@fractalcomputers"
+                                            className="page-link"
+                                        >
+                                            Community Slack
+                                        </a>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col xs={3} style={{ paddingTop: 15 }}>
                                 <div className="section-name">CONTACT</div>
                                 <div>
                                     <a

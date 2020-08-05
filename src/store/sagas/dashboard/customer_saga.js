@@ -5,7 +5,6 @@ import history from "utils/history";
 
 import * as LoginAction from "store/actions/auth/login_actions";
 import * as SignupAction from "store/actions/auth/signup_actions";
-import * as DiskAction from "store/actions/dashboard/disk_actions";
 import * as StripeAction from "store/actions/dashboard/stripe_actions";
 import * as CustomerAction from "store/actions/dashboard/customer_actions";
 import * as PopupAction from "store/actions/dashboard/popup_actions";
@@ -64,7 +63,6 @@ function* insertCustomer(action) {
         history.push("/dashboard");
 
         yield put(PopupAction.triggerSurvey(true));
-        yield put(DiskAction.diskCreating(true));
 
         yield call(
             apiPost,
