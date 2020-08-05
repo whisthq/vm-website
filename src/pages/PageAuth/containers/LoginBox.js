@@ -197,7 +197,7 @@ class LoginBox extends Component {
                         </Button>
                     ) : (
                         <Button
-                            disabled="true"
+                            disabled={true}
                             style={{
                                 marginTop: 5,
                                 color: "white",
@@ -213,7 +213,7 @@ class LoginBox extends Component {
                     )
                 ) : (
                     <Button
-                        disabled="true"
+                        disabled={true}
                         onClick={this.handleLogin}
                         style={{
                             marginTop: 5,

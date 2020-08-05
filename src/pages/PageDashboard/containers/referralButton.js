@@ -415,7 +415,7 @@ class ReferralButton extends Component {
                                         </button>
                                     ) : (
                                         <Button
-                                            disabled="true"
+                                            disabled={true}
                                             style={{
                                                 fontWeight: "bold",
                                                 marginTop: 25,

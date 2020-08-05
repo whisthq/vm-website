@@ -136,6 +136,7 @@ function* updateEmail(action) {
 }
 
 function* updateName(action) {
+    console.log(action.name);
     const state = yield select();
     const { response } = yield call(
         apiPost,

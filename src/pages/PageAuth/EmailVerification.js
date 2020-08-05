@@ -180,7 +180,7 @@ class EmailVerification extends Component {
                                     </Button>
                                 ) : (
                                     <Button
-                                        disabled="true"
+                                        disabled={true}
                                         style={{
                                             background: "#0B172B",
                                             padding: "12px 35px",
@@ -286,7 +286,7 @@ class EmailVerification extends Component {
                                         </Button>
                                     ) : (
                                         <Button
-                                            disabled="true"
+                                            disabled={true}
                                             style={{
                                                 background: "#0B172B",
                                                 padding: "12px 35px",

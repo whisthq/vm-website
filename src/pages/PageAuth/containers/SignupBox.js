@@ -530,7 +530,7 @@ class SignupBox extends Component {
                             </Button>
                         ) : (
                             <Button
-                                disabled="true"
+                                disabled={true}
                                 style={{
                                     marginTop: 5,
                                     color: "white",
@@ -546,7 +546,7 @@ class SignupBox extends Component {
                         )
                     ) : (
                         <Button
-                            disabled="true"
+                            disabled={true}
                             style={{
                                 marginTop: 5,
                                 color: "white",

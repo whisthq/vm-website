@@ -160,7 +160,7 @@ class AccountSettings extends Component {
                     }}
                 >
                     You have no saved cards.{" "}
-                    {this.props.customer.id === null && (
+                    {!this.props.customer.id && (
                         <span>Use a paid plan to add cards.</span>
                     )}
                 </div>
@@ -466,7 +466,7 @@ class AccountSettings extends Component {
                                     Credit Cards
                                 </div>
                                 {cardEntries}
-                                {this.props.customer.id !== null && (
+                                {this.props.customer.id && (
                                     <Popup
                                         modal
                                         trigger={

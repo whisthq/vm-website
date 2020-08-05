@@ -264,7 +264,7 @@ class CheckoutForm extends Component {
                         <div style={{ display: "block" }}>
                             <div>
                                 <Button
-                                    disabled="true"
+                                    disabled={true}
                                     style={{
                                         marginBottom: 10,
                                         width: "100%",
