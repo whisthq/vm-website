@@ -36,15 +36,15 @@ class Footer extends Component {
         return (
             <div>
                 <div className="footer">
-                <div
-                            style={{
-                                width: "100%",
-                                marginTop: 0,
-                                marginBottom: 20,
-                                background: "#EBEBEB",
-                                height: 1,
-                            }}
-                        ></div>
+                    <div
+                        style={{
+                            width: "100%",
+                            marginTop: 0,
+                            marginBottom: 20,
+                            background: "#EBEBEB",
+                            height: 1,
+                        }}
+                    ></div>
                     <div className="fractal-container">
                         <Row
                             style={{
