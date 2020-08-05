@@ -31,23 +31,36 @@ class Changelog extends Component {
             ));
             return (
                 <div key={index} className="pb-4">
-                    <div style={{ fontSize: 20, paddingBottom: 25, display: "flex" }}>
-                        <div style={{
-                            width: 13,
-                            height: 13,
-                            borderRadius: "50%",
-                            background: "#FFFFFF",
-                            border: "solid 2px #111111",
-                            position: "relative",
-                            top: 10,
-                            right: 32
-                        }}>
-                        </div>
+                    <div
+                        style={{
+                            fontSize: 20,
+                            paddingBottom: 25,
+                            display: "flex",
+                        }}
+                    >
+                        <div
+                            style={{
+                                width: 13,
+                                height: 13,
+                                borderRadius: "50%",
+                                background: "#FFFFFF",
+                                border: "solid 2px #111111",
+                                position: "relative",
+                                top: 10,
+                                right: 32,
+                            }}
+                        ></div>
                         <div style={{ position: "relative", right: 5 }}>
                             {group.time}
                         </div>
                     </div>
-                    <div style={{ background: "rgba(136, 138, 209, 0.07)", padding: 35, borderRadius: 5 }}>
+                    <div
+                        style={{
+                            background: "rgba(136, 138, 209, 0.07)",
+                            padding: 35,
+                            borderRadius: 5,
+                        }}
+                    >
                         {entries}
                     </div>
                 </div>
@@ -62,7 +75,7 @@ class Changelog extends Component {
                             fontSize: 40,
                             paddingTop: 30,
                             paddingBottom: 40,
-                            fontWeight: "bold"
+                            fontWeight: "bold",
                         }}
                     >
                         Changelog
@@ -71,7 +84,7 @@ class Changelog extends Component {
                         style={{
                             borderLeft: "dotted 1px black",
                             paddingTop: 0,
-                            paddingLeft: 25
+                            paddingLeft: 25,
                         }}
                     >
                         {groups}
