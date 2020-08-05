@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 
 import { userLogin } from "store/actions/auth/login_actions";
 
-import { changeTab } from "store/actions/general/homepage_actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
@@ -82,7 +81,6 @@ class LoginBox extends Component {
         this.setState({ failures: this.props.failed_login_attempts });
         this.updateWindowDimensions();
         window.addEventListener("resize", this.updateWindowDimensions);
-        this.props.dispatch(changeTab("auth"));
     }
 
     componentDidUpdate(prevProps) {
@@ -217,7 +215,7 @@ class LoginBox extends Component {
                         </Button>
                     ) : (
                         <Button
-                            disabled="true"
+                            disabled={true}
                             style={{
                                 marginTop: 5,
                                 color: "white",
@@ -233,7 +231,7 @@ class LoginBox extends Component {
                     )
                 ) : (
                     <Button
-                        disabled="true"
+                        disabled={true}
                         onClick={this.handleLogin}
                         style={{
                             marginTop: 5,
