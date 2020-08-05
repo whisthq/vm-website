@@ -93,7 +93,6 @@ class CheckoutForm extends Component {
                     successful_payment_attempt: true,
                 },
                 function () {
-                    console.log("SUCCESSFUL PAYMENT ATTEMPT");
                     this.props.callback();
                 }
             );
@@ -113,6 +112,7 @@ class CheckoutForm extends Component {
         }
 
         if (this.props.payment && Object.keys(this.props.payment).length > 0) {
+            console.log(this.props.payment.trial_end);
             if (
                 this.state.trialEnd === "" &&
                 this.props.payment.trial_end &&
