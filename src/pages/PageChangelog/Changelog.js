@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Header from "components/header";
 import Footer from "components/footer";
 import { Container, Row, Col } from "react-bootstrap";
-import ScrollAnimation from 'react-animate-on-scroll';
 
 import { changelogData } from "pages/PageChangelog/constants/changes";
 
@@ -48,11 +47,9 @@ class Changelog extends Component {
                             {group.time}
                         </div>
                     </div>
-                    <ScrollAnimation animateIn="fadeIn" duration={1}>
-                        <div style={{ background: "rgba(136, 138, 209, 0.07)", padding: 35, borderRadius: 5 }}>
-                            {entries}
-                        </div>
-                    </ScrollAnimation>
+                    <div style={{ background: "rgba(136, 138, 209, 0.07)", padding: 35, borderRadius: 5 }}>
+                        {entries}
+                    </div>
                 </div>
             );
         });
