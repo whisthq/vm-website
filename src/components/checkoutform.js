@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
 import { chargeStripe } from "store/actions/dashboard/stripe_actions";
+import { getZipState } from "utils/zipcode";
+import { TAX_RATES } from "utils/taxes";
 
 import moment from "moment";
 
@@ -20,7 +22,9 @@ class CheckoutForm extends Component {
             failed_referral_attempt: false,
             creditCard: true,
             trial_end: "",
-            successful_payment_attempt: false,
+            billingState: null,
+            taxPercent: 0,
+            monthlyCharge: 5,
         };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -51,6 +55,7 @@ class CheckoutForm extends Component {
                         this.props.plan.toLowerCase()
                     )
                 );
+                this.props.callback();
             } else {
                 this.setState({
                     processing: false,
@@ -82,23 +87,6 @@ class CheckoutForm extends Component {
                 processing: false,
             });
         }
-
-        if (
-            prevProps.successful_payment_attempts !==
-                this.props.successful_payment_attempts &&
-            !this.state.successful_payment_attempt
-        ) {
-            this.setState(
-                {
-                    successful_payment_attempt: true,
-                },
-                function () {
-                    console.log("SUCCESSFUL PAYMENT ATTEMPT");
-                    this.props.callback();
-                }
-            );
-        }
-
         if (
             prevProps.failed_referral_attempts !==
                 this.props.failed_referral_attempts &&
@@ -158,7 +146,30 @@ class CheckoutForm extends Component {
                     .format("MMMM Do, YYYY"),
             });
         }
+
+        if (this.props.plan) {
+            if (this.props.plan === "Hourly") {
+                this.setState({ monthlyCharge: 5 });
+            } else if (this.props.plan === "Monthly") {
+                this.setState({ monthlyCharge: 39 });
+            } else {
+                this.setState({ monthlyCharge: 99 });
+            }
+        }
     }
+
+    handleCardChange = (evt) => {
+        let postCode = evt.value.postalCode;
+        if (postCode !== null) {
+            let out = getZipState(postCode);
+            if (out !== null) {
+                this.setState({
+                    billingState: out.state,
+                    taxPercent: TAX_RATES[out.st],
+                });
+            }
+        }
+    };
 
     render() {
         const style = {
@@ -190,7 +201,11 @@ class CheckoutForm extends Component {
                         borderRadius: 4,
                     }}
                 >
-                    <CardElement className="MyCardElement" style={style} />
+                    <CardElement
+                        className="MyCardElement"
+                        style={style}
+                        onChange={this.handleCardChange}
+                    />
                 </label>
                 <div className="referral-code">
                     <input
@@ -285,103 +300,121 @@ class CheckoutForm extends Component {
                             <div style={{ height: 20 }}></div>
                         )}
                     </div>
-                    {this.props.plan === "Hourly" ? (
-                        <div
-                            style={{
-                                fontSize: 12,
-                                marginTop: 50,
-                                display: "block",
-                            }}
-                        >
-                            <div style={{ display: "inline", float: "left" }}>
-                                Monthly Charge
-                            </div>
-                            <div
-                                style={{
-                                    display: "inline",
-                                    float: "right",
-                                    fontWeight: "bold",
-                                }}
-                            >
-                                $5.00
-                            </div>
-                        </div>
-                    ) : this.props.plan === "Monthly" ? (
-                        <div
-                            style={{
-                                fontSize: 12,
-                                marginTop: 50,
-                                display: "block",
-                            }}
-                        >
-                            <div style={{ display: "inline", float: "left" }}>
-                                Monthly Charge
-                            </div>
-                            <div
-                                style={{
-                                    display: "inline",
-                                    float: "right",
-                                    fontWeight: "bold",
-                                }}
-                            >
-                                $39.00
-                            </div>
-                        </div>
-                    ) : (
-                        <div
-                            style={{
-                                fontSize: 12,
-                                marginTop: 50,
-                                display: "block",
-                            }}
-                        >
-                            <div style={{ display: "inline", float: "left" }}>
-                                Monthly Charge
-                            </div>
-                            <div
-                                style={{
-                                    display: "inline",
-                                    float: "right",
-                                    fontWeight: "bold",
-                                }}
-                            >
-                                $99.00
-                            </div>
-                        </div>
-                    )}
-                    <br />
                     <div
-                        style={{ fontSize: 12, marginTop: 1, display: "block" }}
+                        style={{
+                            fontSize: 12,
+                            marginTop: 5,
+                        }}
+                        className="d-flex justify-content-between"
                     >
-                        <div style={{ display: "inline", float: "left" }}>
-                            Plan
-                        </div>
+                        <div>Plan</div>
                         <div
                             style={{
-                                display: "inline",
-                                float: "right",
                                 fontWeight: "bold",
                             }}
                         >
                             {this.props.plan}
                         </div>
                     </div>
-                    <br />
                     <div
                         style={{
                             fontSize: 12,
-                            marginTop: 1,
-                            display: "block",
-                            marginBottom: 45,
+                            marginTop: 15,
                         }}
+                        className="d-flex justify-content-between"
                     >
-                        <div style={{ display: "inline", float: "left" }}>
-                            Free Trial Ends
-                        </div>
+                        <div>Monthly Charge</div>
                         <div
                             style={{
-                                display: "inline",
-                                float: "right",
+                                fontWeight: "bold",
+                            }}
+                        >
+                            ${this.state.monthlyCharge.toFixed(2)} USD
+                        </div>
+                    </div>
+                    {this.state.billingState !== null && (
+                        <div
+                            style={{
+                                fontSize: 12,
+                                marginTop: 5,
+                            }}
+                            className="d-flex justify-content-between"
+                        >
+                            <div style={{ color: "grey" }}>
+                                Sales tax - {this.state.billingState} (
+                                {this.state.taxPercent}%)
+                            </div>
+                            <div
+                                style={{
+                                    fontWeight: "bold",
+                                }}
+                            >
+                                $
+                                {(
+                                    this.state.monthlyCharge *
+                                    this.state.taxPercent *
+                                    0.01
+                                ).toFixed(2)}{" "}
+                                USD
+                            </div>
+                        </div>
+                    )}
+                    <div
+                        style={{
+                            fontSize: 12,
+                            marginTop: 5,
+                        }}
+                        className="d-flex justify-content-between"
+                    >
+                        <div>Total</div>
+                        <div
+                            style={{
+                                fontWeight: "bold",
+                            }}
+                        >
+                            $
+                            {(
+                                this.state.monthlyCharge +
+                                this.state.monthlyCharge *
+                                    this.state.taxPercent *
+                                    0.01
+                            ).toFixed(2)}{" "}
+                            USD
+                        </div>
+                    </div>
+                    <div
+                        style={{
+                            fontSize: 12,
+                            marginTop: 5,
+                        }}
+                        className="d-flex justify-content-between"
+                    >
+                        <div>Amount due</div>
+                        <div
+                            style={{
+                                fontWeight: "bold",
+                            }}
+                        >
+                            $
+                            {(
+                                this.state.monthlyCharge +
+                                this.state.monthlyCharge *
+                                    this.state.taxPercent *
+                                    0.01
+                            ).toFixed(2)}{" "}
+                            USD
+                        </div>
+                    </div>
+                    <div
+                        style={{
+                            fontSize: 12,
+                            marginTop: 15,
+                        }}
+                        className="d-flex justify-content-between"
+                    >
+                        <div>Free Trial Ends</div>
+                        <div
+                            style={{
                                 fontWeight: "bold",
                             }}
                         >
@@ -395,7 +428,6 @@ class CheckoutForm extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state);
     return {
         stripe_status: state.DashboardReducer.stripe_status,
         failed_payment_attempts: state.DashboardReducer.failed_payment_attempts,
@@ -405,8 +437,6 @@ function mapStateToProps(state) {
         customer_status: state.DashboardReducer.customer_status,
         customer: state.DashboardReducer.customer,
         payment: state.DashboardReducer.payment,
-        successful_payment_attempts:
-            state.DashboardReducer.successful_payment_attempts,
     };
 }
 

@@ -86,6 +86,7 @@ class SettingsView extends Component {
                         style={{
                             paddingTop: 40,
                             paddingBottom: 50,
+                            width: "100%",
                         }}
                     >
                         <div
@@ -111,7 +112,7 @@ class SettingsView extends Component {
                                                     <Col
                                                         sm={6}
                                                         lg={4}
-                                                        xl={3}
+                                                        xl={4}
                                                         style={{
                                                             paddingRight:
                                                                 this.state
@@ -173,7 +174,7 @@ class SettingsView extends Component {
                                         <Col
                                             sm={6}
                                             md={4}
-                                            xl={3}
+                                            xl={4}
                                             className="pointerOnHover"
                                             style={{
                                                 paddingRight:
