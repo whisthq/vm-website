@@ -238,251 +238,251 @@ class Header extends Component {
                                             </Link>
                                         </div>
                                     ) : (
-                                                <div>
-                                                    <HashLink
-                                                        onClick={() =>
-                                                            this.switchTab("personal")
-                                                        }
-                                                        className="headerlink"
-                                                        to="/"
-                                                        style={{
-                                                            color: `${this.props.color}`,
-                                                            textDecoration: "none",
-                                                            textAlign: "center",
-                                                            fontSize: 16,
-                                                            marginTop: 12,
-                                                        }}
-                                                    >
-                                                        <span
-                                                            style={this.props.linkStyle}
-                                                        >
-                                                            Product
+                                        <div>
+                                            <HashLink
+                                                onClick={() =>
+                                                    this.switchTab("personal")
+                                                }
+                                                className="headerlink"
+                                                to="/"
+                                                style={{
+                                                    color: `${this.props.color}`,
+                                                    textDecoration: "none",
+                                                    textAlign: "center",
+                                                    fontSize: 16,
+                                                    marginTop: 12,
+                                                }}
+                                            >
+                                                <span
+                                                    style={this.props.linkStyle}
+                                                >
+                                                    Product
                                                 </span>
-                                                    </HashLink>
-                                                    <HashLink
-                                                        onClick={() =>
-                                                            this.switchTab("about")
-                                                        }
-                                                        className="headerlink"
-                                                        to="/about"
-                                                        style={{
-                                                            color: `${this.props.color}`,
-                                                            textDecoration: "none",
-                                                            textAlign: "center",
-                                                            fontSize: 16,
-                                                            marginTop: 12,
-                                                            marginLeft: 20,
-                                                        }}
-                                                    >
-                                                        <span
-                                                            style={this.props.linkStyle}
-                                                        >
-                                                            Company
+                                            </HashLink>
+                                            <HashLink
+                                                onClick={() =>
+                                                    this.switchTab("about")
+                                                }
+                                                className="headerlink"
+                                                to="/about"
+                                                style={{
+                                                    color: `${this.props.color}`,
+                                                    textDecoration: "none",
+                                                    textAlign: "center",
+                                                    fontSize: 16,
+                                                    marginTop: 12,
+                                                    marginLeft: 20,
+                                                }}
+                                            >
+                                                <span
+                                                    style={this.props.linkStyle}
+                                                >
+                                                    Company
                                                 </span>
-                                                    </HashLink>
-                                                    <a
-                                                        href="mailto: hello@fractalcomputers.com"
-                                                        style={{
-                                                            color: `${this.props.color}`,
-                                                            textDecoration: "none",
-                                                            textAlign: "center",
-                                                            fontSize: 16,
-                                                            marginTop: 12,
-                                                            marginLeft: 20,
-                                                        }}
-                                                    >
-                                                        <span
-                                                            style={this.props.linkStyle}
-                                                        >
-                                                            Contact Us
+                                            </HashLink>
+                                            <a
+                                                href="mailto: hello@fractalcomputers.com"
+                                                style={{
+                                                    color: `${this.props.color}`,
+                                                    textDecoration: "none",
+                                                    textAlign: "center",
+                                                    fontSize: 16,
+                                                    marginTop: 12,
+                                                    marginLeft: 20,
+                                                }}
+                                            >
+                                                <span
+                                                    style={this.props.linkStyle}
+                                                >
+                                                    Contact Us
                                                 </span>
-                                                    </a>
-                                                    <Link to="/auth">
-                                                        <Button
-                                                            style={{
-                                                                fontWeight: "bold",
-                                                                marginLeft: 35,
-                                                                color: "#1ba8e0",
-                                                                border: "none",
-                                                                paddingLeft: 20,
-                                                                paddingRight: 20,
-                                                                padding: "12px 30px",
-                                                                background:
-                                                                    "rgba(94, 195, 235, 0.2)",
-                                                            }}
-                                                        >
-                                                            My Account
+                                            </a>
+                                            <Link to="/auth">
+                                                <Button
+                                                    style={{
+                                                        fontWeight: "bold",
+                                                        marginLeft: 35,
+                                                        color: "#1ba8e0",
+                                                        border: "none",
+                                                        paddingLeft: 20,
+                                                        paddingRight: 20,
+                                                        padding: "12px 30px",
+                                                        background:
+                                                            "rgba(94, 195, 235, 0.2)",
+                                                    }}
+                                                >
+                                                    My Account
                                                 </Button>
-                                                    </Link>
-                                                </div>
-                                            )}
+                                            </Link>
+                                        </div>
+                                    )}
                                 </div>
                             ) : (
-                                    <div></div>
-                                )}
+                                <div></div>
+                            )}
                         </div>
                     </div>
                 ) : (
+                    <div
+                        style={{
+                            paddingLeft: 35,
+                            paddingRight: 25,
+                            minHeight: 30,
+                        }}
+                    >
                         <div
                             style={{
-                                paddingLeft: 35,
-                                paddingRight: 25,
-                                minHeight: 30,
+                                color: "white",
+                                fontWeight: "bold",
+                                float: "left",
                             }}
                         >
+                            <Link
+                                to="/"
+                                style={{ color: "#111111", fontSize: 20 }}
+                            >
+                                <img
+                                    src={Logo}
+                                    alt=""
+                                    style={{
+                                        height: 20,
+                                        position: "relative",
+                                        bottom: 2,
+                                        right: 10,
+                                    }}
+                                />
+                                <span style={{ color: `${this.props.title}` }}>
+                                    Fractal
+                                </span>
+                            </Link>
+                        </div>
+                        {this.props.homepage ? (
+                            <div style={{ float: "right", zIndex: 100 }}>
+                                <FaBars
+                                    onClick={() => this.openMenu(true)}
+                                    style={{ color: "#111111" }}
+                                />
+                            </div>
+                        ) : (
+                            <div></div>
+                        )}
+                        {this.state.menu ? (
                             <div
                                 style={{
-                                    color: "white",
-                                    fontWeight: "bold",
-                                    float: "left",
+                                    position: "fixed",
+                                    top: 0,
+                                    left: 0,
+                                    width: "100vw",
+                                    height: "100vh",
+                                    background: "white",
+                                    zIndex: 1000,
+                                    textAlign: "center",
                                 }}
                             >
-                                <Link
-                                    to="/"
-                                    style={{ color: "#111111", fontSize: 20 }}
-                                >
-                                    <img
-                                        src={Logo}
-                                        alt=""
+                                <div style={{ padding: 35, paddingTop: 30 }}>
+                                    <FaTimes
+                                        onClick={() => this.openMenu(false)}
                                         style={{
-                                            height: 20,
-                                            position: "relative",
-                                            bottom: 2,
-                                            right: 10,
+                                            color: "#333333",
+                                            float: "right",
+                                            height: 30,
                                         }}
                                     />
-                                    <span style={{ color: `${this.props.title}` }}>
-                                        Fractal
-                                </span>
-                                </Link>
-                            </div>
-                            {this.props.homepage ? (
-                                <div style={{ float: "right", zIndex: 100 }}>
-                                    <FaBars
-                                        onClick={() => this.openMenu(true)}
-                                        style={{ color: "#111111" }}
-                                    />
                                 </div>
-                            ) : (
-                                    <div></div>
-                                )}
-                            {this.state.menu ? (
-                                <div
-                                    style={{
-                                        position: "fixed",
-                                        top: 0,
-                                        left: 0,
-                                        width: "100vw",
-                                        height: "100vh",
-                                        background: "white",
-                                        zIndex: 1000,
-                                        textAlign: "center",
-                                    }}
-                                >
-                                    <div style={{ padding: 35, paddingTop: 30 }}>
-                                        <FaTimes
-                                            onClick={() => this.openMenu(false)}
-                                            style={{
-                                                color: "#333333",
-                                                float: "right",
-                                                height: 30,
-                                            }}
-                                        />
-                                    </div>
-                                    <div style={{ padding: 35, marginTop: 50 }}>
-                                        {this.props.current_page === "personal" ? (
-                                            <div>
-                                                <div
-                                                    onClick={() =>
-                                                        this.switchTab("personal")
-                                                    }
-                                                    style={{ marginBottom: 10 }}
+                                <div style={{ padding: 35, marginTop: 50 }}>
+                                    {this.props.current_page === "personal" ? (
+                                        <div>
+                                            <div
+                                                onClick={() =>
+                                                    this.switchTab("personal")
+                                                }
+                                                style={{ marginBottom: 10 }}
+                                            >
+                                                <HashLink
+                                                    className="headerlink"
+                                                    to="/"
+                                                    style={{
+                                                        color: "#5ec3eb",
+                                                        fontWeight: "bold",
+                                                    }}
                                                 >
-                                                    <HashLink
-                                                        className="headerlink"
-                                                        to="/"
-                                                        style={{
-                                                            color: "#5ec3eb",
-                                                            fontWeight: "bold",
-                                                        }}
-                                                    >
-                                                        Product
+                                                    Product
                                                 </HashLink>
-                                                </div>
-                                                <div
-                                                    onClick={() =>
-                                                        this.switchTab("about")
-                                                    }
-                                                    style={{ marginBottom: 10 }}
-                                                >
-                                                    <HashLink
-                                                        className="headerlink"
-                                                        to="/about"
-                                                        style={{ color: "#333333" }}
-                                                    >
-                                                        Company
-                                                </HashLink>
-                                                </div>
                                             </div>
-                                        ) : (
-                                                <div>
-                                                    <div
-                                                        onClick={() =>
-                                                            this.switchTab("personal")
-                                                        }
-                                                        style={{ marginBottom: 10 }}
-                                                    >
-                                                        <HashLink
-                                                            className="headerlink"
-                                                            to="/"
-                                                            style={{ color: "#333333" }}
-                                                        >
-                                                            Product
-                                                </HashLink>
-                                                    </div>
-                                                    <div
-                                                        onClick={() =>
-                                                            this.switchTab("about")
-                                                        }
-                                                        style={{ marginBottom: 10 }}
-                                                    >
-                                                        <HashLink
-                                                            className="headerlink"
-                                                            to="/about"
-                                                            style={{
-                                                                color: "#5ec3eb",
-                                                                fontWeight: "bold",
-                                                            }}
-                                                        >
-                                                            Company
-                                                </HashLink>
-                                                    </div>
-                                                </div>
-                                            )}
-                                        <div style={{ marginBottom: 10 }}>
-                                            <a
-                                                href="mailto: hello@fractalcomputers.com"
-                                                style={{ color: "#333333" }}
+                                            <div
+                                                onClick={() =>
+                                                    this.switchTab("about")
+                                                }
+                                                style={{ marginBottom: 10 }}
                                             >
-                                                Contact Us
+                                                <HashLink
+                                                    className="headerlink"
+                                                    to="/about"
+                                                    style={{ color: "#333333" }}
+                                                >
+                                                    Company
+                                                </HashLink>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <div>
+                                            <div
+                                                onClick={() =>
+                                                    this.switchTab("personal")
+                                                }
+                                                style={{ marginBottom: 10 }}
+                                            >
+                                                <HashLink
+                                                    className="headerlink"
+                                                    to="/"
+                                                    style={{ color: "#333333" }}
+                                                >
+                                                    Product
+                                                </HashLink>
+                                            </div>
+                                            <div
+                                                onClick={() =>
+                                                    this.switchTab("about")
+                                                }
+                                                style={{ marginBottom: 10 }}
+                                            >
+                                                <HashLink
+                                                    className="headerlink"
+                                                    to="/about"
+                                                    style={{
+                                                        color: "#5ec3eb",
+                                                        fontWeight: "bold",
+                                                    }}
+                                                >
+                                                    Company
+                                                </HashLink>
+                                            </div>
+                                        </div>
+                                    )}
+                                    <div style={{ marginBottom: 10 }}>
+                                        <a
+                                            href="mailto: hello@fractalcomputers.com"
+                                            style={{ color: "#333333" }}
+                                        >
+                                            Contact Us
                                         </a>
-                                        </div>
-                                        <div style={{ marginBottom: 10 }}>
-                                            <Link
-                                                className="headerlink"
-                                                to="/auth"
-                                                style={{ color: "#333333" }}
-                                            >
-                                                My Account
+                                    </div>
+                                    <div style={{ marginBottom: 10 }}>
+                                        <Link
+                                            className="headerlink"
+                                            to="/auth"
+                                            style={{ color: "#333333" }}
+                                        >
+                                            My Account
                                         </Link>
-                                        </div>
                                     </div>
                                 </div>
-                            ) : (
-                                    <div></div>
-                                )}
-                        </div>
-                    )}
+                            </div>
+                        ) : (
+                            <div></div>
+                        )}
+                    </div>
+                )}
                 <link
                     rel="stylesheet"
                     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
