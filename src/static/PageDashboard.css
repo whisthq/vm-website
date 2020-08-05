@@ -9,7 +9,7 @@
     display: flex;
     overflow-x: hidden;
     position: relative;
-    bottom: 60px;
+    top: -60px;
 }
 
 .credits-box {
@@ -37,7 +37,7 @@
     font-weight: bold;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 1000px) {
     .right-section {
         padding-left: 40px;
         padding-right: 40px;

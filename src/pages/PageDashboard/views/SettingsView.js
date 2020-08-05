@@ -128,8 +128,7 @@ class SettingsView extends Component {
                                                 <div
                                                     style={{
                                                         fontSize: 14,
-                                                        background:
-                                                            "rgba(94, 195, 235, 0.06)",
+                                                        background: "#0B172B",
                                                         boxShadow:
                                                             "0px 4px 15px rgba(0, 0, 0, 0.2)",
                                                         borderRadius: 7,

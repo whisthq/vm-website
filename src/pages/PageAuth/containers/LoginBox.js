@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 
 import { userLogin } from "store/actions/auth/login_actions";
 
-import { changeTab } from "store/actions/general/homepage_actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleNotch } from "@fortawesome/free-solid-svg-icons";
 
@@ -75,7 +74,6 @@ class LoginBox extends Component {
 
     componentDidMount() {
         this.setState({ failures: this.props.failed_login_attempts });
-        this.props.dispatch(changeTab("auth"));
     }
 
     componentDidUpdate(prevProps) {

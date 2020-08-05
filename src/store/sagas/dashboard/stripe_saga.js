@@ -108,7 +108,7 @@ function* cancelPlan(action) {
     } else {
         yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/disk/delete",
+            config.url.PRIMARY_SERVER + "/azure_disk/delete",
             {
                 username: state.AuthReducer.username,
                 resource_group: config.azure.RESOURCE_GROUP,
