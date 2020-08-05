@@ -73,7 +73,7 @@ ReactDOM.render(
                 <Route exact path="/card" component={CreditCard} />
                 <Route exact path="/about" component={About} />
                 <Route path="/careers" component={Careers} />
-                <Route path="/changelog" component={Changelog} />
+                <Route exact path="/changelog" component={Changelog} />
                 <Route exact path="/plan" component={Plan} />
                 <Route exact path="/storage" component={Storage} />
             </PersistGate>

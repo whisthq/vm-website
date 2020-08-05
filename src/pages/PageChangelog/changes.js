@@ -1,21 +1,22 @@
 export const changelogData = [
     {
         timestamp: 1595462400,
+        year: 2020,
         logs: [
             {
-                type: "protocol",
+                type: "streaming",
                 msg:
-                    "We’ve added support for spectator mode and multiple mice streaming.",
+                    "We have fixed a bug preventing the clipboard from working on Windows and macOS, we have improved connectivity reliability over long distances, and we have improved the efficiency of the screencapture API.",
             },
             {
-                type: "dashboard",
+                type: "website",
                 msg:
-                    "You can now add more than one credit card in the settings page. We also added the option to change your name and delete your account.",
+                    "We've improved the flow of creating a cloud PC and pre-installing applications.",
             },
             {
-                type: "app",
+                type: "applications",
                 msg:
-                    "We have redesigned the client application, by making it easier to view your settings. We also added aesthetic redesigns.",
+                    "We have added a 'How to use' section to the applications with information on how to make the most of all the features available with Fractal.",
             },
         ],
     },
@@ -24,19 +25,19 @@ export const changelogData = [
         year: 2020,
         logs: [
             {
-                type: "protocol",
+                type: "streaming",
                 msg:
-                    "We’ve added support for spectator mode and multiple mice streaming.",
+                    "We've fixed a video decoding bug which caused infrequent crashing on certain older devices, and have added support fro H.265 video compression.",
             },
             {
-                type: "dashboard",
+                type: "website",
                 msg:
-                    "You can now add more than one credit card in the settings page. We also added the option to change your name and delete your account.",
+                    "We have added application pre-installing on Windows cloud PCs. You can now select up to 40+ applications to be preinstalled for you.",
             },
             {
-                type: "app",
+                type: "applications",
                 msg:
-                    "We have redesigned the client application, by making it easier to view your settings. We also added aesthetic redesigns.",
+                    "We have added support for H.265 compression in the applications, which reduces bandwidth requirements for Fractal and is ideal in low-Internet settings.",
             },
         ],
     },

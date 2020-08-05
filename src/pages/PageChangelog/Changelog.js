@@ -33,14 +33,14 @@ class Changelog extends Component {
             return (
                 <div key={index} className="pb-4">
                     <div style={{ fontSize: 18, paddingBottom: 25 }}>
-                        {moment.unix(group.timestamp).format("MMMM YYYY")}
+                        {moment.unix(group.timestamp).format("MMMM DD, YYYY")}
                     </div>
                     {entries}
                 </div>
             );
         });
         return (
-            <div>
+            <div id="top">
                 <Header color="#333333" button="#5ec3eb" homepage />
                 <Container>
                     <div
