@@ -1,7 +1,6 @@
 export const changelogData = [
     {
-        timestamp: 1595462400,
-        year: 2020,
+        time: "July 22, 2020",
         logs: [
             {
                 type: "streaming",
@@ -21,8 +20,7 @@ export const changelogData = [
         ],
     },
     {
-        timestamp: 1592179200,
-        year: 2020,
+        time: "July 14, 2020",
         logs: [
             {
                 type: "streaming",
@@ -38,6 +36,21 @@ export const changelogData = [
                 type: "applications",
                 msg:
                     "We have added support for H.265 compression in the applications, which reduces bandwidth requirements for Fractal and is ideal in low-Internet settings.",
+            },
+        ],
+    },
+    {
+        time: "June 7, 2020",
+        logs: [
+            {
+                type: "streaming",
+                msg:
+                    "We've added GPU video capture to our Linux streaming protocol and are releasing to beta users..",
+            },
+            {
+                type: "website",
+                msg:
+                    "Bug fixes and internal back-end changes. Improved AES security.",
             },
         ],
     },

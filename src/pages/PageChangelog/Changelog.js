@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import Header from "components/header";
 import Footer from "components/footer";
 import { Container, Row, Col } from "react-bootstrap";
-import moment from "moment";
+import ScrollAnimation from 'react-animate-on-scroll';
 
-import { changelogData } from "pages/PageChangelog/changes.js";
+import { changelogData } from "pages/PageChangelog/constants/changes";
 
 class Changelog extends Component {
     render() {
@@ -12,15 +12,15 @@ class Changelog extends Component {
             let entries = group.logs.map((entry, i) => (
                 <Row key={i} className="pb-3">
                     <Col sm={2}>
-                        <div style={{ float: "right" }}>
+                        <div style={{ float: "left" }}>
                             <div
                                 style={{
-                                    color: "#1BA8E0",
-                                    borderRadius: 5,
-                                    borderColor: "#5EC3EB",
-                                    borderStyle: "solid",
-                                    padding: "0 10px",
+                                    color: "white",
+                                    background: "#384994",
+                                    padding: "5px 10px",
                                     fontSize: 13,
+                                    borderRadius: 3,
+                                    marginBottom: 20,
                                 }}
                             >
                                 {entry.type.toUpperCase()}
@@ -32,10 +32,27 @@ class Changelog extends Component {
             ));
             return (
                 <div key={index} className="pb-4">
-                    <div style={{ fontSize: 18, paddingBottom: 25 }}>
-                        {moment.unix(group.timestamp).format("MMMM DD, YYYY")}
+                    <div style={{ fontSize: 20, paddingBottom: 25, display: "flex" }}>
+                        <div style={{
+                            width: 13,
+                            height: 13,
+                            borderRadius: "50%",
+                            background: "#FFFFFF",
+                            border: "solid 2px #111111",
+                            position: "relative",
+                            top: 10,
+                            right: 32
+                        }}>
+                        </div>
+                        <div style={{ position: "relative", right: 5 }}>
+                            {group.time}
+                        </div>
                     </div>
-                    {entries}
+                    <ScrollAnimation animateIn="fadeIn" duration={1}>
+                        <div style={{ background: "rgba(136, 138, 209, 0.07)", padding: 35, borderRadius: 5 }}>
+                            {entries}
+                        </div>
+                    </ScrollAnimation>
                 </div>
             );
         });
@@ -48,11 +65,20 @@ class Changelog extends Component {
                             fontSize: 40,
                             paddingTop: 30,
                             paddingBottom: 40,
+                            fontWeight: "bold"
                         }}
                     >
                         Changelog
                     </div>
-                    {groups}
+                    <div
+                        style={{
+                            borderLeft: "dotted 1px black",
+                            paddingTop: 0,
+                            paddingLeft: 25
+                        }}
+                    >
+                        {groups}
+                    </div>
                 </Container>
                 <Footer />
             </div>
