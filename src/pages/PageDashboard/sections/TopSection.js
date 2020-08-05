@@ -212,7 +212,7 @@ class TopSection extends Component {
             return (
                 <Row style={{ marginTop: 30 }}>
                     {this.props.disk_creation_message !==
-                    "Create Cloud PC command sent to server." ? (
+                        "Create Cloud PC command sent to server." && (
                         <Col
                             xs={12}
                             style={{
@@ -226,8 +226,6 @@ class TopSection extends Component {
                                 below.
                             </div>
                         </Col>
-                    ) : (
-                        <div></div>
                     )}
                     <Col xs={12} md={7}>
                         <Row>
