@@ -18,29 +18,6 @@ Basic continuous integration is set up for this project. For every push or PR, b
 
 To ensure that code formatting is standardized, and to minimize clutter in the commits, you should set up styling with [Prettier](https://prettier.io/) before making any PRs. You may find a variety of tutorial online for your personal setup. This README covers how to set it up on VSCode and Sublime. You can always run Prettier directly from a terminal via `npm run format`.
 
-### [Sublime](https://packagecontrol.io/packages/JsPrettier)
-
-Install prettier if you haven't yet.
-
-```
-# npm (local):
-npm install --save-dev prettier
-
-# npm (global):
-npm install --global prettier
-```
-
-The easiest and recommended way to install Js​Prettier is using Package Control. From the application menu, navigate to:  
-`Tools` -> `Command Palette...` -> `Package Control: Install Package`, type the word JsPrettier, then select it to complete the installation.
-
-Usage
-
-1. Command Palette: From the command palette (ctrl/cmd + shift + p), type JsPrettier Format Code.
-2. Context Menu: Right-click anywhere in the file to bring up the context menu and select JsPrettier Format Code.
-3. Key Binding: There is no default key binding to run Prettier, but you can add your own.
-
-We recommend setting `auto_format` to `true` in Sublime so you won't need to worry about the usage methods.
-
 ### [VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 Launch VS Code Quick Open (Ctrl+P), paste the following command, and press enter.
