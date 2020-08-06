@@ -20,6 +20,7 @@ class Header extends Component {
     }
 
     openMenu = (open) => {
+        console.log(open);
         this.setState({ menu: open });
     };
 
@@ -43,9 +44,9 @@ class Header extends Component {
                     style={{
                         width: "100%",
                         paddingTop: 20,
-                        overflowX: "hidden",
                         paddingLeft: "80px",
                         paddingRight: "80px",
+                        overflowX: "hidden",
                         display: "flex",
                     }}
                 >
@@ -170,7 +171,6 @@ class Header extends Component {
                     style={{
                         width: "100%",
                         paddingTop: 20,
-                        overflowX: "hidden",
                         paddingLeft: 35,
                         paddingRight: 25,
                         minHeight: 30,
