@@ -16,27 +16,9 @@ class Auth extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            width: 0,
-            height: 0,
-            modalShow: false,
-            showPopup: false,
             processing: false,
             google_button_active: false,
         };
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-    }
-
-    componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener("resize", this.updateWindowDimensions);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWindowDimensions);
-    }
-
-    updateWindowDimensions() {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
     }
 
     setProcessing = (p) => {
@@ -44,11 +26,6 @@ class Auth extends Component {
     };
 
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-        if (this.state.width > 700 && this.state.modalShow) {
-            modalClose();
-        }
-
         return (
             <div id="top">
                 {this.props.loggedIn && this.props.email_verified ? (
@@ -67,7 +44,6 @@ class Auth extends Component {
                                 minHeight: "100vh",
                                 paddingTop: 50,
                                 backgroundColor: "white",
-                                position: "relative",
                             }}
                         >
                             <div
