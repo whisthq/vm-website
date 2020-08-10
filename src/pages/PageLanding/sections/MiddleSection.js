@@ -8,6 +8,7 @@ import "static/PageLanding.css";
 
 import CloudPCBox from "pages/PageLanding/containers/cloudPCBox";
 import SetupBox from "pages/PageLanding/containers/setupBox";
+import UseCaseModal from "pages/PageLanding/containers/useCaseModal";
 
 import Software from "assets/large_graphics/software.svg";
 import Gaming from "assets/large_graphics/gaming.svg";
@@ -24,6 +25,8 @@ class MiddleSection extends Component {
         this.state = {
             width: 0,
             height: 0,
+            modalShow: false,
+            useCase: null,
         };
     }
 
@@ -120,8 +123,28 @@ class MiddleSection extends Component {
                         className="fractal-container"
                         style={{ paddingTop: 40 }}
                     >
+                        <UseCaseModal
+                            show={this.state.modalShow}
+                            onHide={() =>
+                                this.setState({
+                                    modalShow: false,
+                                    useCase: null,
+                                })
+                            }
+                            case={this.state.useCase}
+                        />
                         <Row>
-                            <Col md={4} xs={12} className="col">
+                            <Col
+                                md={4}
+                                xs={12}
+                                className="col"
+                                onClick={() =>
+                                    this.setState({
+                                        modalShow: true,
+                                        useCase: "Productivity",
+                                    })
+                                }
+                            >
                                 <div
                                     className="section"
                                     style={{ background: "#F2DEF8" }}
@@ -136,7 +159,17 @@ class MiddleSection extends Component {
                                 </div>
                                 <div className="subtext">Productivity</div>
                             </Col>
-                            <Col md={4} xs={12} className="col">
+                            <Col
+                                md={4}
+                                xs={12}
+                                className="col"
+                                onClick={() =>
+                                    this.setState({
+                                        modalShow: true,
+                                        useCase: "Gaming",
+                                    })
+                                }
+                            >
                                 <div
                                     className="section"
                                     style={{ background: "#D7EAF5" }}
@@ -151,7 +184,17 @@ class MiddleSection extends Component {
                                 </div>
                                 <div className="subtext">Gaming</div>
                             </Col>
-                            <Col md={4} xs={12} className="col">
+                            <Col
+                                md={4}
+                                xs={12}
+                                className="col"
+                                onClick={() =>
+                                    this.setState({
+                                        modalShow: true,
+                                        useCase: "Creative",
+                                    })
+                                }
+                            >
                                 <div
                                     className="section"
                                     style={{ background: "#D7F5F5" }}
