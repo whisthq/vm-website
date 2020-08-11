@@ -71,7 +71,7 @@ ReactDOM.render(
                         component={TermsOfService}
                     />
                     <Route exact path="/cookie" component={Cookie} />
-                    <Route exact path="/verify" component={EmailVerification} />
+                    <Route path="/verify" component={EmailVerification} />
                     <Route exact path="/card" component={CreditCard} />
                     <Route exact path="/about" component={About} />
                     <Route path="/careers" component={Careers} />

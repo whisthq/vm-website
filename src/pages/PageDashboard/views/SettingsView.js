@@ -60,14 +60,12 @@ class SettingsView extends Component {
         const fonts = [
             { cssSrc: "https://fonts.googleapis.com/css?family=Maven+Pro" },
         ];
-        console.log(this.props.user);
         if (!this.state.loaded) {
             return (
                 <div
                     style={{
                         backgroundColor: "white",
                         minHeight: "100vh",
-                        overflowX: "hidden !important",
                         textAlign: "center",
                     }}
                 >

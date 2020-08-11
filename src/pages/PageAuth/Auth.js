@@ -44,7 +44,6 @@ class Auth extends Component {
                                 minHeight: "100vh",
                                 paddingTop: 50,
                                 backgroundColor: "white",
-                                position: "relative",
                             }}
                         >
                             <div

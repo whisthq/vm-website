@@ -54,12 +54,7 @@ class EmailVerification extends Component {
     }
 
     render() {
-        if (
-            !this.props.verificationToken ||
-            this.props.verificationToken === "" ||
-            !this.props.username ||
-            this.props.username === ""
-        ) {
+        if (!this.props.verificationToken || !this.props.username) {
             return (
                 <div>
                     <div style={{ maxWidth: 1920, margin: "auto" }}>
@@ -206,7 +201,7 @@ class EmailVerification extends Component {
                                         Sending
                                     </Button>
                                 )}
-                                {this.state.sent ? (
+                                {this.state.sent && (
                                     <div
                                         style={{
                                             marginTop: 20,
@@ -223,8 +218,6 @@ class EmailVerification extends Component {
                                         />
                                         Sent
                                     </div>
-                                ) : (
-                                    <div></div>
                                 )}
                             </div>
                         </div>
@@ -312,7 +305,7 @@ class EmailVerification extends Component {
                                             Sending
                                         </Button>
                                     )}
-                                    {this.state.sent ? (
+                                    {this.state.sent && (
                                         <div
                                             style={{
                                                 marginTop: 20,
@@ -329,14 +322,11 @@ class EmailVerification extends Component {
                                             />
                                             Sent
                                         </div>
-                                    ) : (
-                                        <div></div>
                                     )}
                                 </div>
                             </div>
                         </div>
                     )}
-                    }
                 </div>
             );
         }

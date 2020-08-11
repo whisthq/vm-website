@@ -10,14 +10,7 @@
     overflow-x: hidden;
     position: relative;
     bottom: 80px;
-}
-
-@media only screen and (max-width: 900px) {
-    .dashboard-flex {
-        display: flex;
-        overflow-x: hidden;
-        position: static;
-    }
+    width: 100%;
 }
 
 .credits-box {
@@ -35,11 +28,6 @@
     width: calc(100% - 400px);
 }
 
-.right-section .date {
-    display: block;
-    float: none;
-}
-
 .right-section .title {
     font-size: 42px;
     font-weight: bold;
@@ -54,6 +42,12 @@
 
     .right-section .title {
         font-size: 35px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .dashboard-flex {
+        position: static;
     }
 }
 
