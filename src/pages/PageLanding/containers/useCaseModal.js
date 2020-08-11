@@ -44,18 +44,25 @@ class UseCaseModal extends Component {
                         <Col md={8}>
                             <ImageFadeIn
                                 style={{
-                                    height: 300,
+                                    width: "100%",
                                     margin: "auto",
                                     borderRadius: 10,
                                 }}
                                 src={images[this.props.case]}
                             />
                         </Col>
-                        <Col md={4}>
+                        <Col
+                            md={4}
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "space-between",
+                            }}
+                        >
                             <div
                                 style={{
                                     fontSize: 24,
-                                    fontWeight: 800,
+                                    fontWeight: 1000,
                                     color: "#111111",
                                 }}
                             >
@@ -73,13 +80,18 @@ class UseCaseModal extends Component {
                             <div
                                 style={{
                                     fontSize: 16,
-                                    fontWeight: 800,
+                                    fontWeight: 1000,
                                     color: "#111111",
                                     paddingTop: 20,
                                 }}
                             >
-                                Read more about {usage[this.props.case]} on
-                                Fractal on our blog.
+                                <a
+                                    href="https://medium.com/@fractalcomputers"
+                                    style={{ color: "#111111" }}
+                                >
+                                    Read more about {usage[this.props.case]} on
+                                    Fractal on our blog.
+                                </a>
                             </div>
                         </Col>
                     </Row>

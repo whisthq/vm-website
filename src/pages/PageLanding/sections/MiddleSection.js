@@ -137,7 +137,7 @@ class MiddleSection extends Component {
                             <Col
                                 md={4}
                                 xs={12}
-                                className="col"
+                                className="col clickable"
                                 onClick={() =>
                                     this.setState({
                                         modalShow: true,
@@ -162,7 +162,7 @@ class MiddleSection extends Component {
                             <Col
                                 md={4}
                                 xs={12}
-                                className="col"
+                                className="col clickable"
                                 onClick={() =>
                                     this.setState({
                                         modalShow: true,
@@ -187,11 +187,11 @@ class MiddleSection extends Component {
                             <Col
                                 md={4}
                                 xs={12}
-                                className="col"
+                                className="col clickable"
                                 onClick={() =>
                                     this.setState({
                                         modalShow: true,
-                                        useCase: "Creative",
+                                        useCase: "Graphics",
                                     })
                                 }
                             >
