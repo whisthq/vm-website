@@ -118,6 +118,59 @@ class MiddleSection extends Component {
                         </Row>
                     </div>
                 </div>
+                <div
+                    style={{
+                        background: "white",
+                        paddingTop: 40,
+                    }}
+                >
+                    <div
+                        className="fractal-container"
+                        style={{ paddingBottom: 40 }}
+                    >
+                        <div
+                            style={{
+                                fontWeight: "bold",
+                                fontSize:
+                                    this.state.width > 700
+                                        ? "calc(30px + 1.1vw)"
+                                        : 30,
+                                color: "#111111",
+                                textAlign:
+                                    this.state.width > 700 ? "center" : "left",
+                                marginBottom: 20,
+                            }}
+                        >
+                            Access your desktop anywhere
+                        </div>
+                        <div style={{ margin: "auto" }}>
+                            <p
+                                style={{
+                                    fontSize:
+                                        this.state.width > 700
+                                            ? "calc(14px + 0.4vw)"
+                                            : 14,
+                                    lineHeight:
+                                        this.state.width > 700 ? 1.5 : 1.7,
+                                    textAlign:
+                                        this.state.width > 700
+                                            ? "center"
+                                            : "left",
+                                    maxWidth: 750,
+                                    margin: "auto",
+                                    marginTop: 20,
+                                    marginBottom:
+                                        this.state.width > 700 ? 75 : 40,
+                                }}
+                            >
+                                Need to work in more than one location? Forgot
+                                to upload a file to the cloud, or to commit a
+                                change? Your Fractal cloud PC is accessible from
+                                any Internet-connected device.
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div className="gradient-background">
                     <div
                         className="fractal-container"
@@ -346,124 +399,7 @@ class MiddleSection extends Component {
                         </Row>
                     </div>
                 </div>
-                <div
-                    style={{
-                        background: "white",
-                        paddingTop: 40,
-                    }}
-                >
-                    <div
-                        className="fractal-container"
-                        style={{ paddingBottom: 40 }}
-                    >
-                        <div
-                            style={{
-                                fontWeight: "bold",
-                                fontSize:
-                                    this.state.width > 700
-                                        ? "calc(30px + 1.1vw)"
-                                        : 30,
-                                color: "#111111",
-                                textAlign:
-                                    this.state.width > 700 ? "center" : "left",
-                                marginBottom: 20,
-                            }}
-                        >
-                            Access your desktop anywhere
-                        </div>
-                        <div style={{ margin: "auto" }}>
-                            <p
-                                style={{
-                                    fontSize:
-                                        this.state.width > 700
-                                            ? "calc(14px + 0.4vw)"
-                                            : 14,
-                                    lineHeight:
-                                        this.state.width > 700 ? 1.5 : 1.7,
-                                    textAlign:
-                                        this.state.width > 700
-                                            ? "center"
-                                            : "left",
-                                    maxWidth: 750,
-                                    margin: "auto",
-                                    marginTop: 20,
-                                    marginBottom:
-                                        this.state.width > 700 ? 75 : 40,
-                                }}
-                            >
-                                Need to work in more than one location? Forgot
-                                to upload a file to the cloud, or to commit a
-                                change? Your Fractal cloud PC is accessible from
-                                any Internet-connected device.
-                            </p>
-                        </div>
-                        <Row style={{ margin: "auto" }}>
-                            <Col
-                                md={4}
-                                style={{
-                                    paddingLeft: 0,
-                                    paddingRight:
-                                        this.state.width > 700 ? 20 : 0,
-                                }}
-                            >
-                                <div className="gradient-box">
-                                    <ImageFadeIn
-                                        src={RGBIcon}
-                                        style={{ height: 50 }}
-                                    />
-                                    <div className="title">Color Accuracy</div>
-                                    <p className="text">
-                                        Achieve visually lossless frames with
-                                        our color-accurate streaming technology.
-                                    </p>
-                                </div>
-                            </Col>
-                            <Col
-                                md={4}
-                                style={{
-                                    paddingLeft:
-                                        this.state.width > 700 ? 10 : 0,
-                                    paddingRight:
-                                        this.state.width > 700 ? 10 : 0,
-                                }}
-                            >
-                                <div className="gradient-box">
-                                    <ImageFadeIn
-                                        src={HardDriveIcon}
-                                        style={{ height: 50 }}
-                                    />
-                                    <div className="title">
-                                        Hard Drive Upload
-                                    </div>
-                                    <p className="text">
-                                        Clone your entire hard drive to your
-                                        cloud PC at the click of a button.
-                                    </p>
-                                </div>
-                            </Col>
-                            <Col
-                                md={4}
-                                style={{
-                                    paddingLeft:
-                                        this.state.width > 700 ? 20 : 0,
-                                    paddingRight: 0,
-                                }}
-                            >
-                                <div className="gradient-box">
-                                    <ImageFadeIn
-                                        src={FileIcon}
-                                        style={{ height: 45 }}
-                                    />
-                                    <div className="title">4K Resolution</div>
-                                    <p className="text">
-                                        Experience crisp, native images with
-                                        support for up to 4K resolution.
-                                    </p>
-                                </div>
-                            </Col>
-                        </Row>
-                    </div>
-                </div>
+
                 <div style={{ backgroundColor: "white" }}>
                     <div
                         className="fractal-container"

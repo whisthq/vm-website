@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import Header from "components/header";
 import Footer from "components/footer";
 import TopSection from "pages/PageProduct/sections/TopSection";
-// import MiddleSection from "pages/PageLanding/sections/MiddleSection";
+import MiddleSection from "pages/PageProduct/sections/MiddleSection";
 // import PricingSection from "pages/PageLanding/sections/PricingSection";
 // import BottomSection from "pages/PageLanding/sections/BottomSection";
 
@@ -20,6 +20,9 @@ class Product extends Component {
                 </div>
                 <div style={{ maxWidth: 1920, margin: "auto" }}>
                     <TopSection />
+                </div>
+                <div>
+                    <MiddleSection />
                 </div>
                 <div style={{ textAlign: "left" }}>
                     <Footer />
