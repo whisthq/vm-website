@@ -2,6 +2,10 @@
 const production = {
     url: {
         PRIMARY_SERVER: "https://main-webserver.fractalcomputers.com",
+        GRAPHQL: "https://newdb-wrapper.herokuapp.com/v1/graphql",
+    },
+    graphQL: {
+        SECRET: "Fractalcomputers!",
     },
     stripe: {
         PUBLIC_KEY: "pk_live_XLjiiZB93KN0EjY8hwCxvKmB00whKEIj3U",
@@ -15,6 +19,10 @@ const production = {
 const staging = {
     url: {
         PRIMARY_SERVER: "https://cube-celery-staging.herokuapp.com",
+        GRAPHQL: "https://newdb-wrapper.herokuapp.com/v1/graphql",
+    },
+    graphQL: {
+        SECRET: "Fractalcomputers!",
     },
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
@@ -28,6 +36,10 @@ const staging = {
 const development = {
     url: {
         PRIMARY_SERVER: "http://localhost:7730",
+        GRAPHQL: "https://newdb-wrapper.herokuapp.com/v1/graphql",
+    },
+    graphQL: {
+        SECRET: "Fractalcomputers!",
     },
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
@@ -41,6 +53,10 @@ const development = {
 const local = {
     url: {
         PRIMARY_SERVER: "http://localhost:5000",
+        GRAPHQL: "https://newdb-wrapper.herokuapp.com/v1/graphql",
+    },
+    graphQL: {
+        SECRET: "Fractalcomputers!",
     },
     stripe: {
         PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",

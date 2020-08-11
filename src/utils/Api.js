@@ -1,3 +1,5 @@
+import { config } from "utils/constants.js";
+
 export function apiPost(endpoint, body, token) {
     // var base_url = 'https://cube-vm-server.herokuapp.com/form/store'
     // var full_url = `${base_url}${endpoint}`
@@ -7,6 +9,7 @@ export function apiPost(endpoint, body, token) {
         headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + token,
+            "x-hasura-admin-secret": config.graphQL.SECRET,
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify(body),
