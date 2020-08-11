@@ -235,16 +235,16 @@ class Header extends Component {
                                     <div style={{ marginBottom: 10 }}>
                                         <HashLink
                                             className="headerlink"
-                                            to="/"
+                                            to="/product"
                                             style={{
                                                 color:
                                                     this.props.location
-                                                        .pathname === "/"
+                                                        .pathname === "/product"
                                                         ? `${this.props.button}`
                                                         : `${this.props.color}`,
                                                 fontWeight:
                                                     this.props.location
-                                                        .pathname === "/"
+                                                        .pathname === "/product"
                                                         ? "bold"
                                                         : "normal",
                                             }}

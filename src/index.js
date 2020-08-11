@@ -18,6 +18,7 @@ import history from "utils/history";
 import "static/Shared.css";
 
 import Purchase from "pages/PagePurchase/Purchase";
+import Product from "pages/PageProduct/Product";
 import Auth from "pages/PageAuth/Auth";
 import Landing from "pages/PageLanding/Landing";
 import Dashboard from "pages/PageDashboard/Dashboard";
@@ -59,6 +60,7 @@ ReactDOM.render(
             <PersistGate loading={null} persistor={persistor}>
                 <Switch>
                     <Route exact path="/" component={Landing} />
+                    <Route exact path="/product" component={Product} />
                     <Route exact path="/purchase" component={Purchase} />
                     <Route exact path="/auth" component={Auth} />
                     <Route path="/dashboard" component={Dashboard} />
@@ -74,7 +76,7 @@ ReactDOM.render(
                     <Route exact path="/verify" component={EmailVerification} />
                     <Route exact path="/card" component={CreditCard} />
                     <Route exact path="/about" component={About} />
-                    <Route path="/careers" component={Careers} />
+                    <Route exact path="/careers" component={Careers} />
                     <Route exact path="/changelog" component={Changelog} />
                     <Route exact path="/plan" component={Plan} />
                     <Route exact path="/storage" component={Storage} />

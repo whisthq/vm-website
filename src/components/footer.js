@@ -141,10 +141,10 @@ class Footer extends Component {
                             <Col xs={3} style={{ paddingTop: 15 }}>
                                 <div className="section-name">PRODUCT</div>
                                 <HashLink
-                                    to="/#top"
+                                    to="/product#top"
                                     style={{ textDecoration: "none" }}
                                 >
-                                    <div className="page-link">Cloud PC</div>
+                                    <div className="page-link">Technology</div>
                                 </HashLink>
                                 <HashLink
                                     to="/changelog#top"
@@ -155,21 +155,21 @@ class Footer extends Component {
                             </Col>
                             <Col xs={3} style={{ paddingTop: 15 }}>
                                 <div className="section-name">COMPANY</div>
-                                <HashLink
-                                    to="/about#top"
-                                    style={{ textDecoration: "none" }}
-                                >
-                                    <div className="page-link">About</div>
-                                </HashLink>
                                 <div style={{ fontSize: 13 }}>
-                                    <div>
-                                        <a
-                                            href="mailto: careers@fractalcomputers.com"
-                                            className="page-link"
-                                        >
-                                            Careers
-                                        </a>
-                                    </div>
+                                    <HashLink
+                                        to="/about#top"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        <div className="page-link">About</div>
+                                    </HashLink>
+                                </div>
+                                <div style={{ fontSize: 13 }}>
+                                    <HashLink
+                                        to="/about#careers"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        <div className="page-link">Careers</div>
+                                    </HashLink>
                                 </div>
                             </Col>
                             <Col xs={3} style={{ paddingTop: 15 }}>
