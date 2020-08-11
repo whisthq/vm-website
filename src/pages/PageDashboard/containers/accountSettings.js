@@ -173,9 +173,10 @@ class AccountSettings extends Component {
             /[0-9]/.test(this.state.newPass) &&
             passwordsEquals;
 
+        console.log(this.props.user);
+
         return (
             <div>
-                {" "}
                 <div
                     style={{
                         fontSize: 20,

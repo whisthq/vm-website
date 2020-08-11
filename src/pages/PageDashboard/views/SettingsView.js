@@ -60,7 +60,7 @@ class SettingsView extends Component {
         const fonts = [
             { cssSrc: "https://fonts.googleapis.com/css?family=Maven+Pro" },
         ];
-
+        console.log(this.props.user);
         if (!this.state.loaded) {
             return (
                 <div
@@ -128,7 +128,8 @@ class SettingsView extends Component {
                                                 <div
                                                     style={{
                                                         fontSize: 14,
-                                                        background: "#0B172B",
+                                                        backgroundColor:
+                                                            "rgba(94, 195, 235, 0.06)",
                                                         boxShadow:
                                                             "0px 4px 15px rgba(0, 0, 0, 0.2)",
                                                         borderRadius: 7,
