@@ -62,39 +62,53 @@ class TopSection extends Component {
                                 }}
                             >
                                 <div
-                                    className="title-text"
                                     style={{
-                                        fontSize: 48,
-                                        lineHeight:
-                                            this.state.width > 700 ? 1.3 : 1.4,
-                                        marginTop: 200,
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        justifyContent: "flex-end",
+                                        height: "100%",
+                                        paddingBottom: 40,
                                     }}
                                 >
-                                    Cloud computing as you've never{" "}
-                                    <span className="blue-gradient">seen</span>{" "}
-                                    it before
-                                </div>
-                                <p
-                                    className="title-subtext"
-                                    style={{ paddingRight: 40 }}
-                                >
-                                    Fractal’s proprietary low-latency streaming
-                                    technology is the easiest, most responsive
-                                    way to access a supercomputer on any device.
-                                </p>
-                                <Link to="/dashboard">
-                                    <Button
-                                        className="black-button"
+                                    <div
+                                        className="title-text"
                                         style={{
-                                            display: "inline",
-                                            float: "left",
-                                            marginRight: 20,
-                                            marginTop: 10,
+                                            fontSize: 48,
+                                            lineHeight:
+                                                this.state.width > 700
+                                                    ? 1.3
+                                                    : 1.4,
                                         }}
                                     >
-                                        TRY IT NOW
-                                    </Button>
-                                </Link>
+                                        Cloud computing as you've never{" "}
+                                        <span className="blue-gradient">
+                                            seen
+                                        </span>{" "}
+                                        it before
+                                    </div>
+                                    <p
+                                        className="title-subtext"
+                                        style={{ paddingRight: 40 }}
+                                    >
+                                        Fractal’s proprietary low-latency
+                                        streaming technology is the easiest,
+                                        most responsive way to access a
+                                        supercomputer on any device.
+                                    </p>
+                                    <Link to="/dashboard">
+                                        <Button
+                                            className="black-button"
+                                            style={{
+                                                display: "inline",
+                                                float: "left",
+                                                marginRight: 20,
+                                                marginTop: 10,
+                                            }}
+                                        >
+                                            TRY IT NOW
+                                        </Button>
+                                    </Link>
+                                </div>
                             </Col>
                         </Row>
                     </div>

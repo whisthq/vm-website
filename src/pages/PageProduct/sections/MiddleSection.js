@@ -6,6 +6,8 @@ import ImageFadeIn from "react-image-fade-in";
 import "static/Shared.css";
 import "static/PageProduct.css";
 
+import FeatureBox from "pages/PageProduct/containers/featureBox";
+
 import Click from "assets/large_graphics/click.svg";
 import Devices from "assets/large_graphics/devices.svg";
 import Timer from "assets/large_graphics/timer.svg";
@@ -85,7 +87,75 @@ class MiddleSection extends Component {
                                     ms. That means everything you see or do on
                                     your cloud PC is synced in realtime—you can
                                     even work on the same computer at the same
-                                    time as someone else.{" "}
+                                    time as someone else.
+                                </p>
+                            </Col>
+                        </Row>
+                        <Row className="featureRow">
+                            <Col md={8}>
+                                <p style={{ paddingLeft: 40 }}>
+                                    Fractal’s streaming technology allows
+                                    streaming of audio, video, and input between
+                                    two devices of any type, including virtual
+                                    machines, mobile devices, regular computers
+                                    or containers. This means that you can use
+                                    powerful, highly specialized software on
+                                    your phone or tablet.
+                                </p>
+                            </Col>
+                            <Col md={2}>
+                                <div
+                                    style={{
+                                        textAlign: "left",
+                                        color: "#111111",
+                                        fontSize: 24,
+                                    }}
+                                >
+                                    Multiplatform
+                                </div>
+                            </Col>
+                            <Col md={2}>
+                                {" "}
+                                <ImageFadeIn
+                                    src={Devices}
+                                    style={{
+                                        width: 80,
+                                        display: "block",
+                                        margin: "auto",
+                                    }}
+                                />
+                            </Col>
+                        </Row>
+                        <Row className="featureRow">
+                            <Col md={2}>
+                                {" "}
+                                <ImageFadeIn
+                                    src={Timer}
+                                    style={{
+                                        width: 80,
+                                        display: "block",
+                                        margin: "auto",
+                                    }}
+                                />
+                            </Col>
+                            <Col md={2}>
+                                <div
+                                    style={{
+                                        textAlign: "left",
+                                        color: "#111111",
+                                        fontSize: 24,
+                                    }}
+                                >
+                                    Easy to use
+                                </div>
+                            </Col>
+                            <Col md={8}>
+                                <p style={{ paddingRight: 40 }}>
+                                    Our integrated application stack means that
+                                    you can go from signing up for an account to
+                                    downloading the Fractal application to
+                                    launching your cloud PC in a matter of
+                                    minutes.
                                 </p>
                             </Col>
                         </Row>
