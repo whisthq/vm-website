@@ -6,10 +6,6 @@ import ImageFadeIn from "react-image-fade-in";
 import "static/Shared.css";
 import "static/PageProduct.css";
 
-import CloudPCBox from "pages/PageLanding/containers/cloudPCBox";
-import SetupBox from "pages/PageLanding/containers/setupBox";
-import UseCaseModal from "pages/PageLanding/containers/useCaseModal";
-
 import Click from "assets/large_graphics/click.svg";
 import Devices from "assets/large_graphics/devices.svg";
 import Timer from "assets/large_graphics/timer.svg";
@@ -56,7 +52,7 @@ class MiddleSection extends Component {
                 >
                     <div
                         className="fractal-container"
-                        style={{ paddingBottom: 40 }}
+                        style={{ paddingBottom: 40, marginTop: 40 }}
                     >
                         <Row className="featureRow">
                             <Col md={2}>

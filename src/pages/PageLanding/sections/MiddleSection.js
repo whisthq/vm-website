@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ImageFadeIn from "react-image-fade-in";
+import { HashLink } from "react-router-hash-link";
 
 import "static/Shared.css";
 import "static/PageLanding.css";
 
 import CloudPCBox from "pages/PageLanding/containers/cloudPCBox";
 import SetupBox from "pages/PageLanding/containers/setupBox";
-import UseCaseModal from "pages/PageLanding/containers/useCaseModal";
+import UseCaseBox from "pages/PageLanding/containers/useCaseBox";
 
 import Software from "assets/large_graphics/software.svg";
 import Gaming from "assets/large_graphics/gaming.svg";
@@ -25,8 +26,6 @@ class MiddleSection extends Component {
         this.state = {
             width: 0,
             height: 0,
-            modalShow: false,
-            useCase: null,
         };
     }
 
@@ -118,149 +117,73 @@ class MiddleSection extends Component {
                         </Row>
                     </div>
                 </div>
-                <div
-                    style={{
-                        background: "white",
-                        paddingTop: 40,
-                    }}
-                >
-                    <div
-                        className="fractal-container"
-                        style={{ paddingBottom: 40 }}
-                    >
-                        <div
-                            style={{
-                                fontWeight: "bold",
-                                fontSize:
-                                    this.state.width > 700
-                                        ? "calc(30px + 1.1vw)"
-                                        : 30,
-                                color: "#111111",
-                                textAlign:
-                                    this.state.width > 700 ? "center" : "left",
-                                marginBottom: 20,
-                            }}
-                        >
-                            Access your desktop anywhere
-                        </div>
-                        <div style={{ margin: "auto" }}>
-                            <p
-                                style={{
-                                    fontSize:
-                                        this.state.width > 700
-                                            ? "calc(14px + 0.4vw)"
-                                            : 14,
-                                    lineHeight:
-                                        this.state.width > 700 ? 1.5 : 1.7,
-                                    textAlign:
-                                        this.state.width > 700
-                                            ? "center"
-                                            : "left",
-                                    maxWidth: 750,
-                                    margin: "auto",
-                                    marginTop: 20,
-                                    marginBottom:
-                                        this.state.width > 700 ? 75 : 40,
-                                }}
-                            >
-                                Need to work in more than one location? Forgot
-                                to upload a file to the cloud, or to commit a
-                                change? Your Fractal cloud PC is accessible from
-                                any Internet-connected device.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+
                 <div className="gradient-background">
                     <div
                         className="fractal-container"
                         style={{ paddingTop: 40 }}
                     >
-                        <UseCaseModal
-                            show={this.state.modalShow}
-                            onHide={() =>
-                                this.setState({
-                                    modalShow: false,
-                                    useCase: null,
-                                })
-                            }
-                            case={this.state.useCase}
-                        />
                         <Row>
-                            <Col
-                                md={4}
-                                xs={12}
-                                className="col clickable"
-                                onClick={() =>
-                                    this.setState({
-                                        modalShow: true,
-                                        useCase: "Productivity",
-                                    })
-                                }
-                            >
-                                <div
-                                    className="section"
-                                    style={{ background: "#F2DEF8" }}
+                            <Col md={4} xs={12} className="col">
+                                <HashLink
+                                    to="/#Productivity"
+                                    style={{ textDecoration: "none" }}
                                 >
-                                    <ImageFadeIn
-                                        src={Software}
-                                        style={{
-                                            width: "100%",
-                                            height: "100%",
-                                        }}
-                                    />
-                                </div>
-                                <div className="subtext">Productivity</div>
+                                    <div
+                                        className="section"
+                                        style={{ background: "#F2DEF8" }}
+                                    >
+                                        <ImageFadeIn
+                                            src={Software}
+                                            style={{
+                                                width: "100%",
+                                                height: "100%",
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="subtext">Productivity</div>
+                                </HashLink>
                             </Col>
-                            <Col
-                                md={4}
-                                xs={12}
-                                className="col clickable"
-                                onClick={() =>
-                                    this.setState({
-                                        modalShow: true,
-                                        useCase: "Gaming",
-                                    })
-                                }
-                            >
-                                <div
-                                    className="section"
-                                    style={{ background: "#D7EAF5" }}
+
+                            <Col md={4} xs={12} className="col">
+                                <HashLink
+                                    to="/#Gaming"
+                                    style={{ textDecoration: "none" }}
                                 >
-                                    <ImageFadeIn
-                                        src={Gaming}
-                                        style={{
-                                            width: "100%",
-                                            height: "100%",
-                                        }}
-                                    />
-                                </div>
-                                <div className="subtext">Gaming</div>
+                                    <div
+                                        className="section"
+                                        style={{ background: "#D7EAF5" }}
+                                    >
+                                        <ImageFadeIn
+                                            src={Gaming}
+                                            style={{
+                                                width: "100%",
+                                                height: "100%",
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="subtext">Gaming</div>
+                                </HashLink>
                             </Col>
-                            <Col
-                                md={4}
-                                xs={12}
-                                className="col clickable"
-                                onClick={() =>
-                                    this.setState({
-                                        modalShow: true,
-                                        useCase: "Graphics",
-                                    })
-                                }
-                            >
-                                <div
-                                    className="section"
-                                    style={{ background: "#D7F5F5" }}
+                            <Col md={4} xs={12} className="col">
+                                <HashLink
+                                    to="/#Graphics"
+                                    style={{ textDecoration: "none" }}
                                 >
-                                    <ImageFadeIn
-                                        src={Creative}
-                                        style={{
-                                            height: "100%",
-                                            float: "right",
-                                        }}
-                                    />
-                                </div>
-                                <div className="subtext">Graphics</div>
+                                    <div
+                                        className="section"
+                                        style={{ background: "#D7F5F5" }}
+                                    >
+                                        <ImageFadeIn
+                                            src={Creative}
+                                            style={{
+                                                height: "100%",
+                                                float: "right",
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="subtext">Graphics</div>
+                                </HashLink>
                             </Col>
                         </Row>
                     </div>
@@ -399,7 +322,84 @@ class MiddleSection extends Component {
                         </Row>
                     </div>
                 </div>
-
+                <div
+                    style={{
+                        background: "white",
+                        paddingTop: 40,
+                    }}
+                >
+                    <div
+                        className="fractal-container"
+                        style={{ paddingBottom: 40 }}
+                    >
+                        <div
+                            style={{
+                                fontWeight: "bold",
+                                fontSize:
+                                    this.state.width > 700
+                                        ? "calc(30px + 1.1vw)"
+                                        : 30,
+                                color: "#111111",
+                                textAlign:
+                                    this.state.width > 700 ? "center" : "left",
+                                marginBottom: 20,
+                            }}
+                        >
+                            Access your desktop anywhere
+                        </div>
+                        <div style={{ margin: "auto" }}>
+                            <p
+                                style={{
+                                    fontSize:
+                                        this.state.width > 700
+                                            ? "calc(14px + 0.4vw)"
+                                            : 14,
+                                    lineHeight:
+                                        this.state.width > 700 ? 1.5 : 1.7,
+                                    textAlign:
+                                        this.state.width > 700
+                                            ? "center"
+                                            : "left",
+                                    maxWidth: 750,
+                                    margin: "auto",
+                                    marginTop: 20,
+                                    marginBottom:
+                                        this.state.width > 700 ? 75 : 40,
+                                }}
+                            >
+                                Need to work in more than one location? Forgot
+                                to upload a file to the cloud, or to commit a
+                                change? Your Fractal cloud PC is accessible from
+                                any Internet-connected device.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <UseCaseBox case={"Productivity"} />
+                <UseCaseBox case={"Gaming"} />
+                <UseCaseBox case={"Graphics"} />
+                <Row>
+                    <Col md={12}>
+                        <div
+                            style={{
+                                fontSize: 16,
+                                fontWeight: 1000,
+                                color: "rgb(85, 85, 85)",
+                                textAlign: "center",
+                                fontStyle: "italic",
+                                marginTop: 10,
+                            }}
+                        >
+                            <a
+                                href="https://medium.com/@fractalcomputers"
+                                style={{ color: "#111111" }}
+                            >
+                                Read more about how people are using Fractal on
+                                our blog.
+                            </a>
+                        </div>
+                    </Col>
+                </Row>
                 <div style={{ backgroundColor: "white" }}>
                     <div
                         className="fractal-container"
