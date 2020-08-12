@@ -93,8 +93,6 @@ function* fetchDiskAttachStatus(action) {
             json = json.json;
         }
 
-        console.log(json);
-
         if (json && json.output && json.state === "PENDING") {
             var now1 = new Date();
             var message1;
@@ -153,7 +151,7 @@ function* fetchDisks(action) {
             apiGet,
             format(
                 config.url.PRIMARY_SERVER +
-                    "/account/disks?username={0}&main={1}",
+                "/account/disks?username={0}&main={1}",
                 state.AuthReducer.username,
                 "false"
             ),

@@ -57,7 +57,7 @@ class BottomSection extends Component {
                 <Container
                     style={{
                         paddingTop: 75,
-                        paddingBottom: this.state.width > 700 ? 150 : 70,
+                        paddingBottom: this.state.width > 700 ? 100 : 70,
                     }}
                 >
                     <div

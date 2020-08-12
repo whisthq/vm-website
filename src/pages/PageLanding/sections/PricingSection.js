@@ -75,12 +75,12 @@ class PricingSection extends Component {
                                     Start your trial now, pick a plan later.
                                 </div>
                             ) : (
-                                <div>
-                                    Try Fractal free for seven days.
-                                    <br />
+                                    <div>
+                                        Try Fractal free for seven days.
+                                        <br />
                                     Start your trial now.
-                                </div>
-                            )}
+                                    </div>
+                                )}
                         </div>
                         {!this.props.require_payment_oncreate && (
                             <div
@@ -118,7 +118,7 @@ class PricingSection extends Component {
                     </div>
                     <Row style={{ margin: "auto", marginTop: 75 }}>
                         <Col
-                            md={4}
+                            md={3}
                             style={{
                                 paddingLeft: 0,
                                 paddingRight: this.state.width > 700 ? 20 : 0,
@@ -126,34 +126,82 @@ class PricingSection extends Component {
                         >
                             <PriceBox
                                 title="Hourly"
+                                include_pricing
                                 price="5"
-                                description="+$0.70 per hour usage"
+                                description1="Ideal for non-daily use"
+                                description2="Additional $0.70/hr usage"
+                                description3="4K + 60FPS support"
                             />
                         </Col>
                         <Col
-                            md={4}
+                            md={3}
                             style={{
-                                paddingLeft: this.state.width > 700 ? 10 : 0,
+                                paddingLeft: this.state.width > 700 ? 0 : 0,
                                 paddingRight: this.state.width > 700 ? 10 : 0,
                             }}
                         >
                             <PriceBox
                                 title="Monthly"
+                                include_pricing
                                 price="39"
-                                description="6 hr/day + $0.50 per extra hr"
+                                description1="Ideal for daily use"
+                                description2="6 hr/day + $0.50/extra hr"
+                                description3="4K + 60FPS support"
                             />
                         </Col>
                         <Col
-                            md={4}
+                            md={3}
+                            style={{
+                                paddingLeft: this.state.width > 700 ? 10 : 0,
+                                paddingRight: this.state.width > 700 ? 0 : 0,
+                            }}
+                        >
+                            <PriceBox
+                                title="Unlimited"
+                                include_pricing
+                                price="99"
+                                description1="Ideal for extended daily use or overnight rendering"
+                                description2="Unlimited daily usage"
+                                description3="4K + 60FPS support"
+                            />
+                        </Col>
+                        <Col
+                            md={3}
                             style={{
                                 paddingLeft: this.state.width > 700 ? 20 : 0,
                                 paddingRight: 0,
                             }}
                         >
                             <PriceBox
-                                title="Unlimited"
-                                price="99"
-                                description="Unlimited monthly usage"
+                                title="Enterprise"
+                                background="#f4f2ff"
+                                include_banner
+                                banner={
+                                    <div>
+                                        <div>
+                                            Pricing varies by team size
+                                        </div>
+                                        <a
+                                            href="mailto: sales@fractalcomputers.com"
+                                            style={{ outline: "none" }}
+                                        >
+                                            <Button style={{
+                                                marginTop: 10,
+                                                background: "#171d87",
+                                                border: "none",
+                                                paddingLeft: 20,
+                                                paddingRight: 20,
+                                                outline: "none"
+                                            }}>
+                                                Contact Us
+                                            </Button>
+                                        </a>
+                                    </div>
+                                }
+                                description1="Ideal for teams of 3+"
+                                description2="Cloud PC management dashboard"
+                                description3="24/7 support"
+                                description4="Built-in file sharing"
                             />
                         </Col>
                     </Row>
