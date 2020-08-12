@@ -55,7 +55,7 @@ class UseCaseBox extends Component {
                     >
                         <div
                             style={{
-                                fontSize: 24,
+                                fontSize: "calc(16px + 0.4vw)",
                                 fontWeight: 1000,
                                 color: "#111111",
                             }}
