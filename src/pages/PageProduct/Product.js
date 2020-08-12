@@ -5,7 +5,7 @@ import Header from "components/header";
 import Footer from "components/footer";
 import TopSection from "pages/PageProduct/sections/TopSection";
 import MiddleSection from "pages/PageProduct/sections/MiddleSection";
-// import PricingSection from "pages/PageLanding/sections/PricingSection";
+import PricingSection from "pages/PageLanding/sections/PricingSection";
 // import BottomSection from "pages/PageLanding/sections/BottomSection";
 
 class Product extends Component {
@@ -23,6 +23,9 @@ class Product extends Component {
                 </div>
                 <div>
                     <MiddleSection />
+                </div>
+                <div>
+                    <PricingSection />
                 </div>
                 <div style={{ textAlign: "left" }}>
                     <Footer />
