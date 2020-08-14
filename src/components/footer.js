@@ -55,8 +55,8 @@ class Footer extends Component {
                             <Col xs={12} style={{ maxWidth: 350 }}>
                                 <div className="title">Fractal</div>
                                 <div className="text">
-                                    Fractal brings the power of a workstation to
-                                    any Internet-connected device.
+                                    Fractal uses the cloud to transform your laptop
+                                    into a graphics workstation.
                                 </div>
                                 <div
                                     style={{
@@ -290,9 +290,7 @@ class Footer extends Component {
                                         Privacy Policy
                                     </HashLink>
                                 </span>
-                            ) : (
-                                    <div></div>
-                                )}
+                            )}
                         </div>
                     </div>
                 </div>

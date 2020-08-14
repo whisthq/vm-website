@@ -66,7 +66,7 @@ class TopSection extends Component {
                                     </span>
                                 </div>
                                 <p className="title-subtext">
-                                    Fractal uses the cloud to transform your average laptop
+                                    Fractal uses the cloud to transform your laptop
                                     into a graphics workstation.
                                 </p>
                                 <Link to="/dashboard">
