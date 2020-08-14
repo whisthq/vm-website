@@ -50,7 +50,6 @@ class SettingsView extends Component {
                     style={{
                         backgroundColor: "white",
                         minHeight: "100vh",
-                        overflowX: "hidden !important",
                         textAlign: "center",
                     }}
                 >
@@ -77,7 +76,6 @@ class SettingsView extends Component {
                 <div
                     style={{
                         display: "flex",
-                        overflowX: "hidden",
                         position: "relative",
                         bottom: 60,
                     }}

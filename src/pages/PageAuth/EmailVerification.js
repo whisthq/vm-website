@@ -18,14 +18,10 @@ class EmailVerification extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            width: 0,
-            height: 0,
-            modalShow: false,
             isRedirect: false,
             isSending: false,
             sent: false,
         };
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
     }
 
     sendVerificationEmail = () => {
@@ -57,26 +53,8 @@ class EmailVerification extends Component {
         }
     }
 
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.updateWindowDimensions);
-    }
-
-    updateWindowDimensions() {
-        this.setState({ width: window.innerWidth, height: window.innerHeight });
-    }
-
     render() {
-        let modalClose = () => this.setState({ modalShow: false });
-        if (this.state.width > 700 && this.state.modalShow) {
-            modalClose();
-        }
-
-        if (
-            !this.props.verificationToken ||
-            this.props.verificationToken === "" ||
-            !this.props.username ||
-            this.props.username === ""
-        ) {
+        if (!this.props.verificationToken || !this.props.username) {
             return (
                 <div>
                     <div style={{ maxWidth: 1920, margin: "auto" }}>
@@ -223,7 +201,7 @@ class EmailVerification extends Component {
                                         Sending
                                     </Button>
                                 )}
-                                {this.state.sent ? (
+                                {this.state.sent && (
                                     <div
                                         style={{
                                             marginTop: 20,
@@ -240,8 +218,6 @@ class EmailVerification extends Component {
                                         />
                                         Sent
                                     </div>
-                                ) : (
-                                    <div></div>
                                 )}
                             </div>
                         </div>
@@ -329,7 +305,7 @@ class EmailVerification extends Component {
                                             Sending
                                         </Button>
                                     )}
-                                    {this.state.sent ? (
+                                    {this.state.sent && (
                                         <div
                                             style={{
                                                 marginTop: 20,
@@ -346,14 +322,11 @@ class EmailVerification extends Component {
                                             />
                                             Sent
                                         </div>
-                                    ) : (
-                                        <div></div>
                                     )}
                                 </div>
                             </div>
                         </div>
                     )}
-                    }
                 </div>
             );
         }
