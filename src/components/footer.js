@@ -282,7 +282,7 @@ class Footer extends Component {
                                     >
                                         Terms of Service
                                     </HashLink>
-                                    {"  "}
+                                    {" "}&amp;{" "}
                                     <HashLink
                                         to="/privacy#top"
                                         style={{ color: "#555555" }}
