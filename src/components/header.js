@@ -88,11 +88,13 @@ class Header extends Component {
                                 to="/"
                                 style={{
                                     color:
-                                        this.props.location.pathname === "/"
+                                        this.props.location.pathname ===
+                                            "/"
                                             ? `${this.props.button}`
                                             : `${this.props.color}`,
                                     fontWeight:
-                                        this.props.location.pathname === "/"
+                                        this.props.location.pathname ===
+                                            "/"
                                             ? "bold"
                                             : "normal",
                                     textDecoration: "none",
@@ -111,12 +113,12 @@ class Header extends Component {
                                 style={{
                                     color:
                                         this.props.location.pathname ===
-                                        "/about"
+                                            "/about"
                                             ? `${this.props.button}`
                                             : `${this.props.color}`,
                                     fontWeight:
                                         this.props.location.pathname ===
-                                        "/about"
+                                            "/about"
                                             ? "bold"
                                             : "normal",
                                     textDecoration: "none",
@@ -303,13 +305,13 @@ class Header extends Component {
                                             marginBottom: 10,
                                             color:
                                                 this.props.location.pathname ===
-                                                "/dashboard"
+                                                    "/dashboard"
                                                     ? `${this.props.button}`
                                                     : `${this.props.color}`,
                                             textDecoration: "none",
                                             fontWeight:
                                                 this.props.location.pathname ===
-                                                "/dashboard"
+                                                    "/dashboard"
                                                     ? "bold"
                                                     : "normal",
                                             display: "block",
@@ -324,12 +326,12 @@ class Header extends Component {
                                             textDecoration: "none",
                                             fontWeight:
                                                 this.props.location.pathname ===
-                                                "/dashboard/settings"
+                                                    "/dashboard/settings"
                                                     ? "bold"
                                                     : "normal",
                                             color:
                                                 this.props.location.pathname ===
-                                                "/dashboard/settings"
+                                                    "/dashboard/settings"
                                                     ? `${this.props.button}`
                                                     : `${this.props.color}`,
                                         }}
@@ -368,19 +370,19 @@ class Header extends Component {
                                             />
                                         </div>
                                     ) : (
-                                        <div
-                                            className="sign-out-button"
-                                            onClick={() =>
-                                                this.props.dispatch(logout())
-                                            }
-                                            style={{
-                                                marginTop: 10,
-                                                color: `${this.props.color}`,
-                                            }}
-                                        >
-                                            SIGN OUT
-                                        </div>
-                                    )}
+                                            <div
+                                                className="sign-out-button"
+                                                onClick={() =>
+                                                    this.props.dispatch(logout())
+                                                }
+                                                style={{
+                                                    marginTop: 10,
+                                                    color: `${this.props.color}`,
+                                                }}
+                                            >
+                                                SIGN OUT
+                                            </div>
+                                        )}
                                 </div>
                             )}
                         </div>

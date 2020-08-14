@@ -336,6 +336,7 @@ class About extends Component {
                             style={{
                                 marginTop: 120,
                             }}
+                            id="careers"
                         >
                             <div className="titleFont">Open Positions</div>
                             <div
