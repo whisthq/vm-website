@@ -140,12 +140,12 @@ class Footer extends Component {
                         >
                             <Col xs={3} style={{ paddingTop: 15 }}>
                                 <div className="section-name">PRODUCT</div>
-                                <HashLink
+                                {/* <HashLink
                                     to="/product#top"
                                     style={{ textDecoration: "none" }}
                                 >
                                     <div className="page-link">Technology</div>
-                                </HashLink>
+                                </HashLink> */}
                                 <HashLink
                                     to="/changelog#top"
                                     style={{ textDecoration: "none" }}
@@ -279,8 +279,8 @@ class Footer extends Component {
                                     </HashLink>
                                 </span>
                             ) : (
-                                <div></div>
-                            )}
+                                    <div></div>
+                                )}
                         </div>
                     </div>
                 </div>

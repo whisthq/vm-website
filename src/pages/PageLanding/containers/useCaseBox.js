@@ -36,7 +36,7 @@ class UseCaseBox extends Component {
         return (
             <div
                 style={{
-                    padding: "40px 0",
+                    padding: "40px 0px",
                 }}
                 id={this.props.case}
             >
@@ -60,8 +60,9 @@ class UseCaseBox extends Component {
                                 display: "flex",
                                 flexDirection: "column",
                                 justifyContent: "flex-end",
-                                paddingLeft: this.props.reverse ? 0 : 50,
-                                paddingRight: this.props.reverse ? 50 : 0,
+                                paddingLeft: this.props.reverse || this.props.width < 700 ? 0 : 50,
+                                paddingRight: this.props.reverse && this.props.width > 700 ? 50 : 0,
+                                marginTop: this.props.width < 700 ? 30 : 0
                             }}
                         >
                             <div
