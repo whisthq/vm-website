@@ -49,76 +49,8 @@ class MiddleSection extends Component {
     render() {
         return (
             <div>
-                <div
-                    style={{ background: "white", backgroundSize: "100% auto" }}
-                >
-                    <div className="fractal-container">
-                        <Row
-                            style={{
-                                marginBottom: this.state.width > 700 ? 30 : 50,
-                            }}
-                        >
-                            <Col
-                                md={6}
-                                xs={{ order: 1 }}
-                                style={{
-                                    textAlign: "left",
-                                    paddingTop: "10%",
-                                    paddingBottom: "10%",
-                                }}
-                            >
-                                <CloudPCBox />
-                            </Col>
-                            <Col
-                                md={{ span: 6, order: 2 }}
-                                xs={{ order: 1, span: 12 }}
-                                style={{
-                                    textAlign: "left",
-                                    paddingTop:
-                                        this.state.width > 700 ? "10%" : 20,
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        fontWeight: "bold",
-                                        color: "#111111",
-                                        textAlign: "left",
-                                        fontSize:
-                                            this.state.width > 700
-                                                ? "calc(30px + 1.1vw)"
-                                                : 30,
-                                        marginLeft:
-                                            this.state.width > 700 ? 50 : 0,
-                                    }}
-                                >
-                                    Graphics power on
-                                    <br /> any device
-                                </div>
-                                <p
-                                    style={{
-                                        textAlign: "left",
-                                        marginTop: 20,
-                                        fontSize:
-                                            this.state.width > 700
-                                                ? "calc(14px + 0.4vw)"
-                                                : 14,
-                                        maxWidth: 700,
-                                        marginLeft:
-                                            this.state.width > 700 ? 50 : 0,
-                                        lineHeight:
-                                            this.state.width > 700 ? 1.5 : 1.7,
-                                    }}
-                                >
-                                    Edit, render, and play at insane speeds from
-                                    any Windows, Apple, or Linux computer with
-                                    cloud GPU, RAM, and CPUs.
-                                </p>
-                            </Col>
-                        </Row>
-                    </div>
-                </div>
 
-                <div className="gradient-background">
+                <div className="gradient-background" style={{ marginTop: 50 }}>
                     <div
                         className="fractal-container"
                         style={{ paddingTop: 40 }}
@@ -189,6 +121,74 @@ class MiddleSection extends Component {
                     </div>
                 </div>
                 <div
+                    style={{ background: "white", backgroundSize: "100% auto" }}
+                >
+                    <div className="fractal-container">
+                        <Row
+                            style={{
+                                marginBottom: this.state.width > 700 ? 30 : 50,
+                            }}
+                        >
+                            <Col
+                                md={6}
+                                xs={{ order: 1 }}
+                                style={{
+                                    textAlign: "left",
+                                    paddingTop: "10%",
+                                    paddingBottom: "10%",
+                                }}
+                            >
+                                <CloudPCBox />
+                            </Col>
+                            <Col
+                                md={{ span: 6, order: 2 }}
+                                xs={{ order: 1, span: 12 }}
+                                style={{
+                                    textAlign: "left",
+                                    paddingTop:
+                                        this.state.width > 700 ? "10%" : 20,
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        fontWeight: "bold",
+                                        color: "#111111",
+                                        textAlign: "left",
+                                        fontSize:
+                                            this.state.width > 700
+                                                ? "calc(30px + 1.1vw)"
+                                                : 30,
+                                        marginLeft:
+                                            this.state.width > 700 ? 50 : 0,
+                                    }}
+                                >
+                                    Graphics power on
+                                    <br /> any device
+                                </div>
+                                <p
+                                    style={{
+                                        textAlign: "left",
+                                        marginTop: 20,
+                                        fontSize:
+                                            this.state.width > 700
+                                                ? "calc(14px + 0.4vw)"
+                                                : 14,
+                                        maxWidth: 700,
+                                        marginLeft:
+                                            this.state.width > 700 ? 50 : 0,
+                                        lineHeight:
+                                            this.state.width > 700 ? 1.5 : 1.7,
+                                    }}
+                                >
+                                    Edit, render, and play at insane speeds from
+                                    any Windows, Apple, or Linux computer with
+                                    cloud GPU, RAM, and CPUs.
+                                </p>
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
+                {/* <div
                     style={{
                         background: "white",
                         backgroundSize: "100% auto",
@@ -321,8 +321,8 @@ class MiddleSection extends Component {
                             </Col>
                         </Row>
                     </div>
-                </div>
-                <div
+                </div> */}
+                {/* <div
                     style={{
                         background: "white",
                         paddingTop: 40,
@@ -374,11 +374,41 @@ class MiddleSection extends Component {
                             </p>
                         </div>
                     </div>
+                </div> */}
+                <div className="fractal-container">
+                    <div style={{
+                        position: "absolute",
+                        zIndex: 0,
+                        height: "70vh",
+                        width: "70vw",
+                        right: 0,
+                        background: "rgba(60, 119, 214, 0.08)"
+                    }}>
+                    </div>
+                    <div style={{ paddingTop: 35 }}>
+                        <UseCaseBox case={"Productivity"} />
+                    </div>
                 </div>
-                <UseCaseBox case={"Productivity"} />
-                <UseCaseBox case={"Gaming"} />
-                <UseCaseBox case={"Graphics"} />
-                <Row>
+                <div className="fractal-container" style={{ marginTop: 35 }}>
+                    <div style={{ paddingTop: 80 }}>
+                        <UseCaseBox case={"Graphics"} reverse />
+                    </div>
+                </div>
+                <div className="fractal-container" style={{ marginTop: 70 }}>
+                    <div style={{
+                        position: "absolute",
+                        zIndex: 0,
+                        height: "70vh",
+                        width: "70vw",
+                        right: 0,
+                        background: "rgba(60, 119, 214, 0.08)"
+                    }}>
+                    </div>
+                    <div style={{ paddingTop: 35 }}>
+                        <UseCaseBox case={"Gaming"} />
+                    </div>
+                </div>
+                {/* <Row>
                     <Col md={12}>
                         <div
                             style={{
@@ -399,7 +429,7 @@ class MiddleSection extends Component {
                             </a>
                         </div>
                     </Col>
-                </Row>
+                </Row> */}
                 <div style={{ backgroundColor: "white" }}>
                     <div
                         className="fractal-container"

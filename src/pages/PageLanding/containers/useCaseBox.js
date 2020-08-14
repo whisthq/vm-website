@@ -9,11 +9,11 @@ import Graphics from "assets/large_graphics/graphics.png";
 
 const descriptions = {
     Productivity:
-        "Get your work done faster and without  frustration with Fractal. Preinstall your applications and launch your cloud PC in less than 3 minutes. Fractal supports anything you can think of, from heavy video editing to running CPU-intensive computation.",
-    Gaming:
-        "Fractal’s cloud computers and low-latency streaming technology are perfect for playing graphics-intensive games on mid-tier computers. Play the latest games without buying the latest gaming PCs.",
+        "Get your work done faster with gigabyte Internet speeds, 56GB RAM, and pre-installable applications.",
     Graphics:
-        "Render and view your graphics faster with Fractal. Fractal’s technology streams your cloud PC at high resolution, fully utilizing our powerful GPUs.",
+        "Every Fractal cloud PC has a dedicated virtual graphics card capable of handling complex textures, effects, and renders.",
+    Gaming:
+        "Run your favorite Windows games at 60+ FPS and ultra-low latency.",
 };
 
 const images = {
@@ -21,6 +21,15 @@ const images = {
     Gaming: Gaming,
     Graphics: Graphics,
 };
+
+const headers = {
+    Productivity:
+        "Unlock more RAM and blazing-fast Internet",
+    Gaming:
+        "Play demanding Windows games on any laptop",
+    Graphics:
+        "Design and render faster"
+}
 
 class UseCaseBox extends Component {
     render() {
@@ -32,47 +41,60 @@ class UseCaseBox extends Component {
                 id={this.props.case}
             >
                 <Row>
-                    <Col md={{ span: 4, offset: 2 }}>
+                    <Col md={{ span: 7, order: this.props.reverse ? 2 : 1 }}>
                         <ImageFadeIn
                             style={{
                                 width: "100%",
                                 margin: "auto",
-                                borderRadius: 10,
+                                borderRadius: 3,
                                 boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
                             }}
                             src={images[this.props.case]}
                         />
                     </Col>
                     <Col
-                        md={5}
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            justifyContent: "flex-end",
-                            padding: "0 60px",
-                            paddingBottom: 20,
-                        }}
+                        md={{ span: 5, order: this.props.reverse ? 1 : 2 }}
                     >
                         <div
                             style={{
-                                fontSize: "calc(16px + 0.4vw)",
-                                fontWeight: 1000,
-                                color: "#111111",
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "flex-end",
+                                paddingLeft: this.props.reverse ? 0 : 50,
+                                paddingRight: this.props.reverse ? 50 : 0,
                             }}
                         >
-                            {this.props.case}
-                        </div>
-                        <div
-                            style={{
-                                fontSize: 16,
-                                color: "#111111",
-                                paddingTop: 20,
-                            }}
-                        >
-                            {descriptions[this.props.case]}
+                            <div
+                                style={{
+                                    fontSize: "calc(16px + 0.4vw)",
+                                    fontWeight: 1000,
+                                    color: "#1b1f7d",
+                                    marginBottom: 10
+                                }}
+                            >
+                                {this.props.case}
+                            </div>
+                            <div
+                                style={{
+                                    fontSize: "calc(30px + 1.1vw)",
+                                    fontWeight: "bold",
+                                    color: "#111111",
+                                    lineHeight: 1.3
+                                }}
+                            >
+                                {headers[this.props.case]}
+                            </div>
+                            <div
+                                style={{
+                                    fontSize: 16,
+                                    color: "#111111",
+                                    paddingTop: 20,
+                                }}
+                            >
+                                {descriptions[this.props.case]}
+                            </div>
                         </div>
                     </Col>
-                    <Col md={1} />
                 </Row>
             </div>
         );
