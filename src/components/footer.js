@@ -78,7 +78,7 @@ class Footer extends Component {
                                         </div>
                                     </a>
                                     <a
-                                        href="https://medium.com/@fractalcomputers"
+                                        href="https://medium.com/@fractal"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={{
@@ -186,7 +186,7 @@ class Footer extends Component {
                                 <div style={{ fontSize: 13 }}>
                                     <div>
                                         <a
-                                            href="https://medium.com/@fractalcomputers"
+                                            href="https://medium.com/@fractal"
                                             className="page-link"
                                         >
                                             Blog
@@ -196,10 +196,10 @@ class Footer extends Component {
                                 <div style={{ fontSize: 13 }}>
                                     <div>
                                         <a
-                                            href="https://medium.com/@fractalcomputers"
+                                            href="https://discord.gg/eG88g6k"
                                             className="page-link"
                                         >
-                                            Community Slack
+                                            Discord
                                         </a>
                                     </div>
                                 </div>
