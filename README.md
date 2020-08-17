@@ -12,6 +12,8 @@ The admin dashboard is developed using the `npm` package manager. You can start 
 
 If you need to update dependencies, you can run `npm upgrade`, followed by `npm prune` to remove unnecessary dependencies.
 
+Note that the `master` branch autodeploys to `fractalcomputers.com` and should only be pushed to when code has been properly tested. The `staging` branch autodeploys to `fractalcomputers.netlify.com` and is the recommended branch to branch from when working on a feature, and the branch to PR into.
+
 Basic continuous integration is set up for this project. For every push or PR, basic NodeJS tests will be compiled and run within GitHub Actions. This will also auto-format the code via Prettier, see below. You should make sure that every push to master passes the build in GitHub Actions.
 
 ## Styling
