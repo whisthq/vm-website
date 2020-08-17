@@ -144,7 +144,6 @@ function* fetchDisks(action) {
         state.AuthReducer.access_token
     );
     let user_id = json.data.users[0].user_id;
-    console.log(user_id);
 
     var { json } = yield call(
         apiPost,
@@ -170,9 +169,8 @@ function* fetchDisks(action) {
     );
 
     if (json.data) {
-        let output = json.data.hardware_os_disks.push(
-            json.data.hardware_secondary_disks
-        );
+        let output = json.data.hardware_os_disks;
+        output.push(...json.data.hardware_secondary_disks);
         yield put(DiskAction.storeDisks(output));
     } else {
         yield put(DiskAction.storeDisks([]));

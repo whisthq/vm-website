@@ -44,6 +44,7 @@ class SettingsView extends Component {
     }
 
     render() {
+        console.log(this.props.disks);
         if (!this.state.loaded) {
             return (
                 <div
