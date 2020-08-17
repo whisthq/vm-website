@@ -31,8 +31,6 @@ class TopSection extends Component {
             .utc(this.props.trialEnd, "MMMM Do, YYYY", false)
             .isBefore(moment.utc());
 
-        console.log(this.props.customer);
-
         if (this.props.disk_is_creating) {
             let noPayBox =
                 this.props.customer || this.props.require_payment_oncreate;
