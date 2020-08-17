@@ -1,5 +1,5 @@
 import { put, takeEvery, all, call, select } from "redux-saga/effects";
-import { apiPost, apiGet, format } from "utils/Api.js";
+import { apiPost } from "utils/Api.js";
 import { config } from "utils/constants.js";
 import history from "utils/history";
 
@@ -9,29 +9,6 @@ import * as StripeAction from "store/actions/dashboard/stripe_actions";
 import * as CustomerAction from "store/actions/dashboard/customer_actions";
 import * as PopupAction from "store/actions/dashboard/popup_actions";
 import * as RenderingAction from "store/actions/dashboard/rendering_actions";
-
-function* getPromoCode(action) {
-    const state = yield select();
-    const { json } = yield call(
-        apiPost,
-        config.url.GRAPHQL,
-        {
-            query: `{
-              users(where: {email: {_eq: "${action.username}"}}) {
-                referral_code
-              }
-            }
-          `,
-        },
-        state.AuthReducer.access_token
-    );
-
-    if (json.data && json.data.users) {
-        yield put(
-            CustomerAction.storePromoCode(json.data.users[0].referral_code)
-        );
-    }
-}
 
 function* insertCustomer(action) {
     const state = yield select();
@@ -61,7 +38,7 @@ function* insertCustomer(action) {
             {
                 username: state.AuthReducer.username,
                 location: action.location,
-                code: state.DashboardReducer.promo_code,
+                code: state.DashboardReducer.customer.referral_code,
             },
             ""
         );
@@ -161,7 +138,6 @@ function* fetchUserReport(action) {
 export default function* () {
     yield all([
         takeEvery(CustomerAction.RETRIEVE_CUSTOMER, retrieveCustomer),
-        takeEvery(CustomerAction.GET_PROMO_CODE, getPromoCode),
         takeEvery(CustomerAction.INSERT_CUSTOMER, insertCustomer),
         takeEvery(
             CustomerAction.SUBMIT_PURCHASE_FEEDBACK,

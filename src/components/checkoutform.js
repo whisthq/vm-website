@@ -172,6 +172,7 @@ class CheckoutForm extends Component {
     };
 
     render() {
+        console.log(this.state.trialEnd);
         const style = {
             base: {
                 color: "#333333",

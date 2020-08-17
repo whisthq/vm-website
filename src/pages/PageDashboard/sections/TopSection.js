@@ -31,10 +31,11 @@ class TopSection extends Component {
             .utc(this.props.trialEnd, "MMMM Do, YYYY", false)
             .isBefore(moment.utc());
 
+        console.log(this.props.customer);
+
         if (this.props.disk_is_creating) {
             let noPayBox =
-                (this.props.customer && this.props.customer.paid) ||
-                this.props.require_payment_oncreate;
+                this.props.customer || this.props.require_payment_oncreate;
             return (
                 <Row
                     style={{
@@ -138,7 +139,6 @@ class TopSection extends Component {
             );
         } else if (
             this.props.customer &&
-            this.props.customer.paid &&
             this.props.payment &&
             Object.keys(this.props.payment).length > 0 &&
             this.props.payment.plan &&

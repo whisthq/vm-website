@@ -32,7 +32,6 @@ function* userSignup(action) {
             yield put(LoginAction.loginSuccess());
             yield put(TokenAction.storeVerificationToken(json.token));
             yield put(SignupAction.checkVerifiedEmail(action.username));
-            yield put(CustomerAction.getPromoCode(action.username));
         } else {
             yield put(SignupAction.signupFailure(json.status));
             yield put(LoginAction.loginFailure(json.status));

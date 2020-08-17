@@ -43,11 +43,6 @@ export default function (state = DASHBOARD_DEFAULT, action) {
                 ...state,
                 friend_email_status: action.status,
             };
-        case CustomerAction.STORE_PROMO_CODE:
-            return {
-                ...state,
-                promo_code: action.code,
-            };
         case CustomerAction.PROMO_CODE_FAILURE:
             return {
                 ...state,

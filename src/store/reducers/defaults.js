@@ -34,7 +34,6 @@ export const DASHBOARD_DEFAULT = {
     failed_payment_attempts: 0,
     successful_payment_attempts: 0,
     friend_email_status: 0,
-    promo_code: "",
     credits: 0,
     failed_referral_attempts: 0,
     verification_emails_sent: 0,
