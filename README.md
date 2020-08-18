@@ -12,11 +12,15 @@ The admin dashboard is developed using the `npm` package manager. You can start 
 
 If you need to update dependencies, you can run `npm upgrade`, followed by `npm prune` to remove unnecessary dependencies.
 
+Note that the `master` branch autodeploys to `fractalcomputers.com` and should only be pushed to when code has been properly tested. The `staging` branch autodeploys to `fractalcomputers.netlify.com` and is the recommended branch to branch from when working on a feature, and the branch to PR into.
+
 Basic continuous integration is set up for this project. For every push or PR, basic NodeJS tests will be compiled and run within GitHub Actions. This will also auto-format the code via Prettier, see below. You should make sure that every push to master passes the build in GitHub Actions.
 
 ## Styling
 
-To ensure that code formatting is standardized, and to minimize clutter in the commits, you should set up styling with [Prettier](https://prettier.io/) before making any PRs. You may find a variety of tutorial online for your personal setup. This README covers how to set it up on VSCode and Sublime. You can always run Prettier directly from a terminal via `npm run format`.
+To ensure that code formatting is standardized, and to minimize clutter in the commits, you should set up styling with [Prettier](https://prettier.io/) before making any PRs. You may find a variety of tutorial online for your personal setup. This README covers how to set it up on VSCode.
+
+You can always run Prettier directly from a terminal via `npm run format`.
 
 ### [VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
