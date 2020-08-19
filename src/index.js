@@ -40,7 +40,8 @@ import Changelog from "pages/PageChangelog/Changelog";
 import * as Sentry from '@sentry/react';
 
 Sentry.init({dsn: "https://9a25b78ce37b4f7db2ff1a4952c1e3a8@o400459.ingest.sentry.io/5394481",
-            environment: config.sentry_env,});
+            environment: config.sentry_env,
+            release: "website@" + process.env.REACT_APP_VERSION});
 
 const sentryReduxEnhancer = Sentry.createReduxEnhancer({});
 

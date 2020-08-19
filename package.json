@@ -119,7 +119,7 @@
         "workbox-webpack-plugin": "4.3.1"
     },
     "scripts": {
-        "start": "set NODE_ENV='development' && node scripts/start.js",
+        "start": "export REACT_APP_VERSION=$(git rev-parse HEAD) && set NODE_ENV='development' && node scripts/start.js",
         "build": "set CI='' && set NODE_ENV='production' && node scripts/build.js",
         "test": "node scripts/test.js",
         "format": "prettier --write ."
