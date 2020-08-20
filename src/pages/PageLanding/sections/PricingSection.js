@@ -75,12 +75,12 @@ class PricingSection extends Component {
                                     Start your trial now, pick a plan later.
                                 </div>
                             ) : (
-                                    <div>
-                                        Try Fractal free for seven days.
-                                        <br />
+                                <div>
+                                    Try Fractal free for seven days.
+                                    <br />
                                     Start your trial now.
-                                    </div>
-                                )}
+                                </div>
+                            )}
                         </div>
                         {!this.props.require_payment_oncreate && (
                             <div
@@ -178,21 +178,21 @@ class PricingSection extends Component {
                                 include_banner
                                 banner={
                                     <div>
-                                        <div>
-                                            Pricing varies by team size
-                                        </div>
+                                        <div>Pricing varies by team size</div>
                                         <a
                                             href="mailto: sales@fractalcomputers.com"
                                             style={{ outline: "none" }}
                                         >
-                                            <Button style={{
-                                                marginTop: 10,
-                                                background: "#171d87",
-                                                border: "none",
-                                                paddingLeft: 20,
-                                                paddingRight: 20,
-                                                outline: "none"
-                                            }}>
+                                            <Button
+                                                style={{
+                                                    marginTop: 10,
+                                                    background: "#171d87",
+                                                    border: "none",
+                                                    paddingLeft: 20,
+                                                    paddingRight: 20,
+                                                    outline: "none",
+                                                }}
+                                            >
                                                 Contact Us
                                             </Button>
                                         </a>

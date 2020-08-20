@@ -10,7 +10,7 @@ const production = {
         RESOURCE_GROUP: "Fractal",
     },
     new_server: true,
-    sentry_env: "prod"
+    sentry_env: "prod",
 };
 
 const staging = {
@@ -24,7 +24,7 @@ const staging = {
         RESOURCE_GROUP: "Fractal",
     },
     new_server: true,
-    sentry_env: "staging"
+    sentry_env: "staging",
 };
 
 const development = {
@@ -38,7 +38,7 @@ const development = {
         RESOURCE_GROUP: "FractalStaging",
     },
     new_server: true,
-    sentry_env: "dev"
+    sentry_env: "dev",
 };
 
 const local = {
@@ -52,7 +52,7 @@ const local = {
         RESOURCE_GROUP: "Fractal",
     },
     new_server: true,
-    sentry_env: "dev"
+    sentry_env: "dev",
 };
 
 // TODO: Change config to development/production after changes in staging are deployed to the other vm webservers

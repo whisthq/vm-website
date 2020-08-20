@@ -44,7 +44,6 @@ class MiddleSection extends Component {
     render() {
         return (
             <div>
-
                 <div className="gradient-background" style={{ marginTop: 50 }}>
                     <div
                         className="fractal-container"
@@ -184,34 +183,51 @@ class MiddleSection extends Component {
                     </div>
                 </div>
                 <div className="fractal-container">
-                    <div style={{
-                        position: "absolute",
-                        zIndex: 0,
-                        height: "70vh",
-                        width: "70vw",
-                        right: 0,
-                        background: "rgba(60, 119, 214, 0.08)"
-                    }}>
-                    </div>
+                    <div
+                        style={{
+                            position: "absolute",
+                            zIndex: 0,
+                            height: "70vh",
+                            width: "70vw",
+                            right: 0,
+                            background: "rgba(60, 119, 214, 0.08)",
+                        }}
+                    ></div>
                     <div style={{ paddingTop: 35 }}>
-                        <UseCaseBox case={"Productivity"} width={this.state.width} />
+                        <UseCaseBox
+                            case={"Productivity"}
+                            width={this.state.width}
+                        />
                     </div>
                 </div>
-                <div className="fractal-container" style={{ marginTop: this.state.width > 700 ? 35 : 0 }}>
-                    <div style={{ paddingTop: this.state.width > 700 ? 80 : 40 }}>
-                        <UseCaseBox case={"Graphics"} reverse width={this.state.width} />
+                <div
+                    className="fractal-container"
+                    style={{ marginTop: this.state.width > 700 ? 35 : 0 }}
+                >
+                    <div
+                        style={{ paddingTop: this.state.width > 700 ? 80 : 40 }}
+                    >
+                        <UseCaseBox
+                            case={"Graphics"}
+                            reverse
+                            width={this.state.width}
+                        />
                     </div>
                 </div>
-                <div className="fractal-container" style={{ marginTop: this.state.width > 700 ? 70 : 35 }}>
-                    <div style={{
-                        position: "absolute",
-                        zIndex: 0,
-                        height: "70vh",
-                        width: "70vw",
-                        right: 0,
-                        background: "rgba(60, 119, 214, 0.08)"
-                    }}>
-                    </div>
+                <div
+                    className="fractal-container"
+                    style={{ marginTop: this.state.width > 700 ? 70 : 35 }}
+                >
+                    <div
+                        style={{
+                            position: "absolute",
+                            zIndex: 0,
+                            height: "70vh",
+                            width: "70vw",
+                            right: 0,
+                            background: "rgba(60, 119, 214, 0.08)",
+                        }}
+                    ></div>
                     <div style={{ paddingTop: 35 }}>
                         <UseCaseBox case={"Gaming"} width={this.state.width} />
                     </div>
@@ -227,7 +243,8 @@ class MiddleSection extends Component {
                                 xs={{ order: 1 }}
                                 style={{
                                     textAlign: "left",
-                                    paddingBottom: this.state.width > 700 ? 100 : 35,
+                                    paddingBottom:
+                                        this.state.width > 700 ? 100 : 35,
                                     marginLeft: 0,
                                     marginBottom: 25,
                                     marginTop: this.state.width > 700 ? 0 : 40,
@@ -266,7 +283,8 @@ class MiddleSection extends Component {
                                                 : 14,
                                         lineHeight:
                                             this.state.width > 700 ? 1.5 : 1.7,
-                                        paddingBottom: this.state.width > 700 ? 0 : 35
+                                        paddingBottom:
+                                            this.state.width > 700 ? 0 : 35,
                                     }}
                                 >
                                     Sign up, choose a cloud PC, and download the

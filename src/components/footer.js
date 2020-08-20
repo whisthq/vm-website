@@ -55,8 +55,8 @@ class Footer extends Component {
                             <Col xs={12} style={{ maxWidth: 350 }}>
                                 <div className="title">Fractal</div>
                                 <div className="text">
-                                    Fractal uses the cloud to transform your laptop
-                                    into a graphics workstation.
+                                    Fractal uses the cloud to transform your
+                                    laptop into a graphics workstation.
                                 </div>
                                 <div
                                     style={{
@@ -281,8 +281,8 @@ class Footer extends Component {
                                         style={{ color: "#555555" }}
                                     >
                                         Terms of Service
-                                    </HashLink>
-                                    {" "}&amp;{" "}
+                                    </HashLink>{" "}
+                                    &amp;{" "}
                                     <HashLink
                                         to="/privacy#top"
                                         style={{ color: "#555555" }}
