@@ -22,6 +22,7 @@ const getClientEnvironment = require("./env");
 const ModuleNotFoundPlugin = require("react-dev-utils/ModuleNotFoundPlugin");
 const ForkTsCheckerWebpackPlugin = require("react-dev-utils/ForkTsCheckerWebpackPlugin");
 const typescriptFormatter = require("react-dev-utils/typescriptFormatter");
+const SentryCliPlugin = require('@sentry/webpack-plugin');
 
 const postcssNormalize = require("postcss-normalize");
 
@@ -62,6 +63,7 @@ module.exports = function (webpackEnv) {
     // Omit trailing slash as %PUBLIC_URL%/xyz looks better than %PUBLIC_URL%xyz.
     // Get environment variables to inject into our app.
     const env = getClientEnvironment(paths.publicUrlOrPath.slice(0, -1));
+    console.log(env.NODE_ENV)
 
     // common function to get style loaders
     const getStyleLoaders = (cssOptions, preProcessor) => {
@@ -671,6 +673,17 @@ module.exports = function (webpackEnv) {
                         ? typescriptFormatter
                         : undefined,
                 }),
+
+           isEnvProduction && new SentryCliPlugin({
+              include: '.',
+              ignoreFile: '.sentrycliignore',
+              ignore: ['node_modules', 'webpack.config.js'],
+              configFile: '.sentryclirc',
+              release: "website@" + process.env.REACT_APP_VERSION,
+              setCommits: {"auto": true},
+              deploy: {"env": webpackEnv}
+            }),
+
         ].filter(Boolean),
         // Some libraries import Node modules but don't use them in the browser.
         // Tell webpack to provide empty mocks for them so importing them works.

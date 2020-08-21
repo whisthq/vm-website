@@ -60,14 +60,16 @@ class TopSection extends Component {
                                             this.state.width > 700 ? 1.3 : 1.4,
                                     }}
                                 >
-                                    Your computer,<br />just{" "}
+                                    Your computer,
+                                    <br />
+                                    just{" "}
                                     <span className="blue-gradient">
                                         faster
                                     </span>
                                 </div>
                                 <p className="title-subtext">
-                                    Fractal uses the cloud to transform your laptop
-                                    into a graphics workstation.
+                                    Fractal uses the cloud to transform your
+                                    laptop into a graphics workstation.
                                 </p>
                                 <Link to="/dashboard">
                                     <Button
