@@ -1,8 +1,8 @@
 "use strict";
 
 // Don't edit this, this is the same as build.js with different environment variables
-process.env.BABEL_ENV = "staging";
-process.env.NODE_ENV = "staging";
+process.env.BABEL_ENV = "development";
+process.env.NODE_ENV = "development";
 
 // Makes the script crash on unhandled rejections instead of silently
 // ignoring them. In the future, promise rejections that are not handled will
