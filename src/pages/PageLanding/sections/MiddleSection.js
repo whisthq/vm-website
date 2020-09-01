@@ -182,12 +182,12 @@ class MiddleSection extends Component {
                         </Row>
                     </div>
                 </div>
-                <div className="fractal-container">
+                <div className="fractal-container" style={{ position: "relative" }}>
                     <div
                         style={{
                             position: "absolute",
                             zIndex: 0,
-                            height: "70vh",
+                            height: this.state.width > 700 ? "100%" : "50%",
                             width: "70vw",
                             right: 0,
                             background: "rgba(60, 119, 214, 0.08)",
@@ -202,7 +202,7 @@ class MiddleSection extends Component {
                 </div>
                 <div
                     className="fractal-container"
-                    style={{ marginTop: this.state.width > 700 ? 35 : 0 }}
+                    style={{ marginTop: this.state.width > 700 ? 35 : 0, position: "relative" }}
                 >
                     <div
                         style={{ paddingTop: this.state.width > 700 ? 80 : 40 }}
@@ -216,13 +216,13 @@ class MiddleSection extends Component {
                 </div>
                 <div
                     className="fractal-container"
-                    style={{ marginTop: this.state.width > 700 ? 70 : 35 }}
+                    style={{ marginTop: this.state.width > 700 ? 70 : 35, position: "relative" }}
                 >
                     <div
                         style={{
                             position: "absolute",
                             zIndex: 0,
-                            height: "70vh",
+                            height: this.state.width > 700 ? "100%" : "50%",
                             width: "70vw",
                             right: 0,
                             background: "rgba(60, 119, 214, 0.08)",
