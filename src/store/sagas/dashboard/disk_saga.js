@@ -39,7 +39,7 @@ function* attachDisk(disk_name) {
 
         const { json } = yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/azure_disk/attach",
+            config.url.PRIMARY_SERVER + "/disk/attach",
             {
                 disk_name: disk_name,
                 resource_group: config.azure.RESOURCE_GROUP,
@@ -146,39 +146,21 @@ function* fetchDiskAttachStatus(action) {
 
 function* fetchDisks(action) {
     const state = yield select();
-    if (config.new_server) {
-        const { json, response } = yield call(
-            apiGet,
-            format(
-                config.url.PRIMARY_SERVER +
-                    "/account/disks?username={0}&main={1}",
-                state.AuthReducer.username,
-                "false"
-            ),
-            state.AuthReducer.access_token
-        );
+    const { json, response } = yield call(
+        apiGet,
+        format(
+            config.url.PRIMARY_SERVER +
+            "/account/disks?username={0}&main={1}",
+            state.AuthReducer.username,
+            "true"
+        ),
+        state.AuthReducer.access_token
+    );
 
-        if (response.status === 200 && json.disks) {
-            yield put(DiskAction.storeDisks(json.disks));
-        } else {
-            yield put(DiskAction.storeDisks([]));
-        }
+    if (response.status === 200 && json.disks) {
+        yield put(DiskAction.storeDisks(json.disks));
     } else {
-        const { json } = yield call(
-            apiPost,
-            config.url.PRIMARY_SERVER + "/user/fetchdisks",
-            {
-                username: state.AuthReducer.username,
-                main: false,
-            },
-            ""
-        );
-
-        if (json.disks) {
-            yield put(DiskAction.storeDisks(json.disks));
-        } else {
-            yield put(DiskAction.storeDisks([]));
-        }
+        yield put(DiskAction.storeDisks([]));
     }
 }
 
@@ -187,7 +169,7 @@ function* createDisk(action) {
     if (config.new_server) {
         const { json } = yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/azure_disk/clone",
+            config.url.PRIMARY_SERVER + "/disk/clone",
             {
                 username: state.AuthReducer.username,
                 location: action.location,

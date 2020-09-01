@@ -88,7 +88,7 @@ function* userLogin(action) {
                 TokenAction.storeJWT(json.access_token, json.refresh_token)
             );
             yield put(LoginAction.loginSuccess());
-            yield put(TokenAction.storeVerificationToken(json.token));
+            yield put(TokenAction.storeVerificationToken(json.verification_token));
             yield put(SignupAction.checkVerifiedEmail(action.username));
             yield put(CustomerAction.getPromoCode(action.username));
         } else {
