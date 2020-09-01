@@ -157,8 +157,8 @@ function* fetchDisks(action) {
         state.AuthReducer.access_token
     );
 
-    if (response.status === 200 && json.disks) {
-        yield put(DiskAction.storeDisks(json.disks));
+    if (response.status === 200 && json.os_disks) {
+        yield put(DiskAction.storeDisks(json.os_disks));
     } else {
         yield put(DiskAction.storeDisks([]));
     }

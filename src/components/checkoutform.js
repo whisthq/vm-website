@@ -20,6 +20,7 @@ class CheckoutForm extends Component {
             failed_payment_attempt: false,
             code: "",
             failed_referral_attempt: false,
+            successful_payment_attempt: false,
             creditCard: true,
             trial_end: "",
             billingState: null,
@@ -55,7 +56,6 @@ class CheckoutForm extends Component {
                         this.props.plan.toLowerCase()
                     )
                 );
-                this.props.callback();
             } else {
                 this.setState({
                     processing: false,
@@ -87,6 +87,7 @@ class CheckoutForm extends Component {
                 processing: false,
             });
         }
+
         if (
             prevProps.failed_referral_attempts !==
             this.props.failed_referral_attempts &&
@@ -98,6 +99,11 @@ class CheckoutForm extends Component {
                     "Your referral code was invalid. Please re-check the code, or contact support@fractalcomputers.com.",
                 processing: false,
             });
+        }
+
+        if (prevProps.successful_payment_attempts < this.props.successful_payment_attempts && !this.state.successful_payment_attempt) {
+            this.setState({ successful_payment_attempt: true })
+            this.props.callback();
         }
 
         if (this.props.payment && Object.keys(this.props.payment).length > 0) {
@@ -118,7 +124,12 @@ class CheckoutForm extends Component {
                 this.props.customer &&
                 Object.keys(this.props.customer).length === 0
             ) {
-                this.setState({ trialEnd: "" });
+                // var unix = Math.round(((new Date()).getTime() + 7 * 60000 * 60 * 24) / 1000)
+                // this.setState({
+                //     trialEnd: moment
+                //         .unix(unix)
+                //         .format("MMMM Do, YYYY"),
+                // });
             }
         }
 
@@ -444,6 +455,7 @@ function mapStateToProps(state) {
         customer_status: state.DashboardReducer.customer_status,
         customer: state.DashboardReducer.customer,
         payment: state.DashboardReducer.payment,
+        successful_payment_attempts: state.DashboardReducer.successful_payment_attempts
     };
 }
 
