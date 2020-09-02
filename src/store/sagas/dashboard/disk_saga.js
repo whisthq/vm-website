@@ -5,6 +5,8 @@ import { config } from "utils/constants";
 import { formatDate } from "utils/date";
 import * as DiskAction from "store/actions/dashboard/disk_actions";
 
+import moment from "moment";
+
 function* fetchDiskCreationStatus(ID) {
     var { json } = yield call(
         apiGet,
@@ -126,6 +128,22 @@ function* fetchDiskAttachStatus(action) {
     if (json && json.state && json.state === "SUCCESS") {
         yield put(DiskAction.diskCreating(false));
         yield put(DiskAction.fetchDisks(state.DashboardReducer.user));
+        var now3 = new Date();
+        // Get unix timestamp for one week from current time
+        var trialEnd = Math.round(
+            new Date(now3.setDate(now3.getDate() + 7)).getTime() / 1000
+        );
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/mail/computerReady",
+            {
+                username: state.AuthReducer.username,
+                date: moment.unix(trialEnd).format("MMMM Do, YYYY"),
+                code: state.DashboardReducer.promo_code,
+                location: state.DashboardReducer.vm_setup_data.location,
+            },
+            ""
+        );
     }
 
     if (json && json.state && json.state === "FAILURE") {
@@ -149,8 +167,7 @@ function* fetchDisks(action) {
     const { json, response } = yield call(
         apiGet,
         format(
-            config.url.PRIMARY_SERVER +
-            "/account/disks?username={0}&main={1}",
+            config.url.PRIMARY_SERVER + "/account/disks?username={0}&main={1}",
             state.AuthReducer.username,
             "true"
         ),
