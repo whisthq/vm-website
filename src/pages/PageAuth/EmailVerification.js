@@ -41,12 +41,18 @@ class EmailVerification extends Component {
             this.setState({ isRedirect: true });
             this.props.dispatch(validateSignupToken(token));
         }
+        this.props.dispatch(
+            sendVerificationEmail(
+                this.props.username,
+                this.props.verificationToken
+            )
+        );
     }
 
     componentDidUpdate(prevProps) {
         if (
             prevProps.verification_emails_sent !==
-                this.props.verification_emails_sent &&
+            this.props.verification_emails_sent &&
             this.state.isSending
         ) {
             this.setState({ isSending: false, sent: true });
@@ -174,110 +180,6 @@ class EmailVerification extends Component {
                                         RESEND EMAIL
                                     </Button>
                                 ) : (
-                                    <Button
-                                        disabled="true"
-                                        style={{
-                                            background: "#0B172B",
-                                            padding: "12px 35px",
-                                            border: "none",
-                                            color: "white",
-                                            fontWeight: "bold",
-                                            boxShadow:
-                                                "0px 4px 20px rgba(0, 0, 0, 0.20)",
-                                            fontSize: 14,
-                                            minWidth: 225,
-                                            marginBottom: 10,
-                                        }}
-                                    >
-                                        <FontAwesomeIcon
-                                            icon={faCircleNotch}
-                                            spin
-                                            style={{
-                                                color: "white",
-                                                height: 13,
-                                                marginRight: 5,
-                                            }}
-                                        />{" "}
-                                        Sending
-                                    </Button>
-                                )}
-                                {this.state.sent && (
-                                    <div
-                                        style={{
-                                            marginTop: 20,
-                                            color: "#5ac475",
-                                        }}
-                                    >
-                                        <FontAwesomeIcon
-                                            icon={faCheck}
-                                            style={{
-                                                padding: 0,
-                                                width: 12,
-                                                marginRight: 7,
-                                            }}
-                                        />
-                                        Sent
-                                    </div>
-                                )}
-                            </div>
-                        </div>
-                    ) : (
-                        <div
-                            style={{
-                                position: "relative",
-                                maxWidth: 1920,
-                                margin: "auto",
-                            }}
-                        >
-                            <Header color="#111111" button="#5ec3eb" homepage />
-                            <div
-                                style={{
-                                    margin: "auto",
-                                    paddingTop: 180,
-                                    maxWidth: 600,
-                                    lineHeight: 1.7,
-                                    textAlign: "center",
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        fontSize: 26,
-                                        fontWeight: "bold",
-                                        marginBottom: 25,
-                                    }}
-                                >
-                                    Please Verify Your Email
-                                </div>
-                                <div style={{ marginBottom: 50 }}>
-                                    An email has been sent to{" "}
-                                    <strong>{this.props.username}</strong>.
-                                    Please find the email in your inbox and
-                                    select the "Verify Email" button at the
-                                    bottom of the email. If you do not see the
-                                    email, make sure that your email address is
-                                    spelled correctly, and check your Spam/All
-                                    Mail folder.
-                                </div>
-                                <div>
-                                    {!this.state.isSending ? (
-                                        <Button
-                                            onClick={this.sendVerificationEmail}
-                                            style={{
-                                                background: "#0B172B",
-                                                padding: "12px 35px",
-                                                border: "none",
-                                                color: "white",
-                                                fontWeight: "bold",
-                                                boxShadow:
-                                                    "0px 4px 20px rgba(0, 0, 0, 0.20)",
-                                                fontSize: 14,
-                                                minWidth: 225,
-                                                marginBottom: 10,
-                                            }}
-                                        >
-                                            RESEND EMAIL
-                                        </Button>
-                                    ) : (
                                         <Button
                                             disabled="true"
                                             style={{
@@ -302,31 +204,135 @@ class EmailVerification extends Component {
                                                     marginRight: 5,
                                                 }}
                                             />{" "}
-                                            Sending
+                                        Sending
                                         </Button>
                                     )}
-                                    {this.state.sent && (
-                                        <div
+                                {this.state.sent && (
+                                    <div
+                                        style={{
+                                            marginTop: 20,
+                                            color: "#5ac475",
+                                        }}
+                                    >
+                                        <FontAwesomeIcon
+                                            icon={faCheck}
                                             style={{
-                                                marginTop: 20,
-                                                color: "#5ac475",
+                                                padding: 0,
+                                                width: 12,
+                                                marginRight: 7,
                                             }}
-                                        >
-                                            <FontAwesomeIcon
-                                                icon={faCheck}
-                                                style={{
-                                                    padding: 0,
-                                                    width: 12,
-                                                    marginRight: 7,
-                                                }}
-                                            />
-                                            Sent
-                                        </div>
-                                    )}
-                                </div>
+                                        />
+                                        Sent
+                                    </div>
+                                )}
                             </div>
                         </div>
-                    )}
+                    ) : (
+                                <div
+                                    style={{
+                                        position: "relative",
+                                        maxWidth: 1920,
+                                        margin: "auto",
+                                    }}
+                                >
+                                    <Header color="#111111" button="#5ec3eb" homepage />
+                                    <div
+                                        style={{
+                                            margin: "auto",
+                                            paddingTop: 180,
+                                            maxWidth: 600,
+                                            lineHeight: 1.7,
+                                            textAlign: "center",
+                                        }}
+                                    >
+                                        <div
+                                            style={{
+                                                fontSize: 26,
+                                                fontWeight: "bold",
+                                                marginBottom: 25,
+                                            }}
+                                        >
+                                            Please Verify Your Email
+                                </div>
+                                        <div style={{ marginBottom: 50 }}>
+                                            An email has been sent to{" "}
+                                            <strong>{this.props.username}</strong>.
+                                    Please find the email in your inbox and
+                                    select the "Verify Email" button at the
+                                    bottom of the email. If you do not see the
+                                    email, make sure that your email address is
+                                    spelled correctly, and check your Spam/All
+                                    Mail folder.
+                                </div>
+                                        <div>
+                                            {!this.state.isSending ? (
+                                                <Button
+                                                    onClick={this.sendVerificationEmail}
+                                                    style={{
+                                                        background: "#0B172B",
+                                                        padding: "12px 35px",
+                                                        border: "none",
+                                                        color: "white",
+                                                        fontWeight: "bold",
+                                                        boxShadow:
+                                                            "0px 4px 20px rgba(0, 0, 0, 0.20)",
+                                                        fontSize: 14,
+                                                        minWidth: 225,
+                                                        marginBottom: 10,
+                                                    }}
+                                                >
+                                                    RESEND EMAIL
+                                                </Button>
+                                            ) : (
+                                                    <Button
+                                                        disabled="true"
+                                                        style={{
+                                                            background: "#0B172B",
+                                                            padding: "12px 35px",
+                                                            border: "none",
+                                                            color: "white",
+                                                            fontWeight: "bold",
+                                                            boxShadow:
+                                                                "0px 4px 20px rgba(0, 0, 0, 0.20)",
+                                                            fontSize: 14,
+                                                            minWidth: 225,
+                                                            marginBottom: 10,
+                                                        }}
+                                                    >
+                                                        <FontAwesomeIcon
+                                                            icon={faCircleNotch}
+                                                            spin
+                                                            style={{
+                                                                color: "white",
+                                                                height: 13,
+                                                                marginRight: 5,
+                                                            }}
+                                                        />{" "}
+                                            Sending
+                                                    </Button>
+                                                )}
+                                            {this.state.sent && (
+                                                <div
+                                                    style={{
+                                                        marginTop: 20,
+                                                        color: "#5ac475",
+                                                    }}
+                                                >
+                                                    <FontAwesomeIcon
+                                                        icon={faCheck}
+                                                        style={{
+                                                            padding: 0,
+                                                            width: 12,
+                                                            marginRight: 7,
+                                                        }}
+                                                    />
+                                            Sent
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                 </div>
             );
         }

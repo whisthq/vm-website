@@ -16,8 +16,10 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import history from "utils/history";
 import "static/Shared.css";
+import { config } from "utils/constants.js";
 
 import Purchase from "pages/PagePurchase/Purchase";
+import Product from "pages/PageProduct/Product";
 import Auth from "pages/PageAuth/Auth";
 import Landing from "pages/PageLanding/Landing";
 import Dashboard from "pages/PageDashboard/Dashboard";
@@ -34,6 +36,17 @@ import Careers from "pages/PageCareers/Careers";
 import NotFound from "pages/Page404/NotFound";
 import Changelog from "pages/PageChangelog/Changelog";
 
+import * as Sentry from "@sentry/react";
+
+Sentry.init({
+    dsn:
+        "https://9a25b78ce37b4f7db2ff1a4952c1e3a8@o400459.ingest.sentry.io/5394481",
+    environment: config.sentry_env,
+    release: "website@" + process.env.REACT_APP_VERSION,
+});
+
+const sentryReduxEnhancer = Sentry.createReduxEnhancer({});
+
 const persistConfig = {
     key: "rootKey",
     storage,
@@ -46,7 +59,7 @@ let middleware = [routerMiddleware(history), ReduxPromise, sagaMiddleware];
 
 const store = createStore(
     persistedReducer,
-    composeWithDevTools(applyMiddleware(...middleware))
+    composeWithDevTools(applyMiddleware(...middleware), sentryReduxEnhancer)
 );
 
 const persistor = persistStore(store);
@@ -59,6 +72,7 @@ ReactDOM.render(
             <PersistGate loading={null} persistor={persistor}>
                 <Switch>
                     <Route exact path="/" component={Landing} />
+                    <Route exact path="/product" component={Product} />
                     <Route exact path="/purchase" component={Purchase} />
                     <Route exact path="/auth" component={Auth} />
                     <Route path="/dashboard" component={Dashboard} />
@@ -74,7 +88,7 @@ ReactDOM.render(
                     <Route path="/verify" component={EmailVerification} />
                     <Route exact path="/card" component={CreditCard} />
                     <Route exact path="/about" component={About} />
-                    <Route path="/careers" component={Careers} />
+                    <Route exact path="/careers" component={Careers} />
                     <Route exact path="/changelog" component={Changelog} />
                     <Route exact path="/plan" component={Plan} />
                     <Route exact path="/storage" component={Storage} />

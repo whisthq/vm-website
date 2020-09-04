@@ -24,13 +24,13 @@ function* userSignup(action) {
     if (json) {
         if (response.status === 200) {
             yield put(
-                SignupAction.sendVerificationEmail(action.username, json.token)
+                SignupAction.sendVerificationEmail(action.username, json.verification_token)
             );
             yield put(
                 TokenAction.storeJWT(json.access_token, json.refresh_token)
             );
             yield put(LoginAction.loginSuccess());
-            yield put(TokenAction.storeVerificationToken(json.token));
+            yield put(TokenAction.storeVerificationToken(json.verification_token));
             yield put(SignupAction.checkVerifiedEmail(action.username));
         } else {
             yield put(SignupAction.signupFailure(json.status));

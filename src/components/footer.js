@@ -55,8 +55,8 @@ class Footer extends Component {
                             <Col xs={12} style={{ maxWidth: 350 }}>
                                 <div className="title">Fractal</div>
                                 <div className="text">
-                                    Fractal brings the power of a workstation to
-                                    any Internet-connected device.
+                                    Fractal uses the cloud to transform your
+                                    laptop into a graphics workstation.
                                 </div>
                                 <div
                                     style={{
@@ -78,7 +78,7 @@ class Footer extends Component {
                                         </div>
                                     </a>
                                     <a
-                                        href="https://medium.com/@fractalcomputers"
+                                        href="https://medium.com/@fractal"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={{
@@ -143,12 +143,12 @@ class Footer extends Component {
                                 style={{ paddingTop: 15, paddingBottom: 20 }}
                             >
                                 <div className="section-name">PRODUCT</div>
-                                <HashLink
-                                    to="/#top"
+                                {/* <HashLink
+                                    to="/product#top"
                                     style={{ textDecoration: "none" }}
                                 >
-                                    <div className="page-link">Cloud PC</div>
-                                </HashLink>
+                                    <div className="page-link">Technology</div>
+                                </HashLink> */}
                                 <HashLink
                                     to="/changelog#top"
                                     style={{ textDecoration: "none" }}
@@ -161,21 +161,21 @@ class Footer extends Component {
                                 style={{ paddingTop: 15, paddingBottom: 20 }}
                             >
                                 <div className="section-name">COMPANY</div>
-                                <HashLink
-                                    to="/about#top"
-                                    style={{ textDecoration: "none" }}
-                                >
-                                    <div className="page-link">About</div>
-                                </HashLink>
                                 <div style={{ fontSize: 13 }}>
-                                    <div>
-                                        <a
-                                            href="mailto: careers@fractalcomputers.com"
-                                            className="page-link"
-                                        >
-                                            Careers
-                                        </a>
-                                    </div>
+                                    <HashLink
+                                        to="/about#top"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        <div className="page-link">About</div>
+                                    </HashLink>
+                                </div>
+                                <div style={{ fontSize: 13 }}>
+                                    <HashLink
+                                        to="/about#careers"
+                                        style={{ textDecoration: "none" }}
+                                    >
+                                        <div className="page-link">Careers</div>
+                                    </HashLink>
                                 </div>
                             </Col>
                             <Col
@@ -186,7 +186,7 @@ class Footer extends Component {
                                 <div style={{ fontSize: 13 }}>
                                     <div>
                                         <a
-                                            href="https://medium.com/@fractalcomputers"
+                                            href="https://medium.com/@fractal"
                                             className="page-link"
                                         >
                                             Blog
@@ -196,10 +196,10 @@ class Footer extends Component {
                                 <div style={{ fontSize: 13 }}>
                                     <div>
                                         <a
-                                            href="https://medium.com/@fractalcomputers"
+                                            href="https://discord.gg/eG88g6k"
                                             className="page-link"
                                         >
-                                            Community Slack
+                                            Discord
                                         </a>
                                     </div>
                                 </div>
@@ -281,8 +281,8 @@ class Footer extends Component {
                                         style={{ color: "#555555" }}
                                     >
                                         Terms of Service
-                                    </HashLink>
-                                    {"  "}
+                                    </HashLink>{" "}
+                                    &amp;{" "}
                                     <HashLink
                                         to="/privacy#top"
                                         style={{ color: "#555555" }}

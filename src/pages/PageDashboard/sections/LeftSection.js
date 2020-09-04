@@ -48,12 +48,12 @@ class LeftSection extends Component {
                         textDecoration: "none",
                         fontWeight:
                             this.props.location.pathname ===
-                            "/dashboard/settings"
+                                "/dashboard/settings"
                                 ? "bold"
                                 : "normal",
                         color:
                             this.props.location.pathname ===
-                            "/dashboard/settings"
+                                "/dashboard/settings"
                                 ? "#111111"
                                 : "#B9B9B9",
                     }}
@@ -85,16 +85,16 @@ class LeftSection extends Component {
                         />
                     </div>
                 ) : (
-                    <div
-                        className="sign-out-button"
-                        onClick={() => this.props.dispatch(logout())}
-                        style={{
-                            marginTop: 15,
-                        }}
-                    >
-                        SIGN OUT
-                    </div>
-                )}
+                        <div
+                            className="sign-out-button"
+                            onClick={() => this.props.dispatch(logout())}
+                            style={{
+                                marginTop: 15,
+                            }}
+                        >
+                            SIGN OUT
+                        </div>
+                    )}
             </div>
         );
     }
@@ -102,7 +102,7 @@ class LeftSection extends Component {
 
 function mapStateToProps(state) {
     return {
-        use_google: state.AuthReducer.google_auth.use_google
+        use_google: state.AuthReducer.google_auth
             ? state.AuthReducer.google_auth.use_google
             : false,
     };

@@ -1,3 +1,7 @@
+a {
+    outline: none !important;
+}
+
 .footer {
     width: 100%;
     background-color: white;

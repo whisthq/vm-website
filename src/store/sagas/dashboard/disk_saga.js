@@ -75,8 +75,6 @@ function* fetchDiskAttachStatus(action) {
             json = json.json;
         }
 
-        console.log(json);
-
         if (json && json.output && json.state === "PENDING") {
             var now1 = new Date();
             var message1;

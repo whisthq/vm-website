@@ -18,20 +18,22 @@ export function apiPost(endpoint, body, token) {
     });
 }
 
-export function apiGet(endpoint, token) {
-    // var base_url = 'https://cube-vm-server.herokuapp.com/form/store'
-    // var full_url = `${base_url}${endpoint}`
-    return fetch(endpoint, {
-        method: "GET",
-        mode: "cors",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
-            // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-    }).then((response) => {
-        return response.json().then((json) => ({ json, response }));
-    });
+export async function apiGet(endpoint, token) {
+    try {
+        const response = await fetch(endpoint, {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + token,
+            },
+        });
+        const json = await response.json();
+        return { json, response };
+    } catch (err) {
+        console.log(err);
+        return err;
+    }
 }
 
 export function format(fmt, ...args) {
