@@ -122,6 +122,7 @@
     "scripts": {
         "start": "set NODE_ENV='development' && node scripts/start.js",
         "build-staging": "set CI='' && set NODE_ENV='development' && node scripts/build-staging.js",
+        "build-production": "set CI='' && set NODE_ENV='production' && node scripts/build-production.js",
         "test": "node scripts/test.js",
         "format": "prettier --write ."
     },
