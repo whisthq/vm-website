@@ -82,6 +82,8 @@ function* userLogin(action) {
         }
     );
 
+    console.log(json)
+
     if (json) {
         if (json.verified) {
             yield put(

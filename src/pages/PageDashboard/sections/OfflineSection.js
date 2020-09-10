@@ -22,14 +22,14 @@ class OfflineSection extends Component {
                     style={{
                         paddingTop: 200,
                         textAlign: "center",
-                        maxWidth: 500,
+                        maxWidth: 600,
                         margin: "auto",
                         marginBottom: 60,
                     }}
                 >
                     {moment().format("MMMM Do, YYYY")}: Fractal is currently
-                    undergoing a major update and will be back online within a
-                    few days. We apologize for the inconvenience!
+                    undergoing a major update. For questions, please contact
+                    support@fractalcomputers.com. We apologize for the inconvenience!
                 </div>
                 <HashLink
                     to="/#top"

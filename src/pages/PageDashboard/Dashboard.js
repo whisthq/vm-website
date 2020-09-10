@@ -21,6 +21,7 @@ class Dashboard extends Component {
         this.state = {
             width: 0,
             height: 0,
+            waitlist: true
         };
     }
 
