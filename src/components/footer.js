@@ -66,7 +66,7 @@ class Footer extends Component {
                                     }}
                                 >
                                     <a
-                                        href="https://twitter.com/fractalcomputer"
+                                        href="https://twitter.com/tryfractal"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={{
@@ -90,7 +90,7 @@ class Footer extends Component {
                                         </div>
                                     </a>
                                     <a
-                                        href="https://www.linkedin.com/company/fractalcomputers"
+                                        href="https://www.linkedin.com/company/fractal"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={{
@@ -102,7 +102,7 @@ class Footer extends Component {
                                         </div>
                                     </a>
                                     <a
-                                        href="https://www.instagram.com/fractalcomputer/"
+                                        href="https://www.instagram.com/tryfractal"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={{
@@ -114,7 +114,7 @@ class Footer extends Component {
                                         </div>
                                     </a>
                                     <a
-                                        href="https://www.facebook.com/fractalcomputer"
+                                        href="https://www.facebook.com/tryfractal"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         style={{
