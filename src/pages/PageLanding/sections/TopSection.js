@@ -54,20 +54,22 @@ class TopSection extends Component {
                                     style={{
                                         fontSize:
                                             this.state.width > 700
-                                                ? "calc(28px + 2.0vw)"
-                                                : 35,
+                                                ? "calc(32px + 2.2vw)"
+                                                : 38,
                                         lineHeight:
                                             this.state.width > 700 ? 1.3 : 1.4,
                                     }}
                                 >
-                                    Transform your laptop into a{" "}
+                                    Your computer,
+                                    <br />
+                                    just{" "}
                                     <span className="blue-gradient">
-                                        supercomputer
+                                        faster
                                     </span>
                                 </div>
                                 <p className="title-subtext">
-                                    Fractal brings the power of a workstation to
-                                    any Internet-connected device.
+                                    Fractal uses the cloud to transform your
+                                    laptop into a graphics workstation.
                                 </p>
                                 <Link to="/dashboard">
                                     <Button

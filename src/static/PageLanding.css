@@ -131,6 +131,14 @@
     }
 }
 
+.pricing-description {
+    color: #555555;
+    display: block;
+    position: relative;
+    bottom: 5px;
+    margin-bottom: 5px;
+}
+
 .clickable:hover {
     cursor: pointer;
 }

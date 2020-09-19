@@ -24,13 +24,13 @@ function* userSignup(action) {
     if (json) {
         if (response.status === 200) {
             yield put(
-                SignupAction.sendVerificationEmail(action.username, json.token)
+                SignupAction.sendVerificationEmail(action.username, json.verification_token)
             );
             yield put(
                 TokenAction.storeJWT(json.access_token, json.refresh_token)
             );
             yield put(LoginAction.loginSuccess());
-            yield put(TokenAction.storeVerificationToken(json.token));
+            yield put(TokenAction.storeVerificationToken(json.verification_token));
             yield put(SignupAction.checkVerifiedEmail(action.username));
             yield put(CustomerAction.getPromoCode(action.username));
         } else {
@@ -42,39 +42,21 @@ function* userSignup(action) {
 
 function* checkVerifiedEmail(action) {
     const state = yield select();
-    if (config.new_server) {
-        const { json, response } = yield call(
-            apiGet,
-            format(
-                config.url.PRIMARY_SERVER + "/account/verified?username={0}",
-                action.username
-            ),
-            state.AuthReducer.access_token
-        );
-        console.log(json);
-        if (json && response.status === 200 && json.verified) {
-            yield put(SignupAction.emailVerified(true));
-            history.push("/dashboard");
-        } else {
-            yield put(SignupAction.emailVerified(false));
-            history.push("/verify");
-        }
+    const { json, response } = yield call(
+        apiGet,
+        format(
+            config.url.PRIMARY_SERVER + "/account/verified?username={0}",
+            action.username
+        ),
+        state.AuthReducer.access_token
+    );
+    console.log(json);
+    if (json && response.status === 200 && json.verified) {
+        yield put(SignupAction.emailVerified(true));
+        history.push("/dashboard");
     } else {
-        const { json } = yield call(
-            apiPost,
-            config.url.PRIMARY_SERVER + "/account/checkVerified",
-            {
-                username: action.username,
-            },
-            ""
-        );
-        if (json && json.status === 200 && json.verified) {
-            yield put(SignupAction.emailVerified(true));
-            history.push("/dashboard");
-        } else {
-            yield put(SignupAction.emailVerified(false));
-            history.push("/verify");
-        }
+        yield put(SignupAction.emailVerified(false));
+        history.push("/verify");
     }
 }
 
@@ -108,21 +90,17 @@ function* subscribeNewsletter(action) {
 
 function* validateSignupToken(action) {
     const state = yield select();
-    if (config.new_server) {
-        const { json, response } = yield call(
-            apiPost,
-            config.url.PRIMARY_SERVER + "/account/verify",
-            {
-                username: state.AuthReducer.username,
-                token: action.token,
-            },
-            state.AuthReducer.access_token
-        );
-        if (json && response.status === 200 && json.verified) {
-            yield put(SignupAction.emailVerified(true));
-        } else {
-            yield put(SignupAction.emailVerified(false));
-        }
+    const { json, response } = yield call(
+        apiPost,
+        config.url.PRIMARY_SERVER + "/account/verify",
+        {
+            username: state.AuthReducer.username,
+            token: action.token,
+        },
+        state.AuthReducer.access_token
+    );
+    if (json && response.status === 200 && json.verified) {
+        yield put(SignupAction.emailVerified(true));
     } else {
         yield put(SignupAction.emailVerified(false));
     }
@@ -147,7 +125,7 @@ function* sendVerificationEmail(action) {
         } else {
             const { json } = yield call(
                 apiPost,
-                config.url.PRIMARY_SERVER + "/verification",
+                config.url.PRIMARY_SERVER + "/mail/verification",
                 {
                     username: action.username,
                     token: action.token,

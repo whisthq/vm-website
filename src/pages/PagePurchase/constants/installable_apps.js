@@ -217,13 +217,6 @@ export const apps = [
         size: 593,
     },
     {
-        name: "CUDA Development Toolkit",
-        category: "Developer",
-        image: "cuda.jpeg",
-        link: "https://developer.nvidia.com/cuda-zone",
-        size: 60,
-    },
-    {
         name: "LLVM",
         category: "Developer",
         image: "llvm.png",

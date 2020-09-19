@@ -128,9 +128,9 @@ class BottomSection extends Component {
                                 name="Current Plan"
                                 text={
                                     this.props.payment &&
-                                    Object.keys(this.props.payment).length >
+                                        Object.keys(this.props.payment).length >
                                         0 &&
-                                    this.props.payment.plan
+                                        this.props.payment.plan
                                         ? this.props.payment.plan.nickname
                                         : null
                                 }
@@ -149,6 +149,7 @@ class BottomSection extends Component {
 }
 
 function mapStateToProps(state) {
+    console.log(state)
     return {
         payment: state.DashboardReducer.payment,
         customer: state.DashboardReducer.customer,

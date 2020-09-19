@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 const production = {
     url: {
         PRIMARY_SERVER: "https://main-webserver.fractalcomputers.com",
@@ -10,6 +9,7 @@ const production = {
         RESOURCE_GROUP: "Fractal",
     },
     new_server: true,
+    sentry_env: "production",
 };
 
 const staging = {
@@ -23,6 +23,7 @@ const staging = {
         RESOURCE_GROUP: "Fractal",
     },
     new_server: true,
+    sentry_env: "development",
 };
 
 const development = {
@@ -36,20 +37,9 @@ const development = {
         RESOURCE_GROUP: "FractalStaging",
     },
     new_server: true,
+    sentry_env: "development",
 };
 
-const local = {
-    url: {
-        PRIMARY_SERVER: "http://localhost:5000",
-    },
-    stripe: {
-        PUBLIC_KEY: "pk_test_7y07LrJWC5LzNu17sybyn9ce004CLPaOXb",
-    },
-    azure: {
-        RESOURCE_GROUP: "Fractal",
-    },
-    new_server: true,
-};
 
 // TODO: Change config to development/production after changes in staging are deployed to the other vm webservers
 export const config =

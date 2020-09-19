@@ -8,6 +8,9 @@
         "@fortawesome/free-solid-svg-icons": "^5.14.0",
         "@fortawesome/react-fontawesome": "^0.1.11",
         "@popperjs/core": "^2.4.4",
+        "@sentry/cli": "^1.56.1",
+        "@sentry/react": "5.21.1",
+        "@sentry/webpack-plugin": "1.12.1",
         "@svgr/webpack": "4.3.3",
         "@typescript-eslint/eslint-plugin": "^2.32.0",
         "@typescript-eslint/parser": "^2.32.0",
@@ -119,7 +122,8 @@
     },
     "scripts": {
         "start": "set NODE_ENV='development' && node scripts/start.js",
-        "build": "set CI='' && set NODE_ENV='production' && node scripts/build.js",
+        "build-staging": "set CI='' && set NODE_ENV='development' && node scripts/build-staging.js",
+        "build-production": "set CI='' && set NODE_ENV='production' && node scripts/build-production.js",
         "test": "node scripts/test.js",
         "format": "prettier --write ."
     },

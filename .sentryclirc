@@ -1,0 +1,7 @@
+[defaults]
+org=fractalcomputers
+project=website
+url=https://sentry.io/
+
+[auth]
+token=bd96632ca0af42a4b692bea98b7173ef3f66d36ad0114d959763eea88ebc1dea

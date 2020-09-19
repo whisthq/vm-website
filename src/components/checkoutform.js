@@ -20,6 +20,7 @@ class CheckoutForm extends Component {
             failed_payment_attempt: false,
             code: "",
             failed_referral_attempt: false,
+            successful_payment_attempt: false,
             creditCard: true,
             trial_end: "",
             billingState: null,
@@ -55,7 +56,6 @@ class CheckoutForm extends Component {
                         this.props.plan.toLowerCase()
                     )
                 );
-                this.props.callback();
             } else {
                 this.setState({
                     processing: false,
@@ -78,7 +78,7 @@ class CheckoutForm extends Component {
     componentDidUpdate(prevProps) {
         if (
             prevProps.failed_payment_attempts !==
-                this.props.failed_payment_attempts &&
+            this.props.failed_payment_attempts &&
             !this.state.failed_payment_attempt
         ) {
             this.setState({
@@ -87,9 +87,10 @@ class CheckoutForm extends Component {
                 processing: false,
             });
         }
+
         if (
             prevProps.failed_referral_attempts !==
-                this.props.failed_referral_attempts &&
+            this.props.failed_referral_attempts &&
             !this.state.failed_referral_attempt
         ) {
             this.setState({
@@ -98,6 +99,11 @@ class CheckoutForm extends Component {
                     "Your referral code was invalid. Please re-check the code, or contact support@fractalcomputers.com.",
                 processing: false,
             });
+        }
+
+        if (prevProps.successful_payment_attempts < this.props.successful_payment_attempts && !this.state.successful_payment_attempt) {
+            this.setState({ successful_payment_attempt: true })
+            this.props.callback();
         }
 
         if (this.props.payment && Object.keys(this.props.payment).length > 0) {
@@ -118,7 +124,12 @@ class CheckoutForm extends Component {
                 this.props.customer &&
                 Object.keys(this.props.customer).length === 0
             ) {
-                this.setState({ trialEnd: "" });
+                // var unix = Math.round(((new Date()).getTime() + 7 * 60000 * 60 * 24) / 1000)
+                // this.setState({
+                //     trialEnd: moment
+                //         .unix(unix)
+                //         .format("MMMM Do, YYYY"),
+                // });
             }
         }
 
@@ -143,6 +154,13 @@ class CheckoutForm extends Component {
             this.setState({
                 trialEnd: moment
                     .unix(this.props.customer.trial_end)
+                    .format("MMMM Do, YYYY"),
+            });
+        } else {
+            var unix = Math.round(((new Date()).getTime() + 7 * 60000 * 60 * 24) / 1000)
+            this.setState({
+                trialEnd: moment
+                    .unix(unix)
                     .format("MMMM Do, YYYY"),
             });
         }
@@ -254,51 +272,51 @@ class CheckoutForm extends Component {
                             <br />
                         </div>
                     ) : (
-                        <div style={{ display: "block" }}>
-                            <div>
-                                <Button
-                                    disabled="true"
-                                    style={{
-                                        marginBottom: 10,
-                                        width: "100%",
-                                        maxWidth: 900,
-                                        background: "rgba(94, 195, 235, 0.2)",
-                                        border: 0,
-                                        marginTop: 20,
-                                        fontWeight: "bold",
-                                        fontSize: 14,
-                                        boxShadow:
-                                            "0px 4px 5px rgba(0, 0, 0, 0.05)",
-                                        paddingTop: 8,
-                                        paddingBottom: 8,
-                                        float: "left",
-                                        display: "inline",
-                                        height: 40,
-                                    }}
-                                >
-                                    <FontAwesomeIcon
-                                        icon={faCircleNotch}
-                                        spin
+                            <div style={{ display: "block" }}>
+                                <div>
+                                    <Button
+                                        disabled="true"
                                         style={{
-                                            color: "#1ba8e0",
-                                            height: 12,
-                                            marginRight: 5,
-                                            fontSize: 12,
+                                            marginBottom: 10,
+                                            width: "100%",
+                                            maxWidth: 900,
+                                            background: "rgba(94, 195, 235, 0.2)",
+                                            border: 0,
+                                            marginTop: 20,
+                                            fontWeight: "bold",
+                                            fontSize: 14,
+                                            boxShadow:
+                                                "0px 4px 5px rgba(0, 0, 0, 0.05)",
+                                            paddingTop: 8,
+                                            paddingBottom: 8,
+                                            float: "left",
+                                            display: "inline",
+                                            height: 40,
                                         }}
-                                    />
-                                </Button>
+                                    >
+                                        <FontAwesomeIcon
+                                            icon={faCircleNotch}
+                                            spin
+                                            style={{
+                                                color: "#1ba8e0",
+                                                height: 12,
+                                                marginRight: 5,
+                                                fontSize: 12,
+                                            }}
+                                        />
+                                    </Button>
+                                </div>
+                                <br />
                             </div>
-                            <br />
-                        </div>
-                    )}
+                        )}
                     <div style={{ marginTop: 25 }}>
                         {this.state.errorMessage !== "" ? (
                             <div style={{ fontSize: 12, color: "#e34d4d" }}>
                                 {this.state.errorMessage}
                             </div>
                         ) : (
-                            <div style={{ height: 20 }}></div>
-                        )}
+                                <div style={{ height: 20 }}></div>
+                            )}
                     </div>
                     <div
                         style={{
@@ -376,8 +394,8 @@ class CheckoutForm extends Component {
                             {(
                                 this.state.monthlyCharge +
                                 this.state.monthlyCharge *
-                                    this.state.taxPercent *
-                                    0.01
+                                this.state.taxPercent *
+                                0.01
                             ).toFixed(2)}{" "}
                             USD
                         </div>
@@ -399,8 +417,8 @@ class CheckoutForm extends Component {
                             {(
                                 this.state.monthlyCharge +
                                 this.state.monthlyCharge *
-                                    this.state.taxPercent *
-                                    0.01
+                                this.state.taxPercent *
+                                0.01
                             ).toFixed(2)}{" "}
                             USD
                         </div>
@@ -437,11 +455,12 @@ function mapStateToProps(state) {
         customer_status: state.DashboardReducer.customer_status,
         customer: state.DashboardReducer.customer,
         payment: state.DashboardReducer.payment,
+        successful_payment_attempts: state.DashboardReducer.successful_payment_attempts
     };
 }
 
 CheckoutForm.defaultProps = {
-    callback: () => {},
+    callback: () => { },
 };
 
 export default connect(mapStateToProps)(injectStripe(CheckoutForm));

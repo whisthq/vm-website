@@ -5,6 +5,8 @@ import { config } from "utils/constants";
 import { formatDate } from "utils/date";
 import * as DiskAction from "store/actions/dashboard/disk_actions";
 
+import moment from "moment";
+
 function* fetchDiskCreationStatus(ID) {
     var { json } = yield call(
         apiGet,
@@ -39,7 +41,7 @@ function* attachDisk(disk_name) {
 
         const { json } = yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/azure_disk/attach",
+            config.url.PRIMARY_SERVER + "/disk/attach",
             {
                 disk_name: disk_name,
                 resource_group: config.azure.RESOURCE_GROUP,
@@ -93,8 +95,6 @@ function* fetchDiskAttachStatus(action) {
             json = json.json;
         }
 
-        console.log(json);
-
         if (json && json.output && json.state === "PENDING") {
             var now1 = new Date();
             var message1;
@@ -128,6 +128,22 @@ function* fetchDiskAttachStatus(action) {
     if (json && json.state && json.state === "SUCCESS") {
         yield put(DiskAction.diskCreating(false));
         yield put(DiskAction.fetchDisks(state.DashboardReducer.user));
+        var now3 = new Date();
+        // Get unix timestamp for one week from current time
+        var trialEnd = Math.round(
+            new Date(now3.setDate(now3.getDate() + 7)).getTime() / 1000
+        );
+        yield call(
+            apiPost,
+            config.url.PRIMARY_SERVER + "/mail/computerReady",
+            {
+                username: state.AuthReducer.username,
+                date: moment.unix(trialEnd).format("MMMM Do, YYYY"),
+                code: state.DashboardReducer.promo_code,
+                location: state.DashboardReducer.vm_setup_data.location,
+            },
+            ""
+        );
     }
 
     if (json && json.state && json.state === "FAILURE") {
@@ -148,39 +164,20 @@ function* fetchDiskAttachStatus(action) {
 
 function* fetchDisks(action) {
     const state = yield select();
-    if (config.new_server) {
-        const { json, response } = yield call(
-            apiGet,
-            format(
-                config.url.PRIMARY_SERVER +
-                    "/account/disks?username={0}&main={1}",
-                state.AuthReducer.username,
-                "false"
-            ),
-            state.AuthReducer.access_token
-        );
+    const { json, response } = yield call(
+        apiGet,
+        format(
+            config.url.PRIMARY_SERVER + "/account/disks?username={0}&main={1}",
+            state.AuthReducer.username,
+            "true"
+        ),
+        state.AuthReducer.access_token
+    );
 
-        if (response.status === 200 && json.disks) {
-            yield put(DiskAction.storeDisks(json.disks));
-        } else {
-            yield put(DiskAction.storeDisks([]));
-        }
+    if (response.status === 200 && json.os_disks) {
+        yield put(DiskAction.storeDisks(json.os_disks));
     } else {
-        const { json } = yield call(
-            apiPost,
-            config.url.PRIMARY_SERVER + "/user/fetchdisks",
-            {
-                username: state.AuthReducer.username,
-                main: false,
-            },
-            ""
-        );
-
-        if (json.disks) {
-            yield put(DiskAction.storeDisks(json.disks));
-        } else {
-            yield put(DiskAction.storeDisks([]));
-        }
+        yield put(DiskAction.storeDisks([]));
     }
 }
 
@@ -189,7 +186,7 @@ function* createDisk(action) {
     if (config.new_server) {
         const { json } = yield call(
             apiPost,
-            config.url.PRIMARY_SERVER + "/azure_disk/clone",
+            config.url.PRIMARY_SERVER + "/disk/clone",
             {
                 username: state.AuthReducer.username,
                 location: action.location,
