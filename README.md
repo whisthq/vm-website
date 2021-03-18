@@ -1,7 +1,5 @@
 # Fractal Website
 
-![Node.js CI](https://github.com/fractalcomputers/website/workflows/Node.js%20CI/badge.svg)
-
 **THIS REPOSITORY WAS ARCHIVED FOLLOWING OUR MIGRATION FROM VIRTUAL MACHINES TO CONTAINERS, FOR WHICH WE CREATED A NEW WEBSITE. ALL NETLIFY HOSTS AND OTHER HOSTING SERVICES WERE DELETED. AS SUCH, THE INSTRUCTIONS BELOW MAY NO LONGER APPLY. THE REPOSITORY IS LEFT AS ARCHIVED HERE FOR REFERENCE.**
 
 This repository contains the code for the Fractal website where users create and manage their account. It interfaces with the webservers and the admin dashboard.
@@ -14,7 +12,7 @@ The admin dashboard is developed using the `npm` package manager. You can start 
 
 If you need to update dependencies, you can run `npm upgrade`, followed by `npm prune` to remove unnecessary dependencies.
 
-Note that the `master` branch autodeploys to `fractalcomputers.com` and should only be pushed to when code has been properly tested. The `staging` branch autodeploys to `fractalcomputers.netlify.com` and is the recommended branch to branch from when working on a feature, and the branch to PR into.
+Note that the `main` branch autodeploys to `fractalcomputers.com` and should only be pushed to when code has been properly tested. The `staging` branch autodeploys to `fractalcomputers.netlify.com` and is the recommended branch to branch from when working on a feature, and the branch to PR into.
 
 Basic continuous integration is set up for this project. For every push or PR, basic NodeJS tests will be compiled and run within GitHub Actions. This will also auto-format the code via Prettier, see below. You should make sure that every push to master passes the build in GitHub Actions.
 
