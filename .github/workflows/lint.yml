@@ -4,7 +4,7 @@ name: npm lint
 
 on:
   pull_request:
-    branches: [ master, staging ]
+    branches: [ main, staging ]
 
 jobs:
   lint:
